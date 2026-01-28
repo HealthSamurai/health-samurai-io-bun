@@ -40,6 +40,10 @@ export function Layout({ title, description, children }: LayoutProps): string {
         <link rel="stylesheet" href="/styles/medical-form.css" />
         <link rel="stylesheet" href="/styles/company.css" />
         <link rel="stylesheet" href="/styles/pricing.css" />
+        <link rel="stylesheet" href="/styles/fhir-database.css" />
+        <link rel="stylesheet" href="/styles/services.css" />
+        <link rel="stylesheet" href="/styles/careers.css" />
+        <link rel="stylesheet" href="/styles/case-study-detail.css" />
 
         {/* htmx */}
         <script src="https://unpkg.com/htmx.org@1.9.10"></script>

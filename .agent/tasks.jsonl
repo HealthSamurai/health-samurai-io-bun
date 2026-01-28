@@ -1,0 +1,6 @@
+{"id":"task-1769624848-123f","title":"Implement full pricing page using Pricing component","status":"closed","priority":1,"blocked_by":[],"created":"2026-01-28T18:27:28.201282+00:00","closed":"2026-01-28T18:30:01.776011+00:00"}
+{"id":"task-1769625046-13a8","title":"Fix TypeScript errors in fhir-server.tsx","status":"closed","priority":1,"blocked_by":[],"created":"2026-01-28T18:30:46.725930+00:00","closed":"2026-01-28T18:32:36.718293+00:00"}
+{"id":"task-1769626574-bb0b","title":"Implement /fhir-database (Fhirbase) page","status":"closed","priority":2,"blocked_by":[],"created":"2026-01-28T18:56:14.113421+00:00","closed":"2026-01-28T18:59:48.708587+00:00"}
+{"id":"task-1769626575-2018","title":"Implement /services page","status":"closed","priority":3,"blocked_by":[],"created":"2026-01-28T18:56:15.532506+00:00","closed":"2026-01-28T19:02:59.853190+00:00"}
+{"id":"task-1769626576-4bd7","title":"Implement /careers page","status":"closed","priority":3,"blocked_by":[],"created":"2026-01-28T18:56:16.347097+00:00","closed":"2026-01-28T19:05:28.489911+00:00"}
+{"id":"task-1769626577-6167","title":"Implement /case-study/:slug dynamic route","status":"closed","priority":3,"blocked_by":[],"created":"2026-01-28T18:56:17.024937+00:00","closed":"2026-01-28T19:08:11.007022+00:00"}

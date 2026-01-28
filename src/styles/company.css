@@ -1,0 +1,270 @@
+/* Company Page Styles */
+
+/* Hero Section */
+.company-hero {
+  padding: var(--space-20) 0 var(--space-12);
+  background: linear-gradient(135deg, var(--color-bg) 0%, #f0f4f8 100%);
+  text-align: center;
+}
+
+.company-hero h1 {
+  font-size: var(--text-5xl);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* Leadership Section */
+.company-leadership {
+  padding: var(--space-16) 0;
+}
+
+.leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+}
+
+.leader-card {
+  text-align: center;
+}
+
+.leader-image {
+  width: 280px;
+  height: 280px;
+  margin: 0 auto var(--space-6);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.leader-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.leader-name {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+}
+
+.leader-role {
+  font-size: var(--text-base);
+  color: var(--color-primary);
+  font-weight: 500;
+  margin-bottom: var(--space-4);
+}
+
+.leader-bio {
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+  line-height: 1.7;
+  text-align: left;
+}
+
+/* Offices Section */
+.company-offices {
+  padding: var(--space-16) 0;
+  background: var(--color-bg-alt);
+}
+
+.offices-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+}
+
+.office-card {
+  text-align: center;
+}
+
+.office-country {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+}
+
+.office-company {
+  font-size: var(--text-base);
+  color: var(--color-primary);
+  font-weight: 500;
+  margin-bottom: var(--space-4);
+}
+
+.office-address {
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+  white-space: pre-line;
+  margin-bottom: var(--space-2);
+}
+
+.office-phone {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  font-weight: 500;
+  margin-bottom: var(--space-2);
+}
+
+.office-email {
+  font-size: var(--text-sm);
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.office-email:hover {
+  text-decoration: underline;
+}
+
+/* Mission Section */
+.company-mission {
+  padding: var(--space-16) 0;
+}
+
+.company-mission .section-title {
+  text-transform: uppercase;
+}
+
+.mission-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.mission-highlight {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-6);
+}
+
+.mission-content p {
+  font-size: var(--text-base);
+  color: var(--color-text-light);
+  line-height: 1.8;
+  margin-bottom: var(--space-4);
+}
+
+/* Story Section */
+.company-story {
+  padding: var(--space-16) 0;
+  background: var(--color-bg-alt);
+}
+
+.company-story .section-title {
+  text-transform: uppercase;
+}
+
+.story-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.story-content p {
+  font-size: var(--text-base);
+  color: var(--color-text-light);
+  line-height: 1.8;
+  margin-bottom: var(--space-4);
+}
+
+.story-content a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.story-content a:hover {
+  text-decoration: underline;
+}
+
+.story-content strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* Code of Honor Section */
+.company-honor {
+  padding: var(--space-16) 0;
+}
+
+.company-honor .section-title {
+  text-transform: uppercase;
+}
+
+.honor-intro {
+  text-align: center;
+  font-size: var(--text-lg);
+  color: var(--color-text-light);
+  margin-bottom: var(--space-10);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.honor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-8);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.honor-item {
+  padding: var(--space-6);
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+
+.honor-title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.honor-description {
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+  line-height: 1.7;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .leadership-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .offices-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .company-hero h1 {
+    font-size: var(--text-4xl);
+  }
+
+  .leadership-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .leader-image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .leader-bio {
+    text-align: center;
+  }
+
+  .offices-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .honor-grid {
+    grid-template-columns: 1fr;
+  }
+}

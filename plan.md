@@ -31,7 +31,6 @@ Bun.serve() + TSX templates + htmx + CSS
 | Aidbox (FHIR Server) | `/fhir-server` | 1 |
 | Fhirbase | `/fhir-database` | 2 |
 | Blog listing | `/blog` | 2 |
-| Blog post | `/blog/:slug` | 2 |
 | Case Studies | `/casestudies` | 2 |
 | Case Study detail | `/case-study/:slug` | 3 |
 | Contacts | `/contacts` | 2 |
