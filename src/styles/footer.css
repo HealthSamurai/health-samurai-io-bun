@@ -100,7 +100,7 @@
 
 .footer-version {
   font-size: 12px;
-  color: #999;
+  color: #6b7280;  /* Darker gray for WCAG AA contrast on #f4f8fb */
   font-family: monospace;
 }
 

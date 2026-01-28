@@ -314,7 +314,7 @@
 }
 
 .newsletter p {
-  opacity: 0.9;
+  color: white;  /* Full white for WCAG AA contrast */
   margin-bottom: 0;
 }
 
