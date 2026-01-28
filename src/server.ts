@@ -1,9 +1,13 @@
 import { Layout } from "./components/Layout";
-import { HomePage } from "./pages/home";
-import { FhirServerPage } from "./pages/fhir-server";
-import { PricePage } from "./pages/price";
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 4321;
+
+// File system router for pages
+const router = new Bun.FileSystemRouter({
+  style: "nextjs",
+  dir: "./src/pages",
+  fileExtensions: [".tsx"],
+});
 
 // Helper to create HTML response
 function html(content: string): Response {
@@ -61,6 +65,19 @@ function getContentType(path: string): string {
   return types[ext || ""] || "application/octet-stream";
 }
 
+// 404 page
+function notFoundPage(): string {
+  return `
+    <section class="section" style="text-align: center; padding: var(--space-24) 0;">
+      <div class="container">
+        <h1>404</h1>
+        <p style="color: var(--color-text-light); margin-bottom: var(--space-8);">Page not found</p>
+        <a href="/" class="btn btn-primary">Back to Home</a>
+      </div>
+    </section>
+  `;
+}
+
 // Main server
 Bun.serve({
   port: PORT,
@@ -75,7 +92,6 @@ Bun.serve({
 
     // API endpoints (for htmx forms)
     if (path === "/api/contact" && req.method === "POST") {
-      // In a real app, you'd process the form data here
       return html(`
         <div class="card" style="text-align: center; padding: var(--space-8);">
           <h3 style="color: var(--color-secondary);">Thank you!</h3>
@@ -92,99 +108,30 @@ Bun.serve({
       `);
     }
 
-    // Pages
-    switch (path) {
-      case "/":
-        return html(Layout({ title: "Home", children: HomePage() }));
-
-      case "/fhir-server":
-      case "/aidbox":
-        return html(
-          Layout({
-            title: "FHIR Server",
-            description: "Aidbox FHIR Server - Build healthcare solutions with FHIR, PostgreSQL, and our SDK",
-            children: FhirServerPage(),
-          })
-        );
-
-      case "/contacts":
-        return html(
-          Layout({
-            title: "Contact Us",
-            children: `
-              <section class="hero" style="padding: var(--space-12) 0;">
-                <div class="container">
-                  <h1 style="text-align: center;">Contact Us</h1>
-                  <p style="text-align: center; color: var(--color-text-light);">We're ready to lead you to the future of health technology</p>
-                </div>
-              </section>
-              ${(await import("./components/sections/ContactForm")).ContactForm()}
-            `,
-          })
-        );
-
-      case "/casestudies":
-        return html(
-          Layout({
-            title: "Case Studies",
-            children: `
-              <section class="section">
-                <div class="container">
-                  <h1 style="text-align: center; margin-bottom: var(--space-12);">Case Studies</h1>
-                </div>
-              </section>
-              ${(await import("./components/sections/CaseStudies")).CaseStudies()}
-            `,
-          })
-        );
-
-      case "/blog":
-        return html(
-          Layout({
-            title: "Blog",
-            children: `
-              <section class="section">
-                <div class="container">
-                  <h1 style="text-align: center;">The Health Samurai Blog</h1>
-                  <p style="text-align: center; color: var(--color-text-light); margin-bottom: var(--space-12);">
-                    Insights on FHIR, healthcare interoperability, and building health tech
-                  </p>
-                  <div class="card" style="text-align: center; padding: var(--space-12);">
-                    <p class="text-muted">Blog posts coming soon...</p>
-                  </div>
-                </div>
-              </section>
-            `,
-          })
-        );
-
-      case "/price":
-        return html(
-          Layout({
-            title: "Pricing",
-            description: "Aidbox pricing plans - Choose the plan that fits your healthcare solution needs",
-            children: PricePage(),
-          })
-        );
-
-      default:
-        return html(
-          Layout({
-            title: "Page Not Found",
-            children: `
-              <section class="section" style="text-align: center; padding: var(--space-24) 0;">
-                <div class="container">
-                  <h1>404</h1>
-                  <p style="color: var(--color-text-light); margin-bottom: var(--space-8);">Page not found</p>
-                  <a href="/" class="btn btn-primary">Back to Home</a>
-                </div>
-              </section>
-            `,
-          })
-        );
+    // File system routing for pages
+    const match = router.match(req);
+    if (match) {
+      const page = await import(match.filePath);
+      const metadata = page.metadata || {};
+      const content = page.default(match.params);
+      return html(
+        Layout({
+          title: metadata.title || "Health Samurai",
+          description: metadata.description,
+          children: content,
+        })
+      );
     }
+
+    // 404
+    return html(
+      Layout({
+        title: "Page Not Found",
+        children: notFoundPage(),
+      })
+    );
   },
 });
 
 console.log(`🚀 Server running at http://localhost:${PORT}`);
-console.log(`   Hot reload enabled - changes will auto-refresh`);
+console.log(`   File-based routing enabled from src/pages/`);
