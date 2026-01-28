@@ -38,8 +38,8 @@ write_version_info() {
     cd "$APP_DIR"
     COMMIT_HASH=$(git rev-parse --short HEAD)
     COMMIT_DATE=$(git log -1 --format=%ci)
-    echo "{\"commit\":\"$COMMIT_HASH\",\"date\":\"$COMMIT_DATE\"}" > .version.json
-    log "Version: $COMMIT_HASH ($COMMIT_DATE)"
+    echo "{\"commit\":\"$COMMIT_HASH\",\"date\":\"$COMMIT_DATE\",\"branch\":\"$GIT_BRANCH\"}" > .version.json
+    log "Version: $COMMIT_HASH ($COMMIT_DATE) [branch: $GIT_BRANCH]"
 }
 
 install_deps() {

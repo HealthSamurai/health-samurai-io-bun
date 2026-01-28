@@ -1,0 +1,41 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: health-samurai-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: health-samurai-ip
+    ingress.gcp.kubernetes.io/pre-shared-cert: health-samurai-ssl
+spec:
+  rules:
+  # Production - prod branch
+  - host: site-prod.apki.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: health-samurai-web-prod
+            port:
+              number: 80
+  - host: hs.apki.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: health-samurai-web-prod
+            port:
+              number: 80
+  # Development - main branch
+  - host: site-dev.apki.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: health-samurai-web-dev
+            port:
+              number: 80

@@ -1,6 +1,6 @@
 import { footerLinks } from "../data/navigation";
 
-type VersionInfo = { commit: string; date: string } | null;
+type VersionInfo = { commit: string; date: string; branch?: string } | null;
 
 function getVersion(): VersionInfo {
   try {
@@ -71,7 +71,7 @@ export function Footer(): string {
           <img src="/assets/images/logos/health-samurai-footer.svg" alt="Health Samurai" className="footer-watermark" />
           {version && (
             <div className="footer-version">
-              {version.commit} · {new Date(version.date).toLocaleDateString()}
+              {version.branch && `${version.branch}/`}{version.commit} · {new Date(version.date).toLocaleDateString()}
             </div>
           )}
         </div>
