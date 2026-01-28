@@ -71,7 +71,7 @@ export function Footer(): string {
           <img src="/assets/images/logos/health-samurai-footer.svg" alt="Health Samurai" className="footer-watermark" />
           {version && (
             <div className="footer-version">
-              v{version.commit} · {new Date(version.date).toLocaleDateString()}
+              {version.commit} · {new Date(version.date).toLocaleDateString()}
             </div>
           )}
         </div>
