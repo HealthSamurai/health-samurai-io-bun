@@ -28,12 +28,12 @@
   border-radius: 20px;
   font-family: var(--font-mono);
   font-size: var(--text-sm);
-  color: #EA4A35;
+  color: var(--color-primary);  /* WCAG AA compliant */
   margin-bottom: var(--space-6);
 }
 
 .hero-tag strong {
-  color: #EA4A35;
+  color: var(--color-primary);
 }
 
 .hero-title {

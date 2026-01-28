@@ -7,10 +7,11 @@
 
 /* CSS Variables - Matched to health-samurai.io */
 :root {
-  /* Colors - from original site */
-  --color-primary: #EA4A35;
-  --color-primary-dark: #d43d2a;
+  /* Colors - WCAG AA compliant (4.5:1 contrast ratio) */
+  --color-primary: #c9362b;           /* Darkened from #EA4A35 for 4.5:1 contrast on white */
+  --color-primary-dark: #a82d24;
   --color-primary-light: #fef2f0;
+  --color-primary-vibrant: #EA4A35;   /* Original brand color for decorative use only */
   --color-secondary: #0066FF;
   --color-text: #1a1a1a;
   --color-text-light: #666666;
