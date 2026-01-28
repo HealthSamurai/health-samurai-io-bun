@@ -373,7 +373,33 @@ See [htmx docs](https://htmx.org/docs/). Use htmx for dynamic interactions via H
 
 **Server returns HTML fragments.** Status 204 = no swap, 4xx/5xx = error (no swap by default).
 
-## Kubernetes Deployment
+## Deployment
+
+The site is deployed on GKE Autopilot with automatic git-based deployments.
+
+**URLs:**
+| Environment | URL | Branch |
+|-------------|-----|--------|
+| Production | https://site-prod.apki.dev | `prod` |
+| Development | https://site-dev.apki.dev | `main` |
+
+**Instant Deploy via GitHub Webhook:**
+- Push to GitHub triggers webhook → server pulls changes → restarts in ~2 seconds
+- Webhook endpoint: `/api/webhook/github`
+- Secret stored in K8s: `kubectl get secret health-samurai-secrets`
+
+**Fallback Polling:**
+- Dev polls every 30s, Prod polls every 120s
+- Container auto-restarts when new commits detected
+
+**Deploy to Production:**
+```bash
+git checkout prod && git merge main && git push && git checkout main
+```
+
+See `docs/DEPLOYMENT.md` for full infrastructure documentation.
+
+## Kubernetes Configuration
 
 Uses Kustomize for Kubernetes deployments with environment-specific overlays.
 
@@ -387,21 +413,22 @@ k8s/
 │   └── configmap.yaml       # GIT_REPO, GIT_BRANCH, POLL_INTERVAL, PORT
 └── overlays/
     ├── dev/                 # Development environment
-    │   └── kustomization.yaml
+    │   ├── kustomization.yaml
+    │   └── ingress.yaml     # TLS ingress for site-dev.apki.dev
     └── prod/                # Production environment
         ├── kustomization.yaml
-        └── ingress.yaml     # TLS ingress for health-samurai.io
+        └── ingress.yaml     # TLS ingress for site-prod.apki.dev
 ```
 
 **Environment Differences:**
 
 | Setting | Dev | Prod |
 |---------|-----|------|
+| URL | site-dev.apki.dev | site-prod.apki.dev |
 | Namespace | health-samurai-dev | health-samurai-prod |
 | Replicas | 1 | 3 |
 | Git Branch | develop | main |
 | Poll Interval | 30s | 120s |
-| Ingress | No | Yes (TLS) |
 
 **Usage:**
 ```bash
