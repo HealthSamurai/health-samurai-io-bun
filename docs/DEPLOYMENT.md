@@ -300,6 +300,49 @@ git push
 
 The container will detect changes within 60 seconds and auto-restart.
 
+### Instant Deploy with GitHub Webhook (Recommended)
+
+For instant deployments (< 2 seconds), configure a GitHub webhook:
+
+#### 1. Generate a secure secret
+
+```bash
+openssl rand -hex 32
+```
+
+#### 2. Create Kubernetes secret
+
+```bash
+kubectl create secret generic health-samurai-secrets \
+  --from-literal=webhook-secret=YOUR_SECRET_HERE
+```
+
+Or apply the secrets file (edit first!):
+```bash
+# Edit k8s/secrets.yaml with your secret
+kubectl apply -f k8s/secrets.yaml
+```
+
+#### 3. Configure GitHub Webhook
+
+1. Go to: `https://github.com/HealthSamurai/health-samurai-io-bun/settings/hooks`
+2. Click "Add webhook"
+3. Settings:
+   - **Payload URL**: `https://site-dev.apki.dev/api/webhook/github` (or site-prod for prod)
+   - **Content type**: `application/json`
+   - **Secret**: Your generated secret
+   - **Events**: Just the `push` event
+4. Click "Add webhook"
+
+#### 4. Restart deployments to pick up secrets
+
+```bash
+kubectl rollout restart deployment health-samurai-web-dev
+kubectl rollout restart deployment health-samurai-web-prod
+```
+
+Now pushes to GitHub will trigger instant reloads!
+
 ### Manual Deploy (if needed)
 
 ```bash

@@ -87,21 +87,44 @@ clone_or_pull
 install_deps
 start_server
 
+# Check for webhook trigger file
+check_webhook_trigger() {
+    TRIGGER_FILE="$APP_DIR/.reload-trigger"
+    if [ -f "$TRIGGER_FILE" ]; then
+        log "Webhook trigger detected, pulling changes..."
+        rm -f "$TRIGGER_FILE"
+        return 0  # Trigger reload
+    fi
+    return 1  # No trigger
+}
+
 # Poll for changes
 log "Starting git poll loop (interval: ${POLL_INTERVAL}s)"
 while true; do
-    sleep "$POLL_INTERVAL"
+    # Short sleep to check webhook triggers more frequently
+    for i in $(seq 1 "$POLL_INTERVAL"); do
+        sleep 1
 
-    # Check if server is still running
-    if [ -n "$SERVER_PID" ] && ! kill -0 "$SERVER_PID" 2>/dev/null; then
-        log "Server crashed, restarting..."
-        start_server
-        continue
-    fi
+        # Check webhook trigger every second
+        if check_webhook_trigger; then
+            if clone_or_pull; then
+                log "Webhook: Changes detected, restarting server..."
+                restart_server
+            else
+                log "Webhook: No changes found"
+            fi
+        fi
 
-    # Check for updates
+        # Check if server is still running
+        if [ -n "$SERVER_PID" ] && ! kill -0 "$SERVER_PID" 2>/dev/null; then
+            log "Server crashed, restarting..."
+            start_server
+        fi
+    done
+
+    # Regular poll for updates (fallback)
     if clone_or_pull; then
-        log "Changes detected, restarting server..."
+        log "Poll: Changes detected, restarting server..."
         restart_server
     fi
 done

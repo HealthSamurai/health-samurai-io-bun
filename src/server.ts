@@ -1,6 +1,7 @@
 import { Layout } from "./components/Layout";
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 4321;
+const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET || "";
 
 // File system router for pages
 const router = new Bun.FileSystemRouter({
@@ -114,6 +115,47 @@ Bun.serve({
           <strong>Thanks for subscribing!</strong>
         </div>
       `);
+    }
+
+    // GitHub webhook for instant reload
+    if (path === "/api/webhook/github" && req.method === "POST") {
+      // Verify webhook secret
+      const signature = req.headers.get("x-hub-signature-256");
+      const body = await req.text();
+
+      if (!WEBHOOK_SECRET) {
+        console.log("[Webhook] No WEBHOOK_SECRET configured, rejecting");
+        return new Response("Webhook not configured", { status: 503 });
+      }
+
+      // Verify GitHub signature
+      const hmac = new Bun.CryptoHasher("sha256", WEBHOOK_SECRET);
+      hmac.update(body);
+      const expectedSignature = "sha256=" + hmac.digest("hex");
+
+      if (signature !== expectedSignature) {
+        console.log("[Webhook] Invalid signature");
+        return new Response("Invalid signature", { status: 401 });
+      }
+
+      // Parse event type
+      const event = req.headers.get("x-github-event");
+      console.log(`[Webhook] Received ${event} event`);
+
+      // Only trigger reload on push events
+      if (event === "push") {
+        // Write trigger file for entrypoint to detect
+        const triggerFile = ".reload-trigger";
+        await Bun.write(triggerFile, Date.now().toString());
+        console.log("[Webhook] Reload triggered");
+        return new Response(JSON.stringify({ status: "reload_triggered" }), {
+          headers: { "Content-Type": "application/json" },
+        });
+      }
+
+      return new Response(JSON.stringify({ status: "ignored", event }), {
+        headers: { "Content-Type": "application/json" },
+      });
     }
 
     // File system routing for pages
