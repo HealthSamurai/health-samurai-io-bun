@@ -22,9 +22,12 @@ export function Layout({ title, description, children }: LayoutProps): string {
         <meta name="description" content={metaDescription} />
         <title>{fullTitle}</title>
 
-        {/* Fonts */}
+        {/* Preconnects for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://unpkg.com" />
+
+        {/* Fonts */}
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
 
         {/* Styles */}
@@ -45,8 +48,9 @@ export function Layout({ title, description, children }: LayoutProps): string {
         <link rel="icon" type="image/png" href="/assets/images/logos/aidbox-mini.svg" />
       </head>
       <body>
+        <a href="#main-content" className="skip-link">Skip to main content</a>
         <Header />
-        <main dangerouslySetInnerHTML={{ __html: children }} />
+        <main id="main-content" dangerouslySetInnerHTML={{ __html: children }} />
         <Footer />
       </body>
     </html>

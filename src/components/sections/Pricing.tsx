@@ -49,7 +49,7 @@ function PricingCard({ tier, isFirst }: { tier: PricingTier; isFirst?: boolean }
         <img src={tier.icon} alt={tier.name} />
       </div>
       <div className="pricing-card-header">
-        <h4>{tier.name}</h4>
+        <h3 className="pricing-card-name">{tier.name}</h3>
         {isTalkToSales ? (
           <div className="pricing-amount talk-to-sales">{tier.price.yearly}</div>
         ) : (

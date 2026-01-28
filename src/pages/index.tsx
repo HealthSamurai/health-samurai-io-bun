@@ -50,7 +50,8 @@ export default function IndexPage(): string {
             <p>Subscribe for more content!</p>
           </div>
           <form className="newsletter-form" hx-post="/api/subscribe" hx-swap="outerHTML">
-            <input type="email" name="email" placeholder="Your email" required />
+            <label htmlFor="newsletter-email" className="sr-only">Email address</label>
+            <input type="email" id="newsletter-email" name="email" placeholder="Your email" required aria-label="Email address" />
             <button type="submit">Subscribe</button>
           </form>
         </div>

@@ -57,7 +57,7 @@ export function Contributions(): string {
             <a href={item.href} className="contribution-card">
               <img src={item.icon} alt={item.title} className="contribution-icon" />
               <div className="contribution-content">
-                <h4>{item.title}</h4>
+                <h3 className="contribution-title">{item.title}</h3>
                 <p>{item.description}</p>
               </div>
             </a>

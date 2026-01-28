@@ -455,7 +455,8 @@
   flex-grow: 1;
 }
 
-.pricing-card-header h4 {
+.pricing-card-header h3,
+.pricing-card-name {
   font-size: 22px;
   font-weight: 700;
   color: #353b50;

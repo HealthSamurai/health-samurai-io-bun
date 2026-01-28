@@ -189,8 +189,10 @@
   flex-shrink: 0;
 }
 
-.contribution-content h4 {
+.contribution-content h3,
+.contribution-title {
   font-size: var(--text-lg);
+  font-weight: 700;
   margin-bottom: var(--space-2);
 }
 

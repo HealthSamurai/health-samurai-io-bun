@@ -85,6 +85,14 @@ Bun.serve({
     const url = new URL(req.url);
     const path = url.pathname;
 
+    // robots.txt and sitemap.xml
+    if (path === "/robots.txt") {
+      return serveStatic("/robots.txt", "text/plain");
+    }
+    if (path === "/sitemap.xml") {
+      return serveStatic("/sitemap.xml", "application/xml");
+    }
+
     // Static files
     if (path.startsWith("/assets/") || path.startsWith("/styles/")) {
       return serveStatic(path, getContentType(path));
