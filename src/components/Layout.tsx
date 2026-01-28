@@ -37,6 +37,7 @@ export function Layout({ title, description, children }: LayoutProps): string {
         <link rel="stylesheet" href="/styles/hero.css" />
         <link rel="stylesheet" href="/styles/sections.css" />
         <link rel="stylesheet" href="/styles/fhir-server.css" />
+        <link rel="stylesheet" href="/styles/medical-form.css" />
 
         {/* htmx */}
         <script src="https://unpkg.com/htmx.org@1.9.10"></script>
