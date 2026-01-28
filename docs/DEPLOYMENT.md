@@ -22,11 +22,35 @@ The Health Samurai marketing website is deployed on Google Kubernetes Engine (GK
 
 ## URLs
 
-| Environment | URL |
-|-------------|-----|
-| Production | https://site-prod.apki.dev |
-| Development | https://site-dev.apki.dev |
-| Alias | https://hs.apki.dev |
+| Environment | URL | Branch |
+|-------------|-----|--------|
+| Production | https://site-prod.apki.dev | `prod` |
+| Production (alias) | https://hs.apki.dev | `prod` |
+| Development | https://site-dev.apki.dev | `main` |
+
+## Branch Strategy
+
+```
+main branch ──────► site-dev.apki.dev (auto-deploy, 30s poll)
+                    - Development/staging environment
+                    - Fast iteration, immediate feedback
+
+prod branch ──────► site-prod.apki.dev (auto-deploy, 120s poll)
+                    - Production environment
+                    - Merge main → prod to deploy
+```
+
+### Deploy to Production
+
+```bash
+# Merge main into prod and push
+git checkout prod
+git merge main
+git push
+git checkout main
+```
+
+The prod container polls every 120 seconds and auto-restarts on new commits.
 
 ## GCP Resources
 
@@ -70,40 +94,62 @@ docker buildx build --platform linux/amd64 -t gcr.io/atomic-ehr/health-samurai-b
 
 ## Kubernetes Resources
 
-### Deployment
+### Deployments
+
+Two separate deployments for prod and dev environments:
 
 ```yaml
-# k8s/deployment.yaml
+# k8s/prod-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: health-samurai-web
+  name: health-samurai-web-prod
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: health-samurai-web
+      env: prod
   template:
     spec:
       containers:
       - name: web
         image: gcr.io/atomic-ehr/health-samurai-bun:latest
-        ports:
-        - containerPort: 4444
         env:
-        - name: GIT_REPO
-          value: "https://github.com/HealthSamurai/health-samurai-io-bun.git"
+        - name: GIT_BRANCH
+          value: "prod"
+        - name: POLL_INTERVAL
+          value: "120"
+```
+
+```yaml
+# k8s/dev-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: health-samurai-web-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: health-samurai-web
+      env: dev
+  template:
+    spec:
+      containers:
+      - name: web
+        image: gcr.io/atomic-ehr/health-samurai-bun:latest
+        env:
         - name: GIT_BRANCH
           value: "main"
         - name: POLL_INTERVAL
-          value: "60"
-        - name: PORT
-          value: "4444"
+          value: "30"
 ```
 
 ### Ingress with SSL
 
 ```yaml
+# k8s/ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -113,16 +159,7 @@ metadata:
     ingress.gcp.kubernetes.io/pre-shared-cert: health-samurai-ssl
 spec:
   rules:
-  - host: hs.apki.dev
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: health-samurai-web
-            port:
-              number: 80
+  # Production (prod branch)
   - host: site-prod.apki.dev
     http:
       paths:
@@ -130,9 +167,20 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: health-samurai-web
+            name: health-samurai-web-prod
             port:
               number: 80
+  - host: hs.apki.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: health-samurai-web-prod
+            port:
+              number: 80
+  # Development (main branch)
   - host: site-dev.apki.dev
     http:
       paths:
@@ -140,7 +188,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: health-samurai-web
+            name: health-samurai-web-dev
             port:
               number: 80
 ```
