@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: health-samurai-web
+  labels:
+    app: health-samurai-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: health-samurai-web
+  template:
+    metadata:
+      labels:
+        app: health-samurai-web
+    spec:
+      containers:
+        - name: web
+          image: health-samurai-web:latest
+          ports:
+            - containerPort: 4444
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: health-samurai-config
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 4444
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 4444
+            initialDelaySeconds: 5
+            periodSeconds: 10

@@ -28,13 +28,18 @@ Server runs at http://localhost:4444 (override with `PORT=3000 ./server.sh start
 
 ```
 src/
-├── server.ts              # Main server with routes and static file serving
+├── server.ts              # Main server with FileSystemRouter
 ├── lib/
 │   ├── jsx-runtime.ts     # Custom JSX runtime for HTML string rendering
 │   └── jsx-dev-runtime.ts # Development JSX runtime (re-exports jsx-runtime)
-├── pages/
-│   ├── home.tsx           # Home page (/)
-│   └── fhir-server.tsx    # Product page (/fhir-server, /aidbox)
+├── pages/                 # File-based routing (Next.js style)
+│   ├── index.tsx          # Home page (/)
+│   ├── fhir-server.tsx    # Product page (/fhir-server)
+│   ├── aidbox.tsx         # Alias for /fhir-server
+│   ├── price.tsx          # Pricing page (/price)
+│   ├── contacts.tsx       # Contact page (/contacts)
+│   ├── casestudies.tsx    # Case studies (/casestudies)
+│   └── blog.tsx           # Blog page (/blog)
 ├── components/
 │   ├── Layout.tsx         # HTML wrapper with head, header, footer
 │   ├── Header.tsx         # Navigation header
@@ -114,29 +119,55 @@ function MultipleItems(): string {
 
 ## Current Routes
 
-| Path | Handler |
-|------|---------|
-| `/` | Home page |
-| `/fhir-server`, `/aidbox` | Product page |
-| `/contacts` | Contact page |
-| `/casestudies` | Case studies |
-| `/blog` | Blog (placeholder) |
-| `/api/contact` (POST) | Contact form submission |
-| `/api/subscribe` (POST) | Newsletter subscription |
+Routes are automatically discovered from `src/pages/` using `Bun.FileSystemRouter`.
+
+| Path | Page File |
+|------|-----------|
+| `/` | `index.tsx` |
+| `/fhir-server` | `fhir-server.tsx` |
+| `/aidbox` | `aidbox.tsx` (re-exports fhir-server) |
+| `/price` | `price.tsx` |
+| `/contacts` | `contacts.tsx` |
+| `/casestudies` | `casestudies.tsx` |
+| `/blog` | `blog.tsx` |
+| `/api/contact` (POST) | API endpoint in server.ts |
+| `/api/subscribe` (POST) | API endpoint in server.ts |
 
 ## Adding a New Page
 
-1. Create `src/pages/my-page.tsx`:
+Create a file in `src/pages/` with `default` export and `metadata`:
+
 ```tsx
-export function MyPage(): string {
-  return `<section class="section"><h1>My Page</h1></section>`;
+// src/pages/my-page.tsx
+import { Fragment } from "../lib/jsx-runtime";
+
+export const metadata = {
+  title: "My Page",           // Required: page title
+  description: "Optional",    // Optional: meta description
+};
+
+export default function MyPage(): string {
+  return (
+    <Fragment>
+      <section className="section">
+        <div className="container">
+          <h1>My Page</h1>
+        </div>
+      </section>
+    </Fragment>
+  );
 }
 ```
 
-2. Add route in `src/server.ts`:
-```ts
-case "/my-page":
-  return html(Layout({ title: "My Page", children: MyPage() }));
+The route is automatically created from the filename:
+- `my-page.tsx` → `/my-page`
+- `index.tsx` → `/`
+- `blog/[slug].tsx` → `/blog/:slug` (dynamic routes)
+
+**Route aliases:** To create an alias, re-export from another page:
+```tsx
+// src/pages/alias.tsx
+export { default, metadata } from "./original-page";
 ```
 
 ## Adding a New Component
@@ -179,32 +210,47 @@ test("hello world", () => {
 });
 ```
 
-## Routing
+## File System Router
 
-See [Bun HTTP Routing docs](https://bun.com/docs/runtime/http/routing).
+This project uses [Bun.FileSystemRouter](https://bun.com/docs/api/file-system-router) for automatic file-based routing.
 
-Routes are defined in `Bun.serve()` using the `routes` property. Supports static paths, parameters, and wildcards.
-
+**How it works in this project:**
 ```ts
+// src/server.ts
+const router = new Bun.FileSystemRouter({
+  style: "nextjs",
+  dir: "./src/pages",
+  fileExtensions: [".tsx"],
+});
+
 Bun.serve({
-  routes: {
-    "/": () => new Response("Home"),
-    "/api/users/:id": (req) => Response.json({ id: req.params.id }),
-    "/files/*": (req) => new Response(Bun.file("./public/" + req.params["*"])),
+  async fetch(req) {
+    const match = router.match(req);
+    if (match) {
+      const page = await import(match.filePath);
+      return html(Layout({
+        title: page.metadata?.title,
+        description: page.metadata?.description,
+        children: page.default(match.params),
+      }));
+    }
+    return html(Layout({ title: "404", children: notFoundPage() }));
   },
-  fetch: (req) => new Response("Not found", { status: 404 }), // catch-all
-})
+});
 ```
 
-**Route matching precedence:**
-1. Exact routes (`/users/all`)
-2. Parameter routes (`/users/:id`)
-3. Wildcard routes (`/users/*`)
-4. Global catch-all (`/*`)
+**File naming conventions (Next.js style):**
+- `index.tsx` → `/`
+- `about.tsx` → `/about`
+- `blog/index.tsx` → `/blog`
+- `blog/[slug].tsx` → `/blog/:slug` (dynamic)
+- `[[...catchall]].tsx` → catch-all route
 
-**Static file serving:**
-- Buffered (cached): `new Response(await Bun.file("./logo.png").bytes())`
-- Streamed (range requests): `new Response(Bun.file("./download.zip"))`
+**Match result object:**
+- `filePath`: Full path to matched file
+- `kind`: "exact" | "dynamic" | "catch-all" | "optional-catch-all"
+- `params`: Dynamic route parameters (e.g., `{ slug: "my-post" }`)
+- `query`: Parsed query string
 
 ## Frontend
 
@@ -326,6 +372,65 @@ See [htmx docs](https://htmx.org/docs/). Use htmx for dynamic interactions via H
 - `HX-Reswap` / `HX-Retarget` — override swap/target
 
 **Server returns HTML fragments.** Status 204 = no swap, 4xx/5xx = error (no swap by default).
+
+## Kubernetes Deployment
+
+Uses Kustomize for Kubernetes deployments with environment-specific overlays.
+
+**Directory Structure:**
+```
+k8s/
+├── base/                    # Shared resources
+│   ├── kustomization.yaml
+│   ├── deployment.yaml      # 1 replica, health probes, resource limits
+│   ├── service.yaml         # ClusterIP on port 80 → 4444
+│   └── configmap.yaml       # GIT_REPO, GIT_BRANCH, POLL_INTERVAL, PORT
+└── overlays/
+    ├── dev/                 # Development environment
+    │   └── kustomization.yaml
+    └── prod/                # Production environment
+        ├── kustomization.yaml
+        └── ingress.yaml     # TLS ingress for health-samurai.io
+```
+
+**Environment Differences:**
+
+| Setting | Dev | Prod |
+|---------|-----|------|
+| Namespace | health-samurai-dev | health-samurai-prod |
+| Replicas | 1 | 3 |
+| Git Branch | develop | main |
+| Poll Interval | 30s | 120s |
+| Ingress | No | Yes (TLS) |
+
+**Usage:**
+```bash
+# Preview generated manifests
+kubectl kustomize k8s/overlays/dev
+kubectl kustomize k8s/overlays/prod
+
+# Deploy to cluster
+kubectl apply -k k8s/overlays/dev
+kubectl apply -k k8s/overlays/prod
+
+# Delete deployment
+kubectl delete -k k8s/overlays/dev
+```
+
+**Container Image:**
+Update the image in `k8s/overlays/prod/kustomization.yaml`:
+```yaml
+images:
+  - name: health-samurai-web
+    newName: ghcr.io/healthsamurai/health-samurai-web
+    newTag: v1.0.0
+```
+
+**Build and push image:**
+```bash
+docker build -t ghcr.io/healthsamurai/health-samurai-web:latest .
+docker push ghcr.io/healthsamurai/health-samurai-web:latest
+```
 
 ## Datastar
 

@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: health-samurai-web
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  tls:
+    - hosts:
+        - health-samurai.io
+        - www.health-samurai.io
+      secretName: health-samurai-tls
+  rules:
+    - host: health-samurai.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: prod-health-samurai-web
+                port:
+                  number: 80
+    - host: www.health-samurai.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: prod-health-samurai-web
+                port:
+                  number: 80
