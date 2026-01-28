@@ -6,7 +6,11 @@ import { Contributions } from "../components/sections/Contributions";
 import { ContactForm } from "../components/sections/ContactForm";
 import { Fragment } from "../lib/jsx-runtime";
 
-export function HomePage(): string {
+export const metadata = {
+  title: "Home",
+};
+
+export default function IndexPage(): string {
   return (
     <Fragment>
       <Hero

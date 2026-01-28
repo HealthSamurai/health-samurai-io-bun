@@ -5,6 +5,11 @@ import { Button } from "../components/ui/Button";
 import { Tabs } from "../components/ui/Tabs";
 import { Fragment } from "../lib/jsx-runtime";
 
+export const metadata = {
+  title: "FHIR Server",
+  description: "Aidbox FHIR Server - Build healthcare solutions with FHIR, PostgreSQL, and our SDK",
+};
+
 type Feature = {
   icon: string;
   title: string;
@@ -303,7 +308,7 @@ function UseCasePanelContent({ data }: { data: typeof useCaseData[string] }): st
   );
 }
 
-export function FhirServerPage(): string {
+export default function FhirServerPage(): string {
   return (
     <Fragment>
       <Hero

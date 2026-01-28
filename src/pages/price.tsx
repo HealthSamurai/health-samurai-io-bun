@@ -1,6 +1,11 @@
 import { Fragment } from "../lib/jsx-runtime";
 
-export function PricePage(): string {
+export const metadata = {
+  title: "Pricing",
+  description: "Aidbox pricing plans - Choose the plan that fits your healthcare solution needs",
+};
+
+export default function PricePage(): string {
   return (
     <Fragment>
       <section className="hero" style="padding: var(--space-12) 0;">
