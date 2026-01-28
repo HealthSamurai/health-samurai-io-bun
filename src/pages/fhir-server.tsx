@@ -1,5 +1,6 @@
 import { Hero } from "../components/sections/Hero";
 import { ContactForm } from "../components/sections/ContactForm";
+import { Pricing, aidboxPricingTiers, aidboxSupportPlans, aidboxSupportCta } from "../components/sections/Pricing";
 import { Button } from "../components/ui/Button";
 import { Tabs } from "../components/ui/Tabs";
 import { Fragment } from "../lib/jsx-runtime";
@@ -193,17 +194,23 @@ const testimonials = [
   {
     quote: "4medica is committed to delivering the most advanced solutions to our clients. Aidbox's performance, scalability, and powerful analytics, combined with Health Samurai's outstanding support, are enabling us to do just that.",
     name: "Gregg Church",
-    title: "President, 4medica",
+    title: "President",
+    company: "4medica",
+    logo: "/assets/images/logos/clients/4medica.png",
   },
   {
     quote: "By integrating Aidbox, Health Samurai's FHIR-based solution, Patients Know Best makes it easier for developers to build apps on the PKB platform. More patients will have more data more quickly, and clinicians will deliver better care more safely.",
     name: "Mate Varga",
-    title: "CTO at Patients Know Best",
+    title: "CTO",
+    company: "Patients Know Best",
+    logo: "/assets/images/logos/clients/patients-know-best.webp",
   },
   {
     quote: "After two decades in healthcare technology and nearly a decade of working with FHIR, I've used and evaluated numerous FHIR servers. Aidbox stands out as a best-of-breed solution, offering a combination of cost-effectiveness, robust features, and exceptional support.",
     name: "Brian Bray",
-    title: "VP Technology at Prenosis",
+    title: "VP Technology",
+    company: "Prenosis",
+    logo: "/assets/images/logos/clients/prenosis.webp",
   },
 ];
 
@@ -257,13 +264,21 @@ function AddonCard({ addon, featured }: { addon: Addon; featured?: boolean }): s
   );
 }
 
-function TestimonialCard({ testimonial, isActive }: { testimonial: typeof testimonials[0]; isActive: boolean }): string {
+function TestimonialCard({ testimonial, index }: { testimonial: typeof testimonials[0]; index: number }): string {
   return (
-    <div className={`testimonial-card ${isActive ? 'active' : ''}`}>
-      <p className="testimonial-quote">"{testimonial.quote}"</p>
+    <div
+      className="testimonial-card"
+      data-show={`$testimonialIndex === ${index}`}
+    >
+      <div className="testimonial-logo">
+        <img src={testimonial.logo} alt={testimonial.company} />
+      </div>
+      <div className="testimonial-quote">
+        <p>{testimonial.quote}</p>
+      </div>
       <div className="testimonial-author">
         <p className="testimonial-name">{testimonial.name}</p>
-        <p className="testimonial-title">{testimonial.title}</p>
+        <p className="testimonial-title">{testimonial.title} at {testimonial.company}</p>
       </div>
     </div>
   );
@@ -375,100 +390,11 @@ export function FhirServerPage(): string {
       </section>
 
       {/* Pricing Section */}
-      <section className="pricing-section">
-        <div className="container">
-          <div className="pricing-header">
-            <h2>Pricing</h2>
-            <p>Flat pricing with no hidden fees.</p>
-          </div>
-          <div className="pricing-tabs">
-            <button className="pricing-tab active">Yearly</button>
-            <button className="pricing-tab">Monthly</button>
-          </div>
-          <div className="pricing-cards">
-            <div className="pricing-card">
-              <div className="pricing-card-header">
-                <h4>Aidbox Dev</h4>
-                <div className="pricing-amount">$0 <span>/year</span></div>
-                <p>Free for prototyping, testing and development. Not for use with Protected Health Information (PHI).</p>
-              </div>
-              <Button href="https://aidbox.app/ui/portal#/signup" variant="primary">Try now</Button>
-            </div>
-            <div className="pricing-card featured">
-              <div className="pricing-card-header">
-                <h4>Aidbox Core</h4>
-                <div className="pricing-amount">$19,000 <span>/year</span></div>
-                <p>Pay per unique database. Basic support is included. Ask about startup or bulk discounts.</p>
-              </div>
-              <Button href="/price" variant="primary">Contact Us</Button>
-            </div>
-            <div className="pricing-card">
-              <div className="pricing-card-header">
-                <h4>Aidbox Enterprise</h4>
-                <div className="pricing-amount">Talk to Sales</div>
-                <p>Enterprise plan for large-scale production workloads. Built for multi-tenant architectures, high availability, and advanced data pipelines.</p>
-              </div>
-              <Button href="/price" variant="outline">Contact Us</Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Support Plans Section */}
-      <section className="support-plans-section">
-        <div className="container">
-          <h3 className="support-title">Support Plans</h3>
-          <div className="support-plans-grid">
-            <div className="support-plan">
-              <div className="support-plan-header">
-                <h4>Basic</h4>
-                <span className="support-price">Free</span>
-              </div>
-              <ul className="support-features">
-                <li className="support-included">Included in Aidbox Development</li>
-                <li>Onboarding call</li>
-                <li>Private chat with Health Samurai</li>
-                <li>Bug fixing and Q&A</li>
-                <li>Blocking issue resolution up to 1 day</li>
-                <li>Response time up to 3 business days</li>
-              </ul>
-            </div>
-            <div className="support-plan recommended">
-              <div className="support-plan-header">
-                <h4>Professional <span className="recommended-badge">Recommended</span></h4>
-                <span className="support-price">$25,000 /year</span>
-              </div>
-              <ul className="support-features">
-                <li className="support-included">Everything in Basic, plus:</li>
-                <li>Complex Aidbox and FHIR guidance</li>
-                <li>BAA & insurance</li>
-                <li>New terminologies in Termbox on demand</li>
-                <li>Up to 12 video calls</li>
-                <li>Blocking issue resolution up to 8 hours</li>
-                <li>Response time up to 2 business days</li>
-              </ul>
-            </div>
-            <div className="support-plan">
-              <div className="support-plan-header">
-                <h4>Enterprise</h4>
-                <a href="/contacts" className="support-contact">Contact us</a>
-              </div>
-              <ul className="support-features">
-                <li className="support-included">Everything in Professional, plus:</li>
-                <li>24/7 support & phone number</li>
-                <li>Weekly technical & architecture reviews</li>
-                <li>New Aidbox features prioritization</li>
-                <li>Blocking issue resolution up to 4 hours</li>
-                <li>Response time up to 1 business day</li>
-              </ul>
-            </div>
-          </div>
-          <div className="support-cta">
-            <p>Get in touch, we'll dig into your case and propose the best option.</p>
-            <Button href="/price" variant="outline">See Plans</Button>
-          </div>
-        </div>
-      </section>
+      <Pricing
+        tiers={aidboxPricingTiers}
+        supportPlans={aidboxSupportPlans}
+        supportCta={aidboxSupportCta}
+      />
 
       {/* Add-ons Section */}
       <section className="addons-section">
@@ -497,10 +423,30 @@ export function FhirServerPage(): string {
       <section className="testimonials-section">
         <div className="container">
           <div className="section-label">What our customers say about us</div>
-          <div className="testimonials-carousel">
-            {testimonials.map((testimonial, index) => (
-              <TestimonialCard testimonial={testimonial} isActive={index === 0} />
-            ))}
+          <div className="testimonials-carousel" data-signals={`{testimonialIndex: 0, testimonialCount: ${testimonials.length}}`}>
+            <button
+              className="testimonial-nav testimonial-nav--prev"
+              data-on-click="$testimonialIndex = ($testimonialIndex - 1 + $testimonialCount) % $testimonialCount"
+              aria-label="Previous testimonial"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <div className="testimonials-slides">
+              {testimonials.map((testimonial, index) => (
+                <TestimonialCard testimonial={testimonial} index={index} />
+              ))}
+            </div>
+            <button
+              className="testimonial-nav testimonial-nav--next"
+              data-on-click="$testimonialIndex = ($testimonialIndex + 1) % $testimonialCount"
+              aria-label="Next testimonial"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
           </div>
         </div>
       </section>

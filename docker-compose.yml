@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    ports:
+      - "4444:4444"
+    environment:
+      - GIT_REPO=https://github.com/HealthSamurai/health-samurai-io-bun.git
+      - GIT_BRANCH=main
+      - POLL_INTERVAL=60
+      - PORT=4444
+    restart: unless-stopped
