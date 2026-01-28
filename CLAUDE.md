@@ -6,7 +6,9 @@ alwaysApply: false
 
 # Health Samurai Website
 
-Marketing website for Health Samurai / Aidbox FHIR products. Uses server-side rendering with Bun and htmx for interactivity.
+Rebuilding [health-samurai.io](https://health-samurai.io) from scratch using Bun and server-side rendering.
+
+**Goal:** Clone the existing health-samurai.io site with modern tech stack (Bun + htmx + Datastar) instead of the original Webflow implementation. Reference the live site for design, content, and functionality.
 
 ## Quick Start
 
