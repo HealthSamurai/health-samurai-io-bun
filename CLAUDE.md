@@ -11,24 +11,50 @@ Marketing website for Health Samurai / Aidbox FHIR products. Uses server-side re
 ## Quick Start
 
 ```sh
-bun install              # Install dependencies
-./server.sh start        # Start server in background
-./server.sh start -h     # Start with hot reload
-./server.sh stop         # Stop server
-./server.sh restart      # Restart server
-./server.sh restart -h   # Restart with hot reload
-./server.sh status       # Check if running
-./server.sh dev          # Development mode (foreground + hot reload)
-./server.sh logs         # Tail server logs
+bun install    # Install dependencies
+bun dev        # Start dev server (hot reload + opens browser)
 ```
 
-Server runs at http://localhost:4444 (override with `PORT=3000 ./server.sh start`)
+Server runs at http://localhost:4444
+
+## Scripts
+
+All scripts are in `scripts/` and run via `bun run <script>`:
+
+| Command | Description |
+|---------|-------------|
+| `bun dev` | Development server with hot reload, auto-opens browser |
+| `bun start` | Production server (no hot reload) |
+| `bun run routes` | List all available routes |
+| `bun run typecheck` | Run TypeScript type checking |
+
+**Environment variables:**
+- `PORT` - Server port (default: 4444)
+- `NO_BROWSER=1` - Disable auto-open browser on dev
+
+```sh
+PORT=3000 bun dev           # Run on different port
+NO_BROWSER=1 bun dev        # Don't open browser
+```
+
+**Legacy server.sh:** Still available for background process management:
+```sh
+./server.sh start -h    # Start with hot reload (background)
+./server.sh stop        # Stop server
+./server.sh status      # Check if running
+./server.sh logs        # Tail logs
+```
 
 ## Project Structure
 
 ```
+scripts/
+├── dev.ts                 # Development server (bun dev)
+├── start.ts               # Production server (bun start)
+├── routes.ts              # List routes (bun run routes)
+└── typecheck.ts           # Type checking (bun run typecheck)
 src/
-├── server.ts              # Main server with FileSystemRouter
+├── server.ts              # Main server with FileSystemRouter + file watcher
 ├── lib/
 │   ├── jsx-runtime.ts     # Custom JSX runtime for HTML string rendering
 │   └── jsx-dev-runtime.ts # Development JSX runtime (re-exports jsx-runtime)
@@ -36,6 +62,7 @@ src/
 │   ├── index.tsx          # Home page (/)
 │   ├── fhir-server.tsx    # Product page (/fhir-server)
 │   ├── aidbox.tsx         # Alias for /fhir-server
+│   ├── medical-form.tsx   # Aidbox Forms page (/medical-form)
 │   ├── price.tsx          # Pricing page (/price)
 │   ├── contacts.tsx       # Contact page (/contacts)
 │   ├── casestudies.tsx    # Case studies (/casestudies)
@@ -126,6 +153,7 @@ Routes are automatically discovered from `src/pages/` using `Bun.FileSystemRoute
 | `/` | `index.tsx` |
 | `/fhir-server` | `fhir-server.tsx` |
 | `/aidbox` | `aidbox.tsx` (re-exports fhir-server) |
+| `/medical-form` | `medical-form.tsx` |
 | `/price` | `price.tsx` |
 | `/contacts` | `contacts.tsx` |
 | `/casestudies` | `casestudies.tsx` |

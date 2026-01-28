@@ -1,10 +1,13 @@
 {
   "name": "health-samurai",
-  "module": "index.ts",
+  "module": "src/server.ts",
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "bun --hot src/server.ts"
+    "dev": "bun scripts/dev.ts",
+    "start": "bun scripts/start.ts",
+    "typecheck": "bun scripts/typecheck.ts",
+    "routes": "bun scripts/routes.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"

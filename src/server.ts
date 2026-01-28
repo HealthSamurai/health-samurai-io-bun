@@ -1,13 +1,23 @@
 import { Layout } from "./components/Layout";
+import { watch } from "fs";
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 4321;
 const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET || "";
+const PAGES_DIR = "./src/pages";
 
 // File system router for pages
 const router = new Bun.FileSystemRouter({
   style: "nextjs",
-  dir: "./src/pages",
+  dir: PAGES_DIR,
   fileExtensions: [".tsx"],
+});
+
+// Watch for new/deleted pages and reload router
+watch(PAGES_DIR, { recursive: true }, (event, filename) => {
+  if (filename?.endsWith(".tsx")) {
+    router.reload();
+    console.log(`\x1b[36m[Router]\x1b[0m Reloaded (${event}: ${filename})`);
+  }
 });
 
 // Helper to create HTML response
@@ -183,5 +193,24 @@ Bun.serve({
   },
 });
 
-console.log(`🚀 Server running at http://localhost:${PORT}`);
-console.log(`   File-based routing enabled from src/pages/`);
+// List available routes on startup
+function listRoutes(): string[] {
+  const routes: string[] = [];
+  const entries = new Bun.Glob("**/*.tsx").scanSync(PAGES_DIR);
+  for (const entry of entries) {
+    const name = entry.replace(".tsx", "").replace(/\\/g, "/");
+    if (name === "index") {
+      routes.push("/");
+    } else if (name.endsWith("/index")) {
+      routes.push("/" + name.replace("/index", ""));
+    } else {
+      routes.push("/" + name);
+    }
+  }
+  return routes.sort();
+}
+
+const routes = listRoutes();
+console.log(`\n\x1b[32m→\x1b[0m Server running at \x1b[1mhttp://localhost:${PORT}\x1b[0m`);
+console.log(`\x1b[32m→\x1b[0m Routes: ${routes.join(", ")}`);
+console.log(`\x1b[32m→\x1b[0m Watching \x1b[36m${PAGES_DIR}\x1b[0m for changes\n`);
