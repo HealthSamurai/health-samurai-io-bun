@@ -1,8 +1,9 @@
 import { Layout } from "./components/Layout";
 import { HomePage } from "./pages/home";
 import { FhirServerPage } from "./pages/fhir-server";
+import { PricePage } from "./pages/price";
 
-const PORT = 4321;
+const PORT = process.env.PORT ? parseInt(process.env.PORT) : 4321;
 
 // Helper to create HTML response
 function html(content: string): Response {
@@ -154,6 +155,15 @@ Bun.serve({
                 </div>
               </section>
             `,
+          })
+        );
+
+      case "/price":
+        return html(
+          Layout({
+            title: "Pricing",
+            description: "Aidbox pricing plans - Choose the plan that fits your healthcare solution needs",
+            children: PricePage(),
           })
         );
 
