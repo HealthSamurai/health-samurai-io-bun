@@ -5,6 +5,7 @@ namespace: health-samurai-dev
 
 resources:
   - ../../base
+  - ingress.yaml
 
 namePrefix: dev-
 
