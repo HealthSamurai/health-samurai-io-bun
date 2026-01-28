@@ -14,7 +14,7 @@ export function Layout({ title, description, children }: LayoutProps): string {
 
   const metaDescription = description || "Health Samurai provides FHIR server and database solutions for healthcare applications. Build healthcare solutions from CDRs to EHRs using FHIR, PostgreSQL, and our SDK.";
 
-  return (
+  const html = (
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
@@ -51,4 +51,6 @@ export function Layout({ title, description, children }: LayoutProps): string {
       </body>
     </html>
   );
+
+  return `<!DOCTYPE html>${html}`;
 }

@@ -131,18 +131,21 @@ const useCaseData: Record<string, { image: string; imageAlt: string; stories: Ar
 
 const sampleProjects = [
   {
+    icon: "/assets/images/icons/projects/integration-pipeline.svg",
     title: "Integration Pipeline",
     description: "Python framework for integrating Aidbox with external systems.",
     tag: "CDRs & Data Platforms",
     github: "https://github.com/Aidbox/integration-pipeline/tree/main",
   },
   {
+    icon: "/assets/images/icons/projects/fhir-analytics.svg",
     title: "FHIR Analytics",
     description: "FHIR data analytics in Aidbox using SQL-on-FHIR.",
     tag: "Data Analytics",
     github: "https://github.com/Aidbox/examples/tree/main/aidbox-integrations/fhir-analytics",
   },
   {
+    icon: "/assets/images/icons/projects/emr.svg",
     title: "Open-source EMR",
     description: "FHIR-based EMR demo app built with Aidbox.",
     tag: "EMR & Clinical Apps",
@@ -155,6 +158,7 @@ const addons = [
     title: "Aidbox Forms",
     description: "Design, customize, and deploy no-code clinical forms with FHIR support and mobile-friendly UI.",
     href: "/medical-form",
+    image: "/assets/images/addons/forms-screenshot.png",
   },
   {
     title: "Aidbox MPI",
@@ -177,6 +181,13 @@ const addons = [
     href: "https://docs.aidbox.app/terminology",
   },
 ];
+
+type Addon = {
+  title: string;
+  description: string;
+  href: string | null;
+  image?: string;
+};
 
 const testimonials = [
   {
@@ -218,20 +229,28 @@ function FeatureCard({ feature, isWide }: { feature: Feature; isWide: boolean })
 function SampleProjectCard({ project }: { project: typeof sampleProjects[0] }): string {
   return (
     <div className="sample-project-card">
+      <div className="sample-project-icon">
+        <img src={project.icon} alt={project.title} />
+      </div>
       <h4 className="sample-project-title">{project.title}</h4>
-      <div className="sample-project-body">
-        <p>{project.description}</p>
+      <p className="sample-project-desc">{project.description}</p>
+      <div className="sample-project-footer">
         <span className="sample-project-tag">{project.tag}</span>
-        <a href={project.github} className="sample-project-link">Github →</a>
+        <a href={project.github} className="sample-project-link" target="_blank" rel="noopener noreferrer">Github →</a>
       </div>
     </div>
   );
 }
 
-function AddonCard({ addon }: { addon: typeof addons[0] }): string {
+function AddonCard({ addon, featured }: { addon: Addon; featured?: boolean }): string {
   return (
-    <div className="addon-card">
+    <div className={`addon-card${featured ? ' addon-card--featured' : ''}`}>
       <h4 className="addon-title">{addon.title}</h4>
+      {featured && addon.image && (
+        <div className="addon-image">
+          <img src={addon.image} alt={addon.title} />
+        </div>
+      )}
       <p className="addon-desc">{addon.description}</p>
       {addon.href && <a href={addon.href} className="addon-link">More →</a>}
     </div>
@@ -459,9 +478,17 @@ export function FhirServerPage(): string {
             <p>Expand your Aidbox functionality with optional modules</p>
           </div>
           <div className="addons-grid">
-            {addons.map((addon) => (
-              <AddonCard addon={addon} />
-            ))}
+            <div className="addons-row addons-row--top">
+              <AddonCard addon={addons[0]} featured={true} />
+              <div className="addons-stack">
+                <AddonCard addon={addons[1]} />
+                <AddonCard addon={addons[2]} />
+              </div>
+            </div>
+            <div className="addons-row addons-row--bottom">
+              <AddonCard addon={addons[3]} />
+              <AddonCard addon={addons[4]} />
+            </div>
           </div>
         </div>
       </section>

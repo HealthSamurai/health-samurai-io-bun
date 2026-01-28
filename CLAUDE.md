@@ -29,6 +29,9 @@ Server runs at http://localhost:4444 (override with `PORT=3000 ./server.sh start
 ```
 src/
 ├── server.ts              # Main server with routes and static file serving
+├── lib/
+│   ├── jsx-runtime.ts     # Custom JSX runtime for HTML string rendering
+│   └── jsx-dev-runtime.ts # Development JSX runtime (re-exports jsx-runtime)
 ├── pages/
 │   ├── home.tsx           # Home page (/)
 │   └── fhir-server.tsx    # Product page (/fhir-server, /aidbox)
@@ -37,7 +40,8 @@ src/
 │   ├── Header.tsx         # Navigation header
 │   ├── Footer.tsx         # Site footer
 │   ├── ui/
-│   │   └── Button.tsx     # Reusable button component
+│   │   ├── Button.tsx     # Reusable button component
+│   │   └── Tabs.tsx       # Tabs component with Datastar interactivity
 │   └── sections/
 │       ├── Hero.tsx       # Hero banner section
 │       ├── Services.tsx   # Services cards section
@@ -55,23 +59,52 @@ src/
     ├── hero.css
     ├── sections.css
     └── fhir-server.css
+public/
+└── assets/
+    └── js/
+        └── datastar.js    # Datastar framework for client-side reactivity
 ```
 
 ## Architecture
 
-**Server-side HTML rendering**: Components are functions that return HTML strings. No React runtime - just TypeScript functions generating HTML.
+**Server-side JSX rendering**: Components use JSX syntax that compiles to HTML strings at runtime. No React runtime or client-side hydration - just TypeScript functions generating HTML.
+
+The custom JSX runtime is in `src/lib/jsx-runtime.ts` and configured via `tsconfig.json`:
+- `jsx: "react-jsx"` - Use the new JSX transform
+- `jsxImportSource: "#jsx"` - Points to our custom runtime via path alias
 
 ```tsx
-// Example component pattern
+// Example component with JSX
 type Props = { title: string; href: string };
 
 export function Card({ title, href }: Props): string {
-  return `
-    <div class="card">
-      <h3>${title}</h3>
-      <a href="${href}">Learn more</a>
+  return (
+    <div className="card">
+      <h3>{title}</h3>
+      <a href={href}>Learn more</a>
     </div>
-  `;
+  );
+}
+```
+
+**JSX Features:**
+- Use `className` (converted to `class` in HTML)
+- Use `htmlFor` for label's `for` attribute
+- Boolean attributes: `<input disabled />` renders as `<input disabled>`
+- Style objects: `style={{ color: 'red' }}` renders as `style="color: red"`
+- `dangerouslySetInnerHTML={{ __html: rawHtml }}` for raw HTML injection
+- `Fragment` from `src/lib/jsx-runtime` for multiple elements without wrapper
+
+```tsx
+import { Fragment } from "../lib/jsx-runtime";
+
+function MultipleItems(): string {
+  return (
+    <Fragment>
+      <div>First</div>
+      <div>Second</div>
+    </Fragment>
+  );
 }
 ```
 
@@ -293,3 +326,49 @@ See [htmx docs](https://htmx.org/docs/). Use htmx for dynamic interactions via H
 - `HX-Reswap` / `HX-Retarget` — override swap/target
 
 **Server returns HTML fragments.** Status 204 = no swap, 4xx/5xx = error (no swap by default).
+
+## Datastar
+
+See [Datastar docs](https://data-star.dev/). Use Datastar for reactive client-side interactivity via HTML attributes. Datastar is loaded from `/assets/js/datastar.js`.
+
+**Core Concepts:**
+- `data-signals` — Define reactive state as a JSON object
+- `data-show` — Conditionally show/hide elements based on signal values
+- `data-class` — Conditionally apply CSS classes
+- `data-on-click` — Handle click events and update signals
+
+```html
+<!-- Tabs example with Datastar -->
+<div data-signals="{activeTab: 'tab1'}">
+  <button data-class="{active: $activeTab == 'tab1'}" data-on-click="$activeTab = 'tab1'">
+    Tab 1
+  </button>
+  <button data-class="{active: $activeTab == 'tab2'}" data-on-click="$activeTab = 'tab2'">
+    Tab 2
+  </button>
+
+  <div data-show="$activeTab == 'tab1'">Content 1</div>
+  <div data-show="$activeTab == 'tab2'" style="display: none">Content 2</div>
+</div>
+```
+
+**Signal Syntax:**
+- Define signals: `data-signals="{name: 'value', count: 0}"`
+- Read signals: `$name`, `$count` (prefix with `$`)
+- Update signals: `$count = $count + 1` or `$name = 'new value'`
+
+**Important:** Panels hidden by `data-show` should have `style="display: none"` initially to prevent flash of content before Datastar initializes.
+
+**Reusable Tabs Component:**
+```tsx
+import { Tabs } from "../components/ui/Tabs";
+
+// Usage
+<Tabs
+  tabs={[
+    { id: "tab1", label: "First Tab", content: "<p>Content here</p>" },
+    { id: "tab2", label: "Second Tab", content: "<p>More content</p>" },
+  ]}
+  defaultTab="tab1"
+/>
+```

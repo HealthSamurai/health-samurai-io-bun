@@ -1,9 +1,10 @@
-/* Header - Pixel perfect match to health-samurai.io */
+/* Header - Matching health-samurai.io */
 .header {
   position: sticky;
   top: 0;
   z-index: 1000;
   background: white;
+  border-bottom: 1px solid #eee;
 }
 
 .header-inner {
@@ -33,26 +34,23 @@
   gap: 0;
 }
 
-.nav-item {
-  position: relative;
-}
-
 .nav-link {
   display: flex;
   align-items: center;
   gap: 6px;
   padding: 21px 20px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
   color: #333333;
   text-decoration: none;
   background: transparent;
   border: none;
   cursor: pointer;
-  transition: color var(--transition-fast);
+  transition: color 0.15s ease;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link--active {
   color: var(--color-primary);
 }
 
@@ -60,66 +58,160 @@
   width: 10px;
   height: 10px;
   opacity: 0.5;
-  transition: transform var(--transition-fast);
+  transition: transform 0.2s ease;
 }
 
-.nav-item:hover .nav-link-icon {
+.nav-link--active .nav-link-icon {
   transform: rotate(180deg);
 }
 
-/* Dropdown */
-.nav-dropdown {
+/* Mega Menu - Full width dropdown */
+.mega-menu {
   position: absolute;
-  top: 100%;
   left: 0;
-  min-width: 240px;
-  padding: var(--space-2);
-  background: white;
-  border-radius: var(--radius-md);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: all var(--transition-base);
+  right: 0;
+  background: #f8f9fb;
+  border-top: 1px solid #eee;
+  animation: mega-menu-in 0.2s ease;
 }
 
-.nav-item:hover .nav-dropdown {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+@keyframes mega-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.nav-dropdown-item {
+.mega-menu-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 32px var(--container-padding);
+}
+
+.mega-menu-content {
+  display: flex;
+  gap: 40px;
+}
+
+.mega-menu-columns {
+  display: flex;
+  gap: 48px;
+  flex: 1;
+}
+
+.mega-menu-column {
+  min-width: 180px;
+}
+
+.mega-menu-category {
+  font-size: 11px;
+  font-weight: 600;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.mega-menu-link {
   display: block;
-  padding: var(--space-3) var(--space-4);
-  font-size: 14px;
-  color: #333333;
+  padding: 8px 0;
   text-decoration: none;
-  border-radius: var(--radius-sm);
-  transition: background-color var(--transition-fast);
+  color: #333;
+  transition: color 0.15s ease;
 }
 
-.nav-dropdown-item:hover {
-  background-color: var(--color-bg-alt);
+.mega-menu-link:hover,
+.mega-menu-link:hover .mega-menu-link-title {
   color: var(--color-primary);
 }
 
-.nav-dropdown-title {
+.mega-menu-link-title {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.mega-menu-link-desc {
+  display: block;
+  font-size: 13px;
+  color: #666;
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+/* Mega Menu CTA Card */
+.mega-menu-cta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-width: 280px;
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: box-shadow 0.15s ease;
+  border: 1px solid #eee;
+}
+
+.mega-menu-cta:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.mega-menu-cta-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.mega-menu-cta-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.mega-menu-cta-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mega-menu-cta-title {
+  font-size: 15px;
   font-weight: 600;
+  color: #333;
+}
+
+.mega-menu-cta-desc {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.mega-menu-cta-arrow {
+  width: 24px;
+  height: 24px;
+  color: #333;
+  flex-shrink: 0;
+  margin-top: 12px;
 }
 
 /* Header CTA - Sign up button */
 .header-cta {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: 16px;
 }
 
-.header-cta .btn-signup {
+.btn-signup {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 24px;
+  padding: 12px 20px;
   font-size: 14px;
   font-weight: 600;
   color: white;
@@ -127,18 +219,23 @@
   border: none;
   border-radius: 4px;
   text-decoration: none;
-  transition: background-color var(--transition-fast);
+  transition: background-color 0.15s ease;
 }
 
-.header-cta .btn-signup:hover {
+.btn-signup:hover {
   background-color: #d43d2a;
   color: white;
 }
 
-/* Mobile Menu */
+/* Mobile Menu Button */
 .mobile-menu-btn {
   display: none;
-  padding: var(--space-2);
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
   background: none;
   border: none;
   cursor: pointer;
@@ -148,11 +245,84 @@
   display: block;
   width: 24px;
   height: 2px;
-  background: var(--color-text);
-  margin: 5px 0;
-  transition: all var(--transition-fast);
+  background: #333;
+  transition: all 0.2s ease;
 }
 
+.mobile-menu-btn--active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-btn--active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-btn--active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid #eee;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 16px 0;
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+}
+
+.mobile-nav-link {
+  display: block;
+  padding: 12px 24px;
+  font-size: 15px;
+  color: #333;
+  text-decoration: none;
+}
+
+.mobile-nav-link:hover {
+  background: #f5f5f5;
+  color: var(--color-primary);
+}
+
+.mobile-nav-link--sub {
+  padding-left: 40px;
+  font-size: 14px;
+  color: #666;
+}
+
+.mobile-nav-group {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+.mobile-nav-label {
+  padding: 12px 24px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mobile-nav-cta {
+  display: block;
+  margin: 16px 24px 8px;
+  padding: 14px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  background-color: #EA4A35;
+  border-radius: 4px;
+  text-decoration: none;
+  text-align: center;
+}
+
+/* Responsive */
 @media (max-width: 1024px) {
   .nav {
     display: none;
@@ -163,6 +333,16 @@
   }
 
   .mobile-menu-btn {
-    display: block;
+    display: flex;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-inner {
+    height: 56px;
+  }
+
+  .header-logo img {
+    height: 32px;
   }
 }

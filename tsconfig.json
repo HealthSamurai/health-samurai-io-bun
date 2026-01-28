@@ -6,7 +6,7 @@
     "module": "Preserve",
     "moduleDetection": "force",
     "jsx": "react-jsx",
-    "jsxImportSource": "./src/lib",
+    "jsxImportSource": "#jsx",
     "allowJs": true,
 
     // Bundler mode
@@ -14,6 +14,13 @@
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "noEmit": true,
+
+    // Path aliases
+    "baseUrl": ".",
+    "paths": {
+      "#jsx/jsx-runtime": ["./src/lib/jsx-runtime.ts"],
+      "#jsx/jsx-dev-runtime": ["./src/lib/jsx-dev-runtime.ts"]
+    },
 
     // Best practices
     "strict": true,
