@@ -34,8 +34,17 @@ clone_or_pull() {
     fi
 }
 
+write_version_info() {
+    cd "$APP_DIR"
+    COMMIT_HASH=$(git rev-parse --short HEAD)
+    COMMIT_DATE=$(git log -1 --format=%ci)
+    echo "{\"commit\":\"$COMMIT_HASH\",\"date\":\"$COMMIT_DATE\"}" > .version.json
+    log "Version: $COMMIT_HASH ($COMMIT_DATE)"
+}
+
 install_deps() {
     cd "$APP_DIR"
+    write_version_info
     if [ -f "package.json" ]; then
         log "Installing dependencies..."
         bun install

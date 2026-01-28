@@ -1,6 +1,23 @@
 import { footerLinks } from "../data/navigation";
 
+type VersionInfo = { commit: string; date: string } | null;
+
+function getVersion(): VersionInfo {
+  try {
+    const file = Bun.file(".version.json");
+    if (file.size > 0) {
+      // Sync read for simplicity in JSX
+      const text = require("fs").readFileSync(".version.json", "utf-8");
+      return JSON.parse(text);
+    }
+  } catch {
+    // No version file - running locally
+  }
+  return null;
+}
+
 export function Footer(): string {
+  const version = getVersion();
   return (
     <footer className="footer">
       <div className="footer-inner">
@@ -52,6 +69,11 @@ export function Footer(): string {
         {/* Footer watermark logo */}
         <div className="footer-bottom">
           <img src="/assets/images/logos/health-samurai-footer.svg" alt="Health Samurai" className="footer-watermark" />
+          {version && (
+            <div className="footer-version">
+              v{version.commit} · {new Date(version.date).toLocaleDateString()}
+            </div>
+          )}
         </div>
       </div>
     </footer>
