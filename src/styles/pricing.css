@@ -1,0 +1,326 @@
+/* Pricing Page Styles */
+
+/* Pricing Hero */
+.pricing-hero {
+  padding: 80px 0 40px;
+  background: linear-gradient(135deg, var(--color-bg) 0%, #f0f4f8 100%);
+  text-align: center;
+}
+
+.pricing-hero h1 {
+  font-size: var(--text-5xl);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+}
+
+.pricing-hero-subtitle {
+  font-size: var(--text-xl);
+  color: var(--color-text-light);
+  margin-bottom: var(--space-4);
+}
+
+.pricing-hero-note {
+  font-size: var(--text-base);
+  color: var(--color-text-light);
+}
+
+.pricing-hero-note a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.pricing-hero-note a:hover {
+  text-decoration: underline;
+}
+
+/* Modules Section */
+.modules-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.modules-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.modules-header h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #353b50;
+  margin-bottom: 12px;
+}
+
+.modules-header p {
+  font-size: 16px;
+  color: #666;
+}
+
+.modules-grid {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.modules-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 32px;
+  background: #f4f8fb;
+  padding: 4px;
+  border-radius: 24px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modules-toggle-btn {
+  padding: 10px 28px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  background: transparent;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.modules-toggle-btn:hover {
+  color: #333;
+}
+
+.modules-toggle-btn.active {
+  background: #353b50;
+  color: white;
+}
+
+.modules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.module-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  background: #f9fbfc;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.module-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(234, 74, 53, 0.1);
+}
+
+.module-info {
+  flex: 1;
+}
+
+.module-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #353b50;
+  margin: 0 0 6px;
+}
+
+.module-description {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.module-price {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-align: right;
+  min-width: 140px;
+}
+
+/* Services Pricing Section */
+.services-pricing-section {
+  padding: 80px 0;
+  background: linear-gradient(180deg, #f4f8fb 0%, #f9fbfc 100%);
+}
+
+.services-pricing-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.services-pricing-header h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #353b50;
+  margin-bottom: 12px;
+}
+
+.services-pricing-header p {
+  font-size: 16px;
+  color: #666;
+}
+
+.services-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto 40px;
+}
+
+.service-pricing-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 28px 32px;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.service-pricing-info {
+  flex: 1;
+}
+
+.service-pricing-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #353b50;
+  margin: 0 0 8px;
+}
+
+.service-pricing-description {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.service-pricing-price {
+  text-align: right;
+  min-width: 120px;
+}
+
+.service-price-amount {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.service-price-type {
+  display: block;
+  font-size: 12px;
+  color: #999;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.services-pricing-cta {
+  text-align: center;
+}
+
+.services-pricing-cta p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+/* Compliance Section */
+.compliance-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.compliance-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.compliance-text {
+  flex: 1;
+}
+
+.compliance-text h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #353b50;
+  margin: 0 0 16px;
+}
+
+.compliance-text p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #666;
+  margin: 0;
+}
+
+.compliance-badges {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.compliance-badges img {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pricing-hero h1 {
+    font-size: var(--text-4xl);
+  }
+
+  .modules-header h2,
+  .services-pricing-header h2 {
+    font-size: 28px;
+  }
+
+  .module-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .module-price {
+    text-align: left;
+    min-width: auto;
+  }
+
+  .services-pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-pricing-card {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .service-pricing-price {
+    text-align: left;
+    min-width: auto;
+  }
+
+  .compliance-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .compliance-text h2 {
+    font-size: 24px;
+  }
+}

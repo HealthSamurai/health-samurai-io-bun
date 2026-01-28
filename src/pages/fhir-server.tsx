@@ -159,7 +159,14 @@ const sampleProjects = [
   },
 ];
 
-const addons = [
+type Addon = {
+  title: string;
+  description: string;
+  href: string | null;
+  image?: string;
+};
+
+const addons: Addon[] = [
   {
     title: "Aidbox Forms",
     description: "Design, customize, and deploy no-code clinical forms with FHIR support and mobile-friendly UI.",
@@ -187,13 +194,6 @@ const addons = [
     href: "https://docs.aidbox.app/terminology",
   },
 ];
-
-type Addon = {
-  title: string;
-  description: string;
-  href: string | null;
-  image?: string;
-};
 
 const testimonials = [
   {
@@ -347,7 +347,7 @@ export default function FhirServerPage(): string {
             tabs={useCaseTabs.map((uc) => ({
               id: uc.id,
               label: uc.label,
-              content: UseCasePanelContent({ data: useCaseData[uc.id] }),
+              content: UseCasePanelContent({ data: useCaseData[uc.id]! }),
             }))}
           />
         </div>
@@ -410,15 +410,15 @@ export default function FhirServerPage(): string {
           </div>
           <div className="addons-grid">
             <div className="addons-row addons-row--top">
-              <AddonCard addon={addons[0]} featured={true} />
+              <AddonCard addon={addons[0]!} featured={true} />
               <div className="addons-stack">
-                <AddonCard addon={addons[1]} />
-                <AddonCard addon={addons[2]} />
+                <AddonCard addon={addons[1]!} />
+                <AddonCard addon={addons[2]!} />
               </div>
             </div>
             <div className="addons-row addons-row--bottom">
-              <AddonCard addon={addons[3]} />
-              <AddonCard addon={addons[4]} />
+              <AddonCard addon={addons[3]!} />
+              <AddonCard addon={addons[4]!} />
             </div>
           </div>
         </div>
