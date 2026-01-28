@@ -1,0 +1,127 @@
+/* Footer - Pixel perfect match to health-samurai.io */
+.footer {
+  background-color: #f4f8fb;
+  color: var(--color-text);
+  padding: 48px 0;
+}
+
+.footer-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* Certification badges at top */
+.footer-certifications {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.footer-certifications img {
+  height: 82px;
+  width: auto;
+}
+
+/* Main footer columns */
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 1.2fr;
+  gap: 48px;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Brand link with red underline */
+.footer-brand-link {
+  font-size: 15px;
+  font-weight: 500;
+  color: #5e5e5e;
+  text-decoration: none;
+  border-bottom: 2px solid #EA4A35;
+  padding-bottom: 2px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.footer-brand-link:hover {
+  color: #333;
+}
+
+/* Regular footer links */
+.footer-link {
+  font-size: 15px;
+  font-weight: 400;
+  color: #5e5e5e;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-link:hover {
+  color: var(--color-primary);
+}
+
+/* Contact column - right side */
+.footer-contact {
+  text-align: right;
+}
+
+.footer-contact-item {
+  font-size: 16px;
+  font-weight: 400;
+  color: #333333;
+  line-height: 21px;
+  margin-bottom: 16px;
+}
+
+.footer-contact-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Bottom section with watermark logo */
+.footer-bottom {
+  margin-top: 48px;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-watermark {
+  height: 122px;
+  width: auto;
+  opacity: 0.15;
+}
+
+@media (max-width: 1024px) {
+  .footer-columns {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .footer-contact {
+    text-align: left;
+  }
+
+  .footer-certifications {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-columns {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-certifications {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-watermark {
+    height: 80px;
+  }
+}

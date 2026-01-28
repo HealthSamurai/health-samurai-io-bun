@@ -1,0 +1,743 @@
+/* FHIR Server Page Styles - Pixel perfect match */
+
+/* What is Aidbox Section - Matched to original what-is__card */
+.aidbox-features-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.aidbox-features-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-label {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+/* Grid: 4 columns, 16px gap, no borders */
+.aidbox-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* Card: flex column, 24px padding, rounded, gray bg */
+.aidbox-feature-card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background: #f9fafb;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 8px;
+  gap: 24px;
+  transition: all 0.2s;
+}
+
+.aidbox-feature-card:hover {
+  background-color: rgba(234, 74, 53, 0.1);
+}
+
+/* Bento layout: first card spans 2 columns */
+.aidbox-feature-card--wide {
+  grid-column: span 2;
+}
+
+/* Card header: icon + title */
+.aidbox-feature-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.aidbox-feature-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.aidbox-feature-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #353b50;
+  line-height: 1.3;
+}
+
+/* Card body: tags + description */
+.aidbox-feature-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Tags: flex wrap, small gap */
+.aidbox-feature-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Individual tag: gray pill style */
+.aidbox-tag {
+  padding: 2px 8px;
+  background: #ebeff2;
+  color: rgba(53, 59, 80, 0.6);
+  font-size: 13px;
+  font-weight: 400;
+  border-radius: 6px;
+  line-height: 1.6;
+}
+
+/* Description text */
+.aidbox-feature-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(53, 59, 80, 0.7);
+  margin: 0;
+}
+
+.aidbox-features-footer {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.technical-features-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.technical-features-link:hover {
+  color: var(--color-primary);
+}
+
+/* Use Cases Section */
+.use-cases-section {
+  padding: 80px 0;
+  background: #f4f8fb;
+}
+
+.use-cases-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+/* Generic Tabs Component */
+.tabs-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.tabs-trigger {
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tabs-trigger:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.tabs-trigger.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+.tabs-panel {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Use Cases specific styling */
+.use-case-panel-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.use-case-image img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.use-case-stories {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.use-case-story {
+  padding-left: 24px;
+  border-left: 3px solid var(--color-primary);
+}
+
+.story-company {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.story-type {
+  display: block;
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 12px;
+}
+
+.use-case-story p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+}
+
+/* Sample Projects Section */
+.sample-projects-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.sample-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.sample-project-card {
+  background: #f4f8fb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.sample-project-title {
+  padding: 20px 24px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  background: #e8f0f5;
+}
+
+.sample-project-body {
+  padding: 24px;
+}
+
+.sample-project-body p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666;
+  margin: 0 0 16px;
+}
+
+.sample-project-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: white;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.sample-project-link {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  text-decoration: none;
+}
+
+.sample-project-link:hover {
+  color: var(--color-primary);
+}
+
+/* Deploy Section */
+.deploy-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.deploy-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.deploy-header h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.deploy-header p {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+}
+
+.deploy-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.deploy-options {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.deploy-option {
+  padding: 24px;
+  background: #f4f8fb;
+  border-radius: 12px;
+}
+
+.deploy-option h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 8px;
+}
+
+.deploy-option p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.deploy-image img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* Pricing Section */
+.pricing-section {
+  padding: 80px 0;
+  background: #f4f8fb;
+}
+
+.pricing-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.pricing-header h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.pricing-header p {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+}
+
+.pricing-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 40px;
+  background: white;
+  padding: 4px;
+  border-radius: 8px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pricing-tab {
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pricing-tab.active {
+  background: var(--color-primary);
+  color: white;
+}
+
+.pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  border: 2px solid transparent;
+}
+
+.pricing-card.featured {
+  border-color: var(--color-primary);
+}
+
+.pricing-card-header h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 16px;
+}
+
+.pricing-amount {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.pricing-amount span {
+  font-size: 16px;
+  font-weight: 400;
+  color: #666;
+}
+
+.pricing-card-header p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666;
+  margin: 0 0 24px;
+}
+
+/* Support Plans Section */
+.support-plans-section {
+  padding: 48px 0 80px;
+  background: #f4f8fb;
+}
+
+.support-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.support-plans-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto 32px;
+}
+
+.support-plan {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid #e5e5e5;
+}
+
+.support-plan.recommended {
+  border-color: var(--color-primary);
+}
+
+.support-plan-header {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.support-plan-header h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 8px;
+}
+
+.recommended-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background: #fff0ee;
+  color: var(--color-primary);
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+
+.support-price {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.support-contact {
+  font-size: 14px;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.support-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.support-features li {
+  padding: 8px 0;
+  padding-left: 24px;
+  font-size: 14px;
+  color: #666;
+  position: relative;
+}
+
+.support-features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.support-features li.support-included {
+  padding-left: 0;
+  font-weight: 600;
+  color: #333;
+}
+
+.support-features li.support-included::before {
+  display: none;
+}
+
+.support-cta {
+  text-align: center;
+}
+
+.support-cta p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+/* Add-ons Section */
+.addons-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.addons-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.addons-header h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.addons-header p {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+}
+
+.addons-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+}
+
+.addon-card {
+  padding: 24px;
+  background: #f4f8fb;
+  border-radius: 12px;
+}
+
+.addon-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 12px;
+}
+
+.addon-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666;
+  margin: 0 0 16px;
+}
+
+.addon-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  text-decoration: none;
+}
+
+.addon-link:hover {
+  color: var(--color-primary);
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  padding: 80px 0;
+  background: #f4f8fb;
+}
+
+.testimonials-carousel {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  display: none;
+  text-align: center;
+  padding: 40px;
+}
+
+.testimonial-card.active {
+  display: block;
+}
+
+.testimonial-quote {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #333;
+  font-style: italic;
+  margin-bottom: 32px;
+}
+
+.testimonial-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 4px;
+}
+
+.testimonial-title {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+/* Community Section */
+.community-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.community-content {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.community-content h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.community-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.community-benefits {
+  margin-bottom: 32px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .aidbox-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .aidbox-feature-card--wide {
+    grid-column: span 2;
+  }
+
+  .use-case-panel.active {
+    grid-template-columns: 1fr;
+  }
+
+  .sample-projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .deploy-content {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-cards {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+
+  .support-plans-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+
+  .addons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .aidbox-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aidbox-feature-card--wide {
+    grid-column: span 1;
+  }
+
+  .use-cases-tabs {
+    flex-wrap: wrap;
+  }
+
+  .sample-projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .addons-grid {
+    grid-template-columns: 1fr;
+  }
+}
