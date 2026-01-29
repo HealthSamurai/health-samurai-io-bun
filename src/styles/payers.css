@@ -1,0 +1,726 @@
+/* Payers Page Styles */
+
+/* Hero Section */
+.payers-hero {
+  background-color: #353b50;
+  padding: 100px 0;
+}
+
+.payers-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.payers-hero-content {
+  color: #ffffff;
+}
+
+.payers-hero-tag {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  color: #ffffff;
+}
+
+.payers-hero h1 {
+  font-size: 50px;
+  font-weight: 800;
+  line-height: 64px;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.payers-hero-content p {
+  font-size: 21px;
+  line-height: 32px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.payers-hero-link {
+  color: #ea4a35;
+  text-decoration: underline;
+}
+
+.payers-hero-link:hover {
+  color: #c9362b;
+}
+
+.payers-hero-content strong {
+  font-weight: 700;
+}
+
+/* Hero Form */
+.payers-hero-form {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+.payers-form-group {
+  margin-bottom: 16px;
+}
+
+.payers-form-input {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 16px;
+  border: 1px solid #ebebeb;
+  border-radius: 4px;
+  background: #ffffff;
+  transition: border-color 0.15s ease;
+}
+
+.payers-form-input:focus {
+  outline: none;
+  border-color: #ea4a35;
+}
+
+.payers-form-input::placeholder {
+  color: #999999;
+}
+
+.payers-form-btn {
+  width: 100%;
+  padding: 16px 24px;
+  margin-top: 8px;
+}
+
+.payers-recaptcha {
+  margin-top: 16px;
+}
+
+.payers-recaptcha-placeholder {
+  background: #f9f9f9;
+  border: 1px solid #d3d3d3;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Section Title */
+.payers-section-title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 50px;
+  color: #353b50;
+  margin-bottom: 48px;
+}
+
+/* Shift to FHIR Section */
+.payers-shift {
+  background: #ffffff;
+}
+
+.payers-shift-diagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.payers-diagram-challenge,
+.payers-diagram-solution {
+  max-width: 280px;
+}
+
+.payers-diagram-challenge img,
+.payers-diagram-solution img {
+  width: 100%;
+  height: auto;
+}
+
+.payers-diagram-arrow {
+  font-size: 32px;
+  color: #999;
+  font-weight: 300;
+  letter-spacing: -4px;
+}
+
+/* Challenge/Solution Cards */
+.payers-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.payers-challenge-card,
+.payers-solution-card {
+  padding: 40px;
+}
+
+.payers-challenge-card h3,
+.payers-solution-card h3 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 42px;
+  color: #353b50;
+  margin-bottom: 16px;
+}
+
+.payers-card-divider {
+  width: 60px;
+  height: 3px;
+  background-color: #ea4a35;
+  margin-bottom: 24px;
+}
+
+.payers-challenge-card p,
+.payers-solution-card p {
+  font-size: 16px;
+  line-height: 26px;
+  color: #333333;
+  margin-bottom: 24px;
+}
+
+/* Lists */
+.payers-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.payers-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #333333;
+}
+
+.payers-list-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.payers-link {
+  color: #ea4a35;
+  text-decoration: underline;
+}
+
+.payers-link:hover {
+  color: #c9362b;
+}
+
+/* Key Features Section */
+.payers-features {
+  background: #ffffff;
+}
+
+.payers-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.payers-feature-card {
+  background: #ffffff;
+  border: 1px solid #ebebeb;
+  border-radius: 8px;
+  padding: 40px 32px;
+  text-align: center;
+  transition: box-shadow 0.2s ease;
+}
+
+.payers-feature-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.payers-feature-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 20px;
+}
+
+.payers-feature-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.payers-feature-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #353b50;
+  margin-bottom: 12px;
+}
+
+.payers-feature-divider {
+  width: 40px;
+  height: 2px;
+  background-color: #ea4a35;
+  margin: 0 auto 16px;
+}
+
+.payers-feature-desc {
+  font-size: 14px;
+  line-height: 22px;
+  color: #333333;
+  margin: 0;
+}
+
+.payers-feature-desc a {
+  color: #ea4a35;
+  text-decoration: underline;
+}
+
+/* Your FHIR Ecosystem Section */
+.payers-ecosystem {
+  background: rgba(53, 59, 80, 0.05);
+  padding: 80px 0;
+}
+
+.payers-ecosystem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.payers-ecosystem-content h3 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 42px;
+  color: #353b50;
+  margin-bottom: 24px;
+}
+
+.payers-ecosystem-content > p {
+  font-size: 16px;
+  line-height: 26px;
+  color: #333333;
+  margin-bottom: 32px;
+}
+
+.payers-steps-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #353b50;
+  margin-bottom: 20px;
+}
+
+.payers-steps-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+}
+
+.payers-steps-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #333333;
+}
+
+.payers-whitepaper-btn {
+  border: 1px solid #353b50;
+  color: #353b50;
+  background: transparent;
+  padding: 14px 24px;
+}
+
+.payers-whitepaper-btn:hover {
+  border-color: #ea4a35;
+  color: #ea4a35;
+}
+
+.payers-ecosystem-diagram {
+  position: sticky;
+  top: 100px;
+}
+
+.payers-ecosystem-diagram img {
+  width: 100%;
+  height: auto;
+}
+
+/* Case Studies Section */
+.payers-case-studies {
+  background: #f4f8fb;
+  padding: 80px 0;
+}
+
+/* Tabs */
+.payers-tabs-nav {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+.payers-tab-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #666666;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.payers-tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+.payers-tab-btn--active {
+  color: #353b50;
+}
+
+.payers-tab-btn--active::after {
+  background-color: #ea4a35;
+}
+
+.payers-tab-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(234, 74, 53, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.payers-tab-btn--active .payers-tab-icon {
+  background: rgba(234, 74, 53, 0.15);
+}
+
+.payers-tab-icon img {
+  width: 32px;
+  height: 32px;
+}
+
+/* Tab Panel */
+.payers-tab-panel {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 48px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Case Study Cards */
+.payers-case-card {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.payers-case-logo {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.payers-case-logo img {
+  max-width: 240px;
+  height: auto;
+}
+
+.payers-case-play {
+  width: 48px;
+  height: 48px;
+  background: rgba(234, 74, 53, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ea4a35;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.payers-case-play:hover {
+  background: rgba(234, 74, 53, 0.2);
+}
+
+.payers-case-content h4 {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 30px;
+  color: #353b50;
+  margin-bottom: 20px;
+}
+
+.payers-case-content p {
+  font-size: 16px;
+  line-height: 26px;
+  color: #333333;
+  margin-bottom: 16px;
+}
+
+/* Slider Navigation */
+.payers-slider-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid #ebebeb;
+}
+
+.payers-slider-prev,
+.payers-slider-next {
+  background: none;
+  border: none;
+  color: #ea4a35;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 0;
+  transition: color 0.2s ease;
+}
+
+.payers-slider-prev:hover,
+.payers-slider-next:hover {
+  color: #c9362b;
+}
+
+/* Clients Section */
+.payers-clients {
+  background: #ffffff;
+  padding: 60px 0;
+}
+
+.payers-clients-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 48px;
+}
+
+.payers-client-logo {
+  flex: 0 0 auto;
+}
+
+.payers-client-logo img {
+  max-height: 48px;
+  width: auto;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.payers-client-logo:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* Contact Form Section */
+.payers-contact {
+  background: #ffffff;
+}
+
+.payers-contact-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.payers-contact-wrapper h2 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 50px;
+  color: #353b50;
+  margin-bottom: 16px;
+}
+
+.payers-contact-subtitle {
+  font-size: 16px;
+  line-height: 26px;
+  color: #666666;
+  margin-bottom: 40px;
+}
+
+.payers-contact-form {
+  text-align: left;
+}
+
+.payers-contact-field {
+  margin-bottom: 24px;
+}
+
+.payers-contact-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #999999;
+  margin-bottom: 8px;
+}
+
+.payers-contact-field input {
+  width: 100%;
+  padding: 16px 0;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1px solid #ebebeb;
+  background: transparent;
+  transition: border-color 0.15s ease;
+}
+
+.payers-contact-field input:focus {
+  outline: none;
+  border-bottom-color: #ea4a35;
+}
+
+.payers-contact .payers-recaptcha {
+  margin-bottom: 24px;
+}
+
+.payers-contact-btn {
+  width: 100%;
+  padding: 18px 24px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .payers-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .payers-hero h1 {
+    font-size: 40px;
+    line-height: 52px;
+  }
+
+  .payers-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .payers-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .payers-ecosystem-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .payers-ecosystem-diagram {
+    position: static;
+    order: -1;
+  }
+
+  .payers-case-card {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .payers-tabs-nav {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .payers-hero {
+    padding: 60px 0;
+  }
+
+  .payers-hero h1 {
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  .payers-hero-content p {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .payers-section-title {
+    font-size: 28px;
+    line-height: 36px;
+    margin-bottom: 32px;
+  }
+
+  .payers-shift-diagram {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .payers-diagram-arrow {
+    transform: rotate(90deg);
+  }
+
+  .payers-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .payers-tab-panel {
+    padding: 24px;
+  }
+
+  .payers-tabs-nav {
+    gap: 12px;
+  }
+
+  .payers-tab-btn {
+    font-size: 12px;
+  }
+
+  .payers-tab-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .payers-tab-icon img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .payers-slider-nav {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .payers-clients-grid {
+    gap: 24px;
+  }
+
+  .payers-contact-wrapper h2 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+}

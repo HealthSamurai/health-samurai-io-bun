@@ -4,13 +4,18 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun scripts/dev.ts",
-    "start": "bun scripts/start.ts",
+    "dev": "bun run css:watch & bun scripts/dev.ts",
+    "start": "bun run css:build && bun scripts/start.ts",
+    "css:build": "bunx @tailwindcss/cli -i src/styles/tailwind.css -o public/styles/main.css --minify",
+    "css:watch": "bunx @tailwindcss/cli -i src/styles/tailwind.css -o public/styles/main.css --watch",
     "typecheck": "bun scripts/typecheck.ts",
-    "routes": "bun scripts/routes.ts"
+    "routes": "bun scripts/routes.ts",
+    "check-pages": "bun scripts/check-pages.ts"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@tailwindcss/cli": "^4.1.18",
+    "@types/bun": "latest",
+    "tailwindcss": "^4.1.18"
   },
   "peerDependencies": {
     "typescript": "^5"

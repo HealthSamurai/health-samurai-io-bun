@@ -1,0 +1,286 @@
+@import "tailwindcss";
+
+/* Import existing page-specific styles */
+@import "./header.css";
+@import "./footer.css";
+@import "./hero.css";
+@import "./sections.css";
+@import "./fhir-server.css";
+@import "./medical-form.css";
+@import "./company.css";
+@import "./pricing.css";
+@import "./price.css";
+@import "./fhir-database.css";
+@import "./services.css";
+@import "./careers.css";
+@import "./case-study-detail.css";
+@import "./docs-hl7v2.css";
+@import "./c-cda-to-fhir-converter.css";
+@import "./auditbox.css";
+@import "./e-prescription-module.css";
+@import "./startups.css";
+@import "./healthcare-data-platform-toolkit-aidbox.css";
+@import "./telemedicine.css";
+@import "./ehr-toolkit.css";
+@import "./fhir-api.css";
+@import "./payers.css";
+@import "./blog.css";
+@import "./downloads.css";
+@import "./casestudies.css";
+@import "./events.css";
+@import "./news.css";
+@import "./contacts.css";
+@import "./partners.css";
+@import "./legal.css";
+
+/* Custom theme configuration for Health Samurai */
+@theme {
+  /* Colors - WCAG AA compliant */
+  --color-primary: #c9362b;
+  --color-primary-dark: #a82d24;
+  --color-primary-light: #fef2f0;
+  --color-primary-vibrant: #EA4A35;
+  --color-secondary: #0066FF;
+
+  /* Text colors */
+  --color-text: #1a1a1a;
+  --color-text-light: #666666;
+  --color-text-muted: #999999;
+
+  /* Background colors */
+  --color-bg: #ffffff;
+  --color-bg-alt: #f7f7f7;
+  --color-bg-light: #f5f5f5;
+
+  /* Border colors */
+  --color-border: #ebebeb;
+  --color-border-dark: #e0e0e0;
+
+  /* Typography */
+  --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Fira Code', 'Monaco', monospace;
+
+  /* Container */
+  --container-max: 1200px;
+}
+
+/* Base layer - reset and typography */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply font-sans text-base leading-normal text-text bg-bg;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-black text-text leading-tight;
+  }
+
+  h1 {
+    @apply text-5xl leading-[80px];
+  }
+
+  h2 {
+    @apply text-4xl leading-tight;
+  }
+
+  h3 {
+    @apply text-2xl font-bold;
+  }
+
+  h4 {
+    @apply text-xl font-bold;
+  }
+
+  p {
+    @apply mb-4 leading-relaxed;
+  }
+
+  a {
+    @apply text-primary no-underline transition-colors duration-150;
+  }
+
+  a:hover {
+    @apply text-primary-dark;
+  }
+
+  /* Links in text blocks should have underline for accessibility */
+  p a, .text-link {
+    @apply underline underline-offset-2;
+  }
+
+  img {
+    @apply max-w-full h-auto block;
+  }
+
+  ul, ol {
+    @apply list-none;
+  }
+
+  strong {
+    @apply font-bold;
+  }
+}
+
+/* Component layer - reusable components */
+@layer components {
+  /* Container */
+  .container {
+    @apply max-w-[1200px] mx-auto px-8;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-sans text-sm font-bold no-underline border-none rounded cursor-pointer transition-all duration-150 uppercase tracking-wide;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white;
+  }
+
+  .btn-primary:hover {
+    @apply bg-primary-dark text-white;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent text-primary border-2 border-primary;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-primary text-white;
+  }
+
+  .btn-outline {
+    @apply bg-transparent text-text border border-black/10 font-normal;
+  }
+
+  .btn-outline:hover {
+    @apply border-primary text-primary;
+  }
+
+  .btn-lg {
+    @apply px-8 py-4 text-base;
+  }
+
+  .btn-link {
+    @apply inline-flex items-center gap-1 text-sm font-bold text-text no-underline uppercase tracking-wide transition-colors duration-150;
+  }
+
+  .btn-link:hover {
+    @apply text-primary underline;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-bg-alt rounded-lg p-10 border border-border;
+  }
+
+  .card:hover {
+    @apply shadow-md;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-block px-3 py-1 text-xs font-semibold rounded bg-bg-alt text-text-light;
+  }
+
+  /* Section */
+  .section {
+    @apply py-20;
+  }
+
+  .section-alt {
+    @apply bg-bg-alt;
+  }
+
+  .section-light {
+    @apply bg-bg-light;
+  }
+
+  .section-title {
+    @apply text-center mb-12;
+  }
+
+  .section-title h2 {
+    @apply mb-4;
+  }
+
+  .section-title p {
+    @apply text-text-light text-lg max-w-[600px] mx-auto;
+  }
+
+  /* Form */
+  .form-group {
+    @apply mb-4;
+  }
+
+  .form-label {
+    @apply block text-sm font-semibold mb-2 text-text;
+  }
+
+  .form-input {
+    @apply w-full px-4 py-3 font-sans text-base border border-border-dark rounded transition-colors duration-150 bg-white;
+  }
+
+  .form-input:focus {
+    @apply outline-none border-primary;
+  }
+
+  .form-textarea {
+    @apply min-h-[120px] resize-y;
+  }
+
+  /* Accessibility */
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .skip-link {
+    @apply absolute -top-10 left-0 bg-primary text-white px-4 py-2 z-[100] no-underline;
+  }
+
+  .skip-link:focus {
+    @apply top-0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  h1 {
+    @apply text-4xl leading-tight;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  .container {
+    @apply px-5;
+  }
+
+  .section {
+    @apply py-12;
+  }
+}

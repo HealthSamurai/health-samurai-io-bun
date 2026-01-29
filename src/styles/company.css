@@ -1,117 +1,152 @@
-/* Company Page Styles */
+/* Company Page Styles - Matching design spec exactly */
 
 /* Hero Section */
 .company-hero {
-  padding: var(--space-20) 0 var(--space-12);
-  background: linear-gradient(135deg, var(--color-bg) 0%, #f0f4f8 100%);
+  padding: 80px 0 40px;
+  background: #ffffff;
   text-align: center;
 }
 
 .company-hero h1 {
-  font-size: var(--text-5xl);
-  font-weight: 700;
-  color: var(--color-text);
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 44px;
+  color: #333333;
+  margin: 0;
 }
 
-/* Leadership Section */
-.company-leadership {
-  padding: var(--space-16) 0;
+/* Team Section */
+.company-team {
+  padding: 40px 0 80px;
+  background: #ffffff;
 }
 
-.leadership-grid {
+.team-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-8);
+  gap: 40px;
 }
 
-.leader-card {
+.team-card {
   text-align: center;
 }
 
-.leader-image {
-  width: 280px;
-  height: 280px;
-  margin: 0 auto var(--space-6);
-  border-radius: var(--radius-lg);
+.team-photo {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 24px;
+  border-radius: 50%;
   overflow: hidden;
 }
 
-.leader-image img {
+.team-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.leader-name {
-  font-size: var(--text-xl);
-  font-weight: 700;
+.team-name {
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 30px;
   text-transform: uppercase;
-  margin-bottom: var(--space-2);
-  color: var(--color-text);
+  color: #333333;
+  margin: 0 0 8px;
 }
 
-.leader-role {
-  font-size: var(--text-base);
-  color: var(--color-primary);
+.team-title {
+  font-size: 14px;
   font-weight: 500;
-  margin-bottom: var(--space-4);
+  color: #666666;
+  margin: 0 0 16px;
 }
 
-.leader-bio {
-  font-size: var(--text-sm);
-  color: var(--color-text-light);
-  line-height: 1.7;
+.team-bio {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 25px;
+  color: #666666;
   text-align: left;
+  margin: 0;
+}
+
+.team-bio a {
+  color: #ea4a35;
+  text-decoration: none;
+}
+
+.team-bio a:hover {
+  text-decoration: underline;
 }
 
 /* Offices Section */
-.company-offices {
-  padding: var(--space-16) 0;
-  background: var(--color-bg-alt);
+.company-offices-section {
+  background: #ffffff;
+}
+
+.offices-title {
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 44px;
+  color: #333333;
+  text-align: center;
+  margin: 0;
+  padding: 80px 0 60px;
+}
+
+.offices-wrapper {
+  background: #dddddd;
+  padding: 60px 0;
 }
 
 .offices-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-8);
+  gap: 24px;
 }
 
 .office-card {
+  background: #ffffff;
+  padding: 40px 32px;
   text-align: center;
+  border-radius: 4px;
 }
 
 .office-country {
-  font-size: var(--text-xl);
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 30px;
   text-transform: uppercase;
-  margin-bottom: var(--space-2);
-  color: var(--color-text);
+  color: #333333;
+  margin: 0 0 16px;
 }
 
 .office-company {
-  font-size: var(--text-base);
-  color: var(--color-primary);
+  font-size: 14px;
   font-weight: 500;
-  margin-bottom: var(--space-4);
+  color: #666666;
+  margin: 0 0 16px;
 }
 
 .office-address {
-  font-size: var(--text-sm);
-  color: var(--color-text-light);
-  white-space: pre-line;
-  margin-bottom: var(--space-2);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 25px;
+  color: #666666;
+  margin: 0 0 16px;
 }
 
 .office-phone {
-  font-size: var(--text-sm);
-  color: var(--color-text);
+  font-size: 14px;
   font-weight: 500;
-  margin-bottom: var(--space-2);
+  color: #333333;
+  margin: 0 0 8px;
 }
 
 .office-email {
-  font-size: var(--text-sm);
-  color: var(--color-primary);
+  font-size: 14px;
+  font-weight: 500;
+  color: #ea4a35;
   text-decoration: none;
 }
 
@@ -119,121 +154,202 @@
   text-decoration: underline;
 }
 
-/* Mission Section */
-.company-mission {
-  padding: var(--space-16) 0;
+/* Mission, Story, Honor Sections - shared styles */
+.company-mission,
+.company-story,
+.company-honor {
+  padding: 80px 0;
 }
 
-.company-mission .section-title {
-  text-transform: uppercase;
-}
-
-.mission-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.mission-highlight {
-  font-size: var(--text-xl);
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: var(--space-6);
-}
-
-.mission-content p {
-  font-size: var(--text-base);
-  color: var(--color-text-light);
-  line-height: 1.8;
-  margin-bottom: var(--space-4);
-}
-
-/* Story Section */
 .company-story {
-  padding: var(--space-16) 0;
-  background: var(--color-bg-alt);
+  background: #fafafa;
 }
 
-.company-story .section-title {
+.section-heading {
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 30px;
   text-transform: uppercase;
+  color: #333333;
+  text-align: center;
+  margin: 0 0 40px;
 }
 
-.story-content {
+.content-wrapper {
   max-width: 800px;
   margin: 0 auto;
 }
 
-.story-content p {
-  font-size: var(--text-base);
-  color: var(--color-text-light);
-  line-height: 1.8;
-  margin-bottom: var(--space-4);
+.content-wrapper p {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 25px;
+  color: #666666;
+  margin: 0 0 24px;
 }
 
-.story-content a {
-  color: var(--color-primary);
+.content-wrapper p:last-child {
+  margin-bottom: 0;
+}
+
+.highlight-text {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 25px;
+  color: #333333;
+}
+
+.content-wrapper a {
+  color: #ea4a35;
   text-decoration: none;
 }
 
-.story-content a:hover {
+.content-wrapper a:hover {
   text-decoration: underline;
 }
 
-.story-content strong {
-  color: var(--color-text);
-  font-weight: 600;
+.content-wrapper strong {
+  color: #333333;
+  font-weight: 700;
 }
 
-/* Code of Honor Section */
-.company-honor {
-  padding: var(--space-16) 0;
-}
-
-.company-honor .section-title {
-  text-transform: uppercase;
-}
-
+/* Honor Section specific */
 .honor-intro {
-  text-align: center;
-  font-size: var(--text-lg);
-  color: var(--color-text-light);
-  margin-bottom: var(--space-10);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  text-align: left;
+  margin-bottom: 32px;
 }
 
-.honor-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-8);
-  max-width: 900px;
+.honor-list p {
+  margin-bottom: 24px;
+}
+
+.honor-list p:last-child {
+  margin-bottom: 0;
+}
+
+/* Contact Section */
+.company-contact {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.contact-subtext {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 25px;
+  color: #666666;
+  text-align: center;
+  margin: 0 0 40px;
+}
+
+.contact-form {
+  max-width: 400px;
   margin: 0 auto;
 }
 
-.honor-item {
-  padding: var(--space-6);
-  background: white;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--color-border);
+.contact-form .form-group {
+  margin-bottom: 16px;
 }
 
-.honor-title {
-  font-size: var(--text-lg);
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: var(--space-2);
+.contact-form .form-input {
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+  background: #ffffff;
+  color: #333333;
+  transition: border-color 0.15s ease;
 }
 
-.honor-description {
-  font-size: var(--text-sm);
-  color: var(--color-text-light);
-  line-height: 1.7;
+.contact-form .form-input:focus {
+  outline: none;
+  border-color: #ea4a35;
+}
+
+.contact-form .form-input::placeholder {
+  color: #999999;
+}
+
+.contact-form .form-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.recaptcha-placeholder {
+  margin-bottom: 16px;
+}
+
+.recaptcha-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+  background: #f9f9f9;
+}
+
+.recaptcha-checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #c1c1c1;
+  border-radius: 2px;
+  background: #ffffff;
+}
+
+.recaptcha-box span {
+  font-size: 14px;
+  color: #333333;
+  flex: 1;
+}
+
+.recaptcha-logo {
+  font-size: 10px;
+  color: #999999;
+  text-align: right;
+}
+
+.contact-submit {
+  width: 100%;
+  padding: 15px 29px;
+  font-size: 16px;
+  font-weight: 500;
+  background: #ea4a35;
+  color: #ffffff;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  margin-bottom: 16px;
+}
+
+.contact-submit:hover {
+  background: #d43d2f;
+}
+
+.privacy-notice {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 25px;
+  color: #666666;
+  text-align: left;
+  margin: 0;
+}
+
+.privacy-notice a {
+  color: #ea4a35;
+  text-decoration: none;
+}
+
+.privacy-notice a:hover {
+  text-decoration: underline;
 }
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .leadership-grid {
+  .team-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -243,28 +359,52 @@
 }
 
 @media (max-width: 768px) {
+  .company-hero {
+    padding: 60px 0 30px;
+  }
+
   .company-hero h1 {
-    font-size: var(--text-4xl);
+    font-size: 32px;
+    line-height: 38px;
   }
 
-  .leadership-grid {
+  .team-grid {
     grid-template-columns: 1fr;
+    gap: 48px;
   }
 
-  .leader-image {
-    width: 200px;
-    height: 200px;
+  .team-photo {
+    width: 160px;
+    height: 160px;
   }
 
-  .leader-bio {
+  .team-bio {
     text-align: center;
+  }
+
+  .offices-title {
+    font-size: 32px;
+    line-height: 38px;
+    padding: 60px 0 40px;
+  }
+
+  .offices-wrapper {
+    padding: 40px 0;
   }
 
   .offices-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
-  .honor-grid {
-    grid-template-columns: 1fr;
+  .company-mission,
+  .company-story,
+  .company-honor,
+  .company-contact {
+    padding: 60px 0;
+  }
+
+  .section-heading {
+    margin-bottom: 32px;
   }
 }

@@ -158,7 +158,7 @@ export const aidboxPricingTiers: PricingTier[] = [
   {
     id: "dev",
     name: "Aidbox Dev",
-    icon: "/assets/images/icons/pricing/dev.svg",
+    icon: "/assets/images/icons/pricing-dev.svg",
     price: { yearly: "$0", monthly: "$0" },
     description: "Free for prototyping, testing and development. Not for use with Protected Health Information (PHI).",
     cta: { label: "Try now", href: "https://aidbox.app/ui/portal#/signup", variant: "outline" },
@@ -166,7 +166,7 @@ export const aidboxPricingTiers: PricingTier[] = [
   {
     id: "core",
     name: "Aidbox Core",
-    icon: "/assets/images/icons/pricing/core.svg",
+    icon: "/assets/images/icons/pricing-core.svg",
     price: { yearly: "$19,000", monthly: "$1,900" },
     description: "Pay per unique database. Basic support is included. Ask about startup or bulk discounts.",
     cta: { label: "Contact Us", href: "/price", variant: "primary" },
@@ -174,7 +174,7 @@ export const aidboxPricingTiers: PricingTier[] = [
   {
     id: "enterprise",
     name: "Aidbox Enterprise",
-    icon: "/assets/images/icons/pricing/enterprise.svg",
+    icon: "/assets/images/icons/pricing-enterprise.svg",
     price: { yearly: "Talk to Sales", monthly: "Talk to Sales" },
     description: "Enterprise plan for large-scale production workloads. Built for multi-tenant architectures, high availability, and advanced data pipelines.",
     cta: { label: "Contact Us", href: "/price", variant: "outline" },

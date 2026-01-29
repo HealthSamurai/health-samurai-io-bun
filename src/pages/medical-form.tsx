@@ -1,65 +1,56 @@
 import { Fragment } from "../lib/jsx-runtime";
 import { Button } from "../components/ui/Button";
-import { ContactForm } from "../components/sections/ContactForm";
 
 export const metadata = {
-  title: "Aidbox Forms",
-  description: "Medical Forms for Healthcare Workflows - Design, manage, and embed intelligent forms with ease. Fully customizable and compliant with healthcare standards.",
+  title: "FHIR-Compliant Medical Forms for Healthcare Workflows | FHIR questionnaire | Medical form builder",
+  description: "Design, manage, and embed intelligent forms with ease. Fully customizable and compliant with healthcare standards.",
 };
 
 // Client logos for the carousel
 const clientLogos = [
-  { name: "PKB", src: "/assets/images/logos/forms-clients/pkb.webp" },
-  { name: "Bayshore", src: "/assets/images/logos/forms-clients/bayshore.webp" },
-  { name: "Akinox", src: "/assets/images/logos/forms-clients/akinox.webp" },
-  { name: "Sundata", src: "/assets/images/logos/forms-clients/sundata.webp" },
-  { name: "Myriad", src: "/assets/images/logos/forms-clients/myriad.webp" },
-  { name: "Duodecim", src: "/assets/images/logos/forms-clients/duodecim.webp" },
-  { name: "Amwell", src: "/assets/images/logos/forms-clients/amwell.webp" },
+  { name: "PKB", src: "/assets/images/medical-form/logo-pkb.webp" },
+  { name: "Bayshore", src: "/assets/images/medical-form/logo-bayshore.webp" },
+  { name: "Akinox", src: "/assets/images/medical-form/logo-akinox.webp" },
+  { name: "Sundata", src: "/assets/images/medical-form/logo-sundata.webp" },
+  { name: "Myriad", src: "/assets/images/medical-form/logo-myriad.webp" },
+  { name: "Duodecim", src: "/assets/images/medical-form/logo-duodecim.webp" },
+  { name: "Amwell", src: "/assets/images/medical-form/logo-amwell.webp" },
+  { name: "Bupa", src: "/assets/images/medical-form/logo-bupa.png" },
 ];
 
-// Feature showcase items
+// Feature showcase items (zigzag layout)
 const features = [
   {
     title: "No-code Form Creation",
-    description: "Build complex medical forms without writing a single line of code. Use our intuitive drag-and-drop builder.",
+    description: "Drag-and-drop Medical Form Builder interface to create intelligent medical forms.",
     bullets: [
-      "Real-time form view with testing capabilities",
-      "Create forms from 3000+ ready-made templates",
-      "Generate digital forms from PDF files",
+      "Real-time form view with testing capabilities.",
+      "Create forms from 3000+ ready-made templates.",
+      "Generate digital forms from PDF files.",
     ],
-    image: "/assets/images/forms/no-code-builder.png",
+    image: "/assets/images/medical-form/hero-form-builder.png",
   },
   {
     title: "FHIR-Compliant Data",
-    description: "All form data is automatically structured according to FHIR standards for seamless interoperability.",
+    description: "Ensure all captured data is structured and standard-based for easy integration",
     bullets: [
-      "Data collected and stored according to FHIR SDC standard",
-      "FHIR API enables data exchange with third-party apps",
-      "QuestionnaireResponse resources",
+      "Data is collected and stored according to FHIR SDC standard.",
+      "FHIR API enables data exchange with third-party apps.",
     ],
-    image: "/assets/images/forms/fhir-compliant.png",
+    image: "/assets/images/medical-form/fhir-compliant.png",
     reverse: true,
   },
   {
     title: "Seamless Forms Integration",
-    description: "Embed forms into apps, portals, or EHR systems using iFrames or web components. This integration guarantees user experience consistency and allows forms to be easily accessible where needed.",
-    bullets: [
-      "JavaScript SDK for web apps",
-      "REST API for backend integration",
-      "Webhooks for real-time events",
-    ],
-    image: "/assets/images/forms/integration.webp",
+    description: "Embed forms into apps, portals, or EHR systems using iFrames or web components.",
+    additionalText: "This integration guarantees user experience consistency and allows forms to be easily accessible where needed.",
+    image: "/assets/images/medical-form/integration-forms.webp",
   },
   {
     title: "Embedded Form Builder",
-    description: "Provide healthcare professionals with a form builder for creating and editing forms in real-time directly within your application. Embedding the Form Builder eliminates the need for developer involvement, enabling rapid form updates and customization on demand.",
-    bullets: [
-      "White-label builder component",
-      "Custom branding options",
-      "Role-based access control",
-    ],
-    image: "/assets/images/forms/embedded-builder.webp",
+    description: "Provide healthcare professionals with a form builder for creating and editing forms in real-time directly within your application.",
+    additionalText: "Embedding the Form Builder eliminates the need for developer involvement, enabling rapid form updates and customization on demand.",
+    image: "/assets/images/medical-form/embedded-builder.webp",
     reverse: true,
   },
 ];
@@ -69,120 +60,75 @@ const capabilities = [
   {
     title: "Smart Dynamic Forms",
     description: "Design forms that reduce cognitive load by displaying only the fields that require attention. Fields appear as needed, based on user input and set conditions.",
-    image: "/assets/images/forms/smart-dynamic.jpg",
+    image: "/assets/images/medical-form/carousel-dynamic-forms.jpg",
   },
   {
-    title: "Multi-Page Forms with Navigation",
-    description: "Easily organize large forms into multi-page layouts or add a navigation tab for smooth navigation. This feature allows users to enter information step-by-step or quickly switch between sections.",
-    image: "/assets/images/forms/multi-page.jpg",
+    title: "Multi-Page Forms or Forms with Navigation Tab",
+    description: "Easily organize large forms, like the Adult Assessment Form, into multi-page layouts or add a navigation tab for smooth navigation.",
+    image: "/assets/images/medical-form/carousel-multipage.jpg",
   },
   {
-    title: "Annotation Pad & Speech-to-Text",
+    title: "Enhanced Forms with Annotation Pad & Speech-to-Text",
     description: "Add advanced input options to your forms. The Annotation Pad lets clinicians mark images, like indicating wound locations, while Speech-to-Text enables quick, hands-free data entry.",
-    image: "/assets/images/forms/annotation-speech.jpg",
+    image: "/assets/images/medical-form/carousel-annotation.jpg",
   },
   {
     title: "Forms with Personalized Styling",
-    description: "Customize forms with pre-designed themes or create unique styles by adjusting fonts, color schemes, and branding elements. Apply the same theme across multiple forms.",
-    image: "/assets/images/forms/personalized-styling.jpg",
+    description: "Customize forms with pre-designed themes or create unique styles by adjusting fonts, color schemes, and branding elements.",
+    image: "/assets/images/medical-form/carousel-styling.jpg",
   },
   {
     title: "Multilingual Forms",
-    description: "Create multilingual forms to serve users in different languages effortlessly, with the help of AI-assisted translations. This feature makes localization easy and efficient.",
-    image: "/assets/images/forms/smart-dynamic.jpg",
+    description: "Create multilingual forms to serve users in different languages effortlessly, with the help of AI-assisted translations.",
+    image: "/assets/images/medical-form/carousel-multilingual.jpg",
   },
 ];
 
-// Features grid items
+// Features grid items (16 total)
 const featuresGrid = [
-  { icon: "/assets/images/icons/forms/form-builder.svg", title: "Form Builder", description: "No-code interface for creating, testing, and debugging medical forms" },
-  { icon: "/assets/images/icons/forms/embed.svg", title: "Embed Forms", description: "Integrate clinical forms via iFrame or web component" },
-  { icon: "/assets/images/icons/forms/paper-digital.svg", title: "Paper to Digital", description: "Convert paper and fillable PDFs to digital forms" },
-  { icon: "/assets/images/icons/forms/sso.svg", title: "Single Sign-On", description: "Access forms through your portal or EHR directly" },
-  { icon: "/assets/images/icons/forms/audit.svg", title: "Audit Logging", description: "Track all interactions for compliance" },
-  { icon: "/assets/images/icons/forms/offline.svg", title: "Offline Mode", description: "Use forms without an internet connection" },
-  { icon: "/assets/images/icons/forms/signature.svg", title: "Digital Signatures", description: "Capture multiple digital signatures for approvals" },
-  { icon: "/assets/images/icons/forms/multilingual.svg", title: "Multilingual", description: "AI-assisted translations for multiple languages" },
-  { icon: "/assets/images/icons/forms/pdf-gen.svg", title: "PDF Generation", description: "Generate PDFs from form responses automatically" },
-  { icon: "/assets/images/icons/forms/widgets.svg", title: "Extra Widgets", description: "Speech-to-Text, Annotation Pad, and more" },
-  { icon: "/assets/images/icons/forms/multitenancy.svg", title: "Multitenancy", description: "Support multiple clients with isolated data" },
-  { icon: "/assets/images/icons/forms/terminology.svg", title: "Terminologies", description: "Integrate with TermBox, FHIR servers, Ontoserver" },
-  { icon: "/assets/images/icons/forms/components.svg", title: "Reusable Components", description: "Save time by reusing questionnaires as components" },
-  { icon: "/assets/images/icons/forms/multi-page.svg", title: "Multi-Page Forms", description: "Organize large forms into sections" },
-  { icon: "/assets/images/icons/forms/themes.svg", title: "Custom Themes", description: "Customize fonts, colors, and branding" },
-  { icon: "/assets/images/icons/forms/prefill.svg", title: "Pre-fill & Extract", description: "Pre-fill forms and extract data to your database" },
+  { icon: "/assets/images/medical-form/icon-feature-1.svg", title: "Form Builder", description: "No-code interface for creating, testing, and debugging medical forms, making it easy for non-technical users to design complex medical forms." },
+  { icon: "/assets/images/medical-form/icon-feature-2.svg", title: "Embed Forms and Form Builder", description: "Integrate clinical forms and the builder in your app via iFrame or web component for a seamless user experience." },
+  { icon: "/assets/images/medical-form/icon-feature-7.svg", title: "Paper to Digital Form Conversion", description: "Convert paper and fillable PDFs to digital forms for faster data collection and streamlined, structured workflows." },
+  { icon: "/assets/images/medical-form/icon-feature-3.svg", title: "Single Sign-On (SSO)", description: "Allow patients and professionals to access forms directly through your portal or EHR with no additional logins." },
+  { icon: "/assets/images/medical-form/icon-feature-4.svg", title: "Audit Logging", description: "Track all interactions for compliance, maintaining a full history of changes and actions within the system." },
+  { icon: "/assets/images/medical-form/icon-feature-6.svg", title: "Offline Mode", description: "Use FHIR questionnaires without an internet connection, ensuring data collection in remote areas or during connectivity issues." },
+  { icon: "/assets/images/medical-form/icon-feature-1.svg", title: "Digital Multiple Signatures", description: "Capture multiple digital signatures for approvals or consent on structured data capture forms, ideal for healthcare documentation." },
+  { icon: "/assets/images/medical-form/icon-feature-8.svg", title: "Multilingual Forms & Builder Interface", description: "Use AI-assisted translations to create medical forms in multiple languages, serving diverse users without duplicating efforts." },
+  { icon: "/assets/images/medical-form/icon-feature-9.svg", title: "Template-Based PDF Generation", description: "Generate PDFs from form and form responses automatically using customizable templates for standardized output." },
+  { icon: "/assets/images/medical-form/icon-feature-10.svg", title: "Extra Widgets", description: "Enhance clinical forms with features like Speech-to-Text and an Annotation Pad for more advanced data input." },
+  { icon: "/assets/images/medical-form/icon-feature-11.svg", title: "Multitenancy Support", description: "Support multiple clients with isolated data, perfect for large organizations or vendors serving different clients." },
+  { icon: "/assets/images/medical-form/icon-feature-12.svg", title: "External Terminologies Integration", description: "Integrate with services like TermBox, the Public FHIR community server, and Ontoserver for precise clinical coding." },
+  { icon: "/assets/images/medical-form/icon-feature-13.svg", title: "Reusing Forms as Components", description: "Save time by reusing questionnaires as components, allowing quick assembly of new SDC forms with existing elements." },
+  { icon: "/assets/images/medical-form/icon-feature-14.svg", title: "Multi-Page Forms or Navigation Tab", description: "Easily organize large medical forms into multi-page layouts or add a navigation tab for step-by-step entry or quick navigation." },
+  { icon: "/assets/images/medical-form/icon-feature-15.svg", title: "Custom Themes", description: "Customize form appearance with themes, including fonts, colors, and branding for a consistent look and feel." },
+  { icon: "/assets/images/medical-form/icon-feature-16.svg", title: "Pre-fill & Data Extraction", description: "Pre-fill clinical forms with existing data, reducing clinician input time, and extract data directly to your database after submission." },
 ];
 
-// Architecture options
-const architectureOptions = [
-  {
-    id: "aidbox",
-    label: "With Aidbox FHIR Server",
-    description: "Using Aidbox FHIR server to store collected data",
-    image: "/assets/images/forms/arch-aidbox.png",
-  },
-  {
-    id: "external",
-    label: "With External FHIR Server",
-    description: "Using your FHIR-Server for data storage",
-    image: "/assets/images/forms/arch-external.png",
-  },
-];
-
-// Personas for "Tailored for Digital Health Professionals" section
-const personas = [
-  {
-    icon: "/assets/images/icons/forms/persona-developer.svg",
-    title: "Developers",
-    description: "Build and integrate forms with REST APIs and SDKs",
-  },
-  {
-    icon: "/assets/images/icons/forms/persona-admin.svg",
-    title: "System Administrators",
-    description: "Manage forms, users, and permissions across the organization",
-  },
-  {
-    icon: "/assets/images/icons/forms/persona-clinical.svg",
-    title: "Clinical Staff",
-    description: "Create and customize forms without technical knowledge",
-  },
-  {
-    icon: "/assets/images/icons/forms/persona-patient.svg",
-    title: "Patients",
-    description: "Fill forms easily on any device with accessible interfaces",
-  },
-];
-
-// Articles for the blog section
+// Articles
 const articles = [
   {
-    title: "How to Build FHIR-Compliant Medical Forms",
-    image: "/assets/images/forms/article-fhir-forms.jpg",
-    type: "Article",
-    date: "2024",
-    href: "/blog/fhir-compliant-forms",
+    title: "Digitize Paper Medical Forms in Seconds: Helping Doctors Focus on Patients, Not Paperwork",
+    date: "October 22, 2024",
+    readTime: "3 min read",
+    href: "/articles/pdf-to-digital",
   },
   {
-    title: "Aidbox Forms Demo: Building Dynamic Healthcare Forms",
-    image: "/assets/images/forms/article-demo.jpg",
-    type: "Video",
-    date: "2024",
-    href: "https://www.youtube.com/watch?v=Xp5k7Eg7Sbk",
-    isVideo: true,
+    title: "What Additional Benefits Do Electronic Forms Offer, and Why Shouldn't They Be Confused with Reports?",
+    date: "August 26, 2024",
+    readTime: "3 min read",
+    href: "/articles/do-electronic-forms",
   },
   {
-    title: "Converting Paper Forms to Digital with AI",
-    image: "/assets/images/forms/article-paper-digital.jpg",
-    type: "Article",
-    date: "2024",
-    href: "/blog/paper-to-digital",
+    title: "How to build matrix-based medical forms in record time: Video Tutorial",
+    date: "July 19, 2024",
+    readTime: "3 min read",
+    href: "/articles/how-to-build-matrix-based-medical-forms-in-record-time-video-tutorial",
   },
   {
-    title: "Best Practices for Healthcare Form Design",
-    image: "/assets/images/forms/article-best-practices.jpg",
-    type: "Article",
-    date: "2024",
-    href: "/blog/form-design-best-practices",
+    title: "Create your component library and assemble forms like a Lego",
+    date: "May 17, 2024",
+    readTime: "3 min read",
+    href: "/articles/how-do-you-eliminate-routine-and-improve-the-quality-of-designed-forms",
   },
 ];
 
@@ -190,49 +136,85 @@ const articles = [
 const testimonial = {
   quote: "Aidbox Forms made it possible for us to extend our EHR capabilities and enable additional workflows through customizable forms. The platform's flexibility and FHIR compliance makes it easy to adapt forms to our specific needs, whether for data collection or process automation. Their product and support teams are always available, helping us resolve even the most complex challenges quickly and efficiently.",
   name: "Cristian Ruiz",
-  title: "Head of Clinical Systems",
-  company: "Bupa",
-  image: "/assets/images/forms/cristian-ruiz.png",
+  title: "Head of Clinical Systems at Bupa",
+  image: "/assets/images/medical-form/testimonial-cristian.png",
 };
 
-function LogoCarousel(): string {
+function HeroSection(): string {
   return (
-    <section className="forms-logo-carousel">
-      <div className="logo-carousel-track">
-        {clientLogos.map((logo) => (
-          <div className="logo-carousel-item">
-            <img src={logo.src} alt={logo.name} loading="lazy" />
+    <section className="mf-hero">
+      <div className="container">
+        <div className="mf-hero-grid">
+          <div className="mf-hero-content">
+            <h1>Medical Forms for Healthcare Workflows</h1>
+            <p>Design, manage, and embed intelligent forms with ease. Fully customizable and compliant with healthcare standards.</p>
+            <div className="mf-hero-actions">
+              <Button href="https://form-builder.aidbox.app/" variant="primary" size="lg">
+                Try FORMS for free
+              </Button>
+              <Button href="#demo" variant="outline" size="lg">
+                Book a demo
+              </Button>
+            </div>
           </div>
-        ))}
-        {/* Duplicate for infinite scroll effect */}
-        {clientLogos.map((logo) => (
-          <div className="logo-carousel-item">
-            <img src={logo.src} alt={logo.name} loading="lazy" />
+          <div className="mf-hero-image">
+            <img src="/assets/images/medical-form/hero-form-builder.png" alt="No-code Medical Form Creation" />
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );
 }
 
-function FeatureShowcase(): string {
+function FeaturesIntroSection(): string {
   return (
-    <section className="forms-features-showcase">
+    <section className="mf-features-intro">
       <div className="container">
-        {features.map((feature) => (
-          <div className={`feature-block ${feature.reverse ? "feature-block--reverse" : ""}`}>
-            <div className="feature-content">
-              <h3>{feature.title}</h3>
-              <p>{feature.description}</p>
-              <ul>
-                {feature.bullets.map((bullet) => (
-                  <li>{bullet}</li>
-                ))}
-              </ul>
+        <div className="mf-features-intro-header">
+          <h2>Tailored for Digital Health Professionals</h2>
+          <p>Perfect for healthcare providers, digital health vendors, startups, and clinical researchers looking to streamline data collection.</p>
+        </div>
+        <div className="mf-features-blocks">
+          {features.map((feature, index) => (
+            <div className={`mf-feature-block ${feature.reverse ? "mf-feature-block--reverse" : ""}`}>
+              <div className="mf-feature-image">
+                <img src={feature.image} alt={feature.title} loading="lazy" />
+              </div>
+              <div className="mf-feature-content">
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
+                {feature.bullets && (
+                  <ul className="mf-feature-bullets">
+                    {feature.bullets.map((bullet) => (
+                      <li>{bullet}</li>
+                    ))}
+                  </ul>
+                )}
+                {feature.additionalText && (
+                  <p className="mf-feature-additional">{feature.additionalText}</p>
+                )}
+              </div>
             </div>
-            <div className="feature-image">
-              <img src={feature.image} alt={feature.title} loading="lazy" />
-            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LogoCarousel(): string {
+  return (
+    <section className="mf-logo-carousel">
+      <div className="mf-logo-track">
+        {clientLogos.map((logo) => (
+          <div className="mf-logo-item">
+            <img src={logo.src} alt={logo.name} loading="lazy" />
+          </div>
+        ))}
+        {/* Duplicate for infinite scroll effect */}
+        {clientLogos.map((logo) => (
+          <div className="mf-logo-item">
+            <img src={logo.src} alt={logo.name} loading="lazy" />
           </div>
         ))}
       </div>
@@ -242,16 +224,22 @@ function FeatureShowcase(): string {
 
 function TestimonialSection(): string {
   return (
-    <section className="forms-testimonial">
+    <section className="mf-testimonial">
       <div className="container">
-        <div className="testimonial-card">
-          <div className="testimonial-avatar">
-            <img src={testimonial.image} alt={testimonial.name} loading="lazy" />
+        <h2 className="mf-section-title">Testimonials</h2>
+        <div className="mf-testimonial-card">
+          <div className="mf-testimonial-quote-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <path d="M14 24H8C8 17.373 13.373 12 20 12V18C16.686 18 14 20.686 14 24V36H2V24C2 14.059 10.059 6 20 6V12C13.373 12 8 17.373 8 24H14V24ZM38 24H32C32 17.373 37.373 12 44 12V18C40.686 18 38 20.686 38 24V36H26V24C26 14.059 34.059 6 44 6V12C37.373 12 32 17.373 32 24H38V24Z" fill="currentColor"/>
+            </svg>
           </div>
           <blockquote>"{testimonial.quote}"</blockquote>
-          <div className="testimonial-author">
-            <span className="author-name">{testimonial.name}</span>
-            <span className="author-title">{testimonial.title} at {testimonial.company}</span>
+          <div className="mf-testimonial-author">
+            <img src={testimonial.image} alt={testimonial.name} />
+            <div className="mf-testimonial-author-info">
+              <span className="mf-author-name">{testimonial.name}</span>
+              <span className="mf-author-title">{testimonial.title}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -259,19 +247,19 @@ function TestimonialSection(): string {
   );
 }
 
-function CtaSection({ variant = "primary" }: { variant?: "primary" | "secondary" }): string {
+function CtaBanner({ variant }: { variant: "build" | "action" }): string {
+  const isAction = variant === "action";
   return (
-    <section className={`forms-cta forms-cta--${variant}`}>
+    <section className="mf-cta-banner">
       <div className="container">
-        <h2>{variant === "primary" ? "Build your custom medical form in minutes" : "See it in action!"}</h2>
-        <p>Start creating FHIR-compliant forms today with our intuitive builder.</p>
-        <div className="cta-buttons">
-          <Button href="https://aidbox.app/ui/portal#/signup" variant="primary" size="lg">
-            TRY FORMS FOR FREE
-          </Button>
-          <Button href="/contacts" variant="outline" size="lg">
-            Book a demo
-          </Button>
+        <h2>{isAction ? "See it in action!" : "Build your custom medical form in minutes"}</h2>
+        <p>{isAction
+          ? "Discover how easy it is to build custom forms. Get started for free or book a demo to explore all the features."
+          : "Try it for free to experience the simplicity, or book a demo to see the advanced features in action."
+        }</p>
+        <div className="mf-cta-buttons">
+          <a href="https://form-builder.aidbox.app/" className="mf-cta-btn-white">TRY FORMS FOR FREE</a>
+          <a href="#demo" className="mf-cta-btn-outline">Book a demo</a>
         </div>
       </div>
     </section>
@@ -280,56 +268,108 @@ function CtaSection({ variant = "primary" }: { variant?: "primary" | "secondary"
 
 function CapabilitiesCarousel(): string {
   return (
-    <section className="forms-capabilities">
+    <section className="mf-capabilities">
       <div className="container">
-        <h2 className="section-title">Appearance & Capabilities</h2>
+        <div className="mf-capabilities-header">
+          <h2>Appearance & Capabilities</h2>
+          <p>With Aidbox UI Builder, create versatile forms that adapt to various user scenarios and customize their appearance to fit specific needs, from dynamic forms to multilingual support.</p>
+        </div>
         <div
-          className="capabilities-carousel"
-          data-signals={`{capIndex: 0, capCount: ${capabilities.length}}`}
+          className="mf-carousel"
+          data-signals={`{slideIndex: 0, slideCount: ${capabilities.length}}`}
         >
-          <button
-            className="carousel-nav carousel-nav--prev"
-            data-on-click="$capIndex = ($capIndex - 1 + $capCount) % $capCount"
-            aria-label="Previous capability"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
-          </button>
-          <div className="capabilities-track">
-            {capabilities.map((cap, index) => (
-              <div
-                className="capability-card"
-                data-show={`$capIndex === ${index}`}
-                style={index > 0 ? "display: none" : ""}
-              >
-                <div className="capability-image">
-                  <img src={cap.image} alt={cap.title} loading="lazy" />
+          <div className="mf-carousel-container">
+            <button
+              className="mf-carousel-nav mf-carousel-prev"
+              data-on-click="$slideIndex = ($slideIndex - 1 + $slideCount) % $slideCount"
+              aria-label="Previous slide"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <div className="mf-carousel-track">
+              {capabilities.map((cap, index) => (
+                <div
+                  className="mf-carousel-slide"
+                  data-show={`$slideIndex === ${index}`}
+                  style={index > 0 ? "display: none" : ""}
+                >
+                  <div className="mf-carousel-image">
+                    <img src={cap.image} alt={cap.title} loading="lazy" />
+                  </div>
+                  <div className="mf-carousel-content">
+                    <h3>{cap.title}</h3>
+                    <p>{cap.description}</p>
+                    <a href="https://form-builder.aidbox.app/" className="mf-try-link">
+                      Try it out
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+                  </div>
                 </div>
-                <h3>{cap.title}</h3>
-                <p>{cap.description}</p>
-              </div>
-            ))}
+              ))}
+            </div>
+            <button
+              className="mf-carousel-nav mf-carousel-next"
+              data-on-click="$slideIndex = ($slideIndex + 1) % $slideCount"
+              aria-label="Next slide"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
           </div>
-          <button
-            className="carousel-nav carousel-nav--next"
-            data-on-click="$capIndex = ($capIndex + 1) % $capCount"
-            aria-label="Next capability"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-          </button>
-          <div className="carousel-dots">
-            {capabilities.map((_, index) => (
-              <button
-                className="carousel-dot"
-                data-class={`{'carousel-dot--active': $capIndex === ${index}}`}
-                data-on-click={`$capIndex = ${index}`}
-                aria-label={`Go to slide ${index + 1}`}
+          <div className="mf-carousel-counter">
+            <span data-text="$slideIndex + 1">1</span> / {capabilities.length}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FormRequestSection(): string {
+  return (
+    <section className="mf-form-request">
+      <div className="container">
+        <div className="mf-form-request-content">
+          <h2>Need a hand with building a form?</h2>
+          <form className="mf-request-form" hx-post="/api/form-request" hx-swap="outerHTML">
+            <div className="mf-form-group">
+              <input
+                type="text"
+                name="formDescription"
+                placeholder="What kind of form do you need?"
+                className="mf-form-input"
+                required
               />
-            ))}
-          </div>
+            </div>
+            <div className="mf-form-group">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                className="mf-form-input"
+                required
+              />
+            </div>
+            <div className="mf-form-group">
+              <label className="mf-file-upload">
+                <input type="file" name="pdfFile" accept=".pdf" />
+                <span className="mf-file-upload-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                    <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/>
+                  </svg>
+                  Attach your form PDF
+                </span>
+              </label>
+              <span className="mf-file-hint">(optional). We'll create a digital version for you.</span>
+            </div>
+            <p className="mf-form-disclaimer">*the form created will become a part of the public forms collection</p>
+            <button type="submit" className="btn btn-primary btn-lg">Build my form</button>
+          </form>
         </div>
       </div>
     </section>
@@ -338,14 +378,14 @@ function CapabilitiesCarousel(): string {
 
 function FeaturesGrid(): string {
   return (
-    <section className="forms-features-grid">
+    <section className="mf-features-grid">
       <div className="container">
-        <h2 className="section-title">Everything You Need</h2>
-        <div className="features-grid">
+        <h2 className="mf-section-title">Features</h2>
+        <div className="mf-grid">
           {featuresGrid.map((feature) => (
-            <div className="feature-card">
-              <div className="feature-icon">
-                <img src={feature.icon} alt={feature.title} loading="lazy" />
+            <div className="mf-feature-card">
+              <div className="mf-feature-icon">
+                <img src={feature.icon} alt="" loading="lazy" />
               </div>
               <h4>{feature.title}</h4>
               <p>{feature.description}</p>
@@ -357,46 +397,76 @@ function FeaturesGrid(): string {
   );
 }
 
-function PersonasSection(): string {
+function ArchitectureSection(): string {
   return (
-    <section className="forms-personas">
+    <section className="mf-architecture">
       <div className="container">
-        <h2 className="section-title">Tailored for Digital Health Professionals</h2>
-        <div className="personas-grid">
-          {personas.map((persona) => (
-            <div className="persona-card">
-              <div className="persona-icon">
-                <img src={persona.icon} alt={persona.title} loading="lazy" />
-              </div>
-              <h3>{persona.title}</h3>
-              <p>{persona.description}</p>
-            </div>
-          ))}
+        <div className="mf-architecture-header">
+          <h2>Solution Architecture</h2>
+          <p className="mf-subtitle">Flexible, Scalable, and Customizable</p>
         </div>
-      </div>
-    </section>
-  );
-}
-
-function PdfUploadSection(): string {
-  return (
-    <section className="forms-pdf-upload">
-      <div className="container">
-        <div className="pdf-upload-content">
-          <div className="pdf-upload-text">
-            <h2>Need a hand with building a form?</h2>
-            <p>Upload your PDF form and we'll convert it to a digital FHIR-compliant form for you.</p>
-          </div>
-          <div className="pdf-upload-box">
-            <div className="upload-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="17 8 12 3 7 8" />
-                <line x1="12" y1="3" x2="12" y2="15" />
-              </svg>
+        <div className="mf-architecture-cards" data-signals="{arch1Open: false, arch2Open: false}">
+          {/* Option 1: Aidbox FHIR Server */}
+          <div className="mf-arch-card">
+            <h3>Using Aidbox FHIR server to store collected data</h3>
+            <div className="mf-arch-diagram">
+              <img src="/assets/images/medical-form/architecture-aidbox.png" alt="Medical Form Builder and Aidbox" loading="lazy" />
             </div>
-            <p>Drop your PDF here or <span className="upload-link">browse files</span></p>
-            <span className="upload-hint">Max file size: 10MB</span>
+            <div className="mf-arch-details" data-show="$arch1Open" style="display: none">
+              <div className="mf-arch-section">
+                <h4>Aidbox Forms</h4>
+                <ul>
+                  <li><strong>UI Form Builder:</strong> A drag-and-drop interface for non-technical users, supporting complex logic and customization.</li>
+                  <li><strong>Form Renderer:</strong> Full customization for seamlessly integrating your app's design and workflows.</li>
+                  <li><strong>FHIR SDC API:</strong> Collect and exchange data in a standardized FHIR format.</li>
+                  <li><strong>Form Library:</strong> Access nearly 3,000 ready-to-use, customizable forms.</li>
+                </ul>
+              </div>
+              <div className="mf-arch-section">
+                <h4>Aidbox FHIR Server provides:</h4>
+                <ul>
+                  <li>FHIR API & FHIR Storage</li>
+                  <li><strong>Subscriptions:</strong> Real-time updates by subscribing to FHIR resource changes.</li>
+                  <li>Authentication (Auth)</li>
+                  <li>Audit Logging</li>
+                  <li>Analytics Module</li>
+                </ul>
+              </div>
+              <p className="mf-arch-note">Aidbox Forms with the Aidbox FHIR Server is delivered as a Docker container.</p>
+            </div>
+            <button
+              className="mf-read-more"
+              data-on-click="$arch1Open = !$arch1Open"
+            >
+              <span data-show="!$arch1Open">Read more</span>
+              <span data-show="$arch1Open" style="display: none">Show less</span>
+            </button>
+          </div>
+
+          {/* Option 2: External FHIR Server */}
+          <div className="mf-arch-card">
+            <h3>Using your FHIR-Server for data storage</h3>
+            <div className="mf-arch-diagram">
+              <img src="/assets/images/medical-form/architecture-fhir-server.png" alt="Medical Form Builder and your FHIR Server" loading="lazy" />
+            </div>
+            <div className="mf-arch-details" data-show="$arch2Open" style="display: none">
+              <div className="mf-arch-section">
+                <h4>In this setup:</h4>
+                <ul>
+                  <li><strong>Pre-filled Forms:</strong> FHIR questionnaire will be pre-filled with data from your storage.</li>
+                  <li><strong>Form Submission:</strong> Once the form is submitted, the extracted data will be saved directly into your storage.</li>
+                  <li><strong>Form Creation and Storage:</strong> Forms will be created and stored in the Aidbox FHIR Server.</li>
+                  <li><strong>Audit Logging:</strong> All logging will be handled within the Aidbox FHIR Server.</li>
+                </ul>
+              </div>
+            </div>
+            <button
+              className="mf-read-more"
+              data-on-click="$arch2Open = !$arch2Open"
+            >
+              <span data-show="!$arch2Open">Read more</span>
+              <span data-show="$arch2Open" style="display: none">Show less</span>
+            </button>
           </div>
         </div>
       </div>
@@ -406,28 +476,24 @@ function PdfUploadSection(): string {
 
 function ArticlesSection(): string {
   return (
-    <section className="forms-articles">
+    <section className="mf-articles">
       <div className="container">
-        <h2 className="section-title">Learn More About Aidbox Forms</h2>
-        <div className="articles-grid">
+        <div className="mf-articles-header">
+          <h2>Articles</h2>
+          <a href="/article-categories/forms" className="mf-articles-link">
+            All articles
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+        <div className="mf-articles-grid">
           {articles.map((article) => (
-            <a href={article.href} className="article-card" target={article.isVideo ? "_blank" : undefined}>
-              <div className="article-image">
-                <img src={article.image} alt={article.title} loading="lazy" />
-                {article.isVideo && (
-                  <div className="article-play-icon">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                )}
-              </div>
-              <div className="article-content">
-                <h4>{article.title}</h4>
-                <div className="article-meta">
-                  <span>{article.type}</span>
-                  <span>{article.date}</span>
-                </div>
+            <a href={article.href} className="mf-article-card">
+              <h4>{article.title}</h4>
+              <div className="mf-article-meta">
+                <span>{article.date}</span>
+                <span>{article.readTime}</span>
               </div>
             </a>
           ))}
@@ -437,40 +503,59 @@ function ArticlesSection(): string {
   );
 }
 
-function ArchitectureSection(): string {
+function DemoFormSection(): string {
   return (
-    <section className="forms-architecture">
+    <section className="mf-demo-form" id="demo">
       <div className="container">
-        <h2 className="section-title">Solution Architecture</h2>
-        <div
-          className="architecture-tabs"
-          data-signals="{archTab: 'aidbox'}"
-        >
-          <div className="arch-tab-buttons">
-            {architectureOptions.map((opt) => (
-              <button
-                className="arch-tab-btn"
-                data-class={`{'arch-tab-btn--active': $archTab === '${opt.id}'}`}
-                data-on-click={`$archTab = '${opt.id}'`}
-              >
-                {opt.label}
-              </button>
-            ))}
+        <div className="mf-demo-form-content">
+          <div className="mf-demo-form-text">
+            <h2>Ready to discuss your project with us?</h2>
+            <p>Tell us about your case and we will get in touch to book a remote session.</p>
           </div>
-          <div className="arch-tab-panels">
-            {architectureOptions.map((opt, index) => (
-              <div
-                className="arch-panel"
-                data-show={`$archTab === '${opt.id}'`}
-                style={index > 0 ? "display: none" : ""}
-              >
-                <p className="arch-description">{opt.description}</p>
-                <div className="arch-image">
-                  <img src={opt.image} alt={opt.description} loading="lazy" />
-                </div>
+          <form className="mf-demo-form-fields" hx-post="/api/contact" hx-swap="outerHTML">
+            <div className="mf-form-row">
+              <div className="mf-form-group">
+                <input
+                  type="text"
+                  name="fullName"
+                  placeholder="Full Name"
+                  className="mf-form-input"
+                  required
+                />
               </div>
-            ))}
-          </div>
+              <div className="mf-form-group">
+                <input
+                  type="text"
+                  name="company"
+                  placeholder="Company"
+                  className="mf-form-input"
+                />
+              </div>
+            </div>
+            <div className="mf-form-group">
+              <input
+                type="email"
+                name="email"
+                placeholder="Business Email"
+                className="mf-form-input"
+                required
+              />
+            </div>
+            <div className="mf-form-group">
+              <textarea
+                name="description"
+                placeholder="Describe your case"
+                className="mf-form-input mf-textarea"
+                rows={4}
+              ></textarea>
+            </div>
+            <p className="mf-form-privacy">
+              By submitting the form you agree to{" "}
+              <a href="/legal/privacy-policy">Privacy Policy</a> and{" "}
+              <a href="/legal/cookie-policy">Cookie Policy</a>.
+            </p>
+            <button type="submit" className="btn btn-primary btn-lg">Book a Demo</button>
+          </form>
         </div>
       </div>
     </section>
@@ -480,69 +565,18 @@ function ArchitectureSection(): string {
 export default function MedicalFormPage(): string {
   return (
     <Fragment>
-      {/* Hero Section */}
-      <section className="forms-hero">
-        <div className="container">
-          <div className="forms-hero-content">
-            <h1>Medical Forms for Healthcare Workflows</h1>
-            <p>Design, manage, and embed intelligent forms with ease. Fully customizable and compliant with healthcare standards.</p>
-            <div className="hero-actions">
-              <Button href="https://aidbox.app/ui/portal#/signup" variant="primary" size="lg">
-                Try FORMS for free
-              </Button>
-              <Button href="/contacts" variant="outline" size="lg">
-                Book a demo
-              </Button>
-            </div>
-          </div>
-          <div className="forms-hero-video">
-            <iframe
-              src="https://www.youtube.com/embed/Xp5k7Eg7Sbk"
-              title="Aidbox Forms Demo"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              loading="lazy"
-            ></iframe>
-          </div>
-        </div>
-      </section>
-
-      {/* Logo Carousel */}
+      <HeroSection />
+      <FeaturesIntroSection />
       <LogoCarousel />
-
-      {/* Personas Section */}
-      <PersonasSection />
-
-      {/* Feature Showcase */}
-      <FeatureShowcase />
-
-      {/* Testimonial */}
       <TestimonialSection />
-
-      {/* CTA */}
-      <CtaSection variant="primary" />
-
-      {/* Capabilities Carousel */}
+      <CtaBanner variant="build" />
       <CapabilitiesCarousel />
-
-      {/* PDF Upload Section */}
-      <PdfUploadSection />
-
-      {/* Features Grid */}
+      <FormRequestSection />
       <FeaturesGrid />
-
-      {/* CTA Band */}
-      <CtaSection variant="secondary" />
-
-      {/* Architecture */}
+      <CtaBanner variant="action" />
       <ArchitectureSection />
-
-      {/* Articles Section */}
       <ArticlesSection />
-
-      {/* Contact Form */}
-      <ContactForm />
+      <DemoFormSection />
     </Fragment>
   );
 }

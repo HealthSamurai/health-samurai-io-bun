@@ -25,8 +25,10 @@ All scripts are in `scripts/` and run via `bun run <script>`:
 
 | Command | Description |
 |---------|-------------|
-| `bun dev` | Development server with hot reload, auto-opens browser |
-| `bun start` | Production server (no hot reload) |
+| `bun dev` | Dev server + Tailwind watcher (hot reload, opens browser) |
+| `bun start` | Production server (builds CSS, no hot reload) |
+| `bun run css:build` | Build Tailwind CSS (minified) |
+| `bun run css:watch` | Watch Tailwind CSS for changes |
 | `bun run routes` | List all available routes |
 | `bun run typecheck` | Run TypeScript type checking |
 
@@ -39,13 +41,30 @@ PORT=3000 bun dev           # Run on different port
 NO_BROWSER=1 bun dev        # Don't open browser
 ```
 
-**Legacy server.sh:** Still available for background process management:
+## Server Management (Background)
+
+Use `server.sh` to run the server in background with proper PID tracking:
+
 ```sh
-./server.sh start -h    # Start with hot reload (background)
-./server.sh stop        # Stop server
-./server.sh status      # Check if running
-./server.sh logs        # Tail logs
+./server.sh start       # Start server + CSS watcher in background
+./server.sh start -h    # Start with hot reload (recommended for dev)
+./server.sh stop        # Stop server and CSS watcher (uses PID, not pkill!)
+./server.sh restart     # Restart server
+./server.sh restart -h  # Restart with hot reload
+./server.sh status      # Check if running (shows PIDs)
+./server.sh logs        # Tail server logs
+./server.sh dev         # Foreground mode (Ctrl+C to stop)
 ```
+
+**PID files:**
+- `.server.pid` - Server process ID
+- `.css.pid` - Tailwind CSS watcher process ID
+
+**Log files:**
+- `.server.log` - Server output
+- `.css.log` - CSS watcher output
+
+**Important:** Always use `./server.sh stop` to stop the server. Never use `pkill bun` as it kills all Bun processes system-wide.
 
 ## Project Structure
 
@@ -98,6 +117,47 @@ public/
     └── js/
         └── datastar.js    # Datastar framework for client-side reactivity
 ```
+
+## Tailwind CSS
+
+This project uses **Tailwind CSS v4** with the CLI for styling.
+
+**Development:** `bun dev` automatically runs Tailwind watcher alongside the server.
+
+**Manual commands:**
+```sh
+bun run css:build   # One-time build (minified) - used by `bun start`
+bun run css:watch   # Watch mode - used by `bun dev`
+```
+
+**Files:**
+- `src/styles/tailwind.css` - Main entry point with @theme config and component styles
+- `public/styles/main.css` - Compiled output (gitignored)
+- `src/styles/*.css` - Page-specific styles imported into tailwind.css
+
+**Usage in components:**
+```tsx
+// Use Tailwind utility classes directly
+<div className="flex items-center gap-4 p-6 bg-bg-alt rounded-lg">
+  <h2 className="text-2xl font-bold text-text">Title</h2>
+</div>
+
+// Or use component classes defined in tailwind.css
+<button className="btn btn-primary">Click me</button>
+<div className="card">Card content</div>
+<section className="section section-alt">...</section>
+```
+
+**Custom theme colors** (defined in @theme):
+- `primary`, `primary-dark`, `primary-light` - Brand red
+- `text`, `text-light`, `text-muted` - Text colors
+- `bg`, `bg-alt`, `bg-light` - Background colors
+- `border`, `border-dark` - Border colors
+
+**Adding new page styles:**
+1. Create `src/styles/my-page.css`
+2. Add `@import "./my-page.css";` to `src/styles/tailwind.css`
+3. Rebuild with `bun run css:build`
 
 ## Architecture
 

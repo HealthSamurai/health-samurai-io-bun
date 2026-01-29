@@ -30,20 +30,8 @@ export function Layout({ title, description, children }: LayoutProps): string {
         {/* Fonts */}
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
 
-        {/* Styles */}
-        <link rel="stylesheet" href="/styles/global.css" />
-        <link rel="stylesheet" href="/styles/header.css" />
-        <link rel="stylesheet" href="/styles/footer.css" />
-        <link rel="stylesheet" href="/styles/hero.css" />
-        <link rel="stylesheet" href="/styles/sections.css" />
-        <link rel="stylesheet" href="/styles/fhir-server.css" />
-        <link rel="stylesheet" href="/styles/medical-form.css" />
-        <link rel="stylesheet" href="/styles/company.css" />
-        <link rel="stylesheet" href="/styles/pricing.css" />
-        <link rel="stylesheet" href="/styles/fhir-database.css" />
-        <link rel="stylesheet" href="/styles/services.css" />
-        <link rel="stylesheet" href="/styles/careers.css" />
-        <link rel="stylesheet" href="/styles/case-study-detail.css" />
+        {/* Tailwind CSS */}
+        <link rel="stylesheet" href="/styles/main.css" />
 
         {/* htmx */}
         <script src="https://unpkg.com/htmx.org@1.9.10"></script>

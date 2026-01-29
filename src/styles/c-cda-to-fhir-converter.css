@@ -1,0 +1,603 @@
+/* C-CDA to FHIR Converter Page Styles */
+
+/* Subnav Bar */
+.ccda-subnav {
+  background: rgba(244, 248, 251, 0.87);
+  padding: 20px 0;
+}
+
+.ccda-subnav-logo img {
+  height: 32px;
+  width: auto;
+}
+
+/* Hero Section */
+.ccda-hero {
+  background: #f4f8fb;
+  padding: 32px 0 48px;
+}
+
+.ccda-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.ccda-hero-content h1 {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 44px;
+  color: #333333;
+  margin-bottom: 24px;
+}
+
+.ccda-hero-description {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #333333;
+  margin-bottom: 32px;
+}
+
+.ccda-hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ccda-hero-image img {
+  width: 100%;
+  height: auto;
+}
+
+/* Buttons */
+.ccda-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ea4a34;
+  color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.ccda-btn-primary:hover {
+  background: #d43d2a;
+  color: #ffffff;
+}
+
+.ccda-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f2f6f9;
+  color: #ea4a34;
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 2px solid #ea533f;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ccda-btn-secondary:hover {
+  background: #ea4a34;
+  color: #ffffff;
+}
+
+.ccda-btn-docs {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f2f6f9;
+  color: #ea4a34;
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 2px solid #ea533f;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ccda-btn-docs:hover {
+  background: #ea4a34;
+  color: #ffffff;
+}
+
+/* Benefits Section */
+.ccda-benefits {
+  background: #e7edf1;
+  padding: 48px 0;
+}
+
+.ccda-benefits-title {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.ccda-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+.ccda-benefit-card {
+  text-align: center;
+  padding: 16px 8px 32px 0;
+}
+
+.ccda-benefit-card--bottom {
+  grid-column: span 1;
+}
+
+/* Center the bottom row (2 items in 3-column grid) */
+.ccda-benefits-grid .ccda-benefit-card:nth-child(4) {
+  grid-column: 1 / 2;
+  margin-left: auto;
+  margin-right: 0;
+  max-width: 100%;
+}
+
+.ccda-benefits-grid .ccda-benefit-card:nth-child(5) {
+  grid-column: 3 / 4;
+  margin-left: 0;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+/* Alternative: Use flexbox wrapper for bottom row centering */
+.ccda-benefits-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+.ccda-benefit-card {
+  flex: 0 0 calc(33.333% - 12px);
+  max-width: calc(33.333% - 12px);
+}
+
+.ccda-benefit-card--bottom {
+  flex: 0 0 calc(40% - 12px);
+  max-width: calc(40% - 12px);
+}
+
+.ccda-benefit-card h3 {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+  color: #333333;
+  margin-bottom: 12px;
+}
+
+.ccda-benefit-card p {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #333333;
+  margin: 0;
+}
+
+.ccda-benefit-card p a {
+  color: #ea4a34;
+  text-decoration: none;
+}
+
+.ccda-benefit-card p a:hover {
+  text-decoration: underline;
+}
+
+/* How It Works Section */
+.ccda-how-it-works {
+  background: #ffffff;
+  padding: 48px 0;
+}
+
+.ccda-how-it-works h2 {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.ccda-how-description {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #333333;
+  text-align: center;
+  max-width: 940px;
+  margin: 0 auto 32px;
+}
+
+/* Tabs */
+.ccda-tabs {
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+.ccda-tabs-list {
+  display: flex;
+  gap: 0;
+  margin-bottom: 32px;
+}
+
+.ccda-tab {
+  background: #e7edf1;
+  color: #222222;
+  padding: 9px 20px;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ccda-tab:hover {
+  background: #d9e2e8;
+}
+
+.ccda-tab--active,
+.ccda-tab[data-class*="true"] {
+  background: #ea4a34;
+  color: #ffffff;
+}
+
+.ccda-tab-panel {
+  background: #f1f5f9;
+  padding: 32px;
+  border-radius: 8px;
+}
+
+.ccda-how-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.ccda-how-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ccda-step {
+  display: flex;
+  gap: 12px;
+}
+
+.ccda-step-number {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333333;
+  flex-shrink: 0;
+}
+
+.ccda-step-content h3 {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+  color: #333333;
+  margin-bottom: 8px;
+}
+
+.ccda-step-content p {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #333333;
+  margin: 0;
+}
+
+.ccda-step-content p a {
+  color: #ea4a34;
+  text-decoration: none;
+}
+
+.ccda-step-content p a:hover {
+  text-decoration: underline;
+}
+
+.ccda-how-diagram img {
+  width: 100%;
+  height: auto;
+}
+
+/* Need More Details Section */
+.ccda-more-details {
+  background: #e7edf1;
+  padding: 48px 0;
+}
+
+.ccda-more-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+.ccda-more-details-title h2 {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0;
+}
+
+.ccda-more-details-content p {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #333333;
+  margin-bottom: 24px;
+}
+
+/* Why Converting Section */
+.ccda-why-converting {
+  background: #ffffff;
+  padding: 48px 0;
+}
+
+.ccda-why-converting h2 {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.ccda-accordion-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+.ccda-accordion-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ccda-accordion-item {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.ccda-accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 24px 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.ccda-accordion-title {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.ccda-accordion-icon {
+  color: #333333;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.ccda-accordion-icon--open {
+  transform: rotate(180deg);
+}
+
+.ccda-accordion-panel {
+  padding: 0 0 24px;
+}
+
+.ccda-accordion-panel p {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #333333;
+  margin: 0;
+}
+
+/* Closing CTA Section */
+.ccda-cta {
+  background: #333333;
+  padding: 48px 0;
+  text-align: center;
+}
+
+.ccda-cta h2 {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.ccda-cta-description {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #ffffff;
+  margin-bottom: 32px;
+}
+
+.ccda-cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.ccda-cta-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #ea4a34;
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 2px solid #ea533f;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ccda-cta-btn-secondary:hover {
+  background: #ea4a34;
+  color: #ffffff;
+}
+
+.ccda-cta-disclaimer {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #999999;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .ccda-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .ccda-hero-content h1 {
+    font-size: 28px;
+    line-height: 34px;
+  }
+
+  .ccda-hero-description {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .ccda-hero-buttons {
+    flex-direction: column;
+  }
+
+  .ccda-hero-buttons a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .ccda-benefits-title {
+    font-size: 24px;
+  }
+
+  .ccda-benefit-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .ccda-benefit-card--bottom {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .ccda-how-it-works h2,
+  .ccda-more-details-title h2,
+  .ccda-why-converting h2,
+  .ccda-cta h2 {
+    font-size: 24px;
+  }
+
+  .ccda-how-description {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .ccda-tabs-list {
+    flex-wrap: wrap;
+  }
+
+  .ccda-tab {
+    flex: 1;
+    text-align: center;
+  }
+
+  .ccda-how-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .ccda-tab-panel {
+    padding: 24px 16px;
+  }
+
+  .ccda-more-details-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .ccda-accordion-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .ccda-cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ccda-cta-buttons a {
+    width: 100%;
+    max-width: 280px;
+  }
+}

@@ -1,0 +1,862 @@
+/* EHR Toolkit Page Styles */
+
+/* ============================================
+   Hero Section
+   ============================================ */
+.ehr-hero {
+  background-color: #212431;
+  padding: 100px 0 140px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.ehr-hero-title {
+  color: #ffffff;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 64px;
+  margin-bottom: 24px;
+}
+
+.ehr-hero-desc {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  line-height: 28px;
+  max-width: 600px;
+  margin: 0 auto 32px;
+}
+
+.ehr-hero-link {
+  color: #ea4a35;
+  text-decoration: underline;
+}
+
+.ehr-hero-link:hover {
+  color: #d4432f;
+}
+
+.ehr-hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.ehr-hero-btn {
+  padding: 13px 35px;
+  border-radius: 4px;
+  text-transform: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.ehr-hero-signup {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.ehr-hero-signup:hover {
+  color: #ea4a35;
+}
+
+.ehr-hero-signup img {
+  width: 20px;
+  height: 20px;
+}
+
+.ehr-hero-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.ehr-hero-bg img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ============================================
+   Trusted By Section
+   ============================================ */
+.ehr-trusted {
+  background-color: #ffffff;
+  padding: 20px 0;
+}
+
+.ehr-trusted-label {
+  color: #999999;
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.ehr-trusted-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.ehr-trusted-logos img {
+  height: 32px;
+  width: auto;
+  opacity: 0.7;
+  filter: grayscale(100%);
+  transition: opacity 0.2s, filter 0.2s;
+}
+
+.ehr-trusted-logos img:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+/* ============================================
+   Explore Aidbox EHR Toolkit Section
+   ============================================ */
+.ehr-toolkit-section {
+  background-color: #ffffff;
+  padding: 80px 0;
+}
+
+.ehr-toolkit-heading {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 36px;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+/* Tabs */
+.ehr-tabs-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 0;
+}
+
+.ehr-tab {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 30px 42px;
+  background: #ffffff;
+  border: 1px solid rgba(33, 36, 49, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.ehr-tab:hover {
+  border-color: rgba(234, 74, 53, 0.3);
+}
+
+.ehr-tab--active {
+  background: rgba(234, 74, 53, 0.05);
+  border-left: 3px solid #ea4a35;
+}
+
+.ehr-tab-content {
+  flex: 1;
+  padding-right: 16px;
+}
+
+.ehr-tab-title {
+  color: #ea4a35;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  margin-bottom: 12px;
+}
+
+.ehr-tab-desc {
+  color: #222222;
+  font-size: 14px;
+  line-height: 25px;
+  margin: 0;
+}
+
+.ehr-tab-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+/* Tab Panels */
+.ehr-tab-panel {
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  padding: 48px;
+  margin-top: 0;
+}
+
+.ehr-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+/* Feature Cards */
+.ehr-feature-card {
+  background: transparent;
+}
+
+.ehr-feature-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.ehr-feature-stick {
+  width: 4px;
+  height: 24px;
+}
+
+.ehr-feature-title {
+  color: #333333;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 0;
+}
+
+.ehr-feature-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #666666;
+  border: 1px solid #cccccc;
+  border-radius: 16px;
+  margin-left: 8px;
+}
+
+.ehr-feature-desc {
+  color: #222222;
+  font-size: 14px;
+  line-height: 25px;
+  margin: 0;
+  padding-left: 16px;
+}
+
+/* Survey Card */
+.ehr-survey-card {
+  background: #f0f0f0;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.ehr-survey-title {
+  color: #333333;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.ehr-survey-desc {
+  color: #666666;
+  font-size: 14px;
+  line-height: 22px;
+  margin-bottom: 16px;
+}
+
+.ehr-survey-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ea4a35;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ehr-survey-link:hover {
+  text-decoration: underline;
+}
+
+.ehr-survey-arrow {
+  width: 16px;
+  height: 16px;
+}
+
+/* ============================================
+   EHR Brochure Section
+   ============================================ */
+.ehr-brochure-section {
+  background-color: #f7f7f7;
+  padding: 60px 0;
+}
+
+.ehr-brochure-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ehr-brochure-preview {
+  background: #e8e8e8;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.ehr-brochure-preview img {
+  max-width: 100%;
+  height: auto;
+}
+
+.ehr-brochure-content {
+  padding: 48px 48px 48px 0;
+}
+
+.ehr-brochure-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.ehr-brochure-title {
+  color: #333333;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 36px;
+  margin: 0;
+}
+
+.ehr-brochure-icon {
+  width: 64px;
+  height: 64px;
+}
+
+.ehr-brochure-desc {
+  color: #222222;
+  font-size: 16px;
+  line-height: 28px;
+  margin-bottom: 24px;
+}
+
+.ehr-brochure-btn {
+  padding: 13px 35px;
+  border-radius: 4px;
+  text-transform: none;
+  font-weight: 600;
+}
+
+/* ============================================
+   Testimonials Section
+   ============================================ */
+.ehr-testimonials-section {
+  background-color: #f7f7f7;
+  padding: 80px 0;
+}
+
+.ehr-testimonials-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Carousel */
+.ehr-carousel {
+  position: relative;
+}
+
+.ehr-testimonial {
+  position: relative;
+}
+
+.ehr-testimonial-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #e5e9ed;
+  padding: 20px 24px;
+  border-radius: 8px 8px 0 0;
+}
+
+.ehr-testimonial-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: -50px;
+}
+
+.ehr-testimonial-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.ehr-testimonial-name {
+  color: #333333;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.ehr-testimonial-title {
+  color: #666666;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.ehr-testimonial-company {
+  color: #333333;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.ehr-testimonial-body {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 0 0 8px 8px;
+  position: relative;
+}
+
+.ehr-carousel-next {
+  position: absolute;
+  top: -24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ea4a35;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.ehr-carousel-next:hover {
+  background: #d4432f;
+}
+
+.ehr-carousel-next img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+
+.ehr-testimonial-quote {
+  color: #333333;
+  font-size: 16px;
+  line-height: 28px;
+  margin: 0;
+}
+
+.ehr-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.ehr-carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #cccccc;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s;
+}
+
+.ehr-carousel-dot--active {
+  background: #333333;
+}
+
+/* Aidbox as a service */
+.ehr-aidbox-service {
+  padding: 24px;
+}
+
+.ehr-aidbox-service-title {
+  color: #333333;
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 44px;
+  margin-bottom: 24px;
+}
+
+.ehr-aidbox-service-text {
+  color: #333333;
+  font-size: 16px;
+  line-height: 28px;
+  margin-bottom: 16px;
+}
+
+.ehr-aidbox-service-text:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   CTA Section
+   ============================================ */
+.ehr-cta-section {
+  background-color: #ffffff;
+  padding: 80px 0;
+}
+
+.ehr-cta-heading {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 36px;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.ehr-cta-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+.ehr-cta-card {
+  background: #ffffff;
+  border: 1px solid rgba(33, 36, 49, 0.1);
+  border-radius: 8px;
+  padding: 32px;
+}
+
+.ehr-cta-card--primary {
+  border-left: 3px solid #ea4a35;
+  background: rgba(234, 74, 53, 0.02);
+}
+
+.ehr-cta-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.ehr-cta-card-title {
+  color: #333333;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.ehr-cta-card .btn {
+  padding: 13px 35px;
+  border-radius: 4px;
+  text-transform: none;
+  font-weight: 600;
+}
+
+.ehr-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ea4a35;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ehr-cta-link:hover {
+  text-decoration: underline;
+}
+
+.ehr-cta-link img {
+  width: 16px;
+  height: 16px;
+}
+
+.ehr-cta-card-desc {
+  color: #666666;
+  font-size: 14px;
+  line-height: 25px;
+  margin: 0;
+}
+
+/* ============================================
+   ONC Certification Section
+   ============================================ */
+.ehr-onc-section {
+  background-color: #2b3040;
+  padding: 80px 0;
+}
+
+.ehr-onc-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.ehr-onc-title {
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 44px;
+  margin-bottom: 24px;
+}
+
+.ehr-onc-desc {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  line-height: 28px;
+  margin-bottom: 16px;
+}
+
+.ehr-onc-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.ehr-onc-actions .btn {
+  padding: 13px 35px;
+  border-radius: 4px;
+  text-transform: none;
+  font-weight: 600;
+}
+
+.ehr-onc-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ea4a35;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ehr-onc-link:hover {
+  text-decoration: underline;
+}
+
+.ehr-onc-link img {
+  width: 16px;
+  height: 16px;
+}
+
+.ehr-onc-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* ============================================
+   Certified Partners Section
+   ============================================ */
+.ehr-certified-section {
+  background-color: #2b3040;
+  padding: 40px 0 80px;
+}
+
+.ehr-certified-label {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.ehr-certified-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.ehr-certified-logos img {
+  height: 36px;
+  width: auto;
+  opacity: 0.8;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.2s;
+}
+
+.ehr-certified-logos img:hover {
+  opacity: 1;
+}
+
+/* ============================================
+   Responsive Styles
+   ============================================ */
+@media (max-width: 1024px) {
+  .ehr-tabs-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .ehr-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ehr-brochure-card {
+    grid-template-columns: 1fr;
+  }
+
+  .ehr-brochure-preview {
+    min-height: 200px;
+  }
+
+  .ehr-brochure-content {
+    padding: 32px;
+  }
+
+  .ehr-testimonials-wrapper {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .ehr-cta-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .ehr-onc-wrapper {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .ehr-onc-image {
+    order: -1;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .ehr-hero {
+    padding: 60px 0 100px;
+  }
+
+  .ehr-hero-title {
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  .ehr-hero-desc {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .ehr-hero-actions {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .ehr-trusted-logos {
+    gap: 24px;
+  }
+
+  .ehr-trusted-logos img {
+    height: 24px;
+  }
+
+  .ehr-toolkit-section {
+    padding: 48px 0;
+  }
+
+  .ehr-toolkit-heading {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .ehr-tab {
+    padding: 20px 24px;
+  }
+
+  .ehr-tab-panel {
+    padding: 24px;
+  }
+
+  .ehr-brochure-section {
+    padding: 32px 0;
+  }
+
+  .ehr-brochure-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ehr-brochure-title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .ehr-testimonials-section {
+    padding: 48px 0;
+  }
+
+  .ehr-testimonial-photo {
+    width: 80px;
+    height: 80px;
+    margin-left: -30px;
+  }
+
+  .ehr-aidbox-service-title {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .ehr-cta-section {
+    padding: 48px 0;
+  }
+
+  .ehr-cta-heading {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .ehr-onc-section {
+    padding: 48px 0;
+  }
+
+  .ehr-onc-title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .ehr-onc-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .ehr-certified-logos {
+    gap: 24px;
+  }
+
+  .ehr-certified-logos img {
+    height: 28px;
+  }
+}

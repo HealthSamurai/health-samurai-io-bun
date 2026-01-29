@@ -1,274 +1,341 @@
 import { Fragment } from "../lib/jsx-runtime";
-import { Hero } from "../components/sections/Hero";
-import { ContactForm } from "../components/sections/ContactForm";
-import { Button } from "../components/ui/Button";
 
 export const metadata = {
-  title: "Services - FHIR Software Development",
-  description: "Delegate your software development needs to us — experts in designing, building, and maintaining advanced FHIR-based software solutions.",
+  title: "FHIR-first software development for healthcare | Delegate your software development needs to FHIR expert developers",
+  description: "Delegate your software development needs to us - experts in designing, building, and maintaining advanced FHIR-based software solutions for healthcare.",
 };
 
-// Key capabilities
-const capabilities = [
+// Feature cards data
+const featureCards = [
   {
-    icon: "/assets/images/icons/services/team.svg",
     title: "Dedicated Teams",
-    description: "Full-stack developers working exclusively on your project with deep healthcare domain expertise.",
+    description: "Achieve rapid results with our full-stack teams dedicated to your project.",
+    highlighted: true,
   },
   {
-    icon: "/assets/images/icons/services/platform.svg",
     title: "FHIR Platform",
-    description: "Pre-built Aidbox backend infrastructure that accelerates development and reduces time-to-market.",
+    description: 'Reduce time-to-market with our pre-built Aidbox <a href="/fhir-server" class="svc-link">FHIR backend</a> and cloud infrastructure.',
+    highlighted: false,
   },
   {
-    icon: "/assets/images/icons/services/expertise.svg",
     title: "Domain Expertise",
-    description: "15+ years in health IT and HL7 FHIR. We know healthcare interoperability inside and out.",
+    description: "Benefit from 15+ years of experience in health IT, software development, and HL7 FHIR.",
+    highlighted: false,
   },
   {
-    icon: "/assets/images/icons/services/agile.svg",
     title: "Agile & Lean",
-    description: "Short iteration cycles for rapid product development with continuous feedback and delivery.",
+    description: "Reach your goals through short iterations that incrementally develop the product.",
+    highlighted: false,
   },
 ];
 
-// Portfolio projects
-const portfolio = [
+// Portfolio data
+const portfolioItems = [
   {
-    image: "/assets/images/services/portfolio-lucent.webp",
-    title: "Care Coordination Platform",
-    client: "Lucent Health",
-    description: "Built a comprehensive care coordination platform enabling providers to manage patient journeys across the continuum of care.",
+    icon: "/assets/images/services/portfolio-care-coordination.jpg",
+    title: "Care Coordination",
+    description: 'Developing a <a href="https://lucenthealth.com/" target="_blank" rel="noopener noreferrer" class="svc-link">care coordination platform</a> for self-insured companies managed by Lucent Health.',
+    href: "https://lucenthealth.com/",
   },
   {
-    image: "/assets/images/services/portfolio-hospice.webp",
-    title: "Hospice EHR System",
-    client: "100+ Facilities",
-    description: "Developed a specialized EHR system for hospice care, managing clinical workflows across over 100 facilities.",
+    icon: "/assets/images/services/portfolio-hospice-ehr.jpg",
+    title: "Hospice EHR",
+    description: 'Developing a FHIR-native, <a href="https://firenote.health/" target="_blank" rel="noopener noreferrer" class="svc-link">specialized EHR</a> system used by over 100 hospices across the US.',
+    href: "https://firenote.health/",
   },
   {
-    image: "/assets/images/services/portfolio-billing.webp",
+    icon: "/assets/images/services/portfolio-billing-module.jpg",
     title: "Billing Module",
-    client: "Sandata",
-    description: "Created an integrated billing module that streamlines revenue cycle management for home health agencies.",
+    description: 'Creating an <a href="https://www.sandata.com/" target="_blank" rel="noopener noreferrer" class="svc-link">automated billing module</a> for the Sandata Agency Management Platform tailored to US home care agencies.',
+    href: "https://www.sandata.com/",
   },
   {
-    image: "/assets/images/services/portfolio-derm.webp",
+    icon: "/assets/images/services/portfolio-dermatology-ehr.jpg",
     title: "Dermatology EHR",
-    client: "New York Clinic",
-    description: "Custom dermatology EHR with image management, treatment planning, and FHIR-based data exchange.",
+    description: 'Developing <a href="https://metrodermatology.net/" target="_blank" rel="noopener noreferrer" class="svc-link">EHR modules</a> including billing, registration, and self-payment for a Dermatology Clinic in New York.',
+    href: "https://metrodermatology.net/",
   },
 ];
 
-// Services offered
-const services = [
-  { icon: "/assets/images/icons/services/fullstack.svg", title: "Full-stack Development" },
-  { icon: "/assets/images/icons/services/design.svg", title: "System Design" },
-  { icon: "/assets/images/icons/services/fhir-modeling.svg", title: "FHIR Data Modeling" },
-  { icon: "/assets/images/icons/services/integrations.svg", title: "Integrations" },
-  { icon: "/assets/images/icons/services/cloud.svg", title: "Cloud Infrastructure" },
-  { icon: "/assets/images/icons/services/onc.svg", title: "ONC/CMS Compliance" },
-  { icon: "/assets/images/icons/services/hipaa.svg", title: "HIPAA/GDPR Compliance" },
-  { icon: "/assets/images/icons/services/ux.svg", title: "UI/UX Design" },
+// Services grid data
+const servicesGrid = [
+  { icon: "/assets/images/services/icon-fullstack-development.svg", label: "Full-stack Development" },
+  { icon: "/assets/images/services/icon-system-design.svg", label: "System Design" },
+  { icon: "/assets/images/services/icon-fhir-data-modeling.svg", label: "FHIR Data Modeling" },
+  { icon: "/assets/images/services/icon-integrations.svg", label: "Integrations" },
+  { icon: "/assets/images/services/icon-cloud-infrastructure.svg", label: "Cloud Infrastructure" },
+  { icon: "/assets/images/services/icon-onc-cms-compliance.svg", label: "ONC/CMS Compliance" },
+  { icon: "/assets/images/services/icon-hipaa-gdpr-compliance.svg", label: "HIPAA/GDPR Compliance" },
+  { icon: "/assets/images/services/icon-ui-ux-design.svg", label: "UI/UX Design" },
 ];
 
-// Approach sections
-const approachSections = [
+// Tabs data for Approach & Culture
+const tabsData = [
   {
-    title: "Teams",
-    image: "/assets/images/services/approach-teams.webp",
-    description: "Small, cross-functional teams of 3-7 professionals including product owner, tech lead, and full-stack engineers dedicated to your project.",
+    id: "teams",
+    label: "TEAMS",
+    title: "Small & Strong",
+    content: "We craft our teams with full-stack developers who can handle everything from design and development to deployment and maintenance across all layers. A typical team has 3-7 pros, including one PO/BA and 2-6 full-stack engineers.",
+    image: "/assets/images/services/culture-team.webp",
+    imageAlt: "team",
   },
   {
-    title: "Process",
-    image: "/assets/images/services/approach-process.webp",
-    description: "From proof-of-concept to MVP to production-ready — we move through weekly iterations with continuous delivery and rapid feedback loops.",
+    id: "process",
+    label: "PROCESS",
+    title: "Iterative & Incremental",
+    content: "We kick things off with a proof-of-concept project that lays down the basic scenario. From there, we evolve it into an MVP and then scale it up to a production-ready solution, all through quick, 1-week iterations.",
+    image: "/assets/images/services/culture-scrum.webp",
+    imageAlt: "scrum",
   },
   {
-    title: "Culture",
-    image: "/assets/images/services/approach-culture.webp",
-    description: "Proven engineering practices: CI/CD automation, test-driven development, pair programming, and code reviews ensure quality at every step.",
+    id: "culture",
+    label: "CULTURE",
+    title: "Feedback & Automations",
+    content: "With proven engineering practices such as CI/CD automation, TDD, pair programming, and design sessions, our teams move towards their goals at high speed without sacrificing quality. We continuously improve our domain knowledge and development culture.",
+    image: "/assets/images/services/culture-culture.webp",
+    imageAlt: "culture",
   },
   {
+    id: "developments",
+    label: "DEVELOPMENTS",
     title: "Platform & Open Source",
-    image: "/assets/images/services/approach-opensource.webp",
-    description: "Built on Aidbox FHIR Server with contributions to open source projects like sql-on-fhir, fhirbase, and hl7proxy.",
+    content: 'We build projects on our <a href="/fhir-server" class="svc-link">Aidbox FHIR Server</a>, which dramatically reduces initial development efforts. We start and contribute significantly to valuable open-source projects, including: <a href="https://github.com/FHIR/sql-on-fhir-v2" target="_blank" rel="noopener noreferrer" class="svc-link">sql-on-fhir</a>, <a href="https://github.com/fhirbase/fhirbase" target="_blank" rel="noopener noreferrer" class="svc-link">fhirbase</a>, <a href="https://github.com/HealthSamurai/hl7proxy" target="_blank" rel="noopener noreferrer" class="svc-link">hl7proxy</a>, <a href="https://github.com/HealthSamurai/jute.clj" target="_blank" rel="noopener noreferrer" class="svc-link">jute.clj</a>, <a href="https://github.com/HealthSamurai/retest" target="_blank" rel="noopener noreferrer" class="svc-link">retest</a>, <a href="https://github.com/HealthSamurai/suitkin" target="_blank" rel="noopener noreferrer" class="svc-link">suitkin</a>, etc.',
+    image: "/assets/images/services/culture-aidbox.webp",
+    imageAlt: "fhir software",
   },
 ];
 
-// Blog posts
+// Blog posts data
 const blogPosts = [
   {
-    image: "/assets/images/blog/fhir-fuse.webp",
+    image: "/assets/images/services/blog-post-1.png",
     title: "FHIR FUSE: FHIR in a Unix Way",
-    href: "/blog/fhir-fuse",
+    description: "What if working with FHIR didn't start with APIs and clients, but with files and folders? This article explores FHIR-FUSE, a filesystem interface for FHIR servers, what it makes easier, and where its limits become clear.",
+    href: "/articles/fhir-fuse-fhir-in-a-unix-way",
   },
   {
-    image: "/assets/images/blog/multi-clinic.webp",
-    title: "Managing Multi-Clinic Data and Real-time Synchronization",
-    href: "/blog/multi-clinic-sync",
+    image: "/assets/images/services/blog-post-2.png",
+    title: "Managing Multi-Clinic Data and Real-time Synchronization with OrgBAC and Subscriptions",
+    description: "Managing multiple clinics is hard: every facility needs autonomy, but the network still needs oversight and real-time data flow. OrgBAC and Subscriptions in Aidbox make this easy with automatic isolation and instant event delivery.",
+    href: "/articles/managing-multi-clinic-data-and-real-time-synchronization-with-orgbac-and-subscriptions",
   },
   {
-    image: "/assets/images/blog/paper-to-fhir.webp",
+    image: "/assets/images/services/blog-post-3.png",
     title: "From Paper Form to FHIR",
-    href: "/blog/paper-form-to-fhir",
+    description: "Even with today's advanced medical technology, many healthcare facilities still rely heavily on paper forms for patient information. This ongoing use of paper causes significant challenges.",
+    href: "/articles/from-paper-form-to-fhir",
   },
 ];
 
-function CapabilitiesSection(): string {
-  return (
-    <section className="services-capabilities">
-      <div className="container">
-        <div className="capabilities-grid">
-          {capabilities.map((cap) => (
-            <div className="capability-card">
-              <div className="capability-icon">
-                <img src={cap.icon} alt={cap.title} loading="lazy" />
-              </div>
-              <h3 className="capability-title">{cap.title}</h3>
-              <p className="capability-desc">{cap.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function PortfolioSection(): string {
-  return (
-    <section className="services-portfolio">
-      <div className="container">
-        <h2 className="section-heading">Portfolio</h2>
-        <div className="portfolio-grid">
-          {portfolio.map((project) => (
-            <div className="portfolio-card">
-              <div className="portfolio-image">
-                <img src={project.image} alt={project.title} loading="lazy" />
-              </div>
-              <div className="portfolio-content">
-                <span className="portfolio-client">{project.client}</span>
-                <h3 className="portfolio-title">{project.title}</h3>
-                <p className="portfolio-desc">{project.description}</p>
-                <a href="/casestudies" className="portfolio-link">
-                  Read case study <span className="arrow">→</span>
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ServicesSection(): string {
-  return (
-    <section className="services-offered">
-      <div className="container">
-        <div className="services-intro">
-          <h2 className="section-heading">Trusted technology partner for FHIR projects</h2>
-          <p className="services-intro-text">
-            We collaborate with you through small, cross-functional teams to deliver healthcare software that meets your exact requirements.
-          </p>
-        </div>
-        <div className="services-grid">
-          {services.map((service) => (
-            <div className="service-item">
-              <div className="service-icon">
-                <img src={service.icon} alt={service.title} loading="lazy" />
-              </div>
-              <span className="service-title">{service.title}</span>
-            </div>
-          ))}
-        </div>
-        <div className="services-cta">
-          <Button href="/contacts" variant="primary">Hire a team</Button>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ApproachSection(): string {
-  return (
-    <section className="services-approach">
-      <div className="container">
-        <h2 className="section-heading">Our Approach</h2>
-        <div className="approach-grid">
-          {approachSections.map((section) => (
-            <div className="approach-card">
-              <div className="approach-image">
-                <img src={section.image} alt={section.title} loading="lazy" />
-              </div>
-              <div className="approach-content">
-                <h3 className="approach-title">{section.title}</h3>
-                <p className="approach-desc">{section.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function BlogSection(): string {
-  return (
-    <section className="services-blog">
-      <div className="container">
-        <div className="blog-header">
-          <h2 className="section-heading">Our Blog</h2>
-          <a href="/blog" className="blog-all-link">
-            All posts <span className="arrow">→</span>
-          </a>
-        </div>
-        <div className="blog-grid">
-          {blogPosts.map((post) => (
-            <a href={post.href} className="blog-card">
-              <div className="blog-image">
-                <img src={post.image} alt={post.title} loading="lazy" />
-              </div>
-              <h3 className="blog-title">{post.title}</h3>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+// Arrow icon SVG for links
+const arrowRightSvg = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`;
 
 export default function ServicesPage(): string {
   return (
     <Fragment>
-      <Hero
-        tag="Services"
-        title="FHIR-first software development for healthcare"
-        description="Delegate your software development needs to us — experts in designing, building, and maintaining advanced FHIR-based software solutions."
-        primaryCta={{ label: "Let's Talk", href: "/contacts" }}
-        variant="product"
-      />
-
-      <CapabilitiesSection />
-
-      <PortfolioSection />
-
-      <ServicesSection />
-
-      <ApproachSection />
-
-      <BlogSection />
-
-      <section className="services-contact">
+      {/* Hero Section */}
+      <section className="svc-hero">
         <div className="container">
-          <div className="contact-wrapper">
-            <div className="contact-intro">
-              <h2>Got a FHIR project?</h2>
-              <p>
-                Complete the form and one of our FHIR experts will contact you via email to schedule a call within one business day.
-              </p>
+          <div className="svc-hero-grid">
+            <div className="svc-hero-content">
+              <span className="svc-tag">&gt;_ Services</span>
+              <h1><strong>FHIR-first</strong> software development for healthcare</h1>
+              <p>Delegate your software development needs to us - experts in designing, building, and maintaining advanced FHIR-based software solutions for healthcare.</p>
+              <a href="#service-c2a-form" className="btn btn-primary">LET'S TALK</a>
             </div>
-            <ContactForm />
+            <div className="svc-hero-image">
+              <img src="/assets/images/services/hero-development.webp" alt="fhir development" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Feature Cards Section */}
+      <section className="svc-features">
+        <div className="container">
+          <div className="svc-features-grid">
+            {featureCards.map((card, idx) => (
+              <div className={`svc-feature-card${idx === 0 ? ' svc-feature-card--highlighted' : ''}`}>
+                <h3>{card.title}</h3>
+                <p dangerouslySetInnerHTML={{ __html: card.description }} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Section */}
+      <section className="svc-portfolio">
+        <div className="container">
+          <div className="svc-portfolio-header">
+            <div>
+              <h2>Portfolio</h2>
+              <p>We are proud to partner with clients of all stages and sizes in the Health IT sector.</p>
+            </div>
+            <a href="#" className="svc-all-link">
+              All projects
+              <span dangerouslySetInnerHTML={{ __html: arrowRightSvg }} />
+            </a>
+          </div>
+          <div className="svc-portfolio-grid">
+            {portfolioItems.map((item) => (
+              <div className="svc-portfolio-card">
+                <div className="svc-portfolio-icon">
+                  <img src={item.icon} alt={item.title} />
+                </div>
+                <div className="svc-portfolio-content">
+                  <h3>{item.title}</h3>
+                  <p dangerouslySetInnerHTML={{ __html: item.description }} />
+                </div>
+                <a href={item.href} className="svc-portfolio-arrow" target="_blank" rel="noopener noreferrer" aria-label={`Visit ${item.title}`}>
+                  <img src="/assets/images/services/icon-arrow-right.svg" alt="arrow" />
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Trusted Technology Partner Section */}
+      <section className="svc-trusted">
+        <div className="container">
+          <div className="svc-trusted-grid">
+            <div className="svc-trusted-image">
+              <img src="/assets/images/services/trusted-partner-diagram.webp" alt="fhir experts" />
+            </div>
+            <div className="svc-trusted-content">
+              <h2>Trusted technology partner for FHIR projects</h2>
+              <p>Collaborate with our small, cross-functional teams of business-focused domain experts.</p>
+              <div className="svc-services-grid">
+                {servicesGrid.map((service) => (
+                  <div className="svc-service-item">
+                    <div className="svc-service-icon">
+                      <img src={service.icon} alt={service.label} />
+                    </div>
+                    <span>{service.label}</span>
+                  </div>
+                ))}
+              </div>
+              <a href="#service-c2a-form" className="btn btn-primary">Hire a team</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Approach & Culture Section with Tabs */}
+      <section className="svc-approach">
+        <div className="container">
+          <div className="svc-approach-header">
+            <h2>Approach & Culture</h2>
+            <p>We follow the Lean Principle of <a href="#" className="svc-link">"do more with less"</a> and this shapes our culture.</p>
+          </div>
+
+          <div className="svc-tabs" data-signals="{activeTab: 'developments'}">
+            {/* Tab Navigation */}
+            <div className="svc-tabs-nav">
+              {tabsData.map((tab) => (
+                <button
+                  className="svc-tab-btn"
+                  data-class={`{'svc-tab-btn--active': $activeTab == '${tab.id}'}`}
+                  data-on-click={`$activeTab = '${tab.id}'`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Tab Panels */}
+            <div className="svc-tabs-panels">
+              {tabsData.map((tab, idx) => (
+                <div
+                  className="svc-tab-panel"
+                  data-show={`$activeTab == '${tab.id}'`}
+                  style={idx !== 3 ? { display: 'none' } : undefined}
+                >
+                  <div className="svc-tab-panel-grid">
+                    <div className="svc-tab-image">
+                      <img src={tab.image} alt={tab.imageAlt} />
+                    </div>
+                    <div className="svc-tab-content">
+                      <h3>{tab.title}</h3>
+                      <p dangerouslySetInnerHTML={{ __html: tab.content }} />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Section */}
+      <section className="svc-blog">
+        <div className="container">
+          <div className="svc-blog-header">
+            <div>
+              <h2>Our Blog</h2>
+              <p>Learn more about FHIR software design and development for healthcare.</p>
+            </div>
+            <a href="/blog" className="svc-all-link">
+              All posts
+              <span dangerouslySetInnerHTML={{ __html: arrowRightSvg }} />
+            </a>
+          </div>
+          <div className="svc-blog-grid">
+            {blogPosts.map((post) => (
+              <a href={post.href} className="svc-blog-card">
+                <div className="svc-blog-image">
+                  <img src={post.image} alt="blog thumbnail" />
+                </div>
+                <h4>{post.title}</h4>
+                <p>{post.description}</p>
+                <span className="svc-blog-arrow">
+                  <img src="/assets/images/services/icon-arrow-right.svg" alt="arrow" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section className="svc-contact" id="service-c2a-form">
+        <div className="container">
+          <div className="svc-contact-grid">
+            <div className="svc-contact-form">
+              <form action="/api/contact" method="POST">
+                <div className="svc-form-group">
+                  <label htmlFor="name">Name</label>
+                  <input type="text" id="name" name="name" required />
+                </div>
+                <div className="svc-form-group">
+                  <label htmlFor="company">Company</label>
+                  <input type="text" id="company" name="company" />
+                </div>
+                <div className="svc-form-group">
+                  <label htmlFor="email">Business Email</label>
+                  <input type="email" id="email" name="email" required />
+                </div>
+                <div className="svc-form-group">
+                  <label htmlFor="description">Project Description</label>
+                  <textarea id="description" name="description" rows={5} />
+                </div>
+                <div className="svc-form-recaptcha">
+                  {/* reCAPTCHA placeholder - in production use actual reCAPTCHA */}
+                  <div className="g-recaptcha" data-sitekey="your-site-key"></div>
+                </div>
+                <button type="submit" className="btn btn-primary svc-submit-btn">LET'S TALK</button>
+              </form>
+            </div>
+            <div className="svc-contact-info">
+              <div className="svc-contact-icon">
+                <img src="/assets/images/services/contact-us.webp" alt="hire mpi developers" />
+              </div>
+              <h2>Got a FHIR project?</h2>
+              <p>Complete the form and one of our FHIR experts will contact you via email to schedule a call within one business day.</p>
+            </div>
           </div>
         </div>
       </section>

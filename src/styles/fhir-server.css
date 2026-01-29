@@ -1,5 +1,34 @@
 /* FHIR Server Page Styles - Pixel perfect match */
 
+/* Client Logos Bar */
+.client-logos-bar {
+  padding: 40px 0;
+  background: white;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.client-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.client-logos img {
+  height: 38px;
+  max-width: 140px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.3s;
+}
+
+.client-logos img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
 /* What is Aidbox Section - Matched to original what-is__card */
 .aidbox-features-section {
   padding: 80px 0;
@@ -20,7 +49,9 @@
   margin-bottom: 32px;
 }
 
-/* Grid: 4 columns, 16px gap, no borders */
+/* Grid: Bento-style layout
+   Row 1: Wide card (span 2) + 2 normal cards
+   Row 2: 4 normal cards */
 .aidbox-features-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -191,23 +222,46 @@
 }
 
 .use-case-story {
-  padding-left: 24px;
-  border-left: 3px solid var(--color-primary);
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f0f0f0;
+}
+
+.story-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.story-info {
+  display: flex;
+  flex-direction: column;
 }
 
 .story-company {
-  display: block;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
-  color: #333;
+  color: #353b50;
   margin-bottom: 4px;
 }
 
 .story-type {
-  display: block;
-  font-size: 14px;
-  color: #999;
-  margin-bottom: 12px;
+  display: inline-block;
+  font-size: 12px;
+  color: #666;
+  padding: 4px 12px;
+  background: #f4f8fb;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.story-logo {
+  max-height: 40px;
+  max-width: 140px;
+  object-fit: contain;
 }
 
 .use-case-story p {
@@ -341,6 +395,12 @@
   padding: 24px;
   background: #f4f8fb;
   border-radius: 12px;
+}
+
+.deploy-option-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 16px;
 }
 
 .deploy-option h4 {
@@ -764,7 +824,7 @@
 /* Testimonials Section */
 .testimonials-section {
   padding: 80px 0;
-  background: #f4f8fb;
+  background: white;
 }
 
 .testimonials-carousel {
@@ -778,39 +838,37 @@
 
 .testimonials-slides {
   flex: 1;
-  background: white;
+  background: #f9fafb;
   border-radius: 20px;
   padding: 48px 64px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
   min-height: 320px;
   position: relative;
   overflow: hidden;
+  border: 1px solid #f0f0f0;
 }
 
 .testimonial-nav {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: white;
-  border: 1px solid #e5e5e5;
+  background: #f0f0f0;
+  border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #666;
+  color: #999;
   transition: all 0.2s;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .testimonial-nav:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: #e0e0e0;
+  color: #666;
 }
 
 .testimonial-card {
-  text-align: left;
+  text-align: center;
   width: 100%;
   animation: slideIn 0.4s ease-out;
 }
@@ -828,20 +886,14 @@
 
 .testimonial-logo {
   margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
 }
 
 .testimonial-logo img {
   max-height: 48px;
   max-width: 180px;
   object-fit: contain;
-  filter: grayscale(100%);
-  opacity: 0.7;
-  transition: all 0.3s;
-}
-
-.testimonial-card:hover .testimonial-logo img {
-  filter: grayscale(0%);
-  opacity: 1;
 }
 
 .testimonial-quote {
@@ -849,8 +901,8 @@
 }
 
 .testimonial-quote p {
-  font-size: 18px;
-  line-height: 1.8;
+  font-size: 17px;
+  line-height: 1.7;
   color: #353b50;
   margin: 0;
   font-style: normal;
@@ -858,7 +910,6 @@
 
 .testimonial-author {
   padding-top: 24px;
-  border-top: 1px solid #f0f0f0;
 }
 
 .testimonial-name {
@@ -870,7 +921,7 @@
 
 .testimonial-title {
   font-size: 14px;
-  color: #888;
+  color: #7a869a;
   margin: 0;
 }
 
@@ -902,6 +953,111 @@
 
 .community-benefits {
   margin-bottom: 32px;
+}
+
+.community-avatars {
+  margin: 32px 0;
+}
+
+.community-avatars img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* FAQ Section */
+.faq-section {
+  padding: 80px 0;
+  background: #f8f9fb;
+}
+
+.faq-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #353b50;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 48px;
+  line-height: 1.3;
+}
+
+.faq-accordion {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.faq-item {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  color: #353b50;
+  text-align: left;
+  transition: background-color 0.2s;
+}
+
+.faq-trigger:hover {
+  background: #fafafa;
+}
+
+.faq-trigger--active {
+  background: #fafafa;
+}
+
+.faq-icon {
+  font-size: 24px;
+  font-weight: 300;
+  color: #999;
+  transition: transform 0.3s;
+}
+
+.faq-icon--open {
+  transform: rotate(45deg);
+}
+
+.faq-content {
+  padding: 0 32px 24px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #666;
+}
+
+.faq-content p {
+  margin: 0 0 16px;
+}
+
+.faq-content p:last-child {
+  margin-bottom: 0;
+}
+
+.faq-content strong {
+  color: #353b50;
+}
+
+.faq-content ul {
+  margin: 12px 0 16px 20px;
+  padding: 0;
+}
+
+.faq-content li {
+  margin-bottom: 8px;
 }
 
 /* Responsive */

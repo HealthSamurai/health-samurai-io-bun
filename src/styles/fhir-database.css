@@ -1,35 +1,161 @@
-/* Fhirbase Page Styles */
+/* Fhirbase Page Styles - Based on Design Spec */
 
-/* Used By Section */
-.fhirbase-used-by {
-  padding: 40px 0;
-  background: #f9fafb;
+/* Product Sub-Navigation */
+.fhirbase-subnav {
+  background: #dddddd;
+  padding: 16px 0;
 }
 
-.used-by-label {
+.fhirbase-subnav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fhirbase-logo-link {
+  display: flex;
+  align-items: center;
+}
+
+.fhirbase-logo {
+  height: 40px;
+  width: auto;
+}
+
+.fhirbase-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.fhirbase-nav-link {
   font-size: 14px;
   font-weight: 500;
-  color: #888;
-  text-align: center;
-  margin-bottom: 24px;
+  color: #333333;
+  text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+
+.fhirbase-nav-link:hover {
+  color: #ea4a35;
+}
+
+.fhirbase-nav-github {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.github-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+/* Hero Section */
+.fhirbase-hero {
+  padding: 80px 0 60px;
+  background: #ffffff;
+}
+
+.fhirbase-hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.fhirbase-hero-text {
+  max-width: 700px;
+}
+
+.fhirbase-tag {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 100;
+  color: #d95640;
+  margin-bottom: 16px;
+}
+
+.fhirbase-hero h1 {
+  font-size: 54px;
+  font-weight: 700;
+  line-height: 68px;
+  color: #333333;
+  margin-bottom: 24px;
+}
+
+.fhirbase-hero h1 sup {
+  font-size: 24px;
+  vertical-align: super;
+}
+
+.fhirbase-hero-desc {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  color: #333333;
+  margin-bottom: 32px;
+}
+
+.fhirbase-hero-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.fhirbase-hero-buttons .btn-primary {
+  background: #ea4a35;
+  color: #ffffff;
+  border: 2px solid #ea4a35;
+  padding: 12px 29px;
+  border-radius: 4px;
+}
+
+.fhirbase-hero-buttons .btn-primary:hover {
+  background: #d94030;
+  border-color: #d94030;
+}
+
+.fhirbase-hero-buttons .btn-secondary {
+  background: transparent;
+  color: #ea4a35;
+  border: 2px solid #ea4a35;
+  padding: 12px 29px;
+  border-radius: 4px;
+}
+
+.fhirbase-hero-buttons .btn-secondary:hover {
+  background: #ea4a35;
+  color: #ffffff;
+}
+
+/* Used By Section in Hero */
+.fhirbase-hero-used-by {
+  padding-top: 40px;
+  border-top: 1px solid #eee;
+}
+
+.used-by-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #333333;
+  text-transform: uppercase;
+  margin-bottom: 24px;
 }
 
 .used-by-logos {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 48px;
   flex-wrap: wrap;
 }
 
 .used-by-logo img {
-  max-height: 40px;
-  max-width: 140px;
-  object-fit: contain;
+  height: 32px;
+  width: auto;
   filter: grayscale(100%);
-  opacity: 0.6;
+  opacity: 0.7;
   transition: all 0.3s;
 }
 
@@ -38,321 +164,528 @@
   opacity: 1;
 }
 
-/* Features Section */
-.fhirbase-features {
-  padding: 80px 0;
-  background: white;
+/* Section Title and Description (shared) */
+.fhirbase-section-title {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 45px;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 16px;
 }
 
-.features-grid {
+.fhirbase-section-desc {
+  font-size: 16px;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.fhirbase-section-desc a {
+  color: #ea4a35;
+  text-decoration: underline;
+}
+
+/* Overview Section */
+.fhirbase-overview {
+  padding: 0 0 64px;
+  background: #ffffff;
+}
+
+.fhirbase-overview-diagram {
+  max-width: 800px;
+  margin: 0 auto 48px;
+}
+
+.fhirbase-overview-diagram img {
+  width: 100%;
+  height: auto;
+}
+
+.fhirbase-features-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 
-.feature-card {
-  padding: 32px;
-  background: #f9fafb;
-  border-radius: 12px;
+.fhirbase-feature-card {
+  padding: 20px 40px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 4px 0px #e7e5e5;
+  background: #ffffff;
   text-align: center;
-  transition: all 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.feature-card:hover {
-  background: rgba(234, 74, 53, 0.05);
+.fhirbase-feature-card:hover {
   transform: translateY(-4px);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.feature-icon {
+.fhirbase-feature-icon {
   width: 64px;
   height: 64px;
-  margin: 0 auto 20px;
+  margin: 0 auto 16px;
 }
 
-.feature-icon img {
+.fhirbase-feature-icon img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-.feature-title {
+.fhirbase-feature-title {
   font-size: 18px;
   font-weight: 700;
-  color: #353b50;
-  margin: 0 0 12px;
+  line-height: 22.5px;
+  color: #333333;
+  margin-bottom: 12px;
 }
 
-.feature-desc {
+.fhirbase-feature-desc {
   font-size: 14px;
-  line-height: 1.6;
-  color: #666;
+  line-height: 21px;
+  color: #333333;
   margin: 0;
 }
 
 /* Quickstart Section */
-.fhirbase-quickstart {
-  padding: 80px 0;
-  background: #f4f8fb;
-}
-
-.section-title {
-  font-size: 32px;
-  font-weight: 700;
-  color: #353b50;
-  text-align: center;
-  margin-bottom: 16px;
-}
-
-.section-subtitle {
-  font-size: 16px;
-  color: #666;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.quickstart-tabs {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.quickstart-tab-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 32px;
-}
-
-.quickstart-tab-btn {
-  padding: 12px 28px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #666;
-  background: white;
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.quickstart-tab-btn:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-
-.quickstart-tab-btn.active {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: white;
+.fhirbase-quickstart-section {
+  padding: 64px 0;
+  background: #fafafa;
 }
 
 .quickstart-content {
-  background: white;
-  border-radius: 16px;
-  padding: 40px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  max-width: 1000px;
+  margin: 0 auto 48px;
 }
 
 .quickstart-steps {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
 }
 
-.quickstart-steps--docker {
-  grid-template-columns: repeat(2, 1fr);
+.quickstart-steps-docker {
+  grid-template-columns: 1fr 1fr;
 }
 
 .quickstart-step {
   display: flex;
-  align-items: flex-start;
   gap: 16px;
+  align-items: flex-start;
 }
 
-.step-number {
+.quickstart-step-number {
   width: 32px;
   height: 32px;
-  background: var(--color-primary);
-  color: white;
-  border-radius: 50%;
+  border-radius: 4px;
+  border: 1px solid #ddd;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
+  color: #666;
   flex-shrink: 0;
 }
 
-.step-content h4 {
-  font-size: 16px;
-  font-weight: 600;
-  color: #353b50;
-  margin: 0 0 4px;
-}
-
-.step-content p {
+.quickstart-step-content h4 {
   font-size: 14px;
-  color: #666;
-  margin: 0;
-  line-height: 1.5;
+  font-weight: 400;
+  color: #333333;
+  margin-bottom: 8px;
 }
 
-.step-content p.code {
+.quickstart-step-content h4 strong {
+  font-weight: 700;
+}
+
+.quickstart-code {
+  background: #fafafa;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 6px 40px;
   font-family: monospace;
-  background: #f4f4f4;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 13px;
+  font-size: 18px;
+  color: #333333;
+  overflow-x: auto;
 }
 
-/* Downloads Section */
-.fhirbase-downloads {
-  padding: 80px 0;
-  background: white;
+.quickstart-link a {
+  color: #333333;
+  text-decoration: underline;
 }
 
-.downloads-grid {
+.quickstart-link a:hover {
+  color: #ea4a35;
+}
+
+.quickstart-step-content p {
+  font-size: 14px;
+  color: #333333;
+  margin: 0;
+}
+
+.fhirbase-docker-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.fhirbase-docker-desc {
+  font-size: 16px;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.fhirbase-docker-desc a {
+  color: #ea4a35;
+  text-decoration: underline;
+}
+
+.quickstart-docker {
+  margin-bottom: 0;
+}
+
+/* Download Section */
+.fhirbase-download-section {
+  padding: 64px 0;
+  background: #ffffff;
+}
+
+.download-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  max-width: 800px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 .download-card {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.download-card-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px;
-  background: #f9fafb;
-  border-radius: 8px;
+  gap: 12px;
+}
+
+.download-os-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.download-os-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.download-card-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.download-link {
+  background: #f5f5f5;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333333;
   text-decoration: none;
   transition: all 0.2s;
-  border: 1px solid transparent;
 }
 
-.download-card:hover {
-  background: white;
-  border-color: var(--color-primary);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+.download-link:hover {
+  background: #eee;
+  color: #ea4a35;
 }
 
-.download-platform {
+.download-or {
+  color: #999;
   font-size: 14px;
-  font-weight: 600;
-  color: #353b50;
 }
 
-.download-icon {
-  font-size: 18px;
-  color: var(--color-primary);
-}
-
-.download-card--docker {
-  grid-column: span 3;
-  justify-content: center;
-  gap: 12px;
-  background: #f0f8ff;
+.download-docker-cmd {
+  background: #f5f5f5;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 13px;
+  color: #333333;
 }
 
 /* Aidbox Promo Section */
-.fhirbase-aidbox-promo {
+.fhirbase-aidbox-promo-section {
   padding: 80px 0;
-  background: linear-gradient(135deg, #f4f8fb 0%, #e8f4ff 100%);
+  background: #ea4a35;
 }
 
-.promo-content {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 48px;
+.aidbox-promo-content {
+  display: flex;
   align-items: center;
-  max-width: 900px;
-  margin: 0 auto;
+  justify-content: space-between;
+  gap: 48px;
 }
 
-.promo-text h2 {
-  font-size: 28px;
+.aidbox-promo-text {
+  max-width: 600px;
+}
+
+.aidbox-promo-tag {
+  display: inline-block;
+  font-size: 16px;
   font-weight: 700;
-  color: #353b50;
+  color: #ffffff;
   margin-bottom: 16px;
 }
 
-.promo-text p {
+.aidbox-promo-text h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.aidbox-promo-text p {
   font-size: 16px;
-  line-height: 1.7;
-  color: #666;
+  line-height: 24px;
+  color: #ffffff;
   margin-bottom: 24px;
 }
 
-.promo-image img {
-  width: 150px;
+.aidbox-promo-text .btn-primary {
+  background: #ffffff;
+  color: #ea4a35;
+  border: 2px solid #ffffff;
+}
+
+.aidbox-promo-text .btn-primary:hover {
+  background: transparent;
+  color: #ffffff;
+}
+
+.aidbox-promo-logo img {
+  width: 200px;
   height: auto;
 }
 
-/* Resources Section */
-.fhirbase-resources {
-  padding: 80px 0;
-  background: white;
+/* Subscribe Section */
+.fhirbase-subscribe-section {
+  padding: 48px 0;
+  background: #ffffff;
 }
 
-.resources-grid {
+.subscribe-card {
+  background: #f4f8fb;
+  border-radius: 4px;
+  padding: 48px 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.subscribe-text h3 {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 36px;
+  color: #333333;
+  margin-bottom: 0;
+}
+
+.subscribe-text p {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 36px;
+  color: #333333;
+  margin: 0;
+}
+
+.subscribe-form {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.subscribe-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.subscribe-field label {
+  font-size: 14px;
+  color: #333333;
+}
+
+.subscribe-field input {
+  background: #ffffff;
+  border: 1px solid rgba(53, 59, 80, 0.1);
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  width: 180px;
+}
+
+.subscribe-field input:focus {
+  outline: none;
+  border-color: #ea4a35;
+}
+
+.subscribe-btn {
+  background: #ea4935;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 9px 15px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.subscribe-btn:hover {
+  background: #d94030;
+}
+
+/* What is Fhirbase Section */
+.fhirbase-what-is {
+  padding: 64px 0;
+  background: #ffffff;
+}
+
+.what-is-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.what-is-intro {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 24px;
+}
+
+.what-is-content p {
+  font-size: 16px;
+  line-height: 26px;
+  color: #333333;
+  margin-bottom: 16px;
+}
+
+.what-is-content a {
+  color: #ea4a35;
+  text-decoration: underline;
+}
+
+.history-title {
+  margin-top: 32px;
+}
+
+.fhirbase-list {
+  margin: 16px 0;
+  padding-left: 0;
+}
+
+.fhirbase-list li {
+  font-size: 16px;
+  line-height: 26px;
+  color: #333333;
+  margin-bottom: 8px;
+}
+
+/* Learn and Build Section */
+.fhirbase-learn-section {
+  padding: 64px 0;
+  background: #ffffff;
+}
+
+.learn-intro {
+  text-align: center;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.learn-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
+  margin-top: 40px;
 }
 
-.resource-card {
+.learn-card {
+  background: #fafafa;
+  border-radius: 10px;
   padding: 32px;
-  background: #f9fafb;
-  border-radius: 16px;
   text-decoration: none;
   transition: all 0.2s;
   display: flex;
   flex-direction: column;
 }
 
-.resource-card:hover {
-  background: white;
+.learn-card:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   transform: translateY(-4px);
 }
 
-.resource-icon {
-  width: 48px;
-  height: 48px;
-  margin-bottom: 20px;
+.learn-card-large {
+  grid-row: span 2;
 }
 
-.resource-icon img {
+.learn-card-image {
+  margin-bottom: 24px;
+}
+
+.learn-card-image img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
+  border-radius: 8px;
 }
 
-.resource-title {
+.learn-card h3 {
   font-size: 18px;
   font-weight: 700;
-  color: #353b50;
-  margin: 0 0 12px;
+  color: #333333;
+  margin-bottom: 12px;
 }
 
-.resource-desc {
+.learn-card p {
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 21px;
   color: #666;
-  margin: 0 0 16px;
-  flex-grow: 1;
+  margin: 0;
 }
 
-.resource-cta {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-primary);
+.learn-cards-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.learn-card-no-image {
+  justify-content: center;
 }
 
 /* Connectors Section */
-.fhirbase-connectors {
-  padding: 80px 0;
-  background: #f4f8fb;
+.fhirbase-connectors-section {
+  padding: 64px 0;
+  background: #ffffff;
 }
 
 .connectors-grid {
@@ -360,101 +693,269 @@
   justify-content: center;
   gap: 24px;
   flex-wrap: wrap;
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
-.connector-card {
+.connector-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
   padding: 24px 32px;
-  background: white;
-  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
   text-decoration: none;
   transition: all 0.2s;
-  min-width: 100px;
-  border: 1px solid #eee;
+  min-width: 120px;
 }
 
-.connector-card:hover {
-  border-color: var(--color-primary);
+.connector-item:hover {
+  border-color: #ea4a35;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transform: translateY(-2px);
 }
 
 .connector-icon {
-  width: 40px;
-  height: 40px;
-}
-
-.connector-icon img {
-  width: 100%;
-  height: 100%;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
 }
 
 .connector-name {
   font-size: 14px;
   font-weight: 600;
-  color: #353b50;
+  color: #333333;
+  text-decoration: underline;
 }
 
-/* Responsive */
+.request-link {
+  color: #ea4a35;
+  text-decoration: underline;
+}
+
+/* Final CTA Section */
+.fhirbase-final-cta {
+  padding: 120px 0;
+  background: #fafafa;
+  text-align: center;
+}
+
+.final-cta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.final-cta-logo {
+  height: 60px;
+  width: auto;
+}
+
+.final-cta-content p {
+  font-size: 18px;
+  color: #333333;
+  margin: 0;
+}
+
+.final-cta-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.final-cta-buttons .btn-primary {
+  background: #ea4a35;
+  color: #ffffff;
+  border: 2px solid #ea4a35;
+}
+
+.final-cta-buttons .btn-primary:hover {
+  background: #d94030;
+  border-color: #d94030;
+}
+
+.final-cta-buttons .btn-secondary {
+  background: transparent;
+  color: #ea4a35;
+  border: 2px solid #ea4a35;
+}
+
+.final-cta-buttons .btn-secondary:hover {
+  background: #ea4a35;
+  color: #ffffff;
+}
+
+/* Fhirbase Footer */
+.fhirbase-footer {
+  padding: 64px 0 100px;
+  background: #fafafa;
+}
+
+.fhirbase-footer-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.fhirbase-footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fhirbase-footer-link {
+  font-size: 14px;
+  color: #222222;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.fhirbase-footer-link:hover {
+  color: #ea4a35;
+}
+
+.fhirbase-footer-link.active {
+  text-decoration: underline;
+}
+
+.fhirbase-footer-contact {
+  color: #333333;
+}
+
+.fhirbase-footer-contact strong {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.fhirbase-footer-contact span {
+  font-size: 14px;
+}
+
+.fhirbase-footer-contact a {
+  color: #ea4a35;
+}
+
+.fhirbase-footer-logo {
+  display: flex;
+  justify-content: center;
+}
+
+.fhirbase-footer-logo img {
+  height: 40px;
+  width: auto;
+}
+
+/* Responsive Styles */
 @media (max-width: 1024px) {
-  .features-grid {
+  .fhirbase-features-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .downloads-grid {
+  .download-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .download-card--docker {
-    grid-column: span 2;
-  }
-
-  .resources-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .features-grid {
-    grid-template-columns: 1fr;
   }
 
   .quickstart-steps {
     grid-template-columns: 1fr;
   }
 
-  .downloads-grid {
+  .learn-cards {
     grid-template-columns: 1fr;
   }
 
-  .download-card--docker {
-    grid-column: span 1;
+  .learn-card-large {
+    grid-row: span 1;
   }
 
-  .promo-content {
+  .learn-cards-right {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .fhirbase-subnav-content {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .fhirbase-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .fhirbase-hero h1 {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .fhirbase-hero-desc {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .fhirbase-hero-buttons {
+    flex-direction: column;
+  }
+
+  .fhirbase-features-grid {
     grid-template-columns: 1fr;
+  }
+
+  .download-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aidbox-promo-content {
+    flex-direction: column;
     text-align: center;
   }
 
-  .promo-image {
+  .aidbox-promo-logo {
     order: -1;
   }
 
-  .resources-grid {
-    grid-template-columns: 1fr;
+  .subscribe-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 32px 24px;
+  }
+
+  .subscribe-form {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .subscribe-field {
+    width: 100%;
+  }
+
+  .subscribe-field input {
+    width: 100%;
+  }
+
+  .subscribe-btn {
+    width: 100%;
   }
 
   .connectors-grid {
     gap: 16px;
   }
 
-  .connector-card {
+  .connector-item {
     padding: 20px 24px;
+    min-width: 100px;
+  }
+
+  .final-cta-buttons {
+    flex-direction: column;
+  }
+
+  .fhirbase-footer-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 }

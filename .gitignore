@@ -5,6 +5,7 @@ node_modules
 out
 dist
 *.tgz
+public/styles/main.css
 
 # code coverage
 coverage
@@ -15,7 +16,11 @@ logs
 *.log
 .server.log
 .server.pid
+.css.log
+.css.pid
 .reload-trigger
+logs/*.log
+specs/
 report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 
 # dotenv environment variable files

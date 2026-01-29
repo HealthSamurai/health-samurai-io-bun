@@ -23,7 +23,7 @@ const features: Feature[] = [
     icon: "/assets/images/icons/database.svg",
     title: "FHIR Database",
     tags: ["PostgreSQL", "JSONB", "Indexes", "Custom resources", "SQL on FHIR"],
-    description: "Manage FHIR data with the power of PostgreSQL — fully under your control. Aidbox stores resources transparently as JSONB, enabling you to query, join, and aggregate by any element.",
+    description: "Manage FHIR data with the power of PostgreSQL — fully under your control. Aidbox stores resources transparently as JSONB, enabling you to query, join, and aggregate by any element, with full support for transactional operations, reporting, and seamless migrations.",
     href: "https://docs.aidbox.app/database",
   },
   {
@@ -77,30 +77,33 @@ const useCaseTabs = [
   { id: "ehr", label: "EHR" },
 ];
 
-const useCaseData: Record<string, { image: string; imageAlt: string; stories: Array<{ company: string; type?: string; description: string }> }> = {
+const useCaseData: Record<string, { image: string; imageAlt: string; stories: Array<{ company: string; type?: string; logo?: string; description: string }> }> = {
   cdr: {
-    image: "/assets/images/illustrations/cdr-diagram.svg",
+    image: "/assets/images/icons/cdr-diagram.svg",
     imageAlt: "FHIR Server for CDR",
     stories: [
       {
         company: "Innovaccer",
         type: "Healthcare Data Platform",
+        logo: "/assets/images/logos/clients/innovaccer.svg",
         description: "Innovaccer embeds Health Samurai's Aidbox FHIR engine into its Best-in-KLAS data platform, harmonizing EHR data from 1,800+ hospitals to boost interoperability and coordinated care.",
       },
       {
         company: "Sonic Healthcare USA",
         type: "Laboratories",
-        description: "Sonic Healthcare USA partners with Health Samurai to deploy Aidbox FHIR as a centralized Master Patient Index, ensuring precise identity matching, seamless data sharing, and a future-proof infrastructure.",
+        logo: "/assets/images/case-studies/sonic-healthcare.svg",
+        description: "Sonic Healthcare USA partners with Health Samurai to deploy Aidbox FHIR as a centralized Master Patient Index, ensuring precise identity matching, seamless data sharing, and a future-proof infrastructure across its nationwide lab network.",
       },
     ],
   },
   cds: {
-    image: "/assets/images/illustrations/cds-diagram.png",
+    image: "/assets/images/icons/cds-diagram.svg",
     imageAlt: "FHIR Server for CDS",
     stories: [
       {
         company: "Prenosis",
         type: "AI Diagnostic",
+        logo: "/assets/images/logos/clients/prenosis.png",
         description: "Aidbox FHIR backend powers Immunix™, the first FDA-cleared AI/ML tool for sepsis prediction, enabling real-time data processing, and seamless integration with Epic EHR.",
       },
       {
@@ -110,25 +113,28 @@ const useCaseData: Record<string, { image: string; imageAlt: string; stories: Ar
     ],
   },
   portal: {
-    image: "/assets/images/illustrations/portal-diagram.png",
+    image: "/assets/images/icons/phr-diagram.svg",
     imageAlt: "FHIR Server for PHR and Portals",
     stories: [
       {
         company: "Patients Know Best",
+        logo: "/assets/images/logos/clients/patients-know-best.webp",
         description: "Patients Know Best adopts Aidbox FHIR and Form Builder, enhancing its 17 million-record PHR platform and UK interoperability.",
       },
     ],
   },
   ehr: {
-    image: "/assets/images/illustrations/ehr-diagram.png",
+    image: "/assets/images/icons/ehr-diagram.svg",
     imageAlt: "FHIR Server for EHR",
     stories: [
       {
         company: "Firenote",
+        logo: "/assets/images/logos/clients/firenote.png",
         description: "Firenote builds its hospice EMR on Aidbox FHIR, launching twice as fast with a two-engineer team and now powering clinical charting, care plans, e-Rx, scheduling, and billing for 100+ clients.",
       },
       {
         company: "BestNotes",
+        logo: "/assets/images/logos/clients/bestnotes.webp",
         description: "Aidbox's multi-tenant FHIR engine powers BestNotes' behavioral-health EHR, modernizing it into a cloud-native SaaS with custom templates, full regulatory compliance, and automated workflows.",
       },
     ],
@@ -137,21 +143,21 @@ const useCaseData: Record<string, { image: string; imageAlt: string; stories: Ar
 
 const sampleProjects = [
   {
-    icon: "/assets/images/icons/projects/integration-pipeline.svg",
+    icon: "/assets/images/icons/database.svg",
     title: "Integration Pipeline",
     description: "Python framework for integrating Aidbox with external systems.",
     tag: "CDRs & Data Platforms",
     github: "https://github.com/Aidbox/integration-pipeline/tree/main",
   },
   {
-    icon: "/assets/images/icons/projects/fhir-analytics.svg",
+    icon: "/assets/images/icons/api.svg",
     title: "FHIR Analytics",
     description: "FHIR data analytics in Aidbox using SQL-on-FHIR.",
     tag: "Data Analytics",
     github: "https://github.com/Aidbox/examples/tree/main/aidbox-integrations/fhir-analytics",
   },
   {
-    icon: "/assets/images/icons/projects/emr.svg",
+    icon: "/assets/images/icons/ui.svg",
     title: "Open-source EMR",
     description: "FHIR-based EMR demo app built with Aidbox.",
     tag: "EMR & Clinical Apps",
@@ -298,8 +304,15 @@ function UseCasePanelContent({ data }: { data: typeof useCaseData[string] }): st
       <div className="use-case-stories">
         {data.stories.map((story) => (
           <div className="use-case-story">
-            <span className="story-company">{story.company}</span>
-            {story.type && <span className="story-type">{story.type}</span>}
+            <div className="story-header">
+              <div className="story-info">
+                <span className="story-company">{story.company}</span>
+                {story.type && <span className="story-type">{story.type}</span>}
+              </div>
+              {story.logo && (
+                <img src={story.logo} alt={story.company} className="story-logo" />
+              )}
+            </div>
             <p>{story.description}</p>
           </div>
         ))}
@@ -320,6 +333,22 @@ export default function FhirServerPage(): string {
         video="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19%2F6825c9b1aa9dc8fada2e3a28_v2%20creator%20720p60%20placebo%2019-transcode.mp4"
         variant="product"
       />
+
+      {/* Client Logos Bar */}
+      <section className="client-logos-bar">
+        <div className="container">
+          <div className="client-logos">
+            <img src="/assets/images/logos/clients/client-1.png" alt="Sandata" />
+            <img src="/assets/images/logos/clients/firenote.png" alt="Firenote" />
+            <img src="/assets/images/logos/clients/deep6-ai.png" alt="Deep6 AI" />
+            <img src="/assets/images/logos/clients/solutio.webp" alt="Solutio" />
+            <img src="/assets/images/logos/clients/client-6.png" alt="BodyLogicMD" />
+            <img src="/assets/images/logos/clients/novellia.png" alt="Novellia" />
+            <img src="/assets/images/logos/clients/healthie.webp" alt="Healthie" />
+            <img src="/assets/images/logos/clients/lucet.webp" alt="Lucet" />
+          </div>
+        </div>
+      </section>
 
       {/* What is Aidbox Section */}
       <section className="aidbox-features-section">
@@ -375,20 +404,23 @@ export default function FhirServerPage(): string {
           <div className="deploy-content">
             <div className="deploy-options">
               <div className="deploy-option">
+                <img src="/assets/images/icons/cloud-lock.svg" alt="Managed Cloud" className="deploy-option-icon" />
                 <h4>Managed Cloud</h4>
                 <p>We host and maintain everything for you</p>
               </div>
               <div className="deploy-option">
+                <img src="/assets/images/icons/cloud-platform.svg" alt="Cloud Platform" className="deploy-option-icon" />
                 <h4>Cloud Platform</h4>
                 <p>Deploy on AWS, Azure, GCP, or Alibaba</p>
               </div>
               <div className="deploy-option">
+                <img src="/assets/images/icons/server-box.svg" alt="On-Premise" className="deploy-option-icon" />
                 <h4>On-Premise</h4>
                 <p>Install in your own data center with full control</p>
               </div>
             </div>
             <div className="deploy-image">
-              <img src="/assets/images/illustrations/deploy-diagram.svg" alt="Deploy Aidbox" />
+              <img src="/assets/images/hero/deploy-diagram.svg" alt="Deploy Aidbox" />
             </div>
           </div>
         </div>
@@ -462,8 +494,141 @@ export default function FhirServerPage(): string {
           <div className="community-content">
             <h2>Join the Aidbox Community</h2>
             <p>Connect with FHIR engineers, product leaders, and digital health innovators building the future of healthcare.</p>
+            <div className="community-avatars">
+              <img src="/assets/images/hero/community-avatars.png" alt="Aidbox Community Members" />
+            </div>
             <p className="community-benefits">Ask questions, share breakthroughs, and exchange best practices. Get real-time help from the Aidbox team and fellow builders.</p>
-            <Button href="https://connect.health-samurai.io/" variant="primary">Join the community</Button>
+            <Button href="https://connect.health-samurai.io/" variant="primary">Join the Community</Button>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Accordion Section */}
+      <section className="faq-section">
+        <div className="container">
+          <h2 className="faq-title">Aidbox FHIR Platform: Unified FHIR Server and Database for high-performance healthcare applications</h2>
+          <div className="faq-accordion" data-signals="{faqOpen: {intro: true, different: false, performance: false, conclusion: false}}">
+            <div className="faq-item">
+              <button
+                className="faq-trigger"
+                data-on-click="$faqOpen.intro = !$faqOpen.intro"
+                data-class="{'faq-trigger--active': $faqOpen.intro}"
+              >
+                <span>Introduction to Aidbox</span>
+                <span className="faq-icon" data-class="{'faq-icon--open': $faqOpen.intro}">+</span>
+              </button>
+              <div className="faq-content" data-show="$faqOpen.intro">
+                <p>
+                  Aidbox is a <strong>FHIR-first platform</strong> combining a FHIR server and a purpose-built FHIR database under one system. Built on PostgreSQL with custom extensions, Aidbox delivers:
+                </p>
+                <ul>
+                  <li><strong>High-throughput ingestion</strong> (up to 20,000+ resources/second)</li>
+                  <li><strong>Low-latency search</strong> across millions of FHIR records</li>
+                  <li><strong>Fast data export</strong> for analytics, migrations, or external system integrations</li>
+                  <li><strong>Full control over indexing and data structure</strong>, letting you tailor performance optimizations and workflows to your exact needs</li>
+                </ul>
+                <p>
+                  Unlike many solutions that abstract away the backend, Aidbox lets you <strong>access and manipulate your data directly</strong> — you can build custom business logic, implement advanced workflows, or tie into existing systems on your terms.
+                </p>
+                <p>
+                  <strong>Health Samurai</strong> has implemented and supported <strong>dozens of high-load systems</strong> in production — spanning hospitals, labs, startups, healthcare software solution providers, and major payers — confirming the platform's performance and reliability.
+                </p>
+              </div>
+            </div>
+
+            <div className="faq-item">
+              <button
+                className="faq-trigger"
+                data-on-click="$faqOpen.different = !$faqOpen.different"
+                data-class="{'faq-trigger--active': $faqOpen.different}"
+              >
+                <span>What makes Aidbox different</span>
+                <span className="faq-icon" data-class="{'faq-icon--open': $faqOpen.different}">+</span>
+              </button>
+              <div className="faq-content" data-show="$faqOpen.different" style="display: none">
+                <p><strong>1. FHIR-Native Database</strong></p>
+                <p>Aidbox doesn't just provide a FHIR API; it includes a <strong>FHIR-optimized database</strong> built on PostgreSQL with custom extensions. By combining the API and database in one platform, Aidbox ensures <strong>low latency</strong>, <strong>fewer moving parts</strong>, and <strong>less overhead</strong> than solutions that rely on multiple external services.</p>
+
+                <p><strong>2. High-Performance Data Processing</strong></p>
+                <p>Aidbox easily handles <strong>thousands of operations per second</strong>, even when working with millions of resources. This includes fast reads and writes, so you can load patient data, run analytics, or power clinical apps without delay.</p>
+
+                <p><strong>3. Flexible Infrastructure</strong></p>
+                <p>Because Aidbox FHIR server is distributed as a <strong>lightweight Docker container</strong> that only needs PostgreSQL, you avoid the hassle of complex multi-service setups. It's deployable on-premises, in the cloud, or in hybrid environments, all while reducing maintenance and potential points of failure.</p>
+
+                <p><strong>4. Customizable Indexing & Data Model</strong></p>
+                <p>Aidbox's PostgreSQL foundation means you can define your own indexing strategies, modify search behavior, and shape the data model to match your specific project needs, rather than working around a one-size-fits-all approach.</p>
+              </div>
+            </div>
+
+            <div className="faq-item">
+              <button
+                className="faq-trigger"
+                data-on-click="$faqOpen.performance = !$faqOpen.performance"
+                data-class="{'faq-trigger--active': $faqOpen.performance}"
+              >
+                <span>Performance Highlights</span>
+                <span className="faq-icon" data-class="{'faq-icon--open': $faqOpen.performance}">+</span>
+              </button>
+              <div className="faq-content" data-show="$faqOpen.performance" style="display: none">
+                <p><strong>1. High-volume data ingestion</strong></p>
+                <p>We tested Aidbox with <strong>23 million</strong> and then <strong>100 million</strong> resources via the /fhir/$import endpoint.</p>
+                <ul>
+                  <li><strong>Single Import (23M Resources)</strong>: ~4.3 GB zipped (~17.9 GB unzipped), completed in ~65 minutes, ~6,000 resources/second</li>
+                  <li><strong>Concurrent Import (100M Resources)</strong>: 4 concurrent requests, 10 parallel workers each, ~180 GB in the database post-import, <strong>~20,000+ resources/second</strong> peak throughput</li>
+                </ul>
+
+                <p><strong>2. Fast bulk export</strong></p>
+                <p>When exporting <strong>100 million</strong> resources via /fhir/$export: <strong>202.8 GB</strong> of data, <strong>1 hour 47 minutes</strong> total time, <strong>15,500 resources/second</strong> (32.3 MB/s)</p>
+
+                <p><strong>3. High-concurrency CRUD operations</strong></p>
+                <p>Even under <strong>300 parallel threads</strong>, Aidbox achieves:</p>
+                <ul>
+                  <li><strong>Create</strong>: Up to <strong>2,800 RPS</strong> (Observations)</li>
+                  <li><strong>Read</strong>: Up to <strong>3,500 RPS</strong> (Patients)</li>
+                  <li><strong>Update</strong>: <strong>~1,900 RPS</strong> (Encounters)</li>
+                  <li><strong>Delete</strong>: Over <strong>3,900 RPS</strong> (ExplanationOfBenefit)</li>
+                </ul>
+
+                <p><strong>4. Efficient transactions for mid-sized loads</strong></p>
+                <p>Testing FHIR transactions (bundles of 10, 50, 100, 300 resources) showed: <strong>~3,500 resources/second</strong> throughput with optimal concurrency at <strong>1–2 threads per CPU core</strong></p>
+
+                <p><strong>5. Optimized search with indexing at scale</strong></p>
+                <p>Search performance was validated across resources like Patient, Encounter, Claim, and Observation, with up to <strong>5 million</strong> records:</p>
+                <ul>
+                  <li><strong>Patient Search</strong>: ~2,081 RPS (search by name & sort by family)</li>
+                  <li><strong>Encounter Search</strong>: ~3,125 RPS (by patient & date)</li>
+                  <li><strong>Observation Search</strong>: ~2,042 RPS (by patient & date)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="faq-item">
+              <button
+                className="faq-trigger"
+                data-on-click="$faqOpen.conclusion = !$faqOpen.conclusion"
+                data-class="{'faq-trigger--active': $faqOpen.conclusion}"
+              >
+                <span>Conclusion</span>
+                <span className="faq-icon" data-class="{'faq-icon--open': $faqOpen.conclusion}">+</span>
+              </button>
+              <div className="faq-content" data-show="$faqOpen.conclusion" style="display: none">
+                <p><strong>Aidbox FHIR server</strong> offers <strong>speed, control, and reliability</strong> in one streamlined package. The result is a solution that can scale from tens of millions to <strong>billions of FHIR resources</strong>, delivering:</p>
+
+                <p><strong>Outstanding performance on minimal hardware</strong></p>
+                <p>Even an 8 vCPU, 8 GB RAM setup can yield results <strong>10x faster</strong> than popular open-source FHIR servers.</p>
+
+                <p><strong>1. Streamlined operations</strong></p>
+                <p>Aidbox's containerized distribution requires only PostgreSQL, minimizing deployment and maintenance.</p>
+
+                <p><strong>2. Reliability under heavy load</strong></p>
+                <p>High concurrency and large transaction bundles don't hamper Aidbox's responsiveness or stability.</p>
+
+                <p><strong>3. Scalable Bulk Import & Export</strong></p>
+                <p>Process large FHIR datasets—from millions to billions—end-to-end, quickly and without added complexity.</p>
+
+                <p>If you're looking for a powerful, FHIR-compliant platform that simplifies infrastructure, accelerates performance, and keeps data fully accessible, Aidbox is ready to meet your needs.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

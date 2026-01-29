@@ -174,6 +174,12 @@ Bun.serve({
       const page = await import(match.filePath);
       const metadata = page.metadata || {};
       const content = page.default(match.params);
+
+      // If page has fullPage: true, render without Layout wrapper
+      if (metadata.fullPage) {
+        return html(`<!DOCTYPE html>${content}`);
+      }
+
       return html(
         Layout({
           title: metadata.title || "Health Samurai",
