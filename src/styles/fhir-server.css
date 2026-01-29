@@ -2,9 +2,8 @@
 
 /* Client Logos Bar - Marquee animation */
 .client-logos-bar {
-  padding: 40px 0;
+  padding: 0 0 108px;
   background: white;
-  border-bottom: 1px solid #f0f0f0;
   overflow: hidden;
 }
 
@@ -48,7 +47,7 @@
 
 /* What is Aidbox Section - Matched to original what-is__card */
 .aidbox-features-section {
-  padding: 80px 0;
+  padding: 0;
   background: white;
 }
 
@@ -173,8 +172,8 @@
 
 /* Use Cases Section */
 .use-cases-section {
-  padding: 80px 0;
-  background: #f4f8fb;
+  padding: 108px 0 54px;
+  background: transparent;
 }
 
 .use-cases-tabs {
@@ -297,7 +296,7 @@
 
 /* Sample Projects Section */
 .sample-projects-section {
-  padding: 80px 0;
+  padding: 0;
   background: white;
 }
 
@@ -379,7 +378,7 @@
 
 /* Deploy Section */
 .deploy-section {
-  padding: 80px 0;
+  padding: 130px 0 0;
   background: white;
 }
 
@@ -448,7 +447,7 @@
 
 /* Pricing Section */
 .pricing-section {
-  padding: 80px 0;
+  padding: 54px 0;
   background: linear-gradient(180deg, #f4f8fb 0%, #f9fbfc 100%);
   position: relative;
 }
@@ -544,7 +543,7 @@
 .pricing-card-header h3,
 .pricing-card-name {
   font-size: 26px;
-  font-weight: 400;
+  font-weight: 700;
   line-height: 32px;
   letter-spacing: -0.52px;
   color: rgb(53, 59, 80);
@@ -752,8 +751,8 @@
 
 /* Add-ons Section */
 .addons-section {
-  padding: 80px 0;
-  background: #f8f9fb;
+  padding: 54px 0;
+  background: #F9FAFB;
 }
 
 .addons-header {
@@ -852,8 +851,8 @@
 
 /* Testimonials Section */
 .testimonials-section {
-  padding: 80px 0;
-  background: white;
+  padding: 54px 0;
+  background: #F9FAFB;
 }
 
 .testimonials-carousel {
@@ -956,8 +955,8 @@
 
 /* Community Section */
 .community-section {
-  padding: 80px 0;
-  background: white;
+  padding: 54px 0;
+  background: #F9FAFB;
 }
 
 .community-content {
@@ -996,7 +995,7 @@
 
 /* FAQ Section */
 .faq-section {
-  padding: 80px 0;
+  padding: 54px 0;
   background: transparent;
 }
 

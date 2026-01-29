@@ -1,8 +1,8 @@
-# Task: Analyze differences between original and clone
+# Task: Analyze EVERY difference between original and clone
 
 Compare the ORIGINAL page at https://health-samurai.io{{PAGE_PATH}} against the CLONE at http://localhost:4444{{PAGE_PATH}}.
 
-**Goal:** Create an EXHAUSTIVE list of every difference. Be paranoid - if something looks even slightly different, document it.
+**Goal:** Find EVERY SINGLE DIFFERENCE. No classification. Every pixel matters. Report ALL differences found.
 
 ## Server Setup
 
@@ -32,82 +32,150 @@ mkdir -p src/assets/images/{{PAGE_SLUG}}
 - `specs/{{PAGE_SLUG}}.md` - Difference report + full spec
 - `specs/{{PAGE_SLUG}}/original/full.png` - Original screenshot
 - `specs/{{PAGE_SLUG}}/clone/full.png` - Clone screenshot
-- `specs/{{PAGE_SLUG}}/original/sections/*.png` - Original sections
-- `specs/{{PAGE_SLUG}}/clone/sections/*.png` - Clone sections
 
 ## Step 1: Screenshot Both Pages
 
-Using Playwright, capture BOTH pages side by side:
+Using Playwright, capture BOTH pages:
 
 ### Original (https://health-samurai.io{{PAGE_PATH}})
-- Full page → `specs/{{PAGE_SLUG}}/original/full.png`
+- Full page screenshot → `specs/{{PAGE_SLUG}}/original/full.png`
 - Mobile (375px) → `specs/{{PAGE_SLUG}}/original/mobile.png`
-- Each section → `specs/{{PAGE_SLUG}}/original/sections/{name}.png`
 
 ### Clone (http://localhost:4444{{PAGE_PATH}})
-- Full page → `specs/{{PAGE_SLUG}}/clone/full.png`
+- Full page screenshot → `specs/{{PAGE_SLUG}}/clone/full.png`
 - Mobile (375px) → `specs/{{PAGE_SLUG}}/clone/mobile.png`
-- Each section → `specs/{{PAGE_SLUG}}/clone/sections/{name}.png`
 
-## Step 2: Extract Original Design Values
+## Step 2: Extract and Compare EVERYTHING
 
-From the ORIGINAL page, extract EXACT values:
+Go through the page section by section, element by element. For EACH element, extract computed styles from BOTH pages and compare.
 
-### Colors (use browser computed styles)
-- Every background color (sections, cards, buttons)
-- Every text color (h1, h2, h3, p, links, muted)
-- Button colors (normal, hover)
-- Border colors
+**Use Playwright browser_evaluate to extract styles:**
+```javascript
+// Extract all typography and spacing for an element
+const el = document.querySelector('h1'); // or any selector
+const styles = window.getComputedStyle(el);
+return {
+  // Typography
+  fontFamily: styles.fontFamily,
+  fontSize: styles.fontSize,
+  fontWeight: styles.fontWeight,
+  fontStyle: styles.fontStyle,
+  lineHeight: styles.lineHeight,
+  letterSpacing: styles.letterSpacing,
+  textTransform: styles.textTransform,
+  color: styles.color,
+  // Spacing
+  marginTop: styles.marginTop,
+  marginBottom: styles.marginBottom,
+  marginLeft: styles.marginLeft,
+  marginRight: styles.marginRight,
+  paddingTop: styles.paddingTop,
+  paddingBottom: styles.paddingBottom,
+  paddingLeft: styles.paddingLeft,
+  paddingRight: styles.paddingRight,
+  // Layout
+  maxWidth: styles.maxWidth,
+  width: styles.width,
+  // Visual
+  backgroundColor: styles.backgroundColor,
+  borderRadius: styles.borderRadius,
+  boxShadow: styles.boxShadow,
+};
+```
 
-### Typography
-- Font family
-- Every heading size (h1, h2, h3, h4)
-- Body text size
-- Font weights
-- Line heights
+Run this on BOTH original and clone, then compare the values!
 
-### Spacing (measure in pixels)
-- Section padding (top/bottom)
-- Container max-width and padding
-- Card padding
-- Grid gaps
-- Margins between elements
+### For EVERY Section:
+1. Does it exist in clone?
+2. Background color - extract exact hex from both, compare
+3. Padding-top - exact px (vertical spacing inside section)
+4. Padding-bottom - exact px
+5. Padding-left - exact px
+6. Padding-right - exact px
+7. Margin-top - exact px (spacing BETWEEN sections)
+8. Margin-bottom - exact px (spacing BETWEEN sections)
+9. Border-top/border-bottom - if any dividers
 
-### Layout
-- Number of columns
-- Flex directions
-- Alignments
+### For EVERY Container/Wrapper inside sections:
+1. Max-width - exact px (e.g., 1200px, 1140px, 960px)
+2. Margin-left - should be "auto" for centering
+3. Margin-right - should be "auto" for centering
+4. Padding-left - exact px (content inset from edge)
+5. Padding-right - exact px
 
-## Step 3: Compare Element by Element
+### For EVERY Heading (h1, h2, h3, h4, h5, h6):
+1. Font-family - exact font name (e.g., "Inter", "Roboto", system-ui)
+2. Font-size - exact px
+3. Font-weight - exact number (100-900)
+4. Font-style - normal/italic
+5. Line-height - exact value (px or unitless)
+6. Letter-spacing - exact value (px or em)
+7. Text-transform - none/uppercase/lowercase/capitalize
+8. Color - exact hex
+9. Margin-top - exact px
+10. Margin-bottom - exact px
+11. Padding - if any
+12. Text content matches exactly?
 
-Go through EVERY element and compare:
+### For EVERY Paragraph and Text:
+1. Font-family - exact font name
+2. Font-size - exact px
+3. Font-weight - exact number
+4. Font-style - normal/italic
+5. Line-height - exact value
+6. Letter-spacing - exact value
+7. Color - exact hex
+8. Margin-top and margin-bottom
+9. Text-align - left/center/right/justify
 
-### For each section:
-1. Does it exist in clone? (Y/N)
-2. Background color match? (exact hex)
-3. Padding match? (exact px)
-4. Content complete?
-5. Layout correct?
+### For Body/Root Element:
+1. Font-family - the default font stack
+2. Font-size - base font size
+3. Line-height - base line height
+4. Color - default text color
 
-### For each text element:
-1. Text content matches exactly?
-2. Font size matches?
-3. Font weight matches?
-4. Color matches?
-5. Alignment matches?
+### For EVERY Button/Link:
+1. Font-family
+2. Font-size - exact px
+3. Font-weight - exact number
+4. Letter-spacing
+5. Text-transform - none/uppercase
+6. Background color - exact hex
+7. Text color - exact hex
+8. Padding (all 4 sides separately)
+9. Border - color, width, style
+10. Border-radius - exact px
+11. Hover states (background, color, border)
 
-### For each image:
+### For EVERY Card/Box:
+1. Background color
+2. Border (color, width, style)
+3. Border-radius
+4. Padding (all 4 sides separately)
+5. Box-shadow
+6. Gap between cards
+
+### For EVERY Grid/Flex Container:
+1. Display type
+2. Flex-direction
+3. Justify-content
+4. Align-items
+5. Gap
+6. Number of columns
+
+### For EVERY Image:
 1. Image exists in clone?
 2. Loaded from LOCAL path (not external URL)?
-3. Same dimensions?
-4. Same position?
+3. Width and height
+4. Object-fit
+5. Border-radius
 
-### For each interactive element:
+### For EVERY Interactive Element:
 1. Element exists?
-2. Behavior works?
+2. Behavior works identically?
 3. States styled correctly?
 
-## Step 4: Download Missing Images
+## Step 3: Download Missing Images
 
 For ANY image on original not in clone:
 
@@ -115,14 +183,11 @@ For ANY image on original not in clone:
 curl -o src/assets/images/{{PAGE_SLUG}}/descriptive-name.webp "https://original-url"
 ```
 
-Use descriptive names:
-- `hero-background.webp`
-- `feature-icon-api.svg`
-- `team-photo-john.jpg`
+Use descriptive names like `hero-background.webp`, `feature-icon-api.svg`, etc.
 
-## Step 5: Write specs/{{PAGE_SLUG}}.md
+## Step 4: Write specs/{{PAGE_SLUG}}.md
 
-Create comprehensive spec with ALL differences:
+Create the spec with ALL differences listed. NO CLASSIFICATION - just list every difference found.
 
 ```markdown
 # {{PAGE_NAME}} - Difference Report
@@ -140,139 +205,107 @@ Create comprehensive spec with ALL differences:
 
 ## Summary
 
-- ❌ Critical issues: {count}
-- ⚠️ Visual differences: {count}
-- ✅ Matching: {count}
+Total differences found: {count}
 
-## Colors (from original)
+## All Differences
 
-| Element | Original | Clone | Status |
-|---------|----------|-------|--------|
-| Body background | #ffffff | #ffffff | ✅ |
-| Hero background | #f5f7fa | #ffffff | ❌ DIFFERENT |
-| Primary button | #c9362b | #c9362b | ✅ |
-| H1 text | #1a1a1a | #1a1a1a | ✅ |
-| Body text | #666666 | #333333 | ⚠️ DIFFERENT |
+List EVERY difference found, one by one:
 
-## Typography (from original)
+### Section 1: [Name]
 
-| Element | Original | Clone | Status |
-|---------|----------|-------|--------|
-| H1 size | 64px | 48px | ❌ DIFFERENT |
-| H1 weight | 900 | 700 | ❌ DIFFERENT |
-| Body size | 16px | 16px | ✅ |
+| Property | Original | Clone | Difference |
+|----------|----------|-------|------------|
+| background | #f5f7fa | #ffffff | YES |
+| padding-top | 80px | 60px | YES (20px) |
+| padding-bottom | 80px | 60px | YES (20px) |
+| padding-left | 0px | 0px | NO |
+| padding-right | 0px | 0px | NO |
 
-## Spacing (from original)
+#### Container in Section 1
 
-| Element | Original | Clone | Status |
-|---------|----------|-------|--------|
-| Hero padding | 80px 0 | 60px 0 | ⚠️ DIFFERENT |
-| Container max | 1200px | 1200px | ✅ |
-| Card padding | 40px | 32px | ⚠️ DIFFERENT |
+| Property | Original | Clone | Difference |
+|----------|----------|-------|------------|
+| max-width | 1200px | 1140px | YES |
+| margin-left | auto | auto | NO |
+| margin-right | auto | auto | NO |
+| padding-left | 32px | 16px | YES |
+| padding-right | 32px | 16px | YES |
 
-## Sections
+#### H1 in Section 1
 
-### 1. Hero
+| Property | Original | Clone | Difference |
+|----------|----------|-------|------------|
+| font-family | Inter | system-ui | YES |
+| font-size | 64px | 48px | YES (16px) |
+| font-weight | 900 | 700 | YES |
+| line-height | 1.2 | 1.5 | YES |
+| letter-spacing | -0.02em | normal | YES |
+| color | #1a1a1a | #333333 | YES |
+| margin-bottom | 24px | 16px | YES (8px) |
 
-**Status:** ⚠️ NEEDS FIXES
+#### Paragraph in Section 1
 
-| Element | Original | Clone | Fix Needed |
-|---------|----------|-------|------------|
-| Background | #f5f7fa | #ffffff | Change to bg-[#f5f7fa] |
-| H1 text | "Let's implement..." | "Let's implement..." | ✅ |
-| H1 size | 64px | 48px | Change to text-[64px] |
-| CTA button | Present | Present | ✅ |
-| Hero image | hero-dashboard.webp | MISSING | Add image |
+| Property | Original | Clone | Difference |
+|----------|----------|-------|------------|
+| font-family | Inter | system-ui | YES |
+| font-size | 18px | 16px | YES (2px) |
+| font-weight | 400 | 400 | NO |
+| line-height | 1.6 | 1.5 | YES |
+| color | #666666 | #333333 | YES |
+| margin-bottom | 32px | 24px | YES (8px) |
 
-### 2. Features
+#### Button in Section 1
 
-**Status:** ❌ MISSING
+| Property | Original | Clone | Difference |
+|----------|----------|-------|------------|
+| background | #c9362b | #c9362b | NO |
+| padding | 16px 32px | 12px 24px | YES |
+| border-radius | 8px | 4px | YES |
 
-This entire section is missing from clone. Create with:
-- Background: #ffffff
-- 3-column grid
-- (full details...)
+(Continue for EVERY element in EVERY section...)
 
-### 3. Testimonials
+### Section 2: [Name]
+(Same detailed comparison...)
 
-**Status:** ✅ MATCHES
-
-(Continue for ALL sections...)
+### Section 3: [Name]
+(Same detailed comparison...)
 
 ## Images
 
 | Image | Original URL | Local Path | Status |
 |-------|--------------|------------|--------|
-| Hero dashboard | https://...webp | src/assets/images/{{PAGE_SLUG}}/hero-dashboard.webp | ✅ Downloaded |
-| Feature icon 1 | https://...svg | src/assets/images/{{PAGE_SLUG}}/feature-api.svg | ❌ MISSING |
-| Logo | https://...png | EXTERNAL URL IN CLONE | ❌ FIX |
+| Hero image | https://... | src/assets/images/{{PAGE_SLUG}}/hero.webp | Downloaded |
+| Logo 1 | https://... | MISSING | Need to download |
 
 ## Interactive Elements
 
-### Tabs (Features section)
-
-**Original behavior:**
-- 4 tabs: API, Database, Security, SDK
-- Click switches content without reload
-- Active tab has border-bottom
-
-**Clone status:** ❌ NOT WORKING
-- Tabs exist but clicking does nothing
-- Missing data-signals attribute
-
-**Fix:** Add Datastar attributes...
-
-### Accordion (FAQ)
-
-**Original behavior:**
-- 6 questions
-- Click expands/collapses
-- +/- icon toggles
-
-**Clone status:** ❌ MISSING
-- FAQ section doesn't exist
+### [Element Name]
+- Original behavior: [describe]
+- Clone behavior: [describe]
+- Difference: [YES/NO and what]
 
 ## Exact Fixes Required
 
-### Critical (must fix):
-1. Hero background: add `bg-[#f5f7fa]`
-2. H1 size: change to `text-[64px] font-black`
-3. Add missing Features section
-4. Fix tabs: add `data-signals="{activeTab: 'tab1'}"`
-5. Download and add missing images
+For EACH difference found, provide the exact fix:
 
-### Visual (should fix):
-1. Hero padding: change to `py-[80px]`
-2. Card padding: change to `p-[40px]`
-3. Body text color: change to `text-[#666666]`
+1. Section 1 background:
+   - Current: `className="..."`
+   - Fix: Add `bg-[#f5f7fa]`
 
-## Full Original Spec
+2. Section 1 padding-top:
+   - Current: `py-16` (64px)
+   - Fix: Change to `pt-[80px]`
 
-(Include complete spec for Creator to implement/fix)
+3. H1 font-size:
+   - Current: `text-4xl` (36px)
+   - Fix: Change to `text-[64px]`
 
-### Colors
-- Primary: #c9362b
-- Text: #1a1a1a
-- Text Light: #666666
-...
+4. H1 font-weight:
+   - Current: `font-bold` (700)
+   - Fix: Change to `font-black` (900)
 
-### Typography
-- H1: 64px, weight 900, line-height 1.2
-...
-
-### All Sections with Content
-(Complete content for each section)
+(List fix for EVERY difference...)
 ```
-
-## Quality Checklist
-
-- [ ] Screenshots taken of BOTH original and clone
-- [ ] Every color extracted and compared
-- [ ] Every spacing measured and compared
-- [ ] Every section documented with status
-- [ ] All missing images downloaded
-- [ ] Interactive elements tested on both
-- [ ] Exact fixes listed with code snippets
 
 ## Response Format
 
@@ -281,8 +314,9 @@ DONE
 
 Spec: specs/{{PAGE_SLUG}}.md
 Page status: [EXISTS/MISSING]
-Critical issues: {count}
-Visual differences: {count}
+Total differences found: {count}
 Images downloaded: {count}
-Interactive elements: {count} found, {count} working
+Interactive elements checked: {count}
 ```
+
+If differences found, the number must be > 0. The Creator will fix them and we'll run again.

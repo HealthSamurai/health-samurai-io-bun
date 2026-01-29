@@ -19,60 +19,42 @@ function getVersion(): VersionInfo {
 export function Footer(): string {
   const version = getVersion();
   return (
-    <footer className="footer">
-      <div className="footer-inner">
-        {/* Certification badges at top */}
-        <div className="footer-certifications">
-          <img src="/assets/images/certifications/hipaa.png" alt="HIPAA Compliant" />
-          <a href="https://www.health-samurai.io/news/health-samurai-achieves-iso-27001-2022-certification">
-            <img src="/assets/images/certifications/iso-27001.svg" alt="ISO 27001:2022 Certified" />
-          </a>
-        </div>
-
-        {/* Main columns */}
-        <div className="footer-columns">
-          {/* Column 1: Company */}
-          <div className="footer-column">
-            <a href="/" className="footer-brand-link">Health Samurai</a>
+    <footer className="bg-[#f4f8fb] px-8 pb-5 text-[rgb(53,59,80)]">
+      <div className="mx-auto max-w-[1300px]">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1.2fr] lg:gap-12">
+          <div className="flex flex-col gap-3">
+            <a href="/" className="inline-block text-[15px] font-medium text-[#4a4a4a] border-b-2 border-primary pb-0.5">Health Samurai</a>
             {footerLinks.company.map((link) => (
-              <a href={link.href} className="footer-link">{link.label}</a>
+              <a href={link.href} className="text-[15px] text-[#4a4a4a] hover:text-primary hover:underline">{link.label}</a>
             ))}
           </div>
 
-          {/* Column 2: Products */}
-          <div className="footer-column">
+          <div className="flex flex-col gap-3">
             {footerLinks.products.map((link) => (
-              <a href={link.href} className="footer-link">{link.label}</a>
+              <a href={link.href} className="text-[15px] text-[#4a4a4a] hover:text-primary hover:underline">{link.label}</a>
             ))}
           </div>
 
-          {/* Column 3: Legal */}
-          <div className="footer-column">
+          <div className="flex flex-col gap-3">
             {footerLinks.legal.map((link) => (
-              <a href={link.href} className="footer-link">{link.label}</a>
+              <a href={link.href} className="text-[15px] text-[#4a4a4a] hover:text-primary hover:underline">{link.label}</a>
             ))}
           </div>
 
-          {/* Column 4: Contact */}
-          <div className="footer-column footer-contact">
-            <div className="footer-contact-item">
+          <div className="flex flex-col gap-4 text-right text-[16px] text-[#333333] md:text-left lg:text-right">
+            <div>
               1891 N Gaffey St Ste O,<br />
               San Pedro, CA 90731
             </div>
-            <div className="footer-contact-item">
-              +1 (818) 731-1279
-            </div>
-            <div className="footer-contact-item">
-              hello@health-samurai.io
-            </div>
+            <div>+1 (818) 731-1279</div>
+            <div>hello@health-samurai.io</div>
           </div>
         </div>
 
-        {/* Footer watermark logo */}
-        <div className="footer-bottom">
-          <img src="/assets/images/logos/health-samurai-footer.svg" alt="Health Samurai" className="footer-watermark" />
+        <div className="mt-8 flex flex-col items-center gap-4">
+          <img src="/assets/images/logos/health-samurai-footer.svg" alt="Health Samurai" className="h-24 w-auto opacity-15" />
           {version && (
-            <div className="footer-version">
+            <div className="text-[12px] text-[#6b7280] font-mono">
               {version.branch && `${version.branch}/`}{version.commit} · {new Date(version.date).toLocaleDateString()}
             </div>
           )}

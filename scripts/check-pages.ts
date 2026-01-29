@@ -3,10 +3,9 @@
  * Page Cloning Pipeline
  *
  * For each page:
- * 1. Designer: Analyze original, create spec, download images
- * 2. Creator: Implement page from spec
- * 3. Validator: Check implementation against spec
- * 4. If FAIL: Loop back to Creator with issues (up to MAX_RETRIES)
+ * 1. Analyzer: Compare original vs clone, create diff spec
+ * 2. Creator: Fix issues from spec
+ * 3. Loop until Analyzer says SUCCESS or max 5 attempts
  */
 
 import pagesData from "../pages.json";
@@ -31,10 +30,9 @@ const runId = new Date().toISOString().replace(/[:.]/g, "-");
 const logFile = `${LOGS_DIR}/run-${runId}.log`;
 const logStream: string[] = [];
 
-// Load prompt templates
-const designerPromptTemplate = await Bun.file(import.meta.dir + "/../prompts/designer.md").text();
-const creatorPromptTemplate = await Bun.file(import.meta.dir + "/../prompts/creator.md").text();
-const validatorPromptTemplate = await Bun.file(import.meta.dir + "/../prompts/validator.md").text();
+// Prompt paths (loaded fresh on each iteration for hot-reload)
+const ANALYZER_PROMPT_PATH = import.meta.dir + "/../prompts/analyzer.md";
+const CREATOR_PROMPT_PATH = import.meta.dir + "/../prompts/creator.md";
 
 function log(message: string, alsoConsole = true) {
   const line = `[${timestamp()}] ${message}`;
@@ -111,67 +109,63 @@ async function runClaude(prompt: string, label: string): Promise<string> {
 }
 
 // =============================================================================
-// DESIGNER
+// ANALYZER
 // =============================================================================
 
-function buildDesignerPrompt(page: Page): string {
+async function buildAnalyzerPrompt(page: Page): Promise<string> {
+  // Reload template fresh (allows hot-reload of prompts)
+  const template = await Bun.file(ANALYZER_PROMPT_PATH).text();
   const slug = getSlug(page);
-  return designerPromptTemplate
+  return template
     .replace(/\{\{PAGE_NAME\}\}/g, page.name)
     .replace(/\{\{PAGE_PATH\}\}/g, page.path)
     .replace(/\{\{PAGE_SLUG\}\}/g, slug);
 }
 
-async function runDesigner(page: Page): Promise<{ success: boolean; response: string }> {
-  const prompt = buildDesignerPrompt(page);
-  const response = await runClaude(prompt, `DESIGNER ${page.path}`);
-  const success = response.trim().toUpperCase().includes("DONE");
-  return { success, response: response.trim() };
+async function runAnalyzer(page: Page): Promise<{ success: boolean; issues: number; response: string }> {
+  const prompt = await buildAnalyzerPrompt(page);
+  const response = await runClaude(prompt, `ANALYZER ${page.path}`);
+
+  // Count total differences found
+  // Look for "Total differences found: X" or "differences found: X" in response
+  const diffMatch = response.match(/(?:total\s+)?differences\s+found:\s*(\d+)/i);
+  const diffCount = diffMatch?.[1] ? parseInt(diffMatch[1]) : 0;
+
+  // Also count "YES" entries in difference tables as backup
+  const yesCount = (response.match(/\|\s*YES\s*\|/gi) || []).length;
+
+  // Use whichever is higher
+  const totalIssues = Math.max(diffCount, yesCount);
+
+  // Success ONLY if zero differences found
+  const success = totalIssues === 0 && response.includes("DONE");
+
+  return { success, issues: totalIssues, response: response.trim() };
 }
 
 // =============================================================================
 // CREATOR
 // =============================================================================
 
-function buildCreatorPrompt(page: Page, issues?: string): string {
+async function buildCreatorPrompt(page: Page, analyzerResponse: string): Promise<string> {
+  // Reload template fresh (allows hot-reload of prompts)
+  const template = await Bun.file(CREATOR_PROMPT_PATH).text();
   const slug = getSlug(page);
-  let prompt = creatorPromptTemplate
+  let prompt = template
     .replace(/\{\{PAGE_NAME\}\}/g, page.name)
     .replace(/\{\{PAGE_PATH\}\}/g, page.path)
     .replace(/\{\{PAGE_SLUG\}\}/g, slug);
 
-  if (issues) {
-    prompt += `\n\n---\n\n## ⚠️ FIX THESE ISSUES\n\nThe validator found the following problems. You MUST fix them:\n\n${issues}`;
-  }
+  // Append analyzer findings
+  prompt += `\n\n---\n\n## 🔍 ANALYZER FINDINGS\n\nThe analyzer compared original vs clone and found these issues. FIX ALL OF THEM:\n\n${analyzerResponse}`;
 
   return prompt;
 }
 
-async function runCreator(page: Page, issues?: string): Promise<{ success: boolean; response: string }> {
-  const prompt = buildCreatorPrompt(page, issues);
-  const label = issues ? `CREATOR (fix) ${page.path}` : `CREATOR ${page.path}`;
-  const response = await runClaude(prompt, label);
-  const success = response.trim().toUpperCase().includes("DONE");
-  return { success, response: response.trim() };
-}
-
-// =============================================================================
-// VALIDATOR
-// =============================================================================
-
-function buildValidatorPrompt(page: Page): string {
-  const slug = getSlug(page);
-  return validatorPromptTemplate
-    .replace(/\{\{PAGE_NAME\}\}/g, page.name)
-    .replace(/\{\{PAGE_PATH\}\}/g, page.path)
-    .replace(/\{\{PAGE_SLUG\}\}/g, slug);
-}
-
-async function runValidator(page: Page): Promise<{ success: boolean; response: string }> {
-  const prompt = buildValidatorPrompt(page);
-  const response = await runClaude(prompt, `VALIDATOR ${page.path}`);
-  const success = response.trim().toUpperCase().includes("SUCCESS");
-  return { success, response: response.trim() };
+async function runCreator(page: Page, analyzerResponse: string): Promise<string> {
+  const prompt = await buildCreatorPrompt(page, analyzerResponse);
+  const response = await runClaude(prompt, `CREATOR ${page.path}`);
+  return response.trim();
 }
 
 // =============================================================================
@@ -182,8 +176,8 @@ type PageResult = {
   success: boolean;
   lastResponse: string;
   totalTime: number;
-  designTime: number;
   attempts: number;
+  issues: number;
 };
 
 async function processPage(page: Page): Promise<PageResult> {
@@ -192,61 +186,45 @@ async function processPage(page: Page): Promise<PageResult> {
 
   logSection(`PAGE: ${page.path} (${page.name})`);
 
-  // Step 1: Designer
-  log(`  [${timestamp()}] 🎨 Designer: Analyzing original page...`);
-  let stepStart = Date.now();
-  const designResult = await runDesigner(page);
-  const designTime = Date.now() - stepStart;
-  log(`  [${timestamp()}] 🎨 Designer: Done (${formatDuration(designTime)})`);
-
-  if (!designResult.success) {
-    log(`  [${timestamp()}] ❌ Designer failed to create spec`);
-    return {
-      success: false,
-      lastResponse: designResult.response,
-      totalTime: Date.now() - pageStart,
-      designTime,
-      attempts: 0,
-    };
-  }
-
-  // Step 2: Creator (initial)
-  log(`  [${timestamp()}] 🔨 Creator: Implementing from spec...`);
-  stepStart = Date.now();
-  await runCreator(page);
-  log(`  [${timestamp()}] 🔨 Creator: Done (${formatDuration(Date.now() - stepStart)})`);
-
-  // Step 3: Validator with retry loop
   let lastResponse = "";
+  let lastIssues = 0;
+
+  // Run up to MAX_RETRIES iterations of Analyzer → Creator
+  // Only stop early if Analyzer finds ZERO differences
   for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
-    log(`  [${timestamp()}] ✅ Validator: Checking (attempt ${attempt}/${MAX_RETRIES})...`);
-    stepStart = Date.now();
-    const validateResult = await runValidator(page);
-    lastResponse = validateResult.response;
-    log(`  [${timestamp()}] ✅ Validator: Done (${formatDuration(Date.now() - stepStart)})`);
+    // Step 1: Analyzer - find ALL differences
+    log(`  [${timestamp()}] 🔍 Analyzer: Comparing (iteration ${attempt}/${MAX_RETRIES})...`);
+    const stepStart = Date.now();
+    const analyzeResult = await runAnalyzer(page);
+    lastResponse = analyzeResult.response;
+    lastIssues = analyzeResult.issues;
+    log(`  [${timestamp()}] 🔍 Analyzer: Done (${formatDuration(Date.now() - stepStart)}) - ${analyzeResult.issues} differences found`);
 
-    if (validateResult.success) {
+    // If ZERO differences found - we're done!
+    if (analyzeResult.issues === 0) {
       const totalTime = Date.now() - pageStart;
-      log(`  [${timestamp()}] ✅ SUCCESS (total: ${formatDuration(totalTime)})`);
-      logStream.push(`\nRESULT: SUCCESS in ${formatDuration(totalTime)} after ${attempt} attempt(s)`);
-      return { success: true, lastResponse, totalTime, designTime, attempts: attempt };
+      if (attempt === 1) {
+        log(`  [${timestamp()}] ✅ PERFECT MATCH - No differences on first check!`);
+      } else {
+        log(`  [${timestamp()}] ✅ SUCCESS - All differences fixed after ${attempt} iterations!`);
+      }
+      logStream.push(`\nRESULT: SUCCESS after ${attempt} iteration(s) (${formatDuration(totalTime)})`);
+      return { success: true, lastResponse, totalTime, attempts: attempt, issues: 0 };
     }
 
-    if (attempt < MAX_RETRIES) {
-      log(`  [${timestamp()}] ⚠️ Issues found, sending back to Creator...`);
-      logStream.push(`\nATTEMPT ${attempt} FAILED - Issues:`);
-      logStream.push(validateResult.response);
-
-      stepStart = Date.now();
-      await runCreator(page, validateResult.response);
-      log(`  [${timestamp()}] 🔨 Creator: Fixed (${formatDuration(Date.now() - stepStart)})`);
-    }
+    // Differences found - run Creator to fix them
+    log(`  [${timestamp()}] 🔨 Creator: Fixing ${analyzeResult.issues} differences...`);
+    const createStart = Date.now();
+    await runCreator(page, analyzeResult.response);
+    log(`  [${timestamp()}] 🔨 Creator: Done (${formatDuration(Date.now() - createStart)})`);
+    logStream.push(`\nITERATION ${attempt}: ${analyzeResult.issues} differences → Creator`);
   }
 
+  // After all iterations, report final status
   const totalTime = Date.now() - pageStart;
-  log(`  [${timestamp()}] ❌ FAILED after ${MAX_RETRIES} attempts (total: ${formatDuration(totalTime)})`);
-  logStream.push(`\nRESULT: FAILED after ${MAX_RETRIES} attempts (${formatDuration(totalTime)})`);
-  return { success: false, lastResponse, totalTime, designTime, attempts: MAX_RETRIES };
+  log(`  [${timestamp()}] ⚠️ INCOMPLETE after ${MAX_RETRIES} iterations (${lastIssues} differences remaining)`);
+  logStream.push(`\nRESULT: INCOMPLETE - ${lastIssues} differences after ${MAX_RETRIES} iterations (${formatDuration(totalTime)})`);
+  return { success: false, lastResponse, totalTime, attempts: MAX_RETRIES, issues: lastIssues };
 }
 
 // =============================================================================
@@ -266,13 +244,14 @@ async function main() {
 ╔══════════════════════════════════════════════════════════════╗
 ║              PAGE CLONING PIPELINE                           ║
 ║                                                              ║
-║  Designer → Creator → Validator → (retry loop)              ║
+║  🔍 Analyzer (diff) → 🔨 Creator (fix) → loop                ║
 ╚══════════════════════════════════════════════════════════════╝
 `);
 
   console.log(`🚀 Processing ${totalPages} pages...`);
   console.log(`📝 Log file: ${logFile}`);
   console.log(`📁 Specs dir: ${SPECS_DIR}/`);
+  console.log(`🔄 Max attempts: ${MAX_RETRIES}`);
   console.log(`Started at ${timestamp()}`);
   console.log("─".repeat(60));
 
@@ -299,7 +278,7 @@ async function main() {
   // Summary
   const totalTime = Date.now() - mainStart;
   const succeeded = results.filter((r) => r.success);
-  const failed = results.filter((r) => !r.success);
+  const incomplete = results.filter((r) => !r.success);
 
   console.log("\n" + "═".repeat(60));
   console.log("📊 SUMMARY");
@@ -307,8 +286,8 @@ async function main() {
 
   console.log(`\n⏱️  Total time: ${formatDuration(totalTime)}`);
   console.log(`📄 Pages processed: ${results.length}`);
-  console.log(`✅ Succeeded: ${succeeded.length}`);
-  console.log(`❌ Failed: ${failed.length}`);
+  console.log(`✅ Perfect match: ${succeeded.length}`);
+  console.log(`⚠️  Incomplete: ${incomplete.length}`);
 
   if (results.length > 0) {
     const avgTime = totalTime / results.length;
@@ -316,19 +295,24 @@ async function main() {
   }
 
   if (succeeded.length > 0) {
-    console.log(`\n✅ Succeeded (${succeeded.length}):`);
+    console.log(`\n✅ Perfect match (${succeeded.length}):`);
     for (const r of succeeded) {
       console.log(`   ${r.page.path} (${formatDuration(r.totalTime)}, ${r.attempts} attempt${r.attempts > 1 ? 's' : ''})`);
     }
   }
 
-  if (failed.length > 0) {
-    console.log(`\n❌ Failed (${failed.length}):`);
-    for (const r of failed) {
-      console.log(`   ${r.page.path} (${formatDuration(r.totalTime)})`);
-      // Show last validation response for failed pages
-      const summary = r.lastResponse.split("\n").slice(0, 8).join("\n");
-      console.log(`      ${summary.replace(/\n/g, "\n      ")}\n`);
+  if (incomplete.length > 0) {
+    console.log(`\n⚠️  Incomplete (${incomplete.length}):`);
+    for (const r of incomplete) {
+      console.log(`   ${r.page.path} (${r.issues} issues remaining after ${r.attempts} attempts)`);
+      // Show summary of remaining issues
+      const issuesSummary = r.lastResponse.split("\n")
+        .filter(line => line.includes("❌") || line.includes("🔴"))
+        .slice(0, 5)
+        .join("\n");
+      if (issuesSummary) {
+        console.log(`      ${issuesSummary.replace(/\n/g, "\n      ")}`);
+      }
     }
   }
 
@@ -336,8 +320,8 @@ async function main() {
   logSection("SUMMARY");
   logStream.push(`Total time: ${formatDuration(totalTime)}`);
   logStream.push(`Pages processed: ${results.length}`);
-  logStream.push(`Succeeded: ${succeeded.length}`);
-  logStream.push(`Failed: ${failed.length}`);
+  logStream.push(`Perfect match: ${succeeded.length}`);
+  logStream.push(`Incomplete: ${incomplete.length}`);
   if (results.length > 0) {
     logStream.push(`Average per page: ${formatDuration(totalTime / results.length)}`);
   }
@@ -353,19 +337,18 @@ async function main() {
         stats: {
           total: results.length,
           succeeded: succeeded.length,
-          failed: failed.length,
+          incomplete: incomplete.length,
         },
         succeeded: succeeded.map((r) => ({
           ...r.page,
           time: r.totalTime,
-          designTime: r.designTime,
           attempts: r.attempts,
         })),
-        failed: failed.map((r) => ({
+        incomplete: incomplete.map((r) => ({
           ...r.page,
           time: r.totalTime,
-          designTime: r.designTime,
           attempts: r.attempts,
+          remainingIssues: r.issues,
           lastResponse: r.lastResponse,
         })),
       },

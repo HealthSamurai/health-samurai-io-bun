@@ -6,21 +6,9 @@
 }
 
 .footer-inner {
-  max-width: var(--container-max);
+  max-width: 1300px;
   margin: 0 auto;
   padding: 0;
-}
-
-/* Certification badges at top */
-.footer-certifications {
-  display: flex;
-  gap: 32px;
-  margin-bottom: 40px;
-}
-
-.footer-certifications img {
-  height: 82px;
-  width: auto;
 }
 
 /* Main footer columns */
@@ -85,7 +73,7 @@
 
 /* Bottom section with watermark logo */
 .footer-bottom {
-  margin-top: 48px;
+  margin-top: 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -93,7 +81,7 @@
 }
 
 .footer-watermark {
-  height: 122px;
+  height: 96px;
   width: auto;
   opacity: 0.15;
 }
@@ -114,20 +102,12 @@
     text-align: left;
   }
 
-  .footer-certifications {
-    justify-content: center;
-  }
 }
 
 @media (max-width: 640px) {
   .footer-columns {
     grid-template-columns: 1fr;
     gap: 32px;
-  }
-
-  .footer-certifications {
-    flex-direction: column;
-    align-items: center;
   }
 
   .footer-watermark {

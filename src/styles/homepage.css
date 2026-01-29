@@ -1,0 +1,344 @@
+/* Homepage Hero - Merged section matching original */
+.homepage-hero {
+  background: white;
+  margin: 0;
+  padding: 40px 0 60px;
+}
+
+.homepage-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.homepage-hero-header {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.homepage-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "PT Mono", monospace;
+  font-size: 17px;
+  line-height: 24px;
+  color: rgb(53, 59, 80);
+  margin-bottom: 10px;
+}
+
+.hero-caret {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.homepage-hero-title {
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 80px;
+  letter-spacing: -1.12px;
+  color: #333333;
+  margin: 0 0 25px;
+}
+
+.homepage-hero-subtitle {
+  font-size: 16px;
+  line-height: 28px;
+  color: #333333;
+  max-width: 600px;
+  margin: 0 0 30px;
+}
+
+.homepage-hero-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+.homepage-hero-btn-primary {
+  padding: 15px 24px;
+  background: #FC3724;
+  color: #FFFFFF;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.homepage-hero-btn-primary:hover {
+  background: #e02e1c;
+  color: white;
+}
+
+.homepage-hero-btn-secondary {
+  padding: 15px 24px;
+  background: transparent;
+  color: #001638;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.homepage-hero-title .typewriter {
+  color: var(--color-primary);
+  display: inline;
+}
+
+.homepage-hero-title .typewriter::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: var(--color-primary);
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Hero Cards - 2 column layout matching original */
+.hero-cards {
+  margin-top: 32px;
+}
+
+.hero-cards-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.hero-card {
+  padding: 48px 56px 32px;
+  background: #FAFAFA;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.hero-card-primary {
+  background: white;
+  border: 1px solid #F2F2F2;
+}
+
+.hero-card-logo {
+  margin-bottom: 16px;
+}
+
+.hero-card-logo img {
+  height: 32px;
+  width: auto;
+}
+
+.hero-card h2 {
+  font-size: 27px;
+  line-height: 37px;
+  font-weight: 900;
+  color: #333333;
+  margin-bottom: 12px;
+}
+
+.hero-card h3 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 8px;
+}
+
+.hero-card p {
+  font-size: 16px;
+  line-height: 28px;
+  color: #333333;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.hero-card-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Mission Statement */
+.mission-statement {
+  padding: 0;
+  background: white;
+  margin: 24px 0 60px;
+}
+
+.mission-text {
+  font-size: 16px;
+  line-height: 31px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  color: #333333;
+}
+
+.mission-text a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* Presentations */
+.presentations {
+  margin-top: 64px;
+  padding-top: 48px;
+  border-top: 1px solid var(--color-border);
+}
+
+.presentations-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: rgb(53, 59, 80);
+  margin-bottom: 24px;
+}
+
+.presentations-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.presentation-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-bg-alt);
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.15s ease;
+}
+
+.presentation-card:hover {
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.presentation-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.presentation-icon svg {
+  color: white;
+  width: 16px;
+  height: 16px;
+}
+
+.presentation-content h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(53, 59, 80);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.presentation-content p {
+  font-size: 12px;
+  color: rgb(102, 102, 102);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Trust Badges */
+.trust-badges {
+  padding: 0;
+  background: white;
+  margin: 60px 0;
+}
+
+.trust-badges-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+}
+
+.trust-badge {
+  display: block;
+  opacity: 0.8;
+  transition: opacity 0.15s ease;
+}
+
+.trust-badge:hover {
+  opacity: 1;
+}
+
+.trust-badge img {
+  height: 64px;
+  width: auto;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .homepage-hero {
+    margin: 0;
+    padding: 40px 0 60px;
+  }
+
+  .hero-cards-inner {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .hero-cards-right {
+    flex-direction: column;
+  }
+
+  .homepage-hero-title {
+    font-size: 42px;
+    line-height: 52px;
+  }
+
+  .presentations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .homepage-hero {
+    margin: 0;
+    padding: 60px 0 0;
+  }
+
+  .homepage-hero-title {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .hero-card {
+    padding: 32px;
+  }
+
+  .homepage-hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .presentations-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trust-badges-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+}

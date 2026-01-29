@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 /* Import existing page-specific styles */
+@import "./homepage.css";
 @import "./header.css";
 @import "./footer.css";
 @import "./hero.css";

@@ -1,20 +1,26 @@
 /* Header - Matching health-samurai.io */
+.nb-section-fhirbase {
+  padding: 0 32px;
+  background: white;
+  border-bottom: 1px solid #eee;
+}
+
 .header {
   position: sticky;
   top: 0;
   z-index: 1000;
   background: white;
-  border-bottom: 1px solid #eee;
+  box-shadow: rgba(53, 59, 80, 0.1) 0px 0px 2px 0px;
 }
 
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
-  max-width: var(--container-max);
+  height: 65px;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 0 var(--container-padding);
+  padding: 0;
 }
 
 .header-logo {
@@ -339,7 +345,7 @@
 
 @media (max-width: 768px) {
   .header-inner {
-    height: 56px;
+    height: 66px;
   }
 
   .header-logo img {

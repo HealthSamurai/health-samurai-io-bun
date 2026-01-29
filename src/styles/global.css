@@ -56,10 +56,14 @@
   --space-16: 64px;
   --space-20: 80px;
   --space-24: 96px;
+  --space-28: 112px;
 
   /* Container */
   --container-max: 1200px;
-  --container-padding: 32px;
+  --container-padding: 48px;  /* px-12 in Tailwind */
+
+  /* Section spacing - matches original (~100-120px) */
+  --section-padding: 112px;   /* py-28 in Tailwind */
 
   /* Shadows */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -96,7 +100,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 900;
-  color: var(--color-text);
+  color: #333333;
   line-height: var(--leading-tight);
 }
 
@@ -112,17 +116,18 @@ h2 {
 
 h3 {
   font-size: var(--text-2xl);
-  font-weight: 700;
+  font-weight: 900;
 }
 
 h4 {
   font-size: var(--text-xl);
-  font-weight: 700;
+  font-weight: 900;
 }
 
 p {
   margin-bottom: var(--space-4);
-  line-height: 1.6;
+  line-height: 1.75;
+  color: #333333;
 }
 
 a {

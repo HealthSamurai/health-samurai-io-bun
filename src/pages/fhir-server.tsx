@@ -372,7 +372,7 @@ export default function FhirServerPage(): string {
             ))}
           </div>
           <div className="aidbox-features-footer">
-            <a href="https://docs.aidbox.app/features" className="technical-features-link">technical features →</a>
+            <a href="https://docs.aidbox.app/features" className="technical-features-link">TECHNICAL FEATURES →</a>
           </div>
         </div>
       </section>
@@ -517,7 +517,7 @@ export default function FhirServerPage(): string {
       <section className="faq-section">
         <div className="container">
           <h2 className="faq-title">Aidbox FHIR Platform: Unified FHIR Server and Database for high-performance healthcare applications</h2>
-          <div className="faq-accordion" data-signals="{faqOpen: {intro: true, different: true, performance: true, conclusion: true}}">
+          <div className="faq-accordion" data-signals="{faqOpen: {intro: false, different: false, performance: false, conclusion: false}}">
             <div className="faq-item">
               <button
                 className="faq-trigger"

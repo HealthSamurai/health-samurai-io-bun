@@ -1,230 +1,191 @@
-# Task: Implement page from design spec
+# Task: Fix ALL differences from Analyzer report
 
-Implement the "{{PAGE_NAME}}" page using the design specification at `specs/{{PAGE_SLUG}}.md`.
+Fix the "{{PAGE_NAME}}" page to match the ORIGINAL at https://health-samurai.io{{PAGE_PATH}} exactly.
 
-**Goal:** Create a pixel-perfect implementation. All research is done - just code!
+**Goal:** Fix EVERY difference listed. Use Playwright to compare while you work. Be paranoid about matching.
 
-## Step 1: Read the Design Spec
+## Step 1: Read the Analyzer Report
 
+The analyzer found differences between:
+- **Original:** https://health-samurai.io{{PAGE_PATH}}
+- **Clone:** http://localhost:4444{{PAGE_PATH}}
+
+Read the spec file if it exists:
 ```sh
-cat specs/{{PAGE_SLUG}}.md
+cat specs/{{PAGE_SLUG}}.md 2>/dev/null || echo "No spec file yet"
 ```
 
-The spec contains:
-- **Colors** - Exact hex values for all elements
-- **Typography** - Font sizes, weights, line heights
-- **Spacing** - Padding, margins, gaps
-- **Sections** - Each section with content and layout
-- **Images** - Local paths (already downloaded to src/assets/images/)
-- **Interactive** - Tabs, accordions, etc. with their structure
+## Step 2: Restart Server
 
-Also review the screenshots:
-- `specs/{{PAGE_SLUG}}/full.png` - Full page reference
-- `specs/{{PAGE_SLUG}}/mobile.png` - Mobile reference
-- `specs/{{PAGE_SLUG}}/sections/*.png` - Section details
-
-## Step 2: Create the Page File
-
-Create `src/pages/{{PAGE_SLUG}}.tsx`:
-
-```tsx
-import { Fragment } from "../lib/jsx-runtime";
-
-export const metadata = {
-  title: "{{PAGE_NAME}}", // from spec.page.title
-  description: "...",      // from spec.page.description
-};
-
-export default function PageName(): string {
-  return (
-    <Fragment>
-      {/* Implement each section from spec.sections */}
-    </Fragment>
-  );
-}
-```
-
-## Step 3: Implement Each Section
-
-For each section in `spec.sections`:
-
-1. Read the section's `description` and `elements`
-2. Look at the section screenshot for reference
-3. Use the exact colors from `spec.colors`
-4. Use the exact spacing from `spec.spacing`
-5. Reference images from their `local` paths in `spec.images`
-
-### Use Tailwind CSS
-
-```tsx
-// Use theme colors
-<div className="bg-bg-alt text-text">
-
-// Use arbitrary values for exact pixels from spec
-<section className="py-[80px]">
-<div className="max-w-[1200px] mx-auto px-[32px]">
-<h1 className="text-[64px] font-black leading-[1.2]">
-
-// Or inline styles for complex values
-<div style={{ background: 'linear-gradient(...)' }}>
-```
-
-### Component Classes Available
-
-```tsx
-// Buttons
-<a className="btn btn-primary btn-lg">Primary Button</a>
-<a className="btn btn-secondary">Secondary Button</a>
-<a className="btn btn-outline">Outline Button</a>
-
-// Cards
-<div className="card">Card content</div>
-
-// Sections
-<section className="section">          {/* py-20 */}
-<section className="section section-alt">  {/* with bg-alt */}
-
-// Container
-<div className="container">Centered content</div>
-```
-
-## Step 4: Implement Interactive Elements
-
-Check `spec.interactive` for each interactive element:
-
-### Tabs
-```tsx
-<div data-signals="{activeTab: 'tab0'}">
-  {/* Tab buttons */}
-  <div className="flex gap-4">
-    <button
-      data-class="{'tab-active': $activeTab == 'tab0'}"
-      data-on-click="$activeTab = 'tab0'"
-    >
-      {spec.interactive[0].items[0].label}
-    </button>
-    {/* More tabs... */}
-  </div>
-
-  {/* Tab panels */}
-  <div data-show="$activeTab == 'tab0'">
-    {/* Content for tab 0 */}
-  </div>
-  <div data-show="$activeTab == 'tab1'" style="display: none">
-    {/* Content for tab 1 */}
-  </div>
-</div>
-```
-
-### Accordion
-```tsx
-<div data-signals="{accordion0: false, accordion1: false}">
-  <div>
-    <button data-on-click="$accordion0 = !$accordion0">
-      {spec.interactive[0].items[0].title}
-      <span data-show="!$accordion0">+</span>
-      <span data-show="$accordion0" style="display: none">-</span>
-    </button>
-    <div data-show="$accordion0" style="display: none">
-      {spec.interactive[0].items[0].content}
-    </div>
-  </div>
-</div>
-```
-
-### Dropdown
-```tsx
-<div data-signals="{dropdownOpen: false}">
-  <button data-on-click="$dropdownOpen = !$dropdownOpen">
-    Toggle
-  </button>
-  <div data-show="$dropdownOpen" style="display: none">
-    Dropdown content
-  </div>
-</div>
-```
-
-**Remember:** Hidden elements need `style="display: none"` initially!
-
-## Step 5: Add Page-Specific CSS (if needed)
-
-If Tailwind can't achieve something, create `src/styles/{{PAGE_SLUG}}.css`:
-
-```css
-.{{PAGE_SLUG}}-special-element {
-  /* Custom styles */
-}
-```
-
-Then add to `src/styles/tailwind.css`:
-```css
-@import "./{{PAGE_SLUG}}.css";
-```
-
-## Step 6: Test the Page
-
-**IMPORTANT:** Always restart the server after changes!
-
+**ALWAYS restart before testing:**
 ```sh
 ./server.sh restart -h
 ./server.sh status
-curl -I http://localhost:4444{{PAGE_PATH}}
 ```
 
-Open http://localhost:4444{{PAGE_PATH}} and verify:
-- All sections render
-- Images display
-- Interactive elements work
-- Compare against `specs/{{PAGE_SLUG}}/full.png`
+## Step 3: Open BOTH Pages in Playwright
 
-## JSX Reference
+Open both the original and clone side by side for comparison:
+
+1. Navigate to original: https://health-samurai.io{{PAGE_PATH}}
+2. Take screenshot for reference
+3. Open new tab with clone: http://localhost:4444{{PAGE_PATH}}
+4. Compare visually
+
+**Keep both pages open while you work!**
+
+## Step 4: Fix Each Difference
+
+For EVERY difference in the analyzer report:
+
+### Before fixing, VERIFY on original:
+1. Use Playwright to inspect the original element
+2. Extract computed styles (padding, margin, color, font-size, etc.)
+3. Note the EXACT values
+
+### Apply the fix:
+1. Edit the source file
+2. Restart server: `./server.sh restart -h`
+3. Refresh clone in Playwright
+4. Compare with original - does it match NOW?
+
+### Double-check these properties (most commonly wrong):
+
+**Spacing:**
+- padding-top, padding-bottom, padding-left, padding-right
+- margin-top, margin-bottom, margin-left, margin-right
+- gap (in flex/grid containers)
+
+**Layout:**
+- max-width of containers
+- flex-direction, justify-content, align-items
+- grid-template-columns, grid-gap
+
+**Typography:**
+- font-size (exact px)
+- font-weight (exact number: 400, 500, 600, 700, 800, 900)
+- line-height (exact value)
+- letter-spacing
+
+**Colors:**
+- background-color (exact hex)
+- color (exact hex)
+- border-color
+
+**Visual:**
+- border-radius
+- box-shadow
+- opacity
+
+## Step 5: Verify EVERY Fix with Playwright
+
+After each fix:
+
+1. Restart server: `./server.sh restart -h`
+2. Refresh clone page in Playwright
+3. Take screenshot of the fixed element
+4. Compare with original - MUST BE IDENTICAL
+
+**Use Playwright to extract computed styles:**
+```javascript
+// In browser_evaluate
+const el = document.querySelector('.your-selector');
+const styles = window.getComputedStyle(el);
+return {
+  padding: styles.padding,
+  margin: styles.margin,
+  fontSize: styles.fontSize,
+  fontWeight: styles.fontWeight,
+  lineHeight: styles.lineHeight,
+  color: styles.color,
+  backgroundColor: styles.backgroundColor,
+  borderRadius: styles.borderRadius,
+  boxShadow: styles.boxShadow
+};
+```
+
+Compare these values between original and clone - they MUST match!
+
+## Step 6: Use Tailwind with Exact Values
+
+Use arbitrary values for pixel-perfect matching:
 
 ```tsx
-// className (not class)
-<div className="flex items-center">
+// Exact padding
+<div className="pt-[80px] pb-[60px] px-[32px]">
 
-// htmlFor (not for)
-<label htmlFor="email">
+// Exact font size and weight
+<h1 className="text-[64px] font-black leading-[1.2]">
 
-// Style objects
-<div style={{ marginTop: '20px', backgroundColor: '#fff' }}>
+// Exact colors
+<div className="bg-[#f5f7fa] text-[#1a1a1a]">
 
-// Boolean attributes
-<input disabled />
-<input required />
+// Exact border radius
+<div className="rounded-[12px]">
 
-// Raw HTML
-<div dangerouslySetInnerHTML={{ __html: svgCode }} />
+// Exact shadow
+<div className="shadow-[0_4px_20px_rgba(0,0,0,0.1)]">
 
-// Fragments
-import { Fragment } from "../lib/jsx-runtime";
-<Fragment>
-  <section>...</section>
-  <section>...</section>
-</Fragment>
+// Exact max-width
+<div className="max-w-[1200px] mx-auto">
+
+// Exact gap
+<div className="flex gap-[24px]">
 ```
 
-## Quality Checklist
+## Step 7: Final Comparison
 
-- [ ] Page loads at http://localhost:4444{{PAGE_PATH}}
-- [ ] All sections from spec implemented
-- [ ] Colors match spec exactly
-- [ ] Spacing matches spec
-- [ ] All images display (from local paths)
-- [ ] All interactive elements work
-- [ ] Mobile layout works (check spec mobile screenshot)
-- [ ] No TypeScript errors
-- [ ] Clean, readable code
+After all fixes:
+
+1. Restart server one more time
+2. Open both pages in Playwright side by side
+3. Scroll through ENTIRE page
+4. Check EVERY section matches
+5. Check mobile view (resize to 375px)
+
+Take final screenshots:
+- `specs/{{PAGE_SLUG}}/clone/final.png`
+
+## Step 8: Git Commit and Push
+
+After fixing all differences:
+
+```sh
+git add -A
+git commit -m "Fix {{PAGE_NAME}} ({{PAGE_PATH}}) - match original
+
+- Fixed padding/margins
+- Fixed typography
+- Fixed colors
+- Fixed layout
+- Verified with Playwright comparison"
+git push
+```
+
+## Checklist Before Completing
+
+- [ ] Read all differences from analyzer report
+- [ ] Opened BOTH original and clone in Playwright
+- [ ] Fixed EVERY difference listed
+- [ ] Verified each fix by comparing computed styles
+- [ ] Double-checked all padding and margins
+- [ ] Double-checked all font sizes and weights
+- [ ] Double-checked all colors
+- [ ] Double-checked all shadows and borders
+- [ ] Final side-by-side comparison looks identical
+- [ ] Git committed and pushed
 
 ## Response Format
-
-After implementation, respond with:
 
 ```
 DONE
 
 Page: src/pages/{{PAGE_SLUG}}.tsx
-Styles: src/styles/{{PAGE_SLUG}}.css (if created)
-Sections: {count} implemented
-Interactive: {list of what was implemented}
+Fixes applied: {count}
+Verified with Playwright: YES
+Git committed: YES
+Git pushed: YES
+
+Changes made:
+- [list each fix]
 ```
