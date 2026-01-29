@@ -415,16 +415,9 @@ export default function EventsPage(): string {
 
       {/* Upcoming Section */}
       <section className="events-upcoming">
-        <div className="events-upcoming-wave">
-          <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <path d="M0 80V0C240 53.3333 480 80 720 80C960 80 1200 53.3333 1440 0V80H0Z" fill="#f4f8fb"/>
-          </svg>
-        </div>
-        <div className="events-upcoming-content">
-          <div className="container">
-            <h2>Upcoming</h2>
-            <p>No upcoming events. Please <a href="#subscribe-form" className="events-subscribe-link">subscribe</a> to be notified.</p>
-          </div>
+        <div className="container">
+          <h2>Upcoming</h2>
+          <p>No upcoming events. Please <a href="#subscribe-form" className="events-subscribe-link">subscribe</a> to be notified.</p>
         </div>
       </section>
 
@@ -503,27 +496,29 @@ export default function EventsPage(): string {
       {/* Subscribe Form Section */}
       <section className="events-subscribe" id="subscribe-form">
         <div className="container">
-          <form className="events-subscribe-content" action="/api/subscribe" method="POST" name="wf-form-Subscribe-Form">
-            <h3 className="events-subscribe-title">
-              <span className="events-subscribe-line1">Never miss a thing</span>
-              <span className="events-subscribe-line2">Subscribe for more content!</span>
-            </h3>
-            <input
-              type="text"
-              name="Full-Name"
-              placeholder="Full Name"
-              className="events-subscribe-input"
-              required
-            />
-            <input
-              type="email"
-              name="Email-Address"
-              placeholder="Email Address"
-              className="events-subscribe-input"
-              required
-            />
-            <button type="submit" className="events-subscribe-btn">Subscribe</button>
-          </form>
+          <div className="events-subscribe-container">
+            <form className="events-subscribe-content" action="/api/subscribe" method="POST" name="wf-form-Subscribe-Form">
+              <h3 className="events-subscribe-title">
+                <span className="events-subscribe-line1">Never miss a thing</span>
+                <span className="events-subscribe-line2">Subscribe for more content!</span>
+              </h3>
+              <input
+                type="text"
+                name="Full-Name"
+                placeholder="Full Name"
+                className="events-subscribe-input"
+                required
+              />
+              <input
+                type="email"
+                name="Email-Address"
+                placeholder="Email Address"
+                className="events-subscribe-input"
+                required
+              />
+              <button type="submit" className="events-subscribe-btn">Subscribe</button>
+            </form>
+          </div>
         </div>
       </section>
     </Fragment>
