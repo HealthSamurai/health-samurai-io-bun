@@ -1,6 +1,46 @@
-// Generated from Webflow export - using original Webflow classes
+/**
+ * Generate page using original Webflow class names and CSS
+ */
+import * as fs from 'fs';
+
+// Load the page styles (CSS from Webflow)
+const pageStyles = JSON.parse(fs.readFileSync('./webflow/page-styles.json', 'utf-8'));
+
+// Generate CSS file from Webflow styles
+let css = `/* Generated from Webflow - fhir-server page styles */\n\n`;
+
+for (const [className, props] of Object.entries(pageStyles)) {
+  const cssProps = props as Record<string, string>;
+  const propsStr = Object.entries(cssProps)
+    .filter(([k, v]) => typeof v === 'string' && !v.startsWith('[object'))
+    .map(([k, v]) => `  ${k}: ${v};`)
+    .join('\n');
+
+  if (propsStr) {
+    css += `.${className} {\n${propsStr}\n}\n\n`;
+  }
+}
+
+fs.writeFileSync('./src/styles/webflow-fhir-server.css', css);
+console.log('✓ Generated src/styles/webflow-fhir-server.css');
+
+// Load nodes for content
+const nodes = JSON.parse(fs.readFileSync('./webflow/fhir-server-nodes.json', 'utf-8'));
+
+// Extract text content with their original classes
+const textNodes = nodes.filter((n: any) => n.type === 'text' && n.text?.html);
+
+// Helper to extract text by class pattern
+function getTextByClass(pattern: string): string[] {
+  return textNodes
+    .filter((n: any) => n.text.html.includes(pattern))
+    .map((n: any) => n.text.text);
+}
+
+// Generate TSX page using original Webflow classes
+const pageContent = `// Generated from Webflow export - using original Webflow classes
 // Page: /fhir-server (Aidbox)
-// Generated: 2026-01-29T14:42:40.628Z
+// Generated: ${new Date().toISOString()}
 
 import { Fragment } from "../lib/jsx-runtime";
 
@@ -118,8 +158,8 @@ export default function FhirServerPage(): string {
               {useCaseTabs.map((tab) => (
                 <button
                   className="tabs-trigger"
-                  data-class={`{'active': $activeTab === '${tab.id}'}`}
-                  data-on-click={`$activeTab = '${tab.id}'`}
+                  data-class={\`{'active': $activeTab === '\${tab.id}'}\`}
+                  data-on-click={\`$activeTab = '\${tab.id}'\`}
                 >
                   {tab.label}
                 </button>
@@ -129,7 +169,7 @@ export default function FhirServerPage(): string {
               {useCaseTabs.map((tab) => (
                 <div
                   className="tabs-panel"
-                  data-show={`$activeTab === '${tab.id}'`}
+                  data-show={\`$activeTab === '\${tab.id}'\`}
                   style={tab.id !== 'cdr' ? { display: 'none' } : {}}
                 >
                   <p className="light">Content for {tab.label}</p>
@@ -181,3 +221,22 @@ export default function FhirServerPage(): string {
     </Fragment>
   );
 }
+`;
+
+fs.writeFileSync('./src/pages/fhir-server.tsx', pageContent);
+console.log('✓ Generated src/pages/fhir-server.tsx');
+
+// Add import to tailwind.css if not present
+const tailwindCss = fs.readFileSync('./src/styles/tailwind.css', 'utf-8');
+if (!tailwindCss.includes('webflow-fhir-server.css')) {
+  const importLine = '@import "./webflow-fhir-server.css";\n';
+  // Add after other imports
+  const updatedCss = tailwindCss.replace(
+    /(@import [^\n]+\n)(?!@import)/,
+    '$1' + importLine
+  );
+  fs.writeFileSync('./src/styles/tailwind.css', updatedCss);
+  console.log('✓ Added import to tailwind.css');
+}
+
+console.log('\\nDone! Run "bun dev" to test.');

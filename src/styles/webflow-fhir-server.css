@@ -1,0 +1,415 @@
+/* Generated from Webflow - fhir-server page styles */
+/* Includes both extracted typography classes and layout structure */
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero-section {
+  padding: 80px 0 60px;
+  background: white;
+  text-align: center;
+}
+
+.headline-hero {
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(53, 59, 80);
+  margin-bottom: 16px;
+}
+
+.span-red {
+  color: #EA4A35;
+}
+
+.h1-style-56 {
+  font-family: Inter, sans-serif;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: rgb(53, 59, 80);
+  margin-bottom: 24px;
+}
+
+.aligne-center {
+  text-align: center;
+}
+
+.paragraph-12-aidbox-copy {
+  font-family: Inter, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgb(107, 114, 128);
+  max-width: 700px;
+  margin: 0 auto 32px;
+}
+
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   WHAT IS AIDBOX SECTION
+   ============================================ */
+.what-is-section {
+  padding: 80px 0;
+  background: #f9fafb;
+}
+
+.what-is__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+  margin-bottom: 32px;
+}
+
+.what-is__card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  gap: 16px;
+  border: 1px solid #e5e7eb;
+  transition: box-shadow 0.2s;
+}
+
+.what-is__card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.what-is__ttl {
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: rgb(53, 59, 80);
+}
+
+.what-is__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.what-is__tag {
+  padding: 4px 10px;
+  background: #f3f4f6;
+  color: rgba(53, 59, 80, 0.7);
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.what-is__p {
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(53, 59, 80, 0.7);
+  margin: 0;
+}
+
+.section-cta {
+  text-align: center;
+  margin-top: 32px;
+}
+
+/* ============================================
+   USE CASES SECTION
+   ============================================ */
+.use-cases-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.tabs {
+  margin-top: 32px;
+}
+
+.tabs-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 32px;
+  border-bottom: none;
+}
+
+.tabs-trigger {
+  padding: 8px 0;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgb(53, 59, 80);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tabs-trigger:hover {
+  color: #EA4A35;
+}
+
+.tabs-trigger.active {
+  color: #EA4A35;
+  border-bottom-color: #EA4A35;
+}
+
+.tabs-panels {
+  background: white;
+}
+
+.tabs-panel {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 40px;
+  min-height: 200px;
+}
+
+/* ============================================
+   DEPLOY SECTION
+   ============================================ */
+.deploy-section {
+  padding: 80px 0;
+  background: #f9fafb;
+  text-align: center;
+}
+
+/* ============================================
+   FAQ SECTION
+   ============================================ */
+.faq-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.faq-accordion {
+  max-width: 800px;
+  margin: 48px auto 0;
+  background: #f9fafb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.faq-item {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+/* ============================================
+   CONTACT SECTION
+   ============================================ */
+.contact-section {
+  padding: 80px 0;
+  background: #f9fafb;
+  text-align: center;
+}
+
+/* ============================================
+   TYPOGRAPHY CLASSES (from Webflow export)
+   ============================================ */
+.heading__h2 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-family: Inter, sans-serif;
+  font-size: 3rem;
+  line-height: 1.25;
+  font-weight: 700;
+  text-align: center;
+}
+
+.p-26 {
+  font-family: Inter, sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.t-32 {
+  font-size: 2rem;
+}
+
+.light {
+  color: #6b7280;
+}
+
+.deploy__txt {
+  color: #6b7280;
+  margin-top: 16px;
+}
+
+.faq-ttl {
+  max-width: 52rem;
+  margin-top: 0px;
+  margin-right: auto;
+  margin-bottom: 0px;
+  margin-left: auto;
+  font-size: 2.625rem;
+  line-height: 1.2;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: -0.03em;
+}
+
+.st-faq-question-text {
+  width: 100%;
+  display: block;
+  padding: 24px 32px;
+  font-family: Inter, sans-serif;
+  font-size: 1.375rem;
+  line-height: 1.2;
+  font-weight: 500;
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.st-faq-question-text:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.st-faq-answer-desc {
+  display: block;
+  max-width: 50rem;
+  padding: 0 32px 24px;
+  font-family: Inter, sans-serif;
+  font-size: 1rem;
+  line-height: 1.75;
+  text-align: left;
+  color: #6b7280;
+}
+
+.n21_primary_action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 380px;
+  padding: 15px 57px;
+  border: 2px solid #fc3724;
+  border-radius: 8px;
+  background-color: #fc3724;
+  font-family: 'Gotham Pro', Inter, sans-serif;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.n21_primary_action:hover {
+  background-color: #e02f1e;
+  border-color: #e02f1e;
+  color: white;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 57px;
+  border: 2px solid #fc3724;
+  border-radius: 8px;
+  background-color: white;
+  font-family: 'Gotham Pro', Inter, sans-serif;
+  color: rgb(53, 59, 80);
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(252, 55, 36, 0.05);
+  color: rgb(53, 59, 80);
+}
+
+.hand-card-link {
+  font-family: Inter, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1;
+  font-weight: 600;
+  text-decoration: none;
+  color: rgb(53, 59, 80);
+  transition: color 0.2s;
+}
+
+.hand-card-link:hover {
+  color: #EA4A35;
+}
+
+.border-100 {
+  border-radius: 100vw;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .what-is__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .h1-style-56 {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 640px) {
+  .what-is__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .h1-style-56 {
+    font-size: 32px;
+  }
+
+  .hero-section {
+    padding: 40px 0;
+  }
+
+  .what-is-section,
+  .use-cases-section,
+  .deploy-section,
+  .faq-section,
+  .contact-section {
+    padding: 48px 0;
+  }
+
+  .heading__h2 {
+    font-size: 2rem;
+  }
+
+  .faq-ttl {
+    font-size: 1.75rem;
+  }
+
+  .tabs-list {
+    gap: 12px;
+  }
+
+  .tabs-panel {
+    padding: 24px;
+  }
+}
