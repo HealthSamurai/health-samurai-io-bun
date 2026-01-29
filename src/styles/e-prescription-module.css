@@ -2,48 +2,56 @@
 
 /* Hero Section */
 .erx-hero {
-  padding: 92px 0 64px;
-  background: #ffffff;
+  padding: 90px 0 0;
+  background: transparent;
 }
 
 .erx-hero-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  gap: 116px;
   align-items: center;
 }
 
 .erx-hero-content {
-  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 482px;
 }
 
 .erx-hero-tag {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 24px;
+  gap: 5px;
 }
 
 .erx-tag-prompt {
   font-family: "PT Mono", monospace;
   font-size: 18px;
+  letter-spacing: 0.2px;
+  line-height: 27px;
   color: #ea4a35;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .erx-tag-text {
   font-family: "PT Mono", monospace;
   font-size: 18px;
+  letter-spacing: 0.2px;
+  line-height: 27px;
   color: #353b50;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .erx-hero-title {
   font-size: 56px;
   font-weight: 700;
   line-height: 64px;
+  letter-spacing: -1.12px;
   color: #353b50;
-  margin-bottom: 24px;
+  max-width: 384px;
+  margin: 0;
 }
 
 .erx-highlight {
@@ -55,12 +63,12 @@
   font-weight: 400;
   line-height: 24px;
   color: #353b50;
-  margin-bottom: 32px;
+  margin: 0;
 }
 
 .erx-hero-buttons {
   display: flex;
-  gap: 16px;
+  gap: 20px;
 }
 
 .erx-btn-primary {
@@ -70,10 +78,11 @@
   padding: 12px 32px;
   background: #ea4a35;
   color: #ffffff;
-  border: 2px solid #ea4a35;
+  border: 1.5px solid #ea4935;
   border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
+  line-height: 24px;
   text-transform: uppercase;
   text-decoration: none;
   transition: all 0.15s ease;
@@ -92,10 +101,11 @@
   padding: 12px 32px;
   background: transparent;
   color: #353b50;
-  border: 2px solid #ea4a35;
+  border: 1.5px solid #ea4935;
   border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
+  line-height: 24px;
   text-transform: uppercase;
   text-decoration: none;
   transition: all 0.15s ease;
@@ -159,11 +169,12 @@
 
 /* Features Section */
 .erx-features {
-  padding: 64px 0 90px;
+  padding: 0 0 92px;
   background: #ffffff;
 }
 
 .erx-features-header {
+  max-width: 640px;
   margin-bottom: 48px;
 }
 
@@ -171,8 +182,9 @@
   font-size: 26px;
   font-weight: 700;
   line-height: 32px;
+  letter-spacing: -0.52px;
   color: #353b50;
-  margin-bottom: 16px;
+  margin: 0;
 }
 
 .erx-features-title-bold {
@@ -180,42 +192,45 @@
 }
 
 .erx-features-subtitle {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 27px;
   color: #6b7280;
+  margin-top: 16px;
 }
 
 .erx-features-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 44px;
 }
 
 .erx-feature-card {
-  background: #f4f8fb;
+  background: #f9fafb;
   border-radius: 8px;
-  padding: 24px;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .erx-feature-icon {
   width: 64px;
   height: 64px;
-  margin-bottom: 16px;
 }
 
 .erx-feature-title {
   font-size: 18px;
-  font-weight: 700;
-  line-height: 24px;
+  font-weight: 500;
+  line-height: 27px;
   color: #353b50;
-  margin-bottom: 8px;
+  margin: 0;
 }
 
 .erx-feature-desc {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 21px;
+  line-height: 24px;
   color: #6b7280;
   margin: 0;
 }
@@ -223,17 +238,17 @@
 /* Why Is It Easier Section */
 .erx-why-easier {
   padding: 72px 0;
-  background: #ffffff;
-  border-top: 1px solid #f0f2f3;
+  background: #f9fafb;
 }
 
 .erx-section-title {
   font-size: 48px;
   font-weight: 700;
   line-height: 57.6px;
+  letter-spacing: -1.44px;
   color: #353b50;
-  text-align: center;
-  margin-bottom: 16px;
+  text-align: left;
+  margin: 0;
 }
 
 .erx-section-subtitle {
@@ -241,18 +256,20 @@
   font-weight: 400;
   line-height: 27px;
   color: #6b7280;
-  text-align: center;
+  text-align: left;
+  margin-top: 16px;
   margin-bottom: 48px;
 }
 
 .erx-benefits-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  gap: 0;
 }
 
 .erx-benefit-card {
   text-align: left;
+  padding: 24px 40px;
 }
 
 .erx-benefit-icon {
@@ -263,30 +280,37 @@
 
 .erx-benefit-title {
   font-size: 18px;
-  font-weight: 700;
-  line-height: 24px;
+  font-weight: 500;
+  line-height: 27px;
   color: #353b50;
   margin-bottom: 8px;
 }
 
 .erx-benefit-desc {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 21px;
+  line-height: 24px;
   color: #6b7280;
   margin: 0;
 }
 
 /* Roadmap Section */
 .erx-roadmap {
-  padding: 72px 0 90px;
+  padding: 92px 0 0;
   background: #ffffff;
+}
+
+.erx-roadmap .erx-section-subtitle {
+  margin-bottom: 48px;
 }
 
 .erx-roadmap-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 64px;
+  background: #f9fafb;
+  padding: 24px 40px;
+  border-radius: 12px;
 }
 
 .erx-roadmap-column {
@@ -297,22 +321,21 @@
 
 .erx-roadmap-tag {
   display: inline-block;
-  padding: 6px 16px;
+  padding: 4px 12px;
   font-size: 14px;
-  font-weight: 500;
-  border-radius: 20px;
+  font-weight: 400;
+  border-radius: 1440px;
   width: fit-content;
 }
 
 .erx-roadmap-tag--backlog {
-  background: #fdeae8;
+  background: #f0f2f3;
   color: #353b50;
 }
 
 .erx-roadmap-tag--in-progress {
-  background: #ffffff;
+  background: #fdeae8;
   color: #353b50;
-  border: 1px solid #dddddd;
 }
 
 .erx-roadmap-tag--released {
@@ -327,16 +350,16 @@
 }
 
 .erx-roadmap-card {
-  background: #ffffff;
-  border: 1px solid #f0f2f3;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
 }
 
 .erx-roadmap-card-title {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 24px;
   color: #353b50;
   margin-bottom: 4px;
@@ -352,12 +375,12 @@
 
 /* Feature Request Form Section */
 .erx-feature-request {
-  padding: 0 0 76px;
+  padding: 64px 0 90px;
   background: #ffffff;
 }
 
 .erx-feature-request-content {
-  max-width: 600px;
+  max-width: 511px;
   margin: 0 auto;
   text-align: center;
 }
@@ -387,10 +410,10 @@
 .erx-form-textarea {
   width: 100%;
   min-height: 150px;
-  padding: 16px;
+  padding: 12px 12px 8px 24px;
   font-family: 'Inter', sans-serif;
   font-size: 16px;
-  border: 1px solid #dddddd;
+  border: 1px solid #e4e4e4;
   border-radius: 8px;
   resize: vertical;
   background: #ffffff;
@@ -407,10 +430,10 @@
 
 .erx-form-input {
   width: 100%;
-  padding: 16px;
+  padding: 8px 12px 8px 24px;
   font-family: 'Inter', sans-serif;
   font-size: 16px;
-  border: 1px solid #dddddd;
+  border: 1px solid #e4e4e4;
   border-radius: 8px;
   background: #ffffff;
 }
@@ -480,14 +503,15 @@
 
 /* Technologies Section */
 .erx-technologies {
-  padding: 72px 0;
-  background: #f9fafb;
+  padding: 72px 0 90px;
+  background: #ffffff;
 }
 
 .erx-tech-title {
   font-size: 48px;
   font-weight: 700;
   line-height: 57.6px;
+  letter-spacing: -1.44px;
   color: #353b50;
   text-align: center;
   margin-bottom: 8px;
@@ -505,7 +529,7 @@
 .erx-tech-grid {
   display: flex;
   justify-content: center;
-  gap: 64px;
+  gap: 56px;
 }
 
 .erx-tech-item {
@@ -516,31 +540,34 @@
 }
 
 .erx-tech-icon-wrapper {
-  width: 100px;
-  height: 100px;
-  background: #ffffff;
-  border-radius: 50%;
+  width: 190px;
+  height: 188px;
+  background: #f9fafb;
+  border-radius: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .erx-tech-icon {
-  width: 64px;
-  height: 64px;
+  width: 96px;
+  height: 96px;
 }
 
 .erx-tech-label {
-  font-size: 14px;
-  font-weight: 500;
-  color: #6b7280;
+  font-size: 18px;
+  font-weight: 400;
+  color: #353b50;
 }
 
 /* How It Works Section */
 .erx-how-it-works {
-  padding: 72px 0;
+  padding: 0 0 76px;
   background: #ffffff;
+}
+
+.erx-how-it-works .erx-section-title {
+  text-align: center;
 }
 
 .erx-diagram {
@@ -574,11 +601,13 @@
   .erx-hero-content {
     max-width: 100%;
     text-align: center;
+    align-items: center;
   }
 
   .erx-hero-title {
     font-size: 42px;
     line-height: 50px;
+    max-width: none;
   }
 
   .erx-hero-buttons {
@@ -587,10 +616,15 @@
 
   .erx-features-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
 
   .erx-benefits-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .erx-benefit-card {
+    padding: 24px 20px;
   }
 
   .erx-roadmap-grid {
@@ -601,6 +635,14 @@
   .erx-tech-grid {
     flex-wrap: wrap;
     gap: 32px;
+  }
+
+  .erx-section-title {
+    text-align: center;
+  }
+
+  .erx-section-subtitle {
+    text-align: center;
   }
 }
 
@@ -637,6 +679,10 @@
     grid-template-columns: 1fr;
   }
 
+  .erx-benefit-card {
+    padding: 16px 0;
+  }
+
   .erx-tech-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -644,5 +690,15 @@
   .erx-tech-title {
     font-size: 32px;
     line-height: 40px;
+  }
+
+  .erx-tech-icon-wrapper {
+    width: 120px;
+    height: 118px;
+  }
+
+  .erx-tech-icon {
+    width: 64px;
+    height: 64px;
   }
 }
