@@ -32,14 +32,17 @@
 .casestudy-card {
   display: flex;
   align-items: center;
-  padding: 40px 0;
+  padding: 0 0 32px;
+  gap: 32px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   text-decoration: none;
   transition: opacity 0.2s ease;
+  color: rgb(53, 59, 80);
+  font-family: 'Gotham Pro', Arial, sans-serif;
 }
 
-.casestudy-card:first-child {
-  padding-top: 0;
+.casestudy-card:not(:first-child) {
+  padding-top: 32px;
 }
 
 .casestudy-card:hover {
@@ -52,21 +55,22 @@
 
 /* Logo Container */
 .casestudy-logo-container {
-  flex: 0 0 280px;
-  width: 280px;
-  height: 210px;
+  flex: 0 0 auto;
+  width: 229px;
+  height: 225px;
+  max-width: 269px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 0;
   background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .casestudy-logo {
-  max-width: 200px;
-  max-height: 120px;
+  max-width: 229px;
+  max-height: 180px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -75,7 +79,11 @@
 /* Content Container */
 .casestudy-content {
   flex: 1;
-  padding-left: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  padding-left: 0;
 }
 
 .casestudy-title {
@@ -84,7 +92,7 @@
   line-height: 37px;
   color: #353b50;
   margin-bottom: 16px;
-  font-family: 'Gotham Pro', 'Inter', Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
 }
 
 .casestudy-description {
@@ -92,7 +100,8 @@
   font-weight: 400;
   line-height: 26px;
   color: #333333;
-  margin-bottom: 20px;
+  margin-bottom: 0;
+  font-family: 'Gotham Pro', Arial, sans-serif;
 }
 
 .casestudy-readmore {
@@ -100,6 +109,7 @@
   font-weight: 400;
   color: #353b50;
   display: inline-block;
+  font-family: 'Gotham Pro', Arial, sans-serif;
 }
 
 .casestudy-card:hover .casestudy-readmore {
@@ -112,32 +122,44 @@
   padding: 100px 0 90px;
 }
 
+.casestudies-contact-section > .container {
+  max-width: 1100px;
+}
+
 .casestudies-contact-title {
   font-size: 32px;
   font-weight: 900;
+  line-height: 48px;
+  letter-spacing: -0.16px;
   color: #333333;
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 8px;
-  font-family: 'Gotham Pro', 'Inter', Arial, sans-serif;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-family: 'Gotham Pro', Arial, sans-serif;
 }
 
 .casestudies-contact-subtitle {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
+  line-height: 28px;
+  letter-spacing: -0.25px;
   color: #333333;
   text-align: center;
-  margin-bottom: 40px;
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-family: 'Open Sans', sans-serif;
 }
 
 /* Contact Form */
 .casestudies-contact-form {
   max-width: 420px;
   margin: 0 auto;
+  margin-top: 30px;
 }
 
 .casestudies-form-group {
-  margin-bottom: 16px;
+  margin-bottom: 0;
 }
 
 .casestudies-form-input,
@@ -146,12 +168,14 @@
   background: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 2px;
-  padding: 12px 16px;
+  padding: 6px 12px;
   font-size: 14px;
   font-weight: 400;
+  line-height: 20px;
   color: #333333;
-  font-family: inherit;
+  font-family: 'Gotham Pro', Arial, sans-serif;
   transition: border-color 0.2s ease;
+  margin-bottom: 12px;
 }
 
 .casestudies-form-input:focus,
@@ -178,17 +202,20 @@
 /* Submit Button */
 .casestudies-submit-btn {
   width: 100%;
-  background: #ea4a35;
+  background: rgb(234, 74, 53);
   color: #ffffff;
   border: none;
-  border-radius: 4px;
-  padding: 14px 24px;
-  font-size: 14px;
-  font-weight: 600;
+  border-radius: 2px;
+  padding: 15px 29px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
   text-transform: uppercase;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.25px;
+  margin: 16px 0;
+  font-family: 'Gotham Pro', Arial, sans-serif;
 }
 
 .casestudies-submit-btn:hover {
@@ -286,7 +313,6 @@
 
   .casestudy-logo-container {
     max-width: 160px;
-    padding: 16px;
   }
 
   .casestudy-title {

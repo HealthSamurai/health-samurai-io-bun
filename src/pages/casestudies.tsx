@@ -83,7 +83,7 @@ export default function CaseStudiesPage(): string {
                 <div className="casestudy-content">
                   <h3 className="casestudy-title">{study.company}</h3>
                   <p className="casestudy-description">{study.description}</p>
-                  <span className="casestudy-readmore">→ Read more</span>
+                  <span className="casestudy-readmore">-&gt; Read more</span>
                 </div>
               </a>
             ))}

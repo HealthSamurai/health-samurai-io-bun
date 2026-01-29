@@ -29,7 +29,7 @@ export function Layout({ title, description, children, hideFooter }: LayoutProps
         <link rel="preconnect" href="https://unpkg.com" />
 
         {/* Fonts */}
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
         {/* Tailwind CSS */}
         <link rel="stylesheet" href="/styles/main.css" />
