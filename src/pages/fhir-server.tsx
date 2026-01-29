@@ -49,10 +49,55 @@ const features = [
 ];
 
 const useCaseTabs = [
-  { id: "cdr", label: "CDRs & Data Platforms" },
-  { id: "cds", label: "CDS Modules" },
-  { id: "portal", label: "Portals & PHRs" },
-  { id: "ehr", label: "EHR" },
+  {
+    id: "cdr",
+    label: "CDRs & Data Platforms",
+    cases: [
+      {
+        company: "Innovaccer",
+        type: "Healthcare Data Platform",
+        description: "Innovaccer embeds Health Samurai's Aidbox FHIR engine into its Best-in-KLAS data platform, harmonizing EHR data from 1,800+ hospitals to boost interoperability and coordinated care."
+      },
+      {
+        company: "Sonic Healthcare USA",
+        type: "Laboratories",
+        description: "Sonic Healthcare USA partners with Health Samurai to deploy Aidbox FHIR as a centralized Master Patient Index, ensuring precise identity matching, seamless data sharing, and a future-proof infrastructure across its nationwide lab network."
+      }
+    ]
+  },
+  {
+    id: "cds",
+    label: "CDS Modules",
+    cases: [
+      {
+        company: "Clinical Decision Support",
+        type: "Healthcare Analytics",
+        description: "Build intelligent clinical decision support systems powered by FHIR data, enabling real-time alerts, recommendations, and evidence-based care pathways."
+      }
+    ]
+  },
+  {
+    id: "portal",
+    label: "Portals & PHRs",
+    cases: [
+      {
+        company: "Patient Portals",
+        type: "Patient Engagement",
+        description: "Create patient-facing applications with secure access to health records, appointment scheduling, and care team communication using FHIR APIs."
+      }
+    ]
+  },
+  {
+    id: "ehr",
+    label: "EHR",
+    cases: [
+      {
+        company: "Electronic Health Records",
+        type: "Clinical Workflows",
+        description: "Build modern EHR systems with Aidbox as the FHIR-native backend, supporting clinical workflows, documentation, and care coordination."
+      }
+    ]
+  },
 ];
 
 function FeatureCard({ feature }: { feature: typeof features[0] }): string {
@@ -61,7 +106,7 @@ function FeatureCard({ feature }: { feature: typeof features[0] }): string {
       <div className="what-is__ttl">{feature.title}</div>
       <div className="what-is__tags">
         {feature.tags.map((tag) => (
-          <div className="what-is__tag border-100">{tag}</div>
+          <div className="what-is__tag rounded-full">{tag}</div>
         ))}
       </div>
       <p className="what-is__p">{feature.description}</p>
@@ -118,7 +163,7 @@ export default function FhirServerPage(): string {
               {useCaseTabs.map((tab) => (
                 <button
                   className="tabs-trigger"
-                  data-class={`{'active': $activeTab === '${tab.id}'}`}
+                  data-class={`{active: $activeTab == '${tab.id}'}`}
                   data-on-click={`$activeTab = '${tab.id}'`}
                 >
                   {tab.label}
@@ -129,10 +174,20 @@ export default function FhirServerPage(): string {
               {useCaseTabs.map((tab) => (
                 <div
                   className="tabs-panel"
-                  data-show={`$activeTab === '${tab.id}'`}
+                  data-show={`$activeTab == '${tab.id}'`}
                   style={tab.id !== 'cdr' ? { display: 'none' } : {}}
                 >
-                  <p className="light">Content for {tab.label}</p>
+                  <div className="use-case-content">
+                    {tab.cases.map((caseItem) => (
+                      <div className="use-case-card">
+                        <div className="use-case-header">
+                          <div className="use-case-company">{caseItem.company}</div>
+                          <div className="use-case-type">{caseItem.type}</div>
+                        </div>
+                        <p className="use-case-description">{caseItem.description}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>

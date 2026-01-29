@@ -175,6 +175,47 @@
   min-height: 200px;
 }
 
+.use-case-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.use-case-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid #e5e7eb;
+}
+
+.use-case-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.use-case-company {
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(53, 59, 80);
+}
+
+.use-case-type {
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.use-case-description {
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgb(53, 59, 80);
+  margin: 0;
+}
+
 /* ============================================
    DEPLOY SECTION
    ============================================ */
