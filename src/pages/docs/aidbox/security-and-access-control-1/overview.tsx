@@ -16,9 +16,15 @@ const SearchIcon = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" 
 
 // Sidebar navigation structure
 const sidebarNav = [
-  { label: "Settings", href: "#" },
-  { label: "Configure Aidbox and Multibox", href: "#" },
-  { label: "Init Bundle", href: "#" },
+  {
+    category: "CONFIGURATION",
+    items: [
+      { label: "Recommended environment variables", href: "#" },
+      { label: "Settings", href: "#" },
+      { label: "Configure Aidbox and Multibox", href: "#" },
+      { label: "Init Bundle", href: "#" },
+    ],
+  },
   {
     category: "API",
     items: [
