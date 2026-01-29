@@ -54,7 +54,7 @@ const features = [
   {
     icon: "/assets/images/startups/icon-lock.svg",
     title: "Access Control",
-    description: "Configure granular access to the <a href='https://docs.aidbox.app/api-1/fhir-api' class='startups-link'>FHIR</a> data with a flexible access control module based on DSL, JSON Schema, and SQL.",
+    description: "Configure granular access to the <a href='https://www.health-samurai.io/articles/fhir-what-is-great-what-isnt-so-good-and-what-it-is-not' class='startups-link'>FHIR</a> data with a flexible access control module based on DSL, JSON Schema, and SQL.",
   },
   {
     icon: "/assets/images/startups/icon-database-resource.svg",
@@ -174,7 +174,7 @@ export default function StartupsPage(): string {
               <p>
                 Aidbox helps digital health startups speed up development and reduce time to market.
                 Simply delegate technical tasks to the{" "}
-                <a href="https://docs.aidbox.app" className="startups-link">Aidbox FHIR server</a>{" "}
+                <a href="https://www.health-samurai.io/aidbox" className="startups-link">Aidbox FHIR server</a>{" "}
                 and focus on your unique features.
               </p>
               <div className="startups-hero-cta">
@@ -198,9 +198,9 @@ export default function StartupsPage(): string {
       <section className="startups-trusted">
         <div className="container">
           <div className="startups-trusted-content">
-            <p className="startups-trusted-text">
-              <strong>TRUSTED BY</strong> HUNDREDS OF DEV TEAMS
-            </p>
+            <div className="startups-trusted-text">
+              <strong>trusted by</strong> hundreds of dev teams
+            </div>
             <div className="startups-trusted-logos">
               {clientLogos.map((logo) => (
                 <img src={logo.src} alt={logo.alt} />
@@ -247,6 +247,7 @@ export default function StartupsPage(): string {
         <div className="container">
           <div className="startups-brochure-content">
             <div className="startups-brochure-text">
+              <div className="startups-brochure-title">Learn more about Aidbox</div>
               <p className="startups-brochure-description">
                 Download the Aidbox Product Brief to have all the info by hand
               </p>
@@ -354,27 +355,30 @@ export default function StartupsPage(): string {
           <form className="startups-demo-form" action="/api/contact" method="POST">
             <input type="hidden" name="form_name" value="Aidbox for Startups" />
             <div className="startups-form-group">
+              <label className="startups-form-label">Full Name</label>
               <input
                 type="text"
                 name="name"
-                placeholder="Full Name"
+                placeholder=""
                 required
                 className="startups-form-input"
               />
             </div>
             <div className="startups-form-group">
+              <label className="startups-form-label">Business Email</label>
               <input
                 type="email"
                 name="email"
-                placeholder="Business Email"
+                placeholder=""
                 required
                 className="startups-form-input"
               />
             </div>
             <div className="startups-form-group">
+              <label className="startups-form-label">Request description</label>
               <textarea
                 name="message"
-                placeholder="Request description"
+                placeholder="Example Text"
                 rows={4}
                 className="startups-form-input startups-form-textarea"
               />
@@ -384,8 +388,8 @@ export default function StartupsPage(): string {
             </button>
             <p className="startups-demo-privacy">
               By submitting the form you agree to{" "}
-              <a href="/privacy-policy">Privacy Policy</a> and{" "}
-              <a href="/cookie-policy">Cookie Policy</a>.
+              <a href="/legal/privacy-policy">Privacy Policy</a> and{" "}
+              <a href="/legal/cookie-policy">Cookie Policy</a>.
             </p>
           </form>
         </div>

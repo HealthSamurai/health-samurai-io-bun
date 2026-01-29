@@ -86,8 +86,8 @@
 
 /* Hero Section */
 .startups-hero {
-  background-color: var(--startups-bg);
-  padding: 64px 0 48px;
+  background-color: transparent;
+  padding: 80px 0 96px;
   position: relative;
   overflow: hidden;
 }
@@ -109,14 +109,16 @@
   line-height: 64px;
   color: var(--startups-text-dark);
   margin-bottom: 32px;
+  max-width: 704px;
 }
 
 .startups-hero-text > p {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 27px;
   color: var(--startups-text-dark);
-  margin-bottom: 32px;
+  margin-bottom: 48px;
+  max-width: 608px;
 }
 
 .startups-hero-cta {
@@ -137,9 +139,10 @@
 
 /* Trusted By Section */
 .startups-trusted {
-  background-color: var(--startups-bg);
-  border-top: 1px solid var(--startups-bg-grey);
-  padding: 32px 0;
+  background-color: transparent;
+  border-top: none;
+  padding: 0;
+  margin-bottom: 32px;
 }
 
 .startups-trusted-content {
@@ -149,10 +152,10 @@
 }
 
 .startups-trusted-text {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 18px;
-  color: var(--startups-text);
+  line-height: 24px;
+  color: var(--startups-text-dark);
   letter-spacing: 0.5px;
   text-transform: uppercase;
   white-space: nowrap;
@@ -187,7 +190,7 @@
 /* Advantages Section */
 .startups-advantages {
   background-color: var(--startups-bg-alt);
-  padding: 64px 0 96px;
+  padding: 96px 0;
 }
 
 .startups-advantages h2 {
@@ -196,6 +199,7 @@
   line-height: 56px;
   color: var(--startups-text-dark);
   text-align: center;
+  margin-top: 20px;
   margin-bottom: 64px;
 }
 
@@ -216,25 +220,26 @@
 }
 
 .startups-advantage-card h3 {
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 400;
   line-height: 24px;
   color: var(--startups-text-dark);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .startups-advantage-card p {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 20px;
+  line-height: 24px;
   color: var(--startups-text-dark);
   margin: 0;
 }
 
 /* Features Section */
 .startups-features {
-  background-color: var(--startups-bg);
-  padding: 64px 0 96px;
+  background-color: transparent;
+  padding: 0;
+  margin: 64px 0;
 }
 
 .startups-features h2 {
@@ -243,6 +248,7 @@
   line-height: 56px;
   color: var(--startups-text-dark);
   text-align: center;
+  margin-top: 20px;
   margin-bottom: 64px;
 }
 
@@ -279,10 +285,11 @@
   margin: 0;
 }
 
-/* Brochure CTA Section */
+/* Brochure CTA Section - inside features section on original */
 .startups-brochure {
-  background-color: var(--startups-primary-light);
-  padding: 48px 0;
+  background-color: transparent;
+  padding: 0;
+  margin-top: 64px;
 }
 
 .startups-brochure-content {
@@ -294,6 +301,15 @@
 
 .startups-brochure-text {
   flex: 1;
+}
+
+.startups-brochure-title {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--startups-text-dark);
+  text-transform: uppercase;
+  margin-bottom: 16px;
 }
 
 .startups-brochure-description {
@@ -358,7 +374,7 @@
 /* Hosting Options Section */
 .startups-hosting {
   background-color: var(--startups-bg-alt);
-  padding: 64px 0 96px;
+  padding: 0;
 }
 
 .startups-hosting-content {
@@ -372,14 +388,14 @@
 }
 
 .startups-hosting-text h2 {
-  font-size: 42px;
-  line-height: 56px;
+  font-size: 32px;
+  line-height: 42px;
   margin-bottom: 24px;
 }
 
 .startups-hosting-title-bold {
   font-weight: 700;
-  font-style: italic;
+  font-style: normal;
   color: var(--startups-text-dark);
 }
 
@@ -406,8 +422,8 @@
   flex: 1;
   background-color: var(--startups-bg);
   border: 1px solid var(--startups-border);
-  border-radius: 8px;
-  padding: 32px;
+  border-radius: 20px;
+  padding: 32px 48px;
   text-decoration: none;
   transition: all 0.15s ease;
   display: flex;
@@ -472,17 +488,17 @@
 
 /* FAQ Section */
 .startups-faq {
-  background-color: var(--startups-bg);
-  padding: 64px 0 96px;
+  background-color: transparent;
+  padding: 54px 0;
 }
 
 .startups-faq h2 {
-  font-size: 42px;
+  font-size: 32px;
   font-weight: 700;
-  line-height: 56px;
+  line-height: 36px;
   color: var(--startups-text-dark);
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 0;
 }
 
 .startups-faq-list {
@@ -566,16 +582,18 @@
 /* Request Demo Section */
 .startups-demo {
   background-color: var(--startups-bg-alt);
-  padding: 64px 0 96px;
+  padding: 0;
+  margin-top: 20px;
+  margin-bottom: 64px;
 }
 
 .startups-demo h2 {
-  font-size: 42px;
+  font-size: 32px;
   font-weight: 700;
-  line-height: 56px;
+  line-height: 42px;
   color: var(--startups-text-dark);
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 0;
 }
 
 .startups-demo-form {
@@ -585,6 +603,15 @@
 
 .startups-form-group {
   margin-bottom: 16px;
+}
+
+.startups-form-label {
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--startups-text-dark);
+  margin-bottom: 8px;
 }
 
 .startups-form-input {
@@ -609,14 +636,14 @@
 }
 
 .startups-demo-submit {
-  width: 100%;
-  padding: 16px 24px;
+  width: auto;
+  padding: 9px 32px;
   background-color: var(--startups-primary);
   color: white;
   border: none;
   border-radius: 4px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   cursor: pointer;
   transition: background-color 0.15s ease;
   margin-top: 8px;
