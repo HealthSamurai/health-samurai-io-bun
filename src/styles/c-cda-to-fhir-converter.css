@@ -83,30 +83,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
-  color: #222222;
-  padding: 8px 20px 8px 0;
-  border-radius: 0;
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.ccda-btn-secondary:hover {
-  color: #ea4a34;
-}
-
-.ccda-btn-docs {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   background: #f2f6f9;
-  color: #ea4a34;
-  padding: 15px 20px;
+  color: #333333;
+  padding: 15px 8px 15px 10px;
   border-radius: 8px;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 14px;
@@ -117,8 +96,31 @@
   transition: all 0.15s ease;
 }
 
-.ccda-btn-docs:hover {
+.ccda-btn-secondary:hover {
   background: #ea4a34;
+  color: #ffffff;
+  border-color: #ea4a34;
+}
+
+.ccda-btn-docs {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f2f6f9;
+  color: #333333;
+  padding: 15px 8px 15px 20px;
+  border-radius: 8px;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 2px solid #333333;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ccda-btn-docs:hover {
+  background: #333333;
   color: #ffffff;
 }
 
@@ -238,13 +240,13 @@
 
 .ccda-how-description {
   font-family: Inter, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 20px;
   color: #333333;
   text-align: center;
   max-width: 940px;
-  margin: 0 auto 32px;
+  margin: 0 auto 64px;
 }
 
 /* Tabs */
@@ -287,6 +289,12 @@
   border-radius: 8px;
 }
 
+/* Wrapper for steps content (no tabs) */
+.ccda-how-content {
+  max-width: 940px;
+  margin: 0 auto;
+}
+
 .ccda-how-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -306,18 +314,18 @@
 }
 
 .ccda-step-number {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 20px;
-  font-weight: 600;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
   color: #333333;
   flex-shrink: 0;
 }
 
 .ccda-step-content h3 {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 30px;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
   color: #333333;
   margin-bottom: 8px;
 }
@@ -372,9 +380,9 @@
 
 .ccda-more-details-content p {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 28px;
+  line-height: 20px;
   color: #333333;
   margin-bottom: 24px;
 }
@@ -427,7 +435,7 @@
 }
 
 .ccda-accordion-title {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-weight: 600;
   color: #333333;
@@ -477,7 +485,7 @@
   font-family: Inter, sans-serif;
   font-size: 16px;
   font-weight: 400;
-  line-height: 28px;
+  line-height: 20px;
   color: #ffffff;
   padding-top: 20px;
   margin-bottom: 32px;
@@ -515,7 +523,7 @@
 
 .ccda-cta-disclaimer {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 400;
   line-height: 20px;
   color: #999999;

@@ -185,65 +185,22 @@ export default function CCDAToFHIRConverterPage(): string {
             Discover the power of the standalone C-CDA/FHIR Converter, designed to integrate effortlessly with your existing healthcare infrastructure. Without the need for additional software, our converter simplifies the data exchange process, providing a reliable and independent solution that works right out of the box.
           </p>
 
-          {/* Tabs */}
-          <div className="ccda-tabs" data-signals="{activeTab: 'developers'}">
-            <div className="ccda-tabs-list">
-              <button
-                className="ccda-tab"
-                data-class="{'ccda-tab--active': $activeTab === 'developers'}"
-                data-on-click="$activeTab = 'developers'"
-              >
-                Developers
-              </button>
-              <button
-                className="ccda-tab"
-                data-class="{'ccda-tab--active': $activeTab === 'tab2'}"
-                data-on-click="$activeTab = 'tab2'"
-              >
-                Tab 2
-              </button>
-              <button
-                className="ccda-tab"
-                data-class="{'ccda-tab--active': $activeTab === 'tab3'}"
-                data-on-click="$activeTab = 'tab3'"
-              >
-                Tab 3
-              </button>
-            </div>
-
-            {/* Tab Panels */}
-            <div className="ccda-tab-panel" data-show="$activeTab === 'developers'">
-              <div className="ccda-how-grid">
-                <div className="ccda-how-steps">
-                  {processSteps.map((step) => (
-                    <div className="ccda-step">
-                      <div className="ccda-step-number">{step.number}.</div>
-                      <div className="ccda-step-content">
-                        <h3>{step.title}</h3>
-                        <p dangerouslySetInnerHTML={{ __html: step.description }} />
-                      </div>
+          {/* Steps Grid - NO TABS */}
+          <div className="ccda-how-content">
+            <div className="ccda-how-grid">
+              <div className="ccda-how-steps">
+                {processSteps.map((step) => (
+                  <div className="ccda-step">
+                    <div className="ccda-step-number">{step.number}.</div>
+                    <div className="ccda-step-content">
+                      <h3>{step.title}</h3>
+                      <p dangerouslySetInnerHTML={{ __html: step.description }} />
                     </div>
-                  ))}
-                </div>
-                <div className="ccda-how-diagram">
-                  <img src="/assets/images/c-cda-to-fhir-converter/fhir-converter-schema.webp" alt="FHIR converter schema" />
-                </div>
+                  </div>
+                ))}
               </div>
-            </div>
-
-            <div className="ccda-tab-panel" data-show="$activeTab === 'tab2'" style="display: none">
-              <div className="ccda-how-grid">
-                <div className="ccda-how-steps">
-                  <p>Tab 2 content placeholder</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="ccda-tab-panel" data-show="$activeTab === 'tab3'" style="display: none">
-              <div className="ccda-how-grid">
-                <div className="ccda-how-steps">
-                  <p>Tab 3 content placeholder</p>
-                </div>
+              <div className="ccda-how-diagram">
+                <img src="/assets/images/c-cda-to-fhir-converter/fhir-converter-schema.webp" alt="FHIR converter schema" />
               </div>
             </div>
           </div>
