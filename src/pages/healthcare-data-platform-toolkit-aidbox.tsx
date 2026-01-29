@@ -455,7 +455,7 @@ export default function HealthcareDataPlatformToolkitAidbox(): string {
       {/* Customer Stories Carousel Section */}
       <section className="dp-stories">
         <div className="container">
-          <h2 className="dp-stories-title">Meet our customers and get inspired</h2>
+          <h2 className="dp-stories-title"><strong>Meet our customers and get inspired</strong></h2>
           <div className="dp-carousel" data-signals="{currentSlide: 0, totalSlides: 3}">
             <button
               className="dp-carousel-nav dp-carousel-nav--prev"
@@ -521,7 +521,7 @@ export default function HealthcareDataPlatformToolkitAidbox(): string {
         <div className="container">
           <div className="dp-contact-grid">
             <div className="dp-contact-content">
-              <h3 className="dp-contact-title">Talk to an Aidbox expert</h3>
+              <strong className="dp-contact-title">Talk to an Aidbox expert</strong>
               <p className="dp-contact-desc">
                 Get started with the Aidbox developer-friendly FHIR data platform. Because your developers deserve better.
               </p>
