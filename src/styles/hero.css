@@ -116,9 +116,12 @@
   display: inline-flex;
   margin: 0 auto var(--space-6);
   background: transparent;
-  font-family: var(--font-mono);
-  font-size: 16px;
-  color: #333;
+  font-family: "PT Mono", sans-serif;
+  font-size: 17px;
+  line-height: 23.8px;
+  color: rgb(53, 59, 80);
+  padding: 0;
+  border-radius: 0;
 }
 
 .hero-product .hero-tag strong {
@@ -136,10 +139,11 @@
 }
 
 .hero-product .hero-description {
-  font-size: 17px;
-  line-height: 23.8px;
+  font-family: Inter, sans-serif;
+  font-size: 18px;
+  line-height: 28px;
   color: rgb(53, 59, 80);
-  max-width: 700px;
+  max-width: 610px;
   margin: 0 auto var(--space-8);
 }
 

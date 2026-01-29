@@ -59,9 +59,10 @@
 
 .section-label {
   display: block;
-  font-size: 24px;
+  font-size: 48px;
   font-weight: 700;
-  color: #333;
+  line-height: 60px;
+  color: rgb(53, 59, 80);
   text-align: center;
   margin-bottom: 32px;
 }
@@ -75,21 +76,21 @@
   gap: 16px;
 }
 
-/* Card: flex column, transparent bg to match original */
+/* Card: flex column with background to match original */
 .aidbox-feature-card {
   display: flex;
   flex-direction: column;
-  padding: 8px 20px 8px 0;
-  background: transparent;
+  padding: 24px;
+  background: rgb(249, 250, 251);
   text-decoration: none;
   color: inherit;
-  border-radius: 0;
-  gap: 16px;
+  border-radius: 8px;
+  gap: 24px;
   transition: all 0.2s;
 }
 
 .aidbox-feature-card:hover {
-  background-color: rgba(234, 74, 53, 0.05);
+  background-color: rgb(240, 242, 245);
 }
 
 /* Bento layout: first card spans 2 columns */
@@ -111,9 +112,9 @@
 }
 
 .aidbox-feature-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
-  color: #353b50;
+  color: rgb(53, 59, 80);
   line-height: 1.3;
 }
 
@@ -131,21 +132,24 @@
   gap: 6px;
 }
 
-/* Individual tag: text style to match original (no background) */
+/* Individual tag: pill style to match original */
 .aidbox-tag {
-  padding: 0;
-  background: transparent;
-  color: rgb(53, 59, 80);
-  font-size: 18px;
+  padding: 2px 8px;
+  background: rgb(235, 239, 242);
+  color: rgba(53, 59, 80, 0.6);
+  font-family: Graphik, Inter, sans-serif;
+  font-size: 13px;
   font-weight: 400;
-  border-radius: 0;
-  line-height: 1.6;
+  letter-spacing: -0.39px;
+  border-radius: 6px;
+  line-height: 20.8px;
 }
 
 /* Description text */
 .aidbox-feature-desc {
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 22.4px;
+  letter-spacing: -0.28px;
   color: rgba(53, 59, 80, 0.7);
   margin: 0;
 }
@@ -185,16 +189,18 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0;
+  gap: 24px;
   margin-bottom: 40px;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: none;
 }
 
 .tabs-trigger {
-  padding: 12px 20px 8px;
+  padding: 0 0 8px;
+  font-family: Inter, sans-serif;
   font-size: 16px;
-  font-weight: 500;
-  color: #353b50;
+  font-weight: 400;
+  line-height: 24px;
+  color: rgb(53, 59, 80);
   background: transparent;
   border: none;
   border-bottom: 2px solid transparent;
@@ -204,13 +210,13 @@
 }
 
 .tabs-trigger:hover {
-  color: #EA4935;
+  color: rgb(234, 73, 53);
 }
 
 .tabs-trigger.active {
   background: transparent;
-  color: #EA4935;
-  border-bottom-color: #EA4935;
+  color: rgb(234, 73, 53);
+  border-bottom-color: rgb(234, 73, 53);
 }
 
 .tabs-panel {
@@ -330,8 +336,9 @@
 .sample-project-title {
   margin: 0 0 12px;
   font-size: 18px;
-  font-weight: 700;
-  color: #333;
+  font-weight: 500;
+  line-height: 27px;
+  color: rgb(53, 59, 80);
 }
 
 .sample-project-desc {
@@ -382,9 +389,10 @@
 }
 
 .deploy-header h2 {
-  font-size: 36px;
+  font-size: 48px;
   font-weight: 700;
-  color: #333;
+  line-height: 60px;
+  color: rgb(53, 59, 80);
   margin-bottom: 12px;
 }
 
@@ -421,8 +429,9 @@
 
 .deploy-option h4 {
   font-size: 18px;
-  font-weight: 700;
-  color: #333;
+  font-weight: 500;
+  line-height: 27px;
+  color: rgb(53, 59, 80);
   margin: 0 0 8px;
 }
 
@@ -450,9 +459,10 @@
 }
 
 .pricing-header h2 {
-  font-size: 36px;
+  font-size: 48px;
   font-weight: 700;
-  color: #353b50;
+  line-height: 60px;
+  color: rgb(53, 59, 80);
   margin-bottom: 12px;
 }
 
@@ -533,9 +543,11 @@
 
 .pricing-card-header h3,
 .pricing-card-name {
-  font-size: 22px;
-  font-weight: 700;
-  color: #353b50;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: -0.52px;
+  color: rgb(53, 59, 80);
   margin: 0 0 12px;
 }
 
@@ -750,9 +762,10 @@
 }
 
 .addons-header h2 {
-  font-size: 36px;
+  font-size: 48px;
   font-weight: 700;
-  color: #333;
+  line-height: 60px;
+  color: rgb(53, 59, 80);
   margin-bottom: 12px;
 }
 
@@ -954,9 +967,10 @@
 }
 
 .community-content h2 {
-  font-size: 36px;
+  font-size: 48px;
   font-weight: 700;
-  color: #333;
+  line-height: 60px;
+  color: rgb(53, 59, 80);
   margin-bottom: 16px;
 }
 
@@ -987,13 +1001,15 @@
 }
 
 .faq-title {
-  font-size: 32px;
-  font-weight: 700;
-  color: #353b50;
+  font-family: Inter, sans-serif;
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 50.4px;
+  letter-spacing: -1.26px;
+  color: rgb(53, 59, 80);
   text-align: center;
-  max-width: 800px;
+  max-width: 832px;
   margin: 0 auto 48px;
-  line-height: 1.3;
 }
 
 .faq-accordion {
