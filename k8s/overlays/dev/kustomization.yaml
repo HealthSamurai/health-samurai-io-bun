@@ -27,3 +27,8 @@ configMapGenerator:
     literals:
       - GIT_BRANCH=develop
       - POLL_INTERVAL=30
+
+images:
+  - name: health-samurai-web
+    newName: gcr.io/atomic-ehr/health-samurai-web
+    newTag: latest

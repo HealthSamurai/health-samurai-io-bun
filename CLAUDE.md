@@ -539,15 +539,29 @@ Update the image in `k8s/overlays/prod/kustomization.yaml`:
 ```yaml
 images:
   - name: health-samurai-web
-    newName: ghcr.io/healthsamurai/health-samurai-web
-    newTag: v1.0.0
+    newName: gcr.io/atomic-ehr/health-samurai-web
+    newTag: latest
 ```
 
 **Build and push image:**
 ```bash
-docker build -t ghcr.io/healthsamurai/health-samurai-web:latest .
-docker push ghcr.io/healthsamurai/health-samurai-web:latest
+# Authenticate to GCR
+gcloud auth configure-docker gcr.io
+
+# Build and push
+docker build -t gcr.io/atomic-ehr/health-samurai-web:latest .
+docker push gcr.io/atomic-ehr/health-samurai-web:latest
 ```
+
+**Docker Entrypoint:**
+The `docker-entrypoint.sh` script handles:
+1. Clone/pull the git repository
+2. Install dependencies (`bun install`)
+3. Build Tailwind CSS (`bun run css:build`)
+4. Start the server
+5. Poll for git changes and restart on updates
+
+The CSS build step ensures Tailwind is compiled on every deployment and restart.
 
 ## Datastar
 

@@ -25,5 +25,5 @@ configMapGenerator:
 
 images:
   - name: health-samurai-web
-    newName: ghcr.io/healthsamurai/health-samurai-web
+    newName: gcr.io/atomic-ehr/health-samurai-web
     newTag: latest
