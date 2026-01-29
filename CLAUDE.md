@@ -517,7 +517,7 @@ k8s/
 | URL | site-dev.apki.dev | site-prod.apki.dev |
 | Namespace | health-samurai-dev | health-samurai-prod |
 | Replicas | 1 | 3 |
-| Git Branch | develop | main |
+| Git Branch | main | main |
 | Poll Interval | 30s | 120s |
 
 **Usage:**

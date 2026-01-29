@@ -25,7 +25,7 @@ configMapGenerator:
   - name: health-samurai-config
     behavior: merge
     literals:
-      - GIT_BRANCH=develop
+      - GIT_BRANCH=main
       - POLL_INTERVAL=30
 
 images:
