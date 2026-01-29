@@ -313,9 +313,8 @@ export default function HealthcareDataPlatformToolkitAidbox(): string {
         <div className="container">
           <div className="dp-features-header">
             <h2 className="dp-features-title">
-              <span className="dp-text-accent">Ready-to-use building blocks</span>
-              <br />
-              <span className="dp-text-accent">for your FHIR ecosystem</span>
+              <strong className="dp-text-accent">Ready-to-use building blocks</strong>{" "}
+              <strong className="dp-text-accent">for your FHIR ecosystem</strong>
             </h2>
             <p className="dp-features-desc">
               Whether you need to aggregate data from legacy systems or enhance your existing data infrastructure, Aidbox is here to assist you every step of the way.
@@ -378,19 +377,23 @@ export default function HealthcareDataPlatformToolkitAidbox(): string {
       {/* Performance CTA Section */}
       <section className="dp-performance">
         <div className="container">
-          <div className="dp-performance-content">
-            <h3 className="dp-performance-title">
-              Explore how Aidbox effortlessly handles 16 TB of synthetic data
-            </h3>
-            <p className="dp-performance-desc">
-              Designed to process large volumes of data, Aidbox can scale up to the evolving demands of your business.
-            </p>
-            <div className="dp-performance-buttons">
-              <a href="#dp-talk-to-expert" className="dp-btn dp-btn-primary">Talk to an expert</a>
-              <a href="https://aidbox.app/" className="dp-btn dp-btn-secondary" target="_blank" rel="noopener noreferrer">
-                Start a free trial
-                <img src={`${IMG_BASE}/icon-arrow-right.svg`} alt="" className="dp-btn-arrow" />
-              </a>
+          <div className="dp-performance-grid">
+            <div className="dp-performance-left">
+              <h3 className="dp-performance-title">
+                Explore how Aidbox effortlessly handles 16 TB of synthetic data
+              </h3>
+            </div>
+            <div className="dp-performance-right">
+              <p className="dp-performance-desc">
+                Designed to process large volumes of data, Aidbox can scale up to the evolving demands of your business.
+              </p>
+              <div className="dp-performance-buttons">
+                <a href="#dp-talk-to-expert" className="dp-btn dp-btn-primary">Talk to an expert</a>
+                <a href="https://aidbox.app/" className="dp-btn dp-btn-secondary" target="_blank" rel="noopener noreferrer">
+                  Start a free trial
+                  <img src={`${IMG_BASE}/icon-arrow-right.svg`} alt="" className="dp-btn-arrow" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -401,9 +404,8 @@ export default function HealthcareDataPlatformToolkitAidbox(): string {
         <div className="container">
           <div className="dp-deployment-header">
             <h2 className="dp-deployment-title">
-              <span className="dp-text-accent">Select from</span>
-              <br />
-              <span className="dp-text-accent">flexible deployment options</span>
+              <strong className="dp-text-accent">Select from</strong>{" "}
+              <strong className="dp-text-accent">flexible deployment options</strong>
             </h2>
             <p className="dp-deployment-desc">
               Deploy Aidbox in clouds, like GCP, AWS or Azure, or on-premises to meet even the strictest of data security requirements.
@@ -430,7 +432,7 @@ export default function HealthcareDataPlatformToolkitAidbox(): string {
         <div className="container">
           <div className="dp-brochure-grid">
             <div className="dp-brochure-content">
-              <h3 className="dp-brochure-title">Explore Aidbox</h3>
+              <h3 className="dp-brochure-title"><strong>Explore Aidbox</strong></h3>
               <p className="dp-brochure-desc">
                 Download the Aidbox Product Brief to have all the info by hand.
               </p>
