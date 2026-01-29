@@ -1,0 +1,237 @@
+{
+  "65f969814779cab0f386a569": {
+    "localPath": "/assets/images/downloaded/65f969814779cab0f386a569_Frame_427319206.webp",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812ac99"
+  },
+  "6864137b9305ffbb48222765": {
+    "localPath": "/assets/images/downloaded/6864137b9305ffbb48222765_Sonic_Healthcare_logo.svg",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812aaea"
+  },
+  "685ed29d6b715ebceaf7d1ea": {
+    "localPath": "/assets/images/downloaded/685ed29d6b715ebceaf7d1ea_Frame_36666.svg",
+    "alt": "FHIR Server for CDS",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812aaf1"
+  },
+  "68c98f58d55d81e7ca21d529": {
+    "localPath": "/assets/images/downloaded/68c98f58d55d81e7ca21d529_CDS_(1).png",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812aaf2"
+  },
+  "68603319e2f6fd7b2474d29d": {
+    "localPath": "/assets/images/downloaded/68603319e2f6fd7b2474d29d_image_58.png",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812ab05"
+  },
+  "685ed29e581ba3a750692c47": {
+    "localPath": "/assets/images/downloaded/685ed29e581ba3a750692c47_Frame_36667.svg",
+    "alt": "FHIR Server for PHR and Portals",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812ab0f"
+  },
+  "68c98efa20efecbd01fa64be": {
+    "localPath": "/assets/images/downloaded/68c98efa20efecbd01fa64be_PHR.png",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812ab10"
+  },
+  "68603480d2dfbb82152e9099": {
+    "localPath": "/assets/images/downloaded/68603480d2dfbb82152e9099_image_60.png",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812ab18"
+  },
+  "685ed29e2f0e72e007f3f72e": {
+    "localPath": "/assets/images/downloaded/685ed29e2f0e72e007f3f72e_Frame_36646.svg",
+    "alt": "FHIR Server for EHR",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812ab22"
+  },
+  "68c98f1f395224ad225567ae": {
+    "localPath": "/assets/images/downloaded/68c98f1f395224ad225567ae_EHR.png",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812ab23"
+  },
+  "6860348007d49a56b4367b7c": {
+    "localPath": "/assets/images/downloaded/6860348007d49a56b4367b7c_image_61.png",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812ab2b"
+  },
+  "68603480c76979b990b95c63": {
+    "localPath": "/assets/images/downloaded/68603480c76979b990b95c63_image_62.png",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812ab39"
+  },
+  "686553f7c13d1b5210a990d9": {
+    "localPath": "/assets/images/downloaded/686553f7c13d1b5210a990d9_Batch_3-11.svg",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812ab4c"
+  },
+  "686553f79f65dca0c3c60a73": {
+    "localPath": "/assets/images/downloaded/686553f79f65dca0c3c60a73_Batch_3-08.svg",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812ab59"
+  },
+  "686553f77488c429eb6d6c20": {
+    "localPath": "/assets/images/downloaded/686553f77488c429eb6d6c20_Batch_3-09.svg",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812ab66"
+  },
+  "66bb64ecc3d84de30d0dcd21": {
+    "localPath": "/assets/images/downloaded/66bb64ecc3d84de30d0dcd21_Icon.svg",
+    "alt": "FHIR Server for Data Platforms",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812abad"
+  },
+  "66bb64ec4e626f8c3a5edb7c": {
+    "localPath": "/assets/images/downloaded/66bb64ec4e626f8c3a5edb7c_Icon-1.svg",
+    "alt": "FHIR Server for EHR",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812abb3"
+  },
+  "66bb64ec61851e31b2b83524": {
+    "localPath": "/assets/images/downloaded/66bb64ec61851e31b2b83524_Icon-2.svg",
+    "alt": "FHIR Server for CDS",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812abb7"
+  },
+  "66bb64eeac8ea42647f50f5c": {
+    "localPath": "/assets/images/downloaded/66bb64eeac8ea42647f50f5c_Icon-4.svg",
+    "alt": "FHIR Server for Telehealth",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812abbb"
+  },
+  "66bb64ec52e20b3dc69cbd25": {
+    "localPath": "/assets/images/downloaded/66bb64ec52e20b3dc69cbd25_Icon-3.svg",
+    "alt": "FHIR Server for PHR",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812abbf"
+  },
+  "66bb63a235b8a68070ffea83": {
+    "localPath": "/assets/images/downloaded/66bb63a235b8a68070ffea83_narus.png",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812abe4"
+  },
+  "65ef2ed51bbe4f2b53a3f17f": {
+    "localPath": "/assets/images/downloaded/65ef2ed51bbe4f2b53a3f17f_BestNotes_Logo-to-use_1-768x168_1.webp",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812ac9a"
+  },
+  "65ef2ed47afc52937f2537a2": {
+    "localPath": "/assets/images/downloaded/65ef2ed47afc52937f2537a2_Logo_PatientsCo_HiRes_(1)_2.webp",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812ac9b"
+  },
+  "65ef2ed4bc3a27d8a9bb8cf0": {
+    "localPath": "/assets/images/downloaded/65ef2ed4bc3a27d8a9bb8cf0_naruslucent-removebg-preview_1.webp",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812ac9c"
+  },
+  "65ef2ed40068547acf77f5ed": {
+    "localPath": "/assets/images/downloaded/65ef2ed40068547acf77f5ed_prenosis-logo-color_2.webp",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812ac9d"
+  },
+  "65ef2ed60353abdd06ea64e3": {
+    "localPath": "/assets/images/downloaded/65ef2ed60353abdd06ea64e3_Healthie-logo_1.webp",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812ac9e"
+  },
+  "65fd8de5da9567d3ff7c3539": {
+    "localPath": "/assets/images/downloaded/65fd8de5da9567d3ff7c3539_Yale_New_Haven_Hospital_Logo_2.webp",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812ac9f"
+  },
+  "65f96a78f9df4921d266173e": {
+    "localPath": "/assets/images/downloaded/65f96a78f9df4921d266173e_Frame_427319214.webp",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812aca1"
+  },
+  "65ef2ed45605d41cc256b7bf": {
+    "localPath": "/assets/images/downloaded/65ef2ed45605d41cc256b7bf_BodyLogicMD-Tag_1.webp",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812aca2"
+  },
+  "660bd7893d4969e1e5f6f8c9": {
+    "localPath": "/assets/images/downloaded/660bd7893d4969e1e5f6f8c9_Frame_427319215.webp",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812aca3"
+  },
+  "65fd8b0011bc8dfaabfb5ca2": {
+    "localPath": "/assets/images/downloaded/65fd8b0011bc8dfaabfb5ca2_image_76.webp",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812aca4"
+  },
+  "686e8235a3a841ff0ca34dca": {
+    "localPath": "/assets/images/downloaded/686e8235a3a841ff0ca34dca_tabler_cloud-lock.svg",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812acb2"
+  },
+  "686e823631fe2d402be7fbca": {
+    "localPath": "/assets/images/downloaded/686e823631fe2d402be7fbca_hugeicons_laptop-cloud.svg",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812acba"
+  },
+  "686e82368145af9cd456809c": {
+    "localPath": "/assets/images/downloaded/686e82368145af9cd456809c_arcticons_serverbox.svg",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812acc2"
+  },
+  "686fa07bf31b7be70f15a633": {
+    "localPath": "/assets/images/downloaded/686fa07bf31b7be70f15a633_Group_35626.svg",
+    "alt": "Deploy FHIR Server",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812acc9"
+  },
+  "68c9908ab15ccf71a60064f9": {
+    "localPath": "/assets/images/downloaded/68c9908ab15ccf71a60064f9_Frame_36783.png",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812acca"
+  },
+  "6865686c91e164b7564dcb58": {
+    "localPath": "/assets/images/downloaded/6865686c91e164b7564dcb58_Batch_3-12.svg",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812adac"
+  },
+  "6865686b369ec68aecb9cc17": {
+    "localPath": "/assets/images/downloaded/6865686b369ec68aecb9cc17_Batch_3-10.svg",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812adbc"
+  },
+  "69715049e7d99c871e9ec34b": {
+    "localPath": "/assets/images/downloaded/69715049e7d99c871e9ec34b_smart-city.svg",
+    "alt": "FHIR Server for Developers",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812adcb"
+  },
+  "6870ffff419ece22b51500c1": {
+    "localPath": "/assets/images/downloaded/6870ffff419ece22b51500c1_Overlay_2BShadow.png",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812ae7e"
+  },
+  "6863d90045a0c35e2d919c14": {
+    "localPath": "/assets/images/downloaded/6863d90045a0c35e2d919c14__E2_86_92.svg",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812aedb"
+  },
+  "6863d9e6415e9381219aafec": {
+    "localPath": "/assets/images/downloaded/6863d9e6415e9381219aafec_image_44.png",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812aeac"
+  },
+  "65f969ce86d54142331367e5": {
+    "localPath": "/assets/images/downloaded/65f969ce86d54142331367e5_Frame_427319209.webp",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812aeb9"
+  },
+  "677c08fe2fbefa57cee94009": {
+    "localPath": "/assets/images/downloaded/677c08fe2fbefa57cee94009_Prenosis_logo_328_49.png",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812aec7"
+  },
+  "68c996507b5e7099546ed3ba": {
+    "localPath": "/assets/images/downloaded/68c996507b5e7099546ed3ba_Frame_36431_(1).png",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812aee6"
+  },
+  "6863feeae06a3e78981dea5e": {
+    "localPath": "/assets/images/downloaded/6863feeae06a3e78981dea5e_Frame_36431.png",
+    "alt": "Users of FHIR Server",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812aee7"
+  },
+  "686d0dc68af4c55a4a243a19": {
+    "localPath": "/assets/images/downloaded/686d0dc68af4c55a4a243a19_copy-btn.svg",
+    "alt": "",
+    "nodeId": "d97b04d4-e7e6-d304-5900-ff0ea812b0c4"
+  }
+}
