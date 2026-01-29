@@ -185,6 +185,7 @@ Bun.serve({
           title: metadata.title || "Health Samurai",
           description: metadata.description,
           children: content,
+          hideFooter: metadata.hideFooter,
         })
       );
     }

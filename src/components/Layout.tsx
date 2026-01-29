@@ -5,9 +5,10 @@ type LayoutProps = {
   title: string;
   description?: string;
   children: string;
+  hideFooter?: boolean;
 };
 
-export function Layout({ title, description, children }: LayoutProps): string {
+export function Layout({ title, description, children, hideFooter }: LayoutProps): string {
   const fullTitle = title === "Home"
     ? "Health Samurai: FHIR solutions | FHIR integration software"
     : `${title} | Health Samurai`;
@@ -46,7 +47,7 @@ export function Layout({ title, description, children }: LayoutProps): string {
         <a href="#main-content" className="skip-link">Skip to main content</a>
         <Header />
         <main id="main-content" dangerouslySetInnerHTML={{ __html: children }} />
-        <Footer />
+        {!hideFooter && <Footer />}
       </body>
     </html>
   );

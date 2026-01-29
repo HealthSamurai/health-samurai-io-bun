@@ -3,6 +3,7 @@ import { Fragment } from "../lib/jsx-runtime";
 export const metadata = {
   title: "EHR Toolkit",
   description: "The All-in-One Toolkit for EHR Development with Aidbox",
+  hideFooter: true,
 };
 
 // Tab data
@@ -199,6 +200,21 @@ function SurveyCard({ arrowIcon }: { arrowIcon: string }): string {
 export default function EhrToolkitPage(): string {
   return (
     <Fragment>
+      {/* Sub-Navigation Bar */}
+      <nav className="ehr-subnav" role="navigation">
+        <div className="ehr-subnav-content">
+          <a href="#" className="ehr-subnav-logo">
+            <img src="/assets/images/ehr-toolkit/logo-aidbox.svg" alt="Aidbox" />
+          </a>
+          <div className="ehr-subnav-links">
+            <a href="#ehr-toolkit-wrapper" className="ehr-subnav-link">Overview</a>
+            <a href="#ehr-brochure-wrapper" className="ehr-subnav-link">EHR Brochure</a>
+            <a href="#ehr-g10-section" className="ehr-subnav-link">ONC Certification</a>
+          </div>
+          <a href="https://aidbox.app/ui/portal#/signup" className="ehr-subnav-btn">Get Started</a>
+        </div>
+      </nav>
+
       {/* Hero Section */}
       <section className="ehr-hero">
         <div className="container">
@@ -235,7 +251,7 @@ export default function EhrToolkitPage(): string {
       </section>
 
       {/* Explore Aidbox EHR Toolkit Section */}
-      <section className="ehr-toolkit-section">
+      <section className="ehr-toolkit-section" id="ehr-toolkit-wrapper">
         <div className="container">
           <h2 className="ehr-toolkit-heading">
             Explore <span className="text-primary">Aidbox</span> EHR Toolkit
@@ -308,7 +324,7 @@ export default function EhrToolkitPage(): string {
       </section>
 
       {/* EHR Brochure Section */}
-      <section className="ehr-brochure-section">
+      <section className="ehr-brochure-section" id="ehr-brochure-wrapper">
         <div className="container">
           <div className="ehr-brochure-card">
             <div className="ehr-brochure-preview">
@@ -375,7 +391,7 @@ export default function EhrToolkitPage(): string {
 
             {/* Aidbox as a service */}
             <div className="ehr-aidbox-service">
-              <h2 className="ehr-aidbox-service-title">Aidbox as a service</h2>
+              <h1 className="ehr-aidbox-service-title"><strong>Aidbox as a service</strong></h1>
               <p className="ehr-aidbox-service-text">
                 Leading companies rely on <a href="/fhir-server" className="text-primary">Aidbox FHIR Server</a> as a crucial component of their EHR systems.
               </p>
@@ -418,8 +434,8 @@ export default function EhrToolkitPage(): string {
       </section>
 
       {/* ONC Certification Section */}
-      <section className="ehr-onc-section">
-        <div className="container">
+      <section className="ehr-onc-section" id="ehr-g10-section">
+        <div className="ehr-onc-container">
           <div className="ehr-onc-wrapper">
             <div className="ehr-onc-content">
               <h2 className="ehr-onc-title">
@@ -443,20 +459,72 @@ export default function EhrToolkitPage(): string {
               <img src="/assets/images/ehr-toolkit/certificate.svg" alt="ONC Certification" />
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Certified Partners Section */}
-      <section className="ehr-certified-section">
-        <div className="container">
-          <p className="ehr-certified-label">SUCCESSFULLY CERTIFIED WITH US</p>
-          <div className="ehr-certified-logos">
-            {certifiedLogos.map((logo) => (
-              <img src={logo.src} alt={logo.alt} />
-            ))}
+          {/* Certified Partners - inside ONC section */}
+          <div className="ehr-certified-wrapper">
+            <h6 className="ehr-certified-label">SUCCESSFULLY CERTIFIED WITH US</h6>
+            <div className="ehr-certified-logos">
+              {certifiedLogos.map((logo) => (
+                <img src={logo.src} alt={logo.alt} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
+
+      {/* Custom Footer with Subscribe Form */}
+      <footer className="ehr-footer">
+        <div className="ehr-footer-container">
+          {/* Subscribe Form */}
+          <form
+            className="ehr-footer-subscribe"
+            action="https://health-samurai.us19.list-manage.com/subscribe/post?u=1c57d4d1b1aaffde230e81f34&amp;id=0197cbafab"
+            method="post"
+            target="_blank"
+          >
+            <input
+              type="email"
+              name="EMAIL"
+              placeholder="Business Email address"
+              required
+              className="ehr-footer-input"
+            />
+            <button type="submit" className="ehr-footer-submit">Subscribe to Blog</button>
+          </form>
+
+          {/* Footer Links */}
+          <div className="ehr-footer-links">
+            <div className="ehr-footer-column">
+              <span className="ehr-footer-column-title">resources</span>
+              <a href="/blog" className="ehr-footer-link">Blog</a>
+              <a href="https://docs.aidbox.app" className="ehr-footer-link">Documentation</a>
+              <a href="https://docs.aidbox.app/overview/release-notes" className="ehr-footer-link">Release Notes</a>
+              <a href="/services" className="ehr-footer-link">Aidbox for developers</a>
+              <a href="/fhir-api" className="ehr-footer-link">FHIR API for EHR</a>
+              <a href="/payers" className="ehr-footer-link">Aidbox for Health Plans</a>
+              <a href="/telemedicine" className="ehr-footer-link">Aidbox for Telemedicine</a>
+            </div>
+            <div className="ehr-footer-column">
+              <span className="ehr-footer-column-title">company</span>
+              <a href="/company" className="ehr-footer-link">About Us</a>
+              <a href="/news" className="ehr-footer-link">News</a>
+              <a href="/careers" className="ehr-footer-link">Careers</a>
+              <a href="/fhir-meetups" className="ehr-footer-link">FHIR Meetups</a>
+            </div>
+          </div>
+
+          {/* Footer Bottom */}
+          <div className="ehr-footer-bottom">
+            <a href="/" className="ehr-footer-logo">
+              <img src="/assets/images/logos/health-samurai-footer.svg" alt="Health Samurai Logo" />
+            </a>
+            <div className="ehr-footer-legal">
+              <a href="/legal/privacy-policy" className="ehr-footer-legal-link">Privacy Policy</a>
+              <a href="/legal/cookie-policy" className="ehr-footer-legal-link">Cookie Policy</a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </Fragment>
   );
 }
