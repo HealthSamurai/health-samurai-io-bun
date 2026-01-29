@@ -1,18 +1,34 @@
 /* FHIR Server Page Styles - Pixel perfect match */
 
-/* Client Logos Bar */
+/* Client Logos Bar - Marquee animation */
 .client-logos-bar {
   padding: 40px 0;
   background: white;
   border-bottom: 1px solid #f0f0f0;
+  overflow: hidden;
+}
+
+.client-logos-bar .container {
+  overflow: hidden;
+  max-width: 100%;
+  padding: 0;
 }
 
 .client-logos {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 60px;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .client-logos img {
@@ -22,6 +38,7 @@
   filter: grayscale(100%);
   opacity: 0.7;
   transition: all 0.3s;
+  flex-shrink: 0;
 }
 
 .client-logos img:hover {
@@ -58,21 +75,21 @@
   gap: 16px;
 }
 
-/* Card: flex column, 24px padding, rounded, gray bg */
+/* Card: flex column, transparent bg to match original */
 .aidbox-feature-card {
   display: flex;
   flex-direction: column;
-  padding: 24px;
-  background: #f9fafb;
+  padding: 8px 20px 8px 0;
+  background: transparent;
   text-decoration: none;
   color: inherit;
-  border-radius: 8px;
-  gap: 24px;
+  border-radius: 0;
+  gap: 16px;
   transition: all 0.2s;
 }
 
 .aidbox-feature-card:hover {
-  background-color: rgba(234, 74, 53, 0.1);
+  background-color: rgba(234, 74, 53, 0.05);
 }
 
 /* Bento layout: first card spans 2 columns */
@@ -89,12 +106,12 @@
 }
 
 .aidbox-feature-icon {
-  width: 40px;
-  height: 40px;
+  width: 81px;
+  height: 81px;
 }
 
 .aidbox-feature-title {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: #353b50;
   line-height: 1.3;
@@ -114,14 +131,14 @@
   gap: 6px;
 }
 
-/* Individual tag: gray pill style */
+/* Individual tag: text style to match original (no background) */
 .aidbox-tag {
-  padding: 2px 8px;
-  background: #ebeff2;
-  color: rgba(53, 59, 80, 0.6);
-  font-size: 13px;
+  padding: 0;
+  background: transparent;
+  color: rgb(53, 59, 80);
+  font-size: 18px;
   font-weight: 400;
-  border-radius: 6px;
+  border-radius: 0;
   line-height: 1.6;
 }
 
@@ -163,41 +180,42 @@
   margin-bottom: 40px;
 }
 
-/* Generic Tabs Component */
+/* Generic Tabs Component - Underline style to match original */
 .tabs-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px;
+  gap: 0;
   margin-bottom: 40px;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .tabs-trigger {
-  padding: 12px 24px;
-  font-size: 14px;
+  padding: 12px 20px 8px;
+  font-size: 16px;
   font-weight: 500;
-  color: #666;
-  background: white;
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
+  color: #353b50;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .tabs-trigger:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
+  color: #EA4935;
 }
 
 .tabs-trigger.active {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: white;
+  background: transparent;
+  color: #EA4935;
+  border-bottom-color: #EA4935;
 }
 
 .tabs-panel {
   background: white;
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 40px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
@@ -285,8 +303,8 @@
 
 .sample-project-card {
   background: white;
-  border-radius: 16px;
-  padding: 32px;
+  border-radius: 8px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -300,9 +318,7 @@
 }
 
 .sample-project-icon {
-  width: 64px;
-  height: 64px;
-  margin-bottom: 20px;
+  display: none;
 }
 
 .sample-project-icon img {
@@ -457,11 +473,11 @@
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .pricing-tab {
-  padding: 10px 28px;
+  padding: 12px 32px;
   font-size: 14px;
   font-weight: 500;
   color: #666;
@@ -491,17 +507,17 @@
 
 .pricing-card {
   background: white;
-  border-radius: 20px;
-  padding: 40px 32px;
+  border-radius: 8px;
+  padding: 40px 48px;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(53, 59, 80, 0.08);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid #eff2f5;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
 .pricing-card-icon {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   margin-bottom: 28px;
 }
 
@@ -603,7 +619,7 @@
 
 .support-plan {
   background: white;
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 32px;
   border: 1px solid #eee;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
@@ -967,7 +983,7 @@
 /* FAQ Section */
 .faq-section {
   padding: 80px 0;
-  background: #f8f9fb;
+  background: transparent;
 }
 
 .faq-title {

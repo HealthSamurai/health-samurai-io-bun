@@ -334,10 +334,20 @@ export default function FhirServerPage(): string {
         variant="product"
       />
 
-      {/* Client Logos Bar */}
+      {/* Client Logos Bar - Marquee animation */}
       <section className="client-logos-bar">
         <div className="container">
           <div className="client-logos">
+            {/* First set */}
+            <img src="/assets/images/logos/clients/client-1.png" alt="Sandata" />
+            <img src="/assets/images/logos/clients/firenote.png" alt="Firenote" />
+            <img src="/assets/images/logos/clients/deep6-ai.png" alt="Deep6 AI" />
+            <img src="/assets/images/logos/clients/solutio.webp" alt="Solutio" />
+            <img src="/assets/images/logos/clients/client-6.png" alt="BodyLogicMD" />
+            <img src="/assets/images/logos/clients/novellia.png" alt="Novellia" />
+            <img src="/assets/images/logos/clients/healthie.webp" alt="Healthie" />
+            <img src="/assets/images/logos/clients/lucet.webp" alt="Lucet" />
+            {/* Duplicate set for seamless loop */}
             <img src="/assets/images/logos/clients/client-1.png" alt="Sandata" />
             <img src="/assets/images/logos/clients/firenote.png" alt="Firenote" />
             <img src="/assets/images/logos/clients/deep6-ai.png" alt="Deep6 AI" />
@@ -498,7 +508,7 @@ export default function FhirServerPage(): string {
               <img src="/assets/images/hero/community-avatars.png" alt="Aidbox Community Members" />
             </div>
             <p className="community-benefits">Ask questions, share breakthroughs, and exchange best practices. Get real-time help from the Aidbox team and fellow builders.</p>
-            <Button href="https://connect.health-samurai.io/" variant="primary">Join the Community</Button>
+            <Button href="https://connect.health-samurai.io/" variant="primary">Join the community</Button>
           </div>
         </div>
       </section>
@@ -507,7 +517,7 @@ export default function FhirServerPage(): string {
       <section className="faq-section">
         <div className="container">
           <h2 className="faq-title">Aidbox FHIR Platform: Unified FHIR Server and Database for high-performance healthcare applications</h2>
-          <div className="faq-accordion" data-signals="{faqOpen: {intro: true, different: false, performance: false, conclusion: false}}">
+          <div className="faq-accordion" data-signals="{faqOpen: {intro: true, different: true, performance: true, conclusion: true}}">
             <div className="faq-item">
               <button
                 className="faq-trigger"
@@ -545,7 +555,7 @@ export default function FhirServerPage(): string {
                 <span>What makes Aidbox different</span>
                 <span className="faq-icon" data-class="{'faq-icon--open': $faqOpen.different}">+</span>
               </button>
-              <div className="faq-content" data-show="$faqOpen.different" style="display: none">
+              <div className="faq-content" data-show="$faqOpen.different">
                 <p><strong>1. FHIR-Native Database</strong></p>
                 <p>Aidbox doesn't just provide a FHIR API; it includes a <strong>FHIR-optimized database</strong> built on PostgreSQL with custom extensions. By combining the API and database in one platform, Aidbox ensures <strong>low latency</strong>, <strong>fewer moving parts</strong>, and <strong>less overhead</strong> than solutions that rely on multiple external services.</p>
 
@@ -569,7 +579,7 @@ export default function FhirServerPage(): string {
                 <span>Performance Highlights</span>
                 <span className="faq-icon" data-class="{'faq-icon--open': $faqOpen.performance}">+</span>
               </button>
-              <div className="faq-content" data-show="$faqOpen.performance" style="display: none">
+              <div className="faq-content" data-show="$faqOpen.performance">
                 <p><strong>1. High-volume data ingestion</strong></p>
                 <p>We tested Aidbox with <strong>23 million</strong> and then <strong>100 million</strong> resources via the /fhir/$import endpoint.</p>
                 <ul>
@@ -611,7 +621,7 @@ export default function FhirServerPage(): string {
                 <span>Conclusion</span>
                 <span className="faq-icon" data-class="{'faq-icon--open': $faqOpen.conclusion}">+</span>
               </button>
-              <div className="faq-content" data-show="$faqOpen.conclusion" style="display: none">
+              <div className="faq-content" data-show="$faqOpen.conclusion">
                 <p><strong>Aidbox FHIR server</strong> offers <strong>speed, control, and reliability</strong> in one streamlined package. The result is a solution that can scale from tens of millions to <strong>billions of FHIR resources</strong>, delivering:</p>
 
                 <p><strong>Outstanding performance on minimal hardware</strong></p>

@@ -24,7 +24,9 @@ export function Footer(): string {
         {/* Certification badges at top */}
         <div className="footer-certifications">
           <img src="/assets/images/certifications/hipaa.png" alt="HIPAA Compliant" />
-          <img src="/assets/images/certifications/iso-27001.svg" alt="ISO 27001:2022 Certified" />
+          <a href="https://www.health-samurai.io/news/health-samurai-achieves-iso-27001-2022-certification">
+            <img src="/assets/images/certifications/iso-27001.svg" alt="ISO 27001:2022 Certified" />
+          </a>
         </div>
 
         {/* Main columns */}

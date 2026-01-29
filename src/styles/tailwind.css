@@ -142,15 +142,21 @@
 
   /* Buttons */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-sans text-sm font-bold no-underline border-none rounded cursor-pointer transition-all duration-150 uppercase tracking-wide;
+    @apply inline-flex items-center justify-center gap-2 font-sans no-underline rounded cursor-pointer transition-all duration-150;
+    padding: 14px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
   }
 
   .btn-primary {
-    @apply bg-primary text-white;
+    background-color: #EA4A35;
+    color: white;
   }
 
   .btn-primary:hover {
-    @apply bg-primary-dark text-white;
+    background-color: #d94130;
+    color: white;
   }
 
   .btn-secondary {
@@ -162,15 +168,24 @@
   }
 
   .btn-outline {
-    @apply bg-transparent text-text border border-black/10 font-normal;
+    background: transparent;
+    color: rgb(53, 59, 80);
+    border: 2px solid #EA4935;
+    border-radius: 8px;
+    padding: 0 32px;
+    height: 48px;
+    line-height: 48px;
+    font-weight: 500;
   }
 
   .btn-outline:hover {
-    @apply border-primary text-primary;
+    border-color: #d94130;
+    color: #d94130;
   }
 
   .btn-lg {
-    @apply px-8 py-4 text-base;
+    padding: 14px 24px;
+    font-size: 14px;
   }
 
   .btn-link {

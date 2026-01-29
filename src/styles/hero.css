@@ -97,8 +97,8 @@
 
 /* Product Hero - Centered layout for product pages */
 .hero-product {
-  background: #f4f8fb;
-  padding: var(--space-16) 0 var(--space-12);
+  background: transparent;
+  padding: var(--space-16) 0 108px;
 }
 
 .hero-product .hero-inner {
@@ -129,15 +129,16 @@
 .hero-product .hero-title {
   font-size: 56px;
   font-weight: 700;
-  line-height: 1.15;
-  color: #353b50;
+  line-height: 64px;
+  letter-spacing: -1.12px;
+  color: rgb(53, 59, 80);
   margin-bottom: var(--space-6);
 }
 
 .hero-product .hero-description {
-  font-size: 18px;
-  line-height: 1.6;
-  color: #666;
+  font-size: 17px;
+  line-height: 23.8px;
+  color: rgb(53, 59, 80);
   max-width: 700px;
   margin: 0 auto var(--space-8);
 }
