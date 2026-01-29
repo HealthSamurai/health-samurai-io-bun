@@ -170,7 +170,7 @@ export default function StartupsPage(): string {
           <div className="startups-hero-content">
             <div className="startups-hero-text">
               <span className="startups-tag">{">_"} Hello, Aidbox</span>
-              <h1>Design your Healthcare App for the Future with Aidbox</h1>
+              <h1>Design your Healthcare App for the Future <strong>with Aidbox</strong></h1>
               <p>
                 Aidbox helps digital health startups speed up development and reduce time to market.
                 Simply delegate technical tasks to the{" "}

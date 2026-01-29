@@ -1,14 +1,14 @@
 /* Footer - Pixel perfect match to health-samurai.io */
 .footer {
   background-color: #f4f8fb;
-  color: var(--color-text);
-  padding: 48px 0;
+  color: rgb(53, 59, 80);
+  padding: 0 32px 20px 32px;
 }
 
 .footer-inner {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 var(--container-padding);
+  padding: 0;
 }
 
 /* Certification badges at top */

@@ -152,11 +152,11 @@
 }
 
 .startups-trusted-text {
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 13px;
+  font-weight: 500;
   line-height: 24px;
-  color: var(--startups-text-dark);
-  letter-spacing: 0.5px;
+  color: rgba(53, 59, 80, 0.6);
+  letter-spacing: normal;
   text-transform: uppercase;
   white-space: nowrap;
   margin: 0;
@@ -225,6 +225,7 @@
   line-height: 24px;
   color: var(--startups-text-dark);
   margin-bottom: 10px;
+  letter-spacing: normal;
 }
 
 .startups-advantage-card p {
@@ -255,7 +256,8 @@
 .startups-features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  gap: 42px;
+  margin-bottom: 96px;
 }
 
 .startups-feature-card {
@@ -270,11 +272,12 @@
 }
 
 .startups-feature-card h3 {
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 400;
   line-height: 24px;
   color: var(--startups-text-dark);
-  margin: 0;
+  margin: 0 0 8px 0;
+  letter-spacing: normal;
 }
 
 .startups-feature-card p {
@@ -308,7 +311,7 @@
   font-weight: 400;
   line-height: 24px;
   color: var(--startups-text-dark);
-  text-transform: uppercase;
+  text-transform: none;
   margin-bottom: 16px;
 }
 
@@ -489,7 +492,7 @@
 /* FAQ Section */
 .startups-faq {
   background-color: transparent;
-  padding: 54px 0;
+  padding: 96px 0 32px;
 }
 
 .startups-faq h2 {
