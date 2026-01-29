@@ -225,7 +225,7 @@ export default function PayersPage(): string {
       </section>
 
       {/* Shift to FHIR Section */}
-      <section className="payers-shift section">
+      <section className="payers-shift">
         <div className="container">
           <h2 className="payers-section-title">A shift to the FHIR ecosystem</h2>
 
@@ -403,7 +403,7 @@ export default function PayersPage(): string {
       </section>
 
       {/* Clients Section */}
-      <section className="payers-clients section">
+      <section className="payers-clients">
         <div className="container">
           <h2 className="payers-section-title">Clients that trust the Aidbox Platform</h2>
           <div className="payers-clients-grid">
@@ -417,7 +417,7 @@ export default function PayersPage(): string {
       </section>
 
       {/* Contact Form Section */}
-      <section className="payers-contact section" id="hp-request-form">
+      <section className="payers-contact" id="hp-request-form">
         <div className="container">
           <div className="payers-contact-wrapper">
             <h2>Start a conversation with us</h2>

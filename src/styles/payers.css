@@ -15,17 +15,19 @@
 
 .payers-hero-content {
   color: #ffffff;
+  max-width: 580px;
 }
 
 .payers-hero-tag {
   display: inline-block;
-  padding: 8px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1px;
+  padding: 4px 10px 2px;
+  border: 1px solid #ea4a35;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.25px;
   text-transform: uppercase;
-  margin-bottom: 24px;
+  margin-bottom: 0;
   color: #ffffff;
 }
 
@@ -34,14 +36,18 @@
   font-weight: 800;
   line-height: 64px;
   color: #ffffff;
-  margin-bottom: 24px;
+  margin-top: 24px;
+  margin-bottom: 0;
+  max-width: 580px;
 }
 
 .payers-hero-content p {
   font-size: 21px;
   line-height: 32px;
-  color: rgba(255, 255, 255, 0.9);
+  color: #ffffff;
   margin: 0;
+  margin-top: 24px;
+  max-width: 580px;
 }
 
 .payers-hero-link {
@@ -62,20 +68,23 @@
   background: #ffffff;
   padding: 40px;
   border-radius: 8px;
+  max-width: 470px;
 }
 
 .payers-form-group {
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .payers-form-input {
-  width: 100%;
-  padding: 16px 20px;
-  font-size: 16px;
+  width: 430px;
+  padding: 8px 12px;
+  font-size: 14px;
   border: 1px solid #ebebeb;
   border-radius: 4px;
   background: #ffffff;
   transition: border-color 0.15s ease;
+  height: 48px;
+  box-sizing: border-box;
 }
 
 .payers-form-input:focus {
@@ -88,9 +97,16 @@
 }
 
 .payers-form-btn {
-  width: 100%;
-  padding: 16px 24px;
-  margin-top: 8px;
+  width: 430px;
+  height: 54px;
+  padding: 18px 0;
+  margin-top: 18px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+  display: block;
+  border: none;
+  text-align: center;
 }
 
 .payers-recaptcha {
@@ -115,12 +131,13 @@
   font-weight: 700;
   line-height: 50px;
   color: #353b50;
-  margin-bottom: 48px;
+  margin-bottom: 24px;
 }
 
 /* Shift to FHIR Section */
 .payers-shift {
   background: #ffffff;
+  padding: 120px 0 40px;
 }
 
 .payers-shift-diagram {
@@ -167,7 +184,9 @@
   font-weight: 700;
   line-height: 42px;
   color: #353b50;
+  margin-top: 16px;
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .payers-card-divider {
@@ -175,14 +194,16 @@
   height: 3px;
   background-color: #ea4a35;
   margin-bottom: 24px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .payers-challenge-card p,
 .payers-solution-card p {
-  font-size: 16px;
-  line-height: 26px;
-  color: #333333;
-  margin-bottom: 24px;
+  font-size: 15px;
+  line-height: 25px;
+  color: #353b50;
+  margin-bottom: 0;
 }
 
 /* Lists */
@@ -243,9 +264,10 @@
 }
 
 .payers-feature-icon {
-  width: 48px;
-  height: 48px;
-  margin: 0 auto 20px;
+  width: 60px;
+  height: 60px;
+  max-width: 60px;
+  margin: 0 auto 16px;
 }
 
 .payers-feature-icon img {
@@ -255,10 +277,12 @@
 }
 
 .payers-feature-title {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 700;
+  line-height: 34px;
   color: #353b50;
-  margin-bottom: 12px;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 .payers-feature-divider {
@@ -269,9 +293,9 @@
 }
 
 .payers-feature-desc {
-  font-size: 14px;
-  line-height: 22px;
-  color: #333333;
+  font-size: 15px;
+  line-height: 25px;
+  color: #353b50;
   margin: 0;
 }
 
@@ -298,7 +322,8 @@
   font-weight: 700;
   line-height: 42px;
   color: #353b50;
-  margin-bottom: 24px;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 .payers-ecosystem-content > p {
@@ -309,12 +334,14 @@
 }
 
 .payers-steps-title {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: 1px;
+  line-height: 32px;
+  letter-spacing: normal;
   text-transform: uppercase;
   color: #353b50;
-  margin-bottom: 20px;
+  margin-top: 24px;
+  margin-bottom: 16px;
 }
 
 .payers-steps-list {
@@ -334,10 +361,15 @@
 }
 
 .payers-whitepaper-btn {
-  border: 1px solid #353b50;
+  border: 2px solid #353b50;
   color: #353b50;
   background: transparent;
-  padding: 14px 24px;
+  padding: 12px 29px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.25px;
+  margin-top: 40px;
+  height: 48px;
 }
 
 .payers-whitepaper-btn:hover {
@@ -378,9 +410,10 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  font-size: 16px;
-  font-weight: 500;
-  color: #666666;
+  padding-bottom: 6px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #222222;
   transition: color 0.2s ease;
   position: relative;
 }
@@ -397,7 +430,7 @@
 }
 
 .payers-tab-btn--active {
-  color: #353b50;
+  color: #222222;
 }
 
 .payers-tab-btn--active::after {
@@ -514,10 +547,16 @@
   color: #c9362b;
 }
 
+.payers-slider-nav .btn-primary {
+  font-weight: 700;
+  padding: 12px 24px;
+  height: 52px;
+}
+
 /* Clients Section */
 .payers-clients {
   background: #ffffff;
-  padding: 60px 0;
+  padding: 20px 0 40px;
 }
 
 .payers-clients-grid {
@@ -548,20 +587,21 @@
 /* Contact Form Section */
 .payers-contact {
   background: #ffffff;
+  padding: 120px 0;
 }
 
 .payers-contact-wrapper {
-  max-width: 600px;
+  max-width: 460px;
   margin: 0 auto;
   text-align: center;
 }
 
 .payers-contact-wrapper h2 {
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 50px;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 36px;
   color: #353b50;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .payers-contact-subtitle {
@@ -609,8 +649,12 @@
 }
 
 .payers-contact-btn {
-  width: 100%;
+  width: 460px;
   padding: 18px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+  border-radius: 2px;
 }
 
 /* Responsive */
