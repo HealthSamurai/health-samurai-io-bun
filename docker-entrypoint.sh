@@ -48,6 +48,8 @@ install_deps() {
     if [ -f "package.json" ]; then
         log "Installing dependencies..."
         bun install
+        log "Building Tailwind CSS..."
+        bun run css:build
     fi
 }
 
