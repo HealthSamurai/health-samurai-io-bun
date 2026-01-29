@@ -180,7 +180,7 @@ function HeroForm(): string {
           <span>reCAPTCHA</span>
         </div>
       </div>
-      <button type="submit" className="telemed-submit-btn">LET'S TALK</button>
+      <button type="submit" className="telemed-submit-btn">Let's talk</button>
     </form>
   );
 }
@@ -235,7 +235,7 @@ export default function TelemedicinePage(): string {
         <div className="container">
           <div className="telemed-hero-grid">
             <div className="telemed-hero-content">
-              <a href="#telemed-request-form" className="telemed-badge">AIDBOX TELEHEALTH</a>
+              <a href="#telemed-request-form" className="telemed-badge">Aidbox Telehealth</a>
               <h1>Let's build a customizable telemedicine FHIR platform</h1>
               <p className="telemed-hero-desc">
                 We help companies create their own <strong>telehealth solution</strong>.
@@ -473,7 +473,7 @@ export default function TelemedicinePage(): string {
                   <span>reCAPTCHA</span>
                 </div>
               </div>
-              <button type="submit" className="telemed-submit-btn">LET'S TALK</button>
+              <button type="submit" className="telemed-submit-btn">Let's talk</button>
             </form>
           </div>
         </div>
