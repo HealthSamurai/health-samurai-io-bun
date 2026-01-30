@@ -4,9 +4,9 @@ import { Component } from "../../lib/component";
 
 export function StoriesSection(): string {
   return (
-    <Component name="pages/index/StoriesSection" className="home-stories-section">
-      <div className="home-stories-container">
-        <h2 className="home-h2-section">Our stories </h2>
+    <Component name="pages/index/StoriesSection" className="py-12">
+      <div class="container">
+        <h2 class="text-4xl md:text-5xl font-black leading-tight mb-6">Our stories</h2>
         <div className="w-row">
           <div className="column-32 w-col w-col-6 w-col-stack">
             <a

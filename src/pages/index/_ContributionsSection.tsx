@@ -4,9 +4,9 @@ import { Component } from "../../lib/component";
 
 export function ContributionsSection(): string {
   return (
-    <Component name="pages/index/ContributionsSection" className="home-fhircontr-section">
-      <div className="home-contribution-container">
-        <h2 className="home-h2-section">Our FHIR Contributions</h2>
+    <Component name="pages/index/ContributionsSection" className="py-12">
+      <div class="container">
+        <h2 class="text-4xl md:text-5xl font-black leading-tight mb-6">Our FHIR Contributions</h2>
         <a
           rel="nofollow"
           href="https://www.healthdevhub.com/"

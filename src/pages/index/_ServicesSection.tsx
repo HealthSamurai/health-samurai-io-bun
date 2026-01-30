@@ -5,7 +5,7 @@ import { Component } from "../../lib/component";
 export function ServicesSection(): string {
   return (
     <Component name="pages/index/ServicesSection" className="my-6 mb-16">
-      <div class="max-w-[1100px] mx-auto px-4">
+      <div class="container">
         <h2 class="text-4xl md:text-5xl font-black leading-tight mb-6">
           Services
         </h2>
