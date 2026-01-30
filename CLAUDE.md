@@ -66,6 +66,48 @@ Use `server.sh` to run the server in background with proper PID tracking:
 
 **Important:** Always use `./server.sh stop` to stop the server. Never use `pkill bun` as it kills all Bun processes system-wide.
 
+## Webflow HTML Snapshots (chro / CDP)
+
+Prereqs:
+1) Chrome headless on port 9222
+2) chro server on port 2229
+
+```sh
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
+  --headless=new --remote-debugging-port=9222 --disable-gpu about:blank
+
+cd /Users/niquola/chromoi
+bun src/index.js
+```
+
+Health check:
+
+```sh
+curl -sS localhost:2229/health
+```
+
+Snapshot helper (use `jq` for CDP JSON parsing):
+
+```sh
+save_snapshot() {
+  local url="$1"
+  local out="$2"
+  curl -sS localhost:2229/cdp -d "{\"method\":\"Page.navigate\",\"params\":{\"url\":\"${url}\"}}" >/dev/null
+  sleep 4
+  curl -sS localhost:2229/cdp -d '{"method":"Runtime.evaluate","params":{"expression":"document.documentElement.outerHTML"}}' \
+    | jq -r '.result.value // ""' \
+    > "$out"
+}
+
+save_snapshot "https://health-samurai.io/" "./webflow/index.html"
+save_snapshot "https://health-samurai.io/fhir-server" "./webflow/fhir-server.html"
+```
+
+## Ad‑hoc Scripts
+
+- Prefer Bun for ad‑hoc scripts (`bun -e` or `scripts/*.ts` run via `bun`).
+- Use `jq` for quick CDP JSON parsing in shell pipelines.
+
 ## Project Structure
 
 ```

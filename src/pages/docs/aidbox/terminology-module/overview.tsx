@@ -1,0 +1,15132 @@
+// Generated from Webflow HTML (1:1 JSX)
+// Source: /Users/niquola/health-samurai/webflow/snapshots/docs/aidbox/terminology-module/overview.html
+
+import { Fragment } from "../lib/jsx-runtime";
+
+export const metadata = {
+  title: "Terminology Overview | Aidbox Docs",
+  description:
+    "Overview of FHIR terminology concepts and Aidbox's terminology server implementation",
+};
+
+export default function OverviewWebflow(): string {
+  return (
+    <Fragment>
+      <noscript>
+        &lt;iframe height="0"
+        src="https://www.googletagmanager.com/ns.html?id=GTM-PMS5LG2"
+        style="display:none;visibility:hidden" width="0"&gt;&lt;/iframe&gt; 
+      </noscript> 
+      <div
+        className="fixed bottom-0 left-0 right-0 bg-surface border-t border-outline shadow-lg z-[60]"
+        id="cookie-consent-banner"
+        style="display: block;"
+      >
+         
+        <div className="max-w-screen-xl mx-auto px-5 py-4 md:py-6">
+           
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+             
+            <div className="flex-1 text-sm text-on-surface">
+               
+              <p>
+                We use cookies for analytics and marketing to improve your
+                experience and communicate with you. You can accept or reject
+                cookies below. View our 
+                <a
+                  className="text-brand hover:underline"
+                  href="https://www.health-samurai.io/legal/cookie-policy"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Cookie Policy 
+                </a> 
+                for more information. 
+              </p> 
+            </div> 
+            <div className="flex gap-3 justify-end">
+               
+              <button
+                className="px-4 py-2 rounded border border-outline text-on-surface hover:bg-surface-hover transition-colors cursor-pointer"
+                onclick="handleRejectCookies()"
+              >
+                Reject 
+              </button> 
+              <button
+                className="px-4 py-2 rounded bg-brand text-white hover:bg-brand-hover transition-colors cursor-pointer"
+                onclick="handleAcceptCookies()"
+              >
+                Accept All 
+              </button> 
+            </div> 
+          </div> 
+        </div> 
+      </div> 
+      <div
+        aria-label="Select color theme"
+        className="theme-toggle"
+        id="theme-toggle-fixed"
+        role="radiogroup"
+      >
+         
+        <button
+          aria-label="Switch to light theme"
+          data-theme="light"
+          onclick="setTheme('light')"
+        >
+           
+          <span className="theme-tooltip">Light </span> 
+          <svg
+            className="w-4 h-4"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+            fill="currentColor"
+          >
+             
+            <path d="M256 0c8.8 0 16 7.2 16 16l0 80c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-80c0-8.8 7.2-16 16-16zM0 256c0-8.8 7.2-16 16-16l80 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-80 0c-8.8 0-16-7.2-16-16zm400 0c0-8.8 7.2-16 16-16l80 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-80 0c-8.8 0-16-7.2-16-16zM256 400c8.8 0 16 7.2 16 16l0 80c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-80c0-8.8 7.2-16 16-16zM75 75c6.2-6.2 16.4-6.2 22.6 0l56.6 56.6c6.2 6.2 6.2 16.4 0 22.6s-16.4 6.2-22.6 0L75 97.6c-6.2-6.2-6.2-16.4 0-22.6zm0 362c-6.2-6.2-6.2-16.4 0-22.6l56.6-56.6c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6L97.6 437c-6.2 6.2-16.4 6.2-22.6 0zM357.8 154.2c-6.2-6.2-6.2-16.4 0-22.6L414.4 75c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6l-56.6 56.6c-6.2 6.2-16.4 6.2-22.6 0zm0 203.6c6.2-6.2 16.4-6.2 22.6 0L437 414.4c6.2 6.2 6.2 16.4 0 22.6s-16.4 6.2-22.6 0l-56.6-56.6c-6.2-6.2-6.2-16.4 0-22.6zM336 256a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zm-192 0a112 112 0 1 1 224 0 112 112 0 1 1 -224 0z"></path> 
+          </svg> 
+        </button> 
+        <button
+          aria-label="Switch to system theme"
+          data-theme="system"
+          onclick="setTheme('system')"
+          className="active"
+        >
+           
+          <span className="theme-tooltip">System </span> 
+          <svg
+            className="w-4 h-4"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+            data-slot="icon"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M2.25 5.25a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3h-3v.257c0 .597.237 1.17.659 1.591l.621.622a.75.75 0 0 1-.53 1.28h-9a.75.75 0 0 1-.53-1.28l.621-.622a2.25 2.25 0 0 0 .659-1.59V18h-3a3 3 0 0 1-3-3V5.25Zm1.5 0v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5Z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button> 
+        <button
+          aria-label="Switch to dark theme"
+          data-theme="dark"
+          onclick="setTheme('dark')"
+        >
+           
+          <span className="theme-tooltip">Dark </span> 
+          <svg
+            className="w-4 h-4"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 384 512"
+            fill="currentColor"
+          >
+             
+            <path d="M190.6 66.8c-38.8 37.8-62.9 90.7-62.9 149.2c0 108.9 83.5 198.3 189.9 207.3C289.8 439 257.7 448 223.5 448C117.7 448 32 362.1 32 256c0-94.8 68.5-173.5 158.6-189.2zm66.1-21.5c-1.5-6.9-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3z"></path> 
+          </svg> 
+        </button> 
+      </div> 
+      <div>
+         
+        <nav
+          aria-label="Main site menu"
+          className="w-full bg-header-bg backdrop-blur-xl border-b border-header-border flex-shrink-0 sticky top-0 z-50"
+        >
+           
+          <div className="flex items-center justify-between py-3 min-h-16 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto">
+             
+            <div className="flex items-center">
+               
+              <button
+                aria-label="Toggle mobile menu"
+                className="p-2 text-on-surface-strong hover:text-brand transition-colors duration-200 lg:hidden"
+                id="mobile-menu-toggle"
+                type="button"
+              >
+                 
+                <svg
+                  className="size-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                   
+                  <path
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                  ></path> 
+                </svg> 
+              </button> 
+              <div className="flex items-center flex-shrink-0">
+                 
+                <a
+                  className="group/headerlogo flex items-center"
+                  href="/docs/aidbox"
+                >
+                   
+                  <img
+                    alt="Aidbox Docs Logo"
+                    className="block object-contain size-8"
+                    fetchpriority="high"
+                    src="https://www.health-samurai.io/docs/.gitbook/assets/aidbox_logo.jpg"
+                  /> 
+                  <div className="text-pretty tracking-tight font-semibold ms-3 text-lg/tight lg:text-xl/tight text-on-surface-strong">
+                    Aidbox Docs 
+                  </div> 
+                </a> 
+              </div> 
+              <nav
+                className="hidden lg:flex items-center gap-8 ml-16"
+                id="top-navigation"
+              >
+                 
+                <div className="relative group" key="Product">
+                   
+                  <button
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    aria-label="Product menu"
+                    className="flex items-center gap-1 text-sm leading-5 text-on-surface-strong hover:text-brand transition-colors duration-200 font-normal"
+                    type="button"
+                  >
+                     
+                    <span>Product </span> 
+                    <svg
+                      className="size-4 transition-transform duration-200 group-hover:rotate-180"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                       
+                      <path
+                        d="M19 9l-7 7-7-7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                      ></path> 
+                    </svg> 
+                  </button> 
+                  <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute top-full mt-2 w-48 rounded-md shadow-lg bg-surface z-50">
+                     
+                    <div
+                      aria-orientation="vertical"
+                      className="py-1"
+                      role="menu"
+                    >
+                       
+                      <a
+                        className="block px-4 py-2 text-sm text-on-surface-strong hover:text-brand hover:bg-surface-hover no-underline transition-colors duration-200 font-normal"
+                        href="https://www.health-samurai.io/fhir-server"
+                        key="FHIR server"
+                        role="menuitem"
+                        target="_blank"
+                      >
+                        FHIR server 
+                      </a> 
+                      <a
+                        className="block px-4 py-2 text-sm text-on-surface-strong hover:text-brand hover:bg-surface-hover no-underline transition-colors duration-200 font-normal"
+                        href="/docs/aidbox/overview/release-notes"
+                        key="Release notes"
+                        role="menuitem"
+                      >
+                        Release notes 
+                      </a> 
+                      <a
+                        className="block px-4 py-2 text-sm text-on-surface-strong hover:text-brand hover:bg-surface-hover no-underline transition-colors duration-200 font-normal"
+                        href="https://www.health-samurai.io/contacts"
+                        key="Talk to us"
+                        role="menuitem"
+                        target="_blank"
+                      >
+                        Talk to us 
+                      </a> 
+                      <a
+                        className="block px-4 py-2 text-sm text-on-surface-strong hover:text-brand hover:bg-surface-hover no-underline transition-colors duration-200 font-normal"
+                        href="https://connect.health-samurai.io/"
+                        key="Ask community"
+                        role="menuitem"
+                        target="_blank"
+                      >
+                        Ask community 
+                      </a> 
+                      <a
+                        className="block px-4 py-2 text-sm text-on-surface-strong hover:text-brand hover:bg-surface-hover no-underline transition-colors duration-200 font-normal"
+                        href="https://www.health-samurai.io/blog"
+                        key="Blog"
+                        role="menuitem"
+                        target="_blank"
+                      >
+                        Blog 
+                      </a> 
+                      <a
+                        className="block px-4 py-2 text-sm text-on-surface-strong hover:text-brand hover:bg-surface-hover no-underline transition-colors duration-200 font-normal"
+                        href="https://www.health-samurai.io"
+                        key="Health Samurai"
+                        role="menuitem"
+                        target="_blank"
+                      >
+                        Health Samurai 
+                      </a> 
+                    </div> 
+                  </div> 
+                </div> 
+                <a
+                  className="text-sm leading-5 text-on-surface-strong hover:text-brand transition-colors duration-200 no-underline font-normal"
+                  href="/docs/aidbox/getting-started/run-aidbox-locally"
+                  key="Run Aidbox locally"
+                >
+                  Run Aidbox locally 
+                </a> 
+                <a
+                  className="text-sm leading-5 text-on-surface-strong hover:text-brand transition-colors duration-200 no-underline font-normal"
+                  href="/docs/aidbox/getting-started/run-aidbox-in-sandbox"
+                  key="Run Aidbox in Sandbox"
+                >
+                  Run Aidbox in Sandbox 
+                </a> 
+                <a
+                  className="text-sm leading-5 text-on-surface-strong hover:text-brand transition-colors duration-200 no-underline font-normal"
+                  href="/docs/aidbox/examples"
+                  key="Examples"
+                >
+                  Examples 
+                </a> 
+              </nav> 
+            </div> 
+            <div className="flex items-center gap-6">
+               
+              <div className="relative lg:hidden">
+                 
+                <button
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  aria-label="More options"
+                  className="p-2 text-on-surface-strong hover:text-brand transition-colors duration-200"
+                  id="ellipsis-menu-toggle"
+                  type="button"
+                >
+                   
+                  <svg
+                    className="size-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                     
+                    <circle cx="5" cy="12" r="2"></circle> 
+                    <circle cx="12" cy="12" r="2"></circle> 
+                    <circle cx="19" cy="12" r="2"></circle> 
+                  </svg> 
+                </button> 
+                <div
+                  className="hidden absolute right-0 mt-2 w-64 rounded-md shadow-lg outline-none ring-1 ring-outline-subtle bg-surface z-50"
+                  id="ellipsis-dropdown"
+                >
+                   
+                  <div aria-orientation="vertical" className="py-1" role="menu">
+                     
+                    <div className="px-4 py-2 text-xs font-semibold text-on-surface-placeholder uppercase tracking-wide">
+                      Product 
+                    </div> 
+                    <a
+                      className="block px-4 py-2 text-sm text-on-surface-strong hover:text-brand hover:bg-surface-hover no-underline transition-colors duration-200 font-normal"
+                      href="https://www.health-samurai.io/fhir-server"
+                      role="menuitem"
+                      target="_blank"
+                    >
+                      FHIR server 
+                    </a> 
+                    <a
+                      className="block px-4 py-2 text-sm text-on-surface-strong hover:text-brand hover:bg-surface-hover no-underline transition-colors duration-200 font-normal"
+                      href="/overview/release-notes"
+                      role="menuitem"
+                    >
+                      Release notes 
+                    </a> 
+                    <a
+                      className="block px-4 py-2 text-sm text-on-surface-strong hover:text-brand hover:bg-surface-hover no-underline transition-colors duration-200 font-normal"
+                      href="https://www.health-samurai.io/contacts"
+                      role="menuitem"
+                      target="_blank"
+                    >
+                      Talk to us 
+                    </a> 
+                    <a
+                      className="block px-4 py-2 text-sm text-on-surface-strong hover:text-brand hover:bg-surface-hover no-underline transition-colors duration-200 font-normal"
+                      href="https://connect.health-samurai.io/"
+                      role="menuitem"
+                      target="_blank"
+                    >
+                      Ask community 
+                    </a> 
+                    <a
+                      className="block px-4 py-2 text-sm text-on-surface-strong hover:text-brand hover:bg-surface-hover no-underline transition-colors duration-200 font-normal"
+                      href="https://www.health-samurai.io/blog"
+                      role="menuitem"
+                      target="_blank"
+                    >
+                      Blog 
+                    </a> 
+                    <a
+                      className="block px-4 py-2 text-sm text-on-surface-strong hover:text-brand hover:bg-surface-hover no-underline transition-colors duration-200 font-normal"
+                      href="https://www.health-samurai.io"
+                      role="menuitem"
+                      target="_blank"
+                    >
+                      Health Samurai 
+                    </a> 
+                    <a
+                      className="block px-4 py-2 text-sm text-on-surface-strong hover:text-brand hover:bg-surface-hover no-underline transition-colors duration-200 font-normal"
+                      href="/docs/aidbox/getting-started/run-aidbox-locally"
+                      role="menuitem"
+                    >
+                      Run Aidbox locally 
+                    </a> 
+                    <a
+                      className="block px-4 py-2 text-sm text-on-surface-strong hover:text-brand hover:bg-surface-hover no-underline transition-colors duration-200 font-normal"
+                      href="/docs/aidbox/getting-started/run-aidbox-in-sandbox"
+                      role="menuitem"
+                    >
+                      Run Aidbox in Sandbox 
+                    </a> 
+                    <a
+                      className="block px-4 py-2 text-sm text-on-surface-strong hover:text-brand hover:bg-surface-hover no-underline transition-colors duration-200 font-normal"
+                      href="/docs/aidbox/examples"
+                      role="menuitem"
+                    >
+                      Examples 
+                    </a> 
+                  </div> 
+                </div> 
+              </div> 
+              <div className="relative">
+                 
+                <button
+                  aria-label="Toggle search"
+                  className="md:hidden p-2 text-on-surface-strong hover:text-brand transition-colors duration-200 cursor-pointer"
+                  id="mobile-search-toggle"
+                  type="button"
+                >
+                   
+                  <div className="border border-outline rounded p-2 bg-surface-subtle hover:border-outline-hover transition-colors">
+                     
+                    <svg
+                      className="size-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                       
+                      <path
+                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                      ></path> 
+                    </svg> 
+                  </div> 
+                </button> 
+                <div className="hidden md:block">
+                   
+                  <div
+                    className="relative h-9 w-64 max-w-64"
+                    id="meilisearch-wrapper"
+                  >
+                     
+                    <div className="flex h-9 w-full items-center overflow-hidden rounded-md border border-outline bg-surface text-on-surface-secondary transition-all hover:border-outline-input-focus focus-within:border-outline-input-focus focus-within:[&_#meilisearch-shortcut]:hidden">
+                       
+                      <div className="flex min-w-0 flex-1 items-center gap-2">
+                         
+                        <div className="flex items-center justify-center pl-3">
+                           
+                          <svg
+                            className="size-4 text-on-surface-placeholder shrink-0"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                             
+                            <path
+                              d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                            ></path> 
+                          </svg> 
+                        </div> 
+                        <input
+                          autoComplete="off"
+                          className="min-w-0 flex-1 bg-transparent py-1.5 pr-3 text-sm outline-none placeholder:text-sm placeholder:text-on-surface-placeholder text-on-surface-strong font-normal"
+                          hxGet="/docs/aidbox/meilisearch/dropdown"
+                          hxIndicator="#meilisearch-indicator"
+                          hxSwap="innerHTML"
+                          hxTarget="#meilisearch-dropdown"
+                          hxTrigger="keyup[!event.key.startsWith('Arrow') && event.key !== 'Enter' && event.key !== 'Escape'] changed delay:300ms"
+                          id="meilisearch-input"
+                          name="q"
+                          onblur="document.getElementById('meilisearch-shortcut').style.display='flex'"
+                          onfocus="document.getElementById('meilisearch-shortcut').style.display='none'"
+                          placeholder="Ask or search..."
+                          type="text"
+                        /> 
+                      </div> 
+                      <div className="flex shrink-0 items-center">
+                         
+                        <div
+                          className="hidden sm:flex justify-end gap-0.5 whitespace-nowrap text-xs text-on-surface-placeholder font-normal transition-opacity duration-200"
+                          id="meilisearch-shortcut"
+                        >
+                           
+                          <kbd className="inline-flex h-5 w-[39px] items-center justify-center rounded border border-outline bg-surface-hover px-[5px] py-[1px] text-xs leading-4 text-on-surface-placeholder font-normal text-center">
+                            Ctrl 
+                          </kbd> 
+                          <kbd className="inline-flex h-5 w-5 min-w-[20px] items-center justify-center rounded border border-outline bg-surface-hover px-[5px] py-[1px] text-xs leading-4 text-on-surface-placeholder font-normal text-center">
+                            K 
+                          </kbd> 
+                        </div> 
+                        <div
+                          className="htmx-indicator mr-1.5"
+                          id="meilisearch-indicator"
+                        >
+                           
+                          <svg
+                            className="animate-spin size-4 text-on-surface-placeholder"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                             
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              stroke-width="4"
+                            ></circle> 
+                            <path
+                              className="opacity-75"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 0 1 4 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                              fill="currentColor"
+                            ></path> 
+                          </svg> 
+                        </div> 
+                      </div> 
+                    </div> 
+                    <div
+                      className="absolute top-full mt-2 right-0 left-0 md:left-auto md:min-w-[32rem] z-50"
+                      id="meilisearch-dropdown"
+                    ></div> 
+                  </div> 
+                </div> 
+                <div
+                  className="hidden fixed inset-x-0 top-16 z-50 bg-surface border-b border-outline md:hidden"
+                  id="mobile-search-container"
+                >
+                   
+                  <div className="p-4">
+                     
+                    <div className="flex items-center gap-3 px-4 py-2.5 bg-surface border border-outline rounded-aidbox-lg text-on-surface-muted text-sm transition-all duration-200 hover:bg-surface hover:border-outline-hover focus-within:border-brand">
+                       
+                      <svg
+                        className="size-4 text-on-surface-placeholder"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                         
+                        <path
+                          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                        ></path> 
+                      </svg> 
+                      <input
+                        autoComplete="off"
+                        className="flex-1 bg-transparent outline-none placeholder:text-on-surface-placeholder text-on-surface-strong font-normal"
+                        hxGet="/docs/aidbox/meilisearch/dropdown?mobile=true"
+                        hxIndicator="#mobile-meilisearch-indicator"
+                        hxSwap="innerHTML"
+                        hxTarget="#mobile-meilisearch-dropdown"
+                        hxTrigger="keyup[!event.key.startsWith('Arrow') && event.key !== 'Enter' && event.key !== 'Escape'] changed delay:300ms"
+                        id="mobile-meilisearch-input"
+                        name="q"
+                        placeholder="Ask or search..."
+                        type="text"
+                      /> 
+                      <div
+                        className="htmx-indicator"
+                        id="mobile-meilisearch-indicator"
+                      >
+                         
+                        <svg
+                          className="animate-spin size-4 text-on-surface-placeholder"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                           
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            stroke-width="4"
+                          ></circle> 
+                          <path
+                            className="opacity-75"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 0 1 4 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            fill="currentColor"
+                          ></path> 
+                        </svg> 
+                      </div> 
+                      <button
+                        aria-label="Close search"
+                        className="p-1 text-on-surface-placeholder hover:text-on-surface-strong transition-colors"
+                        id="mobile-search-close"
+                        type="button"
+                      >
+                         
+                        <svg
+                          className="size-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                           
+                          <path
+                            d="M6 18L18 6M6 6l12 12"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                          ></path> 
+                        </svg> 
+                      </button> 
+                    </div> 
+                  </div> 
+                  <div
+                    className="px-4 pb-4 z-50 max-h-[60vh] overflow-y-auto"
+                    id="mobile-meilisearch-dropdown"
+                  ></div> 
+                </div> 
+              </div> 
+              <a
+                className="hidden lg:inline-flex items-center justify-center px-4 py-2 text-sm font-semibold leading-5 bg-surface text-on-surface hover:bg-button-hover-bg border border-outline rounded-md transition-colors cursor-pointer"
+                href="https://aidbox.app/ui/portal#/signin"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Login 
+              </a> 
+            </div> 
+          </div> 
+        </nav> 
+        <div className="mobile-menu-overlay"></div> 
+        <div className="flex-1 flex max-w-screen-2xl mx-auto site-full-width:max-w-full items-start overflow-visible md:px-8">
+           
+          <nav
+            aria-label="Documentation menu"
+            className="w-80 flex-shrink-0 sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto py-6 bg-surface border-r border-outline-subtle font-content lg:mr-20 space-y-4 lg:-ms-4"
+            id="navigation"
+          >
+             
+            <div className="break-words mt-4 border-t border-outline-subtle pt-4 first:mt-0 first:border-t-0 first:pt-0">
+               
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/getting-started"
+                      hxGet="/docs/partial/aidbox/getting-started"
+                      hxPushUrl="/docs/aidbox/getting-started"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Getting Started 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/getting-started/run-aidbox-in-sandbox"
+                    hxGet="/docs/partial/aidbox/getting-started/run-aidbox-in-sandbox"
+                    hxPushUrl="/docs/aidbox/getting-started/run-aidbox-in-sandbox"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Run Aidbox in Sandbox 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/getting-started/run-aidbox-locally"
+                    hxGet="/docs/partial/aidbox/getting-started/run-aidbox-locally"
+                    hxPushUrl="/docs/aidbox/getting-started/run-aidbox-locally"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Run Aidbox locally 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/getting-started/java"
+                    hxGet="/docs/partial/aidbox/getting-started/java"
+                    hxPushUrl="/docs/aidbox/getting-started/java"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Use Aidbox with Java 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/getting-started/typescript"
+                    hxGet="/docs/partial/aidbox/getting-started/typescript"
+                    hxPushUrl="/docs/aidbox/getting-started/typescript"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Use Aidbox with TypeScript 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/getting-started/python"
+                    hxGet="/docs/partial/aidbox/getting-started/python"
+                    hxPushUrl="/docs/aidbox/getting-started/python"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Use Aidbox with Python 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/getting-started/csharp"
+                    hxGet="/docs/partial/aidbox/getting-started/csharp"
+                    hxPushUrl="/docs/aidbox/getting-started/csharp"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Use Aidbox with C# 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/getting-started/run-aidbox-on-aws"
+                    hxGet="/docs/partial/aidbox/getting-started/run-aidbox-on-aws"
+                    hxPushUrl="/docs/aidbox/getting-started/run-aidbox-on-aws"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Run Aidbox on AWS 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/getting-started/upload-sample-data"
+                    hxGet="/docs/partial/aidbox/getting-started/upload-sample-data"
+                    hxPushUrl="/docs/aidbox/getting-started/upload-sample-data"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Upload Sample Data 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/features"
+                hxGet="/docs/partial/aidbox/features"
+                hxPushUrl="/docs/aidbox/features"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Features 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/architecture"
+                hxGet="/docs/partial/aidbox/architecture"
+                hxPushUrl="/docs/aidbox/architecture"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Architecture 
+                </span> 
+              </a> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/tutorials"
+                      hxGet="/docs/partial/aidbox/tutorials"
+                      hxPushUrl="/docs/aidbox/tutorials"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Tutorials 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/tutorials/crud-search-tutorials"
+                          hxGet="/docs/partial/aidbox/tutorials/crud-search-tutorials"
+                          hxPushUrl="/docs/aidbox/tutorials/crud-search-tutorials"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            CRUD, Search Tutorials 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/crud-search-tutorials/delete-data"
+                        hxGet="/docs/partial/aidbox/tutorials/crud-search-tutorials/delete-data"
+                        hxPushUrl="/docs/aidbox/tutorials/crud-search-tutorials/delete-data"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Delete data 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/crud-search-tutorials/set-up-uniqueness-in-resource"
+                        hxGet="/docs/partial/aidbox/tutorials/crud-search-tutorials/set-up-uniqueness-in-resource"
+                        hxPushUrl="/docs/aidbox/tutorials/crud-search-tutorials/set-up-uniqueness-in-resource"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Set up uniqueness in Resource 
+                        </span> 
+                      </a> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/tutorials/crud-search-tutorials/search-tutorials"
+                              hxGet="/docs/partial/aidbox/tutorials/crud-search-tutorials/search-tutorials"
+                              hxPushUrl="/docs/aidbox/tutorials/crud-search-tutorials/search-tutorials"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Search Tutorials 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/tutorials/crud-search-tutorials/search-tutorials/custom-searchparameter-tutorial"
+                            hxGet="/docs/partial/aidbox/tutorials/crud-search-tutorials/search-tutorials/custom-searchparameter-tutorial"
+                            hxPushUrl="/docs/aidbox/tutorials/crud-search-tutorials/search-tutorials/custom-searchparameter-tutorial"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Custom SearchParameter tutorial 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/tutorials/crud-search-tutorials/search-tutorials/create-custom-aidbox-search-resource"
+                            hxGet="/docs/partial/aidbox/tutorials/crud-search-tutorials/search-tutorials/create-custom-aidbox-search-resource"
+                            hxPushUrl="/docs/aidbox/tutorials/crud-search-tutorials/search-tutorials/create-custom-aidbox-search-resource"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Create custom Aidbox Search resource 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/tutorials/crud-search-tutorials/search-tutorials/multilingual-search-tutorial"
+                            hxGet="/docs/partial/aidbox/tutorials/crud-search-tutorials/search-tutorials/multilingual-search-tutorial"
+                            hxPushUrl="/docs/aidbox/tutorials/crud-search-tutorials/search-tutorials/multilingual-search-tutorial"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Multilingual search tutorial 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/tutorials/crud-search-tutorials/search-tutorials/migrate-from-aidbox-searchparameter-to-fhir-searchparameter"
+                            hxGet="/docs/partial/aidbox/tutorials/crud-search-tutorials/search-tutorials/migrate-from-aidbox-searchparameter-to-fhir-searchparameter"
+                            hxPushUrl="/docs/aidbox/tutorials/crud-search-tutorials/search-tutorials/migrate-from-aidbox-searchparameter-to-fhir-searchparameter"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Migrate from Aidbox SearchParameter to FHIR
+                              SearchParameter 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/tutorials/crud-search-tutorials/search-tutorials/change-sort-order-by-locale-collation"
+                            hxGet="/docs/partial/aidbox/tutorials/crud-search-tutorials/search-tutorials/change-sort-order-by-locale-collation"
+                            hxPushUrl="/docs/aidbox/tutorials/crud-search-tutorials/search-tutorials/change-sort-order-by-locale-collation"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Change sort order by locale collation 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/tutorials/bulk-api-tutorials"
+                          hxGet="/docs/partial/aidbox/tutorials/bulk-api-tutorials"
+                          hxPushUrl="/docs/aidbox/tutorials/bulk-api-tutorials"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Bulk API Tutorials 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/bulk-api-tutorials/synthea-by-bulk-api"
+                        hxGet="/docs/partial/aidbox/tutorials/bulk-api-tutorials/synthea-by-bulk-api"
+                        hxPushUrl="/docs/aidbox/tutorials/bulk-api-tutorials/synthea-by-bulk-api"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Synthea by Bulk API 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/bulk-api-tutorials/dump-sql-tutorial"
+                        hxGet="/docs/partial/aidbox/tutorials/bulk-api-tutorials/dump-sql-tutorial"
+                        hxPushUrl="/docs/aidbox/tutorials/bulk-api-tutorials/dump-sql-tutorial"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          &#36;dump-sql tutorial 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/tutorials/security-access-control-tutorials"
+                          hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials"
+                          hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Security and Access Control Tutorials 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/allow-patients-to-see-their-own-data"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/allow-patients-to-see-their-own-data"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/allow-patients-to-see-their-own-data"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Allow patients to see their own data 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/restrict-operations-on-resource-type"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/restrict-operations-on-resource-type"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/restrict-operations-on-resource-type"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Restrict operations on resource type 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/relationship-based-access-control"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/relationship-based-access-control"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/relationship-based-access-control"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Relationship-based access control 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/creating-user-and-set-up-full-user-access"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/creating-user-and-set-up-full-user-access"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/creating-user-and-set-up-full-user-access"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Creating user and set up full user access 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/restricting-access-to-patient-data"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/restricting-access-to-patient-data"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/restricting-access-to-patient-data"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Restricting Access to Patient Data 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/create-and-test-access-control"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/create-and-test-access-control"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/create-and-test-access-control"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Create and test access control 
+                        </span> 
+                      </a> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/tutorials/security-access-control-tutorials/rbac"
+                              hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/rbac"
+                              hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/rbac"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                RBAC 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/tutorials/security-access-control-tutorials/rbac/flexible-rbac-built-in-to-aidbox"
+                            hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/rbac/flexible-rbac-built-in-to-aidbox"
+                            hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/rbac/flexible-rbac-built-in-to-aidbox"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Flexible RBAC built-in to Aidbox 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/tutorials/security-access-control-tutorials/rbac/rbac-with-jwt-containing-role"
+                            hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/rbac/rbac-with-jwt-containing-role"
+                            hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/rbac/rbac-with-jwt-containing-role"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              RBAC with JWT containing role 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/set-up-token-introspection"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/set-up-token-introspection"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/set-up-token-introspection"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Set-up token introspection 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/prohibit-user-to-login"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/prohibit-user-to-login"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/prohibit-user-to-login"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Prohibit user to login 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/managing-admin-access-to-the-aidbox-ui-using-okta-groups"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/managing-admin-access-to-the-aidbox-ui-using-okta-groups"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/managing-admin-access-to-the-aidbox-ui-using-okta-groups"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Managing Admin Access to the Aidbox UI Using Okta
+                          Groups 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/run-multibox-locally"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/run-multibox-locally"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/run-multibox-locally"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Run Multibox locally 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/how-to-enable-labels-based-access-control"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/how-to-enable-labels-based-access-control"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/how-to-enable-labels-based-access-control"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to enable labels-based access control 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/how-to-enable-patient-data-access-api"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/how-to-enable-patient-data-access-api"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/how-to-enable-patient-data-access-api"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to enable patient data access API 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/how-to-enable-smart-on-fhir-on-patient-access-api"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/how-to-enable-smart-on-fhir-on-patient-access-api"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/how-to-enable-smart-on-fhir-on-patient-access-api"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to enable SMART on FHIR on Patient Access API 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/how-to-enable-hierarchical-access-control"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/how-to-enable-hierarchical-access-control"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/how-to-enable-hierarchical-access-control"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to enable hierarchical access control 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/how-to-configure-audit-log"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/how-to-configure-audit-log"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/how-to-configure-audit-log"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to configure FHIR Audit Log 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/overview"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/overview"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/overview"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How is an HTTP request processed in Aidbox 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/aidbox"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/aidbox"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/aidbox"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to configure SSO with another Aidbox instance to
+                          access Aidbox UI 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/okta"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/okta"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/okta"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to configure SSO with Okta to access Aidbox
+                          UI 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/apple"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/apple"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/apple"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to configure sign-in with Apple for access to the
+                          Aidbox UI 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/azure-ad"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/azure-ad"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/azure-ad"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to configure Azure AD SSO for access to the Aidbox
+                          UI 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/microsoft-ad-fs"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/microsoft-ad-fs"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/microsoft-ad-fs"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to configure Microsoft AD FS for access to the
+                          Aidbox UI 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/azure-ad-with-certificate-authentication"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/azure-ad-with-certificate-authentication"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/azure-ad-with-certificate-authentication"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to configure Azure AD SSO with certificate
+                          authentication for access to the Aidbox UI 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/github"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/github"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/github"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to configure GitHub SSO for access to Aidbox
+                          UI 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/keycloak"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/keycloak"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/keycloak"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to configure Keycloak for access for AidboxUI 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/keycloak-auto-create-user"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/keycloak-auto-create-user"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/keycloak-auto-create-user"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Auto-create User from foreign token tutorial 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/how-to-implement-consent-based-access-control-using-fhir-search-and-aidbox-access-policy"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/how-to-implement-consent-based-access-control-using-fhir-search-and-aidbox-access-policy"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/how-to-implement-consent-based-access-control-using-fhir-search-and-aidbox-access-policy"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to implement consent-based access control using
+                          FHIR Search and Aidbox Access Policy 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/debug-access-control"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/debug-access-control"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/debug-access-control"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Debug Access Control 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/accesspolicy-best-practices"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/accesspolicy-best-practices"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/accesspolicy-best-practices"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          AccessPolicy best practices 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/basic-auth"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/basic-auth"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/basic-auth"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to configure Basic Auth flow 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/access-policy-dev-tool"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/access-policy-dev-tool"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/access-policy-dev-tool"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Deprecated Access policy dev tool 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/authorization-code-grant"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/authorization-code-grant"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/authorization-code-grant"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to configure Authorization Code Grant 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/client-credentials-grant"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/client-credentials-grant"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/client-credentials-grant"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to configure Client Credentials Grant 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/implicit-grant"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/implicit-grant"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/implicit-grant"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to configure Implicit Grant 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/token-exchange"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/token-exchange"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/token-exchange"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to configure Token Exchange 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/resource-owner-grant"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/resource-owner-grant"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/resource-owner-grant"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to configure Resource Owner Grant flow 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/set-up-external-identity-provider"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/set-up-external-identity-provider"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/set-up-external-identity-provider"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          SSO with External OAuth Identity Provider 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/security-access-control-tutorials/accesspolicy-examples"
+                        hxGet="/docs/partial/aidbox/tutorials/security-access-control-tutorials/accesspolicy-examples"
+                        hxPushUrl="/docs/aidbox/tutorials/security-access-control-tutorials/accesspolicy-examples"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Access policies examples 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/tutorials/terminology-tutorials"
+                          hxGet="/docs/partial/aidbox/tutorials/terminology-tutorials"
+                          hxPushUrl="/docs/aidbox/tutorials/terminology-tutorials"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Terminology Tutorials 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/terminology-tutorials/load-icd-10-terminology-into-aidbox"
+                        hxGet="/docs/partial/aidbox/tutorials/terminology-tutorials/load-icd-10-terminology-into-aidbox"
+                        hxPushUrl="/docs/aidbox/tutorials/terminology-tutorials/load-icd-10-terminology-into-aidbox"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Load ICD-10 terminology into Aidbox 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/terminology-tutorials/uploading-ig-terminology-content-to-external-fhir-terminology-server"
+                        hxGet="/docs/partial/aidbox/tutorials/terminology-tutorials/uploading-ig-terminology-content-to-external-fhir-terminology-server"
+                        hxPushUrl="/docs/aidbox/tutorials/terminology-tutorials/uploading-ig-terminology-content-to-external-fhir-terminology-server"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Uploading IG terminology content to external FHIR
+                          terminology server 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/terminology-tutorials/local-terminology"
+                        hxGet="/docs/partial/aidbox/tutorials/terminology-tutorials/local-terminology"
+                        hxPushUrl="/docs/aidbox/tutorials/terminology-tutorials/local-terminology"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Local Terminology 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/tutorials/validation-tutorials"
+                          hxGet="/docs/partial/aidbox/tutorials/validation-tutorials"
+                          hxPushUrl="/docs/aidbox/tutorials/validation-tutorials"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Validation Tutorials 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/validation-tutorials/isik"
+                        hxGet="/docs/partial/aidbox/tutorials/validation-tutorials/isik"
+                        hxPushUrl="/docs/aidbox/tutorials/validation-tutorials/isik"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          ISiK 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/validation-tutorials/carin-bb"
+                        hxGet="/docs/partial/aidbox/tutorials/validation-tutorials/carin-bb"
+                        hxPushUrl="/docs/aidbox/tutorials/validation-tutorials/carin-bb"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Carin BB 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/validation-tutorials/us-core"
+                        hxGet="/docs/partial/aidbox/tutorials/validation-tutorials/us-core"
+                        hxPushUrl="/docs/aidbox/tutorials/validation-tutorials/us-core"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          US Core 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/validation-tutorials/davinci-pdex"
+                        hxGet="/docs/partial/aidbox/tutorials/validation-tutorials/davinci-pdex"
+                        hxPushUrl="/docs/aidbox/tutorials/validation-tutorials/davinci-pdex"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Davinci Pdex 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/validation-tutorials/mcode"
+                        hxGet="/docs/partial/aidbox/tutorials/validation-tutorials/mcode"
+                        hxPushUrl="/docs/aidbox/tutorials/validation-tutorials/mcode"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          mCode 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/tutorials/integration-toolkit-tutorials"
+                          hxGet="/docs/partial/aidbox/tutorials/integration-toolkit-tutorials"
+                          hxPushUrl="/docs/aidbox/tutorials/integration-toolkit-tutorials"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Integration Toolkit Tutorials 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/integration-toolkit-tutorials/postmark-integration-tutorial"
+                        hxGet="/docs/partial/aidbox/tutorials/integration-toolkit-tutorials/postmark-integration-tutorial"
+                        hxPushUrl="/docs/aidbox/tutorials/integration-toolkit-tutorials/postmark-integration-tutorial"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Postmark integration tutorial 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/integration-toolkit-tutorials/mailgun-integration-tutorial"
+                        hxGet="/docs/partial/aidbox/tutorials/integration-toolkit-tutorials/mailgun-integration-tutorial"
+                        hxPushUrl="/docs/aidbox/tutorials/integration-toolkit-tutorials/mailgun-integration-tutorial"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Mailgun integration tutorial 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/tutorials/subscriptions-tutorials"
+                          hxGet="/docs/partial/aidbox/tutorials/subscriptions-tutorials"
+                          hxPushUrl="/docs/aidbox/tutorials/subscriptions-tutorials"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Subscriptions Tutorials 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/subscriptions-tutorials/fhir-subscription-r5"
+                        hxGet="/docs/partial/aidbox/tutorials/subscriptions-tutorials/fhir-subscription-r5"
+                        hxPushUrl="/docs/aidbox/tutorials/subscriptions-tutorials/fhir-subscription-r5"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          FHIR R5 Subscription Setup 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/subscriptions-tutorials/fhir-subscription-r4b-backport"
+                        hxGet="/docs/partial/aidbox/tutorials/subscriptions-tutorials/fhir-subscription-r4b-backport"
+                        hxPushUrl="/docs/aidbox/tutorials/subscriptions-tutorials/fhir-subscription-r4b-backport"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          FHIR R4B Backport Subscription Setup 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/subscriptions-tutorials/fhir-subscription-r4-backport"
+                        hxGet="/docs/partial/aidbox/tutorials/subscriptions-tutorials/fhir-subscription-r4-backport"
+                        hxPushUrl="/docs/aidbox/tutorials/subscriptions-tutorials/fhir-subscription-r4-backport"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          FHIR R4 Backport Subscription Setup 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/subscriptions-tutorials/kafka-aidboxtopicdestination"
+                        hxGet="/docs/partial/aidbox/tutorials/subscriptions-tutorials/kafka-aidboxtopicdestination"
+                        hxPushUrl="/docs/aidbox/tutorials/subscriptions-tutorials/kafka-aidboxtopicdestination"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Kafka AidboxTopicDestination 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/subscriptions-tutorials/clickhouse-aidboxtopicdestination"
+                        hxGet="/docs/partial/aidbox/tutorials/subscriptions-tutorials/clickhouse-aidboxtopicdestination"
+                        hxPushUrl="/docs/aidbox/tutorials/subscriptions-tutorials/clickhouse-aidboxtopicdestination"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          ClickHouse AidboxTopicDestination 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/subscriptions-tutorials/tutorial-produce-questionnaireresponse-to-kafka-topic"
+                        hxGet="/docs/partial/aidbox/tutorials/subscriptions-tutorials/tutorial-produce-questionnaireresponse-to-kafka-topic"
+                        hxPushUrl="/docs/aidbox/tutorials/subscriptions-tutorials/tutorial-produce-questionnaireresponse-to-kafka-topic"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Tutorial: Produce QuestionnaireResponse to Kafka
+                          topic 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/subscriptions-tutorials/gcp-pub-sub-aidboxtopicdestination"
+                        hxGet="/docs/partial/aidbox/tutorials/subscriptions-tutorials/gcp-pub-sub-aidboxtopicdestination"
+                        hxPushUrl="/docs/aidbox/tutorials/subscriptions-tutorials/gcp-pub-sub-aidboxtopicdestination"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          GCP Pub/Sub AidboxTopicDestination 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/subscriptions-tutorials/webhook-aidboxtopicdestination"
+                        hxGet="/docs/partial/aidbox/tutorials/subscriptions-tutorials/webhook-aidboxtopicdestination"
+                        hxPushUrl="/docs/aidbox/tutorials/subscriptions-tutorials/webhook-aidboxtopicdestination"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Webhook AidboxTopicDestination 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/subscriptions-tutorials/aidboxtopicsubscription-nats-tutorial"
+                        hxGet="/docs/partial/aidbox/tutorials/subscriptions-tutorials/aidboxtopicsubscription-nats-tutorial"
+                        hxPushUrl="/docs/aidbox/tutorials/subscriptions-tutorials/aidboxtopicsubscription-nats-tutorial"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          AidboxTopicSubscription NATS tutorial 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/subscriptions-tutorials/rabbitmq-tutorial"
+                        hxGet="/docs/partial/aidbox/tutorials/subscriptions-tutorials/rabbitmq-tutorial"
+                        hxPushUrl="/docs/aidbox/tutorials/subscriptions-tutorials/rabbitmq-tutorial"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          AidboxTopicSubscription RabbitMQ tutorial 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/subscriptions-tutorials/activemq-tutorial"
+                        hxGet="/docs/partial/aidbox/tutorials/subscriptions-tutorials/activemq-tutorial"
+                        hxPushUrl="/docs/aidbox/tutorials/subscriptions-tutorials/activemq-tutorial"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          AidboxTopicSubscription ActiveMQ tutorial 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/subscriptions-tutorials/aws-eventbridge-aidboxtopicdestination"
+                        hxGet="/docs/partial/aidbox/tutorials/subscriptions-tutorials/aws-eventbridge-aidboxtopicdestination"
+                        hxPushUrl="/docs/aidbox/tutorials/subscriptions-tutorials/aws-eventbridge-aidboxtopicdestination"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          AidboxTopicSubscription AWS EventBridge tutorial 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/subscriptions-tutorials/subscribe-to-new-patient-resource"
+                        hxGet="/docs/partial/aidbox/tutorials/subscriptions-tutorials/subscribe-to-new-patient-resource"
+                        hxPushUrl="/docs/aidbox/tutorials/subscriptions-tutorials/subscribe-to-new-patient-resource"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Subscribe to New Patient Resource 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/tutorials/artifact-registry-tutorials"
+                          hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials"
+                          hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Artifact Registry Tutorials 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/artifact-registry-tutorials/how-to-create-fhir-npm-package"
+                        hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials/how-to-create-fhir-npm-package"
+                        hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials/how-to-create-fhir-npm-package"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to create FHIR npm package 
+                        </span> 
+                      </a> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/tutorials/artifact-registry-tutorials/define-extensions"
+                              hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials/define-extensions"
+                              hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials/define-extensions"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Define Extensions 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/tutorials/artifact-registry-tutorials/define-extensions/extensions-using-structuredefinition"
+                            hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials/define-extensions/extensions-using-structuredefinition"
+                            hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials/define-extensions/extensions-using-structuredefinition"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Extensions using StructureDefinition 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/tutorials/artifact-registry-tutorials/define-extensions/extensions-using-fhirschema"
+                            hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials/define-extensions/extensions-using-fhirschema"
+                            hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials/define-extensions/extensions-using-fhirschema"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Extensions using FHIRSchema 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/tutorials/artifact-registry-tutorials/custom-resources"
+                              hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials/custom-resources"
+                              hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials/custom-resources"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Custom Resources 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/tutorials/artifact-registry-tutorials/custom-resources/custom-resources-using-fhir-schema"
+                            hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials/custom-resources/custom-resources-using-fhir-schema"
+                            hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials/custom-resources/custom-resources-using-fhir-schema"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Custom resources using FHIR Schema 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/tutorials/artifact-registry-tutorials/custom-resources/custom-resources-using-structuredefinition"
+                            hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials/custom-resources/custom-resources-using-structuredefinition"
+                            hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials/custom-resources/custom-resources-using-structuredefinition"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Custom resources using StructureDefinition 
+                            </span> 
+                          </a> 
+                          <div className="nav-item">
+                             
+                            <button
+                              aria-expanded="false"
+                              className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                              type="button"
+                            >
+                               
+                              <div className="flex-1 clickable-summary">
+                                 
+                                <a
+                                  className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                  href="/docs/aidbox/tutorials/artifact-registry-tutorials/custom-resources/migrate-to-fhirschema"
+                                  hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials/custom-resources/migrate-to-fhirschema"
+                                  hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials/custom-resources/migrate-to-fhirschema"
+                                  hxSwap="outerHTML"
+                                  hxTarget="#content"
+                                >
+                                   
+                                  <span className="flex items-center gap-2 ml-4">
+                                    Migrate to FHIR Schema 
+                                  </span> 
+                                </a> 
+                              </div> 
+                              <svg
+                                className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                data-slot="icon"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                  clip-rule="evenodd"
+                                ></path>
+                              </svg>
+                            </button> 
+                            <div
+                              className="nav-children ml-6 border-l-1 border-outline"
+                              hidden="hidden"
+                            >
+                               
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/tutorials/artifact-registry-tutorials/custom-resources/migrate-to-fhirschema/migrate-custom-resources-defined-with-entity-and-attributes-to-fhir-schema"
+                                hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials/custom-resources/migrate-to-fhirschema/migrate-custom-resources-defined-with-entity-and-attributes-to-fhir-schema"
+                                hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials/custom-resources/migrate-to-fhirschema/migrate-custom-resources-defined-with-entity-and-attributes-to-fhir-schema"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  Migrate custom resources defined with Entity
+                                  and Attributes to FHIR Schema 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/tutorials/artifact-registry-tutorials/custom-resources/migrate-to-fhirschema/migrate-custom-resources-defined-with-zen-to-fhir-schema"
+                                hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials/custom-resources/migrate-to-fhirschema/migrate-custom-resources-defined-with-zen-to-fhir-schema"
+                                hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials/custom-resources/migrate-to-fhirschema/migrate-custom-resources-defined-with-zen-to-fhir-schema"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  Migrate custom resources defined with Zen to
+                                  FHIR Schema 
+                                </span> 
+                              </a> 
+                            </div> 
+                          </div> 
+                        </div> 
+                      </div> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide"
+                              hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide"
+                              hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Upload FHIR Implementation Guide 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/how-to-load-fhir-ig-with-init-bundle"
+                            hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/how-to-load-fhir-ig-with-init-bundle"
+                            hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/how-to-load-fhir-ig-with-init-bundle"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              How to load FHIR IG with Init Bundle 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/environment-variable"
+                            hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/environment-variable"
+                            hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/environment-variable"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Environment Variable 
+                            </span> 
+                          </a> 
+                          <div className="nav-item">
+                             
+                            <button
+                              aria-expanded="false"
+                              className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                              type="button"
+                            >
+                               
+                              <div className="flex-1 clickable-summary">
+                                 
+                                <a
+                                  className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                  href="/docs/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/aidbox-ui"
+                                  hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/aidbox-ui"
+                                  hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/aidbox-ui"
+                                  hxSwap="outerHTML"
+                                  hxTarget="#content"
+                                >
+                                   
+                                  <span className="flex items-center gap-2 ml-4">
+                                    Aidbox UI 
+                                  </span> 
+                                </a> 
+                              </div> 
+                              <svg
+                                className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                data-slot="icon"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                  clip-rule="evenodd"
+                                ></path>
+                              </svg>
+                            </button> 
+                            <div
+                              className="nav-children ml-6 border-l-1 border-outline"
+                              hidden="hidden"
+                            >
+                               
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/aidbox-ui/ig-package-from-aidbox-registry"
+                                hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/aidbox-ui/ig-package-from-aidbox-registry"
+                                hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/aidbox-ui/ig-package-from-aidbox-registry"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  IG Package from Aidbox Registry 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/aidbox-ui/public-url-to-ig-package"
+                                hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/aidbox-ui/public-url-to-ig-package"
+                                hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/aidbox-ui/public-url-to-ig-package"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  Public URL to IG Package 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/aidbox-ui/local-ig-package"
+                                hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/aidbox-ui/local-ig-package"
+                                hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/aidbox-ui/local-ig-package"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  Local IG Package 
+                                </span> 
+                              </a> 
+                            </div> 
+                          </div> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/aidbox-fhir-api"
+                            hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/aidbox-fhir-api"
+                            hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/aidbox-fhir-api"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Aidbox FHIR API 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/uploadfig-tool"
+                            hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/uploadfig-tool"
+                            hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/uploadfig-tool"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              UploadFIG Tool 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/initialize-aidbox-from-local-filesystem"
+                            hxGet="/docs/partial/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/initialize-aidbox-from-local-filesystem"
+                            hxPushUrl="/docs/aidbox/tutorials/artifact-registry-tutorials/upload-fhir-implementation-guide/initialize-aidbox-from-local-filesystem"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              How to configure Aidbox to use local filesystem as
+                              artifact registry for initialization 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/tutorials/other-tutorials"
+                          hxGet="/docs/partial/aidbox/tutorials/other-tutorials"
+                          hxPushUrl="/docs/aidbox/tutorials/other-tutorials"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Other Tutorials 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/other-tutorials/run-aidbox-with-fhir-r6"
+                        hxGet="/docs/partial/aidbox/tutorials/other-tutorials/run-aidbox-with-fhir-r6"
+                        hxPushUrl="/docs/aidbox/tutorials/other-tutorials/run-aidbox-with-fhir-r6"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Run Aidbox with FHIR R6 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/other-tutorials/migrate-from-multibox-to-aidbox"
+                        hxGet="/docs/partial/aidbox/tutorials/other-tutorials/migrate-from-multibox-to-aidbox"
+                        hxPushUrl="/docs/aidbox/tutorials/other-tutorials/migrate-from-multibox-to-aidbox"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Migrate from Multibox to Aidbox 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/other-tutorials/sdc-with-custom-resources"
+                        hxGet="/docs/partial/aidbox/tutorials/other-tutorials/sdc-with-custom-resources"
+                        hxPushUrl="/docs/aidbox/tutorials/other-tutorials/sdc-with-custom-resources"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          SDC with Custom Resources 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/other-tutorials/migrate-from-legacy-licence-portal-to-aidbox-portal"
+                        hxGet="/docs/partial/aidbox/tutorials/other-tutorials/migrate-from-legacy-licence-portal-to-aidbox-portal"
+                        hxPushUrl="/docs/aidbox/tutorials/other-tutorials/migrate-from-legacy-licence-portal-to-aidbox-portal"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Migrate from legacy licence portal to Aidbox
+                          portal 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/other-tutorials/set-up-aidbox-with-postman"
+                        hxGet="/docs/partial/aidbox/tutorials/other-tutorials/set-up-aidbox-with-postman"
+                        hxPushUrl="/docs/aidbox/tutorials/other-tutorials/set-up-aidbox-with-postman"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Set up Aidbox with Postman 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/other-tutorials/how-to-run-aidbox-in-gcp-cloud-run"
+                        hxGet="/docs/partial/aidbox/tutorials/other-tutorials/how-to-run-aidbox-in-gcp-cloud-run"
+                        hxPushUrl="/docs/aidbox/tutorials/other-tutorials/how-to-run-aidbox-in-gcp-cloud-run"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to run Aidbox in GCP Cloud Run 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/other-tutorials/how-to-run-aidbox-in-azure-container-apps"
+                        hxGet="/docs/partial/aidbox/tutorials/other-tutorials/how-to-run-aidbox-in-azure-container-apps"
+                        hxPushUrl="/docs/aidbox/tutorials/other-tutorials/how-to-run-aidbox-in-azure-container-apps"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to run Aidbox in Azure Container Apps 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/other-tutorials/how-to-run-aidbox-using-different-java"
+                        hxGet="/docs/partial/aidbox/tutorials/other-tutorials/how-to-run-aidbox-using-different-java"
+                        hxPushUrl="/docs/aidbox/tutorials/other-tutorials/how-to-run-aidbox-using-different-java"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to run Aidbox using different Java 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/other-tutorials/ai-prompts"
+                        hxGet="/docs/partial/aidbox/tutorials/other-tutorials/ai-prompts"
+                        hxPushUrl="/docs/aidbox/tutorials/other-tutorials/ai-prompts"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          AI Prompts 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/tutorials/other-tutorials/how-to-configure-aidbox-to-use-proxy"
+                        hxGet="/docs/partial/aidbox/tutorials/other-tutorials/how-to-configure-aidbox-to-use-proxy"
+                        hxPushUrl="/docs/aidbox/tutorials/other-tutorials/how-to-configure-aidbox-to-use-proxy"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to configure Aidbox to use a proxy for outgoing
+                          requests 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+            <div className="break-words mt-4 border-t border-outline-subtle pt-4 first:mt-0 first:border-t-0 first:pt-0">
+               
+              <div className="mb-1 first:mt-2 ml-4">
+                 
+                <span className="text-xs font-medium leading-4 text-brand uppercase tracking-wider">
+                  Overview 
+                </span> 
+              </div> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/overview/licensing-and-support"
+                hxGet="/docs/partial/aidbox/overview/licensing-and-support"
+                hxPushUrl="/docs/aidbox/overview/licensing-and-support"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Licensing and Support 
+                </span> 
+              </a> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/overview/aidbox-user-portal"
+                      hxGet="/docs/partial/aidbox/overview/aidbox-user-portal"
+                      hxPushUrl="/docs/aidbox/overview/aidbox-user-portal"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Aidbox User Portal 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/overview/aidbox-user-portal/projects"
+                    hxGet="/docs/partial/aidbox/overview/aidbox-user-portal/projects"
+                    hxPushUrl="/docs/aidbox/overview/aidbox-user-portal/projects"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Projects 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/overview/aidbox-user-portal/licenses"
+                    hxGet="/docs/partial/aidbox/overview/aidbox-user-portal/licenses"
+                    hxPushUrl="/docs/aidbox/overview/aidbox-user-portal/licenses"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Licenses 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/overview/aidbox-user-portal/members"
+                    hxGet="/docs/partial/aidbox/overview/aidbox-user-portal/members"
+                    hxPushUrl="/docs/aidbox/overview/aidbox-user-portal/members"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Members 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/overview/aidbox-ui"
+                      hxGet="/docs/partial/aidbox/overview/aidbox-ui"
+                      hxPushUrl="/docs/aidbox/overview/aidbox-ui"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Aidbox UI 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/overview/aidbox-ui/aidbox-notebooks"
+                    hxGet="/docs/partial/aidbox/overview/aidbox-ui/aidbox-notebooks"
+                    hxPushUrl="/docs/aidbox/overview/aidbox-ui/aidbox-notebooks"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Aidbox Notebooks 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/overview/aidbox-ui/rest-console"
+                    hxGet="/docs/partial/aidbox/overview/aidbox-ui/rest-console"
+                    hxPushUrl="/docs/aidbox/overview/aidbox-ui/rest-console"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      REST Console 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/overview/aidbox-ui/database-console"
+                    hxGet="/docs/partial/aidbox/overview/aidbox-ui/database-console"
+                    hxPushUrl="/docs/aidbox/overview/aidbox-ui/database-console"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Database Console 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/overview/aidbox-ui/attrs-stats"
+                    hxGet="/docs/partial/aidbox/overview/aidbox-ui/attrs-stats"
+                    hxPushUrl="/docs/aidbox/overview/aidbox-ui/attrs-stats"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Attrs Stats 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/overview/aidbox-ui/db-tables"
+                    hxGet="/docs/partial/aidbox/overview/aidbox-ui/db-tables"
+                    hxPushUrl="/docs/aidbox/overview/aidbox-ui/db-tables"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      DB Tables 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/overview/aidbox-ui/db-queries"
+                    hxGet="/docs/partial/aidbox/overview/aidbox-ui/db-queries"
+                    hxPushUrl="/docs/aidbox/overview/aidbox-ui/db-queries"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      DB Queries 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/overview/versioning"
+                hxGet="/docs/partial/aidbox/overview/versioning"
+                hxPushUrl="/docs/aidbox/overview/versioning"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Versioning 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/overview/release-notes"
+                hxGet="/docs/partial/aidbox/overview/release-notes"
+                hxPushUrl="/docs/aidbox/overview/release-notes"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Release Notes 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/overview/faq"
+                hxGet="/docs/partial/aidbox/overview/faq"
+                hxPushUrl="/docs/aidbox/overview/faq"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">FAQ </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/overview/contact-us"
+                hxGet="/docs/partial/aidbox/overview/contact-us"
+                hxPushUrl="/docs/aidbox/overview/contact-us"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Contact us 
+                </span> 
+              </a> 
+            </div> 
+            <div className="break-words mt-4 border-t border-outline-subtle pt-4 first:mt-0 first:border-t-0 first:pt-0">
+               
+              <div className="mb-1 first:mt-2 ml-4">
+                 
+                <span className="text-xs font-medium leading-4 text-brand uppercase tracking-wider">
+                  Configuration 
+                </span> 
+              </div> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/configuration/recommended-envs"
+                hxGet="/docs/partial/aidbox/configuration/recommended-envs"
+                hxPushUrl="/docs/aidbox/configuration/recommended-envs"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Recommended environment variables 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/configuration/settings"
+                hxGet="/docs/partial/aidbox/configuration/settings"
+                hxPushUrl="/docs/aidbox/configuration/settings"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Settings 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/configuration/configure-aidbox-and-multibox"
+                hxGet="/docs/partial/aidbox/configuration/configure-aidbox-and-multibox"
+                hxPushUrl="/docs/aidbox/configuration/configure-aidbox-and-multibox"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Configure Aidbox and Multibox 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/configuration/init-bundle"
+                hxGet="/docs/partial/aidbox/configuration/init-bundle"
+                hxPushUrl="/docs/aidbox/configuration/init-bundle"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Init Bundle 
+                </span> 
+              </a> 
+            </div> 
+            <div className="break-words mt-4 border-t border-outline-subtle pt-4 first:mt-0 first:border-t-0 first:pt-0">
+               
+              <div className="mb-1 first:mt-2 ml-4">
+                 
+                <span className="text-xs font-medium leading-4 text-brand uppercase tracking-wider">
+                  API 
+                </span> 
+              </div> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/api/api-overview"
+                hxGet="/docs/partial/aidbox/api/api-overview"
+                hxPushUrl="/docs/aidbox/api/api-overview"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  API Overview 
+                </span> 
+              </a> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/api/rest-api"
+                      hxGet="/docs/partial/aidbox/api/rest-api"
+                      hxPushUrl="/docs/aidbox/api/rest-api"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        REST API 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/api/rest-api/crud"
+                          hxGet="/docs/partial/aidbox/api/rest-api/crud"
+                          hxPushUrl="/docs/aidbox/api/rest-api/crud"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            CRUD 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/crud/create"
+                        hxGet="/docs/partial/aidbox/api/rest-api/crud/create"
+                        hxPushUrl="/docs/aidbox/api/rest-api/crud/create"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Create 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/crud/read"
+                        hxGet="/docs/partial/aidbox/api/rest-api/crud/read"
+                        hxPushUrl="/docs/aidbox/api/rest-api/crud/read"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Read 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/crud/update"
+                        hxGet="/docs/partial/aidbox/api/rest-api/crud/update"
+                        hxPushUrl="/docs/aidbox/api/rest-api/crud/update"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Update 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/crud/patch"
+                        hxGet="/docs/partial/aidbox/api/rest-api/crud/patch"
+                        hxPushUrl="/docs/aidbox/api/rest-api/crud/patch"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Patch 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/crud/delete"
+                        hxGet="/docs/partial/aidbox/api/rest-api/crud/delete"
+                        hxPushUrl="/docs/aidbox/api/rest-api/crud/delete"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Delete 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/api/rest-api/fhir-search"
+                          hxGet="/docs/partial/aidbox/api/rest-api/fhir-search"
+                          hxPushUrl="/docs/aidbox/api/rest-api/fhir-search"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            FHIR search 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/fhir-search/searchparameter"
+                        hxGet="/docs/partial/aidbox/api/rest-api/fhir-search/searchparameter"
+                        hxPushUrl="/docs/aidbox/api/rest-api/fhir-search/searchparameter"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          SearchParameter 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/fhir-search/include-and-revinclude"
+                        hxGet="/docs/partial/aidbox/api/rest-api/fhir-search/include-and-revinclude"
+                        hxPushUrl="/docs/aidbox/api/rest-api/fhir-search/include-and-revinclude"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Include and Revinclude 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/fhir-search/chaining"
+                        hxGet="/docs/partial/aidbox/api/rest-api/fhir-search/chaining"
+                        hxPushUrl="/docs/aidbox/api/rest-api/fhir-search/chaining"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Chaining 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/api/rest-api/aidbox-search"
+                    hxGet="/docs/partial/aidbox/api/rest-api/aidbox-search"
+                    hxPushUrl="/docs/aidbox/api/rest-api/aidbox-search"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Aidbox Search 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/api/rest-api/bundle"
+                    hxGet="/docs/partial/aidbox/api/rest-api/bundle"
+                    hxPushUrl="/docs/aidbox/api/rest-api/bundle"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Bundle 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/api/rest-api/history"
+                    hxGet="/docs/partial/aidbox/api/rest-api/history"
+                    hxPushUrl="/docs/aidbox/api/rest-api/history"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      History 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/api/rest-api/everything-on-patient"
+                    hxGet="/docs/partial/aidbox/api/rest-api/everything-on-patient"
+                    hxPushUrl="/docs/aidbox/api/rest-api/everything-on-patient"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      &#36;everything on Patient 
+                    </span> 
+                  </a> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/api/rest-api/other"
+                          hxGet="/docs/partial/aidbox/api/rest-api/other"
+                          hxPushUrl="/docs/aidbox/api/rest-api/other"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Other 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/other/aidbox-and-fhir-formats"
+                        hxGet="/docs/partial/aidbox/api/rest-api/other/aidbox-and-fhir-formats"
+                        hxPushUrl="/docs/aidbox/api/rest-api/other/aidbox-and-fhir-formats"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Aidbox and FHIR formats 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/other/capability-statement"
+                        hxGet="/docs/partial/aidbox/api/rest-api/other/capability-statement"
+                        hxPushUrl="/docs/aidbox/api/rest-api/other/capability-statement"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Capability Statement 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/other/document"
+                        hxGet="/docs/partial/aidbox/api/rest-api/other/document"
+                        hxPushUrl="/docs/aidbox/api/rest-api/other/document"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          &#36;document 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/other/observation-lastn"
+                        hxGet="/docs/partial/aidbox/api/rest-api/other/observation-lastn"
+                        hxPushUrl="/docs/aidbox/api/rest-api/other/observation-lastn"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Observation/&#36;lastn 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/other/validate"
+                        hxGet="/docs/partial/aidbox/api/rest-api/other/validate"
+                        hxPushUrl="/docs/aidbox/api/rest-api/other/validate"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          &#36;validate 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/other/sql-endpoints"
+                        hxGet="/docs/partial/aidbox/api/rest-api/other/sql-endpoints"
+                        hxPushUrl="/docs/aidbox/api/rest-api/other/sql-endpoints"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          SQL endpoints 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/other/matcho"
+                        hxGet="/docs/partial/aidbox/api/rest-api/other/matcho"
+                        hxPushUrl="/docs/aidbox/api/rest-api/other/matcho"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          &#36;matcho 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/other/to-format"
+                        hxGet="/docs/partial/aidbox/api/rest-api/other/to-format"
+                        hxPushUrl="/docs/aidbox/api/rest-api/other/to-format"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          &#36;to-format 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/other/aidbox-version"
+                        hxGet="/docs/partial/aidbox/api/rest-api/other/aidbox-version"
+                        hxPushUrl="/docs/aidbox/api/rest-api/other/aidbox-version"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Aidbox version 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/other/health-check"
+                        hxGet="/docs/partial/aidbox/api/rest-api/other/health-check"
+                        hxPushUrl="/docs/aidbox/api/rest-api/other/health-check"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Health check 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/other/meta"
+                        hxGet="/docs/partial/aidbox/api/rest-api/other/meta"
+                        hxPushUrl="/docs/aidbox/api/rest-api/other/meta"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          &#36;meta 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/other/meta-add"
+                        hxGet="/docs/partial/aidbox/api/rest-api/other/meta-add"
+                        hxPushUrl="/docs/aidbox/api/rest-api/other/meta-add"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          &#36;meta-add 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/rest-api/other/meta-delete"
+                        hxGet="/docs/partial/aidbox/api/rest-api/other/meta-delete"
+                        hxPushUrl="/docs/aidbox/api/rest-api/other/meta-delete"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          &#36;meta-delete 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/api/bulk-api"
+                      hxGet="/docs/partial/aidbox/api/bulk-api"
+                      hxPushUrl="/docs/aidbox/api/bulk-api"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Bulk API 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/api/bulk-api/configure-access-policies-for-bulk-api"
+                    hxGet="/docs/partial/aidbox/api/bulk-api/configure-access-policies-for-bulk-api"
+                    hxPushUrl="/docs/aidbox/api/bulk-api/configure-access-policies-for-bulk-api"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Configure Access Policies for Bulk API 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/api/bulk-api/dump"
+                    hxGet="/docs/partial/aidbox/api/bulk-api/dump"
+                    hxPushUrl="/docs/aidbox/api/bulk-api/dump"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      &#36;dump 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/api/bulk-api/dump-sql"
+                    hxGet="/docs/partial/aidbox/api/bulk-api/dump-sql"
+                    hxPushUrl="/docs/aidbox/api/bulk-api/dump-sql"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      &#36;dump-sql 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/api/bulk-api/dump-csv"
+                    hxGet="/docs/partial/aidbox/api/bulk-api/dump-csv"
+                    hxPushUrl="/docs/aidbox/api/bulk-api/dump-csv"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      &#36;dump-csv 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/api/bulk-api/export"
+                    hxGet="/docs/partial/aidbox/api/bulk-api/export"
+                    hxPushUrl="/docs/aidbox/api/bulk-api/export"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      &#36;export 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/api/bulk-api/load-and-fhir-load"
+                    hxGet="/docs/partial/aidbox/api/bulk-api/load-and-fhir-load"
+                    hxPushUrl="/docs/aidbox/api/bulk-api/load-and-fhir-load"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      &#36;load and /fhir/&#36;load 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/api/bulk-api/import-and-fhir-import"
+                    hxGet="/docs/partial/aidbox/api/bulk-api/import-and-fhir-import"
+                    hxPushUrl="/docs/aidbox/api/bulk-api/import-and-fhir-import"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      &#36;import and /fhir/&#36;import 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/api/bulk-api/aidbox-bulk-data-import"
+                    hxGet="/docs/partial/aidbox/api/bulk-api/aidbox-bulk-data-import"
+                    hxPushUrl="/docs/aidbox/api/bulk-api/aidbox-bulk-data-import"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Aidbox.bulk data import 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/api/bulk-api/bulk-import-from-an-s3-bucket"
+                    hxGet="/docs/partial/aidbox/api/bulk-api/bulk-import-from-an-s3-bucket"
+                    hxPushUrl="/docs/aidbox/api/bulk-api/bulk-import-from-an-s3-bucket"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Bulk import from an S3 bucket 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/api/batch-transaction"
+                hxGet="/docs/partial/aidbox/api/batch-transaction"
+                hxPushUrl="/docs/aidbox/api/batch-transaction"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Batch/Transaction 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/api/graphql-api"
+                hxGet="/docs/partial/aidbox/api/graphql-api"
+                hxPushUrl="/docs/aidbox/api/graphql-api"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  GraphQL API 
+                </span> 
+              </a> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/api/other"
+                      hxGet="/docs/partial/aidbox/api/other"
+                      hxPushUrl="/docs/aidbox/api/other"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Other APIs 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/api/other/plan-api"
+                          hxGet="/docs/partial/aidbox/api/other/plan-api"
+                          hxPushUrl="/docs/aidbox/api/other/plan-api"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Plan API 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/api/other/plan-api/provider-directory-api"
+                              hxGet="/docs/partial/aidbox/api/other/plan-api/provider-directory-api"
+                              hxPushUrl="/docs/aidbox/api/other/plan-api/provider-directory-api"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Provider Directory API 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/api/other/plan-api/provider-directory-api/practitioner"
+                            hxGet="/docs/partial/aidbox/api/other/plan-api/provider-directory-api/practitioner"
+                            hxPushUrl="/docs/aidbox/api/other/plan-api/provider-directory-api/practitioner"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Practitioner 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/api/other/plan-api/provider-directory-api/practitionerrole"
+                            hxGet="/docs/partial/aidbox/api/other/plan-api/provider-directory-api/practitionerrole"
+                            hxPushUrl="/docs/aidbox/api/other/plan-api/provider-directory-api/practitionerrole"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              PractitionerRole 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/api/other/plan-api/provider-directory-api/organization"
+                            hxGet="/docs/partial/aidbox/api/other/plan-api/provider-directory-api/organization"
+                            hxPushUrl="/docs/aidbox/api/other/plan-api/provider-directory-api/organization"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Organization 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/api/other/plan-api/provider-directory-api/organizationaffiliation"
+                            hxGet="/docs/partial/aidbox/api/other/plan-api/provider-directory-api/organizationaffiliation"
+                            hxPushUrl="/docs/aidbox/api/other/plan-api/provider-directory-api/organizationaffiliation"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              OrganizationAffiliation 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/api/other/archive-restore-api"
+                          hxGet="/docs/partial/aidbox/api/other/archive-restore-api"
+                          hxPushUrl="/docs/aidbox/api/other/archive-restore-api"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Archive/Restore API 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/other/archive-restore-api/create-archive"
+                        hxGet="/docs/partial/aidbox/api/other/archive-restore-api/create-archive"
+                        hxPushUrl="/docs/aidbox/api/other/archive-restore-api/create-archive"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Create-archive 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/other/archive-restore-api/restore-archive"
+                        hxGet="/docs/partial/aidbox/api/other/archive-restore-api/restore-archive"
+                        hxPushUrl="/docs/aidbox/api/other/archive-restore-api/restore-archive"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Restore-archive 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/other/archive-restore-api/prune-archived-data"
+                        hxGet="/docs/partial/aidbox/api/other/archive-restore-api/prune-archived-data"
+                        hxPushUrl="/docs/aidbox/api/other/archive-restore-api/prune-archived-data"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Prune-archived-data 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/api/other/archive-restore-api/delete-archive"
+                        hxGet="/docs/partial/aidbox/api/other/archive-restore-api/delete-archive"
+                        hxPushUrl="/docs/aidbox/api/other/archive-restore-api/delete-archive"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Delete-archive 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/api/other/etag-support"
+                    hxGet="/docs/partial/aidbox/api/other/etag-support"
+                    hxPushUrl="/docs/aidbox/api/other/etag-support"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      ETAG support 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/api/other/cache"
+                    hxGet="/docs/partial/aidbox/api/other/cache"
+                    hxPushUrl="/docs/aidbox/api/other/cache"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Cache 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/api/other/changes-api"
+                    hxGet="/docs/partial/aidbox/api/other/changes-api"
+                    hxPushUrl="/docs/aidbox/api/other/changes-api"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Changes API 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/api/other/rpc-api"
+                    hxGet="/docs/partial/aidbox/api/other/rpc-api"
+                    hxPushUrl="/docs/aidbox/api/other/rpc-api"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      RPC API 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/api/other/sequence-api"
+                    hxGet="/docs/partial/aidbox/api/other/sequence-api"
+                    hxPushUrl="/docs/aidbox/api/other/sequence-api"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Sequence API 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/api/other/encryption-api"
+                    hxGet="/docs/partial/aidbox/api/other/encryption-api"
+                    hxPushUrl="/docs/aidbox/api/other/encryption-api"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Encryption API 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/api/other/batch-upsert"
+                    hxGet="/docs/partial/aidbox/api/other/batch-upsert"
+                    hxPushUrl="/docs/aidbox/api/other/batch-upsert"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Batch Upsert 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+            </div> 
+            <div className="break-words mt-4 border-t border-outline-subtle pt-4 first:mt-0 first:border-t-0 first:pt-0">
+               
+              <div className="mb-1 first:mt-2 ml-4">
+                 
+                <span className="text-xs font-medium leading-4 text-brand uppercase tracking-wider">
+                  Access Control 
+                </span> 
+              </div> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/access-control/access-control"
+                hxGet="/docs/partial/aidbox/access-control/access-control"
+                hxPushUrl="/docs/aidbox/access-control/access-control"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Overview 
+                </span> 
+              </a> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/access-control/identity-management"
+                      hxGet="/docs/partial/aidbox/access-control/identity-management"
+                      hxPushUrl="/docs/aidbox/access-control/identity-management"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Identity Management 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/access-control/identity-management/user-management"
+                    hxGet="/docs/partial/aidbox/access-control/identity-management/user-management"
+                    hxPushUrl="/docs/aidbox/access-control/identity-management/user-management"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      User management 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/access-control/identity-management/application-client-management"
+                    hxGet="/docs/partial/aidbox/access-control/identity-management/application-client-management"
+                    hxPushUrl="/docs/aidbox/access-control/identity-management/application-client-management"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Application/Client Management 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/access-control/authentication"
+                      hxGet="/docs/partial/aidbox/access-control/authentication"
+                      hxPushUrl="/docs/aidbox/access-control/authentication"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Authentication 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/access-control/authentication/basic-http-authentication"
+                    hxGet="/docs/partial/aidbox/access-control/authentication/basic-http-authentication"
+                    hxPushUrl="/docs/aidbox/access-control/authentication/basic-http-authentication"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Basic HTTP Authentication 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/access-control/authentication/oauth-2-0"
+                    hxGet="/docs/partial/aidbox/access-control/authentication/oauth-2-0"
+                    hxPushUrl="/docs/aidbox/access-control/authentication/oauth-2-0"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      OAuth 2.0 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/access-control/authentication/token-introspector"
+                    hxGet="/docs/partial/aidbox/access-control/authentication/token-introspector"
+                    hxPushUrl="/docs/aidbox/access-control/authentication/token-introspector"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Token Introspector 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/access-control/authentication/sso-with-external-identity-provider"
+                    hxGet="/docs/partial/aidbox/access-control/authentication/sso-with-external-identity-provider"
+                    hxPushUrl="/docs/aidbox/access-control/authentication/sso-with-external-identity-provider"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      SSO with External Identity Provider 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/access-control/authentication/two-factor-authentication"
+                    hxGet="/docs/partial/aidbox/access-control/authentication/two-factor-authentication"
+                    hxPushUrl="/docs/aidbox/access-control/authentication/two-factor-authentication"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Two Factor Authentication 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/access-control/authorization"
+                      hxGet="/docs/partial/aidbox/access-control/authorization"
+                      hxPushUrl="/docs/aidbox/access-control/authorization"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Authorization 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/access-control/authorization/access-policies"
+                    hxGet="/docs/partial/aidbox/access-control/authorization/access-policies"
+                    hxPushUrl="/docs/aidbox/access-control/authorization/access-policies"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Access Policies 
+                    </span> 
+                  </a> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/access-control/authorization/smart-on-fhir"
+                          hxGet="/docs/partial/aidbox/access-control/authorization/smart-on-fhir"
+                          hxPushUrl="/docs/aidbox/access-control/authorization/smart-on-fhir"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            SMART on FHIR 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/access-control/authorization/smart-on-fhir/smart-client-authorization"
+                              hxGet="/docs/partial/aidbox/access-control/authorization/smart-on-fhir/smart-client-authorization"
+                              hxPushUrl="/docs/aidbox/access-control/authorization/smart-on-fhir/smart-client-authorization"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                SMART Client Authorization 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/access-control/authorization/smart-on-fhir/smart-client-authorization/smart-app-launch"
+                            hxGet="/docs/partial/aidbox/access-control/authorization/smart-on-fhir/smart-client-authorization/smart-app-launch"
+                            hxPushUrl="/docs/aidbox/access-control/authorization/smart-on-fhir/smart-client-authorization/smart-app-launch"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              SMART App Launch 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/access-control/authorization/smart-on-fhir/smart-client-authorization/smart-backend-services"
+                            hxGet="/docs/partial/aidbox/access-control/authorization/smart-on-fhir/smart-client-authorization/smart-backend-services"
+                            hxPushUrl="/docs/aidbox/access-control/authorization/smart-on-fhir/smart-client-authorization/smart-backend-services"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              SMART backend services 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/access-control/authorization/smart-on-fhir/smart-client-authentication"
+                              hxGet="/docs/partial/aidbox/access-control/authorization/smart-on-fhir/smart-client-authentication"
+                              hxPushUrl="/docs/aidbox/access-control/authorization/smart-on-fhir/smart-client-authentication"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                SMART Client Authentication 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/access-control/authorization/smart-on-fhir/smart-client-authentication/smart-asymmetric-docs-private-key-jwt-authentication"
+                            hxGet="/docs/partial/aidbox/access-control/authorization/smart-on-fhir/smart-client-authentication/smart-asymmetric-docs-private-key-jwt-authentication"
+                            hxPushUrl="/docs/aidbox/access-control/authorization/smart-on-fhir/smart-client-authentication/smart-asymmetric-docs-private-key-jwt-authentication"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              SMART: Asymmetric ("private key JWT")
+                              authentication 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/access-control/authorization/smart-on-fhir/smart-client-authentication/smart-symmetric-docs-client-secret-authentication"
+                            hxGet="/docs/partial/aidbox/access-control/authorization/smart-on-fhir/smart-client-authentication/smart-symmetric-docs-client-secret-authentication"
+                            hxPushUrl="/docs/aidbox/access-control/authorization/smart-on-fhir/smart-client-authentication/smart-symmetric-docs-client-secret-authentication"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              SMART: Symmetric (/"client secret")
+                              authentication 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/access-control/authorization/smart-on-fhir/smart-scopes-for-limiting-access"
+                        hxGet="/docs/partial/aidbox/access-control/authorization/smart-on-fhir/smart-scopes-for-limiting-access"
+                        hxPushUrl="/docs/aidbox/access-control/authorization/smart-on-fhir/smart-scopes-for-limiting-access"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          SMART: Scopes for Limiting Access 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/access-control/authorization/smart-on-fhir/pass-inferno-tests-with-aidbox"
+                        hxGet="/docs/partial/aidbox/access-control/authorization/smart-on-fhir/pass-inferno-tests-with-aidbox"
+                        hxPushUrl="/docs/aidbox/access-control/authorization/smart-on-fhir/pass-inferno-tests-with-aidbox"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Pass Inferno tests with Aidbox 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/access-control/authorization/smart-on-fhir/example-smart-app-launch-using-aidbox-and-keycloak"
+                        hxGet="/docs/partial/aidbox/access-control/authorization/smart-on-fhir/example-smart-app-launch-using-aidbox-and-keycloak"
+                        hxPushUrl="/docs/aidbox/access-control/authorization/smart-on-fhir/example-smart-app-launch-using-aidbox-and-keycloak"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Example: SMART app launch using Aidbox and
+                          Keycloak 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/access-control/authorization/smart-on-fhir/example-smart-app-launch-using-smartbox-and-keycloak"
+                        hxGet="/docs/partial/aidbox/access-control/authorization/smart-on-fhir/example-smart-app-launch-using-smartbox-and-keycloak"
+                        hxPushUrl="/docs/aidbox/access-control/authorization/smart-on-fhir/example-smart-app-launch-using-smartbox-and-keycloak"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Example: SMART app launch using Smartbox and
+                          Keycloak 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/access-control/authorization/scoped-api"
+                          hxGet="/docs/partial/aidbox/access-control/authorization/scoped-api"
+                          hxPushUrl="/docs/aidbox/access-control/authorization/scoped-api"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Scoped API 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/access-control/authorization/scoped-api/organization-based-hierarchical-access-control"
+                        hxGet="/docs/partial/aidbox/access-control/authorization/scoped-api/organization-based-hierarchical-access-control"
+                        hxPushUrl="/docs/aidbox/access-control/authorization/scoped-api/organization-based-hierarchical-access-control"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Organization-based hierarchical access control 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/access-control/authorization/scoped-api/compartments-api"
+                        hxGet="/docs/partial/aidbox/access-control/authorization/scoped-api/compartments-api"
+                        hxPushUrl="/docs/aidbox/access-control/authorization/scoped-api/compartments-api"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Compartments API 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/access-control/authorization/scoped-api/patient-data-access-api"
+                        hxGet="/docs/partial/aidbox/access-control/authorization/scoped-api/patient-data-access-api"
+                        hxPushUrl="/docs/aidbox/access-control/authorization/scoped-api/patient-data-access-api"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Patient data access API 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/access-control/authorization/label-based-access-control"
+                    hxGet="/docs/partial/aidbox/access-control/authorization/label-based-access-control"
+                    hxPushUrl="/docs/aidbox/access-control/authorization/label-based-access-control"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Label-based Access Control 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/access-control/audit-and-logging"
+                hxGet="/docs/partial/aidbox/access-control/audit-and-logging"
+                hxPushUrl="/docs/aidbox/access-control/audit-and-logging"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Audit and Logging 
+                </span> 
+              </a> 
+            </div> 
+            <div className="break-words mt-4 border-t border-outline-subtle pt-4 first:mt-0 first:border-t-0 first:pt-0">
+               
+              <div className="mb-1 first:mt-2 ml-4">
+                 
+                <span className="text-xs font-medium leading-4 text-brand uppercase tracking-wider">
+                  Artifact Registry 
+                </span> 
+              </div> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/artifact-registry/artifact-registry-overview"
+                hxGet="/docs/partial/aidbox/artifact-registry/artifact-registry-overview"
+                hxPushUrl="/docs/aidbox/artifact-registry/artifact-registry-overview"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Artifact Registry overview 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/artifact-registry/structuredefinition"
+                hxGet="/docs/partial/aidbox/artifact-registry/structuredefinition"
+                hxPushUrl="/docs/aidbox/artifact-registry/structuredefinition"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  StructureDefinition 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                data-cross-section="true"
+                href="/docs/aidbox/api/rest-api/fhir-search/searchparameter"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  SearchParameter 
+                  <svg
+                    className="size-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M15.75 2.25H21a.75.75 0 0 1 .75.75v5.25a.75.75 0 0 1-1.5 0V4.81L8.03 17.03a.75.75 0 0 1-1.06-1.06L19.19 3.75h-3.44a.75.75 0 0 1 0-1.5Zm-10.5 4.5a1.5 1.5 0 0 0-1.5 1.5v10.5a1.5 1.5 0 0 0 1.5 1.5h10.5a1.5 1.5 0 0 0 1.5-1.5V10.5a.75.75 0 0 1 1.5 0v8.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V8.25a3 3 0 0 1 3-3h8.25a.75.75 0 0 1 0 1.5H5.25Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/terminology-module/fhir-terminology/codesystem"
+                hxGet="/docs/partial/aidbox/terminology-module/fhir-terminology/codesystem"
+                hxPushUrl="/docs/aidbox/terminology-module/fhir-terminology/codesystem"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  CodeSystem 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/terminology-module/fhir-terminology/valueset"
+                hxGet="/docs/partial/aidbox/terminology-module/fhir-terminology/valueset"
+                hxPushUrl="/docs/aidbox/terminology-module/fhir-terminology/valueset"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  ValueSet 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/terminology-module/fhir-terminology/conceptmap"
+                hxGet="/docs/partial/aidbox/terminology-module/fhir-terminology/conceptmap"
+                hxPushUrl="/docs/aidbox/terminology-module/fhir-terminology/conceptmap"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  ConceptMap 
+                </span> 
+              </a> 
+            </div> 
+            <div className="break-words mt-4 border-t border-outline-subtle pt-4 first:mt-0 first:border-t-0 first:pt-0">
+               
+              <div className="mb-1 first:mt-2 ml-4">
+                 
+                <span className="text-xs font-medium leading-4 text-brand uppercase tracking-wider">
+                  Terminology Module 
+                </span> 
+              </div> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary active"
+                href="/docs/aidbox/terminology-module/overview"
+                hxGet="/docs/partial/aidbox/terminology-module/overview"
+                hxPushUrl="/docs/aidbox/terminology-module/overview"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Terminology Overview 
+                </span> 
+              </a> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/terminology-module/fhir-terminology"
+                      hxGet="/docs/partial/aidbox/terminology-module/fhir-terminology"
+                      hxPushUrl="/docs/aidbox/terminology-module/fhir-terminology"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        FHIR Terminology 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/terminology-module/fhir-terminology/coded-values"
+                    hxGet="/docs/partial/aidbox/terminology-module/fhir-terminology/coded-values"
+                    hxPushUrl="/docs/aidbox/terminology-module/fhir-terminology/coded-values"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Coded Values 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/terminology-module/fhir-terminology/profiles-binding-validation"
+                    hxGet="/docs/partial/aidbox/terminology-module/fhir-terminology/profiles-binding-validation"
+                    hxPushUrl="/docs/aidbox/terminology-module/fhir-terminology/profiles-binding-validation"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Profiles, Binding, and Validation 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/terminology-module/aidbox-terminology-module"
+                      hxGet="/docs/partial/aidbox/terminology-module/aidbox-terminology-module"
+                      hxPushUrl="/docs/aidbox/terminology-module/aidbox-terminology-module"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Aidbox Terminology Module 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/terminology-module/aidbox-terminology-module/setup"
+                    hxGet="/docs/partial/aidbox/terminology-module/aidbox-terminology-module/setup"
+                    hxPushUrl="/docs/aidbox/terminology-module/aidbox-terminology-module/setup"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Setup 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/terminology-module/aidbox-terminology-module/hybrid"
+                    hxGet="/docs/partial/aidbox/terminology-module/aidbox-terminology-module/hybrid"
+                    hxPushUrl="/docs/aidbox/terminology-module/aidbox-terminology-module/hybrid"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Hybrid Mode 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/terminology-module/aidbox-terminology-module/capabilities"
+                    hxGet="/docs/partial/aidbox/terminology-module/aidbox-terminology-module/capabilities"
+                    hxPushUrl="/docs/aidbox/terminology-module/aidbox-terminology-module/capabilities"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Capabilities 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+            </div> 
+            <div className="break-words mt-4 border-t border-outline-subtle pt-4 first:mt-0 first:border-t-0 first:pt-0">
+               
+              <div className="mb-1 first:mt-2 ml-4">
+                 
+                <span className="text-xs font-medium leading-4 text-brand uppercase tracking-wider">
+                  Database 
+                </span> 
+              </div> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/database/overview"
+                hxGet="/docs/partial/aidbox/database/overview"
+                hxPushUrl="/docs/aidbox/database/overview"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Database overview 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/database/postgresql-requirements"
+                hxGet="/docs/partial/aidbox/database/postgresql-requirements"
+                hxPushUrl="/docs/aidbox/database/postgresql-requirements"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  PostgreSQL Requirements 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/database/database-schema"
+                hxGet="/docs/partial/aidbox/database/database-schema"
+                hxPushUrl="/docs/aidbox/database/database-schema"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Database schema 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/database/postgresql-extensions"
+                hxGet="/docs/partial/aidbox/database/postgresql-extensions"
+                hxPushUrl="/docs/aidbox/database/postgresql-extensions"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  PostgreSQL Extensions 
+                </span> 
+              </a> 
+            </div> 
+            <div className="break-words mt-4 border-t border-outline-subtle pt-4 first:mt-0 first:border-t-0 first:pt-0">
+               
+              <div className="mb-1 first:mt-2 ml-4">
+                 
+                <span className="text-xs font-medium leading-4 text-brand uppercase tracking-wider">
+                  Modules 
+                </span> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/modules/profiling-and-validation"
+                      hxGet="/docs/partial/aidbox/modules/profiling-and-validation"
+                      hxPushUrl="/docs/aidbox/modules/profiling-and-validation"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Profiling and validation 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/modules/profiling-and-validation/fhir-schema-validator"
+                          hxGet="/docs/partial/aidbox/modules/profiling-and-validation/fhir-schema-validator"
+                          hxPushUrl="/docs/aidbox/modules/profiling-and-validation/fhir-schema-validator"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            FHIR Schema Validator 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/profiling-and-validation/fhir-schema-validator/setup-aidbox-with-fhir-schema-validation-engine"
+                        hxGet="/docs/partial/aidbox/modules/profiling-and-validation/fhir-schema-validator/setup-aidbox-with-fhir-schema-validation-engine"
+                        hxPushUrl="/docs/aidbox/modules/profiling-and-validation/fhir-schema-validator/setup-aidbox-with-fhir-schema-validation-engine"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Setup Aidbox with FHIR Schema validation engine 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/profiling-and-validation/skip-validation-of-references-in-resource-using-request-header"
+                    hxGet="/docs/partial/aidbox/modules/profiling-and-validation/skip-validation-of-references-in-resource-using-request-header"
+                    hxPushUrl="/docs/aidbox/modules/profiling-and-validation/skip-validation-of-references-in-resource-using-request-header"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Skip validation of references in resource using request
+                      header 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/profiling-and-validation/asynchronous-resource-validation"
+                    hxGet="/docs/partial/aidbox/modules/profiling-and-validation/asynchronous-resource-validation"
+                    hxPushUrl="/docs/aidbox/modules/profiling-and-validation/asynchronous-resource-validation"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Asynchronous resource validation 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/modules/observability"
+                      hxGet="/docs/partial/aidbox/modules/observability"
+                      hxPushUrl="/docs/aidbox/modules/observability"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Observability 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/modules/observability/getting-started"
+                          hxGet="/docs/partial/aidbox/modules/observability/getting-started"
+                          hxPushUrl="/docs/aidbox/modules/observability/getting-started"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Getting started 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/observability/getting-started/run-aidbox-with-opentelemetry-locally"
+                        hxGet="/docs/partial/aidbox/modules/observability/getting-started/run-aidbox-with-opentelemetry-locally"
+                        hxPushUrl="/docs/aidbox/modules/observability/getting-started/run-aidbox-with-opentelemetry-locally"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Run Aidbox with OpenTelemetry locally 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/observability/getting-started/how-to-export-telemetry-to-the-otel-collector"
+                        hxGet="/docs/partial/aidbox/modules/observability/getting-started/how-to-export-telemetry-to-the-otel-collector"
+                        hxPushUrl="/docs/aidbox/modules/observability/getting-started/how-to-export-telemetry-to-the-otel-collector"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to export telemetry to the OTEL collector 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/modules/observability/logs"
+                          hxGet="/docs/partial/aidbox/modules/observability/logs"
+                          hxPushUrl="/docs/aidbox/modules/observability/logs"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Logs 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/modules/observability/logs/how-to-guides"
+                              hxGet="/docs/partial/aidbox/modules/observability/logs/how-to-guides"
+                              hxPushUrl="/docs/aidbox/modules/observability/logs/how-to-guides"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                How-to guides 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/observability/logs/how-to-guides/opentelemetry-logs"
+                            hxGet="/docs/partial/aidbox/modules/observability/logs/how-to-guides/opentelemetry-logs"
+                            hxPushUrl="/docs/aidbox/modules/observability/logs/how-to-guides/opentelemetry-logs"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              OpenTelemetry logs 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/observability/logs/how-to-guides/elastic-logs-and-monitoring-integration"
+                            hxGet="/docs/partial/aidbox/modules/observability/logs/how-to-guides/elastic-logs-and-monitoring-integration"
+                            hxPushUrl="/docs/aidbox/modules/observability/logs/how-to-guides/elastic-logs-and-monitoring-integration"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Elastic Logs and Monitoring Integration 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/observability/logs/how-to-guides/datadog-log-management-integration"
+                            hxGet="/docs/partial/aidbox/modules/observability/logs/how-to-guides/datadog-log-management-integration"
+                            hxPushUrl="/docs/aidbox/modules/observability/logs/how-to-guides/datadog-log-management-integration"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Datadog log management integration 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/observability/logs/how-to-guides/loki-log-management-integration"
+                            hxGet="/docs/partial/aidbox/modules/observability/logs/how-to-guides/loki-log-management-integration"
+                            hxPushUrl="/docs/aidbox/modules/observability/logs/how-to-guides/loki-log-management-integration"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Loki log management integration 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/modules/observability/logs/tutorials"
+                              hxGet="/docs/partial/aidbox/modules/observability/logs/tutorials"
+                              hxPushUrl="/docs/aidbox/modules/observability/logs/tutorials"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Tutorials 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/observability/logs/tutorials/log-analysis-and-visualization-tutorial"
+                            hxGet="/docs/partial/aidbox/modules/observability/logs/tutorials/log-analysis-and-visualization-tutorial"
+                            hxPushUrl="/docs/aidbox/modules/observability/logs/tutorials/log-analysis-and-visualization-tutorial"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Log analysis and visualization tutorial 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/observability/logs/tutorials/export-logs-to-datadog-tutorial"
+                            hxGet="/docs/partial/aidbox/modules/observability/logs/tutorials/export-logs-to-datadog-tutorial"
+                            hxPushUrl="/docs/aidbox/modules/observability/logs/tutorials/export-logs-to-datadog-tutorial"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Export logs to Datadog tutorial 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/observability/logs/tutorials/set-up-logs-with-aidbox-project"
+                            hxGet="/docs/partial/aidbox/modules/observability/logs/tutorials/set-up-logs-with-aidbox-project"
+                            hxPushUrl="/docs/aidbox/modules/observability/logs/tutorials/set-up-logs-with-aidbox-project"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Set up logs with Aidbox project 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/observability/logs/extending-aidbox-logs"
+                        hxGet="/docs/partial/aidbox/modules/observability/logs/extending-aidbox-logs"
+                        hxPushUrl="/docs/aidbox/modules/observability/logs/extending-aidbox-logs"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Extending Aidbox Logs 
+                        </span> 
+                      </a> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/modules/observability/logs/technical-reference"
+                              hxGet="/docs/partial/aidbox/modules/observability/logs/technical-reference"
+                              hxPushUrl="/docs/aidbox/modules/observability/logs/technical-reference"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Technical reference 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/observability/logs/technical-reference/log-appenders"
+                            hxGet="/docs/partial/aidbox/modules/observability/logs/technical-reference/log-appenders"
+                            hxPushUrl="/docs/aidbox/modules/observability/logs/technical-reference/log-appenders"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Log appenders 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/observability/logs/technical-reference/log-transformations"
+                            hxGet="/docs/partial/aidbox/modules/observability/logs/technical-reference/log-transformations"
+                            hxPushUrl="/docs/aidbox/modules/observability/logs/technical-reference/log-transformations"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Log transformations 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/observability/logs/technical-reference/log-schema"
+                            hxGet="/docs/partial/aidbox/modules/observability/logs/technical-reference/log-schema"
+                            hxPushUrl="/docs/aidbox/modules/observability/logs/technical-reference/log-schema"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Log Schema 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/observability/logs/technical-reference/otel-logs-exporter-parameters"
+                            hxGet="/docs/partial/aidbox/modules/observability/logs/technical-reference/otel-logs-exporter-parameters"
+                            hxPushUrl="/docs/aidbox/modules/observability/logs/technical-reference/otel-logs-exporter-parameters"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              OTEL logs exporter parameters 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/modules/observability/metrics"
+                          hxGet="/docs/partial/aidbox/modules/observability/metrics"
+                          hxPushUrl="/docs/aidbox/modules/observability/metrics"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Metrics 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/modules/observability/metrics/monitoring"
+                              hxGet="/docs/partial/aidbox/modules/observability/metrics/monitoring"
+                              hxPushUrl="/docs/aidbox/modules/observability/metrics/monitoring"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                How-to guides 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/observability/metrics/monitoring/how-to-export-metrics-to-the-otel-collector"
+                            hxGet="/docs/partial/aidbox/modules/observability/metrics/monitoring/how-to-export-metrics-to-the-otel-collector"
+                            hxPushUrl="/docs/aidbox/modules/observability/metrics/monitoring/how-to-export-metrics-to-the-otel-collector"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              How to export metrics to the OTEL collector 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/observability/metrics/monitoring/use-aidbox-metrics-server"
+                            hxGet="/docs/partial/aidbox/modules/observability/metrics/monitoring/use-aidbox-metrics-server"
+                            hxPushUrl="/docs/aidbox/modules/observability/metrics/monitoring/use-aidbox-metrics-server"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Use Aidbox Metrics Server 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/other/monitoring/set-up-grafana-integration"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/other/monitoring/set-up-grafana-integration"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/other/monitoring/set-up-grafana-integration"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Set-up Grafana integration (deprecated) 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/modules/observability/metrics/technical-reference"
+                              hxGet="/docs/partial/aidbox/modules/observability/metrics/technical-reference"
+                              hxPushUrl="/docs/aidbox/modules/observability/metrics/technical-reference"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Technical reference 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/observability/metrics/technical-reference/opentelemetry-metrics"
+                            hxGet="/docs/partial/aidbox/modules/observability/metrics/technical-reference/opentelemetry-metrics"
+                            hxPushUrl="/docs/aidbox/modules/observability/metrics/technical-reference/opentelemetry-metrics"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              OpenTelemetry Metrics 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/observability/metrics/technical-reference/otel-metrics-exporter-parameters"
+                            hxGet="/docs/partial/aidbox/modules/observability/metrics/technical-reference/otel-metrics-exporter-parameters"
+                            hxPushUrl="/docs/aidbox/modules/observability/metrics/technical-reference/otel-metrics-exporter-parameters"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              OTEL metrics exporter parameters 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/modules/observability/traces"
+                          hxGet="/docs/partial/aidbox/modules/observability/traces"
+                          hxPushUrl="/docs/aidbox/modules/observability/traces"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Traces 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/observability/traces/how-to-use-tracing"
+                        hxGet="/docs/partial/aidbox/modules/observability/traces/how-to-use-tracing"
+                        hxPushUrl="/docs/aidbox/modules/observability/traces/how-to-use-tracing"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to use tracing 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/observability/traces/otel-traces-exporter-parameters"
+                        hxGet="/docs/partial/aidbox/modules/observability/traces/otel-traces-exporter-parameters"
+                        hxPushUrl="/docs/aidbox/modules/observability/traces/otel-traces-exporter-parameters"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          OTEL traces exporter parameters 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/modules/topic-based-subscriptions"
+                      hxGet="/docs/partial/aidbox/modules/topic-based-subscriptions"
+                      hxPushUrl="/docs/aidbox/modules/topic-based-subscriptions"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Subscriptions 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/topic-based-subscriptions/aidbox-topic-based-subscriptions"
+                    hxGet="/docs/partial/aidbox/modules/topic-based-subscriptions/aidbox-topic-based-subscriptions"
+                    hxPushUrl="/docs/aidbox/modules/topic-based-subscriptions/aidbox-topic-based-subscriptions"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Aidbox Topic-Based Subscriptions 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/topic-based-subscriptions/fhir-topic-based-subscriptions"
+                    hxGet="/docs/partial/aidbox/modules/topic-based-subscriptions/fhir-topic-based-subscriptions"
+                    hxPushUrl="/docs/aidbox/modules/topic-based-subscriptions/fhir-topic-based-subscriptions"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      FHIR Topic-Based Subscriptions 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/topic-based-subscriptions/aidbox-subsubscriptions"
+                    hxGet="/docs/partial/aidbox/modules/topic-based-subscriptions/aidbox-subsubscriptions"
+                    hxPushUrl="/docs/aidbox/modules/topic-based-subscriptions/aidbox-subsubscriptions"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Aidbox SubSubscriptions 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/modules/aidbox-forms"
+                      hxGet="/docs/partial/aidbox/modules/aidbox-forms"
+                      hxPushUrl="/docs/aidbox/modules/aidbox-forms"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Aidbox Forms 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/aidbox-forms/getting-started"
+                    hxGet="/docs/partial/aidbox/modules/aidbox-forms/getting-started"
+                    hxPushUrl="/docs/aidbox/modules/aidbox-forms/getting-started"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Getting started 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/aidbox-forms/aidbox-forms-interface"
+                    hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-forms-interface"
+                    hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-forms-interface"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Aidbox Forms Interface 
+                    </span> 
+                  </a> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha"
+                          hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha"
+                          hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Aidbox UI Builder 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/ui-builder-interface"
+                        hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/ui-builder-interface"
+                        hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/ui-builder-interface"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          UI Builder Interface 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/ai-assistant"
+                        hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/ai-assistant"
+                        hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/ai-assistant"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          AI Assistant 
+                        </span> 
+                      </a> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation"
+                              hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation"
+                              hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Form creation 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/form-settings"
+                            hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/form-settings"
+                            hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/form-settings"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Form Settings 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/widgets"
+                            hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/widgets"
+                            hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/widgets"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Widgets 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/components"
+                            hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/components"
+                            hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/components"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Components 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/entry-mode"
+                            hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/entry-mode"
+                            hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/entry-mode"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Entry Mode 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/versioning"
+                            hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/versioning"
+                            hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/versioning"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Versioning 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/validation"
+                            hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/validation"
+                            hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/validation"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Validation 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/nesting"
+                            hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/nesting"
+                            hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/nesting"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Nesting 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/form-customisation-in-theme-editor"
+                            hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/form-customisation-in-theme-editor"
+                            hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/form-customisation-in-theme-editor"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Form customisation in theme editor 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/form-signature"
+                            hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/form-signature"
+                            hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/form-signature"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Form signature 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/nhs-look-and-feel"
+                            hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/nhs-look-and-feel"
+                            hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/nhs-look-and-feel"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              NHS integration 
+                            </span> 
+                          </a> 
+                          <div className="nav-item">
+                             
+                            <button
+                              aria-expanded="false"
+                              className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                              type="button"
+                            >
+                               
+                              <div className="flex-1 clickable-summary">
+                                 
+                                <a
+                                  className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                  href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/how-to-guides"
+                                  hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/how-to-guides"
+                                  hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/how-to-guides"
+                                  hxSwap="outerHTML"
+                                  hxTarget="#content"
+                                >
+                                   
+                                  <span className="flex items-center gap-2 ml-4">
+                                    How-to guides 
+                                  </span> 
+                                </a> 
+                              </div> 
+                              <svg
+                                className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                data-slot="icon"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                  clip-rule="evenodd"
+                                ></path>
+                              </svg>
+                            </button> 
+                            <div
+                              className="nav-children ml-6 border-l-1 border-outline"
+                              hidden="hidden"
+                            >
+                               
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/how-to-guides/how-to-populate-forms-with-data"
+                                hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/how-to-guides/how-to-populate-forms-with-data"
+                                hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/how-to-guides/how-to-populate-forms-with-data"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  How to: Populate forms with data 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/how-to-guides/how-to-extract-data-from-forms"
+                                hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/how-to-guides/how-to-extract-data-from-forms"
+                                hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/how-to-guides/how-to-extract-data-from-forms"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  How to extract data from forms 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/how-to-guides/how-to-calculate-form-filling-percentage"
+                                hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/how-to-guides/how-to-calculate-form-filling-percentage"
+                                hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/how-to-guides/how-to-calculate-form-filling-percentage"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  How to calculate form filling percentage 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/how-to-guides/how-to-use-answer-expression-into-forms"
+                                hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/how-to-guides/how-to-use-answer-expression-into-forms"
+                                hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/how-to-guides/how-to-use-answer-expression-into-forms"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  How to create a form with dynamical answers
+                                  into questions 
+                                </span> 
+                              </a> 
+                            </div> 
+                          </div> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/multilingual-forms"
+                            hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/multilingual-forms"
+                            hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/multilingual-forms"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Multilingual forms 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/fhirpath-editor"
+                            hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/fhirpath-editor"
+                            hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/fhirpath-editor"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              FHIRPath Expressions with Visual Editor 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/data-extraction"
+                            hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/data-extraction"
+                            hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/data-extraction"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Data Extraction 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/population"
+                            hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/population"
+                            hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-creation/population"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Population 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/import-questionnaire"
+                        hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/import-questionnaire"
+                        hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/import-questionnaire"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Import Questionnaire 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-sharing"
+                        hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-sharing"
+                        hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/form-sharing"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Form sharing 
+                        </span> 
+                      </a> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/printing-forms"
+                              hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/printing-forms"
+                              hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/printing-forms"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Printing forms 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/printing-forms/native-look-form-printing"
+                            hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/printing-forms/native-look-form-printing"
+                            hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/printing-forms/native-look-form-printing"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Native look form printing 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/printing-forms/template-based-pdf-generation"
+                            hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/printing-forms/template-based-pdf-generation"
+                            hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/printing-forms/template-based-pdf-generation"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Template-based PDF generation 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/fhir-versions"
+                        hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/fhir-versions"
+                        hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/fhir-versions"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          FHIR versions 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/offline-forms"
+                        hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/offline-forms"
+                        hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/offline-forms"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Offline forms 
+                        </span> 
+                      </a> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/embedding"
+                              hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/embedding"
+                              hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/embedding"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Embedding 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/request-interception"
+                            hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/request-interception"
+                            hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/request-interception"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Request Interception 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/configuration"
+                        hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/configuration"
+                        hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/configuration"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Configuration 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/forms-multitenancy"
+                        hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/forms-multitenancy"
+                        hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/forms-multitenancy"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Forms multitenancy 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/building-reports-using-sql-on-fhir"
+                        hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/building-reports-using-sql-on-fhir"
+                        hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/building-reports-using-sql-on-fhir"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Building reports using SQL on FHIR 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/integration-with-external-terminology-servers"
+                        hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/integration-with-external-terminology-servers"
+                        hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/integration-with-external-terminology-servers"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Integration with external terminology servers 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/parameterised-valueset"
+                        hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/parameterised-valueset"
+                        hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/parameterised-valueset"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Parameterised ValueSet 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/external-form-renderer"
+                        hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/external-form-renderer"
+                        hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/external-form-renderer"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          External Form Renderer in Builder Preview 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/external-fhir-servers-as-a-data-backend"
+                        hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/external-fhir-servers-as-a-data-backend"
+                        hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/external-fhir-servers-as-a-data-backend"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          External FHIR servers as a data backend 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/store-attachments-in-s3-like-storages"
+                        hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/store-attachments-in-s3-like-storages"
+                        hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-ui-builder-alpha/store-attachments-in-s3-like-storages"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Store attachments in S3-like storages 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/aidbox-forms/access-control-in-forms"
+                    hxGet="/docs/partial/aidbox/modules/aidbox-forms/access-control-in-forms"
+                    hxPushUrl="/docs/aidbox/modules/aidbox-forms/access-control-in-forms"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Access control in forms 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/aidbox-forms/adaptive-forms"
+                    hxGet="/docs/partial/aidbox/modules/aidbox-forms/adaptive-forms"
+                    hxPushUrl="/docs/aidbox/modules/aidbox-forms/adaptive-forms"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Adaptive Forms 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/aidbox-forms/audit-logging-in-forms"
+                    hxGet="/docs/partial/aidbox/modules/aidbox-forms/audit-logging-in-forms"
+                    hxPushUrl="/docs/aidbox/modules/aidbox-forms/audit-logging-in-forms"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Audit logging in forms 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/aidbox-forms/aidbox-form-gallery"
+                    hxGet="/docs/partial/aidbox/modules/aidbox-forms/aidbox-form-gallery"
+                    hxPushUrl="/docs/aidbox/modules/aidbox-forms/aidbox-form-gallery"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Aidbox Form Gallery 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/aidbox-forms/davinci"
+                    hxGet="/docs/partial/aidbox/modules/aidbox-forms/davinci"
+                    hxPushUrl="/docs/aidbox/modules/aidbox-forms/davinci"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Da Vinci DTR 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/modules/sql-on-fhir"
+                      hxGet="/docs/partial/aidbox/modules/sql-on-fhir"
+                      hxPushUrl="/docs/aidbox/modules/sql-on-fhir"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        SQL on FHIR 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/sql-on-fhir/operation-run"
+                    hxGet="/docs/partial/aidbox/modules/sql-on-fhir/operation-run"
+                    hxPushUrl="/docs/aidbox/modules/sql-on-fhir/operation-run"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      &#36;run operation 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/sql-on-fhir/operation-materialize"
+                    hxGet="/docs/partial/aidbox/modules/sql-on-fhir/operation-materialize"
+                    hxPushUrl="/docs/aidbox/modules/sql-on-fhir/operation-materialize"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      &#36;materialize operation 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/sql-on-fhir/defining-flat-views-with-view-definitions"
+                    hxGet="/docs/partial/aidbox/modules/sql-on-fhir/defining-flat-views-with-view-definitions"
+                    hxPushUrl="/docs/aidbox/modules/sql-on-fhir/defining-flat-views-with-view-definitions"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Defining flat views with view definitions 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/sql-on-fhir/migrate-to-the-spec-compliant-viewdefinition-format"
+                    hxGet="/docs/partial/aidbox/modules/sql-on-fhir/migrate-to-the-spec-compliant-viewdefinition-format"
+                    hxPushUrl="/docs/aidbox/modules/sql-on-fhir/migrate-to-the-spec-compliant-viewdefinition-format"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Migrate to the spec-compliant ViewDefinition format 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/sql-on-fhir/query-data-from-flat-views"
+                    hxGet="/docs/partial/aidbox/modules/sql-on-fhir/query-data-from-flat-views"
+                    hxPushUrl="/docs/aidbox/modules/sql-on-fhir/query-data-from-flat-views"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Query data from flat views 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/sql-on-fhir/reference"
+                    hxGet="/docs/partial/aidbox/modules/sql-on-fhir/reference"
+                    hxPushUrl="/docs/aidbox/modules/sql-on-fhir/reference"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Reference 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/modules/integration-toolkit"
+                      hxGet="/docs/partial/aidbox/modules/integration-toolkit"
+                      hxPushUrl="/docs/aidbox/modules/integration-toolkit"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Integration Toolkit 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/modules/integration-toolkit/ccda-converter"
+                          hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter"
+                          hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            C-CDA / FHIR Converter 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections"
+                              hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections"
+                              hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                List of Supported Templates 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/admission-diagnosis-section-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/admission-diagnosis-section-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/admission-diagnosis-section-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Admission Diagnosis Section (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/advance-directives-section-docs-entries-optional-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/advance-directives-section-docs-entries-optional-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/advance-directives-section-docs-entries-optional-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Advance directives section (/entries optional)
+                              (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/advance-directives-section-docs-entries-required-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/advance-directives-section-docs-entries-required-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/advance-directives-section-docs-entries-required-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Advance directives section (/entries required)
+                              (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/allergies-and-intolerances-section-docs-entries-optional-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/allergies-and-intolerances-section-docs-entries-optional-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/allergies-and-intolerances-section-docs-entries-optional-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Allergies and intolerances section (/entries
+                              optional) (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/allergies-and-intolerances-section-docs-entries-required-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/allergies-and-intolerances-section-docs-entries-required-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/allergies-and-intolerances-section-docs-entries-required-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Allergies and intolerances section (/entries
+                              required) (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/assessment-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/assessment-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/assessment-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Assessment Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/chief-complaint-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/chief-complaint-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/chief-complaint-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Chief Complaint Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/chief-complaint-and-reason-for-visit-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/chief-complaint-and-reason-for-visit-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/chief-complaint-and-reason-for-visit-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Chief Complaint and Reason for Visit Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/complications-section-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/complications-section-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/complications-section-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Complications Section (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/course-of-care-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/course-of-care-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/course-of-care-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Course of Care Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/dicom-object-catalog-section-dcm-121181"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/dicom-object-catalog-section-dcm-121181"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/dicom-object-catalog-section-dcm-121181"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              DICOM Object Catalog Section - DCM 121181 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/default-section-rules"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/default-section-rules"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/default-section-rules"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Default Section Rules 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/discharge-diagnosis-section-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/discharge-diagnosis-section-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/discharge-diagnosis-section-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Discharge Diagnosis Section (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/document-header"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/document-header"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/document-header"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Document Header 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/encounters-section-docs-entries-optional-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/encounters-section-docs-entries-optional-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/encounters-section-docs-entries-optional-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Encounters section (/entries optional) (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/encounters-section-docs-entries-required-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/encounters-section-docs-entries-required-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/encounters-section-docs-entries-required-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Encounters section (/entries required) (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/family-history-section-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/family-history-section-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/family-history-section-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Family History Section (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/functional-status-section-docs-v2"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/functional-status-section-docs-v2"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/functional-status-section-docs-v2"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Functional Status Section (/V2) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/general-status-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/general-status-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/general-status-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              General Status Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/goals-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/goals-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/goals-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Goals Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/health-concerns-section-docs-v2"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/health-concerns-section-docs-v2"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/health-concerns-section-docs-v2"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Health Concerns Section (/V2) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/history-of-present-illness-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/history-of-present-illness-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/history-of-present-illness-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              History of Present Illness Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/hospital-consultations-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/hospital-consultations-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/hospital-consultations-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Hospital Consultations Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/hospital-course-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/hospital-course-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/hospital-course-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Hospital Course Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/hospital-discharge-instructions-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/hospital-discharge-instructions-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/hospital-discharge-instructions-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Hospital Discharge Instructions Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/hospital-discharge-physical-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/hospital-discharge-physical-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/hospital-discharge-physical-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Hospital Discharge Physical Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/hospital-discharge-studies-summary-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/hospital-discharge-studies-summary-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/hospital-discharge-studies-summary-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Hospital Discharge Studies Summary Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/immunizations-section-docs-entries-optional-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/immunizations-section-docs-entries-optional-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/immunizations-section-docs-entries-optional-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Immunizations section (/entries optional)
+                              (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/immunizations-section-docs-entries-required-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/immunizations-section-docs-entries-required-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/immunizations-section-docs-entries-required-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Immunizations section (/entries required)
+                              (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/medical-docs-general-history-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/medical-docs-general-history-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/medical-docs-general-history-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Medical (/General) History Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/medical-equipment-section-docs-v2"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/medical-equipment-section-docs-v2"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/medical-equipment-section-docs-v2"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Medical Equipment Section (/V2) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/medications-administered-section-docs-v2"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/medications-administered-section-docs-v2"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/medications-administered-section-docs-v2"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Medications Administered Section (/V2) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/medications-section-docs-entries-optional-docs-v2"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/medications-section-docs-entries-optional-docs-v2"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/medications-section-docs-entries-optional-docs-v2"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Medications section (/entries optional) (/V2) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/medications-section-docs-entries-required-docs-v2"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/medications-section-docs-entries-required-docs-v2"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/medications-section-docs-entries-required-docs-v2"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Medications section (/entries required) (/V2) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/mental-status-section-docs-v2"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/mental-status-section-docs-v2"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/mental-status-section-docs-v2"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Mental Status Section (/V2) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/notes"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/notes"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/notes"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Notes 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/nutrition-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/nutrition-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/nutrition-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Nutrition Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/objective-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/objective-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/objective-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Objective Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/operative-note-fluids-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/operative-note-fluids-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/operative-note-fluids-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Operative Note Fluids Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/operative-note-surgical-procedure-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/operative-note-surgical-procedure-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/operative-note-surgical-procedure-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Operative Note Surgical Procedure Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/past-medical-history-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/past-medical-history-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/past-medical-history-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Past Medical History (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/payers-section-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/payers-section-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/payers-section-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Payers Section (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/plan-of-treatment-section-docs-v2"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/plan-of-treatment-section-docs-v2"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/plan-of-treatment-section-docs-v2"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Plan of Treatment Section (/V2) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/postprocedure-diagnosis-section-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/postprocedure-diagnosis-section-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/postprocedure-diagnosis-section-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Postprocedure Diagnosis Section (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/preoperative-diagnosis-section-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/preoperative-diagnosis-section-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/preoperative-diagnosis-section-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Preoperative Diagnosis Section (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/problem-section-docs-entries-optional-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/problem-section-docs-entries-optional-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/problem-section-docs-entries-optional-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Problem section (/entries optional) (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/problem-section-docs-entries-required-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/problem-section-docs-entries-required-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/problem-section-docs-entries-required-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Problem section (/entries required) (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/procedure-description-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/procedure-description-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/procedure-description-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Procedure Description Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/procedure-disposition-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/procedure-disposition-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/procedure-disposition-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Procedure Disposition Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/procedure-estimated-blood-loss-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/procedure-estimated-blood-loss-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/procedure-estimated-blood-loss-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Procedure Estimated Blood Loss Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/procedure-implants-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/procedure-implants-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/procedure-implants-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Procedure Implants Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/procedure-specimens-taken-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/procedure-specimens-taken-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/procedure-specimens-taken-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Procedure Specimens Taken Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/procedures-section-docs-entries-optional-docs-v2"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/procedures-section-docs-entries-optional-docs-v2"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/procedures-section-docs-entries-optional-docs-v2"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Procedures section (/entries optional) (/V2) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/procedures-section-docs-entries-required-docs-v2"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/procedures-section-docs-entries-required-docs-v2"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/procedures-section-docs-entries-required-docs-v2"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Procedures section (/entries required) (/V2) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/reason-for-visit-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/reason-for-visit-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/reason-for-visit-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Reason for Visit Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/results-section-docs-entries-optional-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/results-section-docs-entries-optional-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/results-section-docs-entries-optional-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Results section (/entries optional) (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/results-section-docs-entries-required-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/results-section-docs-entries-required-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/results-section-docs-entries-required-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Results section (/entries required) (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/review-of-systems-section"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/review-of-systems-section"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/review-of-systems-section"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Review of Systems Section 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/social-history-section-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/social-history-section-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/social-history-section-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Social History Section (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/vital-signs-section-docs-entries-optional-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/vital-signs-section-docs-entries-optional-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/vital-signs-section-docs-entries-optional-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Vital signs section (/entries optional) (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/vital-signs-section-docs-entries-required-docs-v3"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/vital-signs-section-docs-entries-required-docs-v3"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/vital-signs-section-docs-entries-required-docs-v3"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Vital signs section (/entries required) (/V3) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/discharge-meds-section-entries-optional"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/discharge-meds-section-entries-optional"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/discharge-meds-section-entries-optional"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Discharge Meds Section (/entries optional) 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/discharge-meds-section-entries-required"
+                            hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/sections/discharge-meds-section-entries-required"
+                            hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/sections/discharge-meds-section-entries-required"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Discharge Meds Section (/entries required) 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/integration-toolkit/ccda-converter/how-to-deploy-the-service"
+                        hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/how-to-deploy-the-service"
+                        hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/how-to-deploy-the-service"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to deploy the service 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/integration-toolkit/ccda-converter/producing-c-cda-documents"
+                        hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/producing-c-cda-documents"
+                        hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/producing-c-cda-documents"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Producing C-CDA documents 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/integration-toolkit/ccda-converter/how-to-customize-conversion-rules"
+                        hxGet="/docs/partial/aidbox/modules/integration-toolkit/ccda-converter/how-to-customize-conversion-rules"
+                        hxPushUrl="/docs/aidbox/modules/integration-toolkit/ccda-converter/how-to-customize-conversion-rules"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to customize conversion rules 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/modules/integration-toolkit/hl7-v2-integration"
+                          hxGet="/docs/partial/aidbox/modules/integration-toolkit/hl7-v2-integration"
+                          hxPushUrl="/docs/aidbox/modules/integration-toolkit/hl7-v2-integration"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            HL7 v2 integration 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/integration-toolkit/hl7-v2-integration/hl7-v2-integration-with-aidbox-project"
+                        hxGet="/docs/partial/aidbox/modules/integration-toolkit/hl7-v2-integration/hl7-v2-integration-with-aidbox-project"
+                        hxPushUrl="/docs/aidbox/modules/integration-toolkit/hl7-v2-integration/hl7-v2-integration-with-aidbox-project"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          HL7 v2 integration with Aidbox project 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/integration-toolkit/hl7-v2-integration/mappings-with-lisp-mapping"
+                        hxGet="/docs/partial/aidbox/modules/integration-toolkit/hl7-v2-integration/mappings-with-lisp-mapping"
+                        hxPushUrl="/docs/aidbox/modules/integration-toolkit/hl7-v2-integration/mappings-with-lisp-mapping"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Mappings with lisp/mapping 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/integration-toolkit/x12-message-converter"
+                    hxGet="/docs/partial/aidbox/modules/integration-toolkit/x12-message-converter"
+                    hxPushUrl="/docs/aidbox/modules/integration-toolkit/x12-message-converter"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      X12 message converter 
+                    </span> 
+                  </a> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/modules/integration-toolkit/analytics"
+                          hxGet="/docs/partial/aidbox/modules/integration-toolkit/analytics"
+                          hxPushUrl="/docs/aidbox/modules/integration-toolkit/analytics"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Analytics 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/integration-toolkit/analytics/power-bi"
+                        hxGet="/docs/partial/aidbox/modules/integration-toolkit/analytics/power-bi"
+                        hxPushUrl="/docs/aidbox/modules/integration-toolkit/analytics/power-bi"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Power BI 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/integration-toolkit/mappings"
+                    hxGet="/docs/partial/aidbox/modules/integration-toolkit/mappings"
+                    hxPushUrl="/docs/aidbox/modules/integration-toolkit/mappings"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Mappings 
+                    </span> 
+                  </a> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/modules/integration-toolkit/email-providers"
+                          hxGet="/docs/partial/aidbox/modules/integration-toolkit/email-providers"
+                          hxPushUrl="/docs/aidbox/modules/integration-toolkit/email-providers"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Email providers integration 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/integration-toolkit/email-providers/setup-smtp-provider"
+                        hxGet="/docs/partial/aidbox/modules/integration-toolkit/email-providers/setup-smtp-provider"
+                        hxPushUrl="/docs/aidbox/modules/integration-toolkit/email-providers/setup-smtp-provider"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Setup SMTP provider 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/modules/eprescription"
+                      hxGet="/docs/partial/aidbox/modules/eprescription"
+                      hxPushUrl="/docs/aidbox/modules/eprescription"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        ePrescription 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/eprescription/getting-started"
+                    hxGet="/docs/partial/aidbox/modules/eprescription/getting-started"
+                    hxPushUrl="/docs/aidbox/modules/eprescription/getting-started"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Getting Started 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/eprescription/authentication-with-mtls"
+                    hxGet="/docs/partial/aidbox/modules/eprescription/authentication-with-mtls"
+                    hxPushUrl="/docs/aidbox/modules/eprescription/authentication-with-mtls"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Authentication with mTLS 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/eprescription/pharmacies-synchronization"
+                    hxGet="/docs/partial/aidbox/modules/eprescription/pharmacies-synchronization"
+                    hxPushUrl="/docs/aidbox/modules/eprescription/pharmacies-synchronization"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Pharmacies Synchronization 
+                    </span> 
+                  </a> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/modules/eprescription/prescribing"
+                          hxGet="/docs/partial/aidbox/modules/eprescription/prescribing"
+                          hxPushUrl="/docs/aidbox/modules/eprescription/prescribing"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Prescribing 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/eprescription/prescribing/newrx-message"
+                        hxGet="/docs/partial/aidbox/modules/eprescription/prescribing/newrx-message"
+                        hxPushUrl="/docs/aidbox/modules/eprescription/prescribing/newrx-message"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          NewRx Message 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/eprescription/prescribing/cancelrx-message"
+                        hxGet="/docs/partial/aidbox/modules/eprescription/prescribing/cancelrx-message"
+                        hxPushUrl="/docs/aidbox/modules/eprescription/prescribing/cancelrx-message"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          CancelRx Message 
+                        </span> 
+                      </a> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/modules/eprescription/prescribing/pharmacy-initiated-messages"
+                              hxGet="/docs/partial/aidbox/modules/eprescription/prescribing/pharmacy-initiated-messages"
+                              hxPushUrl="/docs/aidbox/modules/eprescription/prescribing/pharmacy-initiated-messages"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Pharmacy-initiated messages 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/eprescription/prescribing/pharmacy-initiated-messages/rx-renewal"
+                            hxGet="/docs/partial/aidbox/modules/eprescription/prescribing/pharmacy-initiated-messages/rx-renewal"
+                            hxPushUrl="/docs/aidbox/modules/eprescription/prescribing/pharmacy-initiated-messages/rx-renewal"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              RxRenewal Message 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/modules/eprescription/prescribing/pharmacy-initiated-messages/rx-change"
+                            hxGet="/docs/partial/aidbox/modules/eprescription/prescribing/pharmacy-initiated-messages/rx-change"
+                            hxPushUrl="/docs/aidbox/modules/eprescription/prescribing/pharmacy-initiated-messages/rx-change"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              RxChange Message 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/eprescription/prescribing/detected-issue"
+                        hxGet="/docs/partial/aidbox/modules/eprescription/prescribing/detected-issue"
+                        hxPushUrl="/docs/aidbox/modules/eprescription/prescribing/detected-issue"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          DetectedIssue 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/eprescription/prescribing/how-to-test-callback"
+                        hxGet="/docs/partial/aidbox/modules/eprescription/prescribing/how-to-test-callback"
+                        hxPushUrl="/docs/aidbox/modules/eprescription/prescribing/how-to-test-callback"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          How to test Callback 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/modules/eprescription/directory"
+                          hxGet="/docs/partial/aidbox/modules/eprescription/directory"
+                          hxPushUrl="/docs/aidbox/modules/eprescription/directory"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Directory 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/eprescription/directory/directorydownload-message"
+                        hxGet="/docs/partial/aidbox/modules/eprescription/directory/directorydownload-message"
+                        hxPushUrl="/docs/aidbox/modules/eprescription/directory/directorydownload-message"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          DirectoryDownload Message 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/eprescription/directory/getproviderlocation-message"
+                        hxGet="/docs/partial/aidbox/modules/eprescription/directory/getproviderlocation-message"
+                        hxPushUrl="/docs/aidbox/modules/eprescription/directory/getproviderlocation-message"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          GetProviderLocation Message 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/eprescription/directory/addproviderlocation-message"
+                        hxGet="/docs/partial/aidbox/modules/eprescription/directory/addproviderlocation-message"
+                        hxPushUrl="/docs/aidbox/modules/eprescription/directory/addproviderlocation-message"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          AddProviderLocation Message 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/eprescription/directory/updateproviderlocation-message"
+                        hxGet="/docs/partial/aidbox/modules/eprescription/directory/updateproviderlocation-message"
+                        hxPushUrl="/docs/aidbox/modules/eprescription/directory/updateproviderlocation-message"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          UpdateProviderLocation Message 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/eprescription/directory/disableproviderlocation-message"
+                        hxGet="/docs/partial/aidbox/modules/eprescription/directory/disableproviderlocation-message"
+                        hxPushUrl="/docs/aidbox/modules/eprescription/directory/disableproviderlocation-message"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          DisableProviderLocation Message 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/modules/eprescription/medications"
+                          hxGet="/docs/partial/aidbox/modules/eprescription/medications"
+                          hxPushUrl="/docs/aidbox/modules/eprescription/medications"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Medications 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/eprescription/medications/fdb"
+                        hxGet="/docs/partial/aidbox/modules/eprescription/medications/fdb"
+                        hxPushUrl="/docs/aidbox/modules/eprescription/medications/fdb"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          FDB 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/modules/eprescription/reference"
+                          hxGet="/docs/partial/aidbox/modules/eprescription/reference"
+                          hxPushUrl="/docs/aidbox/modules/eprescription/reference"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            References 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/eprescription/reference/environment-variables"
+                        hxGet="/docs/partial/aidbox/modules/eprescription/reference/environment-variables"
+                        hxPushUrl="/docs/aidbox/modules/eprescription/reference/environment-variables"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Environment Variables 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/eprescription/reference/list-of-metrics"
+                        hxGet="/docs/partial/aidbox/modules/eprescription/reference/list-of-metrics"
+                        hxPushUrl="/docs/aidbox/modules/eprescription/reference/list-of-metrics"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          List of Metrics 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/eprescription/frequently-asked-questions"
+                    hxGet="/docs/partial/aidbox/modules/eprescription/frequently-asked-questions"
+                    hxPushUrl="/docs/aidbox/modules/eprescription/frequently-asked-questions"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Frequently Asked Questions 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/modules/mpi"
+                      hxGet="/docs/partial/aidbox/modules/mpi"
+                      hxPushUrl="/docs/aidbox/modules/mpi"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        MPI — Master Patient Index 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/modules/mpi/get-started"
+                          hxGet="/docs/partial/aidbox/modules/mpi/get-started"
+                          hxPushUrl="/docs/aidbox/modules/mpi/get-started"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Get started 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/mpi/get-started/run-mdm-locally"
+                        hxGet="/docs/partial/aidbox/modules/mpi/get-started/run-mdm-locally"
+                        hxPushUrl="/docs/aidbox/modules/mpi/get-started/run-mdm-locally"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Run MDM locally 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/mpi/get-started/configure-mpi-module"
+                        hxGet="/docs/partial/aidbox/modules/mpi/get-started/configure-mpi-module"
+                        hxPushUrl="/docs/aidbox/modules/mpi/get-started/configure-mpi-module"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Configure MPI module 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/mpi/find-duplicates-match"
+                    hxGet="/docs/partial/aidbox/modules/mpi/find-duplicates-match"
+                    hxPushUrl="/docs/aidbox/modules/mpi/find-duplicates-match"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Find duplicates: &#36;match 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/mpi/merging-and-unmerging-records-usdmerge-and-usdunmerge"
+                    hxGet="/docs/partial/aidbox/modules/mpi/merging-and-unmerging-records-usdmerge-and-usdunmerge"
+                    hxPushUrl="/docs/aidbox/modules/mpi/merging-and-unmerging-records-usdmerge-and-usdunmerge"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Merging and Unmerging Records: &#36;merge and
+                      &#36;unmerge 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/mpi/matching-model-explanation"
+                    hxGet="/docs/partial/aidbox/modules/mpi/matching-model-explanation"
+                    hxPushUrl="/docs/aidbox/modules/mpi/matching-model-explanation"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Matching Model Explanation 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/mpi/mathematical-details"
+                    hxGet="/docs/partial/aidbox/modules/mpi/mathematical-details"
+                    hxPushUrl="/docs/aidbox/modules/mpi/mathematical-details"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Mathematical Details 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/modules/other-modules"
+                      hxGet="/docs/partial/aidbox/modules/other-modules"
+                      hxPushUrl="/docs/aidbox/modules/other-modules"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Other Modules 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/other-modules/mcp"
+                    hxGet="/docs/partial/aidbox/modules/other-modules/mcp"
+                    hxPushUrl="/docs/aidbox/modules/other-modules/mcp"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      MCP 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/modules/other-modules/aidbox-trigger"
+                    hxGet="/docs/partial/aidbox/modules/other-modules/aidbox-trigger"
+                    hxPushUrl="/docs/aidbox/modules/other-modules/aidbox-trigger"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      AidboxTrigger 
+                    </span> 
+                  </a> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/modules/other-modules/hl7v2"
+                          hxGet="/docs/partial/aidbox/modules/other-modules/hl7v2"
+                          hxPushUrl="/docs/aidbox/modules/other-modules/hl7v2"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            HL7v2 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/other-modules/hl7v2/getting-started"
+                        hxGet="/docs/partial/aidbox/modules/other-modules/hl7v2/getting-started"
+                        hxPushUrl="/docs/aidbox/modules/other-modules/hl7v2/getting-started"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Getting Started 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/other-modules/hl7v2/fhir-resources"
+                        hxGet="/docs/partial/aidbox/modules/other-modules/hl7v2/fhir-resources"
+                        hxPushUrl="/docs/aidbox/modules/other-modules/hl7v2/fhir-resources"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          FHIR Resources 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/other-modules/hl7v2/default-mappings"
+                        hxGet="/docs/partial/aidbox/modules/other-modules/hl7v2/default-mappings"
+                        hxPushUrl="/docs/aidbox/modules/other-modules/hl7v2/default-mappings"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Default Mappings 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/other-modules/hl7v2/module-limitations"
+                        hxGet="/docs/partial/aidbox/modules/other-modules/hl7v2/module-limitations"
+                        hxPushUrl="/docs/aidbox/modules/other-modules/hl7v2/module-limitations"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Module Limitations 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/modules/other-modules/hl7v2/message-lifecycle"
+                        hxGet="/docs/partial/aidbox/modules/other-modules/hl7v2/message-lifecycle"
+                        hxPushUrl="/docs/aidbox/modules/other-modules/hl7v2/message-lifecycle"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Message Lifecycle 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+            <div className="break-words mt-4 border-t border-outline-subtle pt-4 first:mt-0 first:border-t-0 first:pt-0">
+               
+              <div className="mb-1 first:mt-2 ml-4">
+                 
+                <span className="text-xs font-medium leading-4 text-brand uppercase tracking-wider">
+                  File storage 
+                </span> 
+              </div> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/file-storage/aws-s3"
+                hxGet="/docs/partial/aidbox/file-storage/aws-s3"
+                hxPushUrl="/docs/aidbox/file-storage/aws-s3"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  AWS S3 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/file-storage/gcp-cloud-storage"
+                hxGet="/docs/partial/aidbox/file-storage/gcp-cloud-storage"
+                hxPushUrl="/docs/aidbox/file-storage/gcp-cloud-storage"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  GCP Cloud Storage 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/file-storage/azure-blob-storage"
+                hxGet="/docs/partial/aidbox/file-storage/azure-blob-storage"
+                hxPushUrl="/docs/aidbox/file-storage/azure-blob-storage"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Azure Blob Storage 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/file-storage/oracle-cloud-storage"
+                hxGet="/docs/partial/aidbox/file-storage/oracle-cloud-storage"
+                hxPushUrl="/docs/aidbox/file-storage/oracle-cloud-storage"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Oracle Cloud Storage 
+                </span> 
+              </a> 
+            </div> 
+            <div className="break-words mt-4 border-t border-outline-subtle pt-4 first:mt-0 first:border-t-0 first:pt-0">
+               
+              <div className="mb-1 first:mt-2 ml-4">
+                 
+                <span className="text-xs font-medium leading-4 text-brand uppercase tracking-wider">
+                  Deployment and maintenance 
+                </span> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/deployment-and-maintenance/deploy-aidbox"
+                      hxGet="/docs/partial/aidbox/deployment-and-maintenance/deploy-aidbox"
+                      hxPushUrl="/docs/aidbox/deployment-and-maintenance/deploy-aidbox"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Deploy Aidbox 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/deployment-and-maintenance/deploy-aidbox/run-aidbox-in-kubernetes"
+                          hxGet="/docs/partial/aidbox/deployment-and-maintenance/deploy-aidbox/run-aidbox-in-kubernetes"
+                          hxPushUrl="/docs/aidbox/deployment-and-maintenance/deploy-aidbox/run-aidbox-in-kubernetes"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Run Aidbox on Kubernetes 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deployment-and-maintenance/deploy-aidbox/run-aidbox-in-kubernetes/deploy-production-ready-aidbox-to-kubernetes"
+                        hxGet="/docs/partial/aidbox/deployment-and-maintenance/deploy-aidbox/run-aidbox-in-kubernetes/deploy-production-ready-aidbox-to-kubernetes"
+                        hxPushUrl="/docs/aidbox/deployment-and-maintenance/deploy-aidbox/run-aidbox-in-kubernetes/deploy-production-ready-aidbox-to-kubernetes"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Deploy Production-ready Aidbox to Kubernetes 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deployment-and-maintenance/deploy-aidbox/run-aidbox-in-kubernetes/deploy-aidbox-with-helm-charts"
+                        hxGet="/docs/partial/aidbox/deployment-and-maintenance/deploy-aidbox/run-aidbox-in-kubernetes/deploy-aidbox-with-helm-charts"
+                        hxPushUrl="/docs/aidbox/deployment-and-maintenance/deploy-aidbox/run-aidbox-in-kubernetes/deploy-aidbox-with-helm-charts"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Deploy Aidbox with Helm Charts 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deployment-and-maintenance/deploy-aidbox/run-aidbox-in-kubernetes/highly-available-aidbox"
+                        hxGet="/docs/partial/aidbox/deployment-and-maintenance/deploy-aidbox/run-aidbox-in-kubernetes/highly-available-aidbox"
+                        hxPushUrl="/docs/aidbox/deployment-and-maintenance/deploy-aidbox/run-aidbox-in-kubernetes/highly-available-aidbox"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Highly Available Aidbox 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deployment-and-maintenance/deploy-aidbox/run-aidbox-in-kubernetes/self-signed-ssl-certificates"
+                        hxGet="/docs/partial/aidbox/deployment-and-maintenance/deploy-aidbox/run-aidbox-in-kubernetes/self-signed-ssl-certificates"
+                        hxPushUrl="/docs/aidbox/deployment-and-maintenance/deploy-aidbox/run-aidbox-in-kubernetes/self-signed-ssl-certificates"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Self-signed SSL Certificates 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/deployment-and-maintenance/deploy-aidbox/run-aidbox-on-managed-postgresql"
+                    hxGet="/docs/partial/aidbox/deployment-and-maintenance/deploy-aidbox/run-aidbox-on-managed-postgresql"
+                    hxPushUrl="/docs/aidbox/deployment-and-maintenance/deploy-aidbox/run-aidbox-on-managed-postgresql"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Run Aidbox on managed PostgreSQL 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/deployment-and-maintenance/deploy-aidbox/how-to-inject-env-variables-into-init-bundle"
+                    hxGet="/docs/partial/aidbox/deployment-and-maintenance/deploy-aidbox/how-to-inject-env-variables-into-init-bundle"
+                    hxPushUrl="/docs/aidbox/deployment-and-maintenance/deploy-aidbox/how-to-inject-env-variables-into-init-bundle"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      How to inject env variables into Init Bundle 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/deployment-and-maintenance/backup-and-restore"
+                      hxGet="/docs/partial/aidbox/deployment-and-maintenance/backup-and-restore"
+                      hxPushUrl="/docs/aidbox/deployment-and-maintenance/backup-and-restore"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Backup and Restore 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/deployment-and-maintenance/backup-and-restore/crunchy-operator-docs-pgbackrest"
+                    hxGet="/docs/partial/aidbox/deployment-and-maintenance/backup-and-restore/crunchy-operator-docs-pgbackrest"
+                    hxPushUrl="/docs/aidbox/deployment-and-maintenance/backup-and-restore/crunchy-operator-docs-pgbackrest"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Crunchy Operator (/pgbackrest) 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/deployment-and-maintenance/backup-and-restore/pg-dump"
+                    hxGet="/docs/partial/aidbox/deployment-and-maintenance/backup-and-restore/pg-dump"
+                    hxPushUrl="/docs/aidbox/deployment-and-maintenance/backup-and-restore/pg-dump"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      pg_dump 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/deployment-and-maintenance/backup-and-restore/pg-basebackup"
+                    hxGet="/docs/partial/aidbox/deployment-and-maintenance/backup-and-restore/pg-basebackup"
+                    hxPushUrl="/docs/aidbox/deployment-and-maintenance/backup-and-restore/pg-basebackup"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      pg_basebackup 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/deployment-and-maintenance/backup-and-restore/wal-g"
+                    hxGet="/docs/partial/aidbox/deployment-and-maintenance/backup-and-restore/wal-g"
+                    hxPushUrl="/docs/aidbox/deployment-and-maintenance/backup-and-restore/wal-g"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      WAL-G 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/deployment-and-maintenance/indexes"
+                      hxGet="/docs/partial/aidbox/deployment-and-maintenance/indexes"
+                      hxPushUrl="/docs/aidbox/deployment-and-maintenance/indexes"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Indexes 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/deployment-and-maintenance/indexes/get-suggested-indexes"
+                    hxGet="/docs/partial/aidbox/deployment-and-maintenance/indexes/get-suggested-indexes"
+                    hxPushUrl="/docs/aidbox/deployment-and-maintenance/indexes/get-suggested-indexes"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Get Suggested Indexes 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/deployment-and-maintenance/indexes/create-indexes-manually"
+                    hxGet="/docs/partial/aidbox/deployment-and-maintenance/indexes/create-indexes-manually"
+                    hxPushUrl="/docs/aidbox/deployment-and-maintenance/indexes/create-indexes-manually"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Create Indexes Manually 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+            </div> 
+            <div className="break-words mt-4 border-t border-outline-subtle pt-4 first:mt-0 first:border-t-0 first:pt-0">
+               
+              <div className="mb-1 first:mt-2 ml-4">
+                 
+                <span className="text-xs font-medium leading-4 text-brand uppercase tracking-wider">
+                  Developer experience 
+                </span> 
+              </div> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/developer-experience/developer-experience-overview"
+                hxGet="/docs/partial/aidbox/developer-experience/developer-experience-overview"
+                hxPushUrl="/docs/aidbox/developer-experience/developer-experience-overview"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Developer experience overview 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/developer-experience/ai"
+                hxGet="/docs/partial/aidbox/developer-experience/ai"
+                hxPushUrl="/docs/aidbox/developer-experience/ai"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Working with AI 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/developer-experience/apps"
+                hxGet="/docs/partial/aidbox/developer-experience/apps"
+                hxPushUrl="/docs/aidbox/developer-experience/apps"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">Apps </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/developer-experience/use-aidbox-with-react"
+                hxGet="/docs/partial/aidbox/developer-experience/use-aidbox-with-react"
+                hxPushUrl="/docs/aidbox/developer-experience/use-aidbox-with-react"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Use Aidbox with React 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/developer-experience/aidbox-sdk"
+                hxGet="/docs/partial/aidbox/developer-experience/aidbox-sdk"
+                hxPushUrl="/docs/aidbox/developer-experience/aidbox-sdk"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Aidbox SDK 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="https://github.com/Aidbox/examples"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Examples 
+                  <svg
+                    className="size-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M15.75 2.25H21a.75.75 0 0 1 .75.75v5.25a.75.75 0 0 1-1.5 0V4.81L8.03 17.03a.75.75 0 0 1-1.06-1.06L19.19 3.75h-3.44a.75.75 0 0 1 0-1.5Zm-10.5 4.5a1.5 1.5 0 0 0-1.5 1.5v10.5a1.5 1.5 0 0 0 1.5 1.5h10.5a1.5 1.5 0 0 0 1.5-1.5V10.5a.75.75 0 0 1 1.5 0v8.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V8.25a3 3 0 0 1 3-3h8.25a.75.75 0 0 1 0 1.5H5.25Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </span> 
+              </a> 
+            </div> 
+            <div className="break-words mt-4 border-t border-outline-subtle pt-4 first:mt-0 first:border-t-0 first:pt-0">
+               
+              <div className="mb-1 first:mt-2 ml-4">
+                 
+                <span className="text-xs font-medium leading-4 text-brand uppercase tracking-wider">
+                  Solutions 
+                </span> 
+              </div> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/solutions/overview"
+                hxGet="/docs/partial/aidbox/solutions/overview"
+                hxPushUrl="/docs/aidbox/solutions/overview"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Overview 
+                </span> 
+              </a> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/solutions/aidbox-+-fhir-app-portal"
+                      hxGet="/docs/partial/aidbox/solutions/aidbox-+-fhir-app-portal"
+                      hxPushUrl="/docs/aidbox/solutions/aidbox-+-fhir-app-portal"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Aidbox + FHIR App portal 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/solutions/aidbox-+-fhir-app-portal/getting-started"
+                          hxGet="/docs/partial/aidbox/solutions/aidbox-+-fhir-app-portal/getting-started"
+                          hxPushUrl="/docs/aidbox/solutions/aidbox-+-fhir-app-portal/getting-started"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Getting started 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/solutions/aidbox-+-fhir-app-portal/getting-started/run-aidbox-+-fhir-portal-locally"
+                        hxGet="/docs/partial/aidbox/solutions/aidbox-+-fhir-app-portal/getting-started/run-aidbox-+-fhir-portal-locally"
+                        hxPushUrl="/docs/aidbox/solutions/aidbox-+-fhir-app-portal/getting-started/run-aidbox-+-fhir-portal-locally"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Run Aidbox + FHIR Portal locally 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/solutions/aidbox-+-fhir-app-portal/getting-started/run-aidbox-+-fhir-portals-on-k8s"
+                        hxGet="/docs/partial/aidbox/solutions/aidbox-+-fhir-app-portal/getting-started/run-aidbox-+-fhir-portals-on-k8s"
+                        hxPushUrl="/docs/aidbox/solutions/aidbox-+-fhir-app-portal/getting-started/run-aidbox-+-fhir-portals-on-k8s"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Run Aidbox + FHIR Portals on k8s 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/solutions/aidbox-+-fhir-app-portal/getting-started/smartbox-to-aidbox-migration-guide"
+                        hxGet="/docs/partial/aidbox/solutions/aidbox-+-fhir-app-portal/getting-started/smartbox-to-aidbox-migration-guide"
+                        hxPushUrl="/docs/aidbox/solutions/aidbox-+-fhir-app-portal/getting-started/smartbox-to-aidbox-migration-guide"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Migrate from Smartbox to Aidbox + FHIR App portal 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/solutions/aidbox-+-fhir-app-portal/tutorials/developer-sandbox"
+                    hxGet="/docs/partial/aidbox/solutions/aidbox-+-fhir-app-portal/tutorials/developer-sandbox"
+                    hxPushUrl="/docs/aidbox/solutions/aidbox-+-fhir-app-portal/tutorials/developer-sandbox"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Developer Sandbox 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/solutions/aidbox-+-fhir-app-portal/tutorials/admin-portal"
+                    hxGet="/docs/partial/aidbox/solutions/aidbox-+-fhir-app-portal/tutorials/admin-portal"
+                    hxPushUrl="/docs/aidbox/solutions/aidbox-+-fhir-app-portal/tutorials/admin-portal"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Admin Portal 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/solutions/aidbox-+-fhir-app-portal/tutorials/app-gallery"
+                    hxGet="/docs/partial/aidbox/solutions/aidbox-+-fhir-app-portal/tutorials/app-gallery"
+                    hxPushUrl="/docs/aidbox/solutions/aidbox-+-fhir-app-portal/tutorials/app-gallery"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      FHIR App Gallery 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/solutions/providers-or-onc-health-it-certification-program"
+                      hxGet="/docs/partial/aidbox/solutions/providers-or-onc-health-it-certification-program"
+                      hxPushUrl="/docs/aidbox/solutions/providers-or-onc-health-it-certification-program"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        ONC Health IT Certification Program 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/solutions/providers-or-onc-health-it-certification-program/g-10-standardized-api-for-patient-and-population-services"
+                          hxGet="/docs/partial/aidbox/solutions/providers-or-onc-health-it-certification-program/g-10-standardized-api-for-patient-and-population-services"
+                          hxPushUrl="/docs/aidbox/solutions/providers-or-onc-health-it-certification-program/g-10-standardized-api-for-patient-and-population-services"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            (g)(10): Standardized API for Patient and Population
+                            Services 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/solutions/providers-or-onc-health-it-certification-program/g-10-standardized-api-for-patient-and-population-services/pass-inferno-tests-with-aidbox"
+                        hxGet="/docs/partial/aidbox/solutions/providers-or-onc-health-it-certification-program/g-10-standardized-api-for-patient-and-population-services/pass-inferno-tests-with-aidbox"
+                        hxPushUrl="/docs/aidbox/solutions/providers-or-onc-health-it-certification-program/g-10-standardized-api-for-patient-and-population-services/pass-inferno-tests-with-aidbox"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Pass Inferno Tests with Aidbox 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/solutions/providers-or-onc-health-it-certification-program/g-10-standardized-api-for-patient-and-population-services/pass-inferno-visual-inspection-and-attestation"
+                        hxGet="/docs/partial/aidbox/solutions/providers-or-onc-health-it-certification-program/g-10-standardized-api-for-patient-and-population-services/pass-inferno-visual-inspection-and-attestation"
+                        hxPushUrl="/docs/aidbox/solutions/providers-or-onc-health-it-certification-program/g-10-standardized-api-for-patient-and-population-services/pass-inferno-visual-inspection-and-attestation"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Pass Inferno Visual Inspection and Attestation 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/solutions/providers-or-onc-health-it-certification-program/g-7-application-access-patient-selection"
+                    hxGet="/docs/partial/aidbox/solutions/providers-or-onc-health-it-certification-program/g-7-application-access-patient-selection"
+                    hxPushUrl="/docs/aidbox/solutions/providers-or-onc-health-it-certification-program/g-7-application-access-patient-selection"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      (g)(7): Application Access - Patient Selection 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/solutions/CMS-0057-F"
+                      hxGet="/docs/partial/aidbox/solutions/CMS-0057-F"
+                      hxPushUrl="/docs/aidbox/solutions/CMS-0057-F"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        CMS-0057-F 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/solutions/CMS-0057-F/getting-started"
+                          hxGet="/docs/partial/aidbox/solutions/CMS-0057-F/getting-started"
+                          hxPushUrl="/docs/aidbox/solutions/CMS-0057-F/getting-started"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Getting Started 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/solutions/CMS-0057-F/getting-started/run-aidbox-+-cms-app-locally"
+                        hxGet="/docs/partial/aidbox/solutions/CMS-0057-F/getting-started/run-aidbox-+-cms-app-locally"
+                        hxPushUrl="/docs/aidbox/solutions/CMS-0057-F/getting-started/run-aidbox-+-cms-app-locally"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Run Aidbox + CMS App locally 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/solutions/CMS-0057-F/coverage-requirements-discovery-crd"
+                          hxGet="/docs/partial/aidbox/solutions/CMS-0057-F/coverage-requirements-discovery-crd"
+                          hxPushUrl="/docs/aidbox/solutions/CMS-0057-F/coverage-requirements-discovery-crd"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Coverage Requirements Discovery (CRD) 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/solutions/CMS-0057-F/coverage-requirements-discovery-crd/cds-hooks-api"
+                        hxGet="/docs/partial/aidbox/solutions/CMS-0057-F/coverage-requirements-discovery-crd/cds-hooks-api"
+                        hxPushUrl="/docs/aidbox/solutions/CMS-0057-F/coverage-requirements-discovery-crd/cds-hooks-api"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          CDS Hooks API 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/solutions/CMS-0057-F/prior-authorization-support-pas-api"
+                    hxGet="/docs/partial/aidbox/solutions/CMS-0057-F/prior-authorization-support-pas-api"
+                    hxPushUrl="/docs/aidbox/solutions/CMS-0057-F/prior-authorization-support-pas-api"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Prior Authorization Support (PAS) API 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+            </div> 
+            <div className="break-words mt-4 border-t border-outline-subtle pt-4 first:mt-0 first:border-t-0 first:pt-0">
+               
+              <div className="mb-1 first:mt-2 ml-4">
+                 
+                <span className="text-xs font-medium leading-4 text-brand uppercase tracking-wider">
+                  Reference 
+                </span> 
+              </div> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/reference/all-settings"
+                hxGet="/docs/partial/aidbox/reference/all-settings"
+                hxPushUrl="/docs/aidbox/reference/all-settings"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Aidbox Settings Reference 
+                </span> 
+              </a> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/reference/system-resources-reference"
+                      hxGet="/docs/partial/aidbox/reference/system-resources-reference"
+                      hxPushUrl="/docs/aidbox/reference/system-resources-reference"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        System Resources Reference 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/reference/system-resources-reference/iam-module-resources"
+                    hxGet="/docs/partial/aidbox/reference/system-resources-reference/iam-module-resources"
+                    hxPushUrl="/docs/aidbox/reference/system-resources-reference/iam-module-resources"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      IAM Module Resources 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/reference/system-resources-reference/sdc-module-resources"
+                    hxGet="/docs/partial/aidbox/reference/system-resources-reference/sdc-module-resources"
+                    hxPushUrl="/docs/aidbox/reference/system-resources-reference/sdc-module-resources"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      SDC Module Resources 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/reference/system-resources-reference/base-module-resources"
+                    hxGet="/docs/partial/aidbox/reference/system-resources-reference/base-module-resources"
+                    hxPushUrl="/docs/aidbox/reference/system-resources-reference/base-module-resources"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Base Module Resources 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/reference/system-resources-reference/bulk-module-resources"
+                    hxGet="/docs/partial/aidbox/reference/system-resources-reference/bulk-module-resources"
+                    hxPushUrl="/docs/aidbox/reference/system-resources-reference/bulk-module-resources"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Bulk Module Resources 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/reference/system-resources-reference/awf-module-resources"
+                    hxGet="/docs/partial/aidbox/reference/system-resources-reference/awf-module-resources"
+                    hxPushUrl="/docs/aidbox/reference/system-resources-reference/awf-module-resources"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      AWF Module Resources 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/reference/system-resources-reference/cloud-module-resources"
+                    hxGet="/docs/partial/aidbox/reference/system-resources-reference/cloud-module-resources"
+                    hxPushUrl="/docs/aidbox/reference/system-resources-reference/cloud-module-resources"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Cloud Module Resources 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/reference/system-resources-reference/hl7v2-module-resources"
+                    hxGet="/docs/partial/aidbox/reference/system-resources-reference/hl7v2-module-resources"
+                    hxPushUrl="/docs/aidbox/reference/system-resources-reference/hl7v2-module-resources"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      HL7v2 Module Resources 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/reference/system-resources-reference/sql-on-fhir-module-resources"
+                    hxGet="/docs/partial/aidbox/reference/system-resources-reference/sql-on-fhir-module-resources"
+                    hxPushUrl="/docs/aidbox/reference/system-resources-reference/sql-on-fhir-module-resources"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      SQL on FHIR Module Resources 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/reference/system-resources-reference/subscriptions-module-resources"
+                    hxGet="/docs/partial/aidbox/reference/system-resources-reference/subscriptions-module-resources"
+                    hxPushUrl="/docs/aidbox/reference/system-resources-reference/subscriptions-module-resources"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Subscriptions Module Resources 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="https://fhir-schema.github.io/fhir-schema/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  FHIR Schema Reference 
+                  <svg
+                    className="size-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M15.75 2.25H21a.75.75 0 0 1 .75.75v5.25a.75.75 0 0 1-1.5 0V4.81L8.03 17.03a.75.75 0 0 1-1.06-1.06L19.19 3.75h-3.44a.75.75 0 0 1 0-1.5Zm-10.5 4.5a1.5 1.5 0 0 0-1.5 1.5v10.5a1.5 1.5 0 0 0 1.5 1.5h10.5a1.5 1.5 0 0 0 1.5-1.5V10.5a.75.75 0 0 1 1.5 0v8.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V8.25a3 3 0 0 1 3-3h8.25a.75.75 0 0 1 0 1.5H5.25Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </span> 
+              </a> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/reference/email-providers-reference"
+                      hxGet="/docs/partial/aidbox/reference/email-providers-reference"
+                      hxPushUrl="/docs/aidbox/reference/email-providers-reference"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Email Providers Reference 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/reference/email-providers-reference/notification-resource-reference"
+                    hxGet="/docs/partial/aidbox/reference/email-providers-reference/notification-resource-reference"
+                    hxPushUrl="/docs/aidbox/reference/email-providers-reference/notification-resource-reference"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Notification Resource Reference 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/reference/email-providers-reference/mailgun-environment-variables"
+                    hxGet="/docs/partial/aidbox/reference/email-providers-reference/mailgun-environment-variables"
+                    hxPushUrl="/docs/aidbox/reference/email-providers-reference/mailgun-environment-variables"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Mailgun Environment Variables 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/reference/email-providers-reference/postmark-environment-variables"
+                    hxGet="/docs/partial/aidbox/reference/email-providers-reference/postmark-environment-variables"
+                    hxPushUrl="/docs/aidbox/reference/email-providers-reference/postmark-environment-variables"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Postmark Environment Variables 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/reference/aidbox-forms-reference"
+                      hxGet="/docs/partial/aidbox/reference/aidbox-forms-reference"
+                      hxPushUrl="/docs/aidbox/reference/aidbox-forms-reference"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Aidbox Forms Reference 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/reference/aidbox-forms-reference/fhir-sdc-api"
+                    hxGet="/docs/partial/aidbox/reference/aidbox-forms-reference/fhir-sdc-api"
+                    hxPushUrl="/docs/aidbox/reference/aidbox-forms-reference/fhir-sdc-api"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      FHIR SDC API 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/reference/aidbox-forms-reference/aidbox-sdc-api"
+                    hxGet="/docs/partial/aidbox/reference/aidbox-forms-reference/aidbox-sdc-api"
+                    hxPushUrl="/docs/aidbox/reference/aidbox-forms-reference/aidbox-sdc-api"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Aidbox SDC API 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/reference/aidbox-forms-reference/generating-questionnaire-from-pdf-api"
+                    hxGet="/docs/partial/aidbox/reference/aidbox-forms-reference/generating-questionnaire-from-pdf-api"
+                    hxPushUrl="/docs/aidbox/reference/aidbox-forms-reference/generating-questionnaire-from-pdf-api"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Generating Questionnaire from PDF API 
+                    </span> 
+                  </a> 
+                  <a
+                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                    href="/docs/aidbox/reference/aidbox-forms-reference/generating-questionnaire-from-openehr-template"
+                    hxGet="/docs/partial/aidbox/reference/aidbox-forms-reference/generating-questionnaire-from-openehr-template"
+                    hxPushUrl="/docs/aidbox/reference/aidbox-forms-reference/generating-questionnaire-from-openehr-template"
+                    hxSwap="outerHTML"
+                    hxTarget="#content"
+                  >
+                     
+                    <span className="flex items-center gap-2 ml-4">
+                      Generating Questionnaire from openEHR Template API 
+                    </span> 
+                  </a> 
+                </div> 
+              </div> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/reference/aidbox-sql-functions"
+                hxGet="/docs/partial/aidbox/reference/aidbox-sql-functions"
+                hxPushUrl="/docs/aidbox/reference/aidbox-sql-functions"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Aidbox SQL Functions 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/reference/matcho-dsl-reference"
+                hxGet="/docs/partial/aidbox/reference/matcho-dsl-reference"
+                hxPushUrl="/docs/aidbox/reference/matcho-dsl-reference"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  Matcho DSL Reference 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/reference/package-registry-api"
+                hxGet="/docs/partial/aidbox/reference/package-registry-api"
+                hxPushUrl="/docs/aidbox/reference/package-registry-api"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  FAR Package Management API 
+                </span> 
+              </a> 
+              <a
+                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                href="/docs/aidbox/reference/oauth-operation-scopes"
+                hxGet="/docs/partial/aidbox/reference/oauth-operation-scopes"
+                hxPushUrl="/docs/aidbox/reference/oauth-operation-scopes"
+                hxSwap="outerHTML"
+                hxTarget="#content"
+              >
+                 
+                <span className="flex items-center gap-2 ml-4">
+                  OAuth Operation Scopes 
+                </span> 
+              </a> 
+            </div> 
+            <div className="break-words mt-4 border-t border-outline-subtle pt-4 first:mt-0 first:border-t-0 first:pt-0">
+               
+              <div className="mb-1 first:mt-2 ml-4">
+                 
+                <span className="text-xs font-medium leading-4 text-brand uppercase tracking-wider">
+                  Deprecated 
+                </span> 
+              </div> 
+              <div className="nav-item">
+                 
+                <button
+                  aria-expanded="false"
+                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                  type="button"
+                >
+                   
+                  <div className="flex-1 clickable-summary">
+                     
+                    <a
+                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                      href="/docs/aidbox/deprecated/deprecated"
+                      hxGet="/docs/partial/aidbox/deprecated/deprecated"
+                      hxPushUrl="/docs/aidbox/deprecated/deprecated"
+                      hxSwap="outerHTML"
+                      hxTarget="#content"
+                    >
+                       
+                      <span className="flex items-center gap-2 ml-4">
+                        Deprecated 
+                      </span> 
+                    </a> 
+                  </div> 
+                  <svg
+                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <div
+                  className="nav-children ml-6 border-l-1 border-outline"
+                  hidden="hidden"
+                >
+                   
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/deprecated/deprecated/zen-related"
+                          hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related"
+                          hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Zen-related 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/deprecated/deprecated/zen-related/rpc-reference"
+                              hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/rpc-reference"
+                              hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/rpc-reference"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                RPC Reference 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <div className="nav-item">
+                             
+                            <button
+                              aria-expanded="false"
+                              className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                              type="button"
+                            >
+                               
+                              <div className="flex-1 clickable-summary">
+                                 
+                                <a
+                                  className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                  href="/docs/aidbox/deprecated/deprecated/zen-related/rpc-reference/aidbox"
+                                  hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/rpc-reference/aidbox"
+                                  hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/rpc-reference/aidbox"
+                                  hxSwap="outerHTML"
+                                  hxTarget="#content"
+                                >
+                                   
+                                  <span className="flex items-center gap-2 ml-4">
+                                    Aidbox 
+                                  </span> 
+                                </a> 
+                              </div> 
+                              <svg
+                                className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                data-slot="icon"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                  clip-rule="evenodd"
+                                ></path>
+                              </svg>
+                            </button> 
+                            <div
+                              className="nav-children ml-6 border-l-1 border-outline"
+                              hidden="hidden"
+                            >
+                               
+                              <div className="nav-item">
+                                 
+                                <button
+                                  aria-expanded="false"
+                                  className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                                  type="button"
+                                >
+                                   
+                                  <div className="flex-1 clickable-summary">
+                                     
+                                    <a
+                                      className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                      href="/docs/aidbox/deprecated/deprecated/zen-related/rpc-reference/aidbox/mdm"
+                                      hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/rpc-reference/aidbox/mdm"
+                                      hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/rpc-reference/aidbox/mdm"
+                                      hxSwap="outerHTML"
+                                      hxTarget="#content"
+                                    >
+                                       
+                                      <span className="flex items-center gap-2 ml-4">
+                                        Mdm 
+                                      </span> 
+                                    </a> 
+                                  </div> 
+                                  <svg
+                                    className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    aria-hidden="true"
+                                    data-slot="icon"
+                                  >
+                                    <path
+                                      fill-rule="evenodd"
+                                      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                      clip-rule="evenodd"
+                                    ></path>
+                                  </svg>
+                                </button> 
+                                <div
+                                  className="nav-children ml-6 border-l-1 border-outline"
+                                  hidden="hidden"
+                                >
+                                   
+                                  <a
+                                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                    href="/docs/aidbox/deprecated/deprecated/zen-related/rpc-reference/aidbox/mdm/aidbox-mdm-update-mdm-tables"
+                                    hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/rpc-reference/aidbox/mdm/aidbox-mdm-update-mdm-tables"
+                                    hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/rpc-reference/aidbox/mdm/aidbox-mdm-update-mdm-tables"
+                                    hxSwap="outerHTML"
+                                    hxTarget="#content"
+                                  >
+                                     
+                                    <span className="flex items-center gap-2 ml-4">
+                                      aidbox.mdm/update-mdm-tables 
+                                    </span> 
+                                  </a> 
+                                  <a
+                                    className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                    href="/docs/aidbox/deprecated/deprecated/zen-related/rpc-reference/aidbox/mdm/aidbox-mdm-match"
+                                    hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/rpc-reference/aidbox/mdm/aidbox-mdm-match"
+                                    hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/rpc-reference/aidbox/mdm/aidbox-mdm-match"
+                                    hxSwap="outerHTML"
+                                    hxTarget="#content"
+                                  >
+                                     
+                                    <span className="flex items-center gap-2 ml-4">
+                                      aidbox.mdm/match 
+                                    </span> 
+                                  </a> 
+                                </div> 
+                              </div> 
+                            </div> 
+                          </div> 
+                        </div> 
+                      </div> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/zen-related/ftr"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/ftr"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/ftr"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          FTR 
+                        </span> 
+                      </a> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project"
+                              hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project"
+                              hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Aidbox Configuration Project 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/run-aidbox-locally-using-aidbox-configuraiton-project"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/run-aidbox-locally-using-aidbox-configuraiton-project"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/run-aidbox-locally-using-aidbox-configuraiton-project"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Run Aidbox Locally Using Aidbox Configuraiton
+                              Project 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/aidbox-configuration-project-structure"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/aidbox-configuration-project-structure"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/aidbox-configuration-project-structure"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Aidbox Configuration Project Structure 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/set-up-and-use-configuration-projects"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/set-up-and-use-configuration-projects"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/set-up-and-use-configuration-projects"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Set up and Use Configuration Projects 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/enable-igs"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/enable-igs"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/enable-igs"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Enable IGs 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/repository"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/repository"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/repository"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Repository 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/seed-import"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/seed-import"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/seed-import"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Seed Import 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/manage-indexes-in-zen-project"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/manage-indexes-in-zen-project"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/manage-indexes-in-zen-project"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Manage Indexes in Zen Project 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/seed-v2"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/seed-v2"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/seed-v2"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Seed v2 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/migrate-to-git-aidbox-configuration-projects"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/migrate-to-git-aidbox-configuration-projects"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/migrate-to-git-aidbox-configuration-projects"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Migrate to Git Aidbox Configuration Projects 
+                            </span> 
+                          </a> 
+                          <div className="nav-item">
+                             
+                            <button
+                              aria-expanded="false"
+                              className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                              type="button"
+                            >
+                               
+                              <div className="flex-1 clickable-summary">
+                                 
+                                <a
+                                  className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                  href="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/aidbox-project-environment-variables"
+                                  hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/aidbox-project-environment-variables"
+                                  hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/aidbox-project-environment-variables"
+                                  hxSwap="outerHTML"
+                                  hxTarget="#content"
+                                >
+                                   
+                                  <span className="flex items-center gap-2 ml-4">
+                                    Aidbox Configuration Project Reference 
+                                  </span> 
+                                </a> 
+                              </div> 
+                              <svg
+                                className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                data-slot="icon"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                  clip-rule="evenodd"
+                                ></path>
+                              </svg>
+                            </button> 
+                            <div
+                              className="nav-children ml-6 border-l-1 border-outline"
+                              hidden="hidden"
+                            >
+                               
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/aidbox-project-environment-variables/zen-configuration"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/aidbox-project-environment-variables/zen-configuration"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/aidbox-project-environment-variables/zen-configuration"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  Zen Configuration 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/aidbox-project-environment-variables/aidbox-project-rpc-reference"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/aidbox-project-environment-variables/aidbox-project-rpc-reference"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/aidbox-project-environment-variables/aidbox-project-rpc-reference"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  Aidbox Project RPC Reference 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/aidbox-project-environment-variables/aidbox-config-config"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/aidbox-project-environment-variables/aidbox-config-config"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/aidbox-project-environment-variables/aidbox-config-config"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  aidbox.config/config 
+                                </span> 
+                              </a> 
+                            </div> 
+                          </div> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/custom-resources-using-aidbox-project"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/custom-resources-using-aidbox-project"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/custom-resources-using-aidbox-project"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Custom Resources Using Aidbox Project 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/first-class-extensions-using-zen"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/first-class-extensions-using-zen"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/first-class-extensions-using-zen"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              First-Class Extensions Using Zen 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/zen-indexes"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/zen-indexes"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/aidbox-zen-lang-project/zen-indexes"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Zen Indexes 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/deprecated/deprecated/zen-related/us-core-ig"
+                              hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/us-core-ig"
+                              hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/us-core-ig"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                US Core IG 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/us-core-ig/us-core-ig-support-reference"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/us-core-ig/us-core-ig-support-reference"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/us-core-ig/us-core-ig-support-reference"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              US Core IG Support Reference 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/deprecated/deprecated/zen-related/workflow-engine"
+                              hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/workflow-engine"
+                              hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/workflow-engine"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Workflow Engine 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <div className="nav-item">
+                             
+                            <button
+                              aria-expanded="false"
+                              className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                              type="button"
+                            >
+                               
+                              <div className="flex-1 clickable-summary">
+                                 
+                                <a
+                                  className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                  href="/docs/aidbox/deprecated/deprecated/zen-related/workflow-engine/task"
+                                  hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/workflow-engine/task"
+                                  hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/workflow-engine/task"
+                                  hxSwap="outerHTML"
+                                  hxTarget="#content"
+                                >
+                                   
+                                  <span className="flex items-center gap-2 ml-4">
+                                    Task 
+                                  </span> 
+                                </a> 
+                              </div> 
+                              <svg
+                                className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                data-slot="icon"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                  clip-rule="evenodd"
+                                ></path>
+                              </svg>
+                            </button> 
+                            <div
+                              className="nav-children ml-6 border-l-1 border-outline"
+                              hidden="hidden"
+                            >
+                               
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/zen-related/workflow-engine/task/aidbox-built-in-tasks"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/workflow-engine/task/aidbox-built-in-tasks"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/workflow-engine/task/aidbox-built-in-tasks"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  Aidbox Built-in Tasks 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/zen-related/workflow-engine/task/task-executor-api"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/workflow-engine/task/task-executor-api"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/workflow-engine/task/task-executor-api"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  Task Executor API 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/zen-related/workflow-engine/task/task-user-api"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/workflow-engine/task/task-user-api"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/workflow-engine/task/task-user-api"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  Task User API 
+                                </span> 
+                              </a> 
+                            </div> 
+                          </div> 
+                          <div className="nav-item">
+                             
+                            <button
+                              aria-expanded="false"
+                              className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                              type="button"
+                            >
+                               
+                              <div className="flex-1 clickable-summary">
+                                 
+                                <a
+                                  className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                  href="/docs/aidbox/deprecated/deprecated/zen-related/workflow-engine/workflow"
+                                  hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/workflow-engine/workflow"
+                                  hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/workflow-engine/workflow"
+                                  hxSwap="outerHTML"
+                                  hxTarget="#content"
+                                >
+                                   
+                                  <span className="flex items-center gap-2 ml-4">
+                                    Workflow 
+                                  </span> 
+                                </a> 
+                              </div> 
+                              <svg
+                                className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                data-slot="icon"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                  clip-rule="evenodd"
+                                ></path>
+                              </svg>
+                            </button> 
+                            <div
+                              className="nav-children ml-6 border-l-1 border-outline"
+                              hidden="hidden"
+                            >
+                               
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/zen-related/workflow-engine/workflow/workflow-user-api"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/workflow-engine/workflow/workflow-user-api"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/workflow-engine/workflow/workflow-user-api"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  Workflow User API 
+                                </span> 
+                              </a> 
+                            </div> 
+                          </div> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/workflow-engine/services"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/workflow-engine/services"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/workflow-engine/services"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Services 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/workflow-engine/monitoring"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/workflow-engine/monitoring"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/workflow-engine/monitoring"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Monitoring 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-conformance"
+                              hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-conformance"
+                              hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-conformance"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                FHIR Conformance Deprecated Guides 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-conformance/touchstone-fhir-4-0-1-basic-server"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-conformance/touchstone-fhir-4-0-1-basic-server"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-conformance/touchstone-fhir-4-0-1-basic-server"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Touchstone FHIR 4.0.1 Basic Server 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-conformance/touchstone-fhir-uscore-clindata"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-conformance/touchstone-fhir-uscore-clindata"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-conformance/touchstone-fhir-uscore-clindata"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Touchstone FHIR USCore ClinData 
+                            </span> 
+                          </a> 
+                          <div className="nav-item">
+                             
+                            <button
+                              aria-expanded="false"
+                              className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                              type="button"
+                            >
+                               
+                              <div className="flex-1 clickable-summary">
+                                 
+                                <a
+                                  className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                  href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-conformance/how-to-enable-us-core-ig"
+                                  hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-conformance/how-to-enable-us-core-ig"
+                                  hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-conformance/how-to-enable-us-core-ig"
+                                  hxSwap="outerHTML"
+                                  hxTarget="#content"
+                                >
+                                   
+                                  <span className="flex items-center gap-2 ml-4">
+                                    How to Enable US Core IG 
+                                  </span> 
+                                </a> 
+                              </div> 
+                              <svg
+                                className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                data-slot="icon"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                  clip-rule="evenodd"
+                                ></path>
+                              </svg>
+                            </button> 
+                            <div
+                              className="nav-children ml-6 border-l-1 border-outline"
+                              hidden="hidden"
+                            >
+                               
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-conformance/how-to-enable-us-core-ig/start-aidbox-locally-with-us-core-ig-enabled"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-conformance/how-to-enable-us-core-ig/start-aidbox-locally-with-us-core-ig-enabled"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-conformance/how-to-enable-us-core-ig/start-aidbox-locally-with-us-core-ig-enabled"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  Start Aidbox Locally with US Core IG
+                                  Enabled 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-conformance/how-to-enable-us-core-ig/add-us-core-ig-to-a-running-aidbox-instance"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-conformance/how-to-enable-us-core-ig/add-us-core-ig-to-a-running-aidbox-instance"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-conformance/how-to-enable-us-core-ig/add-us-core-ig-to-a-running-aidbox-instance"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  Add US Core IG to a Running Aidbox
+                                  Instance 
+                                </span> 
+                              </a> 
+                            </div> 
+                          </div> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-conformance/hl7-fhir-da-vinci-pdex-plan-net-ig"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-conformance/hl7-fhir-da-vinci-pdex-plan-net-ig"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-conformance/hl7-fhir-da-vinci-pdex-plan-net-ig"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              HL7 FHIR Da Vinci PDex Plan Net IG 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/deprecated/deprecated/zen-related/terminology-deprecated-tutorials"
+                              hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/terminology-deprecated-tutorials"
+                              hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/terminology-deprecated-tutorials"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Terminology Deprecated Tutorials 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/terminology-deprecated-tutorials/inferno-test-suite-us-core-3-1-1"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/terminology-deprecated-tutorials/inferno-test-suite-us-core-3-1-1"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/terminology-deprecated-tutorials/inferno-test-suite-us-core-3-1-1"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Inferno Test-Suite US Core 3.1.1 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/zen-related/api-constructor-docs-beta"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/api-constructor-docs-beta"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/api-constructor-docs-beta"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          API Constructor (/Beta) 
+                        </span> 
+                      </a> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/deprecated/deprecated/zen-related/profiling-with-zen-lang"
+                              hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/profiling-with-zen-lang"
+                              hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/profiling-with-zen-lang"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Zen-Lang Validator 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/profiling-with-zen-lang/write-a-custom-zen-profile"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/profiling-with-zen-lang/write-a-custom-zen-profile"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/profiling-with-zen-lang/write-a-custom-zen-profile"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Write a Custom Zen Profile 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/profiling-with-zen-lang/load-zen-profiles-into-aidbox"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/profiling-with-zen-lang/load-zen-profiles-into-aidbox"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/profiling-with-zen-lang/load-zen-profiles-into-aidbox"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Load Zen Profiles into Aidbox 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/deprecated/deprecated/zen-related/topic-based-subscriptions"
+                              hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/topic-based-subscriptions"
+                              hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/topic-based-subscriptions"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                FHIR Topic-Based Subscriptions 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/topic-based-subscriptions/set-up-subscriptiontopic"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/topic-based-subscriptions/set-up-subscriptiontopic"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/topic-based-subscriptions/set-up-subscriptiontopic"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Set up SubscriptionTopic 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/topic-based-subscriptions/tutorial-subscribe-to-topic-docs-r4b"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/topic-based-subscriptions/tutorial-subscribe-to-topic-docs-r4b"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/topic-based-subscriptions/tutorial-subscribe-to-topic-docs-r4b"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Tutorial: Subscribe to Topic (/R4B) 
+                            </span> 
+                          </a> 
+                          <div className="nav-item">
+                             
+                            <button
+                              aria-expanded="false"
+                              className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                              type="button"
+                            >
+                               
+                              <div className="flex-1 clickable-summary">
+                                 
+                                <a
+                                  className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                  href="/docs/aidbox/deprecated/deprecated/zen-related/topic-based-subscriptions/r4b-api-reference"
+                                  hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/topic-based-subscriptions/r4b-api-reference"
+                                  hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/topic-based-subscriptions/r4b-api-reference"
+                                  hxSwap="outerHTML"
+                                  hxTarget="#content"
+                                >
+                                   
+                                  <span className="flex items-center gap-2 ml-4">
+                                    R4B API Reference 
+                                  </span> 
+                                </a> 
+                              </div> 
+                              <svg
+                                className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                data-slot="icon"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                  clip-rule="evenodd"
+                                ></path>
+                              </svg>
+                            </button> 
+                            <div
+                              className="nav-children ml-6 border-l-1 border-outline"
+                              hidden="hidden"
+                            >
+                               
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/zen-related/topic-based-subscriptions/r4b-api-reference/subscriptiontopic-api"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/topic-based-subscriptions/r4b-api-reference/subscriptiontopic-api"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/topic-based-subscriptions/r4b-api-reference/subscriptiontopic-api"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  SubscriptionTopic API 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/zen-related/topic-based-subscriptions/r4b-api-reference/subscription-api"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/topic-based-subscriptions/r4b-api-reference/subscription-api"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/topic-based-subscriptions/r4b-api-reference/subscription-api"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  Subscription API 
+                                </span> 
+                              </a> 
+                            </div> 
+                          </div> 
+                        </div> 
+                      </div> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository"
+                              hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository"
+                              hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                FHIR Terminology Repository 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/ftr-specification"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/ftr-specification"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/ftr-specification"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              FTR Specification 
+                            </span> 
+                          </a> 
+                          <div className="nav-item">
+                             
+                            <button
+                              aria-expanded="false"
+                              className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                              type="button"
+                            >
+                               
+                              <div className="flex-1 clickable-summary">
+                                 
+                                <a
+                                  className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                  href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/creating-aidbox-project-with-ftr"
+                                  hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/creating-aidbox-project-with-ftr"
+                                  hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/creating-aidbox-project-with-ftr"
+                                  hxSwap="outerHTML"
+                                  hxTarget="#content"
+                                >
+                                   
+                                  <span className="flex items-center gap-2 ml-4">
+                                    Create an FTR Instance 
+                                  </span> 
+                                </a> 
+                              </div> 
+                              <svg
+                                className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                data-slot="icon"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                  clip-rule="evenodd"
+                                ></path>
+                              </svg>
+                            </button> 
+                            <div
+                              className="nav-children ml-6 border-l-1 border-outline"
+                              hidden="hidden"
+                            >
+                               
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/creating-aidbox-project-with-ftr/ftr-from-csv"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/creating-aidbox-project-with-ftr/ftr-from-csv"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/creating-aidbox-project-with-ftr/ftr-from-csv"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  FTR from CSV 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/creating-aidbox-project-with-ftr/ftr-from-fhir-ig"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/creating-aidbox-project-with-ftr/ftr-from-fhir-ig"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/creating-aidbox-project-with-ftr/ftr-from-fhir-ig"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  FTR from FHIR IG 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/creating-aidbox-project-with-ftr/ftr-from-ftr-direct-dependency"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/creating-aidbox-project-with-ftr/ftr-from-ftr-direct-dependency"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/creating-aidbox-project-with-ftr/ftr-from-ftr-direct-dependency"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  FTR from FTR — Direct Dependency 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/creating-aidbox-project-with-ftr/ftr-from-ftr-supplement"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/creating-aidbox-project-with-ftr/ftr-from-ftr-supplement"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/creating-aidbox-project-with-ftr/ftr-from-ftr-supplement"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  FTR from FTR — Supplement 
+                                </span> 
+                              </a> 
+                            </div> 
+                          </div> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/ftr-manifest"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/ftr-manifest"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/ftr-manifest"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              FTR Manifest 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/load-snomed-ct-into-aidbox"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/load-snomed-ct-into-aidbox"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/load-snomed-ct-into-aidbox"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Load SNOMED CT into Aidbox 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/load-loinc-into-aidbox"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/load-loinc-into-aidbox"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/load-loinc-into-aidbox"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Load LOINC into Aidbox 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/load-icd-10-cm-into-aidbox"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/load-icd-10-cm-into-aidbox"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/load-icd-10-cm-into-aidbox"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Load ICD-10-CM into Aidbox 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/load-rxnorm-into-aidbox"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/load-rxnorm-into-aidbox"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/load-rxnorm-into-aidbox"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Load RxNorm into Aidbox 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/load-us-vsac-package-to-aidbox"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/load-us-vsac-package-to-aidbox"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/load-us-vsac-package-to-aidbox"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Load US VSAC Package to Aidbox 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/import-via-ftr"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/import-via-ftr"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/fhir-terminology-repository/import-via-ftr"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Import via FTR 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/zen-related/zen-search-parameters"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/zen-search-parameters"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/zen-search-parameters"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Zen Search Parameters 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/zen-related/access-control-lists-docs-acl"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/access-control-lists-docs-acl"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/access-control-lists-docs-acl"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Access Control Lists (/ACL) 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/zen-related/rbac-with-acl"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/zen-related/rbac-with-acl"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/zen-related/rbac-with-acl"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          RBAC with ACL 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/deprecated/deprecated/entity-attribute"
+                          hxGet="/docs/partial/aidbox/deprecated/deprecated/entity-attribute"
+                          hxPushUrl="/docs/aidbox/deprecated/deprecated/entity-attribute"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Entity / Attribute 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/entity-attribute/entities-and-attributes"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/entity-attribute/entities-and-attributes"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/entity-attribute/entities-and-attributes"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Entities and Attributes 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/entity-attribute/first-class-extensions-using-attribute"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/entity-attribute/first-class-extensions-using-attribute"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/entity-attribute/first-class-extensions-using-attribute"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          First-Class Extensions Using Attribute 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/entity-attribute/custom-resources-using-entity"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/entity-attribute/custom-resources-using-entity"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/entity-attribute/custom-resources-using-entity"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Custom Resources Using Entity 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/entity-attribute/working-with-extensions"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/entity-attribute/working-with-extensions"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/entity-attribute/working-with-extensions"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Working with Extensions 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/entity-attribute/aidbox-search-parameters"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/entity-attribute/aidbox-search-parameters"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/entity-attribute/aidbox-search-parameters"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Aidbox Search Parameters 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/deprecated/deprecated/forms"
+                          hxGet="/docs/partial/aidbox/deprecated/deprecated/forms"
+                          hxPushUrl="/docs/aidbox/deprecated/deprecated/forms"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Forms 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/forms/layout-dsl-docs-deprecated"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/layout-dsl-docs-deprecated"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/layout-dsl-docs-deprecated"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Layout DSL (docs deprecased) 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/forms/document-dsl-docs-deprecated"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/document-dsl-docs-deprecated"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/document-dsl-docs-deprecated"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Document DSL (docs deprecased) 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/forms/launch-dsl-docs-deprecated"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/launch-dsl-docs-deprecated"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/launch-dsl-docs-deprecated"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Launch DSL (docs deprecased) 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/forms/lisp-docs-deprecated"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/lisp-docs-deprecated"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/lisp-docs-deprecated"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Lisp (Deprecated) 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/forms/finalizeconstraints-dsl-docs-deprecated"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/finalizeconstraints-dsl-docs-deprecated"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/finalizeconstraints-dsl-docs-deprecated"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          FinalizeConstraints DSL (Deprecated) 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/forms/finalize-dsl-docs-deprecated"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/finalize-dsl-docs-deprecated"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/finalize-dsl-docs-deprecated"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Finalize DSL (docs deprecased) 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/forms/form-dsl-docs-deprecated"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/form-dsl-docs-deprecated"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/form-dsl-docs-deprecated"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Form DSL (docs deprecased) 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/forms/lisp-api-docs-deprecated"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/lisp-api-docs-deprecated"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/lisp-api-docs-deprecated"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Lisp API (docs deprecased) 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/forms/form-api-docs-deprecated"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/form-api-docs-deprecated"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/form-api-docs-deprecated"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Form API (docs deprecased) 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/forms/workflow-api-docs-deprecated"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/workflow-api-docs-deprecated"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/workflow-api-docs-deprecated"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Workflow API (docs deprecased) 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/forms/addendum-api-docs-deprecated"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/addendum-api-docs-deprecated"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/addendum-api-docs-deprecated"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Addendum API (docs deprecased) 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/forms/any-familiar-form-editor-docs-deprecated"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/any-familiar-form-editor-docs-deprecated"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/any-familiar-form-editor-docs-deprecated"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Any familiar form editor (docs deprecated) 
+                        </span> 
+                      </a> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/deprecated/deprecated/forms/aidbox-code-editor"
+                              hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/aidbox-code-editor"
+                              hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/aidbox-code-editor"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Aidbox Code Editor (/Deprecated) 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/forms/aidbox-code-editor/form-creation"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/aidbox-code-editor/form-creation"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/aidbox-code-editor/form-creation"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Form creation 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/forms/aidbox-code-editor/dynamic-form-creation"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/aidbox-code-editor/dynamic-form-creation"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/aidbox-code-editor/dynamic-form-creation"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              How to create a dynamic form 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/forms/aidbox-code-editor/form-with-calculated-fields-creation"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/aidbox-code-editor/form-with-calculated-fields-creation"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/aidbox-code-editor/form-with-calculated-fields-creation"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              How to create a form with calculated fields 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/forms/aidbox-code-editor/form-customisation"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/aidbox-code-editor/form-customisation"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/aidbox-code-editor/form-customisation"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Form Customisation 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/forms/aidbox-code-editor/versioning"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/aidbox-code-editor/versioning"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/aidbox-code-editor/versioning"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Versioning 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/forms/aidbox-code-editor/form-sharing"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/aidbox-code-editor/form-sharing"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/aidbox-code-editor/form-sharing"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Form sharing 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/forms/aidbox-code-editor/aidbox-form-workflow"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/aidbox-code-editor/aidbox-form-workflow"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/aidbox-code-editor/aidbox-form-workflow"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Aidbox Form Workflow 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/forms/aidbox-code-editor/changing-data-after-form-signing"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/aidbox-code-editor/changing-data-after-form-signing"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/aidbox-code-editor/changing-data-after-form-signing"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Changing data after form signing 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/forms/aidbox-code-editor/fhir-questionnaire-to-aidbox-forms-and-back-conversion"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/forms/aidbox-code-editor/fhir-questionnaire-to-aidbox-forms-and-back-conversion"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/forms/aidbox-code-editor/fhir-questionnaire-to-aidbox-forms-and-back-conversion"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              FHIR Questionnaire to Aidbox forms and back
+                              conversion 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/deprecated/deprecated/aidboxdb"
+                          hxGet="/docs/partial/aidbox/deprecated/deprecated/aidboxdb"
+                          hxPushUrl="/docs/aidbox/deprecated/deprecated/aidboxdb"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            AidboxDB 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/aidboxdb/ha-aidboxdb"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/aidboxdb/ha-aidboxdb"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/aidboxdb/ha-aidboxdb"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          HA AidboxDB 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/aidboxdb/migrate-to-aidboxdb-16"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/aidboxdb/migrate-to-aidboxdb-16"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/aidboxdb/migrate-to-aidboxdb-16"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Migrate to AidboxDB 16 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/aidboxdb/working-with-pgagent"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/aidboxdb/working-with-pgagent"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/aidboxdb/working-with-pgagent"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Working with pgAgent 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/deprecated/deprecated/other"
+                          hxGet="/docs/partial/aidbox/deprecated/deprecated/other"
+                          hxPushUrl="/docs/aidbox/deprecated/deprecated/other"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            Other 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/other/aidboxdb-environment-variables"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/other/aidboxdb-environment-variables"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/other/aidboxdb-environment-variables"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          AidboxDB Environment Variables 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/other/custom-search"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/other/custom-search"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/other/custom-search"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Custom Search 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/other/searchquery"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/other/searchquery"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/other/searchquery"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          SearchQuery 
+                        </span> 
+                      </a> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/deprecated/deprecated/other/app-development-deprecated-tutorials"
+                              hxGet="/docs/partial/aidbox/deprecated/deprecated/other/app-development-deprecated-tutorials"
+                              hxPushUrl="/docs/aidbox/deprecated/deprecated/other/app-development-deprecated-tutorials"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                App Development Deprecated Tutorials 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <div className="nav-item">
+                             
+                            <button
+                              aria-expanded="false"
+                              className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                              type="button"
+                            >
+                               
+                              <div className="flex-1 clickable-summary">
+                                 
+                                <a
+                                  className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                  href="/docs/aidbox/deprecated/deprecated/other/app-development-deprecated-tutorials/receive-logs-from-your-app"
+                                  hxGet="/docs/partial/aidbox/deprecated/deprecated/other/app-development-deprecated-tutorials/receive-logs-from-your-app"
+                                  hxPushUrl="/docs/aidbox/deprecated/deprecated/other/app-development-deprecated-tutorials/receive-logs-from-your-app"
+                                  hxSwap="outerHTML"
+                                  hxTarget="#content"
+                                >
+                                   
+                                  <span className="flex items-center gap-2 ml-4">
+                                    Receive Logs from Your App 
+                                  </span> 
+                                </a> 
+                              </div> 
+                              <svg
+                                className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                data-slot="icon"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                  clip-rule="evenodd"
+                                ></path>
+                              </svg>
+                            </button> 
+                            <div
+                              className="nav-children ml-6 border-l-1 border-outline"
+                              hidden="hidden"
+                            >
+                               
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/other/app-development-deprecated-tutorials/receive-logs-from-your-app/x-audit-header"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/other/app-development-deprecated-tutorials/receive-logs-from-your-app/x-audit-header"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/other/app-development-deprecated-tutorials/receive-logs-from-your-app/x-audit-header"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  X-Audit Header 
+                                </span> 
+                              </a> 
+                            </div> 
+                          </div> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/other/app-development-deprecated-tutorials/patient-encounter-notification-application"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/other/app-development-deprecated-tutorials/patient-encounter-notification-application"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/other/app-development-deprecated-tutorials/patient-encounter-notification-application"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Patient Encounter Notification Application 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/deprecated/deprecated/other/security-access-control-deprecated-tutorials"
+                              hxGet="/docs/partial/aidbox/deprecated/deprecated/other/security-access-control-deprecated-tutorials"
+                              hxPushUrl="/docs/aidbox/deprecated/deprecated/other/security-access-control-deprecated-tutorials"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Security Access Control Deprecated
+                                Tutorials 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/other/security-access-control-deprecated-tutorials/two-factor-authentication"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/other/security-access-control-deprecated-tutorials/two-factor-authentication"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/other/security-access-control-deprecated-tutorials/two-factor-authentication"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Configuring Two Factor Authentication in Aidbox
+                              Identity Provider 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/deprecated/deprecated/other/other-deprecated-tutorials"
+                              hxGet="/docs/partial/aidbox/deprecated/deprecated/other/other-deprecated-tutorials"
+                              hxPushUrl="/docs/aidbox/deprecated/deprecated/other/other-deprecated-tutorials"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Other Deprecated Tutorials 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/resource-generation-with-map-to-fhir-bundle-task-and-subscription-triggers"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/resource-generation-with-map-to-fhir-bundle-task-and-subscription-triggers"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/resource-generation-with-map-to-fhir-bundle-task-and-subscription-triggers"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Resource Generation with Map-to-FHIR-Bundle-Task
+                              and Subscription Triggers 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/apm-aidbox"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/apm-aidbox"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/apm-aidbox"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              APM Aidbox 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/automatically-archive-auditevent-resources-in-gcp-storage-guide"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/automatically-archive-auditevent-resources-in-gcp-storage-guide"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/automatically-archive-auditevent-resources-in-gcp-storage-guide"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Automatically Archive AuditEvent Resources in GCP
+                              Storage Guide 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/hl7-v2-pipeline-with-patient-mapping"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/hl7-v2-pipeline-with-patient-mapping"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/hl7-v2-pipeline-with-patient-mapping"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              HL7 v2 Pipeline with Patient Mapping 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/how-to-migrate-to-apline-linux"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/how-to-migrate-to-apline-linux"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/how-to-migrate-to-apline-linux"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              How to Migrate to Apline Linux 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/how-to-migrate-transaction-id-to-bigint"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/how-to-migrate-transaction-id-to-bigint"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/how-to-migrate-transaction-id-to-bigint"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              How to Migrate Transaction Id to Bigint 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/how-to-fix-broken-dates"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/how-to-fix-broken-dates"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/how-to-fix-broken-dates"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              How to Fix Broken Dates 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/configure-multi-tenancy"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/configure-multi-tenancy"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/other/other-deprecated-tutorials/configure-multi-tenancy"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Configure Multi-Tenancy 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/other/aidboxprofile"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/other/aidboxprofile"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/other/aidboxprofile"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          AidboxProfile 
+                        </span> 
+                      </a> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/other/gcp-pub-sub"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/other/gcp-pub-sub"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/other/gcp-pub-sub"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          GCP Pub/Sub 
+                        </span> 
+                      </a> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/deprecated/deprecated/other/how-to-guides"
+                              hxGet="/docs/partial/aidbox/deprecated/deprecated/other/how-to-guides"
+                              hxPushUrl="/docs/aidbox/deprecated/deprecated/other/how-to-guides"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                SMART (/Deprecated) 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <div className="nav-item">
+                             
+                            <button
+                              aria-expanded="false"
+                              className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                              type="button"
+                            >
+                               
+                              <div className="flex-1 clickable-summary">
+                                 
+                                <a
+                                  className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                  href="/docs/aidbox/deprecated/deprecated/other/how-to-guides/smart-on-fhir"
+                                  hxGet="/docs/partial/aidbox/deprecated/deprecated/other/how-to-guides/smart-on-fhir"
+                                  hxPushUrl="/docs/aidbox/deprecated/deprecated/other/how-to-guides/smart-on-fhir"
+                                  hxSwap="outerHTML"
+                                  hxTarget="#content"
+                                >
+                                   
+                                  <span className="flex items-center gap-2 ml-4">
+                                    SMART on FHIR 
+                                  </span> 
+                                </a> 
+                              </div> 
+                              <svg
+                                className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                data-slot="icon"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                  clip-rule="evenodd"
+                                ></path>
+                              </svg>
+                            </button> 
+                            <div
+                              className="nav-children ml-6 border-l-1 border-outline"
+                              hidden="hidden"
+                            >
+                               
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/other/how-to-guides/smart-on-fhir/smart-on-fhir"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/other/how-to-guides/smart-on-fhir/smart-on-fhir"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/other/how-to-guides/smart-on-fhir/smart-on-fhir"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  SMART on FHIR 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/other/how-to-guides/smart-on-fhir/set-up-smart-on-fhir-in-aidbox"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/other/how-to-guides/smart-on-fhir/set-up-smart-on-fhir-in-aidbox"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/other/how-to-guides/smart-on-fhir/set-up-smart-on-fhir-in-aidbox"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  Set up SMART on FHIR in Aidbox 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/other/how-to-guides/smart-on-fhir/get-a-smart-app-launched"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/other/how-to-guides/smart-on-fhir/get-a-smart-app-launched"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/other/how-to-guides/smart-on-fhir/get-a-smart-app-launched"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  Get a SMART App Launched 
+                                </span> 
+                              </a> 
+                            </div> 
+                          </div> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/other/how-to-guides/smart-on-fhir"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/other/how-to-guides/smart-on-fhir"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/other/how-to-guides/smart-on-fhir"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              SMART on FHIR 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/deprecated/deprecated/other/terminology"
+                              hxGet="/docs/partial/aidbox/deprecated/deprecated/other/terminology"
+                              hxPushUrl="/docs/aidbox/deprecated/deprecated/other/terminology"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Aidbox Terminology Module (deprecated page) 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <div className="nav-item">
+                             
+                            <button
+                              aria-expanded="false"
+                              className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                              type="button"
+                            >
+                               
+                              <div className="flex-1 clickable-summary">
+                                 
+                                <a
+                                  className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                  href="/docs/aidbox/deprecated/deprecated/other/terminology/concept"
+                                  hxGet="/docs/partial/aidbox/deprecated/deprecated/other/terminology/concept"
+                                  hxPushUrl="/docs/aidbox/deprecated/deprecated/other/terminology/concept"
+                                  hxSwap="outerHTML"
+                                  hxTarget="#content"
+                                >
+                                   
+                                  <span className="flex items-center gap-2 ml-4">
+                                    Concept (deprecated) 
+                                  </span> 
+                                </a> 
+                              </div> 
+                              <svg
+                                className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                data-slot="icon"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                  clip-rule="evenodd"
+                                ></path>
+                              </svg>
+                            </button> 
+                            <div
+                              className="nav-children ml-6 border-l-1 border-outline"
+                              hidden="hidden"
+                            >
+                               
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/other/terminology/concept/translate-concepts"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/other/terminology/concept/translate-concepts"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/other/terminology/concept/translate-concepts"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  &#36;translate-concepts (deprecated) 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/other/terminology/concept/handling-hierarchies-using-ancestors"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/other/terminology/concept/handling-hierarchies-using-ancestors"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/other/terminology/concept/handling-hierarchies-using-ancestors"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  Handling hierarchies using ancestors
+                                  (deprecated) 
+                                </span> 
+                              </a> 
+                            </div> 
+                          </div> 
+                          <div className="nav-item">
+                             
+                            <button
+                              aria-expanded="false"
+                              className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                              type="button"
+                            >
+                               
+                              <div className="flex-1 clickable-summary">
+                                 
+                                <a
+                                  className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                  href="/docs/aidbox/deprecated/deprecated/other/terminology/valueset"
+                                  hxGet="/docs/partial/aidbox/deprecated/deprecated/other/terminology/valueset"
+                                  hxPushUrl="/docs/aidbox/deprecated/deprecated/other/terminology/valueset"
+                                  hxSwap="outerHTML"
+                                  hxTarget="#content"
+                                >
+                                   
+                                  <span className="flex items-center gap-2 ml-4">
+                                    ValueSet (deprecated) 
+                                  </span> 
+                                </a> 
+                              </div> 
+                              <svg
+                                className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                data-slot="icon"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                  clip-rule="evenodd"
+                                ></path>
+                              </svg>
+                            </button> 
+                            <div
+                              className="nav-children ml-6 border-l-1 border-outline"
+                              hidden="hidden"
+                            >
+                               
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/other/terminology/valueset/valueset-expansion"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/other/terminology/valueset/valueset-expansion"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/other/terminology/valueset/valueset-expansion"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  ValueSet Expansion (deprecated) 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/other/terminology/valueset/valueset-code-validation"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/other/terminology/valueset/valueset-code-validation"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/other/terminology/valueset/valueset-code-validation"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  ValueSet Code Validation (deprecated) 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/other/terminology/valueset/create-a-valueset"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/other/terminology/valueset/create-a-valueset"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/other/terminology/valueset/create-a-valueset"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  Create a ValueSet (deprecated page) 
+                                </span> 
+                              </a> 
+                            </div> 
+                          </div> 
+                          <div className="nav-item">
+                             
+                            <button
+                              aria-expanded="false"
+                              className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                              type="button"
+                            >
+                               
+                              <div className="flex-1 clickable-summary">
+                                 
+                                <a
+                                  className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                  href="/docs/aidbox/deprecated/deprecated/other/terminology/codesystem-and-concept"
+                                  hxGet="/docs/partial/aidbox/deprecated/deprecated/other/terminology/codesystem-and-concept"
+                                  hxPushUrl="/docs/aidbox/deprecated/deprecated/other/terminology/codesystem-and-concept"
+                                  hxSwap="outerHTML"
+                                  hxTarget="#content"
+                                >
+                                   
+                                  <span className="flex items-center gap-2 ml-4">
+                                    CodeSystem (deprecated) 
+                                  </span> 
+                                </a> 
+                              </div> 
+                              <svg
+                                className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                data-slot="icon"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                  clip-rule="evenodd"
+                                ></path>
+                              </svg>
+                            </button> 
+                            <div
+                              className="nav-children ml-6 border-l-1 border-outline"
+                              hidden="hidden"
+                            >
+                               
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/other/terminology/codesystem-and-concept/codesystem-concept-lookup"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/other/terminology/codesystem-and-concept/codesystem-concept-lookup"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/other/terminology/codesystem-and-concept/codesystem-concept-lookup"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  CodeSystem Concept Lookup (deprecated) 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/other/terminology/codesystem-and-concept/codesystem-subsumption-testing"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/other/terminology/codesystem-and-concept/codesystem-subsumption-testing"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/other/terminology/codesystem-and-concept/codesystem-subsumption-testing"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  CodeSystem subsumption testing
+                                  (deprecated) 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/other/terminology/codesystem-and-concept/codesystem-code-composition"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/other/terminology/codesystem-and-concept/codesystem-code-composition"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/other/terminology/codesystem-and-concept/codesystem-code-composition"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  CodeSystem Code Composition (deprecated) 
+                                </span> 
+                              </a> 
+                            </div> 
+                          </div> 
+                          <div className="nav-item">
+                             
+                            <button
+                              aria-expanded="false"
+                              className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                              type="button"
+                            >
+                               
+                              <div className="flex-1 clickable-summary">
+                                 
+                                <a
+                                  className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                  href="/docs/aidbox/deprecated/deprecated/other/terminology/terminology-api"
+                                  hxGet="/docs/partial/aidbox/deprecated/deprecated/other/terminology/terminology-api"
+                                  hxPushUrl="/docs/aidbox/deprecated/deprecated/other/terminology/terminology-api"
+                                  hxSwap="outerHTML"
+                                  hxTarget="#content"
+                                >
+                                   
+                                  <span className="flex items-center gap-2 ml-4">
+                                    Import External Terminologies
+                                    (deprecated) 
+                                  </span> 
+                                </a> 
+                              </div> 
+                              <svg
+                                className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                                data-slot="icon"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                  clip-rule="evenodd"
+                                ></path>
+                              </svg>
+                            </button> 
+                            <div
+                              className="nav-children ml-6 border-l-1 border-outline"
+                              hidden="hidden"
+                            >
+                               
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/other/terminology/terminology-api/import-flat-file-docs-csv"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/other/terminology/terminology-api/import-flat-file-docs-csv"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/other/terminology/terminology-api/import-flat-file-docs-csv"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  Import flat file (/CSV) (deprecated) 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/other/terminology/terminology-api/import-operation"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/other/terminology/terminology-api/import-operation"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/other/terminology/terminology-api/import-operation"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  &#36;import operation (deprecated) 
+                                </span> 
+                              </a> 
+                              <a
+                                className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                                href="/docs/aidbox/deprecated/deprecated/other/terminology/terminology-api/ready-to-use-terminologies"
+                                hxGet="/docs/partial/aidbox/deprecated/deprecated/other/terminology/terminology-api/ready-to-use-terminologies"
+                                hxPushUrl="/docs/aidbox/deprecated/deprecated/other/terminology/terminology-api/ready-to-use-terminologies"
+                                hxSwap="outerHTML"
+                                hxTarget="#content"
+                              >
+                                 
+                                <span className="flex items-center gap-2 ml-4">
+                                  Ready-to-use terminologies (deprecated) 
+                                </span> 
+                              </a> 
+                            </div> 
+                          </div> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/other/terminology/translate-on-conceptmap"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/other/terminology/translate-on-conceptmap"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/other/terminology/translate-on-conceptmap"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              &#36;translate on ConceptMap (deprecated) 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/deprecated/deprecated/other/aidbox-sdk"
+                              hxGet="/docs/partial/aidbox/deprecated/deprecated/other/aidbox-sdk"
+                              hxPushUrl="/docs/aidbox/deprecated/deprecated/other/aidbox-sdk"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Aidbox SDK (deprecated) 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/other/aidbox-sdk/aidbox-javascript-sdk"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/other/aidbox-sdk/aidbox-javascript-sdk"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/other/aidbox-sdk/aidbox-javascript-sdk"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Aidbox JavaScript SDK 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/other/aidbox-sdk/nodejs-sdk"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/other/aidbox-sdk/nodejs-sdk"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/other/aidbox-sdk/nodejs-sdk"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              NodeJs SDK 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/other/aidbox-sdk/python-sdk"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/other/aidbox-sdk/python-sdk"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/other/aidbox-sdk/python-sdk"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Python SDK 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/solutions/aidbox-+-fhir-app-portal/developer-sandbox"
+                        hxGet="/docs/partial/aidbox/solutions/aidbox-+-fhir-app-portal/developer-sandbox"
+                        hxPushUrl="/docs/aidbox/solutions/aidbox-+-fhir-app-portal/developer-sandbox"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          Developer Sandbox Portal Flow Description 
+                        </span> 
+                      </a> 
+                    </div> 
+                  </div> 
+                  <div className="nav-item">
+                     
+                    <button
+                      aria-expanded="false"
+                      className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                      type="button"
+                    >
+                       
+                      <div className="flex-1 clickable-summary">
+                         
+                        <a
+                          className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                          href="/docs/aidbox/deprecated/deprecated/smartbox"
+                          hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox"
+                          hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox"
+                          hxSwap="outerHTML"
+                          hxTarget="#content"
+                        >
+                           
+                          <span className="flex items-center gap-2 ml-4">
+                            SMARTbox | FHIR API for EHRs 
+                          </span> 
+                        </a> 
+                      </div> 
+                      <svg
+                        className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        data-slot="icon"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button> 
+                    <div
+                      className="nav-children ml-6 border-l-1 border-outline"
+                      hidden="hidden"
+                    >
+                       
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/deprecated/deprecated/smartbox/get-started"
+                              hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/get-started"
+                              hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/get-started"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Get started 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/smartbox/get-started/set-up-smartbox-locally"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/get-started/set-up-smartbox-locally"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/get-started/set-up-smartbox-locally"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Set up Smartbox locally 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/smartbox/get-started/deploy-smartbox-with-kubernetes"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/get-started/deploy-smartbox-with-kubernetes"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/get-started/deploy-smartbox-with-kubernetes"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Deploy Smartbox with Kubernetes 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <a
+                        className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                        href="/docs/aidbox/deprecated/deprecated/smartbox/docs-g-docs-10-standardized-api-for-patient-and-population-services"
+                        hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/docs-g-docs-10-standardized-api-for-patient-and-population-services"
+                        hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/docs-g-docs-10-standardized-api-for-patient-and-population-services"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex items-center gap-2 ml-4">
+                          (/G)(/10) Standardized API for patient and population
+                          services 
+                        </span> 
+                      </a> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/deprecated/deprecated/smartbox/the-b11-decision-support-interventions"
+                              hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/the-b11-decision-support-interventions"
+                              hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/the-b11-decision-support-interventions"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                The B11 decision support interventions 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/smartbox/the-b11-decision-support-interventions/source-attributes"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/the-b11-decision-support-interventions/source-attributes"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/the-b11-decision-support-interventions/source-attributes"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Source attributes 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/smartbox/the-b11-decision-support-interventions/feedback-sections"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/the-b11-decision-support-interventions/feedback-sections"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/the-b11-decision-support-interventions/feedback-sections"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Feedback Sections 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides"
+                              hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/how-to-guides"
+                              hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                How-to Guides 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides/perform-ehr-launch"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/how-to-guides/perform-ehr-launch"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides/perform-ehr-launch"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Perform EHR Launch 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides/revoke-granted-access"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/how-to-guides/revoke-granted-access"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides/revoke-granted-access"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Revoke Granted Access 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides/set-up-ehr-level-customization"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/how-to-guides/set-up-ehr-level-customization"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides/set-up-ehr-level-customization"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Set up EHR-level Customization 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides/check-email-templates"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/how-to-guides/check-email-templates"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides/check-email-templates"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Check email templates 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides/setup-email-provider"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/how-to-guides/setup-email-provider"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides/setup-email-provider"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Setup email provider 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides/register-users"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/how-to-guides/register-users"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides/register-users"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Register Users 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides/set-up-sso-with-auth0"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/how-to-guides/set-up-sso-with-auth0"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides/set-up-sso-with-auth0"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Set up SSO with Auth0 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides/publish-terms-of-use-link-onto-the-documentation-page"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/how-to-guides/publish-terms-of-use-link-onto-the-documentation-page"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides/publish-terms-of-use-link-onto-the-documentation-page"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Publish Terms of Use Link Onto the Documentation
+                              Page 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides/find-out-what-resources-were-exported-during-the-export-operation"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/how-to-guides/find-out-what-resources-were-exported-during-the-export-operation"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides/find-out-what-resources-were-exported-during-the-export-operation"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Find Out What Resources Were Exported During the
+                              &#36;export Operation 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides/find-documentation-endpoint"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/how-to-guides/find-documentation-endpoint"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/how-to-guides/find-documentation-endpoint"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Find Documentation Endpoint 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                      <div className="nav-item">
+                         
+                        <button
+                          aria-expanded="false"
+                          className="nav-summary flex items-center justify-between w-full text-small font-normal transition-colors duration-200 ease-in-out cursor-pointer bg-transparent border-0 text-left"
+                          type="button"
+                        >
+                           
+                          <div className="flex-1 clickable-summary">
+                             
+                            <a
+                              className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                              href="/docs/aidbox/deprecated/deprecated/smartbox/background-information"
+                              hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/background-information"
+                              hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/background-information"
+                              hxSwap="outerHTML"
+                              hxTarget="#content"
+                            >
+                               
+                              <span className="flex items-center gap-2 ml-4">
+                                Background Information 
+                              </span> 
+                            </a> 
+                          </div> 
+                          <svg
+                            className="nav-chevron size-3 text-small font-normaln transition-alln duration-200 mr-9"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                        <div
+                          className="nav-children ml-6 border-l-1 border-outline"
+                          hidden="hidden"
+                        >
+                           
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/smartbox/background-information/considerations-for-testing-with-inferno-onc"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/background-information/considerations-for-testing-with-inferno-onc"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/background-information/considerations-for-testing-with-inferno-onc"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Considerations for Testing with Inferno ONC 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/smartbox/background-information/adding-clients-for-inferno-tests"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/background-information/adding-clients-for-inferno-tests"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/background-information/adding-clients-for-inferno-tests"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Adding Clients for Inferno Tests 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/smartbox/background-information/multitenancy-approach"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/background-information/multitenancy-approach"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/background-information/multitenancy-approach"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Multitenancy Approach 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/smartbox/background-information/what-is-tenant"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/background-information/what-is-tenant"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/background-information/what-is-tenant"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              What Is Tenant 
+                            </span> 
+                          </a> 
+                          <a
+                            className="block transition-colors duration-200 ease-in-out mr-2 clickable-summary text-sm leading-5 tracking-tight text-on-surface-secondary"
+                            href="/docs/aidbox/deprecated/deprecated/smartbox/background-information/email-templating"
+                            hxGet="/docs/partial/aidbox/deprecated/deprecated/smartbox/background-information/email-templating"
+                            hxPushUrl="/docs/aidbox/deprecated/deprecated/smartbox/background-information/email-templating"
+                            hxSwap="outerHTML"
+                            hxTarget="#content"
+                          >
+                             
+                            <span className="flex items-center gap-2 ml-4">
+                              Email Templating 
+                            </span> 
+                          </a> 
+                        </div> 
+                      </div> 
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+          </nav> 
+          <main className="flex-1 items-start" id="content">
+             
+            <div className="flex items-start">
+               
+              <article className="article__content py-8 min-w-0 flex-1 max-w-5xl transform-3d">
+                 
+                <nav>
+                   
+                  <div className="flex items-center gap-2 mb-[11px] overflow-visible">
+                     
+                    <nav aria-label="Breadcrumb" className="flex-1">
+                       
+                      <ol className="flex flex-nowrap items-center overflow-hidden">
+                         
+                        <li
+                          className="flex items-center gap-2 bg-breadcrumb-bg rounded-md px-2 py-0.5 max-w-48 shrink-0"
+                          key="0"
+                        >
+                           
+                          <span className="text-sm font-normal leading-6 text-on-surface truncate">
+                            Terminology Module 
+                          </span> 
+                        </li> 
+                      </ol> 
+                    </nav> 
+                    <div className="relative inline-flex ml-auto overflow-visible">
+                       
+                      <div className="inline-flex rounded-md shadow-sm">
+                         
+                        <button
+                          className="inline-flex items-center gap-1.5 px-2 py-1.5 text-xs font-normal text-on-surface-strong bg-surface border border-outline rounded-l-md hover:bg-surface-hover transition-colors cursor-pointer"
+                          data-md-url="/docs/aidbox/terminology-module/overview.md"
+                          id="copy-page-button"
+                          onclick="copyPageAsMarkdown(this)"
+                          type="button"
+                        >
+                           
+                          <svg
+                            className="size-3.5 bg-current"
+                            style="mask-image: url('/docs/static/copy-icon.svg'); mask-repeat: no-repeat; mask-position: center center;"
+                          ></svg> 
+                          <span>Copy Page </span> 
+                        </button> 
+                        <button
+                          className="inline-flex items-center px-1.5 py-1.5 text-xs text-on-surface-strong bg-surface border border-l-0 border-outline rounded-r-md hover:bg-surface-hover transition-colors cursor-pointer"
+                          id="page-actions-toggle"
+                          type="button"
+                          data-initialized="true"
+                        >
+                           
+                          <svg
+                            className="size-3"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            data-slot="icon"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button> 
+                      </div> 
+                      <div
+                        className="hidden absolute right-0 top-full mt-2 min-w-80 sm:min-w-64 sm:w-64 rounded-md shadow-lg bg-surface z-[9999] border border-outline"
+                        id="page-actions-dropdown"
+                      >
+                         
+                        <div className="py-1">
+                           
+                          <button
+                            className="w-full flex items-start gap-3 px-4 py-2 text-left text-sm text-on-surface-strong hover:bg-surface-hover transition-colors cursor-pointer"
+                            data-md-url="/docs/aidbox/terminology-module/overview.md"
+                            id="copy-page-button-menu"
+                            onclick="copyPageAsMarkdown(this)"
+                          >
+                             
+                            <svg
+                              className="size-3.5 flex-shrink-0 mt-1 bg-current"
+                              style="mask-image: url('/docs/static/copy-icon.svg'); mask-repeat: no-repeat; mask-position: center center;"
+                            ></svg> 
+                            <div className="flex-1 min-w-0">
+                               
+                              <div className="font-normal">Copy Page </div> 
+                              <div className="text-xs opacity-60 mt-0.5">
+                                Copy this page as Markdown for LLMs 
+                              </div> 
+                            </div> 
+                          </button> 
+                          <a
+                            className="w-full flex items-start gap-3 px-4 py-2 text-sm text-on-surface-strong hover:bg-surface-hover transition-colors no-underline"
+                            href="/docs/aidbox/terminology-module/overview.md"
+                            onclick="trackPageAction('view_markdown', this.href)"
+                            target="_blank"
+                          >
+                             
+                            <svg
+                              className="size-3.5 flex-shrink-0 mt-1 bg-current"
+                              style="mask-image: url('/docs/static/markdown-icon.svg'); mask-repeat: no-repeat; mask-position: center center;"
+                            ></svg> 
+                            <div className="flex-1 min-w-0">
+                               
+                              <div className="font-normal inline-flex items-center gap-1">
+                                View as Markdown 
+                                <svg
+                                  className="size-3"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 24 24"
+                                  fill="currentColor"
+                                  aria-hidden="true"
+                                  data-slot="icon"
+                                >
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M8.25 3.75H19.5a.75.75 0 0 1 .75.75v11.25a.75.75 0 0 1-1.5 0V6.31L5.03 20.03a.75.75 0 0 1-1.06-1.06L17.69 5.25H8.25a.75.75 0 0 1 0-1.5Z"
+                                    clip-rule="evenodd"
+                                  ></path>
+                                </svg>
+                              </div> 
+                              <div className="text-xs opacity-60 mt-0.5">
+                                View this page as plain text 
+                              </div> 
+                            </div> 
+                          </a> 
+                          <a
+                            className="w-full flex items-start gap-3 px-4 py-2 text-sm text-on-surface-strong hover:bg-surface-hover transition-colors no-underline"
+                            href="https://github.com/healthsamurai/documentation/edit/master/docs-new/../docs/terminology-module/overview.md"
+                            onclick="trackPageAction('edit_github', this.href)"
+                            target="_blank"
+                          >
+                             
+                            <svg
+                              className="size-3.5 flex-shrink-0 mt-1 bg-current"
+                              style="mask-image: url('/docs/static/github-icon.svg'); mask-repeat: no-repeat; mask-position: center center;"
+                            ></svg> 
+                            <div className="flex-1 min-w-0">
+                               
+                              <div className="font-normal inline-flex items-center gap-1">
+                                Edit on GitHub 
+                                <svg
+                                  className="size-3"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 24 24"
+                                  fill="currentColor"
+                                  aria-hidden="true"
+                                  data-slot="icon"
+                                >
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M8.25 3.75H19.5a.75.75 0 0 1 .75.75v11.25a.75.75 0 0 1-1.5 0V6.31L5.03 20.03a.75.75 0 0 1-1.06-1.06L17.69 5.25H8.25a.75.75 0 0 1 0-1.5Z"
+                                    clip-rule="evenodd"
+                                  ></path>
+                                </svg>
+                              </div> 
+                              <div className="text-xs opacity-60 mt-0.5">
+                                Edit this page on GitHub 
+                              </div> 
+                            </div> 
+                          </a> 
+                          <div className="border-t border-outline my-1"></div> 
+                          <button
+                            className="w-full flex items-start gap-3 px-4 py-2 text-left text-sm text-on-surface-strong hover:bg-surface-hover transition-colors cursor-pointer"
+                            onclick="openInChatGPT()"
+                          >
+                             
+                            <svg
+                              className="size-3.5 flex-shrink-0 mt-1 bg-current"
+                              style="mask-image: url('/docs/static/chatgpt-icon.svg'); mask-repeat: no-repeat; mask-position: center center;"
+                            ></svg> 
+                            <div className="flex-1 min-w-0">
+                               
+                              <div className="font-normal inline-flex items-center gap-1">
+                                Open in ChatGPT 
+                                <svg
+                                  className="size-3"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 24 24"
+                                  fill="currentColor"
+                                  aria-hidden="true"
+                                  data-slot="icon"
+                                >
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M8.25 3.75H19.5a.75.75 0 0 1 .75.75v11.25a.75.75 0 0 1-1.5 0V6.31L5.03 20.03a.75.75 0 0 1-1.06-1.06L17.69 5.25H8.25a.75.75 0 0 1 0-1.5Z"
+                                    clip-rule="evenodd"
+                                  ></path>
+                                </svg>
+                              </div> 
+                              <div className="text-xs opacity-60 mt-0.5">
+                                Ask questions about this page 
+                              </div> 
+                            </div> 
+                          </button> 
+                          <button
+                            className="w-full flex items-start gap-3 px-4 py-2 text-left text-sm text-on-surface-strong hover:bg-surface-hover transition-colors cursor-pointer"
+                            onclick="openInClaude()"
+                          >
+                             
+                            <svg
+                              className="size-3.5 flex-shrink-0 mt-1 bg-current"
+                              style="mask-image: url('/docs/static/claude-icon.svg'); mask-repeat: no-repeat; mask-position: center center;"
+                            ></svg> 
+                            <div className="flex-1 min-w-0">
+                               
+                              <div className="font-normal inline-flex items-center gap-1">
+                                Open in Claude 
+                                <svg
+                                  className="size-3"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 24 24"
+                                  fill="currentColor"
+                                  aria-hidden="true"
+                                  data-slot="icon"
+                                >
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M8.25 3.75H19.5a.75.75 0 0 1 .75.75v11.25a.75.75 0 0 1-1.5 0V6.31L5.03 20.03a.75.75 0 0 1-1.06-1.06L17.69 5.25H8.25a.75.75 0 0 1 0-1.5Z"
+                                    clip-rule="evenodd"
+                                  ></path>
+                                </svg>
+                              </div> 
+                              <div className="text-xs opacity-60 mt-0.5">
+                                Ask questions about this page 
+                              </div> 
+                            </div> 
+                          </button> 
+                        </div> 
+                      </div> 
+                    </div> 
+                  </div> 
+                </nav> 
+                <div className="mx-auto max-w-full">
+                   
+                  <div className="real-content flex-1 min-w-0 max-w-full">
+                     
+                    <div>
+                       
+                      <header className="mb-6" id="page-header">
+                         
+                        <div>
+                           
+                          <h1
+                            className="mt-2 text-5xl font-bold text-on-surface-strong mx-auto max-w-full break-words"
+                            id="terminology-overview"
+                          >
+                            Terminology Overview 
+                          </h1> 
+                        </div> 
+                        <p className="text-lg leading-7 font-normal text-on-surface-secondary border-b border-outline-subtle pb-[17px]">
+                          Overview of FHIR terminology concepts and Aidbox's
+                          terminology server implementation 
+                        </p> 
+                      </header> 
+                      <p className="text-base text-on-surface-secondary leading-relaxed">
+                        Healthcare systems need to share data reliably across
+                        different organizations, vendors, and countries. The
+                        challenge? Every system uses different codes for the
+                        same concepts. One hospital might code "blood pressure"
+                        as "BP", another as "SYSTOLIC_DIASTOLIC", and a third
+                        might use a completely different internal system. Poor
+                        terminology management leads to data silos, integration
+                        nightmares, and ultimately, compromised patient
+                        care. 
+                      </p> 
+                      <p className="text-base text-on-surface-secondary leading-relaxed">
+                        FHIR terminology solves this problem by providing
+                        standardized ways to represent and validate coded
+                        healthcare data. Aidbox implements a comprehensive FHIR
+                        terminology server natively integrated into the
+                        platform, delivering compliant and performant
+                        terminology operations. 
+                      </p> 
+                      <h2
+                        className="mt-[1.05em] text-4xl font-semibold text-on-surface-strong mx-auto"
+                        id="fhir-terminology"
+                        style="position: relative;"
+                      >
+                        FHIR Terminology 
+                        <button
+                          className="heading-link-button"
+                          aria-label="Copy link to this section"
+                          style="display: none; position: absolute; left: -2rem; top: 50%; transform: translateY(-50%); padding: 0.25rem; background: transparent; border: none; cursor: pointer; color: rgb(156, 163, 175); transition: color 0.2s;"
+                        >
+                          <svg
+                            className="heading-link-icon"
+                            width="20"
+                            height="20"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                            ></path>
+                          </svg>
+                        </button> 
+                      </h2> 
+                      <p className="text-base text-on-surface-secondary leading-relaxed">
+                        FHIR builds terminology around core resource types and
+                        data structures that work together to organize and
+                        constrain coded data. 
+                      </p> 
+                      <p className="text-base text-on-surface-secondary leading-relaxed">
+                         
+                        <strong>Coded values </strong> in FHIR use specialized
+                        data types for different scenarios. Simple 
+                        <code>code </code> elements work for fixed vocabularies, 
+                        <code>Coding </code> structures specify both the system
+                        and code for precise identification, and 
+                        <code>CodeableConcept </code> allows multiple codings to
+                        represent the same concept across different systems
+                        simultaneously. 
+                      </p> 
+                      <p className="text-base text-on-surface-secondary leading-relaxed">
+                         
+                        <strong>CodeSystems </strong> define the actual codes
+                        and their meanings. Think of SNOMED CT with its
+                        comprehensive clinical terminology, or LOINC with
+                        standardized laboratory codes. Each CodeSystem
+                        establishes what specific codes mean within their
+                        domain. 
+                      </p> 
+                      <p className="text-base text-on-surface-secondary leading-relaxed">
+                         
+                        <strong>ValueSets </strong> curate collections of codes
+                        from one or more CodeSystems for specific contexts.
+                        While LOINC contains thousands of laboratory codes, a
+                        ValueSet might select just the subset relevant for
+                        "routine blood chemistry panels." 
+                      </p> 
+                      <p className="text-base text-on-surface-secondary leading-relaxed">
+                         
+                        <strong>ConceptMaps </strong> define relationships and
+                        translations between codes from different CodeSystems.
+                        When you need to map your internal "HTN" code to SNOMED
+                        CT's "38341003 | Hypertensive disorder", ConceptMaps
+                        provide the structured translation rules. 
+                      </p> 
+                      <p className="text-base text-on-surface-secondary leading-relaxed">
+                        See also: 
+                        <a
+                          className="text-brand underline underline-offset-2 decoration-[max(0.07em,1px)] hover:text-on-surface-strong hover:decoration-brand transition-all duration-200"
+                          href="/docs/aidbox/terminology-module/fhir-terminology"
+                        >
+                          FHIR Terminology Concepts 
+                        </a> 
+                      </p> 
+                      <h2
+                        className="mt-[1.05em] text-4xl font-semibold text-on-surface-strong mx-auto"
+                        id="aidbox-terminology-module"
+                        style="position: relative;"
+                      >
+                        Aidbox Terminology Module 
+                        <button
+                          className="heading-link-button"
+                          aria-label="Copy link to this section"
+                          style="display: none; position: absolute; left: -2rem; top: 50%; transform: translateY(-50%); padding: 0.25rem; background: transparent; border: none; cursor: pointer; color: rgb(156, 163, 175); transition: color 0.2s;"
+                        >
+                          <svg
+                            className="heading-link-icon"
+                            width="20"
+                            height="20"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                            ></path>
+                          </svg>
+                        </button> 
+                      </h2> 
+                      <p className="text-base text-on-surface-secondary leading-relaxed">
+                        Aidbox implements a flexible terminology server that
+                        adapts to different organizational needs through three
+                        operational modes: 
+                      </p> 
+                      <p className="text-base text-on-surface-secondary leading-relaxed">
+                         
+                        <strong>Local mode </strong> uses only CodeSystems,
+                        ValueSets, and ConceptMaps stored in Aidbox's FHIR
+                        Artifact Registry, providing complete control over
+                        terminology content but requiring explicit loading of
+                        all needed resources. 
+                      </p> 
+                      <p className="text-base text-on-surface-secondary leading-relaxed">
+                         
+                        <strong>Hybrid mode </strong> combines local storage
+                        with external server fallback, balancing performance
+                        with comprehensive coverage by using local resources
+                        when available and querying external servers when
+                        needed. 
+                      </p> 
+                      <p className="text-base text-on-surface-secondary leading-relaxed">
+                         
+                        <strong>Remote (legacy) mode </strong> routes all
+                        terminology requests to external terminology servers,
+                        useful for organizations relying on established external
+                        services or transitioning their terminology
+                        infrastructure. 
+                      </p> 
+                      <p className="text-base text-on-surface-secondary leading-relaxed">
+                        The module supports all standard FHIR terminology
+                        operations - <code>&#36;validate-code </code>, 
+                        <code>&#36;expand </code>, <code>&#36;lookup </code>,
+                        and <code>&#36;translate </code> - working seamlessly
+                        across local and external content depending on your
+                        configuration. 
+                      </p> 
+                      <p className="text-base text-on-surface-secondary leading-relaxed">
+                        See also: 
+                        <a
+                          className="text-brand underline underline-offset-2 decoration-[max(0.07em,1px)] hover:text-on-surface-strong hover:decoration-brand transition-all duration-200"
+                          href="/docs/aidbox/terminology-module/aidbox-terminology-module"
+                        >
+                          Aidbox Terminology Module 
+                        </a> 
+                      </p> 
+                    </div> 
+                  </div> 
+                </div> 
+                <nav>
+                   
+                  <div className="flex flex-col sm:flex-row justify-between items-start mt-8 pt-4 gap-4">
+                     
+                    <div className="flex-1 w-full sm:w-auto">
+                       
+                      <a
+                        className="group text-sm flex gap-4 flex-1 items-center p-2.5 border border-outline-subtle rounded hover:border-outline-input-focus transition-all text-pretty md:text-base md:h-[80px] flex-row-reverse"
+                        href="/docs/aidbox/terminology-module/fhir-terminology/conceptmap"
+                        hxGet="/docs/partial/aidbox/terminology-module/fhir-terminology/conceptmap"
+                        hxPushUrl="/docs/aidbox/terminology-module/fhir-terminology/conceptmap"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex flex-col flex-1 text-right justify-center">
+                           
+                          <span className="text-xs text-on-surface-placeholder">
+                            Previous 
+                          </span> 
+                          <span className="text-on-surface-muted line-clamp-2">
+                            ConceptMap 
+                          </span> 
+                        </span> 
+                        <svg
+                          className="size-4 text-on-surface-muted flex-shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                           
+                          <path
+                            d="M15 19l-7-7 7-7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></path> 
+                        </svg> 
+                      </a> 
+                    </div> 
+                    <div className="flex-1 w-full sm:w-auto">
+                       
+                      <a
+                        className="group text-sm flex gap-4 flex-1 items-center p-2.5 border border-outline-subtle rounded hover:border-outline-input-focus transition-all text-pretty md:text-base md:h-[80px]"
+                        href="/docs/aidbox/terminology-module/fhir-terminology"
+                        hxGet="/docs/partial/aidbox/terminology-module/fhir-terminology"
+                        hxPushUrl="/docs/aidbox/terminology-module/fhir-terminology"
+                        hxSwap="outerHTML"
+                        hxTarget="#content"
+                      >
+                         
+                        <span className="flex flex-col flex-1 justify-center">
+                           
+                          <span className="text-xs text-on-surface-placeholder">
+                            Next 
+                          </span> 
+                          <span className="text-on-surface-muted line-clamp-2">
+                            FHIR Terminology 
+                          </span> 
+                        </span> 
+                        <svg
+                          className="size-4 text-on-surface-muted flex-shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                           
+                          <path
+                            d="M9 5l7 7-7 7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></path> 
+                        </svg> 
+                      </a> 
+                    </div> 
+                  </div> 
+                </nav> 
+                <p className="mt-4 text-sm text-on-surface-muted">
+                  Last updated: 
+                  <time
+                    data-updated-at="2025-08-29T12:44:39Z"
+                    datetime="2025-08-29T12:44:39Z"
+                    id="lastupdated"
+                  >
+                    5 months ago 
+                  </time> 
+                </p> 
+              </article> 
+              <nav
+                aria-label="On-page navigation"
+                className="max-w-56 basis-56 flex-shrink-0 sticky top-16 h-[calc(100vh-4rem)] ml-12 overflow-y-auto py-8 bg-surface font-content hidden lg:block"
+                id="toc-container"
+              >
+                 
+                <div className="px-3 pt-0 pb-2 mb-3 border-b-1 border-outline-subtle">
+                   
+                  <button
+                    className="w-full inline-flex items-center justify-center px-4 py-2.5 text-sm font-semibold leading-5 bg-surface text-on-surface hover:bg-button-hover-bg border border-outline rounded-md transition-colors cursor-pointer"
+                    id="feedback-send-button"
+                    phwidgetsurveyclicklistener="true"
+                  >
+                    Send feedback 
+                  </button> 
+                </div> 
+                <ul className="space-y-0.5">
+                   
+                  <li className="max-w-56 break-words py-0.5">
+                     
+                    <a
+                      className="block px-3 text-sm leading-5 font-normal no-underline relative py-1 transition-colors duration-[300ms] ease-out hover:bg-surface-nav-hover text-on-surface-placeholder"
+                      href="#fhir-terminology"
+                      data-toc-handler="true"
+                    >
+                       
+                      <span>FHIR Terminology </span> 
+                    </a> 
+                  </li> 
+                  <li className="max-w-56 break-words py-0.5">
+                     
+                    <a
+                      className="block px-3 text-sm leading-5 font-normal no-underline relative py-1 transition-colors duration-[300ms] ease-out hover:bg-surface-nav-hover text-on-surface-placeholder"
+                      href="#aidbox-terminology-module"
+                      data-toc-handler="true"
+                    >
+                       
+                      <span>Aidbox Terminology Module </span> 
+                    </a> 
+                  </li> 
+                </ul> 
+              </nav> 
+            </div> 
+          </main> 
+        </div> 
+        <footer className="mt-auto border-t border-outline bg-surface-subtle">
+           
+          <div className="max-w-screen-2xl mx-auto px-5 md:px-8 py-6">
+             
+            <div className="flex flex-col md:flex-row md:justify-center items-center gap-4">
+               
+              <div className="flex items-center gap-2">
+                 
+                <a
+                  className="text-on-surface-strong hover:text-brand transition-colors no-underline text-sm leading-5"
+                  href="https://www.health-samurai.io/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  © Health Samurai 
+                </a> 
+              </div> 
+              <div className="flex items-center gap-4">
+                 
+                <a
+                  className="text-on-surface-strong hover:text-brand transition-colors"
+                  href="https://www.linkedin.com/company/health-samurai"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  title="Health Samurai on LinkedIn"
+                >
+                   
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                     
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path> 
+                  </svg> 
+                </a> 
+                <a
+                  className="text-on-surface-strong hover:text-brand transition-colors"
+                  href="https://www.youtube.com/@HealthSamurai"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  title="Health Samurai on YouTube"
+                >
+                   
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                     
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path> 
+                  </svg> 
+                </a> 
+              </div> 
+              <div className="hidden md:block text-outline">• </div> 
+              <div className="flex flex-col sm:flex-row items-center gap-3 text-center">
+                 
+                <a
+                  className="text-on-surface-strong hover:text-brand transition-colors no-underline text-sm leading-5"
+                  href="https://www.health-samurai.io/contacts"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Contact us 
+                </a> 
+                <span className="hidden sm:block text-outline">• </span> 
+                <a
+                  className="text-on-surface-strong hover:text-brand transition-colors no-underline text-sm leading-5"
+                  href="https://github.com/HealthSamurai/documentation"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Docs source (ba0566b) 
+                </a> 
+                <span className="hidden sm:block text-outline">• </span> 
+                <button
+                  className="text-on-surface-strong hover:text-brand transition-colors text-sm leading-5 cursor-pointer bg-transparent border-0 p-0"
+                  onclick="showCookieSettings()"
+                >
+                  Cookie Settings 
+                </button> 
+              </div> 
+              <div
+                aria-label="Select color theme"
+                className="theme-toggle"
+                id="theme-toggle-footer"
+                role="radiogroup"
+              >
+                 
+                <button
+                  aria-label="Switch to light theme"
+                  data-theme="light"
+                  onclick="setTheme('light')"
+                >
+                   
+                  <span className="theme-tooltip">Light </span> 
+                  <svg
+                    className="w-4 h-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                    fill="currentColor"
+                  >
+                     
+                    <path d="M256 0c8.8 0 16 7.2 16 16l0 80c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-80c0-8.8 7.2-16 16-16zM0 256c0-8.8 7.2-16 16-16l80 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-80 0c-8.8 0-16-7.2-16-16zm400 0c0-8.8 7.2-16 16-16l80 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-80 0c-8.8 0-16-7.2-16-16zM256 400c8.8 0 16 7.2 16 16l0 80c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-80c0-8.8 7.2-16 16-16zM75 75c6.2-6.2 16.4-6.2 22.6 0l56.6 56.6c6.2 6.2 6.2 16.4 0 22.6s-16.4 6.2-22.6 0L75 97.6c-6.2-6.2-6.2-16.4 0-22.6zm0 362c-6.2-6.2-6.2-16.4 0-22.6l56.6-56.6c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6L97.6 437c-6.2 6.2-16.4 6.2-22.6 0zM357.8 154.2c-6.2-6.2-6.2-16.4 0-22.6L414.4 75c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6l-56.6 56.6c-6.2 6.2-16.4 6.2-22.6 0zm0 203.6c6.2-6.2 16.4-6.2 22.6 0L437 414.4c6.2 6.2 6.2 16.4 0 22.6s-16.4 6.2-22.6 0l-56.6-56.6c-6.2-6.2-6.2-16.4 0-22.6zM336 256a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zm-192 0a112 112 0 1 1 224 0 112 112 0 1 1 -224 0z"></path> 
+                  </svg> 
+                </button> 
+                <button
+                  aria-label="Switch to system theme"
+                  data-theme="system"
+                  onclick="setTheme('system')"
+                  className="active"
+                >
+                   
+                  <span className="theme-tooltip">System </span> 
+                  <svg
+                    className="w-4 h-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    data-slot="icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M2.25 5.25a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3h-3v.257c0 .597.237 1.17.659 1.591l.621.622a.75.75 0 0 1-.53 1.28h-9a.75.75 0 0 1-.53-1.28l.621-.622a2.25 2.25 0 0 0 .659-1.59V18h-3a3 3 0 0 1-3-3V5.25Zm1.5 0v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button> 
+                <button
+                  aria-label="Switch to dark theme"
+                  data-theme="dark"
+                  onclick="setTheme('dark')"
+                >
+                   
+                  <span className="theme-tooltip">Dark </span> 
+                  <svg
+                    className="w-4 h-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 384 512"
+                    fill="currentColor"
+                  >
+                     
+                    <path d="M190.6 66.8c-38.8 37.8-62.9 90.7-62.9 149.2c0 108.9 83.5 198.3 189.9 207.3C289.8 439 257.7 448 223.5 448C117.7 448 32 362.1 32 256c0-94.8 68.5-173.5 158.6-189.2zm66.1-21.5c-1.5-6.9-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3z"></path> 
+                  </svg> 
+                </button> 
+              </div> 
+            </div> 
+          </div> 
+        </footer> 
+      </div> 
+      <iframe
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden;"
+      ></iframe> 
+      <div
+        className="PostHogSurvey-0199f205-718a-0000-2baf-c67b89f65c3a"
+        style="--ph-survey-font-family: inherit; --ph-survey-box-padding: 20px 24px; --ph-survey-max-width: 300px; --ph-survey-z-index: 2147482647; --ph-survey-border-color: #c9c6c6; --ph-survey-border-radius: 10px; --ph-survey-border-bottom: 1.5px solid var(--ph-survey-border-color); --ph-survey-background-color: #eeeded; --ph-survey-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); --ph-survey-disabled-button-opacity: 0.6; --ph-survey-submit-button-color: black; --ph-survey-submit-button-text-color: white; --ph-survey-rating-bg-color: white; --ph-survey-rating-active-bg-color: black; --ph-survey-rating-active-text-color: white; --ph-survey-text-primary-color: #020617; --ph-survey-text-subtle-color: #939393; --ph-widget-color: black; --ph-widget-text-color: white; --ph-widget-z-index: 2147482647; --ph-survey-input-background: white; --ph-survey-input-text-color: #020617; --ph-survey-rating-text-color: #020617; --ph-survey-scrollbar-thumb-color: var(--ph-survey-border-color); --ph-survey-scrollbar-track-color: var(--ph-survey-background-color); --ph-survey-outline-color: rgba(59, 130, 246, 0.8);"
+      ></div>
+    </Fragment>
+  );
+}

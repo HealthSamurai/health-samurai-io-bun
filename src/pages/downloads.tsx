@@ -1,196 +1,431 @@
+// Generated from Webflow HTML (1:1 JSX)
+// Source: /Users/niquola/health-samurai/webflow/snapshots/downloads.html
+
 import { Fragment } from "../lib/jsx-runtime";
 
 export const metadata = {
   title: "Aidbox Downloads | Bring FHIR into Healthcare Solution",
-  description: "Brochures, reports, certificates, and architectural diagrams to kickstart your use of the Aidbox FHIR Platform.",
+  description:
+    "Download essential resources for FHIR implementation, EHR integration, and FHIR data storage. Gain insights into data exchange standards, EHR implementation steps, and effective clinical software solutions.",
 };
 
-type DownloadCard = {
-  title: string;
-  description: string;
-  image: string;
-  href: string;
-};
-
-const downloadCards: DownloadCard[] = [
-  {
-    title: "SDC (Structured Data Capture) Guide",
-    description: "Learn how SDC transforms healthcare data collection through intelligent and standardized forms.",
-    image: "/assets/images/downloads/brochure-sdc-guide.png",
-    href: "/downloads/sdc-guide",
-  },
-  {
-    title: "Aidbox FHIR Platform Performance Report",
-    description: "Learn how Aidbox handles data import, search, and export operations in various healthcare scenarios.",
-    image: "/assets/images/downloads/brochure-performance-report.png",
-    href: "/downloads/aidbox-performance-report",
-  },
-  {
-    title: "EHR Development Toolkit Brochure",
-    description: "Build Your EHRs with the Aidbox EHR Toolkit. Customizable Modules and an EHR Implementation Project Plan.",
-    image: "/assets/images/downloads/brochure-ehr-toolkit.png",
-    href: "/downloads/ehr-development-toolkit-brochure",
-  },
-  {
-    title: "Aidbox for Startups Toolkit Brochure",
-    description: "Discover the turnkey development toolkit to design your healthcare solution for the future.",
-    image: "/assets/images/downloads/brochure-startups-toolkit.png",
-    href: "/downloads/aidbox-for-startups-toolkit-brochure",
-  },
-  {
-    title: "Healthcare Data Platform Toolkit Brochure",
-    description: "Discover a unified space for your team to seamlessly aggregate, store, manage, and analyze FHIR data.",
-    image: "/assets/images/downloads/brochure-data-platform.png",
-    href: "/downloads/healthcare-data-platform-toolkit-brochure",
-  },
-  {
-    title: "Aidbox + Cloudticity Solution Brief",
-    description: "Accelerate FHIR adoption by up to 70% and reduce your infrastructure management responsibilities by 80%.",
-    image: "/assets/images/downloads/brochure-cloudticity.png",
-    href: "/downloads/aidbox-cloudticity-solution-brief",
-  },
-  {
-    title: "Standardized HL7 FHIR API for EHRs Cheatsheet",
-    description: "Ensure compliance with the 21st Century Cures Act with this essential cheatsheet.",
-    image: "/assets/images/downloads/brochure-onc-cheatsheet.png",
-    href: "/downloads/standardized-hl7-fhir-api-for-ehrs-cheatsheet",
-  },
-];
-
-function DownloadCardComponent({ card }: { card: DownloadCard }): string {
-  return (
-    <div className="download-card">
-      <div className="download-card-image">
-        <img src={card.image} alt={card.title} />
-      </div>
-      <h3 className="download-card-title">{card.title}</h3>
-      <p className="download-card-desc">{card.description}</p>
-      <a href={card.href} className="download-btn">Download now</a>
-    </div>
-  );
-}
-
-export default function DownloadsPage(): string {
+export default function DownloadsWebflow(): string {
   return (
     <Fragment>
-      {/* Hero Section */}
-      <section className="downloads-hero">
-        <div className="container">
-          <div className="downloads-hero-content">
-            <h1>Download Resources for FHIR Implementation</h1>
-            <p>Brochures, reports, certificates, and architectural diagrams to kickstart your use of the Aidbox FHIR Platform.</p>
-            <div className="downloads-hero-actions">
-              <a href="/contacts" className="download-btn">Talk to an expert</a>
-              <a href="/fhir-server" className="downloads-link">
-                Explore Aidbox
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Brochure Section */}
-      <section className="downloads-featured">
-        <div className="container">
-          <div className="downloads-featured-card">
-            <div className="downloads-featured-image">
-              <img src="/assets/images/downloads/brochure-aidbox-platform.png" alt="Aidbox FHIR Platform Brochure" />
-            </div>
-            <div className="downloads-featured-content">
-              <h3>Aidbox FHIR Platform Brochure</h3>
-              <p>
-                <a href="/aidbox" className="text-link">Aidbox FHIR server</a> is a developer-friendly, adaptable platform that saves months in development time on your FHIR-first healthcare solutions.
-              </p>
-              <p>
-                It offers a comprehensive suite of features including robust data storage, authentication, API services, and analytics.
-              </p>
-              <p>
-                Download the brochure to learn how Aidbox can help you build interoperable apps, and effectively manage vast amounts of <a href="/articles/fhir-what-is-great" className="text-link">FHIR</a> data securely and efficiently.
-              </p>
-              <a href="/downloads/aidbox-brochure" className="download-btn">Download now</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Downloads Grid Section */}
-      <section className="downloads-grid-section">
-        <div className="container">
-          <div className="downloads-grid">
-            {downloadCards.map((card) => (
-              <DownloadCardComponent card={card} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* AI Healthcare Video Section */}
-      <section className="downloads-ai-section">
-        <div className="container">
-          <div className="downloads-ai-card">
-            <div className="downloads-ai-image">
-              <div className="downloads-ai-badge">
-                <img src="/assets/images/downloads/brochure-ai-healthcare.png" alt="Aidbox for AI in healthcare" />
-              </div>
-            </div>
-            <div className="downloads-ai-content">
-              <h3>Aidbox for AI in healthcare</h3>
-              <p>Learn how SDC transforms healthcare data collection through intelligent and standardized forms.</p>
-              <a href="https://www.health-samurai.io/sdc-conference" className="download-btn">Watch now</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer Subscribe Section - This is page-specific, not the global footer */}
-      <section className="downloads-footer">
-        <div className="container">
-          <div className="downloads-subscribe">
-            <form className="downloads-subscribe-form">
-              <input
-                type="email"
-                placeholder="Business Email address"
-                className="downloads-email-input"
-                required
-              />
-              <button type="submit" className="downloads-subscribe-btn">Subscribe to Blog</button>
-            </form>
-          </div>
-          <div className="downloads-footer-divider"></div>
-          <div className="downloads-footer-links">
-            <div className="downloads-footer-col">
-              <h4>RESOURCES</h4>
-              <ul>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="https://docs.aidbox.app">Documentation</a></li>
-                <li><a href="/news">Release Notes</a></li>
-                <li><a href="/services">Aidbox for developers</a></li>
-                <li><a href="/fhir-api">Aidbox for EHR vendors</a></li>
-                <li><a href="/payers">Aidbox for Health Plans</a></li>
-                <li><a href="/telemedicine">Aidbox for Telemedicine</a></li>
-              </ul>
-            </div>
-            <div className="downloads-footer-col">
-              <h4>COMPANY</h4>
-              <ul>
-                <li><a href="/contacts">About Us</a></li>
-                <li><a href="/news">News</a></li>
-                <li><a href="/careers">Careers</a></li>
-                <li><a href="/fhir-meetups">FHIR Meetups</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="downloads-footer-bottom">
-            <img src="/assets/images/downloads/health-samurai-footer-logo.webp" alt="Health Samurai" className="downloads-footer-logo" />
-            <div className="downloads-footer-legal">
-              <a href="/legal/privacy-policy">Privacy Policy</a>
-              <a href="/legal/cookie-policy">Cookie Policy</a>
-            </div>
-          </div>
-        </div>
+      <div className="downloads-header-content-section">
+         
+        <h1 className="downloads-header-title">
+          Download Resources for FHIR Implementation 
+        </h1> 
+        <div className="div-block-111">
+           
+          <p className="downloads-header-p">
+            Brochures, reports, certificates, and architectural diagrams to
+            kickstart your use of the Aidbox FHIR Platform. 
+          </p> 
+          <div className="web-downloads-btngroup-header">
+             
+            <a
+              href="/contacts"
+              target="_blank"
+              className="web-downloads-btn-contactus w-button"
+            >
+              Talk to an expert 
+            </a> 
+            <a
+              id="data-platforms-signup"
+              href="/fhir-server"
+              target="_blank"
+              className="web-downloads-sbtn w-inline-block"
+            >
+               
+              <div className="web-downloads-sbtn-text">
+                Explore Aidbox 
+              </div> 
+              <img
+                src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/634d407529d4e111967296f9_rightArrow.svg"
+                loading="lazy"
+                alt="Right Arrow Icon "
+                className="web-downloads-sbtn-img"
+              /> 
+            </a> 
+          </div> 
+        </div> 
+      </div> 
+      <section className="downloads-featured-content-section">
+         
+        <div className="downloads-featured-content-div">
+           
+          <div className="w-row">
+             
+            <div className="w-col w-col-6">
+               
+              <div className="w-dyn-list">
+                 
+                <div role="list" className="w-dyn-items">
+                   
+                  <div role="listitem" className="w-dyn-item">
+                     
+                    <img
+                      alt
+                      loading="lazy"
+                      src="https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/65945223fdc40a92b3972c40_Aidbox%20Platform%20Brochure%20img.png"
+                      className="downloads-featured-section"
+                    /> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+            <div className="w-col w-col-6">
+               
+              <div className="downloads-featured-content-text">
+                 
+                <div className="w-dyn-list">
+                   
+                  <div role="list" className="w-dyn-items">
+                     
+                    <div role="listitem" className="w-dyn-item">
+                       
+                      <h3 className="downloads-feautured-content-heading">
+                        Aidbox FHIR Platform Brochure 
+                      </h3> 
+                      <p className="downloads-teaser">
+                         
+                        <a
+                          href="https://www.health-samurai.io/aidbox"
+                          target="_blank"
+                        >
+                          Aidbox FHIR server 
+                        </a> 
+                        is a developer-friendly, adaptable platform that saves
+                        months in development time on your FHIR-first healthcare
+                        solutions. <br /> <br />
+                        It offers a comprehensive suite of features including
+                        robust data storage, authentication, API services, and
+                        analytics. <br />‍ <br />
+                        Download the brochure to learn how Aidbox can help you
+                        build interoperable apps, and effectively manage vast
+                        amounts of 
+                        <a
+                          href="https://www.health-samurai.io/articles/fhir-what-is-great-what-isnt-so-good-and-what-it-is-not"
+                          target="_blank"
+                        >
+                          FHIR 
+                        </a> 
+                        data securely and efficiently. <br /> <br /> 
+                      </p> 
+                      <div className="web-downloads-btngroup">
+                         
+                        <a
+                          href="/downloads/aidbox-brochure"
+                          target="_blank"
+                          className="web-downloads-btn-featured w-button"
+                        >
+                          Download now 
+                        </a> 
+                      </div> 
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+          </div> 
+        </div> 
+      </section> 
+      <section className="downloads-content-section">
+         
+        <div className="div-block-113">
+           
+          <div className="w-dyn-list">
+             
+            <div role="list" className="w-dyn-items w-row">
+               
+              <div
+                role="listitem"
+                className="collection-item-7 w-dyn-item w-col w-col-4"
+              >
+                 
+                <div className="downloads-card">
+                   
+                  <img
+                    alt
+                    loading="lazy"
+                    src="https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6867c7b407db4eab23e9cae0_FHD%20(1).png"
+                    className="image-119"
+                  /> 
+                  <h3 className="downloads-h3">
+                    SDC (Structured Data Capture) Guide 
+                  </h3> 
+                  <p className="downloads-teaser-misc">
+                    Learn how SDC transforms healthcare data collection through
+                    intelligent and standardized forms. 
+                  </p> 
+                  <div className="web-downloads-btngroup">
+                     
+                    <a
+                      href="/downloads/sdc-guide"
+                      target="_blank"
+                      className="web-downloads-btn w-button"
+                    >
+                      Download now 
+                    </a> 
+                  </div> 
+                </div> 
+              </div> 
+              <div
+                role="listitem"
+                className="collection-item-7 w-dyn-item w-col w-col-4"
+              >
+                 
+                <div className="downloads-card">
+                   
+                  <img
+                    alt
+                    loading="lazy"
+                    src="https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/659546fd4a799af9cb365601_Aidbox%20Performance%20Report.png"
+                    className="image-119"
+                  /> 
+                  <h3 className="downloads-h3">
+                    Aidbox FHIR Platform Performance Report 
+                  </h3> 
+                  <p className="downloads-teaser-misc">
+                    Learn how Aidbox handles data import, search, and export
+                    operations in various healthcare scenarios. 
+                  </p> 
+                  <div className="web-downloads-btngroup">
+                     
+                    <a
+                      href="/downloads/aidbox-performance-report"
+                      target="_blank"
+                      className="web-downloads-btn w-button"
+                    >
+                      Download now 
+                    </a> 
+                  </div> 
+                </div> 
+              </div> 
+              <div
+                role="listitem"
+                className="collection-item-7 w-dyn-item w-col w-col-4"
+              >
+                 
+                <div className="downloads-card">
+                   
+                  <img
+                    alt
+                    loading="lazy"
+                    src="https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/65942654c2aa984922aee601_EHR%20Toolkit.png"
+                    className="image-119"
+                  /> 
+                  <h3 className="downloads-h3">
+                    EHR Development Toolkit Brochure 
+                  </h3> 
+                  <p className="downloads-teaser-misc">
+                    Build Your EHRs with the Aidbox EHR Toolkit. Customizable
+                    Modules and an EHR Implementation Project Plan. 
+                  </p> 
+                  <div className="web-downloads-btngroup">
+                     
+                    <a
+                      href="/downloads/ehr-development-toolkit-brochure"
+                      target="_blank"
+                      className="web-downloads-btn w-button"
+                    >
+                      Download now 
+                    </a> 
+                  </div> 
+                </div> 
+              </div> 
+              <div
+                role="listitem"
+                className="collection-item-7 w-dyn-item w-col w-col-4"
+              >
+                 
+                <div className="downloads-card">
+                   
+                  <img
+                    alt
+                    loading="lazy"
+                    src="https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/659426603fea8309c4cc81a5_startups%20Toolkit.png"
+                    className="image-119"
+                  /> 
+                  <h3 className="downloads-h3">
+                    Aidbox for Startups Toolkit Brochure 
+                  </h3> 
+                  <p className="downloads-teaser-misc">
+                    Discover the turnkey development toolkit to design your
+                    healthcare solution for the future. 
+                  </p> 
+                  <div className="web-downloads-btngroup">
+                     
+                    <a
+                      href="/downloads/aidbox-for-startups-toolkit-brochure"
+                      target="_blank"
+                      className="web-downloads-btn w-button"
+                    >
+                      Download now 
+                    </a> 
+                  </div> 
+                </div> 
+              </div> 
+              <div
+                role="listitem"
+                className="collection-item-7 w-dyn-item w-col w-col-4"
+              >
+                 
+                <div className="downloads-card">
+                   
+                  <img
+                    alt
+                    loading="lazy"
+                    src="https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/65942671ad8f21bac7268bc7_Aidbox%20For%20Data%20Platforms.png"
+                    className="image-119"
+                  /> 
+                  <h3 className="downloads-h3">
+                    Healthcare Data Platform Toolkit Brochure 
+                  </h3> 
+                  <p className="downloads-teaser-misc">
+                    Discover a unified space for your team to seamlessly
+                    aggregate, store, manage, and analyze FHIR data. 
+                  </p> 
+                  <div className="web-downloads-btngroup">
+                     
+                    <a
+                      href="/downloads/healthcare-data-platform-toolkit-brochure"
+                      target="_blank"
+                      className="web-downloads-btn w-button"
+                    >
+                      Download now 
+                    </a> 
+                  </div> 
+                </div> 
+              </div> 
+              <div
+                role="listitem"
+                className="collection-item-7 w-dyn-item w-col w-col-4"
+              >
+                 
+                <div className="downloads-card">
+                   
+                  <img
+                    alt
+                    loading="lazy"
+                    src="https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6594268edd9de25b7d5cd2d1_Aidbox%2B%20Cloudticity.png"
+                    className="image-119"
+                  /> 
+                  <h3 className="downloads-h3">
+                    Aidbox + Cloudticity Solution Brief 
+                  </h3> 
+                  <p className="downloads-teaser-misc">
+                    Accelerate FHIR adoption by up to 70% and reduce your
+                    infrastructure management responsibilities by 80%. 
+                  </p> 
+                  <div className="web-downloads-btngroup">
+                     
+                    <a
+                      href="/downloads/aidbox-cloudticity-solution-brief"
+                      target="_blank"
+                      className="web-downloads-btn w-button"
+                    >
+                      Download now 
+                    </a> 
+                  </div> 
+                </div> 
+              </div> 
+              <div
+                role="listitem"
+                className="collection-item-7 w-dyn-item w-col w-col-4"
+              >
+                 
+                <div className="downloads-card">
+                   
+                  <img
+                    alt
+                    loading="lazy"
+                    src="https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6594269bed3b7d26151d686d_ONC%20Cheatsheet.png"
+                    className="image-119"
+                  /> 
+                  <h3 className="downloads-h3">
+                    Standardized HL7 FHIR API for EHRs Cheatsheet 
+                  </h3> 
+                  <p className="downloads-teaser-misc">
+                    Ensure compliance with the 21st Century Cures Act with this
+                    essential cheatsheet. 
+                  </p> 
+                  <div className="web-downloads-btngroup">
+                     
+                    <a
+                      href="/downloads/standardized-hl7-fhir-api-for-ehrs-cheatsheet"
+                      target="_blank"
+                      className="web-downloads-btn w-button"
+                    >
+                      Download now 
+                    </a> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+          </div> 
+        </div> 
+      </section> 
+      <section className="downloads-video-section">
+         
+        <div className="downloads-video-div">
+           
+          <div className="w-row">
+             
+            <div className="w-col w-col-6">
+               
+              <div className="w-dyn-list">
+                 
+                <div role="list" className="w-dyn-items">
+                   
+                  <div role="listitem" className="w-dyn-item">
+                     
+                    <img
+                      alt
+                      loading="lazy"
+                      src="https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/65942fae842475cf696a41c4_AI%20in%20healthcare%20(1).png"
+                      className="downloads-video-section-2"
+                    /> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+            <div className="w-col w-col-6">
+               
+              <div className="downloads-featured-content-text">
+                 
+                <div className="w-dyn-list">
+                   
+                  <div role="list" className="w-dyn-items">
+                     
+                    <div role="listitem" className="w-dyn-item">
+                       
+                      <h3 className="downloads-video-heading">
+                        Aidbox for AI in healthcare 
+                      </h3> 
+                      <p className="downloads-video-teaser">
+                        Learn how SDC transforms healthcare data collection
+                        through intelligent and standardized forms. 
+                      </p> 
+                      <div className="web-downloads-btngroup">
+                         
+                        <a
+                          href="https://www.health-samurai.io/sdc-conference"
+                          target="_blank"
+                          className="web-downloads-btn-featured w-button"
+                        >
+                          Watch now 
+                        </a> 
+                      </div> 
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+          </div> 
+        </div> 
       </section>
     </Fragment>
   );

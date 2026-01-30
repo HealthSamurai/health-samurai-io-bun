@@ -1,65 +1,97 @@
-import { footerLinks } from "../data/navigation";
-
-type VersionInfo = { commit: string; date: string; branch?: string } | null;
-
-function getVersion(): VersionInfo {
-  try {
-    const file = Bun.file(".version.json");
-    if (file.size > 0) {
-      // Sync read for simplicity in JSX
-      const text = require("fs").readFileSync(".version.json", "utf-8");
-      return JSON.parse(text);
-    }
-  } catch {
-    // No version file - running locally
-  }
-  return null;
-}
-
 export function Footer(): string {
-  const version = getVersion();
   return (
-    <footer className="bg-[#f4f8fb] px-8 pb-5 text-[rgb(53,59,80)]">
-      <div className="mx-auto max-w-[1300px]">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1.2fr] lg:gap-12">
-          <div className="flex flex-col gap-3">
-            <a href="/" className="inline-block text-[15px] font-medium text-[#4a4a4a] border-b-2 border-primary pb-0.5">Health Samurai</a>
-            {footerLinks.company.map((link) => (
-              <a href={link.href} className="text-[15px] text-[#4a4a4a] hover:text-primary hover:underline">{link.label}</a>
-            ))}
+    <div>
+      <div className="prefooter-section_awards">
+        <div className="pre-footer-div-main">
+          <div className="footer-div-awards">
+            <img
+              src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/67d0332ca0d91f84e893638b_hippa-logo.png"
+              loading="lazy"
+              alt=""
+              className="footer-awards-grid-div-img"
+            />
+            <a
+              href="https://www.health-samurai.io/news/health-samurai-achieves-iso-27001-2022-certification"
+              className="footer-avard__link w-inline-block"
+            >
+              <img
+                src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/67d03378e6aff704b281d613_ISOMark_27001-2022%202.svg"
+                loading="lazy"
+                alt=""
+                className="footer-awards-grid-div-img"
+              />
+            </a>
           </div>
-
-          <div className="flex flex-col gap-3">
-            {footerLinks.products.map((link) => (
-              <a href={link.href} className="text-[15px] text-[#4a4a4a] hover:text-primary hover:underline">{link.label}</a>
-            ))}
-          </div>
-
-          <div className="flex flex-col gap-3">
-            {footerLinks.legal.map((link) => (
-              <a href={link.href} className="text-[15px] text-[#4a4a4a] hover:text-primary hover:underline">{link.label}</a>
-            ))}
-          </div>
-
-          <div className="flex flex-col gap-4 text-right text-[16px] text-[#333333] md:text-left lg:text-right">
-            <div>
-              1891 N Gaffey St Ste O,<br />
-              San Pedro, CA 90731
+          <div className="footer__grid">
+            <div className="footer-linkblock">
+              <a href="/" className="footer-links">Health Samurai</a>
+              <a href="/company" className="footer-links">About Us</a>
+              <a href="/careers" className="footer-links">Careers</a>
+              <a href="/news" className="footer-links">News</a>
+              <a href="/blog" className="footer-links">Blog</a>
+              <a href="/contacts" className="footer-links">Contact Us</a>
             </div>
-            <div>+1 (818) 731-1279</div>
-            <div>hello@health-samurai.io</div>
-          </div>
-        </div>
-
-        <div className="mt-8 flex flex-col items-center gap-4">
-          <img src="/assets/images/logos/health-samurai-footer.svg" alt="Health Samurai" className="h-24 w-auto opacity-15" />
-          {version && (
-            <div className="text-[12px] text-[#6b7280] font-mono">
-              {version.branch && `${version.branch}/`}{version.commit} · {new Date(version.date).toLocaleDateString()}
+            <div className="footer-linkblock">
+              <a href="/fhir-server" className="footer-links">FHIR Server</a>
+              <a href="/fhir-database" className="footer-links">Fhirbase</a>
+              <a href="https://www.health-samurai.io/services" target="_blank" className="footer-links">
+                For Developers
+              </a>
+              <a href="/payers" className="footer-links">For Health Plans</a>
+              <a href="/casestudies" className="footer-links">Case Studies</a>
+              <a href="/opensource" className="footer-links">Open Source</a>
+              <a href="/fhir-meetups" className="footer-links">Meetups</a>
             </div>
-          )}
+            <div className="footer-linkblock">
+              <a href="/legal/privacy-policy" className="footer-links">Privacy Policy</a>
+              <a href="/legal/cookie-policy" className="footer-links">Cookie Policy</a>
+            </div>
+            <div id="w-node-b8201ada-06a9-faf9-07e5-36274912e037-86da6d4e" className="prefooter-address">
+              <div className="prefooter-bodytext phone">
+                1891 N Gaffey St Ste O,<br />
+                San Pedro, CA 90731<br />
+                <span className="footer-phone">+1 (818) 731-1279 </span>
+                <br />
+                hello@health-samurai.io
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </footer>
+
+      <div className="footer-section">
+        <img
+          src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5a3041c4d877230001fc7454_hslogo-footer.svg"
+          alt="Health Samurai Company Logo"
+          className="hs-logo-footer"
+        />
+      </div>
+
+      <div className="hs-cookie-banner-section cookie-banner">
+        <div fsCc="banner" className="hs-cookie-banner-container-general">
+          <div className="hs-cookie-banner-container">
+            <p className="hs-cookies-banner-text">
+              By using this website, you agree to the storing of cookies on your device to enhance site navigation,
+              analyze site usage, and assist in our marketing efforts. View our{" "}
+              <a href="/legal/cookie-policy" rel="nofollow" target="_blank">
+                Cookie Policy
+              </a>{" "}
+              for more information.
+            </p>
+            <div className="hs-cookies-btn-group">
+              <a fsCc="open-preferences" href="#" className="hs-cookie-banner-preferences-btn w-button">
+                <span className="text-span-43">Preferences </span>
+              </a>
+              <a fsCc="deny" href="#" className="hs-cookie-banner-deny-btn deny-btn w-button">
+                Deny
+              </a>
+              <a fsCc="allow" href="#" className="hs-cookie-banner-accept-btn accept-btn w-button">
+                Accept All
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

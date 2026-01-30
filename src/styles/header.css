@@ -1,354 +1,44 @@
-/* Header - Matching health-samurai.io */
-.nb-section-fhirbase {
-  padding: 0 32px;
-  background: white;
-  border-bottom: 1px solid #eee;
-}
-
-.header {
+/* Header overrides for Webflow navigation markup */
+.nb-scroll-hidden-copy {
   position: sticky;
   top: 0;
   z-index: 1000;
   background: white;
-  box-shadow: rgba(53, 59, 80, 0.1) 0px 0px 2px 0px;
 }
 
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 65px;
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0;
+.nb-item-dropdown.w--open > .w-dropdown-list,
+.nb-item-dropdown .w-dropdown-list.w--open {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  background-color: transparent;
+  height: auto;
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  z-index: 1001;
 }
 
-.header-logo {
-  display: flex;
-  align-items: center;
+.nb-item-dropdown.w--open .nb-dropdown-toggle {
+  color: #c9362b;
 }
 
-.header-logo img {
-  height: 40px;
-  width: auto;
-}
-
-/* Navigation */
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 0;
-}
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 21px 20px;
-  font-size: 15px;
-  font-weight: 400;
-  color: #333333;
-  text-decoration: none;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  transition: color 0.15s ease;
-}
-
-.nav-link:hover,
-.nav-link--active {
-  color: var(--color-primary);
-}
-
-.nav-link-icon {
-  width: 10px;
-  height: 10px;
-  opacity: 0.5;
-  transition: transform 0.2s ease;
-}
-
-.nav-link--active .nav-link-icon {
+.nb-item-dropdown.w--open .nb-icon {
   transform: rotate(180deg);
 }
 
-/* Mega Menu - Full width dropdown */
-.mega-menu {
-  position: absolute;
-  left: 0;
-  right: 0;
-  background: #f8f9fb;
-  border-top: 1px solid #eee;
-  animation: mega-menu-in 0.2s ease;
-}
-
-@keyframes mega-menu-in {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
+/* Show mobile submenus without Webflow JS */
+@media (max-width: 991px) {
+  .nb-navbar-mobile-list .w-dropdown-list {
+    display: block;
+    position: static;
+    height: auto;
     opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.mega-menu-inner {
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding: 32px var(--container-padding);
-}
-
-.mega-menu-content {
-  display: flex;
-  gap: 40px;
-}
-
-.mega-menu-columns {
-  display: flex;
-  gap: 48px;
-  flex: 1;
-}
-
-.mega-menu-column {
-  min-width: 180px;
-}
-
-.mega-menu-category {
-  font-size: 11px;
-  font-weight: 600;
-  color: #999;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 16px;
-}
-
-.mega-menu-link {
-  display: block;
-  padding: 8px 0;
-  text-decoration: none;
-  color: #333;
-  transition: color 0.15s ease;
-}
-
-.mega-menu-link:hover,
-.mega-menu-link:hover .mega-menu-link-title {
-  color: var(--color-primary);
-}
-
-.mega-menu-link-title {
-  display: block;
-  font-size: 14px;
-  font-weight: 500;
-  color: #333;
-}
-
-.mega-menu-link-desc {
-  display: block;
-  font-size: 13px;
-  color: #666;
-  margin-top: 2px;
-  line-height: 1.4;
-}
-
-/* Mega Menu CTA Card */
-.mega-menu-cta {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  min-width: 280px;
-  padding: 24px;
-  background: white;
-  border-radius: 12px;
-  text-decoration: none;
-  transition: box-shadow 0.15s ease;
-  border: 1px solid #eee;
-}
-
-.mega-menu-cta:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-}
-
-.mega-menu-cta-content {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-}
-
-.mega-menu-cta-icon {
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
-}
-
-.mega-menu-cta-text {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.mega-menu-cta-title {
-  font-size: 15px;
-  font-weight: 600;
-  color: #333;
-}
-
-.mega-menu-cta-desc {
-  font-size: 13px;
-  color: #666;
-  line-height: 1.5;
-}
-
-.mega-menu-cta-arrow {
-  width: 24px;
-  height: 24px;
-  color: #333;
-  flex-shrink: 0;
-  margin-top: 12px;
-}
-
-/* Header CTA - Sign up button */
-.header-cta {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.btn-signup {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 24px;
-  font-size: 14px;
-  font-weight: 600;
-  color: white;
-  background-color: rgb(234, 74, 53);
-  border: none;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background-color 0.15s ease;
-}
-
-.btn-signup:hover {
-  background-color: #d43d2a;
-  color: white;
-}
-
-/* Mobile Menu Button */
-.mobile-menu-btn {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 40px;
-  height: 40px;
-  padding: 8px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.mobile-menu-btn span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: #333;
-  transition: all 0.2s ease;
-}
-
-.mobile-menu-btn--active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.mobile-menu-btn--active span:nth-child(2) {
-  opacity: 0;
-}
-
-.mobile-menu-btn--active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* Mobile Navigation */
-.mobile-nav {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: white;
-  border-top: 1px solid #eee;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  padding: 16px 0;
-  max-height: calc(100vh - 64px);
-  overflow-y: auto;
-}
-
-.mobile-nav-link {
-  display: block;
-  padding: 12px 24px;
-  font-size: 15px;
-  color: #333;
-  text-decoration: none;
-}
-
-.mobile-nav-link:hover {
-  background: #f5f5f5;
-  color: var(--color-primary);
-}
-
-.mobile-nav-link--sub {
-  padding-left: 40px;
-  font-size: 14px;
-  color: #666;
-}
-
-.mobile-nav-group {
-  border-bottom: 1px solid #eee;
-  padding-bottom: 8px;
-  margin-bottom: 8px;
-}
-
-.mobile-nav-label {
-  padding: 12px 24px 8px;
-  font-size: 11px;
-  font-weight: 600;
-  color: #999;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.mobile-nav-cta {
-  display: block;
-  margin: 16px 24px 8px;
-  padding: 14px 20px;
-  font-size: 14px;
-  font-weight: 600;
-  color: white;
-  background-color: var(--color-primary);
-  border-radius: 4px;
-  text-decoration: none;
-  text-align: center;
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .nav {
-    display: none;
+    transform: none;
   }
 
-  .header-cta .btn-signup {
-    display: none;
-  }
-
-  .mobile-menu-btn {
-    display: flex;
-  }
-}
-
-@media (max-width: 768px) {
-  .header-inner {
-    height: 66px;
-  }
-
-  .header-logo img {
-    height: 32px;
+  .nb-navbar-mobile-list .w-dropdown-toggle {
+    cursor: default;
   }
 }

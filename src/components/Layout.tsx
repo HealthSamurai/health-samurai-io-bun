@@ -38,13 +38,12 @@ export function Layout({ title, description, children, hideFooter }: LayoutProps
         <script src="https://unpkg.com/htmx.org@1.9.10"></script>
 
         {/* Datastar */}
-        <script type="module" src="/assets/js/datastar.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/gh/starfederation/datastar@1.0.0-RC.7/bundles/datastar.js"></script>
 
         {/* Favicon */}
         <link rel="icon" type="image/png" href="/assets/images/logos/aidbox-mini.svg" />
       </head>
       <body>
-        <a href="#main-content" className="skip-link">Skip to main content</a>
         <Header />
         <main id="main-content" dangerouslySetInnerHTML={{ __html: children }} />
         {!hideFooter && <Footer />}

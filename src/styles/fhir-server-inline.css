@@ -1,0 +1,65 @@
+.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}
+
+
+.w-slider-dot {
+background:#D8D8D8;
+width:10px;
+height:10px;
+margin-right: 6px;
+}
+
+.w-slider-dot.w-active {
+background:#EA4A35;
+}
+
+.w-slider-nav.w-shadow>div {
+box-shadow: none;
+}
+
+
+
+/* Blend modes */
+.mbm-normal{mix-blend-mode: normal;}
+.mbm-multiply{mix-blend-mode: multiply;}
+.mbm-screen{mix-blend-mode: screen;}
+.mbm-overlay{mix-blend-mode: overlay;}
+.mbm-darken{mix-blend-mode: darken;}
+.mbm-lighten{mix-blend-mode: lighten;}
+.mbm-color-dodge{mix-blend-mode: color-dodge}
+.mbm-color-burn{mix-blend-mode: color-burn;}
+.mbm-hard-light{mix-blend-mode: hard-light;}
+.mbm-soft-light{mix-blend-mode: soft-light;}
+.mbm-difference{mix-blend-mode: difference;}
+.mbm-exclusion{mix-blend-mode: exclusion;}
+.mbm-hue{mix-blend-mode: hue;}
+.mbm-saturation{mix-blend-mode: saturation;}
+.mbm-color{mix-blend-mode: color;}
+.mbm-luminosity{mix-blend-mode: luminosity;}
+
+
+
+ [fake-slide=true] .swiper-bullet {
+     display: none;
+ }
+ [fake-slide=true] .swiper-bullet.is-active {
+     display: inline-block;
+ }
+
+
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - 1rem));
+  }
+}
+
+.scroll {
+  animation: scroll 40s linear infinite;
+}
+
+.reverse {
+  animation-direction: reverse;
+}

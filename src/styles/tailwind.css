@@ -1,5 +1,8 @@
 @import "tailwindcss";
-@import "./webflow-fhir-server.css";
+@import "./webflow-shared.css";
+@import "./auditbox-inline.css";
+@import "./fhir-server-inline.css";
+@import "./medical-form-inline.css";
 
 /* Import existing page-specific styles */
 @import "./homepage.css";

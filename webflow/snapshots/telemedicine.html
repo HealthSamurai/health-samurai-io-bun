@@ -1,0 +1,689 @@
+<html data-wf-domain="www.health-samurai.io" data-wf-page="65e700209ec2472550459c08" data-wf-site="57441aa5da71fdf07a0a2e19" lang="en" class="w-mod-js w-mod-ix wf-opensans-n3-active wf-opensans-i3-active wf-opensans-n4-active wf-opensans-i4-active wf-opensans-n6-active wf-opensans-i6-active wf-opensans-n7-active wf-opensans-i7-active wf-opensans-n8-active wf-opensans-i8-active wf-bitter-n4-active wf-bitter-n7-active wf-bitter-i4-active wf-merriweather-n3-active wf-merriweather-i3-active wf-merriweather-n4-active wf-merriweather-i4-active wf-merriweather-n7-active wf-merriweather-i7-active wf-merriweather-n9-active wf-merriweather-i9-active wf-inconsolata-n4-active wf-inconsolata-n7-active wf-montserrat-n1-active wf-montserrat-i1-active wf-montserrat-n2-active wf-montserrat-i2-active wf-montserrat-n3-active wf-montserrat-i3-active wf-montserrat-n4-active wf-montserrat-i4-active wf-montserrat-n5-active wf-montserrat-i5-active wf-montserrat-n6-active wf-montserrat-i6-active wf-montserrat-n7-active wf-montserrat-i7-active wf-montserrat-n8-active wf-montserrat-i8-active wf-montserrat-n9-active wf-montserrat-i9-active wf-varela-n4-active wf-sourcesanspro-n2-active wf-sourcesanspro-i2-active wf-sourcesanspro-n3-active wf-sourcesanspro-i3-active wf-sourcesanspro-n4-active wf-sourcesanspro-i4-active wf-sourcesanspro-n6-active wf-sourcesanspro-i6-active wf-sourcesanspro-n7-active wf-sourcesanspro-i7-active wf-sourcesanspro-n9-active wf-sourcesanspro-i9-active wf-ptmono-n4-active wf-inter-n1-active wf-inter-n2-active wf-inter-n3-active wf-inter-n4-active wf-inter-n5-active wf-inter-n6-active wf-inter-n7-active wf-inter-n8-active wf-inter-n9-active wf-active"><head><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style><meta http-equiv="origin-trial" content="A7vZI3v+Gz7JfuRolKNM4Aff6zaGuT7X0mf3wtoZTnKv6497cVMnhy03KDqX7kBz/q/iidW7srW31oQbBt4VhgoAAACUeyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGUuY29tOjQ0MyIsImZlYXR1cmUiOiJEaXNhYmxlVGhpcmRQYXJ0eVN0b3JhZ2VQYXJ0aXRpb25pbmczIiwiZXhwaXJ5IjoxNzU3OTgwODAwLCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta charset="utf-8"><title>Let's build a customizable telemedicine FHIR platform</title><meta content="We help companies create their own telehealth solution. Our cross-functional team takes the backbone solution and modifies it for your specific business needs." name="description"><meta content="Let's build a customizable telemedicine FHIR platform" property="og:title"><meta content="We help companies create their own telehealth solution. Our cross-functional team takes the backbone solution and modifies it for your specific business needs." property="og:description"><meta content="Let's build a customizable telemedicine FHIR platform" property="twitter:title"><meta content="We help companies create their own telehealth solution. Our cross-functional team takes the backbone solution and modifies it for your specific business needs." property="twitter:description"><meta property="og:type" content="website"><meta content="summary_large_image" name="twitter:card"><meta content="width=device-width, initial-scale=1" name="viewport"><meta content="NxOEerZGhYQljvB4VrCmSlxchttElnF8uKE1rxbpLww" name="google-site-verification"><link href="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/css/health-samurai.webflow.shared.35e995b25.min.css" rel="stylesheet" type="text/css" integrity="sha384-NemVslwu5hXkuFGjj+dRvjYLpWpJaylr7+UKx22UzchjYaU13abekDVfeGu87dlY" crossorigin="anonymous"><link href="https://fonts.googleapis.com" rel="preconnect"><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous"><script type="text/javascript" crossorigin="anonymous" async="" src="https://ph.aidbox.app/static/array.js"></script><script defer="" src="https://chimpstatic.com/mcjs-connected/js/users/1c57d4d1b1aaffde230e81f34/8581bdbfa20a1f451faa6c376.js" integrity="sha512-Bv+RQoXeMipWX1pmmJZTJVNp9oaTIHNezhZpb3wqO8Ab02YfP8L5npJF5UKr4CDDZxMs+MjHXWnnHp6/+MRpNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script type="text/javascript" async="" charset="utf-8" src="https://www.gstatic.com/recaptcha/releases/N67nZn4AqZkNcbeMu4prBgzg/recaptcha__ru.js" crossorigin="anonymous" integrity="sha384-zHvpdrpklHYq4J2Sl3m27cdc0bM6U1jYSZxil+jNDQIV1rS2pamkxuTRe8QibRwT"></script><script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic%7CBitter:400,700,400italic%7CMerriweather:300,300italic,400,400italic,700,700italic,900,900italic%7CInconsolata:400,700%7CMontserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic%7CVarela:400%7CSource+Sans+Pro:200,200italic,300,300italic,regular,italic,600,600italic,700,700italic,900,900italic%7CPT+Mono:regular%7CInter:100,200,300,regular,500,600,700,800,900&amp;subset=cyrillic,cyrillic-ext,latin,latin-ext,cyrillic,cyrillic-ext,greek,greek-ext,latin,latin-ext,vietnamese" media="all"><script type="text/javascript">WebFont.load({  google: {    families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic","Bitter:400,700,400italic","Merriweather:300,300italic,400,400italic,700,700italic,900,900italic","Inconsolata:400,700","Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic","Varela:400","Source Sans Pro:200,200italic,300,300italic,regular,italic,600,600italic,700,700italic,900,900italic","PT Mono:regular:cyrillic,cyrillic-ext,latin,latin-ext","Inter:100,200,300,regular,500,600,700,800,900:cyrillic,cyrillic-ext,greek,greek-ext,latin,latin-ext,vietnamese"]  }});</script><script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script><link href="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5a2ff62247c38400019e81f3_32.png" rel="shortcut icon" type="image/x-icon"><link href="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5a2ff50e669ec50001a59b5d_health-samurai.png" rel="apple-touch-icon"><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-G1Y6RVRQGD"></script><script type="text/javascript">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('set', 'developer_id.dZGVlNj', true);gtag('js', new Date());gtag('config', 'G-G1Y6RVRQGD');</script><script src="https://www.google.com/recaptcha/api.js" type="text/javascript"></script><meta name="google-site-verification" content="vmykJbHmCZxq2U09K3rQF4jZe-ZjOhFNqJSDKLlHGXA">
+
+<style>
+.w-slider-dot {
+background:#D8D8D8;
+width:10px;
+height:10px;
+margin-right: 6px;
+}
+
+.w-slider-dot.w-active {
+background:#EA4A35;
+}
+
+.w-slider-nav.w-shadow>div {
+box-shadow: none;
+}
+</style>
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+
+<!-- Ahrefs aditional analytics -->
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="2Rp3m4FcNXNTzNXu6laFCQ" integrity="sha512-uWMKUPvxxtsptHJGcV9kC9wk7S0mhicwWYnmFb5JmfrA2Mu+9DNsK65wHu+QNVSVRWbo3COm1iPd98/t/7qgYg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- swiper -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<!--swiper-->
+<script async="" src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+<!-- JSON-LD markup generated by Google Structured Data Markup Helper. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/", 
+  "@type": "Product", 
+  "name": "Aidbox Telehealth",
+  "image": "https://assets-global.website-files.com/57441aa5da71fdf07a0a2e19/60511b291f6f2cfd21bdaea2_aidbox-scheme.svg",
+  "description": "Aidbox is a metadata-driven platform where everything is represented as data/resources that can be customized and always remain under your control. Using Aidbox provides you with: Mature and extensible modules Major FHIR versions support HIPAA safeguards Proven architecture frameworks Custom resources if FHIR is not enough Consistent performance at any scale Open source FHIR tooling on top of Aidbox",
+  "brand": {
+    "@type": "Brand",
+    "name": "Health Samurai"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "10",
+    "bestRating": "10",
+    "worstRating": "1",
+    "ratingCount": "52",
+    "reviewCount": "4"
+  },
+  "review": [{
+    "@type": "Review",
+    "name": "Customer Stories 1",
+    "reviewBody": "We evaluated many different FHIR server solutions for a high priority project at NDBH. We made the decision to use Aidbox due to its scalability, reliability, and ease of use. We have developed a great partnership with Health Samurai and appreciate the prompt, top-notch support they continue to provide to our team.",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "10",
+      "bestRating": "10",
+      "worstRating": "1"
+    },
+    "author": {"@type": "Person", "name": "Todd Stuart"},
+    "publisher": {"@type": "Organization", "name": "New Directions Behavioral Health"}
+  },{
+    "@type": "Review",
+    "name": "Customer Stories 2",
+    "reviewBody": "We chose the Aidbox solution for the implementation of our CODA19 distributed data analysis platform. This platform is spread over 8 hospitals in the province of Quebec (Canada) and requires the use of an interoperable data storage solution. Aidbox really allowed us to move quickly on the data management aspect and put our efforts on development and analysis. Its multiple features in terms of security and access control, its unique APIs and ease of implementation are major assets in the development of our solution. Health-samurai team’s ability to truly listen to our needs and being proactive were keys in building this great partnership. They always find the way to go the extra mile.",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "10",
+      "bestRating": "10",
+      "worstRating": "1"
+    },
+    "author": {"@type": "Person", "name": "Pascal St-Onge"},
+    "publisher": {"@type": "Organization", "name": "Centre de recherche du CHUM (CRCHUM)"}
+  },{
+    "@type": "Review",
+    "name": "Customer Stories 3",
+    "reviewBody": "After comparing Aidbox to the other competing products in the space, it was clear that they had the most mature product and complete implementation of the FHIR standard. The primary benefit we received from using Aidbox has been speed to market. When you work for a startup, this is extremely important. Aidbox provides us with a data layer, messaging API, terminology server, queuing system, notification system, audit logging, data validation, and document storage system allowing us to focus on developing our business logic. Additionally, their team has been able to help us take our business problems and solve them using FHIR.",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "10",
+      "bestRating": "10",
+      "worstRating": "1"
+    },
+    "author": {"@type": "Person", "name": "Rob Stokes"},
+    "publisher": {"@type": "Organization", "name": "Narus Health / Lucent Health"}
+  },{
+    "@type": "Review",
+    "name": "Customer Stories 4",
+    "reviewBody": "Health Samurai has been a dream to work with! They really helped us accomplish everything that we've been able to with the FHIR implementation, we were one of 10 organizations of 350 that were able to hit the original Interoperability deadline, and honestly, it was 100% as a result of working with HealthSamurai. They have been incredible partners, always communicative and helpful even when our data has been a total struggle. They are as interested and curious about technology as we are and they have the technical background to really make anything possible. They have also been so incredibly helpful in working with our other vendors and partners, helping the entire ecosystem of healthcare tech companies that we are working with to increase their adoption of technology and working in new ways.",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "10",
+      "bestRating": "10",
+      "worstRating": "1"
+    },
+    "author": {"@type": "Person", "name": "Kuuipo Curry"},
+    "publisher": {"@type": "Organization", "name": "VillageCare"}
+  }],
+  "offers": {
+    "@type": "Offer",
+    "name": "Aidbox Developer License",
+    "description": "Free developer license for Aidbox",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "availability": "https://schema.org/InStock",
+    "priceValidUntil": "2124-06-12"
+  }
+}
+</script>
+</head><body class="telehealth-body"><div data-w-id="5d754a33-592a-7fef-19f3-b3781cc8ba01" class="nb-section-fhirbase"><div class="nb-container"><div class="nb-left-items"><a href="/" class="nb-item-logo w-inline-block"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5a2ff50e669ec50001a59b5d_health-samurai.webp" loading="eager" width="64" height="64" alt="Health Samurai logo" class="nb-logo"></a><div data-hover="false" data-delay="0" data-w-id="5d754a33-592a-7fef-19f3-b3781cc8ba06" class="nb-item-dropdown w-dropdown"><div class="nb-dropdown-toggle w-dropdown-toggle" id="w-dropdown-toggle-0" aria-controls="w-dropdown-list-0" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0"><div class="nb-icon w-icon-dropdown-toggle" aria-hidden="true"></div><div class="nb-item-text">Products</div></div><nav class="nb-dropdown-list w-dropdown-list" id="w-dropdown-list-0" aria-labelledby="w-dropdown-toggle-0"><div class="nb-dropdown-list-container"><div class="nb-submenu-container"><div class="nb-item-list-cols w-row"><div class="nb-item-list-col w-col w-col-3"><div class="nb-item-col-title transparent">FHIR server</div><a href="/fhir-server" class="nb-item-extended w-inline-block" tabindex="0"><div class="nb-item-ext-title">FHIR Server</div><div class="nb-item-ext-desc">Powerful backend for digital health developers</div></a><a href="/fhir-database" class="nb-item-extended w-inline-block" tabindex="0"><div class="nb-item-ext-title">Fhirbase</div><div class="nb-item-ext-desc">Open source FHIR-native database for healthcare data</div></a><a href="/auditbox" class="nb-item-extended w-inline-block" tabindex="0"><div class="nb-item-ext-title">Auditbox</div><div class="nb-item-ext-desc">FHIR-native Audit Record Repository for compliance and security</div></a><a href="https://healthsamurai.github.io/formbox-renderer/" target="_blank" class="nb-item-extended w-inline-block" tabindex="0"><div class="nb-item-ext-title">Open-Source Form Renderer</div><div class="nb-item-ext-desc">Render HL7® FHIR® Questionnaires across any UI system</div></a></div><div class="nb-item-list-col w-col w-col-3"><div class="nb-item-col-title">converters</div><a href="https://www.health-samurai.io/docs/aidbox/modules/integration-toolkit/hl7-v2-integration" rel="nofollow" target="_blank" class="nb-link w-dropdown-link" tabindex="0">HL7v2 to FHIR converter</a><a href="https://www.health-samurai.io/c-cda-to-fhir-converter" target="_blank" class="nb-link w-dropdown-link" tabindex="0">C-CDA to FHIR converter</a></div><div class="nb-item-list-col w-col w-col-3"><div class="nb-item-col-title">modules</div><a href="/medical-form" class="nb-link w-dropdown-link" tabindex="0">Aidbox Forms</a><a href="https://www.health-samurai.io/docs/aidbox/terminology-module/overview" rel="nofollow" target="_blank" class="nb-link w-dropdown-link" tabindex="0">Aidbox Terminology</a><a href="https://www.health-samurai.io/docs/aidbox/modules/other-modules/mpi" rel="nofollow" target="_blank" class="nb-link w-dropdown-link" tabindex="0">Aidbox MPI</a><a href="https://www.health-samurai.io/docs/aidbox/security-and-access-control-1/overview" rel="nofollow" target="_blank" class="nb-link w-dropdown-link" tabindex="0">Auth Server</a><a href="/e-prescription-module" rel="nofollow" class="nb-link w-dropdown-link" tabindex="0">Aidbox E-Prescription</a></div><div class="nb-item-list-col w-col w-col-3"><a rel="nofollow" href="https://aidbox.app/ui/portal#/signup" target="_blank" class="nb-item-banner w-inline-block" tabindex="0"><div class="nb-banner-left"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/633ac72418675342e0eb95ee_aidbox_logo_mini.svg" loading="lazy" alt="Aidbox logo" height="48" class="nb-banner-img"><div class="nb-banner-title">Managed Aidbox</div><div class="nb-banner-desc">Get started in minutes with a fully managed Aidbox FHIR platform and modules</div></div><div class="nb-banner-right"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/634d407529d4e111967296f9_rightArrow.svg" loading="lazy" height="32" alt="Right Arrow Icon
+" class="nb-banner-arrow"></div></a></div></div></div></div></nav></div><div data-hover="false" data-delay="0" data-w-id="5d754a33-592a-7fef-19f3-b3781cc8ba39" class="nb-item-dropdown w-dropdown"><div class="nb-dropdown-toggle w-dropdown-toggle" id="w-dropdown-toggle-1" aria-controls="w-dropdown-list-1" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0"><div class="nb-icon w-icon-dropdown-toggle" aria-hidden="true"></div><div class="nb-item-text">Solutions</div></div><nav class="nb-dropdown-list w-dropdown-list" id="w-dropdown-list-1" aria-labelledby="w-dropdown-toggle-1"><div class="nb-dropdown-list-container"><div class="nb-submenu-container"><div class="nb-item-list-cols w-row"><div class="nb-item-list-col w-col w-col-3"><div class="nb-item-col-title">development</div><a href="/startups" class="nb-link w-dropdown-link" tabindex="0">Aidbox for Startups</a><a href="/healthcare-data-platform-toolkit-aidbox" class="nb-link w-dropdown-link" tabindex="0">Aidbox for Data Platforms</a><a href="/telemedicine" aria-current="page" class="nb-link w-dropdown-link w--current" tabindex="0">Telemed development toolkit</a><a href="/ehr-toolkit" class="nb-link w-dropdown-link" tabindex="0">EHR development toolkit</a></div><div class="nb-item-list-col w-col w-col-3"><div class="nb-item-col-title">Compliance</div><a href="/fhir-api" class="nb-link w-dropdown-link" tabindex="0">ONC-certified API tools for EHRs</a><a href="/payers" class="nb-link w-dropdown-link" tabindex="0">FHIR API for Payers - CMS</a><a href="/auditbox" class="nb-link w-dropdown-link" tabindex="0">Audit Record Repository</a></div><div class="nb-item-list-col w-col w-col-3"><div class="nb-item-col-title">others</div><a href="https://www.health-samurai.io/articles/aidbox-for-wearable-and-medical-devices" target="_blank" class="nb-link w-dropdown-link" tabindex="0">Aidbox for IoMT vendors</a></div><div class="nb-item-list-col w-col w-col-3"><a rel="nofollow" href="https://aws.amazon.com/marketplace/pp/prodview-l5djlpvsd6o5g" target="_blank" class="nb-item-banner w-inline-block" tabindex="0"><div class="nb-banner-left"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/633ac72418675342e0eb95ee_aidbox_logo_mini.svg" loading="lazy" alt="Aidbox logo" height="48" class="nb-banner-img"><div class="nb-banner-title">Aidbox on AWS</div><div class="nb-banner-desc">Get FHIR backend on AWS in one click.</div></div><div class="nb-banner-right"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/634d407529d4e111967296f9_rightArrow.svg" loading="lazy" height="32" alt="Right Arrow Icon
+" class="nb-banner-arrow"></div></a></div></div></div></div></nav></div><a rel="nofollow" href="/services" class="nb-item-link w-inline-block"><div class="nb-item-text">Services</div></a><div class="div-block-183"></div><div data-hover="false" data-delay="0" data-w-id="5d754a33-592a-7fef-19f3-b3781cc8ba5c" class="nb-item-dropdown w-dropdown"><div class="nb-dropdown-toggle w-dropdown-toggle" id="w-dropdown-toggle-2" aria-controls="w-dropdown-list-2" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0"><div class="nb-icon w-icon-dropdown-toggle" aria-hidden="true"></div><div class="nb-item-text">Docs &amp; Resources</div></div><nav class="nb-dropdown-list w-dropdown-list" id="w-dropdown-list-2" aria-labelledby="w-dropdown-toggle-2"><div class="nb-dropdown-list-container"><div class="nb-submenu-container"><div class="nb-item-list-cols w-row"><div class="nb-item-list-col w-col w-col-3"><div class="nb-item-col-title">Resources</div><a href="/blog" class="nb-link w-dropdown-link" tabindex="0">Blog</a><a href="/downloads" class="nb-link w-dropdown-link" tabindex="0">Downloads </a><a href="/casestudies" class="nb-link w-dropdown-link" tabindex="0">Case Studies</a><a href="/events" class="nb-link w-dropdown-link" tabindex="0">Events and Webinars</a><a href="https://www.health-samurai.io/docs/aidbox/overview/release-notes" rel="nofollow" target="_blank" class="nb-link w-dropdown-link" tabindex="0">Release Notes</a></div><div class="nb-item-list-col w-col w-col-3"><div class="nb-item-col-title">docs</div><a href="https://www.health-samurai.io/docs/aidbox/" rel="nofollow" target="_blank" class="nb-link w-dropdown-link" tabindex="0">Aidbox Docs</a><a href="https://fhirbase.aidbox.app/" rel="nofollow" target="_blank" class="nb-link w-dropdown-link" tabindex="0">Fhirbase Docs</a><a href="https://www.health-samurai.io/docs/aidbox/modules/aidbox-forms" rel="nofollow" target="_blank" class="nb-link w-dropdown-link" tabindex="0">Aidbox Forms Docs</a><a href="https://www.health-samurai.io/docs/aidbox/modules/other-modules/mpi" rel="nofollow" target="_blank" class="nb-link w-dropdown-link" tabindex="0">Aidbox MPI Docs</a><a href="https://www.health-samurai.io/docs/aidbox/terminology-module/overview" rel="nofollow" target="_blank" class="nb-link w-dropdown-link" tabindex="0">Aidbox Terminology</a></div><div class="nb-item-list-col w-col w-col-3"><div class="nb-item-col-title">community</div><a href="https://connect.health-samurai.io/" rel="nofollow" target="_blank" class="nb-link w-dropdown-link" tabindex="0">User Community</a></div><div class="nb-item-list-col w-col w-col-3"><a rel="nofollow" href="https://www.health-samurai.io/docs/aidbox/getting-started/run-aidbox-in-sandbox" target="_blank" class="nb-item-banner w-inline-block" tabindex="0"><div class="nb-banner-left"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/633ac72418675342e0eb95ee_aidbox_logo_mini.svg" loading="lazy" alt="Aidbox logo" height="48" class="nb-banner-img"><div class="nb-banner-title">Getting Started</div><div class="nb-banner-desc">Step-by-step guide on how to start with the Aidbox FHIR platform</div></div><div class="nb-banner-right"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/634d407529d4e111967296f9_rightArrow.svg" loading="lazy" height="32" alt="Right Arrow Icon
+" class="nb-banner-arrow"></div></a></div></div></div></div></nav></div><div data-hover="false" data-delay="0" data-w-id="5d754a33-592a-7fef-19f3-b3781cc8ba8f" class="nb-item-dropdown w-dropdown"><div class="nb-dropdown-toggle w-dropdown-toggle" id="w-dropdown-toggle-3" aria-controls="w-dropdown-list-3" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0"><div class="nb-icon w-icon-dropdown-toggle" aria-hidden="true"></div><div class="nb-item-text">Company</div></div><nav class="nb-dropdown-list w-dropdown-list" id="w-dropdown-list-3" aria-labelledby="w-dropdown-toggle-3"><div class="nb-dropdown-list-container"><div class="nb-submenu-container"><div class="nb-item-list-cols w-row"><div class="nb-item-list-col w-col w-col-3"><div class="nb-item-col-title">company</div><a href="/company" class="nb-link w-dropdown-link" tabindex="0">About us</a><a href="/careers" class="nb-link w-dropdown-link" tabindex="0">Careers</a><a href="/news" class="nb-link w-dropdown-link" tabindex="0">News</a><a href="/company" class="nb-link w-dropdown-link" tabindex="0">Advisory Board</a><a href="/contacts" class="nb-link w-dropdown-link" tabindex="0">Contact us</a><a href="/partners" class="nb-link w-dropdown-link" tabindex="0">Aidbox Partner Network</a></div><div class="nb-item-list-col w-col w-col-3"><div class="nb-item-col-title">follow us</div><a href="https://github.com/Aidbox" rel="nofollow" target="_blank" class="nb-link w-dropdown-link" tabindex="0">GitHub</a><a href="https://www.linkedin.com/company/6653460" rel="nofollow" target="_blank" class="nb-link w-dropdown-link" tabindex="0">LinkedIn</a><a href="https://twitter.com/health_samurai" rel="nofollow" target="_blank" class="nb-link w-dropdown-link" tabindex="0">Twitter</a><a href="https://www.facebook.com/healthsamurai/" rel="nofollow" target="_blank" class="nb-link w-dropdown-link" tabindex="0">Facebook</a><a href="https://www.crunchbase.com/organization/health-samurai" rel="nofollow" target="_blank" class="nb-link w-dropdown-link" tabindex="0">Crunchbase</a></div><div class="nb-item-list-col w-col w-col-3"><a href="/fhir-api" class="nb-item-banner w-inline-block" tabindex="0"><div class="nb-banner-left"><div class="nb-banner-title">FHIR API for EHRs</div><div class="nb-banner-desc">Enrich your EHR with a pluggable Aidbox FHIR® API module</div></div><div class="nb-banner-right"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/634d407529d4e111967296f9_rightArrow.svg" loading="lazy" height="32" alt="Right Arrow Icon
+" class="nb-banner-arrow"></div></a></div><div class="nb-item-list-col w-col w-col-3"><a href="/payers" class="nb-item-banner w-inline-block" tabindex="0"><div class="nb-banner-left"><div class="nb-banner-title">FHIR API for Payers</div><div class="nb-banner-desc">Aidbox helps health plans to comply with the CMS Interoperability rule</div></div><div class="nb-banner-right"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/634d407529d4e111967296f9_rightArrow.svg" loading="lazy" height="32" alt="Right Arrow Icon
+" class="nb-banner-arrow"></div></a></div></div></div></div></nav></div><a rel="nofollow" href="/price" class="nb-item-link w-inline-block"><div class="nb-item-text">Pricing</div></a></div><div class="nb-right-items"><a id="Sign-up-Cross-Web" rel="nofollow" href="https://aidbox.app/ui/portal#/signup" target="_blank" class="nb-btn-primary w-button">Sign up for free</a></div></div><div data-animation="default" class="nb-navbar-mobile w-nav" data-easing2="ease" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="400" data-doc-height="1"><div class="nb-container-mobile w-container"><div class="nb-mobile-subcontainer"><a href="/" class="nb-item-logo w-inline-block"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5a2ff50e669ec50001a59b5d_health-samurai.webp" alt="Health Samurai Logo" width="128" height="64" class="nb-logo"></a><div class="nb-menu-button w-nav-button" style="-webkit-user-select: text;" aria-label="menu" role="button" tabindex="0" aria-controls="w-nav-overlay-0" aria-haspopup="menu" aria-expanded="false"><div class="nb-menu-btn-icon w-icon-nav-menu"></div></div></div><nav role="navigation" class="nb-navbar-mobile-list w-nav-menu"><div data-hover="false" data-delay="0" data-w-id="5d754a33-592a-7fef-19f3-b3781cc8bad1" class="nb-mobile-dropdown w-dropdown" style="max-width: 940px;"><div class="nb-mobile-submenu-item-title w-dropdown-toggle" id="w-dropdown-toggle-4" aria-controls="w-dropdown-list-4" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0"><div class="nb-mobile-item-icon w-icon-dropdown-toggle" aria-hidden="true"></div><div class="text-block-45">Products</div></div><nav class="nb-mobile-submenu-items w-dropdown-list" id="w-dropdown-list-4" aria-labelledby="w-dropdown-toggle-4"><a href="/fhir-server" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Aidbox FHIR Server</a><a href="/fhirbase" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Fhirbase</a><a href="https://docs.aidbox.app/modules-1/hl7-v2-integration" rel="nofollow" target="_blank" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">HL7v2 to FHIR Converter</a><a href="https://www.health-samurai.io/c-cda-to-fhir-converter" target="_blank" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">C-CDA to FHIR Converter</a><a href="/medical-form" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Aidbox Forms</a><a href="https://docs.aidbox.app/modules-1/terminology" rel="nofollow" target="_blank" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Aidbox Terminology</a><a href="https://docs.aidbox.app/modules-1/mdm" rel="nofollow" target="_blank" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Aidbox MPI</a><a href="https://docs.aidbox.app/integrations/analytics" rel="nofollow" target="_blank" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Aidbox Analytics</a><a href="https://docs.aidbox.app/security-and-access-control-1/overview" rel="nofollow" target="_blank" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Auth Server</a></nav></div><div data-hover="false" data-delay="0" data-w-id="5d754a33-592a-7fef-19f3-b3781cc8bae9" class="nb-mobile-dropdown w-dropdown" style="max-width: 940px;"><div class="nb-mobile-submenu-item-title w-dropdown-toggle" id="w-dropdown-toggle-5" aria-controls="w-dropdown-list-5" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0"><div class="nb-mobile-item-icon w-icon-dropdown-toggle" aria-hidden="true"></div><div class="text-block-45">Solutions</div></div><nav class="nb-mobile-submenu-items w-dropdown-list" id="w-dropdown-list-5" aria-labelledby="w-dropdown-toggle-5"><a href="/startups" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Aidbox for Startups</a><a href="/healthcare-data-platform-toolkit-aidbox" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Aidbox for Data Platforms</a><a href="/telemedicine" aria-current="page" class="nb-mobile-submenu-item w-dropdown-link w--current" tabindex="0">Telemed development toolkit</a><a href="/ehr-toolkit" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">EHR development toolkit</a><a href="/fhir-api" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">ONC-certified API tools for EHRs</a><a href="/payers" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">FHIR API for Payers - CMS</a><a href="https://www.health-samurai.io/articles/aidbox-for-wearable-and-medical-devices" target="_blank" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Aidbox for IoMT vendors</a></nav></div><a rel="nofollow" href="/services" class="nb-item-link-mobile w-inline-block"><div class="nb-item-text-mobile">Services</div></a><div data-hover="false" data-delay="0" data-w-id="5d754a33-592a-7fef-19f3-b3781cc8baf7" class="nb-mobile-dropdown w-dropdown" style="max-width: 940px;"><div class="nb-mobile-submenu-item-title w-dropdown-toggle" id="w-dropdown-toggle-6" aria-controls="w-dropdown-list-6" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0"><div class="nb-mobile-item-icon w-icon-dropdown-toggle" aria-hidden="true"></div><div class="text-block-45">Docs &amp; Resources</div></div><nav class="nb-mobile-submenu-items w-dropdown-list" id="w-dropdown-list-6" aria-labelledby="w-dropdown-toggle-6"><a href="/blog" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Blog</a><a href="/downloads" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Downloads</a><a href="/casestudies" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Case Studies</a><a href="/events" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Events and Webinars</a><a href="https://docs.aidbox.app/overview/release-notes" rel="nofollow" target="_blank" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Release Notes</a><a href="https://github.com/Aidbox/Issues" rel="nofollow" target="_blank" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Aidbox Bug Tracker</a><a href="https://docs.aidbox.app/" rel="nofollow" target="_blank" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Aidbox Docs</a><a href="https://fhirbase.aidbox.app/" rel="nofollow" target="_blank" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Fhirbase Docs</a><a href="https://docs.aidbox.app/modules-1/aidbox-forms" rel="nofollow" target="_blank" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Aidbox Forms Docs</a><a href="https://docs.aidbox.app/modules-1/mdm" rel="nofollow" target="_blank" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Aidbox MPI Docs</a><a href="https://docs.aidbox.app/modules-1/terminology" rel="nofollow" target="_blank" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Aidbox Terminology Docs</a></nav></div><div data-hover="false" data-delay="0" data-w-id="5d754a33-592a-7fef-19f3-b3781cc8bb15" class="nb-mobile-dropdown w-dropdown" style="max-width: 940px;"><div class="nb-mobile-submenu-item-title w-dropdown-toggle" id="w-dropdown-toggle-7" aria-controls="w-dropdown-list-7" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0"><div class="nb-mobile-item-icon w-icon-dropdown-toggle" aria-hidden="true"></div><div class="text-block-45">Company</div></div><nav class="nb-mobile-submenu-items w-dropdown-list" id="w-dropdown-list-7" aria-labelledby="w-dropdown-toggle-7"><a href="/company" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">About Us</a><a href="/careers" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Careers</a><a href="/news" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">News</a><a href="/company" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Advisory Board</a><a href="/contacts" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Contact Us</a><a href="/partners" class="nb-mobile-submenu-item w-dropdown-link" tabindex="0">Aidbox Partner Network</a></nav></div><a rel="nofollow" href="/price" class="nb-item-link-mobile w-inline-block"><div class="nb-item-text-mobile">Pricing</div></a></nav></div><div class="w-nav-overlay" data-wf-ignore="" id="w-nav-overlay-0"></div></div></div><div class="hp-header-section"><div class="telemed-header-container"><div class="telemed-header-cols w-row"><div class="column-64 w-col w-col-6 w-col-stack"><a href="#telemed-request-form" class="hp-link-to-whitepaper w-inline-block"><div class="hp-label-header"><div>Aidbox Telehealth</div></div></a><h1 class="telemed-h1">Let's build a customizable telemedicine FHIR platform</h1><p class="telemed-header-desc">We help companies create their own <strong>telehealth solution</strong>. Our cross-functional team takes the <a href="#telemed-solution-components">backbone solution</a> and modifies it for your specific business needs.</p></div><div class="telemed-header-img w-col w-col-6 w-col-stack"><div id="telemed-form" ms-code-form-no-redirect="" class="telemed-request-form-block-header w-form"><form id="wf-form-Telemed-Request-2" name="wf-form-Telemed-Request" data-name="Telemed Request" action="https://telemed.d-chistoforov.workers.dev" method="post" ms-code-form-no-redirect="" class="telemed-form-container-header" data-wf-page-id="65e700209ec2472550459c08" data-wf-element-id="9e6ae305-5ea6-88a3-1e8a-020fff059d3a" aria-label="Telemed Request"><div ms-code-form-no-redirect="" class="telemed-service-form-contacts"><input class="text-field-3 w-input" maxlength="256" name="Name" data-name="Name" placeholder="Name" type="text" id="Telemed-name" required=""><input class="global-textinput text-field-4 w-input" maxlength="256" name="Company-Name" data-name="Company Name" placeholder="Company" type="text" id="Company-Name" required=""><input class="text-field-4 w-input" maxlength="256" name="Business-Email" data-name="Business Email" placeholder="Business Email" type="email" id="Business-Email" required=""><input class="text-field-5 w-input" maxlength="256" name="Phone" data-name="Phone" placeholder="Phone" type="tel" id="Telemed-phone" required=""></div><textarea id="Telemed-Request" name="Telemed-Request" maxlength="5000" data-name="Telemed Request" placeholder="Tell us about your needs or project" required="" class="textarea-2 w-input"></textarea><div data-theme="dark" data-sitekey="6LezJYorAAAAAEvrKWPmz5Z0Ek5GE0SWTgrJc9Zu" class="w-form-formrecaptcha recaptcha-5 g-recaptcha g-recaptcha-error g-recaptcha-disabled"><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" width="304" height="78" role="presentation" name="a-v0do0qjlx5gu" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LezJYorAAAAAEvrKWPmz5Z0Ek5GE0SWTgrJc9Zu&amp;co=aHR0cHM6Ly93d3cuaGVhbHRoLXNhbXVyYWkuaW86NDQz&amp;hl=ru&amp;v=N67nZn4AqZkNcbeMu4prBgzg&amp;theme=dark&amp;size=normal&amp;anchor-ms=20000&amp;execute-ms=30000&amp;cb=zupmwtd14d3"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div><div class="w-embed w-script"><script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector('form'); // замени на точный селектор формы
+
+  if (!form) return;
+
+  form.addEventListener("submit", function (e) {
+    const response = grecaptcha.getResponse();
+    if (response.length === 0) {
+      e.preventDefault();
+      e.stopImmediatePropagation(); // полностью блокируем встроенный обработчик Webflow
+      alert("Confirm that you are not a robot!");
+      return false; // финальный стоп
+    }
+  }, true); // слушаем в фазе захвата, чтобы опередить Webflow
+});
+</script></div><input type="submit" data-wait="Please wait..." class="telemed-service-btn-primary w-button" value="Let's talk"><input type="hidden" name="hutk" value=""><input type="hidden" name="ipAddress" value=""><input type="hidden" name="pageUri" value=""><input type="hidden" name="pageId" value=""><input type="hidden" name="pageName" value=""></form><div class="w-form-done" tabindex="-1" role="region" aria-label="Telemed Request success"><div>Thank you! Your submission has been received!</div></div><div class="w-form-fail" tabindex="-1" role="region" aria-label="Telemed Request failure"><div>Oops! Something went wrong while submitting the form.</div></div></div></div></div><div class="telemed-benefit-cols w-row"><div class="column-77 w-col w-col-3"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad06adca86a879786ea85b_Boilerplate.svg" loading="lazy" width="88" height="" alt="" class="telemed-benefit-icon"><div class="telemed-benefit-title">Aidbox Telehealth</div><div class="telemed-benefit-desc">Rapid development on top of the&nbsp;backbone solution with basic <br>end-to-end scenario</div></div><div class="column-78 w-col w-col-3"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad06add5b53e4e3b3572e9_Backend.svg" loading="lazy" width="88" alt="" class="telemed-benefit-icon"><div class="telemed-benefit-title">FHIR&nbsp;Backend</div><div class="telemed-benefit-desc">Ready-to-use backend based on HL7 FHIR with HIPAA eligible infrastructure</div></div><div class="column-79 w-col w-col-3"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad06af1832395d8ccdf739_Team.svg" loading="lazy" width="88" alt="" class="telemed-benefit-icon"><div class="telemed-benefit-title">Skilled Dev Team </div><div class="telemed-benefit-desc">Our cross-functional team carries out a wide range of activities from design to deployment</div></div><div class="column-80 w-col w-col-3"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad06adcbc8b413e22b3c53_Process.svg" loading="lazy" width="88" alt="" class="telemed-benefit-icon"><div class="telemed-benefit-title">Agile &amp; Lean&nbsp;Process</div><div class="telemed-benefit-desc">Weekly planning and demo allow you to influence and control development</div></div></div></div></div><div loading="lazy" class="telemed-howitworks-section"><div class="telemed-howitworks-container"><h2 class="telemed-subheader">Product Implementation</h2><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1746cbc8b480392b7c9f_timeline.svg" loading="lazy" width="720" alt="" class="telemed-timeline-img"></div></div><div id="telemed-solution-components" loading="lazy" class="telemed-section-apps"><div class="telemed-container"><h2 class="telemed-subheader">Aidbox Telehealth</h2><div class="telemed-subsection-apps-cols w-row"><div class="column-70 w-col w-col-6"><h3 class="telemed-subsection-title">Telehealth Apps</h3><p class="telemed-subsection-desc">Web (React) and mobile (ReactNative) apps provide a basic end-to-end scenario. It allows patients and practitioners to manage appointments, view PHRs, make video-calls and chat.</p><div class="telemed-section-item"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1b23aaa0833e293f1886_item.svg" loading="lazy" height="32" alt=""><p class="telemed-subsection-subtitle">Registration workflow</p></div><div class="telemed-section-item"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1b23aaa0833e293f1886_item.svg" loading="lazy" height="32" alt=""><p class="telemed-subsection-subtitle">Basic scheduling module</p></div><div class="telemed-section-item"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1b23aaa0833e293f1886_item.svg" loading="lazy" height="32" alt=""><p class="telemed-subsection-subtitle">Video calls (Integration with Twilio)</p></div><div class="telemed-section-item"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1b23aaa0833e293f1886_item.svg" loading="lazy" height="32" alt=""><p class="telemed-subsection-subtitle">Live Chat</p></div><div class="telemed-section-item"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1b23aaa0833e293f1886_item.svg" loading="lazy" height="32" alt=""><p class="telemed-subsection-subtitle">Consult Note tool for Practitioners</p></div><div class="telemed-section-item"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1b23aaa0833e293f1886_item.svg" loading="lazy" height="32" alt=""><p class="telemed-subsection-subtitle">Basic Personal Health Records (PHR)</p></div></div><div class="telemed-col-right w-col w-col-6"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad5b948c0e7c14d232febe_teledemo-gif.gif" loading="lazy" height="" width="511.5" alt="" class="image-52"></div></div></div></div><div loading="lazy" class="telemed-section-backend"><div class="telemed-container"><div class="telemed-subsection-cols w-row"><div class="telemed-col-left w-col w-col-6"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad2841668c9043e23d8a2f_Aidbox.svg" loading="lazy" height="460" width="825.5" alt="" class="image-52"></div><div class="telemed-col-right w-col w-col-6"><h3 class="telemed-subsection-title">Aidbox FHIR Backend</h3><p class="telemed-subsection-desc">Aidbox <a href="https://www.health-samurai.io/aidbox" target="_blank">FHIR server</a> is a meta-data driven platform. It means that almost everything in Aidbox is represented as data (resources) and you can configure it. For example, REST endpoints (operations), resource definitions, profiles, and access policies are resources in Aidbox.</p><div class="telemed-section-item"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1b23aaa0833e293f1886_item.svg" loading="lazy" height="32" alt=""><p class="telemed-subsection-subtitle">FHIR Storage based on PostgreSQL and JSONB</p></div><div class="telemed-section-item"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1b23aaa0833e293f1886_item.svg" loading="lazy" height="32" alt=""><p class="telemed-subsection-subtitle">FHIR REST API and API Gateway</p></div><div class="telemed-section-item"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1b23aaa0833e293f1886_item.svg" loading="lazy" height="32" alt=""><p class="telemed-subsection-subtitle">Additional APIs: SQL API, GraphQL</p></div><div class="telemed-section-item"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1b23aaa0833e293f1886_item.svg" loading="lazy" height="32" alt=""><p class="telemed-subsection-subtitle">Authorization Server: OAuth 2.0 &amp; OpenID Connect</p></div><div class="telemed-section-item"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1b23aaa0833e293f1886_item.svg" loading="lazy" height="32" alt=""><p class="telemed-subsection-subtitle">Security &amp; Access Control: Access Policies, SMART IG</p></div><div class="telemed-section-item"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1b23aaa0833e293f1886_item.svg" loading="lazy" height="32" alt=""><p class="telemed-subsection-subtitle"><a href="https://www.health-samurai.io/articles/fhir-what-is-great-what-isnt-so-good-and-what-it-is-not" target="_blank">FHIR</a> Terminology Server: ICD-10, LOINC, SNOMED CT</p></div><div class="telemed-section-item"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1b23aaa0833e293f1886_item.svg" loading="lazy" height="32" alt=""><p class="telemed-subsection-subtitle">Custom resources and FHIR/Aidbox Extensions</p></div><div class="telemed-section-item"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1b23aaa0833e293f1886_item.svg" loading="lazy" height="32" alt=""><p class="telemed-subsection-subtitle">HL7 v.2, X12 Adapters</p></div></div></div></div></div><div loading="lazy" class="telemed-section-infra"><div class="telemed-container-infra"><div class="telemed-subsection-cols telemed-ccol-switch w-row"><div class="w-col w-col-6"><h3 class="telemed-subsection-title">HIPAA Eligible Infrastructure</h3><p class="telemed-subsection-desc">Automated cloud infrastructure is built on Kubernetes (k8S) for AWS, Azure &amp; GCP and has solutions for backups, monitoring, logging. We use dev, staging, and production environments with automated CI/CD pipeline.</p><div class="telemed-section-item"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1b23aaa0833e293f1886_item.svg" loading="lazy" height="32" alt=""><p class="telemed-subsection-subtitle">Development infrastructure: Dev / Staging / Production</p></div><div class="telemed-section-item"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1b23aaa0833e293f1886_item.svg" loading="lazy" height="32" alt=""><p class="telemed-subsection-subtitle">Automated CI/CD pipeline: Drone CI / Kustomize for k8S</p></div><div class="telemed-section-item"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1b23aaa0833e293f1886_item.svg" loading="lazy" height="32" alt=""><p class="telemed-subsection-subtitle">DB Replication and Backups</p></div><div class="telemed-section-item"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1b23aaa0833e293f1886_item.svg" loading="lazy" height="32" alt=""><p class="telemed-subsection-subtitle">Monitoring based on Prometheus &amp; Grafana</p></div><div class="telemed-section-item"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1b23aaa0833e293f1886_item.svg" loading="lazy" height="32" alt=""><p class="telemed-subsection-subtitle">Audit Log based on ElasticSearch / Kibana / Grafana</p></div><div class="telemed-section-item"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad1b23aaa0833e293f1886_item.svg" loading="lazy" height="32" alt=""><p class="telemed-subsection-subtitle">File Storage to link to uploaded files</p></div></div><div class="telemed-col-right w-col w-col-6"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5fad2a80cf85541e02fa689a_Infra.svg" loading="lazy" height="460" width="825.5" alt="" class="image-52"></div></div></div></div><div loading="lazy" class="telemed-section-project-costs"><div class="telemed-container"><h2 class="telemed-subheader">Project Cost Structure</h2><div class="div-block-50"><div class="telemed-cost-item fafafa w-row"><div class="column-71 w-col w-col-1"><div class="telemed-cost-item-number telemed-bold-p">#</div></div><div class="w-col w-col-11"><div class="telemed-cost-item-desc telemed-bold-p">Pricing</div></div></div><div class="telemed-cost-item w-row"><div class="column-72 w-col w-col-1"><div class="telemed-cost-item-number">#1</div></div><div class="w-col w-col-11"><div class="telemed-cost-item-desc">Team Cost</div></div></div><div class="telemed-cost-item w-row"><div class="column-73 w-col w-col-1"><div class="telemed-cost-item-number">#2</div></div><div class="w-col w-col-11"><div class="telemed-cost-item-desc">Aidbox License fee <span class="text-span-23">*</span></div></div></div><div class="telemed-cost-item w-row"><div class="column-74 w-col w-col-1"><div class="telemed-cost-item-number">#3</div></div><div class="w-col w-col-11"><div class="telemed-cost-item-desc">Aidbox Support fee <span class="text-span-23">**</span></div></div></div><div class="telemed-cost-item w-row"><div class="column-75 w-col w-col-1"><div class="telemed-cost-item-number">#4</div></div><div class="w-col w-col-11"><div class="telemed-cost-item-desc">External Platforms fees</div></div></div><div class="telemed-cost-item w-row"><div class="column-76 w-col w-col-1"><div class="telemed-cost-item-number">#5</div></div><div class="w-col w-col-11"><div class="telemed-cost-item-desc">Cloud Infrastructure fee</div></div></div><div class="telemed-pricing-btn-column"></div><a href="#telemed-request-form" class="telemed-pricing-request-btn w-button">get pricing</a></div><div class="telemed-cost-item-notes">You don't have to pay for the license and support fee as long as Health Samurai is engaged in a development contract.<br><span class="text-span-24">*</span> - Aidbox License fee / if we don’t have an active development contract<br><span class="text-span-25">**</span> - Aidbox Support fee / if we don’t have an active development contract</div></div></div><div loading="lazy" class="telemed-clients-section"><div class="hp-offer-container"><h2 class="telemed-subheader">Trusted by</h2><div class="hp-clients-line w-row"><div class="hp-client-column w-col w-col-2 w-col-stack"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5b994108bd293e89e8dba7a9_narus.webp" width="190" alt="" loading="lazy" class="hp-client-logo"></div><div class="hp-client-column w-col w-col-2 w-col-stack"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5baa47449a52153187b29c0b_metroderm-logo.webp" width="149.5" alt="" loading="lazy" class="hp-client-logo"></div><div class="hp-client-column w-col w-col-2 w-col-stack"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5baa001b96725b4a8b3e60f7_uhn-logo.webp" width="320" alt="" loading="lazy" class="hp-client-logo"></div><div class="hp-client-column w-col w-col-2 w-col-stack"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5baa47e8db34508c0ab1a890_bodylogic-logo.webp" width="424" alt="" loading="lazy" class="hp-client-logo"></div><div class="hp-client-column w-col w-col-2 w-col-stack"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5ece16fd1757d398f7783bd2_logoynhh2x.webp" width="152" alt="" loading="lazy" class="hp-client-logo"></div><div class="hp-client-column w-col w-col-2 w-col-stack"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5ece176edaf78c184754a72b_bestnotes.webp" width="170.5" alt="" loading="lazy" class="hp-client-logo"></div></div></div></div><div loading="lazy" class="hp-casestudies-section hs-new-case"><div class="hp-offer-container"><h2 class="hp-subheader">Case Studies</h2><div class="explore__wrp"><div data-current="Tab 1" data-easing="ease" data-duration-in="0" data-duration-out="0" class="hs-tab__wrp w-tabs"><div class="hs-tab__menu w-tab-menu" role="tablist"><a data-w-tab="Tab 1" class="hs-tab__link w-inline-block w-tab-link w--current" id="w-tabs-0-data-w-tab-0" href="#w-tabs-0-data-w-pane-0" role="tab" aria-controls="w-tabs-0-data-w-pane-0" aria-selected="true"><img loading="lazy" src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/66bb64ecc3d84de30d0dcd21_Icon.svg" alt="" class="hs-tab__icon"><div><span class="mobile">Data </span>platforms</div></a><a data-w-tab="Tab 2" class="hs-tab__link w-inline-block w-tab-link" tabindex="-1" id="w-tabs-0-data-w-tab-1" href="#w-tabs-0-data-w-pane-1" role="tab" aria-controls="w-tabs-0-data-w-pane-1" aria-selected="false"><img loading="lazy" src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/66bb64ec4e626f8c3a5edb7c_Icon-1.svg" alt="" class="hs-tab__icon"><div>EHR</div></a><a data-w-tab="Tab 3" class="hs-tab__link w-inline-block w-tab-link" tabindex="-1" id="w-tabs-0-data-w-tab-2" href="#w-tabs-0-data-w-pane-2" role="tab" aria-controls="w-tabs-0-data-w-pane-2" aria-selected="false"><img loading="lazy" src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/66bb64ec61851e31b2b83524_Icon-2.svg" alt="" class="hs-tab__icon"><div>CDS</div></a><a data-w-tab="Tab 4" class="hs-tab__link w-inline-block w-tab-link" tabindex="-1" id="w-tabs-0-data-w-tab-3" href="#w-tabs-0-data-w-pane-3" role="tab" aria-controls="w-tabs-0-data-w-pane-3" aria-selected="false"><img loading="lazy" src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/66bb64eeac8ea42647f50f5c_Icon-4.svg" alt="" class="hs-tab__icon"><div>Telehealth</div></a><a data-w-tab="Tab 5" class="hs-tab__link w-inline-block w-tab-link" tabindex="-1" id="w-tabs-0-data-w-tab-4" href="#w-tabs-0-data-w-pane-4" role="tab" aria-controls="w-tabs-0-data-w-pane-4" aria-selected="false"><img loading="lazy" src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/66bb64ec52e20b3dc69cbd25_Icon-3.svg" alt="" class="hs-tab__icon"><div>PHR</div></a></div><div class="hs-tab__content w-tab-content"><div data-w-tab="Tab 1" class="hs-tab__pane w-tab-pane w--tab-active" id="w-tabs-0-data-w-pane-0" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-0"><div class="slider__wrp"><div class="slider-main_component"><div class="swiper is-slider-tabs"><div class="swiper-wrapper is-slider-tabs"><div class="swiper-slide is-slider-main"><div class="hs-tab__content-inner"><a href="#" class="hs-tab__video w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog"><div class="hs-video-play__wrp"><img width="275" loading="lazy" alt="" src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/66bb7ff4cc01961f08b45273_innovacer.avif" class="video-logo innovaccer"><div class="play-btn__wrp"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 58 60" fill="none" class="icon-play"><path d="M28.0441 1.05531C28.6715 0.684734 29.4508 0.684733 30.0782 1.05531L53.0903 14.6468C53.6995 15.0065 54.0732 15.6614 54.0732 16.3688V43.6312C54.0732 44.3386 53.6995 44.9935 53.0903 45.3532L30.0782 58.9447C29.4508 59.3153 28.6715 59.3153 28.0441 58.9447L5.03198 45.3532C4.42283 44.9935 4.04907 44.3386 4.04907 43.6312V16.3688C4.04907 15.6614 4.42283 15.0065 5.03198 14.6468L28.0441 1.05531Z" fill="currentColor"></path><path d="M23.2617 20.7348C23.2617 19.945 24.1342 19.4669 24.7999 19.892L39.31 29.1572C39.9258 29.5504 39.9258 30.4497 39.31 30.8429L24.7999 40.1081C24.1342 40.5331 23.2617 40.055 23.2617 39.2653V20.7348Z" fill="currentColor" class="play"></path></svg><div class="play-txt">Play video</div></div></div><script type="application/json" class="w-json">{
+  "items": [
+    {
+      "url": "https://youtube.com/watch?v=sfhtqP_KsQI",
+      "originalUrl": "https://youtube.com/watch?v=sfhtqP_KsQI",
+      "width": 940,
+      "height": 528,
+      "thumbnailUrl": "https://i.ytimg.com/vi/sfhtqP_KsQI/hqdefault.jpg",
+      "html": "<iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FsfhtqP_KsQI%3Ffeature%3Doembed&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DsfhtqP_KsQI&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FsfhtqP_KsQI%2Fhqdefault.jpg&key=96f1f04c5f4143bcb0f2e68c87d65feb&type=text%2Fhtml&schema=youtube\" width=\"940\" height=\"528\" scrolling=\"no\" title=\"YouTube embed\" frameborder=\"0\" allow=\"autoplay; fullscreen; encrypted-media; picture-in-picture;\" allowfullscreen=\"true\"></iframe>",
+      "type": "video"
+    }
+  ],
+  "group": ""
+}</script></a><div class="hs-content__txt-wrp"><p class="hs-content__txt"><strong>Innovaccer is developing a data platform for value-based care, using FHIR for storing healthcare data. </strong><br><br>They work with large volumes of data and need a FHIR backend that can handle FHIR data with good performance at scale. They chose Aidbox after completing a POC (Proof of Concept) project where they loaded 10 TB of FHIR data into Aidbox and optimized it to handle 120 FHIR queries running under 100 ms each. <br><br>Aidbox was running on AWS Aurora with 8, 16, and 32 CPU configurations, demonstrating up to 5,000 requests per second.<br>‍<br><a href="https://www.health-samurai.io/news/innovaccer-chooses-aidbox-to-drive-interoperability-for-the-1-data-platform-for-value-based-healthcare?ysclid=lz13j7i54f409471228" target="_blank" class="hs-content__txt-link">Full story</a></p></div></div></div><div class="swiper-slide is-slider-main"><div class="hs-tab__content-inner"><a href="#" class="hs-tab__video w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog"><img loading="lazy" src="https://cdn.prod.website-files.com/img/placeholder-thumb.svg" alt="" class="hs-tab__vid-img"><div class="hs-video-play__wrp"><img width="275" loading="lazy" alt="" src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/66bb7ff416c4d9b733dfa7be_rhapsody.avif" class="video-logo"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 58 60" fill="none" class="icon-play"><path d="M28.0441 1.05531C28.6715 0.684734 29.4508 0.684733 30.0782 1.05531L53.0903 14.6468C53.6995 15.0065 54.0732 15.6614 54.0732 16.3688V43.6312C54.0732 44.3386 53.6995 44.9935 53.0903 45.3532L30.0782 58.9447C29.4508 59.3153 28.6715 59.3153 28.0441 58.9447L5.03198 45.3532C4.42283 44.9935 4.04907 44.3386 4.04907 43.6312V16.3688C4.04907 15.6614 4.42283 15.0065 5.03198 14.6468L28.0441 1.05531Z" fill="currentColor"></path><path d="M23.2617 20.7348C23.2617 19.945 24.1342 19.4669 24.7999 19.892L39.31 29.1572C39.9258 29.5504 39.9258 30.4497 39.31 30.8429L24.7999 40.1081C24.1342 40.5331 23.2617 40.055 23.2617 39.2653V20.7348Z" fill="currentColor" class="play"></path></svg></div><script type="application/json" class="w-json">{
+  "items": [],
+  "group": ""
+}</script></a><div class="hs-content__txt-wrp"><p class="hs-content__txt"><strong>Rhapsody is a developer of best-in-class interface engines, CorePoint and Rhapsody, which are used for exchanging HL7 v2 data by hundreds of organizations worldwide. <br></strong>‍<br>They needed to support the next generation of healthcare interoperability standards and APIs based on FHIR, and chose Aidbox as part of their new Healthcare API gateway solution. <br><br>They successfully implemented the API gateway for a province in Canada that shares FHIR data for several million patients.<br>‍<br><a href="https://www.health-samurai.io/casestudies" target="_blank" class="hs-content__txt-link">Full story</a></p></div></div></div></div><div class="fs-slider_navigation"><div class="swiper-bullet-wrapper"><div class="swiper-bullet is-active"></div><div class="swiper-bullet"></div></div></div></div><div class="fs-slider_navigation"><button class="fs-slider_button swiper-prev"><div class="icon-arrow w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 9 15" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.89649 1.72388L1.89648 7.72388L7.89648 13.7239" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg></div><div class="txt__arrow"><span class="mobile">Previous</span> <span class="desc">story</span></div></button><div class="btn__bg"><div class="center__frame"><a href="/aidbox#run" class="hs-new-button bold w-inline-block"><div>Try Aidbox for free</div></a></div></div><button class="fs-slider_button right swiper-next"><div class="txt__arrow"><span class="mobile">Next</span> <span class="desc">story</span></div><div class="icon-arrow w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 9 15" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M1.51562 13.0128L7.51562 7.01282L1.51562 1.01282" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg></div></button></div></div></div></div><div data-w-tab="Tab 2" class="hs-tab__pane w-tab-pane" id="w-tabs-0-data-w-pane-1" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-1"><div class="slider__wrp"><div class="slider-main_component"><div class="swiper is-slider-tabs"><div class="swiper-wrapper is-slider-tabs"><div class="swiper-slide is-slider-main"><div class="hs-tab__content-inner"><a href="#" class="hs-tab__video w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog"><div class="hs-video-play__wrp"><img width="275" loading="lazy" alt="" src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/66bb63a235b8a68070ffea83_narus.png" class="video-logo"><div class="play-btn__wrp"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 58 60" fill="none" class="icon-play"><path d="M28.0441 1.05531C28.6715 0.684734 29.4508 0.684733 30.0782 1.05531L53.0903 14.6468C53.6995 15.0065 54.0732 15.6614 54.0732 16.3688V43.6312C54.0732 44.3386 53.6995 44.9935 53.0903 45.3532L30.0782 58.9447C29.4508 59.3153 28.6715 59.3153 28.0441 58.9447L5.03198 45.3532C4.42283 44.9935 4.04907 44.3386 4.04907 43.6312V16.3688C4.04907 15.6614 4.42283 15.0065 5.03198 14.6468L28.0441 1.05531Z" fill="currentColor"></path><path d="M23.2617 20.7348C23.2617 19.945 24.1342 19.4669 24.7999 19.892L39.31 29.1572C39.9258 29.5504 39.9258 30.4497 39.31 30.8429L24.7999 40.1081C24.1342 40.5331 23.2617 40.055 23.2617 39.2653V20.7348Z" fill="currentColor" class="play"></path></svg><div class="play-txt">Play video</div></div></div><script type="application/json" class="w-json">{
+  "items": [
+    {
+      "url": "https://youtube.com/watch?v=6PQWvkVDXmU",
+      "originalUrl": "https://youtube.com/watch?v=6PQWvkVDXmU",
+      "width": 940,
+      "height": 528,
+      "thumbnailUrl": "https://i.ytimg.com/vi/6PQWvkVDXmU/hqdefault.jpg",
+      "html": "<iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2F6PQWvkVDXmU%3Ffeature%3Doembed&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D6PQWvkVDXmU&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2F6PQWvkVDXmU%2Fhqdefault.jpg&key=96f1f04c5f4143bcb0f2e68c87d65feb&type=text%2Fhtml&schema=youtube\" width=\"940\" height=\"528\" scrolling=\"no\" title=\"YouTube embed\" frameborder=\"0\" allow=\"autoplay; fullscreen; encrypted-media; picture-in-picture;\" allowfullscreen=\"true\"></iframe>",
+      "type": "video"
+    }
+  ],
+  "group": ""
+}</script></a><div class="hs-content__txt-wrp"><p class="hs-content__txt"><strong>Leveraging many Aidbox features to address various backend concerns — including infrastructure, database, API, and terminology, they launched in six months with a five-engineer team. <br></strong><br>The company swiftly scaled to 300 enterprise clients and was later acquired by Lucent Health, growing its client base to 3,000 across various states.<br><br><a href="https://www.health-samurai.io/casestudies" target="_blank" class="hs-content__txt-link">Full story</a></p></div></div></div><div class="swiper-slide is-slider-main"><div class="hs-tab__content-inner"><a href="#" class="hs-tab__video w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog"><img loading="lazy" src="https://cdn.prod.website-files.com/img/placeholder-thumb.svg" alt="" class="hs-tab__vid-img"><div class="hs-video-play__wrp"><img width="275" loading="lazy" alt="" src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/66bb7ff470a0544a70d06346_bestnotes.avif" class="video-logo"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 58 60" fill="none" class="icon-play"><path d="M28.0441 1.05531C28.6715 0.684734 29.4508 0.684733 30.0782 1.05531L53.0903 14.6468C53.6995 15.0065 54.0732 15.6614 54.0732 16.3688V43.6312C54.0732 44.3386 53.6995 44.9935 53.0903 45.3532L30.0782 58.9447C29.4508 59.3153 28.6715 59.3153 28.0441 58.9447L5.03198 45.3532C4.42283 44.9935 4.04907 44.3386 4.04907 43.6312V16.3688C4.04907 15.6614 4.42283 15.0065 5.03198 14.6468L28.0441 1.05531Z" fill="currentColor"></path><path d="M23.2617 20.7348C23.2617 19.945 24.1342 19.4669 24.7999 19.892L39.31 29.1572C39.9258 29.5504 39.9258 30.4497 39.31 30.8429L24.7999 40.1081C24.1342 40.5331 23.2617 40.055 23.2617 39.2653V20.7348Z" fill="currentColor" class="play"></path></svg></div><script type="application/json" class="w-json">{
+  "items": [
+    {
+      "url": "https://youtube.com/watch?v=VCd7iqkA8U4",
+      "originalUrl": "https://youtube.com/watch?v=VCd7iqkA8U4",
+      "width": 940,
+      "height": 528,
+      "thumbnailUrl": "https://i.ytimg.com/vi/VCd7iqkA8U4/hqdefault.jpg",
+      "html": "<iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FVCd7iqkA8U4%3Ffeature%3Doembed&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DVCd7iqkA8U4&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FVCd7iqkA8U4%2Fhqdefault.jpg&key=96f1f04c5f4143bcb0f2e68c87d65feb&type=text%2Fhtml&schema=youtube\" width=\"940\" height=\"528\" scrolling=\"no\" title=\"YouTube embed\" frameborder=\"0\" allow=\"autoplay; fullscreen; encrypted-media; picture-in-picture;\" allowfullscreen=\"true\"></iframe>",
+      "type": "video"
+    }
+  ],
+  "group": ""
+}</script></a><div class="hs-content__txt-wrp"><p class="hs-content__txt"><strong>BestNotes is a successful behavioral health EHR company from Idaho that serves 2,000 practices. <br></strong><br>They wanted to modernize their EHR and build a cloud-based, multi-tenant SaaS EHR with a modern web UI and enhanced functionality. To make it future-proof, they decided to go with FHIR on the backend and looked for a FHIR-based backend that would provide enough flexibility to develop a full-blown EHR. They discovered Aidbox and loved it for its support of custom resources, SQL API, and easy multi-tenancy. <br><br>BestNotes builts the next generation of their EHR on top of Aidbox as its sole backend and are now migrating their clients to the new solution<br><br><a href="https://www.health-samurai.io/casestudies" target="_blank" class="hs-content__txt-link">Full story</a></p></div></div></div><div class="swiper-slide is-slider-main"><div class="hs-tab__content-inner"><a href="#" class="hs-tab__video w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog"><img loading="lazy" src="https://cdn.prod.website-files.com/img/placeholder-thumb.svg" alt="" class="hs-tab__vid-img"><div class="hs-video-play__wrp"><img width="275" loading="lazy" alt="" src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/66bb7ff4a15ba5b8e3779e40_solutio.avif" class="video-logo solutio"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 58 60" fill="none" class="icon-play"><path d="M28.0441 1.05531C28.6715 0.684734 29.4508 0.684733 30.0782 1.05531L53.0903 14.6468C53.6995 15.0065 54.0732 15.6614 54.0732 16.3688V43.6312C54.0732 44.3386 53.6995 44.9935 53.0903 45.3532L30.0782 58.9447C29.4508 59.3153 28.6715 59.3153 28.0441 58.9447L5.03198 45.3532C4.42283 44.9935 4.04907 44.3386 4.04907 43.6312V16.3688C4.04907 15.6614 4.42283 15.0065 5.03198 14.6468L28.0441 1.05531Z" fill="currentColor"></path><path d="M23.2617 20.7348C23.2617 19.945 24.1342 19.4669 24.7999 19.892L39.31 29.1572C39.9258 29.5504 39.9258 30.4497 39.31 30.8429L24.7999 40.1081C24.1342 40.5331 23.2617 40.055 23.2617 39.2653V20.7348Z" fill="currentColor" class="play"></path></svg></div><script type="application/json" class="w-json">{
+  "items": [
+    {
+      "url": "https://youtube.com/watch?v=MlzNybl3cV0",
+      "originalUrl": "https://youtube.com/watch?v=MlzNybl3cV0",
+      "width": 940,
+      "height": 528,
+      "thumbnailUrl": "https://i.ytimg.com/vi/MlzNybl3cV0/hqdefault.jpg",
+      "html": "<iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FMlzNybl3cV0%3Ffeature%3Doembed&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DMlzNybl3cV0&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FMlzNybl3cV0%2Fhqdefault.jpg&key=96f1f04c5f4143bcb0f2e68c87d65feb&type=text%2Fhtml&schema=youtube\" width=\"940\" height=\"528\" scrolling=\"no\" title=\"YouTube embed\" frameborder=\"0\" allow=\"autoplay; fullscreen; encrypted-media; picture-in-picture;\" allowfullscreen=\"true\"></iframe>",
+      "type": "video"
+    }
+  ],
+  "group": ""
+}</script></a><div class="hs-content__txt-wrp"><p class="hs-content__txt"><strong>Solutio is a German company specializing in management software for dentists, serving approximately 4,000 dental practices.<br></strong><br>Solutio hires Aidbox to modernize their dental EHR system, aiming to enhance interoperability with FHIR standard. The transition to Aidbox will enable Solutio to comply with German healthcare legislation and potentially expand the market.<br><br><a href="https://www.health-samurai.io/casestudies" target="_blank" class="hs-content__txt-link">Full story</a></p></div></div></div></div><div class="fs-slider_navigation"><div class="swiper-bullet-wrapper"><div class="swiper-bullet"></div><div class="swiper-bullet is-active"></div></div></div></div><div class="fs-slider_navigation"><button class="fs-slider_button swiper-prev"><div class="icon-arrow w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 9 15" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.89649 1.72388L1.89648 7.72388L7.89648 13.7239" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg></div><div class="txt__arrow"><span class="mobile">Previous</span> <span class="desc">story</span></div></button><div class="btn__bg"><div class="center__frame"><a href="/aidbox#run" class="hs-new-button bold w-inline-block"><div>Try Aidbox for free</div></a></div></div><button class="fs-slider_button right swiper-next"><div class="txt__arrow"><span class="mobile">Next</span> <span class="desc">story</span></div><div class="icon-arrow w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 9 15" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M1.51562 13.0128L7.51562 7.01282L1.51562 1.01282" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg></div></button></div></div></div></div><div data-w-tab="Tab 3" class="hs-tab__pane w-tab-pane" id="w-tabs-0-data-w-pane-2" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-2"><div class="slider__wrp"><div class="slider-main_component"><div class="swiper is-slider-tabs"><div class="swiper-wrapper is-slider-tabs"><div class="swiper-slide is-slider-main"><div class="hs-tab__content-inner"><a href="#" class="hs-tab__video w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog"><div class="hs-video-play__wrp"><img width="275" loading="lazy" alt="" src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/66bb7ff4483522792dac4de1_prenosis.avif" class="video-logo prenosis"><div class="play-btn__wrp"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 58 60" fill="none" class="icon-play"><path d="M28.0441 1.05531C28.6715 0.684734 29.4508 0.684733 30.0782 1.05531L53.0903 14.6468C53.6995 15.0065 54.0732 15.6614 54.0732 16.3688V43.6312C54.0732 44.3386 53.6995 44.9935 53.0903 45.3532L30.0782 58.9447C29.4508 59.3153 28.6715 59.3153 28.0441 58.9447L5.03198 45.3532C4.42283 44.9935 4.04907 44.3386 4.04907 43.6312V16.3688C4.04907 15.6614 4.42283 15.0065 5.03198 14.6468L28.0441 1.05531Z" fill="currentColor"></path><path d="M23.2617 20.7348C23.2617 19.945 24.1342 19.4669 24.7999 19.892L39.31 29.1572C39.9258 29.5504 39.9258 30.4497 39.31 30.8429L24.7999 40.1081C24.1342 40.5331 23.2617 40.055 23.2617 39.2653V20.7348Z" fill="currentColor" class="play"></path></svg><div class="play-txt">Play video</div></div></div><script type="application/json" class="w-json">{
+  "items": [
+    {
+      "url": "https://youtube.com/watch?v=4i-RwgiJaPc",
+      "originalUrl": "https://youtube.com/watch?v=4i-RwgiJaPc",
+      "width": 940,
+      "height": 528,
+      "thumbnailUrl": "https://i.ytimg.com/vi/4i-RwgiJaPc/hqdefault.jpg",
+      "html": "<iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2F4i-RwgiJaPc%3Ffeature%3Doembed&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D4i-RwgiJaPc&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2F4i-RwgiJaPc%2Fhqdefault.jpg&key=96f1f04c5f4143bcb0f2e68c87d65feb&type=text%2Fhtml&schema=youtube\" width=\"940\" height=\"528\" scrolling=\"no\" title=\"YouTube embed\" frameborder=\"0\" allow=\"autoplay; fullscreen; encrypted-media; picture-in-picture;\" allowfullscreen=\"true\"></iframe>",
+      "type": "video"
+    }
+  ],
+  "group": ""
+}</script></a><div class="hs-content__txt-wrp"><p class="hs-content__txt"><strong>Prenosis is a health tech innovator that leverages its ImmunixTM - precision medicine platform and the Sepsis ImmunoScoreTM - the first ever FDA authorized AI Diagnostic for Sepsis for the diagnosis of sepsis and the prediction of adverse outcomes.<br></strong><br>Prenosis chose Aidbox for its scalable and extensible FHIR backend, enhancing their AI platform's ability to efficiently predict sepsis through seamless integration with their ML algorithms.<br>‍<br><a href="https://www.health-samurai.io/news/prenosis-receives-barda-contract-for-its-sepsis-diagnostic-tool-based-on-aidbox?ysclid=lz149lwlma550362211" target="_blank" class="hs-content__txt-link">Full story</a></p></div></div></div><div class="swiper-slide is-slider-main"><div class="hs-tab__content-inner"><a href="#" class="hs-tab__video w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog"><img loading="lazy" src="https://cdn.prod.website-files.com/img/placeholder-thumb.svg" alt="" class="hs-tab__vid-img"><div class="hs-video-play__wrp"><img width="275" loading="lazy" alt="" src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/66bb7ff45a8c3e14c9a7e24d_medflow.avif" class="video-logo"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 58 60" fill="none" class="icon-play"><path d="M28.0441 1.05531C28.6715 0.684734 29.4508 0.684733 30.0782 1.05531L53.0903 14.6468C53.6995 15.0065 54.0732 15.6614 54.0732 16.3688V43.6312C54.0732 44.3386 53.6995 44.9935 53.0903 45.3532L30.0782 58.9447C29.4508 59.3153 28.6715 59.3153 28.0441 58.9447L5.03198 45.3532C4.42283 44.9935 4.04907 44.3386 4.04907 43.6312V16.3688C4.04907 15.6614 4.42283 15.0065 5.03198 14.6468L28.0441 1.05531Z" fill="currentColor"></path><path d="M23.2617 20.7348C23.2617 19.945 24.1342 19.4669 24.7999 19.892L39.31 29.1572C39.9258 29.5504 39.9258 30.4497 39.31 30.8429L24.7999 40.1081C24.1342 40.5331 23.2617 40.055 23.2617 39.2653V20.7348Z" fill="currentColor" class="play"></path></svg></div><script type="application/json" class="w-json">{
+  "items": [
+    {
+      "url": "https://youtube.com/watch?v=QMZACcFT-jc",
+      "originalUrl": "https://youtube.com/watch?v=QMZACcFT-jc",
+      "width": 940,
+      "height": 528,
+      "thumbnailUrl": "https://i.ytimg.com/vi/QMZACcFT-jc/hqdefault.jpg",
+      "html": "<iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FQMZACcFT-jc%3Ffeature%3Doembed&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DQMZACcFT-jc&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FQMZACcFT-jc%2Fhqdefault.jpg&key=96f1f04c5f4143bcb0f2e68c87d65feb&type=text%2Fhtml&schema=youtube\" width=\"940\" height=\"528\" scrolling=\"no\" title=\"YouTube embed\" frameborder=\"0\" allow=\"autoplay; fullscreen; encrypted-media; picture-in-picture;\" allowfullscreen=\"true\"></iframe>",
+      "type": "video"
+    }
+  ],
+  "group": ""
+}</script></a><div class="hs-content__txt-wrp"><p class="hs-content__txt"><strong>Medflow is a population health tool designed by physicians to enhance cross-platform care workflows, integrating EHR and HIE with a FHIR foundation to streamline care pathways and reduce IT system complexity.<br></strong><br>MedFlow has selected Aidbox to enhance their data management capabilities with the FHIR database, enabling the storage of integrated and standardized external EHR data. This selection facilitates the automation of custom patient care and financial analytics workflows.<br><br><a href="https://www.health-samurai.io/casestudies" target="_blank" class="hs-content__txt-link">Full story</a></p></div></div></div></div><div class="fs-slider_navigation"><div class="swiper-bullet-wrapper"><div class="swiper-bullet"></div><div class="swiper-bullet is-active"></div></div></div></div><div class="fs-slider_navigation"><button class="fs-slider_button swiper-prev"><div class="icon-arrow w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 9 15" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.89649 1.72388L1.89648 7.72388L7.89648 13.7239" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg></div><div class="txt__arrow"><span class="mobile">Previous</span> <span class="desc">story</span></div></button><div class="btn__bg"><div class="center__frame"><a href="/aidbox#run" class="hs-new-button bold w-inline-block"><div>Try Aidbox for free</div></a></div></div><button class="fs-slider_button right swiper-next"><div class="txt__arrow"><span class="mobile">Next</span> <span class="desc">story</span></div><div class="icon-arrow w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 9 15" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M1.51562 13.0128L7.51562 7.01282L1.51562 1.01282" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg></div></button></div></div></div></div><div data-w-tab="Tab 4" class="hs-tab__pane w-tab-pane" id="w-tabs-0-data-w-pane-3" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-3"><div class="slider__wrp"><div fake-slide="true" class="slider-main_component"><div fake-slide="true" class="swiper is-slider-tabs"><div class="swiper-wrapper is-slider-tabs"><div class="swiper-slide is-slider-main"><div class="hs-tab__content-inner"><a href="#" class="hs-tab__video w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog"><div class="hs-video-play__wrp"><img width="275" loading="lazy" alt="" src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/66bb7ff42f1c2befa722cb52_willow.avif" class="video-logo willow"><div class="play-btn__wrp"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 58 60" fill="none" class="icon-play"><path d="M28.0441 1.05531C28.6715 0.684734 29.4508 0.684733 30.0782 1.05531L53.0903 14.6468C53.6995 15.0065 54.0732 15.6614 54.0732 16.3688V43.6312C54.0732 44.3386 53.6995 44.9935 53.0903 45.3532L30.0782 58.9447C29.4508 59.3153 28.6715 59.3153 28.0441 58.9447L5.03198 45.3532C4.42283 44.9935 4.04907 44.3386 4.04907 43.6312V16.3688C4.04907 15.6614 4.42283 15.0065 5.03198 14.6468L28.0441 1.05531Z" fill="currentColor"></path><path d="M23.2617 20.7348C23.2617 19.945 24.1342 19.4669 24.7999 19.892L39.31 29.1572C39.9258 29.5504 39.9258 30.4497 39.31 30.8429L24.7999 40.1081C24.1342 40.5331 23.2617 40.055 23.2617 39.2653V20.7348Z" fill="currentColor" class="play"></path></svg><div class="play-txt">Play video</div></div></div><script type="application/json" class="w-json">{
+  "items": [
+    {
+      "url": "https://youtube.com/watch?v=SkLq-F_73oU",
+      "originalUrl": "https://youtube.com/watch?v=SkLq-F_73oU",
+      "width": 940,
+      "height": 528,
+      "thumbnailUrl": "https://i.ytimg.com/vi/SkLq-F_73oU/hqdefault.jpg",
+      "html": "<iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FSkLq-F_73oU%3Ffeature%3Doembed&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DSkLq-F_73oU&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FSkLq-F_73oU%2Fhqdefault.jpg&key=96f1f04c5f4143bcb0f2e68c87d65feb&type=text%2Fhtml&schema=youtube\" width=\"940\" height=\"528\" scrolling=\"no\" title=\"YouTube embed\" frameborder=\"0\" allow=\"autoplay; fullscreen; encrypted-media; picture-in-picture;\" allowfullscreen=\"true\"></iframe>",
+      "type": "video"
+    }
+  ],
+  "group": ""
+}</script></a><div class="hs-content__txt-wrp"><p class="hs-content__txt"><strong>Willowglade Technologies is a US tech company known for its patient-centric care coordination solutions for oncology and chronic conditions.<br></strong><br>Willowglade employed Aidbox to achieve ONC compliance and enhance interoperability of their ‘Personal Health Navigator’ patient portal with EHR systems<br><br><a href="https://www.health-samurai.io/news/willowglade-technologies-achieves-onc-compliance-with-the-assistance-of-aidbox-certified-tools" target="_blank" class="hs-content__txt-link">Full story</a></p></div></div></div><div class="swiper-slide is-slider-main"><div class="hs-tab__content-inner"><a href="#" class="hs-tab__video w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog"><div class="hs-video-play__wrp"><img width="275" loading="lazy" alt="" src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/66bb7ff42f1c2befa722cb52_willow.avif" class="video-logo willow"><div class="play-btn__wrp"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 58 60" fill="none" class="icon-play"><path d="M28.0441 1.05531C28.6715 0.684734 29.4508 0.684733 30.0782 1.05531L53.0903 14.6468C53.6995 15.0065 54.0732 15.6614 54.0732 16.3688V43.6312C54.0732 44.3386 53.6995 44.9935 53.0903 45.3532L30.0782 58.9447C29.4508 59.3153 28.6715 59.3153 28.0441 58.9447L5.03198 45.3532C4.42283 44.9935 4.04907 44.3386 4.04907 43.6312V16.3688C4.04907 15.6614 4.42283 15.0065 5.03198 14.6468L28.0441 1.05531Z" fill="currentColor"></path><path d="M23.2617 20.7348C23.2617 19.945 24.1342 19.4669 24.7999 19.892L39.31 29.1572C39.9258 29.5504 39.9258 30.4497 39.31 30.8429L24.7999 40.1081C24.1342 40.5331 23.2617 40.055 23.2617 39.2653V20.7348Z" fill="currentColor" class="play"></path></svg><div class="play-txt">Play video</div></div></div><script type="application/json" class="w-json">{
+  "items": [
+    {
+      "url": "https://youtube.com/watch?v=SkLq-F_73oU",
+      "originalUrl": "https://youtube.com/watch?v=SkLq-F_73oU",
+      "width": 940,
+      "height": 528,
+      "thumbnailUrl": "https://i.ytimg.com/vi/SkLq-F_73oU/hqdefault.jpg",
+      "html": "<iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FSkLq-F_73oU%3Ffeature%3Doembed&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DSkLq-F_73oU&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FSkLq-F_73oU%2Fhqdefault.jpg&key=96f1f04c5f4143bcb0f2e68c87d65feb&type=text%2Fhtml&schema=youtube\" width=\"940\" height=\"528\" scrolling=\"no\" title=\"YouTube embed\" frameborder=\"0\" allow=\"autoplay; fullscreen; encrypted-media; picture-in-picture;\" allowfullscreen=\"true\"></iframe>",
+      "type": "video"
+    }
+  ],
+  "group": ""
+}</script></a><div class="hs-content__txt-wrp"><p class="hs-content__txt"><strong>Willowglade Technologies is a US tech company known for its patient-centric care coordination solutions for oncology and chronic conditions.<br></strong><br>Willowglade employed Aidbox to achieve ONC compliance and enhance interoperability of their ‘Personal Health Navigator’ patient portal with EHR systems<br><br><a href="https://www.health-samurai.io/news/willowglade-technologies-achieves-onc-compliance-with-the-assistance-of-aidbox-certified-tools" target="_blank" class="hs-content__txt-link">Full story</a></p></div></div></div></div><div class="fs-slider_navigation"><div class="swiper-bullet-wrapper"><div class="swiper-bullet"></div><div class="swiper-bullet is-active"></div></div></div></div><div class="fs-slider_navigation"><button class="fs-slider_button swiper-prev"><div class="icon-arrow w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 9 15" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.89649 1.72388L1.89648 7.72388L7.89648 13.7239" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg></div><div class="txt__arrow"><span class="mobile">Previous</span> <span class="desc">story</span></div></button><div class="btn__bg"><div class="center__frame"><a href="/aidbox#run" class="hs-new-button bold w-inline-block"><div>Try Aidbox for free</div></a></div></div><button class="fs-slider_button right swiper-next"><div class="txt__arrow"><span class="mobile">Next</span> <span class="desc">story</span></div><div class="icon-arrow w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 9 15" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M1.51562 13.0128L7.51562 7.01282L1.51562 1.01282" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg></div></button></div></div></div></div><div data-w-tab="Tab 5" class="hs-tab__pane w-tab-pane" id="w-tabs-0-data-w-pane-4" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-4"><div class="slider__wrp"><div fake-slide="true" class="slider-main_component"><div fake-slide="true" class="swiper is-slider-tabs"><div class="swiper-wrapper is-slider-tabs"><div class="swiper-slide is-slider-main"><div class="hs-tab__content-inner"><a href="#" class="hs-tab__video w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog"><div class="hs-video-play__wrp"><img width="275" loading="lazy" alt="" src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/66bb7ff37ab675d943eba3d8_patients.avif" class="video-logo"><div class="play-btn__wrp"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 58 60" fill="none" class="icon-play"><path d="M28.0441 1.05531C28.6715 0.684734 29.4508 0.684733 30.0782 1.05531L53.0903 14.6468C53.6995 15.0065 54.0732 15.6614 54.0732 16.3688V43.6312C54.0732 44.3386 53.6995 44.9935 53.0903 45.3532L30.0782 58.9447C29.4508 59.3153 28.6715 59.3153 28.0441 58.9447L5.03198 45.3532C4.42283 44.9935 4.04907 44.3386 4.04907 43.6312V16.3688C4.04907 15.6614 4.42283 15.0065 5.03198 14.6468L28.0441 1.05531Z" fill="currentColor"></path><path d="M23.2617 20.7348C23.2617 19.945 24.1342 19.4669 24.7999 19.892L39.31 29.1572C39.9258 29.5504 39.9258 30.4497 39.31 30.8429L24.7999 40.1081C24.1342 40.5331 23.2617 40.055 23.2617 39.2653V20.7348Z" fill="currentColor" class="play"></path></svg><div class="play-txt">Play video</div></div></div><script type="application/json" class="w-json">{
+  "items": [
+    {
+      "url": "https://youtube.com/watch?v=PibKTwL-Jig",
+      "originalUrl": "https://youtube.com/watch?v=PibKTwL-Jig",
+      "width": 940,
+      "height": 528,
+      "thumbnailUrl": "https://i.ytimg.com/vi/PibKTwL-Jig/hqdefault.jpg",
+      "html": "<iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FPibKTwL-Jig%3Ffeature%3Doembed&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DPibKTwL-Jig&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FPibKTwL-Jig%2Fhqdefault.jpg&key=96f1f04c5f4143bcb0f2e68c87d65feb&type=text%2Fhtml&schema=youtube\" width=\"940\" height=\"528\" scrolling=\"no\" title=\"YouTube embed\" frameborder=\"0\" allow=\"autoplay; fullscreen; encrypted-media; picture-in-picture;\" allowfullscreen=\"true\"></iframe>",
+      "type": "video"
+    }
+  ],
+  "group": ""
+}</script></a><div class="hs-content__txt-wrp"><p class="hs-content__txt"><strong>‍</strong><strong>PatientsKnowBest is a PHR (Personal Health Record) technology vendor for the NHS that serves 15 million users, which is more than a quarter of the United Kingdom population.<br></strong><br>It is the first PHR to be integrated with the UK NHS network. They rebuilt their technology with a FHIR-native approach and not only used Aidbox for the backend but also built their patient portal UI using Aidbox Forms. <br><br>Every non-FHIR data source receives its dedicated FHIR server for data normalization. Normalized data is then aggregated to a global regional FHIR server, which harmonizes data from several FHIR servers into a clean longitudinal medical record.<br><br><a href="https://www.health-samurai.io/news/patients-know-best-chooses-aidbox-to-drive-interoperability-for-its-uk-based-phr" target="_blank" class="hs-content__txt-link">Full story</a></p></div></div></div><div class="swiper-slide is-slider-main"><div class="hs-tab__content-inner"><a href="#" class="hs-tab__video w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog"><div class="hs-video-play__wrp"><img width="275" loading="lazy" alt="" src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/66bb7ff37ab675d943eba3d8_patients.avif" class="video-logo"><div class="play-btn__wrp"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 58 60" fill="none" class="icon-play"><path d="M28.0441 1.05531C28.6715 0.684734 29.4508 0.684733 30.0782 1.05531L53.0903 14.6468C53.6995 15.0065 54.0732 15.6614 54.0732 16.3688V43.6312C54.0732 44.3386 53.6995 44.9935 53.0903 45.3532L30.0782 58.9447C29.4508 59.3153 28.6715 59.3153 28.0441 58.9447L5.03198 45.3532C4.42283 44.9935 4.04907 44.3386 4.04907 43.6312V16.3688C4.04907 15.6614 4.42283 15.0065 5.03198 14.6468L28.0441 1.05531Z" fill="currentColor"></path><path d="M23.2617 20.7348C23.2617 19.945 24.1342 19.4669 24.7999 19.892L39.31 29.1572C39.9258 29.5504 39.9258 30.4497 39.31 30.8429L24.7999 40.1081C24.1342 40.5331 23.2617 40.055 23.2617 39.2653V20.7348Z" fill="currentColor" class="play"></path></svg><div class="play-txt">Play video</div></div></div><script type="application/json" class="w-json">{
+  "items": [
+    {
+      "url": "https://youtube.com/watch?v=PibKTwL-Jig",
+      "originalUrl": "https://youtube.com/watch?v=PibKTwL-Jig",
+      "width": 940,
+      "height": 528,
+      "thumbnailUrl": "https://i.ytimg.com/vi/PibKTwL-Jig/hqdefault.jpg",
+      "html": "<iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FPibKTwL-Jig%3Ffeature%3Doembed&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DPibKTwL-Jig&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FPibKTwL-Jig%2Fhqdefault.jpg&key=96f1f04c5f4143bcb0f2e68c87d65feb&type=text%2Fhtml&schema=youtube\" width=\"940\" height=\"528\" scrolling=\"no\" title=\"YouTube embed\" frameborder=\"0\" allow=\"autoplay; fullscreen; encrypted-media; picture-in-picture;\" allowfullscreen=\"true\"></iframe>",
+      "type": "video"
+    }
+  ],
+  "group": ""
+}</script></a><div class="hs-content__txt-wrp"><p class="hs-content__txt"><strong>‍</strong><strong>PatientsKnowBest is a PHR (Personal Health Record) technology vendor for the NHS that serves 15 million users, which is more than a quarter of the United Kingdom population.<br></strong><br>It is the first PHR to be integrated with the UK NHS network. They rebuilt their technology with a FHIR-native approach and not only used Aidbox for the backend but also built their patient portal UI using Aidbox Forms. <br><br>Every non-FHIR data source receives its dedicated FHIR server for data normalization. Normalized data is then aggregated to a global regional FHIR server, which harmonizes data from several FHIR servers into a clean longitudinal medical record.<br><br><a href="https://www.health-samurai.io/news/patients-know-best-chooses-aidbox-to-drive-interoperability-for-its-uk-based-phr" target="_blank" class="hs-content__txt-link">Full story</a></p></div></div></div></div><div class="fs-slider_navigation"><div class="swiper-bullet-wrapper"><div class="swiper-bullet"></div><div class="swiper-bullet is-active"></div></div></div></div><div class="fs-slider_navigation"><button class="fs-slider_button swiper-prev"><div class="icon-arrow w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 9 15" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M7.89649 1.72388L1.89648 7.72388L7.89648 13.7239" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg></div><div class="txt__arrow"><span class="mobile">Previous</span> <span class="desc">story</span></div></button><div class="btn__bg"><div class="center__frame"><a href="/aidbox#run" class="hs-new-button bold w-inline-block"><div>Try Aidbox for free</div></a></div></div><button class="fs-slider_button right swiper-next"><div class="txt__arrow"><span class="mobile">Next</span> <span class="desc">story</span></div><div class="icon-arrow w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 9 15" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
+<path d="M1.51562 13.0128L7.51562 7.01282L1.51562 1.01282" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg></div></button></div></div></div></div></div></div></div></div></div><div id="telemed-request-form" loading="lazy" class="telemed-request-form-section"><div class="telemed-form-container w-container"><div id="payers-form" class="telemed-request-form-block w-form"><h2 class="telemed-request-form-h2">Start a conversation with us</h2><p class="telemed-section-desc-p">Please fill out this form and we'll be in touch shortly<br></p><form id="wf-form-Telemed-Request" name="wf-form-Telemed-Request" data-name="Telemed Request" method="get" data-webflow-hubspot-api-form-url="https://hubspotonwebflow.com/api/forms/d0738b4c-7818-4f01-9965-11da0e8f1b9a" class="telemed-request-form" data-wf-page-id="65e700209ec2472550459c08" data-wf-element-id="a61d92c3-b75f-3578-690d-71ed71e8e204" aria-label="Telemed Request"><div class="telemed-form"><label for="Name-8" class="telemed-form-label">Name</label><input class="text-field-6 w-input" data-wfhsfieldname="name" maxlength="256" name="Name" data-name="Name" placeholder="" type="text" id="Name-8" required=""><label for="Email" class="telemed-form-label">Email</label><input class="text-field-7 w-input" data-wfhsfieldname="email" maxlength="256" name="Email" data-name="Email" placeholder="" type="email" id="Email" required=""><label for="Phone-2" class="telemed-form-label">Phone</label><input class="text-field-8 w-input" data-wfhsfieldname="phone" maxlength="256" name="Phone" data-name="Phone" placeholder="" type="tel" id="Telemed-phone-2" required=""><label for="Telemed-Request" class="telemed-form-label">Tell us about your needs or project</label><textarea class="textarea-3 w-input" data-wfhsfieldname="Tell-us-about-your-needs-or-project" maxlength="5000" name="Telemed-Request" data-name="Telemed Request" placeholder="" id="Telemed-Request-2" required=""></textarea></div><div data-sitekey="6LezJYorAAAAAEvrKWPmz5Z0Ek5GE0SWTgrJc9Zu" class="w-form-formrecaptcha g-recaptcha g-recaptcha-error g-recaptcha-disabled"><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" width="304" height="78" role="presentation" name="a-4p7c1m5t94gu" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LezJYorAAAAAEvrKWPmz5Z0Ek5GE0SWTgrJc9Zu&amp;co=aHR0cHM6Ly93d3cuaGVhbHRoLXNhbXVyYWkuaW86NDQz&amp;hl=ru&amp;v=N67nZn4AqZkNcbeMu4prBgzg&amp;size=normal&amp;anchor-ms=20000&amp;execute-ms=30000&amp;cb=z9ro4rlc1lj5"></iframe></div><textarea id="g-recaptcha-response-1" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;"></iframe></div><input type="submit" data-wait="Please wait..." class="telemed-btn-primary w-button" value="Let's talk"><input type="hidden" name="hutk" value=""><input type="hidden" name="ipAddress" value=""><input type="hidden" name="pageUri" value=""><input type="hidden" name="pageId" value=""><input type="hidden" name="pageName" value=""></form><div class="w-form-done" tabindex="-1" role="region" aria-label="Telemed Request success"><div>Thank you! Your submission has been received!</div></div><div class="w-form-fail" tabindex="-1" role="region" aria-label="Telemed Request failure"><div>Oops! Something went wrong while submitting the form.</div></div></div></div></div><div class="prefooter-section_awards"><div class="pre-footer-div-main"><div class="footer-div-awards"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/67d0332ca0d91f84e893638b_hippa-logo.png" loading="lazy" alt="" class="footer-awards-grid-div-img"><a href="https://www.health-samurai.io/news/health-samurai-achieves-iso-27001-2022-certification" class="footer-avard__link w-inline-block"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/67d03378e6aff704b281d613_ISOMark_27001-2022%202.svg" loading="lazy" alt="" class="footer-awards-grid-div-img"></a></div><div class="footer__grid"><div class="footer-linkblock"><a href="/" class="footer-links">Health Samurai</a><a href="/company" class="footer-links">About Us</a><a href="/careers" class="footer-links">Careers</a><a href="/news" class="footer-links">News</a><a href="/blog" class="footer-links">Blog</a><a href="/contacts" class="footer-links">Contact Us</a></div><div class="footer-linkblock"><a href="/fhir-server" class="footer-links">FHIR Server</a><a href="/fhir-database" class="footer-links">Fhirbase</a><a href="https://www.health-samurai.io/services" target="_blank" class="footer-links">For Developers</a><a href="/payers" class="footer-links">For Health Plans</a><a href="/casestudies" class="footer-links">Case Studies</a><a href="/opensource" class="footer-links">Open Source</a><a href="/fhir-meetups" class="footer-links">Meetups</a></div><div class="footer-linkblock"><a href="/legal/privacy-policy" class="footer-links">Privacy Policy</a><a href="/legal/cookie-policy" class="footer-links">Cookie Policy</a></div><div id="w-node-b8201ada-06a9-faf9-07e5-36274912e037-86da6d4e" class="prefooter-address"><div class="prefooter-bodytext phone">1891 N Gaffey St Ste O, <br>San Pedro, CA 90731<br><span class="footer-phone">+1 (818) 731-1279 </span><br>hello@health-samurai.io</div></div></div></div></div><div class="footer-section"><img src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5a3041c4d877230001fc7454_hslogo-footer.svg" alt="Health Samurai Company Logo" class="hs-logo-footer"></div><div class="hs-cookie-banner-section cookie-banner"><div fs-cc="banner" class="hs-cookie-banner-container-general"><div class="hs-cookie-banner-container"><p class="hs-cookies-banner-text">By using this website, you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts. View our <a href="/legal/cookie-policy" rel="nofollow" target="_blank">Cookie Policy</a> for more information.</p><div class="hs-cookies-btn-group"><a fs-cc="open-preferences" href="#" class="hs-cookie-banner-preferences-btn w-button"><span class="text-span-43">Preferences</span></a><a fs-cc="deny" href="#" class="hs-cookie-banner-deny-btn deny-btn w-button">Deny</a><a fs-cc="allow" href="#" class="hs-cookie-banner-accept-btn accept-btn w-button">Accept All</a></div></div></div></div><script type="text/javascript" crossorigin="anonymous" src="https://ph.aidbox.app/static/surveys.js?v=1.336.2"></script><script type="text/javascript" crossorigin="anonymous" src="https://ph.aidbox.app/array/phc_uO4ImMUxOljaWPDRr7lWu9TYpBrpIs4R1RwLu8uLRmx/config.js"></script><script type="text/javascript" crossorigin="anonymous" src="https://ph.aidbox.app/static/exception-autocapture.js?v=1.336.2"></script><script type="text/javascript" crossorigin="anonymous" src="https://ph.aidbox.app/static/dead-clicks-autocapture.js?v=1.336.2"></script><script type="text/javascript" crossorigin="anonymous" src="https://ph.aidbox.app/static/posthog-recorder.js?v=1.336.2"></script><script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=57441aa5da71fdf07a0a2e19" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/js/webflow.schunk.36b8fb49256177c8.js" type="text/javascript" integrity="sha384-4abIlA5/v7XaW1HMXKBgnUuhnjBYJ/Z9C1OSg4OhmVw9O3QeHJ/qJqFBERCDPv7G" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/js/webflow.1e1080c7.ca7aa9e6bba60820.js" type="text/javascript" integrity="sha384-cNjZ3hHEitA2dXmkagLIWMxAn9Gb01C3Y4w2fXJm3OCMQJvMX8Ihze0PlZwL1l+u" crossorigin="anonymous"></script><script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" integrity="sha512-I8FiouJolRcptYDlA1rWyplpz8xc5YoiCBe5EudrOL5sKcPKdoDLToGYhj2Vpy6mW9Bv9xibXIR15MHOUBrqsQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- Google Tag Manager -->
+<script>
+  var GTMCode="GTM-PMS5LG2",GTMLoaded=!1;
+  function loadGTM(){
+    if(!GTMLoaded){
+      GTMLoaded=!0;
+      var e,a,t,o,d,r="script",s="dataLayer";
+      e=window,a=document,t=GTMCode,
+      e[s]=e[s]||[],
+      e[s].push({"gtm.start":new Date().getTime(),event:"gtm.js"}),
+      o=a.getElementsByTagName(r)[0],
+      d=a.createElement(r),
+      d.async=!0,
+      d.src="https://www.googletagmanager.com/gtm.js?id="+t+("dataLayer"!=s?"&l="+s:""),
+      d.integrity="sha512-2EsonYD59eeCxAm037J5nCFzylhTMbVaRxQvcrWaDbNt/px2W4JA3lPKIL4FMwGTN6BJAkNkODICA2CgcbNJxA==",
+      d.crossOrigin="anonymous",
+      d.referrerPolicy="no-referrer",
+      o.parentNode.insertBefore(d,o)
+    }
+  }
+  $(window).one("scroll touchstart mousemove",loadGTM);
+</script>
+<!-- End Google Tag Manager -->
+
+
+<!-- PostHog -->
+<script>
+   !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init Ie Ts Ms Ee Es Rs capture Ge calculateEventProperties Os register register_once register_for_session unregister unregister_for_session js getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ds Fs createPersonProfile Ls Ps opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing Cs debug I As getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+
+// List of domains to track
+var TRACKED_DOMAINS = [
+    'health-samurai.io',
+    'health-samurai.ru',
+    'aidbox.app',
+    'fhir.ru',
+    'fhirstarter.com',
+    'docs.aidbox.app',
+    'form-builder.aidbox.app',
+    'sqlonfhir.aidbox.app'
+];
+
+(function(){
+    // Check for PostHog tracking parameters in URL
+    var initPostHogWithParams = function() {
+        try {
+            var urlParams = new URLSearchParams(window.location.search);
+            var sessionId = urlParams.get('_phsi');
+            var distinctId = urlParams.get('_phdi');
+            var posthogParams = {
+                api_host: 'https://ph.aidbox.app',
+                defaults: '2025-05-24',
+                person_profiles: 'identified_only',
+            };
+
+            if (sessionId && distinctId && typeof posthog !== 'undefined') {
+                posthogParams.bootstrap = {
+                    sessionID: sessionId,
+                    distinctID: distinctId
+                }
+            };
+
+            posthog.init("phc_uO4ImMUxOljaWPDRr7lWu9TYpBrpIs4R1RwLu8uLRmx", posthogParams);
+
+        } catch(e) {return;}
+    };
+
+    var initTracking = function() {
+        if(typeof posthog === 'undefined') return;
+
+        var handleClick = function(e) {
+            var target = e.target.closest('a');
+            if(!target || !target.href) return;
+            try {
+                var url = new URL(target.href);
+                if(!TRACKED_DOMAINS.includes(url.hostname)) return;
+                if(url.hostname === window.location.hostname) return;
+
+                var sessionId = posthog.get_session_id();
+                var distinctId = posthog.get_distinct_id();
+
+                if(sessionId && distinctId) {
+                    url.searchParams.set('_phsi', sessionId);
+                    url.searchParams.set('_phdi', distinctId);
+                }
+                target.href = url.toString();
+            } catch(e) {return;}
+        };
+
+        document.addEventListener('click', handleClick);
+    };
+
+    // Initialize both tracking features
+    if(document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            initPostHogWithParams();
+            initTracking();
+        });
+    } else {
+        initPostHogWithParams();
+        initTracking();
+    }
+})();
+
+</script>
+<!-- End PostHog -->
+
+<!-- Page URL attribute for Articles (noscript) -->
+<script async=""> $('#current-page').val(location.href); </script>
+<!-- End Page URL attribute for Articles (noscript)  -->
+
+<!-- Mailchimp Ads Remarketing -->
+<script id="mcjs">
+!function(c,h,i,m,p){
+  m = c.createElement(h),
+  p = c.getElementsByTagName(h)[0],
+  m.defer = 1,
+  m.src = i,
+  m.integrity = "sha512-Bv+RQoXeMipWX1pmmJZTJVNp9oaTIHNezhZpb3wqO8Ab02YfP8L5npJF5UKr4CDDZxMs+MjHXWnnHp6/+MRpNA==",
+  m.crossOrigin = "anonymous",
+  m.referrerPolicy = "no-referrer",
+  p.parentNode.insertBefore(m,p)
+}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1c57d4d1b1aaffde230e81f34/8581bdbfa20a1f451faa6c376.js");
+</script>
+<!-- End Mailchimp Ads Remarketing -->
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Find all forms on the page
+    const forms = document.querySelectorAll('form');
+    
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            // Get form data
+            const formData = new FormData(form);
+            let formDataObject = {};
+            
+            // Convert FormData to a regular object
+            formData.forEach((value, key) => {
+                formDataObject[key] = value;
+            });
+            
+            // Send event to PostHog
+            posthog.capture('form_submitted', {
+                form_id: form.id || 'unnamed_form',
+                form_name: form.getAttribute('name') || 'unnamed_form',
+                form_data: formDataObject,
+                page_url: window.location.href,
+                page_title: document.title
+            });
+
+            const email = formDataObject['EMAIL'] || formDataObject['Email-Address'] || formDataObject['Email'] || formDataObject['Email-7'] || formDataObject['Business-Email'];
+            formDataObject.email = email;
+            posthog.identify( email, formDataObject);
+        })
+    });
+});
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js" integrity="sha512-p6WYJTHuxed+f/KWE3K/4So9GFfk8tngrQhiNJJ4fCfjVM2D5Uo932g/868uCc0wymKatIk0JBni0StIJznq4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+
+window.addEventListener('DOMContentLoaded', function() {
+  
+
+  var cookieConsentName = 'user_cookie_consent';
+  var cookieBannerClosed = 'cookie_banner_closed';
+  
+
+  var cookieBanner = document.querySelector('.cookie-banner');
+  
+
+  if (!cookieBanner) return;
+  
+  if (Cookies.get(cookieConsentName) || Cookies.get(cookieBannerClosed)) {
+
+    cookieBanner.style.display = 'none';
+    return;
+  }
+  
+
+  var acceptButtons = cookieBanner.querySelectorAll('.accept-btn');
+  acceptButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+
+      Cookies.set(cookieConsentName, 'accepted', { expires: 365, path: '/' });
+      
+
+      Cookies.set(cookieBannerClosed, 'true', { expires: 365, path: '/' });
+      
+
+      cookieBanner.style.display = 'none';
+      
+      window.location.reload(); 
+
+
+    });
+  });
+  
+
+  var denyButtons = cookieBanner.querySelectorAll('.deny-btn');
+  denyButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+
+      Cookies.set(cookieConsentName, 'denied', { expires: 30, path: '/' });
+      
+
+      Cookies.set(cookieBannerClosed, 'true', { expires: 30, path: '/' });
+      
+
+      cookieBanner.style.display = 'none';
+      
+      var cookiesToRemove = ['_ga', '_gid', '_fbp', '_gat'];
+      cookiesToRemove.forEach(function(cookie) {
+        Cookies.remove(cookie, { path: '/' });
+      });
+      
+    });
+  });
+  
+});
+
+
+function getCookieConsentStatus() {
+  return Cookies.get('user_cookie_consent'); 
+}
+</script>
+<!-- 💙 MEMBERSCRIPT #126 v0.1 💙 - POST FORM DATA TO WEBHOOK WITHOUT REDIRECTING -->
+<script>
+  // Wait for the DOM to be fully loaded
+  document.addEventListener('DOMContentLoaded', function() {
+    // Select all forms with the ms-code-form-no-redirect attribute
+    const forms = document.querySelectorAll('form[ms-code-form-no-redirect]');
+
+    forms.forEach(form => {
+      // Select the success and error message elements for this form
+      const formWrapper = form.closest('.w-form');
+      const successMessage = formWrapper.querySelector('.w-form-done');
+      const errorMessage = formWrapper.querySelector('.w-form-fail');
+
+      // Add submit event listener to the form
+      form.addEventListener('submit', function(event) {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        // Get the form data
+        const formData = new FormData(form);
+
+        // Get the submit button and set its text to the waiting message
+        const submitButton = form.querySelector('input[type="submit"], button[type="submit"]');
+        const originalButtonText = submitButton.value || submitButton.textContent;
+        const waitingText = submitButton.getAttribute('data-wait') || 'Please wait...';
+
+        if (submitButton.tagName === 'INPUT') {
+          submitButton.value = waitingText;
+        } else {
+          submitButton.textContent = waitingText;
+        }
+
+        // Disable the submit button
+        submitButton.disabled = true;
+
+        // Send the form data to the form's action URL using fetch
+        fetch(form.action, {
+          method: 'POST',
+          body: formData
+        })
+          .then(response => {
+            if (response.ok) {
+              // If the submission was successful, show the success message
+              form.style.display = 'none';
+              successMessage.style.display = 'block';
+              errorMessage.style.display = 'none';
+            } else {
+              // If there was an error, show the error message
+              throw new Error('Form submission failed');
+            }
+          })
+          .catch(error => {
+            // If there was a network error or the submission failed, show the error message
+            console.error('Error:', error);
+            errorMessage.style.display = 'block';
+            successMessage.style.display = 'none';
+          })
+          .finally(() => {
+            // Reset the submit button text and re-enable it
+            if (submitButton.tagName === 'INPUT') {
+              submitButton.value = originalButtonText;
+            } else {
+              submitButton.textContent = originalButtonText;
+            }
+            submitButton.disabled = false;
+          });
+      });
+    });
+  });
+</script>
+
+
+<!-- Initialize Swiper -->
+<script>
+ function isNext (swiper) {
+   return swiper.isEnd && swiper.previousRealIndex > swiper.realIndex || swiper.hostEl.attributes.getNamedItem('fake-slide');
+ }
+
+ function isPrev (swiper) {
+   return swiper.isBeginning && swiper.realIndex > swiper.previousRealIndex || swiper.hostEl.attributes.getNamedItem('fake-slide');
+ }
+
+ function onNext (swiper) {
+   const nextTab = document.querySelector(".hs-tab__menu > [aria-selected=true]").nextElementSibling
+   if (nextTab) {
+     nextTab.click()
+     swiper.slideToLoop(swiper.slides.length - 1, 0);
+     swiper.updateProgress()
+   } else {
+     document.querySelector(".hs-tab__menu").firstChild.click()
+     swiper.slideToLoop(swiper.slides.length - 1, 0);
+     swiper.updateProgress()
+   }
+ }
+
+ function onPrev (swiper) {
+   const nextTab = document.querySelector(".hs-tab__menu > [aria-selected=true]").previousElementSibling
+   if (nextTab) {
+     nextTab.click()
+     swiper.slideToLoop(0, 0)
+     swiper.updateProgress()
+   } else {
+     document.querySelector(".hs-tab__menu").lastChild.click()
+     swiper.slideToLoop(0, 0)
+     swiper.updateProgress()
+   }
+ }
+
+
+$(".slider-main_component").each(function (index) {
+  const swiper = new Swiper($(this).find(".swiper")[0], {
+    speed: 0,
+    loop: true,
+    // effect: "fade",
+    autoHeight: false,
+    centeredSlides: false,
+    followFinger: true,
+    freeMode: false,
+    slideToClickedSlide: false,
+    slidesPerView: 1,
+    spaceBetween: "4%",
+    rewind: false,
+
+    pagination: {
+      el: $(this).find(".swiper-bullet-wrapper")[0],
+      bulletActiveClass: "is-active",
+      bulletClass: "swiper-bullet",
+      bulletElement: "button",
+      clickable: true
+    },
+    navigation: {
+      nextEl: $(this).find(".swiper-next")[0],
+      prevEl: $(this).find(".swiper-prev")[0],
+      disabledClass: "is-disabled"
+    },
+    scrollbar: {
+      el: $(this).find(".swiper-drag-wrapper")[0],
+      draggable: true,
+      dragClass: "swiper-drag",
+      snapOnRelease: true
+    },
+    slideActiveClass: "is-active",
+    slideDuplicateActiveClass: "is-active"
+  });
+   swiper.on('navigationNext', function (swiper) {
+   if (isNext(swiper)) {
+     onNext(swiper)
+   }
+ });
+
+ swiper.on('navigationPrev',  function (swiper) {
+   if (isPrev(swiper)) {
+     onPrev(swiper)
+   }
+ });
+ swiper.on('paginationUpdate', function (swiper) {
+   if (swiper.swipeDirection == 'next') {
+     if (isNext(swiper)) {
+       onNext(swiper)
+     }
+   }
+   if (swiper.swipeDirection == 'prev') {
+     if (isPrev(swiper)) {
+       onPrev(swiper)
+     }
+   }
+ });
+
+});
+
+</script><div style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 3px; position: absolute; transition: visibility linear 0.3s, opacity 0.3s linear; opacity: 0; visibility: hidden; z-index: 2000000000; left: 0px; top: -10000px;"><div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.05;"></div><div class="g-recaptcha-bubble-arrow" style="border: 11px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -11px; z-index: 2000000000;"></div><div class="g-recaptcha-bubble-arrow" style="border: 10px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -10px; z-index: 2000000000;"></div><div style="z-index: 2000000000; position: relative;"><iframe title="текущую проверку reCAPTCHA можно пройти в течение ещё двух минут" name="c-v0do0qjlx5gu" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/bframe?hl=ru&amp;v=N67nZn4AqZkNcbeMu4prBgzg&amp;k=6LezJYorAAAAAEvrKWPmz5Z0Ek5GE0SWTgrJc9Zu&amp;bft=0dAFcWeA4LVDrVgCSj0e2ClNnUekuTZACGTPSuqLVcTXqBYo-RUOQhfCzdXA5DnLuCJvIPENC6YRLlilZac4C29T3oGs0wOQz2zw" style="width: 100%; height: 100%;"></iframe></div></div><div style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 3px; position: absolute; transition: visibility linear 0.3s, opacity 0.3s linear; opacity: 0; visibility: hidden; z-index: 2000000000; left: 0px; top: -10000px;"><div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.05;"></div><div class="g-recaptcha-bubble-arrow" style="border: 11px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -11px; z-index: 2000000000;"></div><div class="g-recaptcha-bubble-arrow" style="border: 10px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -10px; z-index: 2000000000;"></div><div style="z-index: 2000000000; position: relative;"><iframe title="текущую проверку reCAPTCHA можно пройти в течение ещё двух минут" name="c-4p7c1m5t94gu" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/bframe?hl=ru&amp;v=N67nZn4AqZkNcbeMu4prBgzg&amp;k=6LezJYorAAAAAEvrKWPmz5Z0Ek5GE0SWTgrJc9Zu&amp;bft=0dAFcWeA5N0c8eMqIi3jqj23kLgvxBaNSvKY6RSjhHORbVWTglVZOiM_PoGQ7O-I204nwK7cqFL22AIvYXdw7qImV0sCgJEDFHxQ" style="width: 100%; height: 100%;"></iframe></div></div></body></html>
