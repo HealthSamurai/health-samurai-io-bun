@@ -68,9 +68,9 @@ export function Footer(): string {
       </div>
 
       <div
+        id="cookie-banner"
         className="hs-cookie-banner-section cookie-banner"
-        data-signals="{cookieConsent: localStorage.getItem('cookieConsent') || ''}"
-        data-show="$cookieConsent === ''"
+        style="display: none"
       >
         <div className="hs-cookie-banner-container-general">
           <div className="hs-cookie-banner-container">
@@ -86,14 +86,14 @@ export function Footer(): string {
               <a
                 href="#"
                 className="hs-cookie-banner-deny-btn deny-btn w-button"
-                data-on-click="localStorage.setItem('cookieConsent', 'denied'); $cookieConsent = 'denied'"
+                onclick="localStorage.setItem('cookieConsent', 'denied'); document.getElementById('cookie-banner').style.display = 'none'; return false;"
               >
                 Deny
               </a>
               <a
                 href="#"
                 className="hs-cookie-banner-accept-btn accept-btn w-button"
-                data-on-click="localStorage.setItem('cookieConsent', 'accepted'); $cookieConsent = 'accepted'"
+                onclick="localStorage.setItem('cookieConsent', 'accepted'); document.getElementById('cookie-banner').style.display = 'none'; return false;"
               >
                 Accept All
               </a>
@@ -101,6 +101,12 @@ export function Footer(): string {
           </div>
         </div>
       </div>
+
+      <script dangerouslySetInnerHTML={{ __html: `
+        if (!localStorage.getItem('cookieConsent')) {
+          document.getElementById('cookie-banner').style.display = 'block';
+        }
+      ` }} />
     </div>
   );
 }
