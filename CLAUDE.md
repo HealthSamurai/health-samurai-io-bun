@@ -177,29 +177,181 @@ bun run css:watch   # Watch mode - used by `bun dev`
 - `public/styles/main.css` - Compiled output (gitignored)
 - `src/styles/*.css` - Page-specific styles imported into tailwind.css
 
-**Usage in components:**
-```tsx
-// Use Tailwind utility classes directly
-<div className="flex items-center gap-4 p-6 bg-bg-alt rounded-lg">
-  <h2 className="text-2xl font-bold text-text">Title</h2>
-</div>
+### Theme Configuration
 
-// Or use component classes defined in tailwind.css
-<button className="btn btn-primary">Click me</button>
-<div className="card">Card content</div>
-<section className="section section-alt">...</section>
+The custom theme is defined in `src/styles/tailwind.css` using the `@theme` directive:
+
+```css
+@theme {
+  /* Colors - WCAG AA compliant */
+  --color-primary: #c9362b;
+  --color-primary-dark: #a82d24;
+  --color-primary-light: #fef2f0;
+  --color-primary-vibrant: #EA4A35;
+  --color-secondary: #0066FF;
+
+  /* Text colors */
+  --color-text: #1a1a1a;
+  --color-text-light: #666666;
+  --color-text-muted: #999999;
+
+  /* Background colors */
+  --color-bg: #ffffff;
+  --color-bg-alt: #f7f7f7;
+  --color-bg-light: #f5f5f5;
+
+  /* Border colors */
+  --color-border: #ebebeb;
+  --color-border-dark: #e0e0e0;
+
+  /* Typography */
+  --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Fira Code', 'Monaco', monospace;
+
+  /* Container */
+  --container-max: 1200px;
+}
 ```
 
-**Custom theme colors** (defined in @theme):
-- `primary`, `primary-dark`, `primary-light` - Brand red
-- `text`, `text-light`, `text-muted` - Text colors
-- `bg`, `bg-alt`, `bg-light` - Background colors
-- `border`, `border-dark` - Border colors
+### Using Theme Colors
 
-**Adding new page styles:**
+Theme colors can be used with any Tailwind color utility:
+
+| Color | Background | Text | Border |
+|-------|------------|------|--------|
+| primary | `bg-primary` | `text-primary` | `border-primary` |
+| primary-dark | `bg-primary-dark` | `text-primary-dark` | `border-primary-dark` |
+| primary-light | `bg-primary-light` | `text-primary-light` | `border-primary-light` |
+| text | `bg-text` | `text-text` | `border-text` |
+| text-light | `bg-text-light` | `text-text-light` | `border-text-light` |
+| text-muted | `bg-text-muted` | `text-text-muted` | `border-text-muted` |
+| bg | `bg-bg` | `text-bg` | `border-bg` |
+| bg-alt | `bg-bg-alt` | - | `border-bg-alt` |
+| bg-light | `bg-bg-light` | - | `border-bg-light` |
+| border | - | - | `border-border` |
+| border-dark | - | - | `border-border-dark` |
+
+### Using Theme Fonts
+
+```tsx
+<p className="font-sans">Body text (Inter)</p>
+<h1 className="font-heading">Heading text (Inter)</h1>
+<code className="font-mono">Code text (Fira Code)</code>
+```
+
+### Component Classes
+
+Reusable component classes are defined in `@layer components`:
+
+```tsx
+// Buttons
+<a className="btn btn-primary">Primary button</a>
+<a className="btn btn-secondary">Secondary button</a>
+<a className="btn btn-outline">Outline button</a>
+<a className="btn btn-link">Link style button</a>
+<a className="btn btn-primary btn-lg">Large button</a>
+
+// Cards
+<div className="card">Card with hover shadow</div>
+
+// Sections
+<section className="section">Standard section (py-20)</section>
+<section className="section section-alt">Alt background section</section>
+<section className="section-light">Light background section</section>
+
+// Container
+<div className="container">Max 1200px, centered, px-8</div>
+
+// Forms
+<div className="form-group">
+  <label className="form-label">Label</label>
+  <input className="form-input" />
+  <textarea className="form-input form-textarea" />
+</div>
+
+// Accessibility
+<span className="sr-only">Screen reader only text</span>
+<a className="skip-link" href="#main">Skip to content</a>
+
+// Badge
+<span className="badge">Tag</span>
+```
+
+### Usage Examples
+
+**Inline Tailwind classes (preferred for new components):**
+```tsx
+<div className="flex items-center gap-4 p-6 bg-bg-alt rounded-lg">
+  <h2 className="text-2xl font-bold text-text">Title</h2>
+  <p className="text-text-light">Description</p>
+</div>
+```
+
+**Common patterns:**
+```tsx
+// Centered container with max width
+<div className="max-w-[1200px] mx-auto px-8">
+
+// Grid layout (responsive)
+<div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+// Flexbox with gap
+<div className="flex flex-wrap gap-4 items-center justify-center">
+
+// Responsive text
+<h1 className="text-3xl lg:text-5xl font-bold">
+
+// Arbitrary values (when theme doesn't have exact value)
+<div className="max-w-[560px] leading-[1.7] tracking-[-1.12px]">
+```
+
+### Migrating CSS to Tailwind
+
+When refactoring existing CSS classes to Tailwind:
+
+1. Replace CSS variables with theme colors: `var(--color-primary)` → `text-primary`
+2. Use arbitrary values for exact matches: `56px` → `text-[56px]`
+3. Keep keyframe animations in CSS (typewriter, marquee, etc.)
+4. Use `@apply` in CSS for complex reusable patterns
+
+**Example migration:**
+```css
+/* Before (CSS) */
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #fef2f0;
+  border-radius: 20px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--color-primary);
+  margin-bottom: 24px;
+}
+```
+
+```tsx
+// After (Tailwind classes)
+<div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-light rounded-[20px] font-mono text-sm text-primary mb-6">
+```
+
+### Adding New Page Styles
+
+For page-specific styles that can't use Tailwind utilities:
+
 1. Create `src/styles/my-page.css`
 2. Add `@import "./my-page.css";` to `src/styles/tailwind.css`
-3. Rebuild with `bun run css:build`
+3. Use `@apply` for Tailwind utilities in CSS when needed:
+   ```css
+   .my-custom-class {
+     @apply flex items-center gap-4 text-primary;
+     /* Custom CSS that can't be expressed with utilities */
+     animation: custom-animation 2s infinite;
+   }
+   ```
+4. Rebuild with `bun run css:build`
 
 ## Architecture
 

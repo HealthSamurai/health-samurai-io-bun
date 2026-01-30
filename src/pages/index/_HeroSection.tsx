@@ -1,62 +1,81 @@
 // Hero section with main Aidbox header
 
 import { Component } from "../../lib/component";
+import { Button } from "../../components/ui/Button";
 
 export function HeroSection(): string {
   return (
-    <Component name="pages/index/HeroSection" className="home-header-section">
-      <div className="home-header-container">
-        <h1 className="home-h1-2020">
-          Let's implement your ideas on FHIR
-          <span className="h1" aria-hidden="true"></span>
-        </h1>
-        <div className="main-aidbox-header">
-          <div className="columns-31 w-row">
-            <div className="column-109 w-col w-col-6 w-col-stack">
-              <p className="main-aidbox-header-subtitle">
-                <span className="text-span-18">
-                  <strong className="bold-text-38">&gt;_ </strong>
-                </span>
-                <strong> Hello, Aidbox </strong>
-              </p>
-              <h2 className="main-aidbox-header-title">
-                <strong className="main-aidbox-header-title">
-                  FHIR Platform
-                </strong>
-              </h2>
-              <p className="main-aidbox-header-p">
-                Full-blown <a href="/fhir-server">FHIR server </a> that
-                drastically reduces time and effort for your Health IT solution
-                development.
-              </p>
-              <div className="div-block-58">
-                <a
-                  href="https://www.health-samurai.io/fhir-server#Contactus"
-                  id="home-book-demo-button"
-                  className="main-aidbox-header-primary-btn w-button"
-                >
-                  <strong>BOOK A DEMO </strong>
-                </a>
-                <a
-                  href="/fhir-server"
-                  id="home-aidbox-read-more"
-                  className="main-aidbox-header-primary-btn secondary_btn_transp w-button"
-                >
-                  <strong>read more &gt; </strong>
-                </a>
-              </div>
+    <Component name="pages/index/HeroSection" className="mt-16 bg-white">
+      <div data-name="hero-backdrop" className="relative isolate overflow-hidden bg-linear-to-b from-primary-light/30">
+        <div data-name="hero-container" className="mx-auto max-w-7xl px-6 pt-16 pb-20 sm:pt-24 sm:pb-28 lg:grid lg:grid-cols-2 lg:items-center lg:gap-x-16 lg:px-8 lg:pt-32 lg:pb-40">
+
+          <div data-name="hero-content" className="max-w-xl">
+            <div data-name="hero-badge" className="mb-2 inline-flex items-center gap-2 rounded-full bg-primary-light px-4 py-1.5 text-sm font-mono text-primary ring-1 ring-primary/20">
+              <span className="font-bold">&gt;_</span>
+              <span>Hello, Aidbox</span>
             </div>
-            <div className="column-98 w-col w-col-6 w-col-stack">
-              <img
-                src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/602a2c95b4409e38b2d23295_aidbox-logo.svg"
-                loading="eager"
-                width="102.5"
-                alt="Aidbox logo"
-                className="main-aidbox-header-image"
-              />
+
+            <h1 data-name="hero-title" className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:text-7xl">
+              FHIR Platform
+            </h1>
+
+            <p data-name="hero-description" className="mt-6 text-lg leading-8 text-gray-600 sm:text-xl">
+              Full-blown FHIR server that drastically reduces time and effort
+              for your Health IT solution development.
+            </p>
+
+            <div data-name="hero-actions" className="mt-10 flex flex-wrap items-center gap-4">
+              <Button href="/fhir-server#contact" variant="primary" size="xl">
+                Book a Demo
+              </Button>
+              <Button href="/fhir-server" variant="secondary" size="xl">
+                Learn more →
+              </Button>
+            </div>
+          </div>
+
+          <div data-name="hero-media" className="mt-16 sm:mt-20 lg:mt-0">
+            <div className="relative">
+              <div
+                data-name="hero-media-backdrop"
+                aria-hidden="true"
+                className="absolute -inset-4 -z-10 rounded-2xl bg-primary/5"
+              ></div>
+
+              <div data-name="code-window" className="overflow-hidden rounded-xl bg-gray-900 shadow-2xl ring-1 ring-white/10">
+                <div data-name="code-window-header" className="flex items-center gap-2 border-b border-white/10 bg-gray-800/60 px-4 py-3">
+                  <div data-name="window-controls" className="flex gap-1.5">
+                    <div className="h-3 w-3 rounded-full bg-red-500/80"></div>
+                    <div className="h-3 w-3 rounded-full bg-yellow-500/80"></div>
+                    <div className="h-3 w-3 rounded-full bg-green-500/80"></div>
+                  </div>
+                  <div data-name="window-tabs" className="flex text-sm font-medium text-gray-400">
+                    <div data-name="tab-active" className="border-b-2 border-primary px-3 py-1 text-white">Patient.json</div>
+                    <div data-name="tab" className="px-3 py-1">Observation.json</div>
+                  </div>
+                </div>
+
+                <div data-name="code-content" className="p-6">
+                  <pre className="text-sm leading-relaxed text-gray-300 font-mono">
+{`{
+  "resourceType": "Patient",
+  "id": "example",
+  "name": [{
+    "use": "official",
+    "family": "Smith",
+    "given": ["John"]
+  }],
+  "birthDate": "1990-01-15",
+  "gender": "male"
+}`}
+                  </pre>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        <div data-name="hero-gradient-fade" aria-hidden="true" className="absolute inset-x-0 bottom-0 -z-10 h-32 bg-linear-to-t from-white"></div>
       </div>
     </Component>
   );
