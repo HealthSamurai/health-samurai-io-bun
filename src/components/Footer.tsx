@@ -1,3 +1,5 @@
+import { gitInfo } from "../lib/git-info";
+
 export function Footer(): string {
   return (
     <div>
@@ -65,6 +67,11 @@ export function Footer(): string {
           alt="Health Samurai Company Logo"
           className="hs-logo-footer"
         />
+        {gitInfo.branch && (
+          <div className="footer-git-info" style="margin-top: 8px; font-size: 12px; color: #666;">
+            {gitInfo.branch} @ {gitInfo.shortCommit}
+          </div>
+        )}
       </div>
 
       <div

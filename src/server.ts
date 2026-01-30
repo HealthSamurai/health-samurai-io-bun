@@ -1,5 +1,9 @@
 import { Layout } from "./components/Layout";
 import { watch } from "fs";
+import { initGitInfo } from "./lib/git-info";
+
+// Initialize git info at startup
+await initGitInfo();
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 4321;
 const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET || "";
