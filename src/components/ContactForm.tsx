@@ -5,10 +5,6 @@ import { Fragment } from "../lib/jsx-runtime";
 export type ContactFormConfig = {
   // Form configuration
   action?: string;
-  formId?: string;
-  formName?: string;
-  pageId?: string;
-  elementId?: string;
   pageUrl?: string;
 
   // Labels & text
@@ -18,7 +14,7 @@ export type ContactFormConfig = {
   // Input styling
   inputClassName?: string;
 
-  // Success message - can be simple string or JSX
+  // Success message
   successMessage?: string;
 };
 
@@ -30,10 +26,6 @@ export type ContactSectionConfig = ContactFormConfig & {
 
 const defaultConfig: Required<ContactFormConfig> = {
   action: "https://main-page.d-chistoforov.workers.dev",
-  formId: "wf-form-Contact-Us",
-  formName: "wf-form-Contact-Us",
-  pageId: "",
-  elementId: "",
   pageUrl: "",
   submitLabel: "SEND",
   messagePlaceholder: "How we can help?",
@@ -50,15 +42,11 @@ export function ContactForm(config: ContactFormConfig = {}): string {
   return (
     <div className="w-form">
       <form
-        id={c.formId}
-        name={c.formName}
-        data-name="Contact Us"
+        id="contact-form"
+        name="contact-form"
         action={c.action}
         method="post"
-        msCodeFormNoRedirect
         className="w-clearfix"
-        data-wf-page-id={c.pageId}
-        data-wf-element-id={c.elementId}
         aria-label="Contact Us"
       >
         <input
