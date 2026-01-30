@@ -1,10 +1,12 @@
 // Mission section with company description
 
+import { Component } from "../../lib/component";
+
 export function MissionSection(): string {
   return (
-    <div loading="lazy" className="home-payers-section">
-      <div loading="lazy" className="home-container-1100">
-        <p loading="lazy" className="home-offer-desc">
+    <Component name="pages/index/MissionSection" className="home-payers-section">
+      <div className="home-container-1100">
+        <p className="home-offer-desc">
           At Health Samurai, we aim to transform care delivery with exceptional
           software. We believe that an open, connected healthcare application
           ecosystem will drive higher quality care and lower costs. To help make
@@ -26,6 +28,6 @@ export function MissionSection(): string {
           various platforms and applications. <br />
         </p>
       </div>
-    </div>
+    </Component>
   );
 }

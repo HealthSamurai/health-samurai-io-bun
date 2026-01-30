@@ -1,8 +1,10 @@
 // Hero section with main Aidbox header
 
+import { Component } from "../../lib/component";
+
 export function HeroSection(): string {
   return (
-    <div className="home-header-section">
+    <Component name="pages/index/HeroSection" className="home-header-section">
       <div className="home-header-container">
         <h1 className="home-h1-2020">
           Let's implement your ideas on FHIR
@@ -27,7 +29,7 @@ export function HeroSection(): string {
                 drastically reduces time and effort for your Health IT solution
                 development.
               </p>
-              <div loading="lazy" className="div-block-58">
+              <div className="div-block-58">
                 <a
                   href="https://www.health-samurai.io/fhir-server#Contactus"
                   id="home-book-demo-button"
@@ -56,6 +58,6 @@ export function HeroSection(): string {
           </div>
         </div>
       </div>
-    </div>
+    </Component>
   );
 }

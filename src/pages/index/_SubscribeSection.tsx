@@ -1,8 +1,10 @@
 // Subscribe section with newsletter form
 
+import { Component } from "../../lib/component";
+
 export function SubscribeSection(): string {
   return (
-    <div id="subscribe-section" className="subscribe-section">
+    <Component name="pages/index/SubscribeSection" className="subscribe-section">
       <div className="subscribe-container">
         <div id="generic-subscribe-form" className="subscribe-form w-form">
           <form
@@ -11,10 +13,7 @@ export function SubscribeSection(): string {
             data-name="Subscribe Form"
             action="https://health-samurai.us19.list-manage.com/subscribe/post?u=1c57d4d1b1aaffde230e81f34&amp;id=0197cbafab"
             method="post"
-            data-webflow-hubspot-api-form-url="https://hubspotonwebflow.com/api/forms/979ea0e1-b06b-43b8-bfb0-a8cdea0c0673"
             className="subscribe-form-container"
-            data-wf-page-id="65e700209ec24725504599eb"
-            data-wf-element-id="d3ea4deb-538d-b400-b47c-69a41481cce8"
             aria-label="Subscribe Form"
           >
             <div className="w-embed">
@@ -36,7 +35,6 @@ export function SubscribeSection(): string {
               </label>
               <input
                 className="subscribe-input w-input"
-                data-wfhsfieldname="name"
                 maxLength="256"
                 name="FNAME"
                 data-name="FNAME"
@@ -52,7 +50,6 @@ export function SubscribeSection(): string {
               </label>
               <input
                 className="subscribe-input w-input"
-                data-wfhsfieldname="email"
                 maxLength="256"
                 name="EMAIL"
                 data-name="EMAIL"
@@ -68,11 +65,6 @@ export function SubscribeSection(): string {
               className="subscribe-btn w-button"
               value="Subscribe"
             />
-            <input type="hidden" name="hutk" value />
-            <input type="hidden" name="ipAddress" value />
-            <input type="hidden" name="pageUri" value />
-            <input type="hidden" name="pageId" value />
-            <input type="hidden" name="pageName" value />
           </form>
           <div
             className="w-form-done"
@@ -92,6 +84,6 @@ export function SubscribeSection(): string {
           </div>
         </div>
       </div>
-    </div>
+    </Component>
   );
 }

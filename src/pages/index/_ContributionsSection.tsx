@@ -1,14 +1,13 @@
 // FHIR Contributions section with community, open source, events, and presentations
 
+import { Component } from "../../lib/component";
+
 export function ContributionsSection(): string {
   return (
-    <div loading="lazy" className="home-fhircontr-section">
-      <div loading="lazy" className="home-contribution-container">
-        <h2 loading="lazy" className="home-h2-section">
-          Our FHIR Contributions
-        </h2>
+    <Component name="pages/index/ContributionsSection" className="home-fhircontr-section">
+      <div className="home-contribution-container">
+        <h2 className="home-h2-section">Our FHIR Contributions</h2>
         <a
-          loading="lazy"
           rel="nofollow"
           href="https://www.healthdevhub.com/"
           target="_blank"
@@ -75,7 +74,6 @@ export function ContributionsSection(): string {
         <div className="home-open-source w-row">
           <div className="column-37 w-col w-col-4 w-col-stack">
             <a
-              loading="lazy"
               href="/fhir-database"
               className="home-contr-card-col1 w-inline-block"
             >
@@ -93,11 +91,7 @@ export function ContributionsSection(): string {
             </a>
           </div>
           <div className="column-38 w-col w-col-4 w-col-stack">
-            <a
-              loading="lazy"
-              href="/opensource"
-              className="draft-contr-os-second w-inline-block"
-            >
+            <a href="/opensource" className="draft-contr-os-second w-inline-block">
               <img
                 src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5c40629230dc10619b49ac4f_fhirjs-logo.svg"
                 alt="fhirjs-logo"
@@ -113,11 +107,7 @@ export function ContributionsSection(): string {
             </a>
           </div>
           <div className="column-39 w-col w-col-4 w-col-stack">
-            <a
-              loading="lazy"
-              href="/opensource"
-              className="draft-contr-os-second w-inline-block"
-            >
+            <a href="/opensource" className="draft-contr-os-second w-inline-block">
               <img
                 src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5c4062a39300276e08ea1253_fhirschema-logo.svg"
                 alt="fhir schema logo"
@@ -136,7 +126,6 @@ export function ContributionsSection(): string {
         <div className="home-events w-row">
           <div className="column-34 w-col w-col-6 w-col-stack">
             <a
-              loading="lazy"
               rel="nofollow"
               href="https://www.health-samurai.io/events/fhir-camp-2025"
               target="_blank"
@@ -158,7 +147,6 @@ export function ContributionsSection(): string {
           </div>
           <div className="column-35 w-col w-col-6 w-col-stack">
             <a
-              loading="lazy"
               rel="nofollow"
               href="https://www.meetup.com/HealthDev/"
               target="_blank"
@@ -179,7 +167,6 @@ export function ContributionsSection(): string {
               </div>
             </a>
             <a
-              loading="lazy"
               href="https://health-samurai.timepad.ru/"
               target="_blank"
               className="home-contr-meetup w-inline-block"
@@ -275,6 +262,6 @@ export function ContributionsSection(): string {
           </div>
         </div>
       </div>
-    </div>
+    </Component>
   );
 }

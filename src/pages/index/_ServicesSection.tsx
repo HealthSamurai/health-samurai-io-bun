@@ -1,15 +1,14 @@
 // Services section with "Hire our engineers" and "ONC-certified FHIR API Module"
 
+import { Component } from "../../lib/component";
+
 export function ServicesSection(): string {
   return (
-    <div loading="lazy" className="home-payers-section">
-      <div loading="lazy" className="home-container-1100">
+    <Component name="pages/index/ServicesSection" className="home-payers-section">
+      <div className="home-container-1100">
         <h2 className="home-h2-section">Services </h2>
         <div className="home-header-offers w-row">
-          <div
-            loading="lazy"
-            className="home-header-offer1 w-col w-col-6 w-col-stack"
-          >
+          <div className="home-header-offer1 w-col w-col-6 w-col-stack">
             <h2 className="home-h2">
               <strong>Hire our engineers </strong>
             </h2>
@@ -29,10 +28,7 @@ export function ServicesSection(): string {
               <strong>Hire us &gt; </strong>
             </a>
           </div>
-          <div
-            loading="lazy"
-            className="home-header-offer-right w-col w-col-6 w-col-stack"
-          >
+          <div className="home-header-offer-right w-col w-col-6 w-col-stack">
             <h2 className="home-h2">
               <strong>ONC-certified </strong>
               <span className="text-span-42">
@@ -59,6 +55,6 @@ export function ServicesSection(): string {
           </div>
         </div>
       </div>
-    </div>
+    </Component>
   );
 }

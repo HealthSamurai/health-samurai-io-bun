@@ -308,6 +308,48 @@ export { default, metadata } from "./original-page";
 2. Export a function returning `string`
 3. Import and use in pages by calling the function
 
+## Component Tracing
+
+Components use `data-component` attributes for debugging. This makes it easy to identify which component rendered which HTML in browser DevTools.
+
+**Usage:**
+```tsx
+import { Component } from "../lib/component";
+
+export function MySection(): string {
+  return (
+    <Component name="pages/mypage/MySection" className="my-section">
+      <h2>Content here</h2>
+    </Component>
+  );
+}
+```
+
+**Output:**
+```html
+<div data-component="pages/mypage/MySection" class="my-section">
+  <h2>Content here</h2>
+</div>
+```
+
+**Naming convention:** Use full path from `src/` without extension: `pages/index/HeroSection`, `components/ContactForm`
+
+**Shared components with configurable names:**
+```tsx
+// In shared component
+export function ContactSection(config: { componentName?: string } = {}): string {
+  const name = config.componentName ?? "components/ContactSection";
+  return <Component name={name}>...</Component>;
+}
+
+// In page-specific wrapper
+export function ContactSection(): string {
+  return BaseContactSection({
+    componentName: "pages/index/ContactSection",
+  });
+}
+```
+
 ---
 
 Default to using Bun instead of Node.js.

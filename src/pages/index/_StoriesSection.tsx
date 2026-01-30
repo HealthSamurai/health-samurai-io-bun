@@ -1,14 +1,15 @@
 // Our Stories section with case studies
 
+import { Component } from "../../lib/component";
+
 export function StoriesSection(): string {
   return (
-    <div loading="lazy" className="home-stories-section">
-      <div loading="lazy" className="home-stories-container">
+    <Component name="pages/index/StoriesSection" className="home-stories-section">
+      <div className="home-stories-container">
         <h2 className="home-h2-section">Our stories </h2>
         <div className="w-row">
           <div className="column-32 w-col w-col-6 w-col-stack">
             <a
-              loading="lazy"
               id="w-node-_9523b69d-b6eb-1f2f-e2d4-c51d007dfaea-504599eb"
               href="https://www.health-samurai.io/case-study/prenosis-develops-immunix-for-precision-medicine-with-aidbox"
               target="_blank"
@@ -48,7 +49,6 @@ export function StoriesSection(): string {
               </p>
             </a>
             <a
-              loading="lazy"
               href="https://www.health-samurai.io/case-study/narushealth"
               target="_blank"
               className="home-story-card-col2--narus w-inline-block"
@@ -79,7 +79,6 @@ export function StoriesSection(): string {
           </div>
           <div className="column-33 w-col w-col-6 w-col-stack">
             <a
-              loading="lazy"
               id="w-node-_9523b69d-b6eb-1f2f-e2d4-c51d007dfb07-504599eb"
               href="https://www.health-samurai.io/case-study/how-deep-6-ai-enhanced-ai-pipeline-performance-for-clinical-trial-recruitment-with-aidbox"
               target="_blank"
@@ -112,7 +111,6 @@ export function StoriesSection(): string {
               </p>
             </a>
             <a
-              loading="lazy"
               id="w-node-_9523b69d-b6eb-1f2f-e2d4-c51d007dfb11-504599eb"
               href="https://www.health-samurai.io/case-study/4medica-modernizes-clinical-data-infrastructure-with-aidbox"
               target="_blank"
@@ -150,6 +148,6 @@ export function StoriesSection(): string {
           </div>
         </div>
       </div>
-    </div>
+    </Component>
   );
 }

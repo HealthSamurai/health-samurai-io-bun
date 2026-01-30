@@ -1,10 +1,12 @@
 // Trusted by section with client logos
 
+import { Component } from "../../lib/component";
+
 export function TrustedSection(): string {
   return (
-    <div loading="lazy" className="trusted-section">
-      <div loading="lazy" className="home-clients-container">
-        <div loading="lazy" className="trust-section trusted-top">
+    <Component name="pages/index/TrustedSection" className="trusted-section">
+      <div className="home-clients-container">
+        <div className="trust-section trusted-top">
           <a
             href="https://innovaccer.com/"
             target="_blank"
@@ -76,7 +78,7 @@ export function TrustedSection(): string {
             />
           </a>
         </div>
-        <div loading="lazy" className="trust-section">
+        <div className="trust-section">
           <a
             href="https://www.gethealthie.com/"
             target="_blank"
@@ -163,6 +165,6 @@ export function TrustedSection(): string {
           </a>
         </div>
       </div>
-    </div>
+    </Component>
   );
 }

@@ -4,6 +4,7 @@ import { ContactSection as BaseContactSection } from "../../components/ContactFo
 
 export function ContactSection(): string {
   return BaseContactSection({
+    componentName: "pages/index/ContactSection",
     pageUrl: "https://www.health-samurai.io/",
   });
 }

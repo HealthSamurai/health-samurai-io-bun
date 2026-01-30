@@ -1,6 +1,6 @@
 // Shared contact form component - configurable per page
 
-import { Fragment } from "../lib/jsx-runtime";
+import { Component } from "../lib/component";
 
 export type ContactFormConfig = {
   // Form configuration
@@ -19,6 +19,9 @@ export type ContactFormConfig = {
 };
 
 export type ContactSectionConfig = ContactFormConfig & {
+  // Component tracing
+  componentName?: string;
+
   // Section header
   title?: string;
   subtitle?: string;
@@ -166,41 +169,15 @@ export function ContactForm(config: ContactFormConfig = {}): string {
 export function ContactSection(config: ContactSectionConfig = {}): string {
   const title = config.title ?? "contact us";
   const subtitle = config.subtitle ?? "Get in touch with us today!";
+  const componentName = config.componentName ?? "components/ContactSection";
 
   return (
-    <div id="contactus-section" className="contact-section">
+    <Component name={componentName} className="contact-section">
       <h2 className="global-2header">{title} </h2>
       <p className="paragraph-3">{subtitle} </p>
       <div id="get_in_touch" className="getintouch-form">
         {ContactForm(config)}
       </div>
-    </div>
-  );
-}
-
-/**
- * Success message with links - for home page style
- */
-export function ContactSuccessWithLinks(): string {
-  return (
-    <Fragment>
-      <div>
-        <span>
-          <span>
-            <strong>Thank you! </strong> <br />
-            We'll be in touch soon. <br /> <br />
-            In the meantime, you can: <br />
-          </span>
-        </span>
-      </div>
-      <div className="thankyou-links">
-        Read our <a href="/casestudies">Case Studies </a> and see some of the
-        work we've done for our clients. <br /> <br />
-        Learn how <a href="/aidbox">Aidbox </a> can help you handle all your
-        healthcare data the right way. <br /> <br />
-        Visit our <a href="/blog">Blog </a> for the latest FHIR and digital
-        health stories and resources.
-      </div>
-    </Fragment>
+    </Component>
   );
 }
