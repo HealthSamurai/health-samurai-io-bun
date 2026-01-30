@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@source "../components/**/*.tsx";
+@source "../pages/**/*.tsx";
 @import "./webflow-shared.css";
 @import "./auditbox-inline.css";
 @import "./fhir-server-inline.css";
