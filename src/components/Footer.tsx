@@ -67,8 +67,12 @@ export function Footer(): string {
         />
       </div>
 
-      <div className="hs-cookie-banner-section cookie-banner">
-        <div fsCc="banner" className="hs-cookie-banner-container-general">
+      <div
+        className="hs-cookie-banner-section cookie-banner"
+        data-signals="{cookieConsent: localStorage.getItem('cookieConsent') || ''}"
+        data-show="$cookieConsent === ''"
+      >
+        <div className="hs-cookie-banner-container-general">
           <div className="hs-cookie-banner-container">
             <p className="hs-cookies-banner-text">
               By using this website, you agree to the storing of cookies on your device to enhance site navigation,
@@ -79,13 +83,18 @@ export function Footer(): string {
               for more information.
             </p>
             <div className="hs-cookies-btn-group">
-              <a fsCc="open-preferences" href="#" className="hs-cookie-banner-preferences-btn w-button">
-                <span className="text-span-43">Preferences </span>
-              </a>
-              <a fsCc="deny" href="#" className="hs-cookie-banner-deny-btn deny-btn w-button">
+              <a
+                href="#"
+                className="hs-cookie-banner-deny-btn deny-btn w-button"
+                data-on-click="localStorage.setItem('cookieConsent', 'denied'); $cookieConsent = 'denied'"
+              >
                 Deny
               </a>
-              <a fsCc="allow" href="#" className="hs-cookie-banner-accept-btn accept-btn w-button">
+              <a
+                href="#"
+                className="hs-cookie-banner-accept-btn accept-btn w-button"
+                data-on-click="localStorage.setItem('cookieConsent', 'accepted'); $cookieConsent = 'accepted'"
+              >
                 Accept All
               </a>
             </div>
