@@ -1,5 +1,6 @@
 import { Fragment } from "../lib/jsx-runtime";
 import { Hero } from "../components/Hero";
+import { Subscribe } from "../components/Subscribe";
 
 export const metadata = {
   title: "Events",
@@ -43,6 +44,12 @@ export default function EventsPage(): string {
           </div>
         </div>
       </section>
+
+      <Subscribe
+        title="Never miss an event"
+        description="Get notified about upcoming webinars, conferences, and FHIR meetups. Read our"
+        buttonText="Subscribe"
+      />
     </Fragment>
   );
 }
