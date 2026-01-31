@@ -8,6 +8,7 @@ import {
   aboutLinks,
 } from "../data/header";
 import { SearchButton, MobileSearchButton, SearchModal } from "./Search";
+import { ThemeToggle } from "./ui/ThemeToggle";
 import type { Context } from "../context";
 
 type HeaderProps = {
@@ -17,7 +18,7 @@ type HeaderProps = {
 export function Header({ ctx }: HeaderProps = {}): string {
   const user = ctx?.user;
   return (
-    <header class="relative isolate z-10 bg-white" data-signals="{productsOpen: false, aboutOpen: false, mobileOpen: false, searchOpen: false, searchQuery: ''}">
+    <header class="relative isolate z-10 bg-white dark:bg-dark-bg transition-colors" data-signals="{productsOpen: false, aboutOpen: false, mobileOpen: false, searchOpen: false, searchQuery: ''}">
       <nav aria-label="Global" class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         {/* Logo */}
         <div class="flex lg:flex-1">
@@ -32,7 +33,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
           <MobileSearchButton />
           <button
             type="button"
-            class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+            class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-dark-text-light"
             data-on:click="$mobileOpen = true"
           >
             <span class="sr-only">Open main menu</span>
@@ -45,7 +46,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
           {/* Products dropdown */}
           <button
             type="button"
-            class="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900"
+            class="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900 dark:text-dark-text"
             data-on:click="$productsOpen = !$productsOpen; $aboutOpen = false"
           >
             Products
@@ -58,7 +59,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
 
           {/* Simple links */}
           {navLinks.map((link) => (
-            <a href={link.href} class="text-sm/6 font-semibold text-gray-900 hover:text-primary">
+            <a href={link.href} class="text-sm/6 font-semibold text-gray-900 dark:text-dark-text hover:text-primary">
               {link.label}
             </a>
           ))}
@@ -66,7 +67,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
           {/* About dropdown */}
           <button
             type="button"
-            class="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900"
+            class="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900 dark:text-dark-text"
             data-on:click="$aboutOpen = !$aboutOpen; $productsOpen = false"
           >
             About
@@ -78,9 +79,10 @@ export function Header({ ctx }: HeaderProps = {}): string {
           </button>
         </div>
 
-        {/* Search + CTA/User */}
-        <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:gap-x-6">
+        {/* Search + Theme + CTA/User */}
+        <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:gap-x-4">
           <SearchButton />
+          <ThemeToggle />
           {user ? (
             <div class="relative" data-signals="{userMenuOpen: false}">
               <button
@@ -151,34 +153,34 @@ export function Header({ ctx }: HeaderProps = {}): string {
 
       {/* Products dropdown panel */}
       <div
-        class="absolute left-0 top-full w-full overflow-hidden bg-white shadow-lg ring-1 ring-gray-900/5 transition-all duration-200"
+        class="absolute left-0 top-full w-full overflow-hidden bg-white dark:bg-dark-bg shadow-lg ring-1 ring-gray-900/5 dark:ring-dark-border transition-all duration-200"
         data-show="$productsOpen"
         style={{ display: "none" }}
       >
-        <div class="relative bg-white">
+        <div class="relative bg-white dark:bg-dark-bg">
           <div class="mx-auto grid max-w-7xl grid-cols-4 gap-x-4 px-6 py-10 lg:px-8 xl:gap-x-8">
             {products.map((product) => (
-              <div class="group relative rounded-lg p-6 text-sm/6 hover:bg-gray-50">
-                <div class="flex size-11 items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+              <div class="group relative rounded-lg p-6 text-sm/6 hover:bg-gray-50 dark:hover:bg-dark-bg-alt">
+                <div class="flex size-11 items-center justify-center rounded-lg bg-gray-50 dark:bg-dark-bg-alt group-hover:bg-white dark:group-hover:bg-dark-bg">
                   <span dangerouslySetInnerHTML={{ __html: product.icon }} />
                 </div>
-                <a href={product.href} class="mt-6 block font-semibold text-gray-900">
+                <a href={product.href} class="mt-6 block font-semibold text-gray-900 dark:text-dark-text">
                   {product.label}
                   <span class="absolute inset-0" />
                 </a>
-                <p class="mt-1 text-gray-600">{product.description}</p>
+                <p class="mt-1 text-gray-600 dark:text-dark-text-light">{product.description}</p>
               </div>
             ))}
           </div>
 
           {/* Bottom actions */}
-          <div class="bg-gray-50">
+          <div class="bg-gray-50 dark:bg-dark-bg-alt">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
-              <div class="grid grid-cols-3 divide-x divide-gray-900/5 border-x border-gray-900/5">
+              <div class="grid grid-cols-3 divide-x divide-gray-900/5 dark:divide-dark-border border-x border-gray-900/5 dark:border-dark-border">
                 {dropdownActions.map((action) => (
                   <a
                     href={action.href}
-                    class="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-gray-900 hover:bg-gray-100"
+                    class="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-gray-900 dark:text-dark-text hover:bg-gray-100 dark:hover:bg-dark-bg"
                   >
                     <span dangerouslySetInnerHTML={{ __html: action.icon }} />
                     {action.label}
@@ -192,22 +194,22 @@ export function Header({ ctx }: HeaderProps = {}): string {
 
       {/* About dropdown panel */}
       <div
-        class="absolute left-0 top-full w-full overflow-hidden bg-white shadow-lg ring-1 ring-gray-900/5 transition-all duration-200"
+        class="absolute left-0 top-full w-full overflow-hidden bg-white dark:bg-dark-bg shadow-lg ring-1 ring-gray-900/5 dark:ring-dark-border transition-all duration-200"
         data-show="$aboutOpen"
         style={{ display: "none" }}
       >
-        <div class="relative bg-white">
+        <div class="relative bg-white dark:bg-dark-bg">
           <div class="mx-auto grid max-w-7xl grid-cols-4 gap-x-4 px-6 py-10 lg:px-8 xl:gap-x-8">
             {aboutLinks.map((item) => (
-              <div class="group relative rounded-lg p-6 text-sm/6 hover:bg-gray-50">
-                <div class="flex size-11 items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+              <div class="group relative rounded-lg p-6 text-sm/6 hover:bg-gray-50 dark:hover:bg-dark-bg-alt">
+                <div class="flex size-11 items-center justify-center rounded-lg bg-gray-50 dark:bg-dark-bg-alt group-hover:bg-white dark:group-hover:bg-dark-bg">
                   <span dangerouslySetInnerHTML={{ __html: item.icon }} />
                 </div>
-                <a href={item.href} class="mt-6 block font-semibold text-gray-900">
+                <a href={item.href} class="mt-6 block font-semibold text-gray-900 dark:text-dark-text">
                   {item.label}
                   <span class="absolute inset-0" />
                 </a>
-                <p class="mt-1 text-gray-600">{item.description}</p>
+                <p class="mt-1 text-gray-600 dark:text-dark-text-light">{item.description}</p>
               </div>
             ))}
           </div>
@@ -232,7 +234,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
 
       {/* Mobile menu panel */}
       <div
-        class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 lg:hidden"
+        class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white dark:bg-dark-bg p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:sm:ring-dark-border lg:hidden"
         data-show="$mobileOpen"
         style={{ display: "none" }}
       >
@@ -243,7 +245,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
           </a>
           <button
             type="button"
-            class="-m-2.5 rounded-md p-2.5 text-gray-700"
+            class="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-dark-text-light"
             data-on:click="$mobileOpen = false"
           >
             <span class="sr-only">Close menu</span>
@@ -252,7 +254,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
         </div>
 
         <div class="mt-6 flow-root">
-          <div class="-my-6 divide-y divide-gray-500/10">
+          <div class="-my-6 divide-y divide-gray-500/10 dark:divide-dark-border">
             <div class="space-y-2 py-6">
               {/* Products accordion */}
               <div class="-mx-3">
@@ -327,27 +329,45 @@ export function Header({ ctx }: HeaderProps = {}): string {
             </div>
 
             <div class="py-6">
+              {/* Theme toggle for mobile */}
+              <button
+                type="button"
+                onclick="theme.toggle()"
+                class="-mx-3 flex w-full items-center gap-x-3 rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 dark:text-dark-text hover:bg-gray-50 dark:hover:bg-dark-bg-alt"
+              >
+                {/* Sun icon */}
+                <svg class="size-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                {/* Moon icon */}
+                <svg class="size-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+                <span class="dark:hidden">Dark mode</span>
+                <span class="hidden dark:inline">Light mode</span>
+              </button>
+
               {user ? (
-                <div class="border-t border-gray-200 pt-4">
+                <div class="border-t border-gray-200 dark:border-dark-border pt-4 mt-4">
                   <div class="flex items-center gap-x-3 px-3 py-2">
                     {user.avatarUrl ? (
-                      <img src={user.avatarUrl} alt="" class="size-10 rounded-full bg-gray-50" />
+                      <img src={user.avatarUrl} alt="" class="size-10 rounded-full bg-gray-50 dark:bg-dark-bg-alt" />
                     ) : (
                       <span class="flex size-10 items-center justify-center rounded-full bg-primary text-white text-sm font-medium">
                         {user.username.charAt(0).toUpperCase()}
                       </span>
                     )}
                     <div>
-                      <p class="text-sm font-semibold text-gray-900">{user.username}</p>
-                      <p class="text-xs text-gray-500">{user.email}</p>
+                      <p class="text-sm font-semibold text-gray-900 dark:text-dark-text">{user.username}</p>
+                      <p class="text-xs text-gray-500 dark:text-dark-text-muted">{user.email}</p>
                     </div>
                   </div>
                   {user.email.endsWith("@health-samurai.io") && (
                     <a
                       href="/admin/analytics"
-                      class="-mx-3 flex items-center gap-x-2 rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                      class="-mx-3 flex items-center gap-x-2 rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 dark:text-dark-text hover:bg-gray-50 dark:hover:bg-dark-bg-alt"
                     >
-                      <svg class="size-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg class="size-5 text-gray-400 dark:text-dark-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" />
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" />
                       </svg>
@@ -357,7 +377,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
                   <form method="POST" action="/api/logout" class="mt-2">
                     <button
                       type="submit"
-                      class="-mx-3 block w-full rounded-lg px-3 py-2.5 text-left text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                      class="-mx-3 block w-full rounded-lg px-3 py-2.5 text-left text-base/7 font-semibold text-gray-900 dark:text-dark-text hover:bg-gray-50 dark:hover:bg-dark-bg-alt"
                     >
                       Sign out
                     </button>
@@ -366,7 +386,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
               ) : (
                 <a
                   href="/login"
-                  class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                  class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 dark:text-dark-text hover:bg-gray-50 dark:hover:bg-dark-bg-alt mt-4"
                 >
                   Log in <span aria-hidden="true" dangerouslySetInnerHTML={{ __html: "&rarr;" }} />
                 </a>

@@ -58,6 +58,9 @@ export async function Layout({ title, description, children, hideFooter, devMode
         <link rel="shortcut icon" type="image/png" href="/assets/images/favicons/favicon-32.png" />
         <link rel="apple-touch-icon" href="/assets/images/favicons/apple-touch-icon.png" />
 
+        {/* RSS feed autodiscovery */}
+        <link rel="alternate" type="application/rss+xml" title="Health Samurai Blog" href="/blog/rss.xml" />
+
         {/* Color scheme detection - runs before render to prevent flash */}
         <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}})()` }} />
       </head>

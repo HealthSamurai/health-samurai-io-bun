@@ -191,6 +191,52 @@ ${posts.slice(0, 10).map(p => `- [${p.title}](/blog/${p.slug}.md): ${p.descripti
       });
     }
 
+    // RSS feed for blog
+    if (path === "/blog/rss.xml" || path === "/feed.xml" || path === "/rss.xml") {
+      const { getAllPosts } = await import("./data/blog");
+      const posts = getAllPosts().slice(0, 50); // Latest 50 posts
+
+      const escapeXml = (str: string) =>
+        str
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&apos;");
+
+      const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Health Samurai Blog</title>
+    <link>https://health-samurai.io/blog</link>
+    <description>Articles about FHIR, healthcare interoperability, and Health Samurai products.</description>
+    <language>en-us</language>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+    <atom:link href="https://health-samurai.io/blog/rss.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://health-samurai.io/assets/images/logo.svg</url>
+      <title>Health Samurai Blog</title>
+      <link>https://health-samurai.io/blog</link>
+    </image>
+${posts.map(post => `    <item>
+      <title>${escapeXml(post.title)}</title>
+      <link>https://health-samurai.io/blog/${post.slug}</link>
+      <guid isPermaLink="true">https://health-samurai.io/blog/${post.slug}</guid>
+      <pubDate>${post.date ? new Date(post.date).toUTCString() : ""}</pubDate>
+      <author>noreply@health-samurai.io (${escapeXml(post.author)})</author>
+      <description>${escapeXml(post.description)}</description>
+    </item>`).join("\n")}
+  </channel>
+</rss>`;
+
+      return new Response(rss, {
+        headers: {
+          "Content-Type": "application/rss+xml; charset=utf-8",
+          "Cache-Control": "public, max-age=3600",
+        },
+      });
+    }
+
     // Raw markdown for LLMs: /blog.md (index) and /blog/[slug].md
     if (path === "/blog.md") {
       const { getAllPosts } = await import("./data/blog");
@@ -379,20 +425,97 @@ Make healthcare data interoperable through FHIR standards.
 
     // API endpoints (for htmx forms)
     if (path === "/api/contact" && req.method === "POST") {
-      return html(`
-        <div class="card" style="text-align: center; padding: var(--space-8);">
-          <h3 style="color: var(--color-secondary);">Thank you!</h3>
-          <p>We've received your message and will get back to you soon.</p>
-        </div>
-      `);
+      try {
+        const formData = await req.formData();
+        const formType = formData.get("form_type")?.toString() || "contact";
+        const firstName = formData.get("first-name")?.toString() || "";
+        const lastName = formData.get("last-name")?.toString() || "";
+        const email = formData.get("email")?.toString() || "";
+        const phone = formData.get("phone-number")?.toString() || "";
+        const message = formData.get("message")?.toString() || "";
+        const page = formData.get("page")?.toString() || "";
+
+        const name = `${firstName} ${lastName}`.trim();
+        const ipAddress = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+                          req.headers.get("x-real-ip") || null;
+        const userAgent = req.headers.get("user-agent") || null;
+        const referrer = req.headers.get("referer") || null;
+
+        const data = {
+          firstName,
+          lastName,
+          phone,
+          message,
+          page,
+        };
+
+        await db`
+          INSERT INTO form_submissions (form_type, email, name, data, ip_address, user_agent, referrer, session_id)
+          VALUES (${formType}, ${email}, ${name}, ${JSON.stringify(data)}, ${ipAddress}::inet, ${userAgent}, ${referrer}, ${analyticsSessionId})
+        `;
+
+        return html(`
+          <div class="rounded-lg bg-green-50 p-4 mb-6">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <h3 class="text-sm font-medium text-green-800">Thank you!</h3>
+                <p class="mt-1 text-sm text-green-700">We've received your message and will get back to you soon.</p>
+              </div>
+            </div>
+          </div>
+        `);
+      } catch (error) {
+        console.error("Failed to save contact form submission:", error);
+        return html(`
+          <div class="rounded-lg bg-red-50 p-4 mb-6">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <h3 class="text-sm font-medium text-red-800">Oops!</h3>
+                <p class="mt-1 text-sm text-red-700">Something went wrong. Please try again or email us directly.</p>
+              </div>
+            </div>
+          </div>
+        `);
+      }
     }
 
     if (path === "/api/subscribe" && req.method === "POST") {
-      return html(`
-        <div style="text-align: center; padding: var(--space-4); color: white;">
-          <strong>Thanks for subscribing!</strong>
-        </div>
-      `);
+      try {
+        const formData = await req.formData();
+        const email = formData.get("email")?.toString() || "";
+        const ipAddress = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+                          req.headers.get("x-real-ip") || null;
+        const userAgent = req.headers.get("user-agent") || null;
+        const referrer = req.headers.get("referer") || null;
+
+        await db`
+          INSERT INTO form_submissions (form_type, email, data, ip_address, user_agent, referrer, session_id)
+          VALUES ('subscribe', ${email}, '{}', ${ipAddress}::inet, ${userAgent}, ${referrer}, ${analyticsSessionId})
+        `;
+
+        return html(`
+          <div style="text-align: center; padding: var(--space-4); color: white;">
+            <strong>Thanks for subscribing!</strong>
+          </div>
+        `);
+      } catch (error) {
+        console.error("Failed to save subscription:", error);
+        return html(`
+          <div style="text-align: center; padding: var(--space-4); color: white;">
+            <strong>Thanks for subscribing!</strong>
+          </div>
+        `);
+      }
     }
 
     // Login API endpoint

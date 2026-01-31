@@ -3,6 +3,9 @@
 @source "../components/**/*.tsx";
 @source "../pages/**/*.tsx";
 
+/* Enable class-based dark mode */
+@variant dark (&:where(.dark, .dark *));
+
 /* Custom theme configuration for Health Samurai */
 @theme {
   /* Colors */
@@ -23,6 +26,15 @@
   /* Border colors */
   --color-border: #ebebeb;
 
+  /* Dark mode colors */
+  --color-dark-bg: #0f172a;
+  --color-dark-bg-alt: #1e293b;
+  --color-dark-text: #f1f5f9;
+  --color-dark-text-light: #94a3b8;
+  --color-dark-text-muted: #64748b;
+  --color-dark-border: #334155;
+  --color-dark-primary-light: #3b1d1a;
+
   /* Typography */
   --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
 }
@@ -30,10 +42,17 @@
 @layer base {
   html {
     -webkit-font-smoothing: antialiased;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
   }
 
   body {
     @apply font-sans text-gray-900 bg-white;
+    @apply dark:bg-dark-bg dark:text-dark-text;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 }
 
@@ -53,4 +72,15 @@
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* htmx indicator styles */
+.htmx-indicator {
+  display: none;
+}
+.htmx-request .htmx-indicator {
+  display: inline-block;
+}
+.htmx-request.htmx-indicator {
+  display: inline-block;
 }
