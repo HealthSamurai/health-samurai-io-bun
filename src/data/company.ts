@@ -64,18 +64,25 @@ export const company = {
     {
       name: "Pavel Smirnov",
       role: "CEO",
-      linkedin: "https://www.linkedin.com/in/pavelsmirnov/",
+      linkedin: "https://www.linkedin.com/in/pavelsmirnoff/",
+      twitter: "https://twitter.com/paul_smirnoff",
+      description:
+        "Serial entrepreneur and FHIR trailblazer. Started working in healthcare IT in 2004, led development of cloud inpatient EHR at hospitals in California.",
     },
     {
       name: "Nikolai Ryzhikov",
       role: "CTO",
-      linkedin: "https://www.linkedin.com/in/niquola/",
+      linkedin: "https://www.linkedin.com/in/nikolai-ryzhikov-586a6913/",
+      description:
+        "Head of engineering and mastermind behind Aidbox, the first commercial FHIR backend platform. Expert in FHIR, PostgreSQL, and Clojure.",
     },
     {
       name: "Grahame Grieve",
       role: "Advisor",
+      linkedin: "https://au.linkedin.com/in/grahame-grieve-952637",
+      twitter: "https://twitter.com/grahamegrieve",
       description:
-        "Creator of FHIR, consulting to national programs, vendor consortiums, individual vendors, and standards bodies about healthcare data exchange. Recipient of the 2019 Glaser Award and the 2015 Jon Hilton Award in Primary Care Informatics.",
+        "Creator of FHIR and FHIR Product Director at HL7 International. Consulting to national programs, vendor consortiums, and standards bodies about healthcare data exchange. Recipient of the 2019 Glaser Award and the 2015 Jon Hilton Award in Primary Care Informatics.",
     },
   ],
 
