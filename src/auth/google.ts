@@ -64,7 +64,15 @@ function renderError(message: string): string {
  * GET /auth/google - Redirect to Google OAuth consent screen
  */
 export async function googleLogin(req: Request): Promise<Response> {
+  console.log("[OAuth] Starting Google login flow");
+  console.log("[OAuth] Config:", {
+    clientId: GOOGLE_CLIENT_ID ? `${GOOGLE_CLIENT_ID.substring(0, 20)}...` : "NOT SET",
+    redirectUri: GOOGLE_REDIRECT_URI,
+    allowedDomain: ALLOWED_DOMAIN,
+  });
+
   if (!GOOGLE_CLIENT_ID) {
+    console.error("[OAuth] GOOGLE_CLIENT_ID not configured");
     return new Response(renderError("Google OAuth is not configured. Please set GOOGLE_CLIENT_ID environment variable."), {
       status: 500,
       headers: { "Content-Type": "text/html" },
@@ -83,6 +91,7 @@ export async function googleLogin(req: Request): Promise<Response> {
   });
 
   const authUrl = `${GOOGLE_AUTH_URL}?${params.toString()}`;
+  console.log("[OAuth] Redirecting to Google consent screen");
 
   return new Response(null, {
     status: 302,
@@ -98,8 +107,11 @@ export async function googleCallback(req: Request): Promise<Response> {
   const code = url.searchParams.get("code");
   const error = url.searchParams.get("error");
 
+  console.log("[OAuth] Callback received", { hasCode: !!code, error });
+
   // Handle errors from Google
   if (error) {
+    console.log("[OAuth] Error from Google:", error);
     return new Response(renderError(`Google authentication failed: ${error}`), {
       status: 400,
       headers: { "Content-Type": "text/html" },
@@ -107,6 +119,7 @@ export async function googleCallback(req: Request): Promise<Response> {
   }
 
   if (!code) {
+    console.log("[OAuth] No authorization code received");
     return new Response(renderError("No authorization code received from Google"), {
       status: 400,
       headers: { "Content-Type": "text/html" },
@@ -114,6 +127,9 @@ export async function googleCallback(req: Request): Promise<Response> {
   }
 
   try {
+    console.log("[OAuth] Exchanging code for tokens...");
+    console.log("[OAuth] Redirect URI:", GOOGLE_REDIRECT_URI);
+
     // Exchange code for tokens
     const tokenResponse = await fetch(GOOGLE_TOKEN_URL, {
       method: "POST",
@@ -129,7 +145,7 @@ export async function googleCallback(req: Request): Promise<Response> {
 
     if (!tokenResponse.ok) {
       const errorData = await tokenResponse.text();
-      console.error("Token exchange failed:", errorData);
+      console.error("[OAuth] Token exchange failed:", tokenResponse.status, errorData);
       return new Response(renderError("Failed to exchange authorization code"), {
         status: 400,
         headers: { "Content-Type": "text/html" },
@@ -137,13 +153,16 @@ export async function googleCallback(req: Request): Promise<Response> {
     }
 
     const tokens = (await tokenResponse.json()) as { access_token: string; id_token?: string };
+    console.log("[OAuth] Token exchange successful");
 
     // Fetch user info from Google
+    console.log("[OAuth] Fetching user info...");
     const userInfoResponse = await fetch(GOOGLE_USERINFO_URL, {
       headers: { Authorization: `Bearer ${tokens.access_token}` },
     });
 
     if (!userInfoResponse.ok) {
+      console.error("[OAuth] Failed to fetch user info:", userInfoResponse.status);
       return new Response(renderError("Failed to fetch user information from Google"), {
         status: 400,
         headers: { "Content-Type": "text/html" },
@@ -151,10 +170,12 @@ export async function googleCallback(req: Request): Promise<Response> {
     }
 
     const googleUser = (await userInfoResponse.json()) as GoogleUserInfo;
+    console.log("[OAuth] User info received:", { email: googleUser.email, id: googleUser.id });
 
     // Verify email domain
     const emailDomain = googleUser.email.split("@")[1];
     if (emailDomain !== ALLOWED_DOMAIN) {
+      console.log("[OAuth] Domain rejected:", emailDomain, "expected:", ALLOWED_DOMAIN);
       return new Response(
         renderError(`Access restricted to @${ALLOWED_DOMAIN} accounts. Your email domain: @${emailDomain}`),
         { status: 403, headers: { "Content-Type": "text/html" } }
@@ -162,13 +183,16 @@ export async function googleCallback(req: Request): Promise<Response> {
     }
 
     // Find or create user
+    console.log("[OAuth] Looking up user by google_id...");
     let [user] = await db`SELECT * FROM users WHERE google_id = ${googleUser.id}`;
 
     if (!user) {
+      console.log("[OAuth] No user found by google_id, checking email...");
       // Check if user exists with same email (for linking accounts)
       [user] = await db`SELECT * FROM users WHERE email = ${googleUser.email}`;
 
       if (user) {
+        console.log("[OAuth] Found user by email, linking Google account...");
         // Link Google account to existing user
         await db`
           UPDATE users
@@ -176,6 +200,7 @@ export async function googleCallback(req: Request): Promise<Response> {
           WHERE id = ${user.id}
         `;
       } else {
+        console.log("[OAuth] Creating new user...");
         // Create new user
         const username = await generateUniqueUsername(googleUser.email.split("@")[0]);
         [user] = await db`
@@ -183,8 +208,10 @@ export async function googleCallback(req: Request): Promise<Response> {
           VALUES (${googleUser.email}, ${username}, ${googleUser.id}, ${googleUser.given_name}, ${googleUser.family_name}, ${googleUser.picture}, true, 'user')
           RETURNING *
         `;
+        console.log("[OAuth] User created:", user.id);
       }
     } else {
+      console.log("[OAuth] Found existing user:", user.id);
       // Update avatar if changed
       if (user.avatar_url !== googleUser.picture) {
         await db`UPDATE users SET avatar_url = ${googleUser.picture}, updated_at = CURRENT_TIMESTAMP WHERE id = ${user.id}`;
@@ -193,6 +220,7 @@ export async function googleCallback(req: Request): Promise<Response> {
 
     // Check if user is active
     if (user.is_active === false) {
+      console.log("[OAuth] User is deactivated:", user.id);
       return new Response(renderError("Your account has been deactivated."), {
         status: 403,
         headers: { "Content-Type": "text/html" },
@@ -200,10 +228,13 @@ export async function googleCallback(req: Request): Promise<Response> {
     }
 
     // Update last login time
+    console.log("[OAuth] Updating last login time...");
     await db`UPDATE users SET last_login_at = CURRENT_TIMESTAMP WHERE id = ${user.id}`;
 
     // Create session
+    console.log("[OAuth] Creating session...");
     const sessionId = await createSession(user.id!);
+    console.log("[OAuth] Session created, redirecting to home");
 
     // Redirect to home with session cookie
     return new Response(null, {
@@ -214,7 +245,10 @@ export async function googleCallback(req: Request): Promise<Response> {
       },
     });
   } catch (error) {
-    console.error("Google OAuth error:", error);
+    console.error("[OAuth] Unhandled error:", error);
+    if (error instanceof Error) {
+      console.error("[OAuth] Error stack:", error.stack);
+    }
     return new Response(renderError("An error occurred during authentication. Please try again."), {
       status: 500,
       headers: { "Content-Type": "text/html" },
