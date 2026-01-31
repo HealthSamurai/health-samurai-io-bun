@@ -1,35 +1,42 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: health-samurai-dev
+# Deploy to default namespace (shared with prod)
+namespace: default
 
 resources:
   - ../../base
-  - ingress.yaml
 
-patches:
-  - path: postgres-secret-patch.yaml
+# Suffix creates: health-samurai-web-dev, postgres-dev, etc.
+nameSuffix: "-dev"
 
-namePrefix: dev-
+labels:
+  - pairs:
+      environment: development
+    includeSelectors: true
 
-commonLabels:
-  environment: development
-
-patchesJson6902:
-  - patch: |-
-      - op: replace
-        path: /spec/replicas
-        value: 1
-    target:
-      kind: Deployment
-      name: health-samurai-web
+# Override replicas for dev
+replicas:
+  - name: health-samurai-web
+    count: 1
 
 configMapGenerator:
   - name: health-samurai-config
-    behavior: merge
+    behavior: replace
     literals:
+      - GIT_REPO=https://github.com/HealthSamurai/health-samurai-io-bun.git
       - GIT_BRANCH=main
       - POLL_INTERVAL=30
+      - PORT=4444
+
+secretGenerator:
+  - name: postgres-secret
+    behavior: replace
+    literals:
+      - POSTGRES_USER=healthsamurai
+      - POSTGRES_PASSWORD=healthsamurai
+      - POSTGRES_DB=healthsamurai
+      - DATABASE_URL=postgres://healthsamurai:healthsamurai@postgres-dev:5432/healthsamurai
 
 images:
   - name: health-samurai-web

@@ -12,6 +12,8 @@ resources:
   - postgres-service.yaml
   - postgres-secret.yaml
 
-commonLabels:
-  app.kubernetes.io/name: health-samurai-web
-  app.kubernetes.io/component: web
+labels:
+  - pairs:
+      app.kubernetes.io/name: health-samurai-web
+      app.kubernetes.io/component: web
+    includeSelectors: false
