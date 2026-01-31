@@ -84,6 +84,120 @@ export async function lookupGeoLocation(ip: string): Promise<GeoLocation | null>
   }
 }
 
+// ============================================
+// User Agent Parsing
+// ============================================
+
+export interface ParsedUserAgent {
+  browser: string;
+  browserVersion: string;
+  os: string;
+  osVersion: string;
+  device: "desktop" | "mobile" | "tablet" | "bot" | "unknown";
+  isBot: boolean;
+}
+
+/**
+ * Parse user agent string into structured data
+ */
+export function parseUserAgent(ua: string | null): ParsedUserAgent | null {
+  if (!ua) return null;
+
+  const result: ParsedUserAgent = {
+    browser: "Unknown",
+    browserVersion: "",
+    os: "Unknown",
+    osVersion: "",
+    device: "unknown",
+    isBot: false,
+  };
+
+  // Detect bots
+  const botPatterns = /bot|crawl|spider|slurp|mediapartners|googlebot|bingbot|yandex|baidu|duckduck|facebookexternalhit|twitterbot|linkedinbot|pinterest|whatsapp|telegram|slack/i;
+  if (botPatterns.test(ua)) {
+    result.isBot = true;
+    result.device = "bot";
+    // Try to identify the bot
+    if (/googlebot/i.test(ua)) result.browser = "Googlebot";
+    else if (/bingbot/i.test(ua)) result.browser = "Bingbot";
+    else if (/yandex/i.test(ua)) result.browser = "Yandex";
+    else if (/baidu/i.test(ua)) result.browser = "Baidu";
+    else if (/facebookexternalhit/i.test(ua)) result.browser = "Facebook";
+    else if (/twitterbot/i.test(ua)) result.browser = "Twitter";
+    else if (/linkedinbot/i.test(ua)) result.browser = "LinkedIn";
+    else result.browser = "Bot";
+    return result;
+  }
+
+  // Detect browser (order matters - check specific before generic)
+  if (/edg(e|a|ios)?/i.test(ua)) {
+    result.browser = "Edge";
+    const match = ua.match(/edg(?:e|a|ios)?[\/\s]?([\d.]+)/i);
+    if (match) result.browserVersion = match[1] || "";
+  } else if (/opr|opera/i.test(ua)) {
+    result.browser = "Opera";
+    const match = ua.match(/(?:opr|opera)[\/\s]?([\d.]+)/i);
+    if (match) result.browserVersion = match[1] || "";
+  } else if (/chrome|crios|chromium/i.test(ua)) {
+    result.browser = "Chrome";
+    const match = ua.match(/(?:chrome|crios|chromium)[\/\s]?([\d.]+)/i);
+    if (match) result.browserVersion = match[1] || "";
+  } else if (/firefox|fxios/i.test(ua)) {
+    result.browser = "Firefox";
+    const match = ua.match(/(?:firefox|fxios)[\/\s]?([\d.]+)/i);
+    if (match) result.browserVersion = match[1] || "";
+  } else if (/safari/i.test(ua) && !/chrome/i.test(ua)) {
+    result.browser = "Safari";
+    const match = ua.match(/version[\/\s]?([\d.]+)/i);
+    if (match) result.browserVersion = match[1] || "";
+  } else if (/msie|trident/i.test(ua)) {
+    result.browser = "IE";
+    const match = ua.match(/(?:msie\s|rv:)([\d.]+)/i);
+    if (match) result.browserVersion = match[1] || "";
+  }
+
+  // Detect OS
+  if (/windows nt/i.test(ua)) {
+    result.os = "Windows";
+    const match = ua.match(/windows nt ([\d.]+)/i);
+    if (match) {
+      const ver = match[1];
+      if (ver === "10.0") result.osVersion = "10/11";
+      else if (ver === "6.3") result.osVersion = "8.1";
+      else if (ver === "6.2") result.osVersion = "8";
+      else if (ver === "6.1") result.osVersion = "7";
+      else result.osVersion = ver || "";
+    }
+  } else if (/mac os x/i.test(ua)) {
+    result.os = "macOS";
+    const match = ua.match(/mac os x ([\d_.]+)/i);
+    if (match) result.osVersion = (match[1] || "").replace(/_/g, ".");
+  } else if (/iphone|ipad|ipod/i.test(ua)) {
+    result.os = "iOS";
+    const match = ua.match(/os ([\d_]+)/i);
+    if (match) result.osVersion = (match[1] || "").replace(/_/g, ".");
+  } else if (/android/i.test(ua)) {
+    result.os = "Android";
+    const match = ua.match(/android ([\d.]+)/i);
+    if (match) result.osVersion = match[1] || "";
+  } else if (/linux/i.test(ua)) {
+    result.os = "Linux";
+  } else if (/cros/i.test(ua)) {
+    result.os = "ChromeOS";
+  }
+
+  // Detect device type
+  if (/ipad|tablet|playbook|silk/i.test(ua) || (/android/i.test(ua) && !/mobile/i.test(ua))) {
+    result.device = "tablet";
+  } else if (/mobile|iphone|ipod|android.*mobile|blackberry|opera mini|opera mobi|iemobile|windows phone/i.test(ua)) {
+    result.device = "mobile";
+  } else {
+    result.device = "desktop";
+  }
+
+  return result;
+}
+
 /**
  * Parse cookies from request
  */
@@ -184,15 +298,16 @@ export async function trackEvent(opts: TrackEventOptions): Promise<void> {
   } = opts;
 
   const ipHash = ip ? hashIP(ip) : null;
+  const rawIp = ip && ip !== "unknown" ? ip : null;
 
   try {
     await db`
       INSERT INTO analytics_events (
         session_id, user_id, event_type, path, referrer,
-        previous_path, user_agent, ip_hash, metadata
+        previous_path, user_agent, ip_hash, ip_address, metadata
       ) VALUES (
         ${sessionId}, ${userId ?? null}, ${eventType}, ${path}, ${referrer ?? null},
-        ${previousPath ?? null}, ${userAgent ?? null}, ${ipHash}, ${metadata ? JSON.stringify(metadata) : null}
+        ${previousPath ?? null}, ${userAgent ?? null}, ${ipHash}, ${rawIp}, ${metadata ? JSON.stringify(metadata) : null}
       )
     `;
   } catch (error) {
@@ -267,14 +382,30 @@ export async function trackPageView(
   const url = new URL(req.url);
   const referrer = req.headers.get("referer") || undefined;
   const clientIP = getClientIP(req);
+  const userAgentString = req.headers.get("user-agent") || undefined;
 
-  // Build metadata with language and UTM params
+  // Build metadata with all available info
   const language = getLanguage(req);
   const utm = getUTMParams(url);
   const metadata: Record<string, unknown> = {};
 
   if (language) metadata.language = language;
   if (utm) metadata.utm = utm;
+
+  // Parse user agent for browser/device info
+  const parsedUA = parseUserAgent(userAgentString || null);
+  if (parsedUA) {
+    metadata.browser = {
+      name: parsedUA.browser,
+      version: parsedUA.browserVersion,
+    };
+    metadata.os = {
+      name: parsedUA.os,
+      version: parsedUA.osVersion,
+    };
+    metadata.device = parsedUA.device;
+    metadata.isBot = parsedUA.isBot;
+  }
 
   // Fetch geo data (uses cache, so usually fast)
   const geo = await lookupGeoLocation(clientIP);
@@ -287,6 +418,16 @@ export async function trackPageView(
     };
   }
 
+  // Store screen info if provided via query (client-side can add this)
+  const screenWidth = url.searchParams.get("sw");
+  const screenHeight = url.searchParams.get("sh");
+  if (screenWidth && screenHeight) {
+    metadata.screen = {
+      width: parseInt(screenWidth, 10),
+      height: parseInt(screenHeight, 10),
+    };
+  }
+
   await trackEvent({
     sessionId,
     userId,
@@ -294,7 +435,7 @@ export async function trackPageView(
     path: url.pathname,
     referrer,
     previousPath,
-    userAgent: req.headers.get("user-agent") || undefined,
+    userAgent: userAgentString,
     ip: clientIP,
     metadata: Object.keys(metadata).length > 0 ? metadata : undefined,
   });
@@ -658,4 +799,174 @@ export async function getTopCities(
     country: row.country,
     visitors: Number(row.visitors),
   }));
+}
+
+/**
+ * Get top browsers by visitors
+ */
+export async function getTopBrowsers(
+  startDate: Date,
+  endDate: Date,
+  limit: number = 10
+): Promise<Array<{ browser: string; visitors: number }>> {
+  const results = await db`
+    SELECT
+      COALESCE(metadata->'browser'->>'name', 'Unknown') as browser,
+      COUNT(DISTINCT session_id) as visitors
+    FROM analytics_events
+    WHERE event_type = 'page_view'
+      AND created_at >= ${startDate}
+      AND created_at < ${endDate}
+      AND COALESCE(metadata->>'isBot', 'false') = 'false'
+    GROUP BY metadata->'browser'->>'name'
+    ORDER BY visitors DESC
+    LIMIT ${limit}
+  `;
+
+  return results.map((row: { browser: string; visitors: number }) => ({
+    browser: row.browser,
+    visitors: Number(row.visitors),
+  }));
+}
+
+/**
+ * Get top operating systems by visitors
+ */
+export async function getTopOS(
+  startDate: Date,
+  endDate: Date,
+  limit: number = 10
+): Promise<Array<{ os: string; visitors: number }>> {
+  const results = await db`
+    SELECT
+      COALESCE(metadata->'os'->>'name', 'Unknown') as os,
+      COUNT(DISTINCT session_id) as visitors
+    FROM analytics_events
+    WHERE event_type = 'page_view'
+      AND created_at >= ${startDate}
+      AND created_at < ${endDate}
+      AND COALESCE(metadata->>'isBot', 'false') = 'false'
+    GROUP BY metadata->'os'->>'name'
+    ORDER BY visitors DESC
+    LIMIT ${limit}
+  `;
+
+  return results.map((row: { os: string; visitors: number }) => ({
+    os: row.os,
+    visitors: Number(row.visitors),
+  }));
+}
+
+/**
+ * Get device type breakdown
+ */
+export async function getDeviceBreakdown(
+  startDate: Date,
+  endDate: Date
+): Promise<Array<{ device: string; visitors: number; percentage: number }>> {
+  const results = await db`
+    WITH device_counts AS (
+      SELECT
+        COALESCE(metadata->>'device', 'unknown') as device,
+        COUNT(DISTINCT session_id) as visitors
+      FROM analytics_events
+      WHERE event_type = 'page_view'
+        AND created_at >= ${startDate}
+        AND created_at < ${endDate}
+        AND COALESCE(metadata->>'isBot', 'false') = 'false'
+      GROUP BY metadata->>'device'
+    ),
+    total AS (
+      SELECT SUM(visitors) as total_visitors FROM device_counts
+    )
+    SELECT
+      device,
+      visitors,
+      ROUND(visitors * 100.0 / NULLIF(total.total_visitors, 0), 1) as percentage
+    FROM device_counts, total
+    ORDER BY visitors DESC
+  `;
+
+  return results.map((row: { device: string; visitors: number; percentage: number }) => ({
+    device: row.device,
+    visitors: Number(row.visitors),
+    percentage: Number(row.percentage) || 0,
+  }));
+}
+
+/**
+ * Get bot traffic stats
+ */
+export async function getBotStats(
+  startDate: Date,
+  endDate: Date,
+  limit: number = 10
+): Promise<{ totalBotHits: number; topBots: Array<{ bot: string; hits: number }> }> {
+  const [countResult] = await db`
+    SELECT COUNT(*) as total
+    FROM analytics_events
+    WHERE event_type = 'page_view'
+      AND created_at >= ${startDate}
+      AND created_at < ${endDate}
+      AND metadata->>'isBot' = 'true'
+  `;
+
+  const topBots = await db`
+    SELECT
+      COALESCE(metadata->'browser'->>'name', 'Unknown Bot') as bot,
+      COUNT(*) as hits
+    FROM analytics_events
+    WHERE event_type = 'page_view'
+      AND created_at >= ${startDate}
+      AND created_at < ${endDate}
+      AND metadata->>'isBot' = 'true'
+    GROUP BY metadata->'browser'->>'name'
+    ORDER BY hits DESC
+    LIMIT ${limit}
+  `;
+
+  return {
+    totalBotHits: Number(countResult?.total) || 0,
+    topBots: topBots.map((row: { bot: string; hits: number }) => ({
+      bot: row.bot,
+      hits: Number(row.hits),
+    })),
+  };
+}
+
+/**
+ * Get recent visitors with full details (for live view)
+ */
+export async function getRecentVisitors(
+  limit: number = 20
+): Promise<Array<{
+  session_id: string;
+  path: string;
+  ip_address: string | null;
+  country: string | null;
+  city: string | null;
+  browser: string | null;
+  os: string | null;
+  device: string | null;
+  referrer: string | null;
+  created_at: Date;
+}>> {
+  return await db`
+    SELECT
+      session_id,
+      path,
+      ip_address,
+      metadata->'geo'->>'country' as country,
+      metadata->'geo'->>'city' as city,
+      metadata->'browser'->>'name' as browser,
+      metadata->'os'->>'name' as os,
+      metadata->>'device' as device,
+      referrer,
+      created_at
+    FROM analytics_events
+    WHERE event_type = 'page_view'
+      AND COALESCE(metadata->>'isBot', 'false') = 'false'
+    ORDER BY created_at DESC
+    LIMIT ${limit}
+  `;
 }
