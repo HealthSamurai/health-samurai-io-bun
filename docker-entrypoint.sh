@@ -2,6 +2,7 @@
 set -e
 
 APP_DIR="/app/repo"
+LOG_FIFO="/tmp/server.log"
 SERVER_PID=""
 
 log() {
@@ -56,8 +57,13 @@ install_deps() {
 start_server() {
     cd "$APP_DIR"
     log "Starting server on port $PORT..."
-    # Run server with unbuffered output for real-time logging
-    stdbuf -o0 -e0 bun run src/server.ts 2>&1 &
+    # Create named pipe for log forwarding
+    rm -f "$LOG_FIFO"
+    mkfifo "$LOG_FIFO"
+    # Forward server output to stdout in background
+    cat "$LOG_FIFO" &
+    # Run server with output to pipe
+    bun run src/server.ts > "$LOG_FIFO" 2>&1 &
     SERVER_PID=$!
     log "Server started with PID: $SERVER_PID"
 }
@@ -80,6 +86,7 @@ restart_server() {
 cleanup() {
     log "Shutting down..."
     stop_server
+    rm -f "$LOG_FIFO"
     exit 0
 }
 
