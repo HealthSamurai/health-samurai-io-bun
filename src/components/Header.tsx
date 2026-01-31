@@ -7,10 +7,11 @@ import {
   navLinks,
   aboutLinks,
 } from "../data/header";
+import { SearchButton, MobileSearchButton, SearchModal } from "./Search";
 
 export function Header(): string {
   return (
-    <header class="relative isolate z-10 bg-white" data-signals="{productsOpen: false, aboutOpen: false, mobileOpen: false}">
+    <header class="relative isolate z-10 bg-white" data-signals="{productsOpen: false, aboutOpen: false, mobileOpen: false, searchOpen: false, searchQuery: ''}">
       <nav aria-label="Global" class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         {/* Logo */}
         <div class="flex lg:flex-1">
@@ -21,7 +22,8 @@ export function Header(): string {
         </div>
 
         {/* Mobile menu button */}
-        <div class="flex lg:hidden">
+        <div class="flex items-center gap-x-2 lg:hidden">
+          <MobileSearchButton />
           <button
             type="button"
             class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
@@ -70,8 +72,9 @@ export function Header(): string {
           </button>
         </div>
 
-        {/* CTA */}
-        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+        {/* Search + CTA */}
+        <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:gap-x-6">
+          <SearchButton />
           <a href={cta.href} class="text-sm/6 font-semibold text-gray-900">
             {cta.label} <span aria-hidden="true" dangerouslySetInnerHTML={{ __html: "&rarr;" }} />
           </a>
@@ -266,6 +269,9 @@ export function Header(): string {
           </div>
         </div>
       </div>
+
+      {/* Search modal */}
+      <SearchModal />
     </header>
   );
 }

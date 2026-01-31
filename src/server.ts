@@ -2,6 +2,7 @@ import { Layout } from "./components/Layout";
 import { watch } from "fs";
 import { initGitInfo } from "./lib/git-info";
 import { initHighlighter } from "./lib/markdown";
+import { getAllPosts } from "./data/blog";
 
 // Initialize at startup
 await initGitInfo();
@@ -139,6 +140,42 @@ Bun.serve({
         <div style="text-align: center; padding: var(--space-4); color: white;">
           <strong>Thanks for subscribing!</strong>
         </div>
+      `);
+    }
+
+    // Search API endpoint
+    if (path === "/api/search") {
+      const query = url.searchParams.get("q")?.toLowerCase().trim() || "";
+      if (!query || query.length < 2) {
+        return html(`<div class="p-4 text-center text-sm text-gray-500">Type at least 2 characters...</div>`);
+      }
+
+      const posts = getAllPosts();
+      const results = posts
+        .filter(post => {
+          const title = post.title.toLowerCase();
+          const desc = post.description.toLowerCase();
+          return title.includes(query) || desc.includes(query);
+        })
+        .slice(0, 8);
+
+      if (results.length === 0) {
+        return html(`<div class="p-4 text-center text-sm text-gray-500">No results found for "${query}"</div>`);
+      }
+
+      const resultsHtml = results.map(post => {
+        const title = post.title.replace(/^🔥\s*/, "");
+        return `
+          <a href="/blog/${post.slug}" class="block px-4 py-3 hover:bg-gray-50" data-on:click="$searchOpen = false">
+            <p class="text-sm font-medium text-gray-900">${title}</p>
+            <p class="text-sm text-gray-500 line-clamp-1">${post.description}</p>
+          </a>
+        `;
+      }).join("");
+
+      return html(`
+        <p class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">Blog posts</p>
+        <div class="divide-y divide-gray-100">${resultsHtml}</div>
       `);
     }
 
