@@ -5,14 +5,12 @@ import { SQL } from "bun";
 
 const MIGRATIONS_DIR = path.join(import.meta.dir, "..", "migrations");
 
+// Default DATABASE_URL for local development
+const DEFAULT_DATABASE_URL = "postgres://healthsamurai:healthsamurai@localhost:5436/healthsamurai";
+
 function createConnection() {
-  return new SQL({
-    hostname: process.env.POSTGRES_HOST || "localhost",
-    port: parseInt(process.env.POSTGRES_PORT || "5436"),
-    username: process.env.POSTGRES_USER || "healthsamurai",
-    password: process.env.POSTGRES_PASSWORD || "healthsamurai",
-    database: process.env.POSTGRES_DB || "healthsamurai",
-  });
+  // Bun.SQL supports DATABASE_URL natively
+  return new SQL(process.env.DATABASE_URL || DEFAULT_DATABASE_URL);
 }
 
 export async function initMigrationsTable(sql: SQL) {
