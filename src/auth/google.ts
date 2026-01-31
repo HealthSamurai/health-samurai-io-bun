@@ -257,10 +257,10 @@ export async function googleCallback(req: Request): Promise<Response> {
     });
   } catch (error) {
     console.error("[OAuth] Unhandled error:", error);
-    if (error instanceof Error) {
-      console.error("[OAuth] Error stack:", error.stack);
-    }
-    return new Response(renderError("An error occurred during authentication. Please try again."), {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    const errorStack = error instanceof Error ? error.stack : "";
+    console.error("[OAuth] Error details:", errorMessage, errorStack);
+    return new Response(renderError(`Auth error: ${errorMessage}`), {
       status: 500,
       headers: { "Content-Type": "text/html" },
     });
