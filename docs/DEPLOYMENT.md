@@ -12,45 +12,49 @@ The Health Samurai marketing website is deployed on Google Kubernetes Engine (GK
 │  (source code)  │     │  (Bun container) │     │  Balancer       │
 └─────────────────┘     └──────────────────┘     └─────────────────┘
                               │                         │
-                              │ polls every 60s         │
+                              │ polls every 30-120s     │
                               ▼                         ▼
                         ┌──────────────────┐     ┌─────────────────┐
                         │  Auto-restart    │     │  SSL/HTTPS      │
-                        │  on new commits  │     │  (Google-managed)│
+                        │  on new commits  │     │  (pre-shared)   │
                         └──────────────────┘     └─────────────────┘
 ```
+
+**Namespace:** Both dev and prod environments run in the `default` namespace with `-dev` and `-prod` suffixes for resource names.
 
 ## URLs
 
 | Environment | URL | Branch |
 |-------------|-----|--------|
-| Production | https://site-prod.apki.dev | `prod` |
-| Production (alias) | https://hs.apki.dev | `prod` |
+| Production | https://site-prod.apki.dev | `main` |
+| Production (alias) | https://hs.apki.dev | `main` |
 | Development | https://site-dev.apki.dev | `main` |
 
-## Branch Strategy
+## Deployment Strategy
+
+Both environments track the `main` branch but with different poll intervals:
 
 ```
-main branch ──────► site-dev.apki.dev (auto-deploy, 30s poll)
-                    - Development/staging environment
-                    - Fast iteration, immediate feedback
-
-prod branch ──────► site-prod.apki.dev (auto-deploy, 120s poll)
-                    - Production environment
-                    - Merge main → prod to deploy
+main branch ─┬──► health-samurai-web-dev (30s poll)
+             │    - Development/staging environment
+             │    - Fast iteration, immediate feedback
+             │
+             └──► health-samurai-web-prod (120s poll)
+                  - Production environment
+                  - 3 replicas for high availability
 ```
 
-### Deploy to Production
+### Deploy Code
+
+Code deploys automatically when pushed to GitHub:
 
 ```bash
-# Merge main into prod and push
-git checkout prod
-git merge main
+git add .
+git commit -m "Your changes"
 git push
-git checkout main
 ```
 
-The prod container polls every 120 seconds and auto-restarts on new commits.
+The containers detect changes within 30-120 seconds and auto-restart.
 
 ## GCP Resources
 
@@ -59,97 +63,71 @@ The prod container polls every 120 seconds and auto-restarts on new commits.
 | GKE Cluster | `hs-cluster` | `atomic-ehr` |
 | Region | `us-central1` | |
 | Static IP | `health-samurai-ip` | `35.186.242.241` |
-| SSL Certificate | `health-samurai-ssl` | Google-managed |
-| Container Registry | `gcr.io/atomic-ehr/health-samurai-bun` | |
+| SSL Certificate | `health-samurai-ssl` | Pre-shared |
+| Container Registry | `gcr.io/atomic-ehr/health-samurai-web` | |
 
-## Docker Image
+## Kubernetes Configuration
 
-### Build and Push
+### Directory Structure
+
+```
+k8s/
+├── base/                    # Shared resources
+│   ├── kustomization.yaml
+│   ├── deployment.yaml      # Web app deployment
+│   ├── service.yaml         # Web app ClusterIP service
+│   ├── configmap.yaml       # GIT_REPO, GIT_BRANCH, POLL_INTERVAL, PORT
+│   ├── postgres-statefulset.yaml  # ParadeDB StatefulSet
+│   ├── postgres-service.yaml      # Postgres ClusterIP service
+│   └── postgres-secret.yaml       # Postgres credentials template
+├── overlays/
+│   ├── dev/
+│   │   └── kustomization.yaml     # nameSuffix: "-dev", replicas: 1
+│   └── prod/
+│       └── kustomization.yaml     # nameSuffix: "-prod", replicas: 3
+└── ingress.yaml             # GCP Load Balancer ingress (applied separately)
+```
+
+### Resources Created
+
+| Resource | Dev | Prod |
+|----------|-----|------|
+| Deployment | `health-samurai-web-dev` | `health-samurai-web-prod` |
+| Service | `health-samurai-web-dev` | `health-samurai-web-prod` |
+| ConfigMap | `health-samurai-config-dev` | `health-samurai-config-prod` |
+| StatefulSet | `postgres-dev` | `postgres-prod` |
+| Service | `postgres-dev` | `postgres-prod` |
+| Secret | `postgres-secret-dev` | `postgres-secret-prod` |
+| PVC | `postgres-data-postgres-dev-0` | `postgres-data-postgres-prod-0` |
+
+### Environment Differences
+
+| Setting | Dev | Prod |
+|---------|-----|------|
+| Replicas | 1 | 3 |
+| Poll Interval | 30s | 120s |
+| DATABASE_URL | `postgres://...@postgres-dev:5432/...` | `postgres://...@postgres-prod:5432/...` |
+
+### Deploy with Kustomize
 
 ```bash
-# Configure Docker for GCR
-gcloud auth configure-docker gcr.io
+# Preview generated manifests
+kubectl kustomize k8s/overlays/dev
+kubectl kustomize k8s/overlays/prod
 
-# Build for amd64 (required for GKE)
-docker buildx build --platform linux/amd64 -t gcr.io/atomic-ehr/health-samurai-bun:latest --push .
+# Apply to cluster
+kubectl apply -k k8s/overlays/dev
+kubectl apply -k k8s/overlays/prod
+
+# Apply ingress (only needed once)
+kubectl apply -f k8s/ingress.yaml
 ```
 
-### Environment Variables
+### Ingress Configuration
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `GIT_REPO` | (required) | GitHub repository URL |
-| `GIT_BRANCH` | `main` | Branch to track |
-| `POLL_INTERVAL` | `60` | Seconds between git checks |
-| `PORT` | `4444` | Server port |
-
-### How It Works
-
-1. Container starts and clones the repository
-2. Runs `bun install` to install dependencies
-3. Starts the Bun server
-4. Polls GitHub every 60 seconds for new commits
-5. If new commits detected: pulls changes, reinstalls deps, restarts server
-6. Writes `.version.json` with commit hash and date (displayed in footer)
-
-## Kubernetes Resources
-
-### Deployments
-
-Two separate deployments for prod and dev environments:
+The ingress uses GCP's native load balancer with a pre-shared SSL certificate:
 
 ```yaml
-# k8s/prod-deployment.yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: health-samurai-web-prod
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: health-samurai-web
-      env: prod
-  template:
-    spec:
-      containers:
-      - name: web
-        image: gcr.io/atomic-ehr/health-samurai-bun:latest
-        env:
-        - name: GIT_BRANCH
-          value: "prod"
-        - name: POLL_INTERVAL
-          value: "120"
-```
-
-```yaml
-# k8s/dev-deployment.yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: health-samurai-web-dev
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: health-samurai-web
-      env: dev
-  template:
-    spec:
-      containers:
-      - name: web
-        image: gcr.io/atomic-ehr/health-samurai-bun:latest
-        env:
-        - name: GIT_BRANCH
-          value: "main"
-        - name: POLL_INTERVAL
-          value: "30"
-```
-
-### Ingress with SSL
-
-```yaml
-# k8s/ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -159,7 +137,6 @@ metadata:
     ingress.gcp.kubernetes.io/pre-shared-cert: health-samurai-ssl
 spec:
   rules:
-  # Production (prod branch)
   - host: site-prod.apki.dev
     http:
       paths:
@@ -180,7 +157,6 @@ spec:
             name: health-samurai-web-prod
             port:
               number: 80
-  # Development (main branch)
   - host: site-dev.apki.dev
     http:
       paths:
@@ -195,173 +171,51 @@ spec:
 
 ## PostgreSQL Database
 
-PostgreSQL is deployed using [ParadeDB](https://paradedb.com/) (Postgres with vector/search extensions) as a StatefulSet in each environment.
-
-### Architecture
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    health-samurai-dev                       │
-├─────────────────────────────────────────────────────────────┤
-│  ┌─────────────────┐         ┌─────────────────────────┐   │
-│  │ dev-health-     │         │ dev-postgres            │   │
-│  │ samurai-web     │────────▶│ (StatefulSet)           │   │
-│  │ (Deployment)    │         │                         │   │
-│  └─────────────────┘         │ PVC: 10Gi               │   │
-│          │                   └─────────────────────────┘   │
-│          │ DATABASE_URL                   │                │
-│          │                                │ port 5432      │
-│          ▼                                ▼                │
-│  postgres://healthsamurai:...@dev-postgres:5432/healthsamurai
-└─────────────────────────────────────────────────────────────┘
-```
-
-### Kubernetes Resources
-
-| Resource | Dev | Prod |
-|----------|-----|------|
-| StatefulSet | `dev-postgres` | `prod-postgres` |
-| Service | `dev-postgres:5432` | `prod-postgres:5432` |
-| Secret | `dev-postgres-secret` | `prod-postgres-secret` |
-| PVC | `postgres-data-dev-postgres-0` | `postgres-data-prod-postgres-0` |
-| Storage | 10Gi | 10Gi |
+PostgreSQL is deployed using [ParadeDB](https://paradedb.com/) (Postgres with vector/search extensions) as a StatefulSet.
 
 ### Connection Details
 
 | Environment | DATABASE_URL |
 |-------------|--------------|
-| Dev | `postgres://healthsamurai:healthsamurai@dev-postgres:5432/healthsamurai` |
-| Prod | `postgres://healthsamurai:healthsamurai@prod-postgres:5432/healthsamurai` |
-
-The web application automatically receives `DATABASE_URL` from the `postgres-secret` via `secretRef` in the deployment.
-
-### Files
-
-```
-k8s/
-├── base/
-│   ├── postgres-statefulset.yaml   # ParadeDB StatefulSet with PVC
-│   ├── postgres-service.yaml       # ClusterIP service on port 5432
-│   └── postgres-secret.yaml        # Credentials and DATABASE_URL
-└── overlays/
-    ├── dev/
-    │   └── postgres-secret-patch.yaml   # DATABASE_URL with dev-postgres host
-    └── prod/
-        └── postgres-secret-patch.yaml   # DATABASE_URL with prod-postgres host
-```
-
-### Deploy
-
-```bash
-# Preview generated manifests
-kubectl kustomize k8s/overlays/dev
-kubectl kustomize k8s/overlays/prod
-
-# Apply to cluster
-kubectl apply -k k8s/overlays/dev
-kubectl apply -k k8s/overlays/prod
-```
-
-### Check Status
-
-```bash
-# Check pods
-kubectl get pods -n health-samurai-dev -l app=postgres
-kubectl get pods -n health-samurai-prod -l app=postgres
-
-# Check PVCs
-kubectl get pvc -n health-samurai-dev
-kubectl get pvc -n health-samurai-prod
-
-# View logs
-kubectl logs -n health-samurai-dev statefulset/dev-postgres
-kubectl logs -n health-samurai-prod statefulset/prod-postgres
-```
+| Dev | `postgres://healthsamurai:healthsamurai@postgres-dev:5432/healthsamurai` |
+| Prod | `postgres://healthsamurai:healthsamurai@postgres-prod:5432/healthsamurai` |
 
 ### Connect to Database
 
 ```bash
 # Dev
-kubectl exec -it -n health-samurai-dev dev-postgres-0 -- psql -U healthsamurai
+kubectl exec -it -n default postgres-dev-0 -- psql -U healthsamurai
 
 # Prod
-kubectl exec -it -n health-samurai-prod prod-postgres-0 -- psql -U healthsamurai
+kubectl exec -it -n default postgres-prod-0 -- psql -U healthsamurai
 ```
 
-### Run Migrations
+### Database Migrations
 
-Migrations are run from the web container which has access to the database:
+Migrations run automatically when the server starts. Manual commands if needed:
 
 ```bash
-# Dev
-kubectl exec -it -n health-samurai-dev deployment/dev-health-samurai-web -- bun run migrate:up
+# Check status
+kubectl exec -n default deployment/health-samurai-web-dev -- bun run migrate:status
 
-# Prod
-kubectl exec -it -n health-samurai-prod deployment/prod-health-samurai-web -- bun run migrate:up
+# Run migrations
+kubectl exec -n default deployment/health-samurai-web-dev -- bun run migrate:up
 
-# Check migration status
-kubectl exec -it -n health-samurai-dev deployment/dev-health-samurai-web -- bun run migrate:status
+# Rollback
+kubectl exec -n default deployment/health-samurai-web-dev -- bun run migrate:down
 ```
 
 ### Backup & Restore
 
 ```bash
 # Backup (dev)
-kubectl exec -n health-samurai-dev dev-postgres-0 -- \
+kubectl exec -n default postgres-dev-0 -- \
   pg_dump -U healthsamurai healthsamurai > backup-dev-$(date +%Y%m%d).sql
 
 # Restore (dev)
-kubectl exec -i -n health-samurai-dev dev-postgres-0 -- \
+kubectl exec -i -n default postgres-dev-0 -- \
   psql -U healthsamurai healthsamurai < backup-dev-20260131.sql
 ```
-
-### Changing Credentials (Production)
-
-For production, you should change the default credentials:
-
-1. Update `k8s/overlays/prod/postgres-secret-patch.yaml`:
-   ```yaml
-   apiVersion: v1
-   kind: Secret
-   metadata:
-     name: postgres-secret
-   stringData:
-     POSTGRES_USER: your_secure_user
-     POSTGRES_PASSWORD: your_secure_password
-     POSTGRES_DB: healthsamurai
-     DATABASE_URL: postgres://your_secure_user:your_secure_password@prod-postgres:5432/healthsamurai
-   ```
-
-2. Apply and restart:
-   ```bash
-   kubectl apply -k k8s/overlays/prod
-   kubectl rollout restart -n health-samurai-prod statefulset/prod-postgres
-   kubectl rollout restart -n health-samurai-prod deployment/prod-health-samurai-web
-   ```
-
-### Troubleshooting
-
-**Pod stuck in Pending:**
-```bash
-# Check PVC status
-kubectl describe pvc -n health-samurai-dev postgres-data-dev-postgres-0
-# May need to wait for GKE to provision storage
-```
-
-**Connection refused from web app:**
-```bash
-# Verify postgres is ready
-kubectl exec -n health-samurai-dev dev-postgres-0 -- pg_isready -U healthsamurai
-
-# Check service endpoints
-kubectl get endpoints -n health-samurai-dev dev-postgres
-```
-
-**Data persistence:**
-- StatefulSet uses PersistentVolumeClaim (10Gi)
-- Data persists across pod restarts
-- Deleting the StatefulSet does NOT delete the PVC
-- To delete data: `kubectl delete pvc -n health-samurai-dev postgres-data-dev-postgres-0`
 
 ## Google OAuth Authentication
 
@@ -383,7 +237,7 @@ Google OAuth is configured for `@health-samurai.io` domain authentication.
 
 ### Kubernetes Secrets
 
-Google OAuth credentials are stored in the `health-samurai-secrets` secret in each namespace:
+Google OAuth credentials are stored in the `health-samurai-secrets` secret:
 
 | Secret Key | Description |
 |------------|-------------|
@@ -394,23 +248,21 @@ Google OAuth credentials are stored in the `health-samurai-secrets` secret in ea
 
 **View secrets:**
 ```bash
-kubectl get secret health-samurai-secrets -n health-samurai-dev -o jsonpath='{.data}' | jq 'keys'
-kubectl get secret health-samurai-secrets -n health-samurai-prod -o jsonpath='{.data}' | jq 'keys'
+kubectl get secret health-samurai-secrets -n default -o jsonpath='{.data}' | jq 'keys'
 ```
 
 **Update secrets:**
 ```bash
-# Delete and recreate
-kubectl delete secret health-samurai-secrets -n health-samurai-dev
+kubectl delete secret health-samurai-secrets -n default
 kubectl create secret generic health-samurai-secrets \
-  --namespace=health-samurai-dev \
+  --namespace=default \
   --from-literal=GOOGLE_CLIENT_ID=<client-id> \
   --from-literal=GOOGLE_CLIENT_SECRET=<client-secret> \
   --from-literal=GOOGLE_REDIRECT_URI=https://site-dev.apki.dev/auth/google/callback \
   --from-literal=GOOGLE_ALLOWED_DOMAIN=health-samurai.io
 
-# Restart deployment to pick up changes
-kubectl rollout restart deployment/dev-health-samurai-web -n health-samurai-dev
+# Restart deployments to pick up changes
+kubectl rollout restart deployment/health-samurai-web-dev deployment/health-samurai-web-prod -n default
 ```
 
 ### Local Development
@@ -428,68 +280,27 @@ GOOGLE_REDIRECT_URI=http://localhost:4444/auth/google/callback
 GOOGLE_ALLOWED_DOMAIN=health-samurai.io
 ```
 
-### Managing OAuth Client
+## Docker Image
 
-The OAuth client is managed in Google Cloud Console:
-- **Console URL:** https://console.cloud.google.com/apis/credentials?project=atomic-ehr
-- To add new redirect URIs or view the client secret, navigate to the OAuth 2.0 Client IDs section
-
-## DNS Configuration
-
-DNS is managed in GCP Cloud DNS (zone: `apki-dev`).
-
-| Record | Type | Value |
-|--------|------|-------|
-| `hs.apki.dev` | A | `35.186.242.241` |
-| `site-prod.apki.dev` | A | `35.186.242.241` |
-| `site-dev.apki.dev` | A | `35.186.242.241` |
-
-### Add/Update DNS Records
+### Build and Push
 
 ```bash
-# Add new record
-gcloud dns record-sets create "subdomain.apki.dev." \
-  --zone=apki-dev \
-  --type=A \
-  --ttl=300 \
-  --rrdatas="35.186.242.241" \
-  --project=atomic-ehr
+# Configure Docker for GCR
+gcloud auth configure-docker gcr.io
 
-# Update existing record
-gcloud dns record-sets update "subdomain.apki.dev." \
-  --zone=apki-dev \
-  --type=A \
-  --ttl=300 \
-  --rrdatas="NEW_IP" \
-  --project=atomic-ehr
+# Build for amd64 (required for GKE)
+docker buildx build --platform linux/amd64 -t gcr.io/atomic-ehr/health-samurai-web:latest --push .
 ```
 
-## SSL/HTTPS
+### Container Behavior
 
-SSL is handled by Google-managed certificates. The `.dev` TLD requires HTTPS (HSTS preloaded in browsers).
-
-### Check Certificate Status
-
-```bash
-gcloud compute ssl-certificates describe health-samurai-ssl \
-  --global \
-  --project=atomic-ehr
-```
-
-### Add New Domain to Certificate
-
-```bash
-# Delete old cert
-gcloud compute ssl-certificates delete health-samurai-ssl --global --project=atomic-ehr
-
-# Create new cert with additional domain
-gcloud compute ssl-certificates create health-samurai-ssl \
-  --domains=hs.apki.dev,site-prod.apki.dev,site-dev.apki.dev,NEW_DOMAIN.apki.dev \
-  --global \
-  --project=atomic-ehr
-```
-
-Note: Certificate provisioning takes 10-60 minutes.
+1. Container starts and clones the repository
+2. Runs `bun install` to install dependencies
+3. Builds Tailwind CSS
+4. Runs database migrations
+5. Starts the Bun server
+6. Polls GitHub for new commits
+7. If new commits detected: pulls changes, rebuilds CSS, restarts server
 
 ## Common Operations
 
@@ -501,167 +312,144 @@ gcloud container clusters get-credentials hs-cluster \
   --project=atomic-ehr
 ```
 
-### Check Pod Status
+### Check Status
 
 ```bash
-kubectl get pods
-kubectl logs deployment/health-samurai-web
+# All resources
+kubectl get pods,svc,deploy,statefulset -n default | grep -E "(health-samurai|postgres|NAME)"
+
+# Pod logs
+kubectl logs -n default deployment/health-samurai-web-dev --tail=50
+kubectl logs -n default deployment/health-samurai-web-prod --tail=50
+
+# Ingress status
+kubectl describe ingress health-samurai-ingress -n default
 ```
 
-### Force Restart (pull latest image)
+### Force Restart
 
 ```bash
-kubectl rollout restart deployment health-samurai-web
-```
+# Restart deployments (pulls latest code)
+kubectl rollout restart deployment/health-samurai-web-dev deployment/health-samurai-web-prod -n default
 
-### Check Ingress Status
-
-```bash
-kubectl describe ingress health-samurai-ingress
+# Restart postgres (rarely needed)
+kubectl rollout restart statefulset/postgres-dev statefulset/postgres-prod -n default
 ```
 
 ### View Backend Health
 
+The ingress annotation shows backend health:
 ```bash
-gcloud compute backend-services get-health \
-  k8s1-26a1bcab-default-health-samurai-web-80-1da5f565 \
-  --global \
-  --project=atomic-ehr
+kubectl get ingress health-samurai-ingress -n default -o jsonpath='{.metadata.annotations.ingress\.kubernetes\.io/backends}'
 ```
 
-## Deploying Code Changes
+## DNS Configuration
 
-Code deploys automatically! Just push to GitHub:
+DNS is managed in GCP Cloud DNS (zone: `apki-dev`).
 
-```bash
-git add .
-git commit -m "Your changes"
-git push
-```
+| Record | Type | Value |
+|--------|------|-------|
+| `hs.apki.dev` | A | `35.186.242.241` |
+| `site-prod.apki.dev` | A | `35.186.242.241` |
+| `site-dev.apki.dev` | A | `35.186.242.241` |
 
-The container will detect changes within 60 seconds and auto-restart.
+## Troubleshooting
 
-### Instant Deploy with GitHub Webhook (Recommended)
+### Site returns 502
+
+1. Check if deployments are healthy:
+   ```bash
+   kubectl get pods -n default | grep health-samurai
+   ```
+
+2. Check pod logs for errors:
+   ```bash
+   kubectl logs -n default deployment/health-samurai-web-dev --tail=100
+   ```
+
+3. Check ingress backend health:
+   ```bash
+   kubectl describe ingress health-samurai-ingress -n default | grep -A5 "Annotations"
+   ```
+
+4. Verify DATABASE_URL is set (common issue):
+   ```bash
+   kubectl get secret postgres-secret-dev -n default -o jsonpath='{.data.DATABASE_URL}' | base64 -d
+   ```
+
+### Database Connection Issues
+
+1. Check postgres pod is running:
+   ```bash
+   kubectl get pods -n default | grep postgres
+   ```
+
+2. Test database connectivity:
+   ```bash
+   kubectl exec -n default postgres-dev-0 -- pg_isready -U healthsamurai
+   ```
+
+3. Check service endpoints:
+   ```bash
+   kubectl get endpoints -n default postgres-dev
+   ```
+
+### Migrations Failing
+
+1. Check migration status in logs:
+   ```bash
+   kubectl logs -n default deployment/health-samurai-web-dev | grep -i migration
+   ```
+
+2. Manually run migrations:
+   ```bash
+   kubectl exec -n default deployment/health-samurai-web-dev -- bun run migrate:status
+   kubectl exec -n default deployment/health-samurai-web-dev -- bun run migrate:up
+   ```
+
+### OAuth Not Working
+
+1. Verify secrets are set:
+   ```bash
+   kubectl get secret health-samurai-secrets -n default -o jsonpath='{.data.GOOGLE_CLIENT_ID}' | base64 -d
+   ```
+
+2. Check redirect URI matches Google Console configuration
+
+3. Check logs for OAuth errors:
+   ```bash
+   kubectl logs -n default deployment/health-samurai-web-dev | grep -i oauth
+   ```
+
+## Instant Deploy with GitHub Webhook
 
 For instant deployments (< 2 seconds), configure a GitHub webhook:
 
-#### 1. Generate a secure secret
+### 1. Generate a secure secret
 
 ```bash
 openssl rand -hex 32
 ```
 
-#### 2. Create Kubernetes secret
+### 2. Update Kubernetes secret
 
 ```bash
-kubectl create secret generic health-samurai-secrets \
-  --from-literal=webhook-secret=YOUR_SECRET_HERE
+kubectl patch secret health-samurai-secrets -n default \
+  --type='json' \
+  -p='[{"op": "add", "path": "/data/webhook-secret", "value": "'$(echo -n "YOUR_SECRET" | base64)'"}]'
+
+kubectl rollout restart deployment/health-samurai-web-dev deployment/health-samurai-web-prod -n default
 ```
 
-Or apply the secrets file (edit first!):
-```bash
-# Edit k8s/secrets.yaml with your secret
-kubectl apply -f k8s/secrets.yaml
-```
-
-#### 3. Configure GitHub Webhook
+### 3. Configure GitHub Webhook
 
 1. Go to: `https://github.com/HealthSamurai/health-samurai-io-bun/settings/hooks`
 2. Click "Add webhook"
 3. Settings:
-   - **Payload URL**: `https://site-dev.apki.dev/api/webhook/github` (or site-prod for prod)
+   - **Payload URL**: `https://site-dev.apki.dev/api/webhook/github`
    - **Content type**: `application/json`
    - **Secret**: Your generated secret
    - **Events**: Just the `push` event
 4. Click "Add webhook"
 
-#### 4. Restart deployments to pick up secrets
-
-```bash
-kubectl rollout restart deployment health-samurai-web-dev
-kubectl rollout restart deployment health-samurai-web-prod
-```
-
 Now pushes to GitHub will trigger instant reloads!
-
-### Manual Deploy (if needed)
-
-```bash
-# Rebuild and push image (only if Dockerfile changed)
-docker buildx build --platform linux/amd64 -t gcr.io/atomic-ehr/health-samurai-bun:latest --push .
-
-# Restart deployment to pull new image
-kubectl rollout restart deployment health-samurai-web
-```
-
-## Troubleshooting
-
-### Site returns 404
-
-1. Check pod is running: `kubectl get pods`
-2. Check pod logs: `kubectl logs deployment/health-samurai-web`
-3. Check ingress hosts: `kubectl describe ingress health-samurai-ingress`
-4. Check backend health in GCP Console
-
-### Site returns 502
-
-1. Backend health check failing
-2. Check pod logs for errors
-3. Verify container starts and listens on port 4444
-
-### SSL Certificate not working
-
-1. Check cert status: `gcloud compute ssl-certificates describe health-samurai-ssl --global`
-2. Provisioning can take up to 60 minutes
-3. Ensure DNS points to the correct IP
-
-### Container not pulling updates
-
-1. Check git connectivity in pod: `kubectl exec -it <pod> -- git fetch`
-2. Verify GIT_REPO env variable is correct
-3. Check poll interval in logs
-
-## Files
-
-```
-├── Dockerfile              # Bun + git Alpine image
-├── docker-entrypoint.sh    # Clone/pull/restart logic
-├── docker-compose.yml      # Local development (includes postgres)
-├── k8s/
-│   ├── base/
-│   │   ├── kustomization.yaml
-│   │   ├── deployment.yaml          # Web app deployment
-│   │   ├── service.yaml             # Web app service
-│   │   ├── configmap.yaml           # Environment config
-│   │   ├── postgres-statefulset.yaml # PostgreSQL StatefulSet
-│   │   ├── postgres-service.yaml    # PostgreSQL service
-│   │   └── postgres-secret.yaml     # Database credentials
-│   └── overlays/
-│       ├── dev/
-│       │   ├── kustomization.yaml
-│       │   ├── ingress.yaml
-│       │   └── postgres-secret-patch.yaml  # Dev DATABASE_URL
-│       └── prod/
-│           ├── kustomization.yaml
-│           ├── ingress.yaml
-│           └── postgres-secret-patch.yaml  # Prod DATABASE_URL
-```
-
-## Useful Commands
-
-```bash
-# Check all resources
-kubectl get pods,svc,ingress
-
-# Stream logs
-kubectl logs -f deployment/health-samurai-web
-
-# Check GKE cluster
-gcloud container clusters list --project=atomic-ehr
-
-# Check static IP
-gcloud compute addresses list --global --project=atomic-ehr
-
-# Check forwarding rules (HTTP/HTTPS)
-gcloud compute forwarding-rules list --global --project=atomic-ehr
-```
