@@ -42,7 +42,8 @@ export function Layout({ title, description, children, hideFooter, devMode }: La
         <script type="module" src="https://cdn.jsdelivr.net/gh/starfederation/datastar@1.0.0-RC.7/bundles/datastar.js"></script>
 
         {/* Favicon */}
-        <link rel="icon" type="image/png" href="/assets/images/logos/aidbox-mini.svg" />
+        <link rel="shortcut icon" type="image/png" href="/assets/images/favicons/favicon-32.png" />
+        <link rel="apple-touch-icon" href="/assets/images/favicons/apple-touch-icon.png" />
       </head>
       <body>
         <Header />
