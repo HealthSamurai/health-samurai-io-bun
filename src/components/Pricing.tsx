@@ -46,6 +46,10 @@ export function Pricing({
               class="rounded-full px-4 py-1.5 transition-colors"
               data-class="{'bg-primary text-white': !$annual, 'text-gray-500': $annual}"
               data-on:click="$annual = false"
+              data-track="click"
+              data-track-label="Monthly"
+              data-track-category="pricing"
+              data-track-billing="monthly"
             >
               Monthly
             </button>
@@ -54,6 +58,10 @@ export function Pricing({
               class="rounded-full px-4 py-1.5 transition-colors"
               data-class="{'bg-primary text-white': $annual, 'text-gray-500': !$annual}"
               data-on:click="$annual = true"
+              data-track="click"
+              data-track-label="Annually"
+              data-track-category="pricing"
+              data-track-billing="annual"
             >
               Annually
             </button>
@@ -109,6 +117,10 @@ export function Pricing({
                     ? "bg-primary text-white shadow-sm hover:bg-primary-dark"
                     : "text-primary ring-1 ring-inset ring-primary/20 hover:ring-primary/40"
                 }`}
+                data-track="click"
+                data-track-label={`Get started - ${tier.name}`}
+                data-track-category="pricing"
+                data-track-tier={tier.id}
               >
                 Get started
               </a>

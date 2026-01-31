@@ -488,6 +488,13 @@ Make healthcare data interoperable through FHIR standards.
 
     // Analytics event API endpoint (for client-side tracking)
     if (path === "/api/analytics/event" && req.method === "POST") {
+      // Skip tracking for internal users
+      if (user?.email?.endsWith("@health-samurai.io")) {
+        return new Response(JSON.stringify({ ok: true, skipped: true }), {
+          headers: { "Content-Type": "application/json" },
+        });
+      }
+
       try {
         const analyticsSessionId = getAnalyticsSessionId(req);
         const body = await req.json() as { eventType?: string; path?: string; metadata?: Record<string, unknown> };
@@ -697,7 +704,7 @@ Make healthcare data interoperable through FHIR standards.
       // Check if user has @health-samurai.io email
       if (!user.email.endsWith("@health-samurai.io")) {
         return new Response(
-          Layout({
+          await Layout({
             title: "Access Denied",
             children: `
               <section class="section" style="text-align: center; padding: var(--space-24) 0;">
@@ -716,6 +723,7 @@ Make healthcare data interoperable through FHIR standards.
             `,
             devMode: DEV_MODE,
             ctx,
+            path,
           }),
           {
             status: 403,
@@ -726,12 +734,17 @@ Make healthcare data interoperable through FHIR standards.
     }
 
     // File system routing for pages
+    // Check if user is internal (skip analytics for @health-samurai.io)
+    const isInternalUser = user?.email?.endsWith("@health-samurai.io") ?? false;
+
     const match = router.match(req);
     if (match) {
-      // Track page view (non-blocking)
+      // Track page view (non-blocking) - skip for internal users
       const analyticsSessionId = getAnalyticsSessionId(req);
       const previousPath = getAndSetPreviousPath(analyticsSessionId, path);
-      trackPageView(req, analyticsSessionId, user?.id, previousPath).catch(() => {});
+      if (!isInternalUser) {
+        trackPageView(req, analyticsSessionId, user?.id, previousPath).catch(() => {});
+      }
 
       const page = await import(match.filePath);
       // Merge route params with query params
@@ -758,13 +771,14 @@ Make healthcare data interoperable through FHIR standards.
       const content = await page.default({ ...params, ctx });
 
       return new Response(
-        Layout({
+        await Layout({
           title: metadata.title || "Health Samurai",
           description: metadata.description,
           children: content,
           hideFooter: metadata.hideFooter,
           devMode: DEV_MODE,
           ctx,
+          path,
         }),
         {
           headers: {
@@ -775,17 +789,20 @@ Make healthcare data interoperable through FHIR standards.
       );
     }
 
-    // 404 - also track as page view
+    // 404 - also track as page view (skip for internal users)
     const analyticsSessionId = getAnalyticsSessionId(req);
     const previousPath = getAndSetPreviousPath(analyticsSessionId, path);
-    trackPageView(req, analyticsSessionId, user?.id, previousPath).catch(() => {});
+    if (!isInternalUser) {
+      trackPageView(req, analyticsSessionId, user?.id, previousPath).catch(() => {});
+    }
 
     return new Response(
-      Layout({
+      await Layout({
         title: "Page Not Found",
         children: notFoundPage(),
         devMode: DEV_MODE,
         ctx,
+        path,
       }),
       {
         status: 404,

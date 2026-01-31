@@ -794,6 +794,41 @@ OAuth credentials stored in `health-samurai-secrets` secret. See `docs/DEPLOYMEN
 kubectl get secret health-samurai-secrets -n health-samurai-dev -o jsonpath='{.data}' | jq 'keys'
 ```
 
+## Analytics
+
+Self-hosted analytics tracking page views, user journeys, and site traffic. See [spec/analytics.md](spec/analytics.md) for full documentation.
+
+**Key files:**
+- `src/analytics.ts` - Tracking logic and dashboard queries
+- `src/pages/admin/analytics.tsx` - Admin dashboard UI
+
+**Dashboard:** `/admin/analytics` (requires `@health-samurai.io` login)
+
+**Automatic tracking:** Every page view is tracked server-side with session, referrer, geo, browser/device info.
+
+**Declarative tracking:** Add `data-track` attributes to track clicks without JavaScript:
+
+```html
+<!-- Track button click -->
+<button data-track="click" data-track-label="Sign Up" data-track-category="cta">
+  Sign Up
+</button>
+
+<!-- Track link with extra data -->
+<a href="/docs" data-track="click" data-track-label="View Docs" data-track-position="header">
+  Documentation
+</a>
+
+<!-- Track form submission -->
+<form data-track="submit" data-track-label="Contact Form">...</form>
+```
+
+**Programmatic tracking:** From JavaScript:
+
+```javascript
+hsTrack('custom_event', 'Button Clicked', { category: 'cta', plan: 'pro' });
+```
+
 ## File System Router
 
 This project uses [Bun.FileSystemRouter](https://bun.sh/docs/api/file-system-router) for automatic file-based routing.
