@@ -10,6 +10,8 @@ export async function initHighlighter() {
     langs: [
       "javascript",
       "typescript",
+      "tsx",
+      "jsx",
       "json",
       "bash",
       "shell",
@@ -75,4 +77,52 @@ marked.use({ renderer });
 
 export function renderMarkdown(content: string): string {
   return marked.parse(content, { async: false }) as string;
+}
+
+/**
+ * Highlight a code snippet with Shiki
+ * @param code - The code to highlight
+ * @param lang - Language (typescript, javascript, html, etc.)
+ * @returns HTML string with syntax highlighting
+ */
+export function highlightCode(code: string, lang: string = "typescript"): string {
+  if (!highlighter) {
+    // Fallback if highlighter not initialized
+    const escaped = code
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+    return `<pre class="p-4 rounded-lg overflow-x-auto bg-[#24292e]"><code class="text-sm font-mono">${escaped}</code></pre>`;
+  }
+
+  // Normalize language name
+  const langMap: Record<string, string> = {
+    js: "javascript",
+    ts: "typescript",
+    sh: "bash",
+    yml: "yaml",
+  };
+  const normalizedLang = langMap[lang] || lang;
+
+  // Check if language is supported
+  const supportedLangs = highlighter.getLoadedLanguages();
+  const finalLang = supportedLangs.includes(normalizedLang as any) ? normalizedLang : "text";
+
+  try {
+    const html = highlighter.codeToHtml(code, {
+      lang: finalLang,
+      theme: "github-dark",
+    });
+    // Add padding to the existing style attribute
+    return html.replace(
+      /style="([^"]*)"/,
+      'style="$1; padding: 1rem; border-radius: 0.5rem; overflow-x: auto;"'
+    );
+  } catch {
+    const escaped = code
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+    return `<pre class="p-4 rounded-lg overflow-x-auto bg-[#24292e]"><code class="text-sm font-mono">${escaped}</code></pre>`;
+  }
 }
