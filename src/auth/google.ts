@@ -193,10 +193,8 @@ export async function googleCallback(req: Request): Promise<Response> {
     console.log("[OAuth] Looking up user by google_id...");
     let user;
     try {
-      // Create fresh SQL connection for OAuth to avoid connection state issues
-      const { SQL } = await import("bun");
-      const freshDb = new SQL(process.env.DATABASE_URL || "postgres://healthsamurai:healthsamurai@localhost:5436/healthsamurai");
-      [user] = await freshDb`SELECT * FROM users WHERE google_id = ${googleUser.id}`;
+      const users = await db`SELECT * FROM users WHERE google_id = ${googleUser.id}`;
+      user = users[0];
     } catch (dbError) {
       console.error("[OAuth] DB error on user lookup:", dbError);
       return new Response(renderError(`Database error: ${dbError instanceof Error ? dbError.message : String(dbError)}`), {
@@ -208,7 +206,8 @@ export async function googleCallback(req: Request): Promise<Response> {
     if (!user) {
       console.log("[OAuth] No user found by google_id, checking email...");
       // Check if user exists with same email (for linking accounts)
-      [user] = await db`SELECT * FROM users WHERE email = ${googleUser.email}`;
+      const usersByEmail = await db`SELECT * FROM users WHERE email = ${googleUser.email}`;
+      user = usersByEmail[0];
 
       if (user) {
         console.log("[OAuth] Found user by email, linking Google account...");
@@ -222,11 +221,12 @@ export async function googleCallback(req: Request): Promise<Response> {
         console.log("[OAuth] Creating new user...");
         // Create new user
         const username = await generateUniqueUsername(googleUser.email.split("@")[0]);
-        [user] = await db`
+        const newUsers = await db`
           INSERT INTO users (email, username, google_id, first_name, last_name, avatar_url, is_active, role)
           VALUES (${googleUser.email}, ${username}, ${googleUser.id}, ${googleUser.given_name}, ${googleUser.family_name}, ${googleUser.picture}, true, 'user')
           RETURNING *
         `;
+        user = newUsers[0];
         console.log("[OAuth] User created:", user.id);
       }
     } else {
@@ -287,8 +287,8 @@ async function generateUniqueUsername(baseUsername: string): Promise<string> {
   let counter = 1;
 
   while (true) {
-    const [existing] = await db`SELECT id FROM users WHERE username = ${username}`;
-    if (!existing) break;
+    const existing = await db`SELECT id FROM users WHERE username = ${username}`;
+    if (existing.length === 0) break;
     username = `${baseUsername}${counter}`;
     counter++;
   }
