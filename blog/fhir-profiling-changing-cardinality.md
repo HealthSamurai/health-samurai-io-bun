@@ -4,7 +4,8 @@
   "title": "🔥 FHIR Profiling: Changing Cardinality",
   "description": "One key function of profiles is to modify the cardinality of an element. A profile can restrict an element&#x27;s cardinality within its base structure.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68063486891a21be6698f5fb_image.png",
-  "author": "",
+  "date": "2025-04-11",
+  "author": "Ivan Bagrov",
   "slug": "fhir-profiling-changing-cardinality"
 }
 ---

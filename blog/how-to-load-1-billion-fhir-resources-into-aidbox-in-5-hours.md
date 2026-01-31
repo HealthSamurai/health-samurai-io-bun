@@ -4,7 +4,8 @@
   "title": "🔥 How to load 1 billion FHIR resources into Aidbox in 5 hours",
   "description": "Big data usually means big problems and a lot of work. One of the problems is how to load a lot of data. There is usually some source of big data, and the problem is posed as some kind of legacy system migration or migration of historical data into an FHIR server.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/62b9b4448e9868d4725c4ece_import.png",
-  "author": "",
+  "date": "2024-05-06",
+  "author": "Marat Surmashev",
   "slug": "how-to-load-1-billion-fhir-resources-into-aidbox-in-5-hours"
 }
 ---

@@ -4,7 +4,8 @@
   "title": "🔥 How to create a FHIR Implementation Guide",
   "description": "Learn how to create a FHIR Implementation Guide—your organization’s rulebook for turning flexible FHIR standards into actionable, interoperable healthcare data. From profiles and extensions to terminology, search, and packaging, this guide walks you through the essential steps to ensure consist",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/685292361db59fdf2f65cc6b_BgColor6.png",
-  "author": "",
+  "date": "2025-06-18",
+  "author": "Gennady Razmakhnin",
   "slug": "how-to-create-a-fhir-implementation-guide"
 }
 ---

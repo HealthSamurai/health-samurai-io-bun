@@ -4,7 +4,8 @@
   "title": "🔥 How to build matrix-based medical forms in record time: Video Tutorial",
   "description": "Learn how to create efficient, user-friendly matrix forms using the Aidbox Public Form Builder. See real-world examples like PHQ-2/PHQ-9 and GAD-7 in action.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/669a787404fec201030b4494_How%20to%20build%20matrix-based%20medical%20forms%20in%20record%20time_%20Video%20Tutorial.png",
-  "author": "",
+  "date": "2024-07-19",
+  "author": "Maria Ryzhikova",
   "slug": "how-to-build-matrix-based-medical-forms-in-record-time-video-tutorial"
 }
 ---

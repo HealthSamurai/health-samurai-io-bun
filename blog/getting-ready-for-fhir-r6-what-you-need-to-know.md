@@ -4,7 +4,8 @@
   "title": "🔥 Getting Ready for FHIR R6: What You Need to Know",
   "description": "FHIR R6 is on the way, and it’s definitely a major step forward. Although its final publication is not expected until late 2026, Aidbox already supports version 6.0.0-ballot3, allowing you to begin evaluating and prototyping with R6 today — either in the cloud or on a local installation.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68121c15eec36fcc2e721a2c_image.png",
-  "author": "",
+  "date": "2025-04-25",
+  "author": "Mike Kulakov",
   "slug": "getting-ready-for-fhir-r6-what-you-need-to-know"
 }
 ---

@@ -4,7 +4,7 @@
   "title": "🔥 Free FHIR tools to use",
   "description": "Discover top free FHIR tools that simplify integration without the cost. From building medical forms to validating FHIRPath, these tools help developers and healthcare teams boost data exchange - totally free!",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/66ed72d452eaf1b6aced0ce1_Free%20fhir%20tools.png",
-  "author": "",
+  "date": "2024-09-10",
   "slug": "free-fhir-tools"
 }
 ---

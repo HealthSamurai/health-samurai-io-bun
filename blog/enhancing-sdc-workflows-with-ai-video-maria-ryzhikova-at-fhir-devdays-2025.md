@@ -4,7 +4,8 @@
   "title": "🔥 [Video] Enhancing SDC Workflows with AI – Maria Ryzhikova at FHIR DevDays 2025",
   "description": "Designing FHIR SDC Questionnaires from paper forms is repetitive and error‑prone. This DevDays session by Maria Ryzhikova shows how Aidbox Forms uses AI to generate Questionnaire templates from PDFs, add scoring logic, and create multilingual forms using FHIR translation extensions.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68aef2efb14ccebe22668ab6_Group%203.png",
-  "author": "",
+  "date": "2025-12-15",
+  "author": "Maria Ryzhikova",
   "slug": "enhancing-sdc-workflows-with-ai-video-maria-ryzhikova-at-fhir-devdays-2025"
 }
 ---

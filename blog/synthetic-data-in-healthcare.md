@@ -4,7 +4,8 @@
   "title": "🔥 Synthetic data in healthcare",
   "description": "How to start working with “Personal Health Information” without any responsibility?",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/680632d325df71e58bbae754_image.png",
-  "author": "",
+  "date": "2025-04-11",
+  "author": "Alexandr Penskoy",
   "slug": "synthetic-data-in-healthcare"
 }
 ---

@@ -4,7 +4,8 @@
   "title": "🔥 FHIR FUSE: FHIR in a Unix Way",
   "description": "What if working with FHIR didn’t start with APIs and clients, but with files and folders? This article explores FHIR-FUSE, a filesystem interface for FHIR servers, what it makes easier, and where its limits become clear.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/694ac57f5b884e8aaa8bb291_image%20(5).png",
-  "author": "",
+  "date": "2025-12-23",
+  "author": "Marat Surmashev, Aleksandr Penskoi",
   "slug": "fhir-fuse-fhir-in-a-unix-way"
 }
 ---

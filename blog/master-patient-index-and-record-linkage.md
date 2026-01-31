@@ -4,7 +4,8 @@
   "title": "🔥 Master Patient Index and Record Linkage",
   "description": "How to keep patient records consistent and complete",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6409d4ade7fbd4f4460a66d3_Group%20511.png",
-  "author": "",
+  "date": "2024-03-09",
+  "author": "Nikolai Ryzhikov, Pavel Suverov",
   "slug": "master-patient-index-and-record-linkage"
 }
 ---

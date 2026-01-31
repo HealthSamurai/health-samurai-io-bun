@@ -4,7 +4,8 @@
   "title": "🔥 From Form to Analytics",
   "description": "Struggling with messy health data? Aidbox Forms + SQL on FHIR transform data collection &amp; analysis. Standardize inputs with coded forms, query FHIR data easily, and focus on care—not paperwork. See how it works with a real risk assessment example.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/680633d3e7307f5af1a60cd2_image.png",
-  "author": "",
+  "date": "2025-04-15",
+  "author": "Stas Buldakov",
   "slug": "from-form-to-analytics"
 }
 ---

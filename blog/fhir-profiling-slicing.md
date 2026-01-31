@@ -4,7 +4,8 @@
   "title": "🔥 FHIR Profiling: Slicing",
   "description": "The slicing mechanism enables the specification of requirements for array elements.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68063592568b7857133c348e_image.png",
-  "author": "",
+  "date": "2025-04-11",
+  "author": "Ivan Bagrov",
   "slug": "fhir-profiling-slicing"
 }
 ---

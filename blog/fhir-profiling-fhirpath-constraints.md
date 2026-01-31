@@ -4,7 +4,8 @@
   "title": "🔥 FHIR Profiling: FHIRPath Constraints",
   "description": "Constraint - a validation rule that is defined on a profile and described using the FHIRPath syntax.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68063523dffbc578e4ddebd1_image.png",
-  "author": "",
+  "date": "2025-04-11",
+  "author": "Ivan Bagrov",
   "slug": "fhir-profiling-fhirpath-constraints"
 }
 ---

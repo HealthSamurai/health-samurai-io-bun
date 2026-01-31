@@ -4,7 +4,8 @@
   "title": "🔥 Implementing Role-Based Access Control for FHIR Resources with Keycloak and SMART on FHIR V2",
   "description": "Fine-grained FHIR access control doesn’t have to be complex — see how we made it simple with Keycloak, SMART on FHIR, and Aidbox.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68ee7ca49c6987b5a3a87458_Group%209.png",
-  "author": "",
+  "date": "2025-10-14",
+  "author": "Aleksandr Kislitsyn",
   "slug": "implementing-role-based-access-control-for-fhir-resources-with-keycloak-and-smart-on-fhir-v2"
 }
 ---

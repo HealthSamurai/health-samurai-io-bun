@@ -4,7 +4,8 @@
   "title": "🔥 How to upload StructureDefinition into Aidbox via FHIR API",
   "description": "StructureDefinition is a resource that describes the structure of other resources, including profiles, extensions, and data types.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6806373727bf1214891ac45b_image.png",
-  "author": "",
+  "date": "2025-04-18",
+  "author": "Ivan Bagrov",
   "slug": "upload-structuredefinition"
 }
 ---

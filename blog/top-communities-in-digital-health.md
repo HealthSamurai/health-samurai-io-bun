@@ -4,7 +4,8 @@
   "title": "🔥 Top communities in digital health",
   "description": "How to stay ahead of digital health trends? Tech leaders and engineers often have concerns about HL7 FHIR, integrations, systems design, etc. These topics raise a tonne of questions that even Google can’t answer in depth. But professional communities can!",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/63ee4972f789c21ab097a4b0_iStock-1347297297-1020x708.jpg",
-  "author": "",
+  "date": "2023-02-16",
+  "author": "Svetlana Golubeva",
   "slug": "top-communities-in-digital-health"
 }
 ---

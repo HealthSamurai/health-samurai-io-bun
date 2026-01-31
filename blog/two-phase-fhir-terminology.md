@@ -4,7 +4,8 @@
   "title": "🔥 Two-phase FHIR terminology",
   "description": "Terminology in Health IT is a very important and complicated aspect. A lot of interoperability depends on how accurately do you encode your data.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/5cc86a5e5168e9eecde0a939_IMG_20190430_181552_2.jpg",
-  "author": "",
+  "date": "2019-04-30",
+  "author": "Niquola Ryzhikov",
   "slug": "two-phase-fhir-terminology"
 }
 ---

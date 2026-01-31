@@ -4,7 +4,8 @@
   "title": "🔥 Navigating the FHIR terminology data: Insights and challenges",
   "description": "We focused on the FHIR IG Registry as it offers a comprehensive dataset. By doing this, we aimed to identify the most pressing issues, challenges, and use cases we were likely to encounter.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/5b915ef1885443777259a836_lightbulb.jpg",
-  "author": "",
+  "date": "2024-07-08",
+  "author": "Orlando Osorio",
   "slug": "state-of-fhir-terminology-2024"
 }
 ---

@@ -4,7 +4,7 @@
   "title": "🔥 Top 10 medical forms",
   "description": "Access over 3,000 ready-to-use form templates. Upload questionnaires or create new ones using drag-and-drop functionality. Generate FHIR-compliant forms in minutes.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68063775c567fdef2e9f0ff0_image.png",
-  "author": "",
+  "date": "2025-03-24",
   "slug": "top-10-medical-forms"
 }
 ---

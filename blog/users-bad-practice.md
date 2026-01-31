@@ -4,7 +4,8 @@
   "title": "🔥 Users bad practice",
   "description": "Our settings have a set of properties attached to them, and some of these properties exist exactly to prevent common mistakes that may lead to Aidbox crash or unwanted behavior.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68063523dffbc578e4ddebd1_image.png",
-  "author": "",
+  "date": "2025-04-11",
+  "author": "Artyom Bologov",
   "slug": "users-bad-practice"
 }
 ---

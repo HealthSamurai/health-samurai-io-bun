@@ -4,7 +4,8 @@
   "title": "🔥 SQL on FHIR in PostgreSQL",
   "description": "SQL on FHIR in PostgreSQL. Two types of SQL on FHIR View Runners - ETL (in-memory) &amp; ELT (in-database) and demo the ELT implementation for PostgreSQL.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/672e0f830feaa72b8006d983_Frame%20427319235.png",
-  "author": "",
+  "date": "2024-11-08",
+  "author": "Nikolai Ryzhikov",
   "slug": "sql-on-fhir-in-postgresql"
 }
 ---

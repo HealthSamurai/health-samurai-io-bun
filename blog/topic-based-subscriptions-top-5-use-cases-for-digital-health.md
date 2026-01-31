@@ -4,7 +4,8 @@
   "title": "🔥 Topic-based subscriptions: Top 5 use cases for digital health",
   "description": "Get up close with FHIR subscriptions, learn where and how you can apply them in the real world to maximize the benefits. Plus, there&#x27;s a bonus at the end, so keep reading!",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/65b8097d43ea90ffa6b9379c_Frame%203161.png",
-  "author": "",
+  "date": "2024-01-30",
+  "author": "Svetlana Golubeva, Max Putintsev",
   "slug": "topic-based-subscriptions-top-5-use-cases-for-digital-health"
 }
 ---

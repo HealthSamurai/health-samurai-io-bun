@@ -4,7 +4,8 @@
   "title": "🔥 Extending FHIR Resources",
   "description": "The FHIR specification includes many resources that describe various medical data. Sometimes, however, the basic resources are insufficient to describe the data, and in such cases, FHIR provides the following mechanisms for extending the basic resources.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68063436ce24264b5ea7cf74_image.png",
-  "author": "",
+  "date": "2025-04-11",
+  "author": "Ivan Bagrov",
   "slug": "extending-fhir-resources"
 }
 ---

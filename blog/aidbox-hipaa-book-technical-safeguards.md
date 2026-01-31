@@ -4,7 +4,8 @@
   "title": "🔥 Aidbox HIPAA book. Part 1. Technical safeguards",
   "description": "Spoiler alert: HIPAA is easy when you are using Aidbox. The Health Insurance Portability and Accountability Act (HIPAA) sets standards in the United States for protecting individually identifiable health information.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/61e1ad67d6c9f0611b8dd36e_HiPPA.png",
-  "author": "",
+  "date": "2021-10-25",
+  "author": "Mike K.",
   "slug": "aidbox-hipaa-book-technical-safeguards"
 }
 ---

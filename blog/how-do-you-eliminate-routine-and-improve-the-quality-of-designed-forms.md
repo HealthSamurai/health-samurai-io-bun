@@ -4,7 +4,8 @@
   "title": "🔥 How do you eliminate routine and improve the quality of designed forms?",
   "description": "Working with IT engineers, I&#x27;ve noticed a common trait: when faced with routine tasks, they seek ways to avoid them by creating libraries for reusing written code. Routine work consumes time and is prone to errors.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/665da1034576e85273103e53_Aidbox%20Forms.png",
-  "author": "",
+  "date": "2024-05-17",
+  "author": "Maria Ryzhikova",
   "slug": "how-do-you-eliminate-routine-and-improve-the-quality-of-designed-forms"
 }
 ---

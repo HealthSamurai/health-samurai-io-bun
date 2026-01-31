@@ -4,7 +4,8 @@
   "title": "🔥 Gino Canessa Interview: Community and collaboration in Health Tech",
   "description": "Read and watch the interview with Gino Canessa from Microsoft. Gino shares insights on community engagement in FHIR, essential tools for implementation, and the importance of collaboration in digital healthcare.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/678e539a4279def12d4b2ba0_Gino%20Canessa%20Interview_%20Community%20and%20Collaboration%20in%20Health%20Tech.png",
-  "author": "",
+  "date": "2025-01-20",
+  "author": "Kurt Johnson",
   "slug": "gino-canessa-interview-community-and-collaboration-in-health-tech"
 }
 ---

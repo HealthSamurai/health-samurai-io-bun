@@ -4,7 +4,8 @@
   "title": "🔥 Digitize paper medical forms in seconds: Helping doctors focus on patients, not paperwork",
   "description": "The digital transformation of healthcare is all about using technology to improve patient outcomes. This includes integrating digital tools and platforms into healthcare, from electronic health records and e-prescriptions to wearable devices and AI-based applications.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/671798562b87804da03fe710_tg_image_1818869044.jpeg",
-  "author": "",
+  "date": "2024-10-22",
+  "author": "Maria Ryzhikova, Olim Saidov",
   "slug": "pdf-to-digital"
 }
 ---

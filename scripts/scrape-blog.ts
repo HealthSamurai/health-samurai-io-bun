@@ -76,9 +76,33 @@ function htmlToMarkdown(html: string): string {
   return md;
 }
 
-// Extract metadata from HTML head
-function extractMetadata(html: string, url: string): Record<string, string> {
-  const meta: Record<string, string> = { url };
+// Parse human-readable date to ISO format
+function parseDate(dateStr: string): string {
+  const months: Record<string, string> = {
+    'january': '01', 'february': '02', 'march': '03', 'april': '04',
+    'may': '05', 'june': '06', 'july': '07', 'august': '08',
+    'september': '09', 'october': '10', 'november': '11', 'december': '12'
+  };
+
+  // Try "Month DD, YYYY" format
+  const match = dateStr.match(/(\w+)\s+(\d{1,2}),?\s+(\d{4})/i);
+  if (match) {
+    const month = months[match[1].toLowerCase()];
+    const day = match[2].padStart(2, '0');
+    const year = match[3];
+    if (month) return `${year}-${month}-${day}`;
+  }
+
+  // Try ISO format already
+  const isoMatch = dateStr.match(/(\d{4})-(\d{2})-(\d{2})/);
+  if (isoMatch) return isoMatch[0];
+
+  return dateStr;
+}
+
+// Extract metadata from HTML
+function extractMetadata(html: string, url: string): Record<string, any> {
+  const meta: Record<string, any> = { url };
 
   // Title
   const titleMatch = html.match(/<title>([^<]*)<\/title>/i);
@@ -94,17 +118,30 @@ function extractMetadata(html: string, url: string): Record<string, string> {
     || html.match(/<meta[^>]*content="([^"]*)"[^>]*property="og:image"[^>]*>/i);
   if (imgMatch) meta.image = imgMatch[1].trim();
 
-  // Published date - look for time element or date patterns
-  const timeMatch = html.match(/<time[^>]*datetime="([^"]*)"[^>]*>/i);
-  if (timeMatch) meta.date = timeMatch[1].trim();
+  // Date from ar-header-date class
+  const dateMatch = html.match(/class="ar-header-date"[^>]*>([^<]+)</i);
+  if (dateMatch) {
+    meta.date = parseDate(dateMatch[1].trim());
+  }
 
-  // Author
-  const authorMatch = html.match(/class="[^"]*author[^"]*"[^>]*>([^<]*)</i);
-  if (authorMatch) meta.author = authorMatch[1].trim();
+  // Author from ar-header-author class
+  const authorMatch = html.match(/class="ar-header-author"[^>]*>([^<]+)</i);
+  if (authorMatch) {
+    meta.author = authorMatch[1].trim();
+  }
 
-  // Category from URL or content
-  const categoryMatch = html.match(/href="\/article-categories\/([^"]+)"/i);
-  if (categoryMatch) meta.category = categoryMatch[1].replace(/-/g, " ");
+  // Categories - collect all unique category links
+  const categories: string[] = [];
+  const categoryMatches = html.matchAll(/href="\/article-categories\/([^"]+)"[^>]*>([^<]*)</gi);
+  for (const match of categoryMatches) {
+    const category = match[2].trim();
+    if (category && !categories.includes(category)) {
+      categories.push(category);
+    }
+  }
+  if (categories.length > 0) {
+    meta.categories = categories;
+  }
 
   // Slug from URL
   const slugMatch = url.match(/\/articles\/([^\/]+)$/);

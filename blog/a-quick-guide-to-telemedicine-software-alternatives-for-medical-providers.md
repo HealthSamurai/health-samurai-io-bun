@@ -4,7 +4,8 @@
   "title": "🔥 A quick guide to telemedicine software alternatives",
   "description": "How can we successfully implement a telemedicine solution and then use it? To make an accurate choice, let’s examine the main merits and demerits of several telemedicine options.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/5fe5f71540671a98521e4ee2_telehealth.png",
-  "author": "",
+  "date": "2020-12-25",
+  "author": "Anastasia Demina",
   "slug": "a-quick-guide-to-telemedicine-software-alternatives-for-medical-providers"
 }
 ---

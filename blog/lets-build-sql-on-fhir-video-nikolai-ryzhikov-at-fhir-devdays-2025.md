@@ -4,7 +4,8 @@
   "title": "🔥 [Online workshop] SQL on FHIR – Nikolai Ryzhikov at FHIR DevDays 2025",
   "description": "FHIR&#x27;s nested structure works for APIs but frustrates SQL analytics. SQL on FHIR uses a simple DSL to define flat views – portable across ETL/ELT runners, tested via shared suites. Nikolai Ryzhikov&#x27;s DevDays session demos the workflow from Synthea data to Grafana dashboards.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68aef2efb14ccebe22668ab6_Group%203.png",
-  "author": "",
+  "date": "2025-12-15",
+  "author": "Nikolai Ryzhikov",
   "slug": "lets-build-sql-on-fhir-video-nikolai-ryzhikov-at-fhir-devdays-2025"
 }
 ---

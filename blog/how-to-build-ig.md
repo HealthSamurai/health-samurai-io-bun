@@ -4,7 +4,8 @@
   "title": "🔥 How to build IG",
   "description": "FHIR IG (Implementation Guide) is a set of artifacts that describe the requirements for a FHIR server. For example, an IG may contain a set of rules, profiles, extensions, search parameters, and examples of FHIR resources.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/680636f7127a343d8d9ee3c3_image.png",
-  "author": "",
+  "date": "2025-04-10",
+  "author": "Ivan Bagrov",
   "slug": "how-to-build-ig"
 }
 ---

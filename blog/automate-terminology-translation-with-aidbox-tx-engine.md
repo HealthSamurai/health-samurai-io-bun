@@ -4,7 +4,8 @@
   "title": "🔥 Automate Terminology Translation with Aidbox TX Engine",
   "description": "Healthcare systems constantly exchange data using different code sets, creating thousands of daily terminology translations. Aidbox TX Engine automates this process with FHIR ConceptMap and $translate, eliminating spreadsheets, custom scripts, and integration errors.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68a48ee46b778fe5efc8f9b8_image.png",
-  "author": "",
+  "date": "2025-12-08",
+  "author": "Guillermo Rodríguez",
   "slug": "automate-terminology-translation-with-aidbox-tx-engine"
 }
 ---

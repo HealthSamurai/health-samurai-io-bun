@@ -4,7 +4,8 @@
   "title": "🔥 Type Schema: a Pragmatic Approach to Build FHIR SDK",
   "description": "FHIR has become the primary standard for exchanging healthcare data. To get started with FHIR, developers need to read the FHIR specification and implementation guides (IGs, such as US Core, MCODE, etc.), and then implement them in their programming language. FHIR SDKs simplify this process by offer",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6819d486eb26f111c64b3b74_image.png",
-  "author": "",
+  "date": "2025-05-06",
+  "author": "Aleksandr Penskoi, Gennady Razmakhnin",
   "slug": "type-schema-a-pragmatic-approach-to-build-fhir-sdk"
 }
 ---

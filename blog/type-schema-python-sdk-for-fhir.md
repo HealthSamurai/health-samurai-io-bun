@@ -4,7 +4,8 @@
   "title": "🔥 Type Schema: Python SDK for FHIR",
   "description": "We recently announced Type Schema—a new, language‑agnostic way to build SDKs from FHIR packages. Today, let&#x27;s take a look at our Python SDK MVP and show how it streamlines FHIR development from first install to excellent developer experience.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/684ad677eaad118cb93c9d28_BgColor6.png",
-  "author": "",
+  "date": "2025-06-12",
+  "author": "Aleksandr Penskoi",
   "slug": "type-schema-python-sdk-for-fhir"
 }
 ---

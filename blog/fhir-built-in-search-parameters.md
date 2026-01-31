@@ -4,7 +4,8 @@
   "title": "🔥 FHIR Built-in Search Parameters",
   "description": "FHIR specification defines an HTTP interface to complex medical data, including &quot;simple&quot; patient info like the history of their statements, endorsements, observations and so on.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/680635e1f13fc24108fd8011_image.png",
-  "author": "",
+  "date": "2025-04-11",
+  "author": "Alexandr Penskoi",
   "slug": "fhir-built-in-search-parameters"
 }
 ---

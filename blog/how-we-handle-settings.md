@@ -4,7 +4,8 @@
   "title": "🔥 How we handle settings",
   "description": "Any program has stages of its life. Startup, initialization, regular working, cleanup, error, shutdown. At all of these stages, the program (say, Aidbox) needs to know its settings to behave in ways the user expects.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68063686776e649122310c1c_image.png",
-  "author": "",
+  "date": "2025-04-11",
+  "author": "Artyom Bologov",
   "slug": "how-we-handle-settings"
 }
 ---

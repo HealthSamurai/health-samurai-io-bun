@@ -4,7 +4,8 @@
   "title": "🔥 FHIR Profiling: Binding",
   "description": "Binding is used to define an allowed set of values for an element.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/680635484e655293597a83c0_image.png",
-  "author": "",
+  "date": "2025-04-11",
+  "author": "Ivan Bagrov",
   "slug": "fhir-profiling-binding"
 }
 ---

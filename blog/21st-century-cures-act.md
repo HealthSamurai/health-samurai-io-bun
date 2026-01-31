@@ -4,7 +4,8 @@
   "title": "🔥 Your path to compliance with the 21st Century Cures Act",
   "description": "On May, 1st of 2020 ONC has published the final rule called “21st Century Cures Act: Interoperability, Information Blocking, and the ONC Health IT Certification Program” to further boost interoperability among provider organizations and EHR ...",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/61e179fe4ee44923b64c253a_ONC%20Certified.png",
-  "author": "",
+  "date": "2022-01-14",
+  "author": "Pavel Smirnov",
   "slug": "21st-century-cures-act"
 }
 ---

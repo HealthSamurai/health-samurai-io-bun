@@ -4,7 +4,8 @@
   "title": "🔥 Early Access: FHIR-Native Audit Log for Modern Healthcare Solutions",
   "description": "Discover Auditbox, a FHIR-native audit log designed for modern healthcare apps. Now available in Early Access with 12 months free.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68d3e4b7fa0a829db8dd7473_Group%208.png",
-  "author": "",
+  "date": "2025-09-24",
+  "author": "Mike Kulakov",
   "slug": "early-access-fhir-native-audit-log-for-modern-healthcare-solutions"
 }
 ---

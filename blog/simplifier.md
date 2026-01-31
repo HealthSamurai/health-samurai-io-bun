@@ -4,7 +4,8 @@
   "title": "🔥 How to upload IG from simplifier",
   "description": "Simplifier is a FHIR package registry that stores basic and custom FHIR packages.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68063718b42b5f24c47145ec_image.png",
-  "author": "",
+  "date": "2025-04-17",
+  "author": "Ivan Bagrov",
   "slug": "simplifier"
 }
 ---

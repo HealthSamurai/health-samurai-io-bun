@@ -4,7 +4,8 @@
   "title": "🔥 Managing Multi-Clinic Data and Real-time Synchronization with OrgBAC and Subscriptions",
   "description": "Managing multiple clinics is hard: every facility needs autonomy, but the network still needs oversight and real-time data flow. OrgBAC and Subscriptions in Aidbox make this easy with automatic isolation and instant event delivery.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68aef2efb14ccebe22668ab6_Group%203.png",
-  "author": "",
+  "date": "2025-12-09",
+  "author": "Aleksandr Penskoi",
   "slug": "managing-multi-clinic-data-and-real-time-synchronization-with-orgbac-and-subscriptions"
 }
 ---

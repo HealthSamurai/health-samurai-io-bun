@@ -4,7 +4,8 @@
   "title": "🔥 Fine-Grained Access Control",
   "description": "How can confidentiality of data be ensured and access to these data be controlled among system users, considering different access levels and data sensitivity?",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6806362996d4cf66505575f1_image.png",
-  "author": "",
+  "date": "2025-04-11",
+  "author": "Rostislav Antonov",
   "slug": "fine-grained-access-control"
 }
 ---

@@ -4,7 +4,8 @@
   "title": "🔥 SQL on FHIR: What is a ViewDefinition, and how does it work?",
   "description": "Discover how to flatten complex healthcare data using ViewDefinition resource. Dive into our article for tips and examples.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/66a26ab1bd9c2d09ffd0afd1_ViewDef%20(1).png",
-  "author": "",
+  "date": "2024-07-26",
+  "author": "Nikolai Ryzhikov",
   "slug": "what-is-a-viewdefinition"
 }
 ---

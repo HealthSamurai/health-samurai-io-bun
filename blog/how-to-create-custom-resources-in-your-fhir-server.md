@@ -4,7 +4,8 @@
   "title": "🔥 How to create custom resources in your FHIR server?",
   "description": "The FHIR R5 specification includes 157 resources, from common ones like Patient to specialized ones. But when your data doesn&#x27;t fit any existing resource, you may need to create a custom type. This article explores 3 ways to create custom FHIR resources and weighs their pros and cons.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/66e013e9d246992c7e2d611e_How%20to%20create%20custom%20resources%20in%20your%20FHIR%20server_.png",
-  "author": "",
+  "date": "2024-09-10",
+  "author": "Evgeny Mukha, Vasiliy Kupriakov",
   "slug": "how-to-create-custom-resources-in-your-fhir-server"
 }
 ---

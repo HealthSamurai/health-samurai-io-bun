@@ -4,7 +4,8 @@
   "title": "🔥 Introducing the AI Assistant in Aidbox Forms: From Form Creation to Insights in Minutes",
   "description": "Now you can start with a clinical intention and end with a fully working data pipeline, without ever breaking the narrative or switching tools.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68933e11198dfe9aa4f4ec19_Group%202.jpg",
-  "author": "",
+  "date": "2025-11-10",
+  "author": "Maria Ryzhikova",
   "slug": "closing-the-loop-from-forms-to-insights-introducing-the-ai-assistant-in-aidbox-forms"
 }
 ---

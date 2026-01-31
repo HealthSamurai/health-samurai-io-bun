@@ -4,7 +4,8 @@
   "title": "🔥 Boost Form-Building with AI",
   "description": "We’re excited to introduce AI-powered features in Aidbox Forms that make creating electronic and multilingual medical forms faster and easier.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/67dc2efb0c3eee050d4cded5_Aidbox%20Happy%20developer.png",
-  "author": "",
+  "date": "2025-03-20",
+  "author": "Maria Ryzhikova",
   "slug": "boost-form-building-with-ai"
 }
 ---

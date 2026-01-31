@@ -4,7 +4,8 @@
   "title": "🔥 Aidbox Becomes the First FHIR Server to Pass All SQL-on-FHIR Tests",
   "description": "Aidbox just became the first FHIR server to pass all SQL-on-FHIR tests — thanks to full support for the repeat element. This update lets engineers query deeply nested FHIR structures like QuestionnaireResponse.item with a single, elegant definition.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68d278cd7d98059841c6c707_image%20(1).png",
-  "author": "",
+  "date": "2025-11-06",
+  "author": "Aleksandr Kislitsyn",
   "slug": "aidbox-becomes-the-first-fhir-server-to-pass-all-sql-on-fhir-tests"
 }
 ---

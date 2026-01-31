@@ -4,7 +4,8 @@
   "title": "🔥 CMS compliance implementation",
   "description": "Are you facing the necessity of becoming CMS compliant? In this article, I would like to tell you about our experience making a US health plan’s legacy medical system CMS compliant.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/63c7f0aef98d444d61021a1f_thumb.png",
-  "author": "",
+  "date": "2023-01-16",
+  "author": "Paul Chayka, WaveAccess",
   "slug": "cms-compliance-implementation"
 }
 ---

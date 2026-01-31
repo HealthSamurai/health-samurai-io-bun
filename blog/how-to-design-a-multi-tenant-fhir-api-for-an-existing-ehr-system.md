@@ -4,7 +4,8 @@
   "title": "🔥 How to design a multi-tenant FHIR API for an existing EHR system",
   "description": "Explore ways of cutting design costs using a multi-tenant FHIR API with SMART on FHIR support and comply with the 21st Century Cures Act for EHR systems on the fly.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6411a58fd63fc625fd3efccd_Aidbox%20blog2(1).png",
-  "author": "",
+  "date": "2024-07-08",
+  "author": "Vlad Ganshin",
   "slug": "how-to-design-a-multi-tenant-fhir-api-for-an-existing-ehr-system"
 }
 ---

@@ -4,7 +4,8 @@
   "title": "🔥 Introducing Hybrid Terminology Engine",
   "description": "Struggling with both massive standards like SNOMED and local custom codes? A hybrid terminology server intelligently splits requests between local and external sources, giving you broad coverage and local control without the trade-offs of traditional TX setups.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68cbd9f1a9e9ecfe92268c72_Group%206.png",
-  "author": "",
+  "date": "2025-09-18",
+  "author": "Guillermo Rodríguez",
   "slug": "introducing-hybrid-terminology-engine"
 }
 ---

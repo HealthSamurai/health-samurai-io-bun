@@ -4,7 +4,8 @@
   "title": "🔥 How to enable US Core IG",
   "description": "The FHIR US Core Implementation Guide (US Core IG) is a set of standardized profiles and guidelines based on HL7® FHIR® (Fast Healthcare Interoperability Resources) designed for the U.S. healthcare system.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/680633543591b3a77e154428_image.png",
-  "author": "",
+  "date": "2025-04-11",
+  "author": "Evgeny Mukha",
   "slug": "how-to-enable-us-core-ig"
 }
 ---

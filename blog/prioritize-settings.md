@@ -4,7 +4,8 @@
   "title": "🔥 Prioritize settings",
   "description": "Source is an intuitive way to think about settings. They come from somewhere, be it a single place or many places.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/680632603591b3a77e146585_image.png",
-  "author": "",
+  "date": "2025-04-11",
+  "author": "Artyom Bologov",
   "slug": "prioritize-settings"
 }
 ---

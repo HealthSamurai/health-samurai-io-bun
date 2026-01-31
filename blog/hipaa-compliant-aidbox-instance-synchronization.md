@@ -4,7 +4,8 @@
   "title": "🔥 HIPAA-compliant Aidbox instance synchronization",
   "description": "Do you have offices or clinics all over the world and want to collect statistical data in a single storage? In this article, we&#x27;ll share our experiences in implementing HIPAA-compliant data synchronization across multiple Aidbox instances.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/64005c8547d0151844bb347d_HIPAA-complaint%20Aidbox%20instance%20synchronization.png",
-  "author": "",
+  "date": "2023-03-02",
+  "author": "Paul Chayka, WaveAccess",
   "slug": "hipaa-compliant-aidbox-instance-synchronization"
 }
 ---

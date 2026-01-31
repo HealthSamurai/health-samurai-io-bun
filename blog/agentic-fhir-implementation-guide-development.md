@@ -4,7 +4,8 @@
   "title": "🔥 Agentic FHIR Implementation Guide Development",
   "description": "Discover how AI and Aidbox make building FHIR Implementation Guides faster, easier, and accessible to both developers and healthcare experts.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68aef2efb14ccebe22668ab6_Group%203.png",
-  "author": "",
+  "date": "2025-08-27",
+  "author": "Aleksandr Kislitsyn",
   "slug": "agentic-fhir-implementation-guide-development"
 }
 ---

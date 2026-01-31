@@ -4,7 +4,8 @@
   "title": "🔥 Why do you need to enable 2FA in your healthcare application?",
   "description": "Two-factor authentication (2FA) is a subset of multi-factor authentication (MFA) and an important security measure that adds a second layer of protection to your healthcare app. Read our guide and enable 2FA for Aidbox-based solutions.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/61e1ad72f4c47ccd3aeeafd9_2FA.png",
-  "author": "",
+  "date": "2021-04-28",
+  "author": "Anastasia Demina",
   "slug": "2fa-in-your-healthcare-application"
 }
 ---

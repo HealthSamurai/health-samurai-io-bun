@@ -4,7 +4,8 @@
   "title": "🔥 New Resource Browser",
   "description": "Resource Browser is the core of Aidbox. It’s useful to review the loaded resources and make decisions based on that.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/680632603591b3a77e146585_image.png",
-  "author": "",
+  "date": "2025-04-11",
+  "author": "Artyom Bologov",
   "slug": "new-resource-browser"
 }
 ---

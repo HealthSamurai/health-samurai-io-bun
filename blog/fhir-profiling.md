@@ -4,7 +4,8 @@
   "title": "🔥 FHIR Profiling",
   "description": "The base FHIR specification outlines a set of fundamental resources utilized in various contexts within healthcare.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68063459a4a7351c88399fc6_image.png",
-  "author": "",
+  "date": "2025-04-11",
+  "author": "Ivan Bagrov",
   "slug": "fhir-profiling"
 }
 ---

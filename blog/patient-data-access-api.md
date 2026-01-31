@@ -4,7 +4,8 @@
   "title": "🔥 Patient data access API",
   "description": "We often need to access data for a specific patient while ensuring that access is limited to them. This can be done by adding a patient reference search parameter to each request.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/680636054a5a23417d4da59b_image.png",
-  "author": "",
+  "date": "2025-04-11",
+  "author": "Rostislav Antonov",
   "slug": "patient-data-access-api"
 }
 ---

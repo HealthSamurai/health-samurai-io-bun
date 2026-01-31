@@ -4,7 +4,8 @@
   "title": "🔥 Unified FHIR Async Operations Pattern",
   "description": "Master unified FHIR async patterns for bulk exports and other long-running operations using Bulk Data Access and R5/R6: Prefer headers (bundle/redirect/manifest), polling, callbacks, long polling, plus HTTP examples and visual flows for Manifest, Bundle, Redirect, Cancel, and Callback workflows.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/681dcbba90ffeb168bda2eb0_image.png",
-  "author": "",
+  "date": "2025-11-27",
+  "author": "Nikolai Ryzhikov",
   "slug": "unified-fhir-async-operations-pattern"
 }
 ---

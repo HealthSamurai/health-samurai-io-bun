@@ -4,7 +4,7 @@
   "title": "🔥 Make Your Forms User-Friendly Across Devices",
   "description": "While forms automatically adapt to different screen sizes, you can now provide an even better experience by adding a short text version of your form’s content.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/680633d3e7307f5af1a60cd2_image.png",
-  "author": "",
+  "date": "2025-04-11",
   "slug": "forms-user-friendly-across-devices"
 }
 ---

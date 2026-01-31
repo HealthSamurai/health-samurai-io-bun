@@ -4,7 +4,8 @@
   "title": "🔥 Standardized API for EHRs | Cheat Sheet - §170.315(g)(10)",
   "description": "Hey! Good news – Aidbox is in the process of being ONC certified for §170.315(g)(10). In the process of preparing for certification, we systematized the information and have decided to share our handy cheat sheet (PDF) with you.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/626a3a7c33f24d231f14d519_Cheat%20Sheet%20%7C%205.jpg",
-  "author": "",
+  "date": "2022-04-28",
+  "author": "Mike Ryzhikov",
   "slug": "standardized-api-for-ehrs-cheat-sheet"
 }
 ---

@@ -4,7 +4,8 @@
   "title": "🔥 How to resolve FHIR SearchParameters conflicting codes",
   "description": "What is SearchParameter’s code? Which SearchParameters are available in the FHIR Server? Is it possible to have a clash of two different SearchParameters having the same code? How should this clash be resolved according to the FHIR specification? What to do in such situations in Aidbox?",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/66d5d2dead2f7055d23da929_param.jpg",
-  "author": "",
+  "date": "2024-09-02",
+  "author": "Aleksandr Kislitsyn",
   "slug": "resolve-fhir-searchparameters-conflicting"
 }
 ---

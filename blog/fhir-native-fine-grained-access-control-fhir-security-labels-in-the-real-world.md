@@ -4,7 +4,8 @@
   "title": "🔥 FHIR Native Fine-Grained Access Control: FHIR Security Labels in the Real World",
   "description": "This article explains how FHIR Security Labels control access to healthcare data by role. It shows how psychiatrists, nurses, and billers see only the data they need, protecting patient privacy. Learn how these labels work at both record and field levels to keep health data safe.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/680636054a5a23417d4da59b_image.png",
-  "author": "",
+  "date": "2025-08-01",
+  "author": "Rostislav Antonov",
   "slug": "fhir-native-fine-grained-access-control-fhir-security-labels-in-the-real-world"
 }
 ---

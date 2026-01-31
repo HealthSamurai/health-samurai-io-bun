@@ -4,7 +4,8 @@
   "title": "🔥 Understanding the CMS-0057-F Interoperability and Prior Authorization Final Rule",
   "description": "CMS-0057-F reshapes interoperability by mandating four FHIR-based APIs and measurable prior authorization standards. Here’s what it changes, who it affects, and why it matters for payers, providers, vendors, and patients.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68d121ca2e572bfd8dd79c0a_Group%207.png",
-  "author": "",
+  "date": "2026-01-14",
+  "author": "Mike Kulakov",
   "slug": "understanding-the-cms-0057-f-interoperability-and-prior-authorization-final-rule"
 }
 ---

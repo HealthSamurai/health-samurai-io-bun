@@ -4,7 +4,8 @@
   "title": "🔥 Building healthcare microservices: a FHIR-native approach",
   "description": "Discover how a FHIR-native microservices approach streamlines healthcare system development. Learn how to build scalable, interoperable services using FHIR’s ready-to-use APIs, domain models, and terminology tools—ideal for greenfield and legacy system modernization.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/67e550f41b88bbc50881a1e7_Discover_the_Advantages_of_a_Production_Ready_FHIR_Infrastructure%20(1).png",
-  "author": "",
+  "date": "2025-03-27",
+  "author": "Aleksandr Kislitsyn",
   "slug": "building-healthcare-microservices-a-fhir-native-approach"
 }
 ---

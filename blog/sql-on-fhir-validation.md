@@ -4,7 +4,7 @@
   "title": "🔥 SQL on FHIR Validation: How Aidbox Proved a New Data Standard",
   "description": "FHIR (Fast Healthcare Interoperability Resources) revolutionized medical data exchange between systems. However, its nested JSON structure makes data analytics challenging.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68e4ecc0a90b2bafdc501388_image%20(2).png",
-  "author": "",
+  "date": "2026-01-15",
   "slug": "sql-on-fhir-validation"
 }
 ---

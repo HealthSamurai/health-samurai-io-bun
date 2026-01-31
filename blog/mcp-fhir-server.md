@@ -4,7 +4,8 @@
   "title": "🔥 MCP FHIR Server",
   "description": "We recently added experimental support for the MCP Server in Aidbox. Let&#x27;s explore how to set it up and use it to interact with FHIR resources through an LLM interface.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/681dcbba90ffeb168bda2eb0_image.png",
-  "author": "",
+  "date": "2025-05-09",
+  "author": "Aleksandr Kislitsyn",
   "slug": "mcp-fhir-server"
 }
 ---

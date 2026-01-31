@@ -4,7 +4,8 @@
   "title": "🔥 Introducing $materialize: SQL interface for FHIR data",
   "description": "The new $materialize operation in Aidbox creates SQL tables or views from FHIR ViewDefinition resources, making nested FHIR data easier to query. It helps turn complex JSON structures into familiar tabular formats for use with standard SQL tools.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68ca9099eaf5979f7591bf7d_Group%204.png",
-  "author": "",
+  "date": "2025-09-17",
+  "author": "Andrey Listopadov",
   "slug": "introducing-materialize-sql-interface-for-fhir-data"
 }
 ---

@@ -4,7 +4,8 @@
   "title": "🔥 Aidbox 2025: Building a Future‑Proof FHIR Platform",
   "description": "In 2025, Aidbox focused on performance, FHIR conformance, and developer experience—removing bottlenecks and aligning deeply with the FHIR ecosystem. This post highlights the key architectural changes that make Aidbox faster, more transparent, and production-ready.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68e4ecc0a90b2bafdc501388_image%20(2).png",
-  "author": "",
+  "date": "2026-01-21",
+  "author": "Aleksandr Kislitsyn",
   "slug": "aidbox-2025-building-a-future-proof-fhir-platform"
 }
 ---

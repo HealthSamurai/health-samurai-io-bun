@@ -4,7 +4,8 @@
   "title": "🔥 Resource Preview",
   "description": "Aidbox has a Resource Browser that allows to look over the available resources and their data. But sometimes it’s necessary to focus on just one resource and act on it. That’s where Resource Preview comes in!",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6806329b654ebb772a64865b_image.png",
-  "author": "",
+  "date": "2025-04-11",
+  "author": "Artyom Bologov",
   "slug": "resource-preview"
 }
 ---

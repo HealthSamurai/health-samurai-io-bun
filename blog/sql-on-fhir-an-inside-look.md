@@ -4,7 +4,8 @@
   "title": "🔥 SQL on FHIR: An inside look at benefits and opportunities",
   "description": "What is SQL on FHIR and why is it perfect for working with large amounts of FHIR data? Capability to perform complex queries, such as join, filter, sort, and aggregate data, are among the many benefits it brings to digital health developers and data engineers.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/64da20445ffe2951302bc125_Frame%203129%201.png",
-  "author": "",
+  "date": "2024-05-08",
+  "author": "Mike Kulakov, Svetlana Golubeva",
   "slug": "sql-on-fhir-an-inside-look"
 }
 ---

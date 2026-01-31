@@ -4,7 +4,8 @@
   "title": "🔥 Grahame Grieve Interview: Future of FHIR in 2025",
   "description": "Read and watch the interview with Grahame Grieve from FHIR Camp 2024. He talks about the future of FHIR, AI in healthcare, and making FHIR accessible for everyone.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/678e404198e09b7dc19545fc_Grahame%20Grieve%20Interview_%20Future%20of%20FHIR%20in%202025.png",
-  "author": "",
+  "date": "2025-01-20",
+  "author": "Kurt Johnson",
   "slug": "grahame-grieve-interview-future-of-fhir-in-2025"
 }
 ---

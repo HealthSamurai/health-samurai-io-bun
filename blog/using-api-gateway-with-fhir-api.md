@@ -4,7 +4,8 @@
   "title": "🔥 Using API Gateway with FHIR API",
   "description": "The API Gateway (or Proxy) pattern is popular in modern architecture. In this pattern, the API Gateway component acts as a single entry point and middleware between client applications and backend services. It provides various API management capabilities such as routing and more.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/671bc90df367a992397f17f1_tg_image_1289126086.jpeg",
-  "author": "",
+  "date": "2024-10-25",
+  "author": "Aleksandr Kislitsyn",
   "slug": "using-api-gateway-with-fhir-api"
 }
 ---

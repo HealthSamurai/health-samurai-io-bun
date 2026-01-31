@@ -4,7 +4,8 @@
   "title": "🔥 Aidbox FHIR API is certified by ICSA Labs | 170.315(g)(10) criteria",
   "description": "Great news for EHR vendors! We are happy to announce that the Aidbox FHIR API module is officially certified for 170.315(g)(10) criteria by ICSA Labs. This means that you can enrich your existing EHR with it, get compliance automatically and strengthen your solution with a pluggable FHIR API.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6303733494df211ef2b3e19e_icsa.png",
-  "author": "",
+  "date": "2022-08-16",
+  "author": "Mike Ryzhikov",
   "slug": "aidbox-fhir-api-is-certified-by-icsa-labs-g10-criteria"
 }
 ---

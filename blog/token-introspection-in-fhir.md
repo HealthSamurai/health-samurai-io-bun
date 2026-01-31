@@ -4,7 +4,8 @@
   "title": "🔥 Token Introspection in FHIR: A Complete Guide to Modern Token Validation",
   "description": "Token Introspection is the critical bridge between Authentication and Authorization. When a client presents a token to access FHIR resources, the server must check if the token is valid.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68a48ee46b778fe5efc8f9b8_image.png",
-  "author": "",
+  "date": "2025-08-19",
+  "author": "Rostislav Antonov",
   "slug": "token-introspection-in-fhir"
 }
 ---

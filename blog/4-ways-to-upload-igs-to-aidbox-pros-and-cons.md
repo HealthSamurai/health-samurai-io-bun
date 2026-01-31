@@ -4,7 +4,8 @@
   "title": "🔥 4 ways to upload IGs to Aidbox: Pros and Cons",
   "description": "Explore all 4 possible ways to configure IGs in the Aidbox FHIR Platform. Dive into what, how, and why each method can fit your needs.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/665da1e56c3d9d77ac14988c_Upload%20IGs%20to%20Aidbox.png",
-  "author": "",
+  "date": "2024-06-03",
+  "author": "Evgeny Mukha",
   "slug": "4-ways-to-upload-igs-to-aidbox-pros-and-cons"
 }
 ---

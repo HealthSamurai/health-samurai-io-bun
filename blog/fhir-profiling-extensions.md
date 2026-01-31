@@ -4,7 +4,8 @@
   "title": "🔥 FHIR Profiling: Extensions",
   "description": "In FHIR, you can define a profile not only for a resource but also for an extension.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/680635690e90601ea16e3ded_image.png",
-  "author": "",
+  "date": "2025-04-11",
+  "author": "Ivan Bagrov",
   "slug": "fhir-profiling-extensions"
 }
 ---

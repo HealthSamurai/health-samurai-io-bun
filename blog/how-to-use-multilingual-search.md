@@ -4,7 +4,8 @@
   "title": "🔥 How to use multilingual search",
   "description": "FHIR specifies the translation extension to store translations from the base language of a resource to other languages. In this post, we will cover how to search through resources by specifying the language.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6806330c8a6673afc89bbd05_image.png",
-  "author": "",
+  "date": "2025-04-11",
+  "author": "Evgeny Mukha",
   "slug": "how-to-use-multilingual-search"
 }
 ---

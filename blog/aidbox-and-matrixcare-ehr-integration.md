@@ -4,7 +4,8 @@
   "title": "🔥 Silver bullet DIY: Aidbox and MatrixCare EHR integration",
   "description": "There is no silver bullet for establishing a working ETL pipeline for transmitting an HL7v2 feed from EHR into FHIR data out of the box. MatrixCare EHR is not an exclusion. In this article, we are going to give examples of how we managed to ease the pain of integration and which instruments we used.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/62d5450f869dc49d99a2f2ac_A-Thumbnail.png",
-  "author": "",
+  "date": "2022-07-18",
+  "author": "Artem Alekseev",
   "slug": "aidbox-and-matrixcare-ehr-integration"
 }
 ---

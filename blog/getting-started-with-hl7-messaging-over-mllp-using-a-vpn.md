@@ -4,7 +4,8 @@
   "title": "🔥 Getting started with HL7 messaging over MLLP using a VPN",
   "description": "Sharing our experience: How to securely transport an HL7 message using the MLLP protocol and effectively resolve connectivity issues.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/635aa47f3097f62f7fecbc80_Aidbox%20blog(7).png",
-  "author": "",
+  "date": "2022-10-27",
+  "author": "Artem Alexeev, Viktor Gusakov",
   "slug": "getting-started-with-hl7-messaging-over-mllp-using-a-vpn"
 }
 ---

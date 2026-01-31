@@ -4,7 +4,8 @@
   "title": "🔥 First steps to get your FHIR-based solution ready for production",
   "description": "Basic tips for building high-availability FHIR systems in a cloud infrastructure. Here, you will learn how to develop a production-ready and reliable FHIR solution in the cloud.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/632c763ec0bc24eee4b8fb18_Aidbox-on-Aws-thumb.png",
-  "author": "",
+  "date": "2022-09-22",
+  "author": "Mike Ryzhikov",
   "slug": "first-steps-to-get-your-fhir-based-solution-ready-for-production"
 }
 ---

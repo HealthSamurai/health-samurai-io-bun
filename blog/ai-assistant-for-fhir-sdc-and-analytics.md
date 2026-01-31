@@ -4,7 +4,8 @@
   "title": "🔥 AI Assistant for FHIR SDC and Analytics",
   "description": "From form authoring to clinical insights, the AI Assistant brings the entire FHIR SDC lifecycle into a single, no-code experience — making data capture faster, smarter, and analytics-ready.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68d121ca2e572bfd8dd79c0a_Group%207.png",
-  "author": "",
+  "date": "2025-09-22",
+  "author": "Olim Saidov, Maria Ryzhikova",
   "slug": "ai-assistant-for-fhir-sdc-and-analytics"
 }
 ---

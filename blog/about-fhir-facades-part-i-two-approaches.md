@@ -4,7 +4,8 @@
   "title": "🔥 About FHIR facades (part I) - two approaches",
   "description": "There are many reasons to let your software solution speak to others. Between interacting with other applications and extending your solution with new modules ...",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/5d7a60d0a637b37eb2b7d4b6_Group.png",
-  "author": "",
+  "date": "2019-09-12",
+  "author": "Pavel Smirnov",
   "slug": "about-fhir-facades-part-i-two-approaches"
 }
 ---

@@ -4,7 +4,7 @@
   "title": "🔥 Store Unstructured Data in External Storage",
   "description": "Simply set up your storage account and update the SDCconfig resource, and all attachment files will be saved in your designated storage.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/680633f4740aa7cdbafb5800_image.png",
-  "author": "",
+  "date": "2025-04-11",
   "slug": "store-unstructured-data-in-external-storage"
 }
 ---

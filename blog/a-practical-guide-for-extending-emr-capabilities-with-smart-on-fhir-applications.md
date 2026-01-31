@@ -4,7 +4,8 @@
   "title": "🔥 A practical guide for extending EMR capabilities with SMART on FHIR applications",
   "description": "Learn How FHIR and SMART Are Transforming EMR Integration in Healthcare. Dive into practical insights from Beda Software&#x27;s CTO, Ilya Beda, on extending EMR solutions efficiently.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/65b809e75908bd8201cc2cad_Frame%203162.png",
-  "author": "",
+  "date": "2023-09-04",
+  "author": "Ilya Beda, Beda Software",
   "slug": "a-practical-guide-for-extending-emr-capabilities-with-smart-on-fhir-applications"
 }
 ---

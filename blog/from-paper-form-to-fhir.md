@@ -4,7 +4,8 @@
   "title": "🔥 From Paper Form to FHIR",
   "description": "Even with today&#x27;s advanced medical technology, many healthcare facilities still rely heavily on paper forms for patient information. This ongoing use of paper causes significant challenges.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/681b7628f6d59e4438a2263e_image%20(1).png",
-  "author": "",
+  "date": "2025-05-08",
+  "author": "Olim Saidov",
   "slug": "from-paper-form-to-fhir"
 }
 ---

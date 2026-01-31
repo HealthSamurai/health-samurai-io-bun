@@ -4,7 +4,8 @@
   "title": "🔥 Automate tasks with Aidbox’s Workflow Engine",
   "description": "Patient admissions, order management, medication reconciliation, care coordination are quite repeatable steps. Once you automate it, you get a lot of valuable time back to focus on more important tasks.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6492eb9e0664640d9b063c18_Workflow%20Engine%20Blogpost%20Premiere(3).png",
-  "author": "",
+  "date": "2023-06-21",
+  "author": "Svetlana Golubeva",
   "slug": "automate-tasks-with-aidbox-workflow-engine"
 }
 ---

@@ -4,7 +4,8 @@
   "title": "🔥 Aidbox Subscriptions: A comprehensive overview of data integration, challenges, and solutions",
   "description": "Learn how subscriptions simplify data management with automated, event-driven workflows. They improve care coordination, decision-making, and streamline processes like data syncing and automation. Plus, Aidbox offers reliable, scalable solutions for both simple and high-load systems.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/66ec41c0f9a6c5a676dfa1fd_Aidbox%20Subscriptions_%20A%20comprehensive%20overview%20of%20data%20integration%2C%20challenges%2C%20and%20solutions.png",
-  "author": "",
+  "date": "2024-09-19",
+  "author": "Marat Surmashev",
   "slug": "subscriptions-on-fhir-overview-of-data-integration-challenges-and-solutions"
 }
 ---

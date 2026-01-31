@@ -4,7 +4,8 @@
   "title": "🔥 What additional benefits do electronic forms offer, and why shouldn&#x27;t they be confused with reports?",
   "description": "Discover the additional benefits electronic forms bring to medical workflows, and why they should be distinct from reports. In this article, I walk through creating a Wound Assessment form, showcasing how features like repeatable sections, image attachments, and conditional logic make electronic for",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/66ccbbc493cba5bddbe1e975_mini.jpg",
-  "author": "",
+  "date": "2024-08-26",
+  "author": "Maria Ryzhikova",
   "slug": "do-electronic-forms"
 }
 ---

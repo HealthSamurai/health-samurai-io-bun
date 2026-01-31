@@ -4,7 +4,8 @@
   "title": "🔥 First Fhirbase Release",
   "description": "Health Samurai team is proud to announce the first stable release of Fhirbase, an open-source tool to store and manage FHIR data in PostgreSQL relational database.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/5c2399723c78e545e18b7926_fhirbase_release.jpeg",
-  "author": "",
+  "date": "2018-10-04",
+  "author": "Mike Lapshin",
   "slug": "first-fhirbase-release"
 }
 ---

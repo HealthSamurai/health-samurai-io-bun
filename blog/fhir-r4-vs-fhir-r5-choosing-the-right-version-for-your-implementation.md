@@ -4,7 +4,8 @@
   "title": "🔥 FHIR R4 vs FHIR R5: Choosing the Right Version for Your Implementation",
   "description": "The FHIR community is at a crossroads. Some rush to explore R5, but many are holding back—waiting for R6, the version that promises to finally bring order, stability, and confidence to years of rapid evolution.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68e4ecc0a90b2bafdc501388_image%20(2).png",
-  "author": "",
+  "date": "2025-10-07",
+  "author": "Vlad Zholnerchuk",
   "slug": "fhir-r4-vs-fhir-r5-choosing-the-right-version-for-your-implementation"
 }
 ---

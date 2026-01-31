@@ -4,7 +4,8 @@
   "title": "🔥 Why building healthcare forms is so challenging—and how to fix it",
   "description": "From high development costs to complex integrations, healthcare organizations face significant challenges when creating and managing forms. After reading this article, you&#x27;ll gain a clear understanding of the biggest roadblocks in healthcare form creation and how to overcome them efficiently with Ai",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/67e2a69c639cdcf4efd21688_Frame%2028.png",
-  "author": "",
+  "date": "2025-03-25",
+  "author": "Maria Ryzhikova",
   "slug": "why-building-healthcare-forms-is-so-challenging--and-how-to-fix-it"
 }
 ---

@@ -4,7 +4,8 @@
   "title": "🔥 Unlocking FHIRPath Power: A Deep Dive into Static Type Analysis for Robust Tooling",
   "description": "FHIRPath is a powerful language for navigating and extracting data from FHIR resources, but its flexibility can lead to complex expressions that are prone to runtime errors. This article explores the architecture and benefits of implementing a static type analysis system for FHIRPath.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68493698e4ef96825edbcc75_Group%201.png",
-  "author": "",
+  "date": "2025-06-10",
+  "author": "Olim Saidov",
   "slug": "unlocking-fhirpath-power-a-deep-dive-into-static-type-analysis-for-robust-tooling"
 }
 ---

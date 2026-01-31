@@ -4,7 +4,8 @@
   "title": "🔥 How explain to the user how settings work?",
   "description": "Aidbox is not necessarily used by engineers. We need to make Aidbox and its settings accessible and understandable. We do this in multiple ways.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/680636abc2afd961833bab0e_image.png",
-  "author": "",
+  "date": "2025-04-11",
+  "author": "Artyom Bologov",
   "slug": "how-explain-to-the-user-how-settings-work"
 }
 ---

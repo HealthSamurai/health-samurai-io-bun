@@ -4,7 +4,8 @@
   "title": "🔥 Bringing data from wearables and medical IoT devices to FHIR solutions",
   "description": "This post demonstrates how to effectively integrate data produced by medical devices into the FHIR solution based on the Aidbox FHIR platform. Here you will find the FHIR model, a guide on how to adjust the Aidbox platform, and a link to the open-source project that illustrates this concept.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/623d6e7f6a85fa34a0728971_timeseries-banner.jpg",
-  "author": "",
+  "date": "2024-03-24",
+  "author": "Mike Ryzhikov",
   "slug": "aidbox-for-wearable-and-medical-devices"
 }
 ---

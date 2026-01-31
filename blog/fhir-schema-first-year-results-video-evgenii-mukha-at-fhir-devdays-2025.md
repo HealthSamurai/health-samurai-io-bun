@@ -4,7 +4,8 @@
   "title": "🔥 [Video] FHIR Schema First Year Results – Evgenii Mukha at FHIR DevDays 2025",
   "description": "Despite shared specs, FHIR validators disagree on edge cases. FHIR Schema fixes this with a JSON Schema-inspired format and simple, universal algorithm. Learn Aidbox insights, snapshot-less validation, and the roadmap.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68aef2efb14ccebe22668ab6_Group%203.png",
-  "author": "",
+  "date": "2025-12-15",
+  "author": "Evgenii Mukha",
   "slug": "fhir-schema-first-year-results-video-evgenii-mukha-at-fhir-devdays-2025"
 }
 ---

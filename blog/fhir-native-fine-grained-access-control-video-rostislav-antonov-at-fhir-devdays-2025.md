@@ -4,7 +4,8 @@
   "title": "🔥 [Video] FHIR Native Fine-Grained Access Control – Rostislav Antonov at FHIR DevDays 2025",
   "description": "FHIR security labels can limit access not just to whole resources but to individual fields. Rostislav Antonov’s DevDays talk shows how this works in Aidbox and what trade-offs it creates around leakage, performance, and write protection.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68aef2efb14ccebe22668ab6_Group%203.png",
-  "author": "",
+  "date": "2025-12-15",
+  "author": "Rostislav Antonov",
   "slug": "fhir-native-fine-grained-access-control-video-rostislav-antonov-at-fhir-devdays-2025"
 }
 ---

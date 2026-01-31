@@ -4,7 +4,8 @@
   "title": "🔥 The 2020 X-mas Hackathon",
   "description": "Launched 5 years ago for the first time, The X-mas Hackathon is a two-day event that brings healthcare enthusiasts together to build solutions that tackle a wide variety of problems.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/600833fcfc55429b6911eefe_meeting-5804489_1920.png",
-  "author": "",
+  "date": "2020-12-24",
+  "author": "Anastasia Demina",
   "slug": "the-2020-x-mas-hackathon"
 }
 ---

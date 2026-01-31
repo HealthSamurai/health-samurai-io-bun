@@ -4,7 +4,8 @@
   "title": "🔥 Tackling legacy system integration with FHIR",
   "description": "The healthcare industry faces complex challenges, many caused by outdated infrastructure and lack of interoperability between systems.",
   "image": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6759c8e99ef5c481d6ca29d4_capminds.png",
-  "author": "",
+  "date": "2024-12-11",
+  "author": "Daniil Chistoforov",
   "slug": "tackling-legacy-system-integration-with-fhir"
 }
 ---
