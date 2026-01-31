@@ -62,15 +62,15 @@ export async function Layout({ title, description, children, hideFooter, devMode
         <link rel="alternate" type="application/rss+xml" title="Health Samurai Blog" href="/blog/rss.xml" />
 
         {/* Color scheme detection - runs before render to prevent flash */}
-        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}})()` }} />
+        <script>{`(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}})()`}</script>
       </head>
       <body data-no-track={isInternalUser ? "true" : undefined}>
         <Header ctx={ctx} />
-        <main id="main-content" dangerouslySetInnerHTML={{ __html: children }} />
+        <main id="main-content">{children}</main>
         {!hideFooter && <Footer />}
-        {path && ctx && <div dangerouslySetInnerHTML={{ __html: await PageStatsPanel({ path, ctx }) }} />}
+        {path && ctx && <div>{await PageStatsPanel({ path, ctx })}</div>}
         {devMode && (
-          <script dangerouslySetInnerHTML={{ __html: `let _id;setInterval(async()=>{const r=await fetch("/__ping").catch(()=>null);const n=await r?.text();if(_id&&n&&_id!==n)location.reload();if(n)_id=n},1000)` }} />
+          <script>{`let _id;setInterval(async()=>{const r=await fetch("/__ping").catch(()=>null);const n=await r?.text();if(_id&&n&&_id!==n)location.reload();if(n)_id=n},1000)`}</script>
         )}
       </body>
     </html>

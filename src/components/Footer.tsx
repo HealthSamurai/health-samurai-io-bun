@@ -60,7 +60,7 @@ export function Footer(): string {
               {socialLinks.map(link => (
                 <a href={link.href} target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-800">
                   <span class="sr-only">{link.label}</span>
-                  <span dangerouslySetInnerHTML={{ __html: link.icon }} />
+                  <span>{link.icon}</span>
                 </a>
               ))}
             </div>

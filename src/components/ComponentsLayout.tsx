@@ -205,13 +205,13 @@ export function ComponentsLayout({ title, currentPath, children, devMode }: Comp
           {/* Main content */}
           <main class="flex-1 lg:pl-64">
             <div class="px-8 py-6">
-              <div dangerouslySetInnerHTML={{ __html: children }} />
+              <div>{children}</div>
             </div>
           </main>
         </div>
 
         {devMode && (
-          <script dangerouslySetInnerHTML={{ __html: `let _id;setInterval(async()=>{const r=await fetch("/__ping").catch(()=>null);const n=await r?.text();if(_id&&n&&_id!==n)location.reload();if(n)_id=n},1000)` }} />
+          <script>{`let _id;setInterval(async()=>{const r=await fetch("/__ping").catch(()=>null);const n=await r?.text();if(_id&&n&&_id!==n)location.reload();if(n)_id=n},1000)`}</script>
         )}
       </body>
     </html>

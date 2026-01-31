@@ -162,7 +162,7 @@ function DeviceChart({ devices }: { devices: Array<{ device: string; visitors: n
         <div>
           <div class="flex items-center justify-between mb-1">
             <div class="flex items-center gap-2">
-              <span class="text-gray-500" dangerouslySetInnerHTML={{ __html: icons[d.device] || icons.unknown }} />
+              <span class="text-gray-500">{icons[d.device] || icons.unknown}</span>
               <span class="text-sm font-medium text-gray-900 capitalize">{d.device}</span>
             </div>
             <span class="text-sm text-gray-500">{formatNumber(d.visitors)} ({d.percentage}%)</span>

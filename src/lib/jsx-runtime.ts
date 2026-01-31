@@ -62,11 +62,6 @@ function renderProps(props: Props): string {
       continue;
     }
 
-    // Handle dangerouslySetInnerHTML
-    if (key === "dangerouslySetInnerHTML") {
-      continue; // Handled separately in jsx()
-    }
-
     attrs.push(`${attrName}="${escapeHtml(String(value))}"`);
   }
 
@@ -83,7 +78,7 @@ export function jsx(
     return tag(props);
   }
 
-  const { children, dangerouslySetInnerHTML, ...restProps } = props;
+  const { children, ...restProps } = props;
   const attributes = renderProps(restProps as Props);
 
   // Handle void elements
@@ -91,12 +86,9 @@ export function jsx(
     return `<${tag}${attributes} />`;
   }
 
-  // Handle dangerouslySetInnerHTML
-  const innerHTML = dangerouslySetInnerHTML
-    ? (dangerouslySetInnerHTML as { __html: string }).__html
-    : renderChildren(children);
+  const content = renderChildren(children);
 
-  return `<${tag}${attributes}>${innerHTML}</${tag}>`;
+  return `<${tag}${attributes}>${content}</${tag}>`;
 }
 
 // jsxs is the same as jsx for our purposes (used for multiple children)

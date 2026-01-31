@@ -37,7 +37,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
             data-on:click="$mobileOpen = true"
           >
             <span class="sr-only">Open main menu</span>
-            <span dangerouslySetInnerHTML={{ __html: icons.menu }} />
+            <span>{icons.menu}</span>
           </button>
         </div>
 
@@ -53,8 +53,9 @@ export function Header({ ctx }: HeaderProps = {}): string {
             <span
               class="flex-none text-gray-400 transition-transform duration-200"
               data-class:rotate-180="$productsOpen"
-              dangerouslySetInnerHTML={{ __html: icons.chevron }}
-            />
+            >
+              {icons.chevron}
+            </span>
           </button>
 
           {/* Simple links */}
@@ -74,8 +75,9 @@ export function Header({ ctx }: HeaderProps = {}): string {
             <span
               class="flex-none text-gray-400 transition-transform duration-200"
               data-class:rotate-180="$aboutOpen"
-              dangerouslySetInnerHTML={{ __html: icons.chevron }}
-            />
+            >
+              {icons.chevron}
+            </span>
           </button>
         </div>
 
@@ -101,8 +103,9 @@ export function Header({ ctx }: HeaderProps = {}): string {
                 <span
                   class="flex-none text-gray-400 transition-transform duration-200"
                   data-class:rotate-180="$userMenuOpen"
-                  dangerouslySetInnerHTML={{ __html: icons.chevron }}
-                />
+                >
+                  {icons.chevron}
+                </span>
               </button>
               {/* User dropdown menu */}
               <div
@@ -145,7 +148,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
             </div>
           ) : (
             <a href="/login" class="text-sm/6 font-semibold text-gray-900">
-              Log in <span aria-hidden="true" dangerouslySetInnerHTML={{ __html: "&rarr;" }} />
+              Log in <span aria-hidden="true">&rarr;</span>
             </a>
           )}
         </div>
@@ -162,7 +165,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
             {products.map((product) => (
               <div class="group relative rounded-lg p-6 text-sm/6 hover:bg-gray-50 dark:hover:bg-dark-bg-alt">
                 <div class="flex size-11 items-center justify-center rounded-lg bg-gray-50 dark:bg-dark-bg-alt group-hover:bg-white dark:group-hover:bg-dark-bg">
-                  <span dangerouslySetInnerHTML={{ __html: product.icon }} />
+                  <span>{product.icon}</span>
                 </div>
                 <a href={product.href} class="mt-6 block font-semibold text-gray-900 dark:text-dark-text">
                   {product.label}
@@ -182,7 +185,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
                     href={action.href}
                     class="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-gray-900 dark:text-dark-text hover:bg-gray-100 dark:hover:bg-dark-bg"
                   >
-                    <span dangerouslySetInnerHTML={{ __html: action.icon }} />
+                    <span>{action.icon}</span>
                     {action.label}
                   </a>
                 ))}
@@ -203,7 +206,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
             {aboutLinks.map((item) => (
               <div class="group relative rounded-lg p-6 text-sm/6 hover:bg-gray-50 dark:hover:bg-dark-bg-alt">
                 <div class="flex size-11 items-center justify-center rounded-lg bg-gray-50 dark:bg-dark-bg-alt group-hover:bg-white dark:group-hover:bg-dark-bg">
-                  <span dangerouslySetInnerHTML={{ __html: item.icon }} />
+                  <span>{item.icon}</span>
                 </div>
                 <a href={item.href} class="mt-6 block font-semibold text-gray-900 dark:text-dark-text">
                   {item.label}
@@ -249,7 +252,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
             data-on:click="$mobileOpen = false"
           >
             <span class="sr-only">Close menu</span>
-            <span dangerouslySetInnerHTML={{ __html: icons.close }} />
+            <span>{icons.close}</span>
           </button>
         </div>
 
@@ -267,8 +270,9 @@ export function Header({ ctx }: HeaderProps = {}): string {
                   <span
                     class="flex-none transition-transform duration-200"
                     data-class:rotate-180="$productsOpen"
-                    dangerouslySetInnerHTML={{ __html: icons.chevron }}
-                  />
+                  >
+                    {icons.chevron}
+                  </span>
                 </button>
                 <div
                   class="mt-2 space-y-2"
@@ -307,8 +311,9 @@ export function Header({ ctx }: HeaderProps = {}): string {
                   <span
                     class="flex-none transition-transform duration-200"
                     data-class:rotate-180="$aboutOpen"
-                    dangerouslySetInnerHTML={{ __html: icons.chevron }}
-                  />
+                  >
+                    {icons.chevron}
+                  </span>
                 </button>
                 <div
                   class="mt-2 space-y-2"
@@ -320,7 +325,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
                       href={item.href}
                       class="group flex items-center gap-x-3 rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
                     >
-                      <span class="flex size-8 items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white" dangerouslySetInnerHTML={{ __html: item.icon }} />
+                      <span class="flex size-8 items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">{item.icon}</span>
                       {item.label}
                     </a>
                   ))}
@@ -388,7 +393,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
                   href="/login"
                   class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 dark:text-dark-text hover:bg-gray-50 dark:hover:bg-dark-bg-alt mt-4"
                 >
-                  Log in <span aria-hidden="true" dangerouslySetInnerHTML={{ __html: "&rarr;" }} />
+                  Log in <span aria-hidden="true">&rarr;</span>
                 </a>
               )}
             </div>

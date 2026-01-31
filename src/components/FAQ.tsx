@@ -38,8 +38,8 @@ export function FAQ({
                   >
                     <span class="text-base/7 font-semibold">{item.question}</span>
                     <span class="ml-6 flex h-7 items-center">
-                      <span data-show={`!$faq${index}`} dangerouslySetInnerHTML={{ __html: plusIcon }} />
-                      <span data-show={`$faq${index}`} style={{ display: "none" }} dangerouslySetInnerHTML={{ __html: minusIcon }} />
+                      <span data-show={`!$faq${index}`}>{plusIcon}</span>
+                      <span data-show={`$faq${index}`} style={{ display: "none" }}>{minusIcon}</span>
                     </span>
                   </button>
                 </dt>

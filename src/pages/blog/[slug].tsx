@@ -190,11 +190,12 @@ export default async function BlogPost(params: BlogPostParams): Promise<string> 
               prose-blockquote:border-l-4 prose-blockquote:border-gray-200 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-600
               prose-ul:my-4 prose-li:my-1
               prose-ol:my-4"
-            dangerouslySetInnerHTML={{ __html: contentHtml }}
-          />
+          >
+            {contentHtml}
+          </div>
 
           {/* Like Button */}
-          <div class="mx-auto max-w-2xl" dangerouslySetInnerHTML={{ __html: await PostLikeButton({ slug, ctx }) }} />
+          <div class="mx-auto max-w-2xl">{await PostLikeButton({ slug, ctx })}</div>
         </div>
 
         {/* Comments Section */}

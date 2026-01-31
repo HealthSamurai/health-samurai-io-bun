@@ -63,7 +63,7 @@ export default function ServicesPage(): string {
               {services.map(service => (
                 <div class="flex flex-col">
                   <dt class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
-                    <span dangerouslySetInnerHTML={{ __html: service.icon }} />
+                    <span>{service.icon}</span>
                     {service.title}
                   </dt>
                   <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">

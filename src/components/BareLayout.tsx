@@ -30,7 +30,7 @@ export function BareLayout({ title, description, children }: BareLayoutProps): s
         {/* Favicon */}
         <link rel="shortcut icon" type="image/png" href="/assets/images/favicons/favicon-32.png" />
       </head>
-      <body class="bg-gray-50" dangerouslySetInnerHTML={{ __html: children }} />
+      <body class="bg-gray-50">{children}</body>
     </html>
   );
 

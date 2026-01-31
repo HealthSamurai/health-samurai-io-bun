@@ -40,8 +40,9 @@ function BentoCard({
             {item.icon && (
               <span
                 class="size-16 text-primary"
-                dangerouslySetInnerHTML={{ __html: item.icon.replace('class="size-6', 'class="size-16') }}
-              />
+              >
+                {item.icon.replace('class="size-6', 'class="size-16')}
+              </span>
             )}
           </div>
         )}
@@ -128,10 +129,7 @@ export function Bento({ tagline, title, items }: BentoProps): string {
               >
                 <div class="flex items-center gap-4">
                   {item.icon && (
-                    <span
-                      class="text-primary"
-                      dangerouslySetInnerHTML={{ __html: item.icon }}
-                    />
+                    <span class="text-primary">{item.icon}</span>
                   )}
                   <div>
                     <h3 class="font-semibold text-gray-950 group-hover:text-primary">

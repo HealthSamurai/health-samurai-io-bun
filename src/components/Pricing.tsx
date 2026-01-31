@@ -128,7 +128,7 @@ export function Pricing({
               <ul role="list" class="mt-8 space-y-3 text-sm/6 text-gray-600 xl:mt-10">
                 {tier.features.map((feature) => (
                   <li class="flex gap-x-3">
-                    <span dangerouslySetInnerHTML={{ __html: checkIcon }} />
+                    <span>{checkIcon}</span>
                     {feature}
                   </li>
                 ))}
