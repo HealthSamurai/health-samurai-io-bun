@@ -547,19 +547,12 @@ PostgreSQL database using ParadeDB (Postgres with vector extensions).
 docker-compose up -d postgres
 ```
 
-**Connection settings (defaults):**
-- Host: `localhost`
-- Port: `5436`
-- User: `healthsamurai`
-- Password: `healthsamurai`
-- Database: `healthsamurai`
+**Connection:**
+```bash
+DATABASE_URL=postgres://healthsamurai:healthsamurai@localhost:5436/healthsamurai
+```
 
-**Environment variables:**
-- `POSTGRES_HOST` - Database host (default: localhost)
-- `POSTGRES_PORT` - Database port (default: 5436)
-- `POSTGRES_USER` - Database user (default: healthsamurai)
-- `POSTGRES_PASSWORD` - Database password (default: healthsamurai)
-- `POSTGRES_DB` - Database name (default: healthsamurai)
+Copy `.env.example` to `.env` for local development.
 
 ### Kubernetes Deployment
 
