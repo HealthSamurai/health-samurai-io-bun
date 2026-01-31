@@ -563,6 +563,106 @@ export { default, metadata } from "./original-page";
 2. Export a function returning `string`
 3. Import and use in pages by calling the function
 
+## UI Component Library
+
+Reusable UI components based on Tailwind Plus UI patterns. All components are server-rendered functions returning HTML strings.
+
+**Location:** `src/components/ui/`
+
+**Demo pages:** `/_components/ui/*` (with live examples and code snippets)
+
+### Available Components
+
+| Component | File | Description |
+|-----------|------|-------------|
+| Avatar | `Avatar.tsx` | User avatars with sizes (xs-2xl), shapes, status indicators, initials fallback, groups |
+| Badge | `Badge.tsx` | Status badges with colors, variants (flat/outline), dots, removable option |
+| Button | `Button.tsx` | Buttons with variants, sizes, icons, loading states, link style |
+| Card | `Card.tsx` | Content cards with headers, footers, dividers, well variant |
+| Alert | `Alert.tsx` | Notifications with types (info/success/warning/error), icons, actions, dismissible |
+| Input | `Input.tsx` | Form inputs with types, addons, validation states, icons |
+| Tabs | `Tabs.tsx` | Tab navigation with variants (underline/pills), icons, badges, Datastar integration |
+| Modal | `Modal.tsx` | Dialog modals with sizes, icons, variants, ConfirmDialog/SuccessDialog helpers |
+| Dropdown | `Dropdown.tsx` | Datastar-powered dropdown menus with positions, icons, sections |
+| Toggle | `Toggle.tsx` | Toggle switches with sizes, variants, descriptions, groups |
+| Spinner | `Spinner.tsx` | Loading indicators, skeleton loaders, loading overlays |
+
+### Usage
+
+```tsx
+import { Button } from "../components/ui/Button";
+import { Badge } from "../components/ui/Badge";
+import { Avatar } from "../components/ui/Avatar";
+
+// Components are functions that return HTML strings
+const html = `
+  ${Button({ variant: "primary", children: "Click me" })}
+  ${Badge({ color: "green", dot: true, children: "Active" })}
+  ${Avatar({ src: "/avatar.jpg", size: "lg" })}
+`;
+```
+
+### Interactive Components
+
+Some components use Datastar for interactivity:
+
+- **Tabs** - `TabsWithContent()` for client-side tab switching
+- **Dropdown** - Opens/closes with click outside detection
+- **Modal** - Uses native `<dialog>` element with Datastar triggers
+
+```tsx
+import { TabsWithContent } from "../components/ui/Tabs";
+import { Dropdown, DropdownItem, DropdownSection } from "../components/ui/Dropdown";
+
+// Tabs with Datastar state management
+${TabsWithContent({
+  id: "my-tabs",
+  tabs: [
+    { id: "tab1", label: "First", content: "Content 1" },
+    { id: "tab2", label: "Second", content: "Content 2" },
+  ],
+})}
+
+// Dropdown with menu items
+${Dropdown({
+  id: "menu",
+  trigger: "Options",
+  children: DropdownSection({
+    children: DropdownItem({ children: "Edit", href: "/edit" }),
+  }),
+})}
+```
+
+### Creating New Components
+
+1. Create in `src/components/ui/NewComponent.tsx`
+2. Define TypeScript types for props
+3. Export function(s) returning HTML strings
+4. Add demo page at `src/pages/_components/ui/newcomponent.tsx`
+5. Add to sidebar in `src/components/ComponentsLayout.tsx`
+
+**Demo page pattern:**
+```tsx
+import { ComponentsLayout } from "../../../components/ComponentsLayout";
+import { NewComponent } from "../../../components/ui/NewComponent";
+import { highlightCode } from "../../../lib/markdown";
+
+export const metadata = { title: "New Component", fullPage: true };
+
+export default function Demo({ devMode }: { devMode?: boolean }): string {
+  return ComponentsLayout({
+    title: "New Component",
+    currentPath: "/_components/ui/newcomponent",
+    children: `
+      <h1>New Component</h1>
+      <div>${NewComponent({ ... })}</div>
+      ${highlightCode(`<NewComponent ... />`, "tsx")}
+    `,
+    devMode,
+  });
+}
+```
+
 ## Component Tracing
 
 Components use `data-component` attributes for debugging. This makes it easy to identify which component rendered which HTML in browser DevTools.
