@@ -1,4 +1,4 @@
-import { SQL } from "bun";
+import { Pool } from "pg";
 
 // Connection URL
 const DATABASE_URL = process.env.DATABASE_URL ||
@@ -6,12 +6,32 @@ const DATABASE_URL = process.env.DATABASE_URL ||
 
 console.log("[DB] Connecting to:", DATABASE_URL.replace(/:[^:@]+@/, ":***@"));
 
-// Create connection using URL directly (simpler, less error-prone)
-export const db = new SQL(DATABASE_URL);
+// Create a connection pool using pg
+const pool = new Pool({
+  connectionString: DATABASE_URL,
+  max: 10,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 10000,
+});
 
 // Test connection on startup
-db`SELECT 1 as connected`.then(() => {
+pool.query("SELECT 1 as connected").then(() => {
   console.log("[DB] Connection successful");
 }).catch((err: Error) => {
   console.error("[DB] Connection failed:", err.message);
 });
+
+// Tagged template literal wrapper to maintain compatibility with existing code
+export const db = async (strings: TemplateStringsArray, ...values: unknown[]) => {
+  // Build the query with $1, $2, etc. placeholders
+  let query = strings[0];
+  for (let i = 0; i < values.length; i++) {
+    query += `$${i + 1}${strings[i + 1]}`;
+  }
+
+  const result = await pool.query(query, values);
+  return result.rows;
+};
+
+// Also export the pool for direct access if needed
+export { pool };

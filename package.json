@@ -30,6 +30,7 @@
     "@tailwindcss/typography": "^0.5.19",
     "marked": "^17.0.1",
     "parse5": "^8.0.0",
+    "pg": "^8.18.0",
     "shiki": "^3.22.0"
   }
 }
