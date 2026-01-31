@@ -4,7 +4,7 @@ import { watch } from "fs";
 import { initGitInfo } from "./lib/git-info";
 import { initHighlighter } from "./lib/markdown";
 import { getAllPosts } from "./data/blog";
-import { db } from "./db";
+import { db, closeDb } from "./db";
 import { newContext } from "./context";
 import {
   createSession,
@@ -43,6 +43,23 @@ const PORT = process.env.PORT ? parseInt(process.env.PORT) : 4321;
 const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET || "";
 const PAGES_DIR = "./src/pages";
 const DEV_MODE = process.env.DEV === "1" || process.argv.includes("--hot");
+
+let isShuttingDown = false;
+const shutdown = async (signal: string) => {
+  if (isShuttingDown) return;
+  isShuttingDown = true;
+  console.log(`\x1b[33m→\x1b[0m Shutting down (${signal})...`);
+  await closeDb();
+  process.exit(0);
+};
+
+process.on("SIGINT", () => {
+  void shutdown("SIGINT");
+});
+
+process.on("SIGTERM", () => {
+  void shutdown("SIGTERM");
+});
 
 // Server ID for live reload (changes on restart)
 const SERVER_ID = crypto.randomUUID();

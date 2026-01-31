@@ -80,7 +80,10 @@ export function CommentItem({ comment, replies, allComments, currentUser, slug, 
         )}
 
         {/* Content */}
-        <div class="flex-1 min-w-0">
+        <div
+          class="flex-1 min-w-0"
+          data-signals={`{${replySignal}: false}`}
+        >
           <div class="flex items-center gap-2 mb-1">
             <span class="font-medium text-gray-900 text-sm">{comment.username}</span>
             <span class="text-xs text-gray-500">{formatCommentDate(comment.created_at)}</span>
@@ -91,7 +94,7 @@ export function CommentItem({ comment, replies, allComments, currentUser, slug, 
           <div class="flex items-center gap-4 mt-2">
             {canReply && (
               <button
-                data-on-click={`$${replySignal} = !$${replySignal}`}
+                {...{ "data-on:click": `$${replySignal} = !$${replySignal}` }}
                 class="text-xs text-gray-500 hover:text-gray-700"
               >
                 Reply
@@ -113,7 +116,6 @@ export function CommentItem({ comment, replies, allComments, currentUser, slug, 
           {/* Reply form (hidden by default) */}
           {canReply && (
             <div
-              data-signals={`{${replySignal}: false}`}
               data-show={`$${replySignal}`}
               style="display: none"
               class="mt-3"
@@ -122,7 +124,9 @@ export function CommentItem({ comment, replies, allComments, currentUser, slug, 
                 hx-post={`/api/blog/${slug}/comments`}
                 hx-target={`#comment-${comment.id} > .replies`}
                 hx-swap="beforeend"
-                hx-on--after-request={`if(event.detail.successful) { this.reset(); $${replySignal} = false; }`}
+                {...{
+                  "hx-on": `htmx:afterRequest: if(event.detail.successful) { this.reset(); $${replySignal} = false; }`,
+                }}
                 class="flex gap-2"
               >
                 <input type="hidden" name="parent_id" value={String(comment.id)} />
@@ -142,7 +146,7 @@ export function CommentItem({ comment, replies, allComments, currentUser, slug, 
                   </button>
                   <button
                     type="button"
-                    data-on-click={`$${replySignal} = false`}
+                    {...{ "data-on:click": `$${replySignal} = false` }}
                     class="px-3 py-1.5 text-gray-500 hover:text-gray-700 text-xs"
                   >
                     Cancel
@@ -217,7 +221,7 @@ export function CommentForm({ slug, user }: CommentFormProps): string {
       hx-post={`/api/blog/${slug}/comments`}
       hx-target="#comments-list"
       hx-swap="beforeend"
-      hx-on--after-request="if(event.detail.successful) this.reset()"
+      {...{ "hx-on": "htmx:afterRequest: if(event.detail.successful) this.reset()" }}
       class="mt-8 pt-8 border-t border-gray-100"
     >
       <div class="flex gap-3">

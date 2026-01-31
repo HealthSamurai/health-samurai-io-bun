@@ -14,7 +14,7 @@ Rebuilding [health-samurai.io](https://health-samurai.io) from scratch using Bun
 
 ```sh
 bun install    # Install dependencies
-bun dev        # Start dev server (hot reload)
+bun dev        # Start dev server in background (watch mode + Tailwind watch)
 ```
 
 Server runs at http://localhost:4444
@@ -25,7 +25,12 @@ All scripts are in `scripts/` and run via `bun run <script>`:
 
 | Command | Description |
 |---------|-------------|
-| `bun dev` | Dev server + Tailwind watcher (hot reload) |
+| `bun dev` | Start background dev server + Tailwind watch |
+| `bun dev:fg` | Run dev server + Tailwind watch in foreground |
+| `bun dev:reload` | Restart background dev processes |
+| `bun dev:stop` | Stop background dev processes |
+| `bun dev:status` | Show background dev status |
+| `bun dev:logs` | Tail dev server + Tailwind logs |
 | `bun start` | Production server (builds CSS, no hot reload) |
 | `bun run css:build` | Build Tailwind CSS (minified) |
 | `bun run css:watch` | Watch Tailwind CSS for changes |
@@ -41,22 +46,21 @@ All scripts are in `scripts/` and run via `bun run <script>`:
 - `PORT` - Server port (default: 4444)
 
 ```sh
-PORT=3000 bun dev           # Run on different port
+PORT=3000 bun dev           # Run background dev server on different port
+PORT=3000 bun dev:fg        # Foreground dev server on different port
 ```
 
-## Server Management (Background)
+## Server Management (Dev)
 
-Use `server.sh` to run the server in background with proper PID tracking:
+Use `bun dev` (single entry point) to manage background dev processes with PID + log files:
 
 ```sh
-./server.sh start       # Start server + CSS watcher in background
-./server.sh start -h    # Start with hot reload (recommended for dev)
-./server.sh stop        # Stop server and CSS watcher (uses PID, not pkill!)
-./server.sh restart     # Restart server
-./server.sh restart -h  # Restart with hot reload
-./server.sh status      # Check if running (shows PIDs)
-./server.sh logs        # Tail server logs
-./server.sh dev         # Foreground mode (Ctrl+C to stop)
+bun dev           # Start server + CSS watcher in background
+bun dev:reload    # Restart background processes
+bun dev:stop      # Stop background processes (uses PID files)
+bun dev:status    # Check if running (shows PIDs)
+bun dev:logs      # Tail server + Tailwind logs
+bun dev:fg        # Foreground mode (Ctrl+C to stop)
 ```
 
 **PID files:**
@@ -67,7 +71,11 @@ Use `server.sh` to run the server in background with proper PID tracking:
 - `.server.log` - Server output
 - `.css.log` - CSS watcher output
 
-**Important:** Always use `./server.sh stop` to stop the server. Never use `pkill bun` as it kills all Bun processes system-wide.
+**Important:** Always use `bun dev:stop` to stop the server. Never use `pkill bun` as it kills all Bun processes system-wide.
+
+**Tailwind watch fallback:** On systems where native file watching fails, `bun run css:watch` falls back to polling rebuilds every 2 seconds. This is expected and keeps CSS up to date.
+
+**Temp directory:** Dev scripts use a local `./.tmp` directory for Bun temp files.
 
 ## Webflow HTML Snapshots (chro / CDP)
 
@@ -115,8 +123,6 @@ save_snapshot "https://health-samurai.io/fhir-server" "./webflow/fhir-server.htm
 
 ```
 scripts/
-├── dev.ts                 # Development server (bun dev)
-├── start.ts               # Production server (bun start)
 ├── routes.ts              # List routes (bun run routes)
 └── typecheck.ts           # Type checking (bun run typecheck)
 src/
@@ -1145,6 +1151,9 @@ The CSS build step ensures Tailwind is compiled on every deployment and restart.
 See [Datastar docs](https://data-star.dev/reference). Use Datastar for reactive client-side interactivity via HTML attributes.
 
 **IMPORTANT: Attribute syntax uses COLONS, not hyphens!**
+**JSX note:** Datastar attributes like `data-on:click` and `data-signals:foo` are valid in this JSX runtime. For htmx events, prefer `hx-on="event: handler"` because JSX rejects names like `hx-on:htmx:afterRequest`.
+
+**Scope rule:** Signals must be declared on the element or an ancestor of any element that reads/updates them. Sibling scopes do not share signals.
 
 **Core Attributes:**
 - `data-signals` — Define reactive state (object or key syntax)

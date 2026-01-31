@@ -4,10 +4,15 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun scripts/dev.ts",
+    "dev": "bun scripts/dev.ts start",
+    "dev:fg": "bun scripts/dev.ts fg",
+    "dev:reload": "bun scripts/dev.ts reload",
+    "dev:stop": "bun scripts/dev.ts stop",
+    "dev:status": "bun scripts/dev.ts status",
+    "dev:logs": "bun scripts/dev.ts logs",
     "start": "bun run css:build && bun scripts/start.ts",
-    "css:build": "bunx @tailwindcss/cli -i src/styles/tailwind.css -o public/styles/main.css --minify",
-    "css:watch": "bunx @tailwindcss/cli -i src/styles/tailwind.css -o public/styles/main.css --watch",
+    "css:build": "bun node_modules/@tailwindcss/cli/dist/index.mjs -i src/styles/tailwind.css -o public/styles/main.css --minify",
+    "css:watch": "bun scripts/css-watch.ts",
     "typecheck": "bun scripts/typecheck.ts",
     "routes": "bun scripts/routes.ts",
     "check-pages": "bun scripts/check-pages.ts",
@@ -15,7 +20,8 @@
     "migrate:up": "bun scripts/migrate.ts up",
     "migrate:down": "bun scripts/migrate.ts down",
     "migrate:status": "bun scripts/migrate.ts status",
-    "migrate:create": "bun scripts/migrate.ts create"
+    "migrate:create": "bun scripts/migrate.ts create",
+    "sql": "bun scripts/sql.ts"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.18",

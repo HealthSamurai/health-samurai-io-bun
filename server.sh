@@ -86,18 +86,24 @@ do_stop() {
 }
 
 start_css() {
+  local watch_mode=$1
+
   # Build CSS first
   echo "Building CSS..."
   bun run css:build 2>/dev/null
 
-  echo "Starting CSS watcher..."
-  nohup bun x @tailwindcss/cli -i src/styles/tailwind.css -o public/styles/main.css --watch > "$CSS_LOG_FILE" 2>&1 &
-  echo $! > "$CSS_PID_FILE"
-  sleep 2
-  if [ -f "$CSS_PID_FILE" ] && kill -0 "$(cat $CSS_PID_FILE)" 2>/dev/null; then
-    print_status "CSS watcher started (PID: $(cat $CSS_PID_FILE))"
+  if [ "$watch_mode" = "true" ]; then
+    echo "Starting CSS watcher..."
+    nohup bun run css:watch > "$CSS_LOG_FILE" 2>&1 &
+    echo $! > "$CSS_PID_FILE"
+    sleep 2
+    if [ -f "$CSS_PID_FILE" ] && kill -0 "$(cat $CSS_PID_FILE)" 2>/dev/null; then
+      print_status "CSS watcher started (PID: $(cat $CSS_PID_FILE))"
+    else
+      print_warn "CSS watcher may have exited (CSS already built)"
+    fi
   else
-    print_warn "CSS watcher may have exited (CSS already built)"
+    rm -f "$CSS_PID_FILE"
   fi
 }
 
@@ -113,17 +119,17 @@ do_start() {
   # Clean up port
   kill_port
 
-  # Start CSS watcher
-  start_css
+  # Start CSS watcher only in watch mode
+  start_css "$hot_reload"
 
   echo "Starting server on port $PORT..."
 
   if [ "$hot_reload" = "true" ]; then
-    DEV=1 PORT=$PORT nohup bun --hot run src/server.ts > "$LOG_FILE" 2>&1 &
+    DEV=1 PORT=$PORT nohup bun --watch src/server.ts > "$LOG_FILE" 2>&1 &
     echo $! > "$PID_FILE"
     sleep 1
     if is_running; then
-      print_status "Server started with hot reload + live reload (PID: $(get_pid))"
+      print_status "Server started with watch mode + live reload (PID: $(get_pid))"
     fi
   else
     PORT=$PORT nohup bun run src/server.ts > "$LOG_FILE" 2>&1 &
@@ -166,14 +172,14 @@ do_dev() {
 
   # Build CSS first
   echo "Building CSS..."
-  bunx @tailwindcss/cli -i src/styles/tailwind.css -o public/styles/main.css 2>/dev/null
+  bun run css:build 2>/dev/null
 
   # Start CSS watcher in background
   echo "Starting CSS watcher..."
-  bunx @tailwindcss/cli -i src/styles/tailwind.css -o public/styles/main.css --watch > "$CSS_LOG_FILE" 2>&1 &
+  bun run css:watch > "$CSS_LOG_FILE" 2>&1 &
   echo $! > "$CSS_PID_FILE"
 
-  echo "Starting server in development mode (foreground, hot + live reload)..."
+  echo "Starting server in development mode (foreground, watch + live reload)..."
   echo "URL: http://localhost:$PORT"
   echo "Press Ctrl+C to stop"
   echo ""
@@ -181,7 +187,7 @@ do_dev() {
   # Trap to clean up CSS watcher on exit
   trap 'stop_css; exit 0' INT TERM
 
-  DEV=1 PORT=$PORT bun --hot run src/server.ts
+  DEV=1 PORT=$PORT bun --watch src/server.ts
   stop_css
 }
 
@@ -200,11 +206,11 @@ show_help() {
   echo ""
   echo "Commands:"
   echo "  start     Start server in background"
-  echo "  start -h  Start server in background with hot reload"
+  echo "  start -h  Start server in background with watch mode"
   echo "  stop      Stop the server"
   echo "  restart   Restart the server"
   echo "  status    Show server status"
-  echo "  dev       Run in foreground with hot reload (Ctrl+C to stop)"
+  echo "  dev       Run in foreground with watch mode (Ctrl+C to stop)"
   echo "  logs      Tail the server logs"
   echo ""
   echo "Environment:"

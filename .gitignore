@@ -18,6 +18,7 @@ logs
 .server.pid
 .css.log
 .css.pid
+.tmp
 .reload-trigger
 logs/*.log
 specs/
