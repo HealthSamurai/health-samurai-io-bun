@@ -1,15 +1,24 @@
+import type { Context } from "../context";
+import { gitInfo } from "../lib/git-info";
+
 type BareLayoutProps = {
   title: string;
   description?: string;
   children: string;
+  ctx?: Context;
+  devMode?: boolean;
 };
 
 /**
  * Minimal layout for auth pages (login, etc.) - no header/footer
  */
-export function BareLayout({ title, description, children }: BareLayoutProps): string {
+export function BareLayout({ title, description, children, ctx, devMode }: BareLayoutProps): string {
   const fullTitle = `${title} | Health Samurai`;
   const metaDescription = description || "Health Samurai - FHIR solutions for healthcare";
+  const isDev = devMode ?? ctx?.devMode ?? false;
+  const cssHref = isDev && ctx?.serverId
+    ? `/styles/main.css?v=${ctx.serverId}`
+    : `/styles/main.css?v=${gitInfo.shortCommit || "prod"}`;
 
   const html = (
     <html lang="en">
@@ -25,7 +34,7 @@ export function BareLayout({ title, description, children }: BareLayoutProps): s
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
 
         {/* Tailwind CSS */}
-        <link rel="stylesheet" href="/styles/main.css" />
+        <link rel="stylesheet" href={cssHref} />
 
         {/* Favicon */}
         <link rel="shortcut icon" type="image/png" href="/assets/images/favicons/favicon-32.png" />

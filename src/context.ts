@@ -12,8 +12,10 @@ export interface SessionUser {
 export interface Context {
   db: SQL;
   user?: SessionUser;
+  serverId: string;
+  devMode: boolean;
 }
 
-export const newContext = (db: SQL, user?: SessionUser): Context => {
-  return { db, user };
+export const newContext = (db: SQL, serverId: string, devMode: boolean, user?: SessionUser): Context => {
+  return { db, user, serverId, devMode };
 };

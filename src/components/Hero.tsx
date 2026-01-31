@@ -76,7 +76,11 @@ export function Hero({ title, description, primaryCta, secondaryCta, image, vide
                     <img
                       src={image.src}
                       alt={image.alt}
-                      class="rounded-md bg-gray-50 shadow-xl ring-1 ring-gray-900/10"
+                      width="1216"
+                      height="684"
+                      loading="lazy"
+                      decoding="async"
+                      class="rounded-md bg-gray-50 shadow-xl ring-1 ring-gray-900/10 w-full h-auto"
                     />
                   ) : null}
                 </div>

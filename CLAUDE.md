@@ -771,38 +771,6 @@ DATABASE_URL=postgres://healthsamurai:healthsamurai@localhost:5436/healthsamurai
 
 Copy `.env.example` to `.env` for local development.
 
-### Kubernetes Deployment
-
-PostgreSQL is deployed as a StatefulSet with persistent storage in both dev and prod environments.
-
-| Environment | Service | DATABASE_URL |
-|-------------|---------|--------------|
-| Dev | `dev-postgres:5432` | `postgres://healthsamurai:healthsamurai@dev-postgres:5432/healthsamurai` |
-| Prod | `prod-postgres:5432` | `postgres://healthsamurai:healthsamurai@prod-postgres:5432/healthsamurai` |
-
-**Deploy:**
-```bash
-kubectl apply -k k8s/overlays/dev
-kubectl apply -k k8s/overlays/prod
-```
-
-**Connect to database:**
-```bash
-# Dev
-kubectl exec -it -n health-samurai-dev dev-postgres-0 -- psql -U healthsamurai
-
-# Prod
-kubectl exec -it -n health-samurai-prod prod-postgres-0 -- psql -U healthsamurai
-```
-
-**Migrations:** Run automatically on server startup. Manual commands if needed:
-```bash
-kubectl exec -n health-samurai-dev deployment/dev-health-samurai-web -- bun run migrate:status
-kubectl exec -n health-samurai-prod deployment/prod-health-samurai-web -- bun run migrate:status
-```
-
-See `docs/DEPLOYMENT.md` for full Kubernetes PostgreSQL documentation.
-
 ### Database Migrations
 
 SQL-based migrations with up/down scripts. Migration files are stored in `migrations/` directory.
@@ -934,14 +902,9 @@ GOOGLE_REDIRECT_URI=http://localhost:4444/auth/google/callback
 GOOGLE_ALLOWED_DOMAIN=health-samurai.io
 ```
 
-### Kubernetes Deployment
+### Kubernetes
 
-OAuth credentials stored in `health-samurai-secrets` secret. See `docs/DEPLOYMENT.md` for details.
-
-```bash
-# View secret keys
-kubectl get secret health-samurai-secrets -n health-samurai-dev -o jsonpath='{.data}' | jq 'keys'
-```
+OAuth credentials stored in `health-samurai-secrets` secret. See `/deploy` skill for details.
 
 ## Analytics
 
@@ -1164,103 +1127,16 @@ See [htmx docs](https://htmx.org/docs/). Use htmx for dynamic interactions via H
 
 ## Deployment
 
-The site is deployed on GKE Autopilot with automatic git-based deployments.
+See `/deploy` skill for full deployment documentation.
 
-**URLs:**
-| Environment | URL | Branch |
-|-------------|-----|--------|
-| Production | https://site-prod.apki.dev | `prod` |
-| Development | https://site-dev.apki.dev | `main` |
-
-**Instant Deploy via GitHub Webhook:**
-- Push to GitHub triggers webhook → server pulls changes → restarts in ~2 seconds
-- Webhook endpoint: `/api/webhook/github`
-- Secret stored in K8s: `kubectl get secret health-samurai-secrets`
-
-**Fallback Polling:**
-- Dev polls every 30s, Prod polls every 120s
-- Container auto-restarts when new commits detected
-
-**Deploy to Production:**
+**Quick deploy to production:**
 ```bash
 git checkout prod && git merge main && git push && git checkout main
 ```
 
-See `docs/DEPLOYMENT.md` for full infrastructure documentation.
-
-## Kubernetes Configuration
-
-Uses Kustomize for Kubernetes deployments with environment-specific overlays.
-
-**Directory Structure:**
-```
-k8s/
-├── base/                    # Shared resources
-│   ├── kustomization.yaml
-│   ├── deployment.yaml      # 1 replica, health probes, resource limits
-│   ├── service.yaml         # ClusterIP on port 80 → 4444
-│   └── configmap.yaml       # GIT_REPO, GIT_BRANCH, POLL_INTERVAL, PORT
-└── overlays/
-    ├── dev/                 # Development environment
-    │   ├── kustomization.yaml
-    │   └── ingress.yaml     # TLS ingress for site-dev.apki.dev
-    └── prod/                # Production environment
-        ├── kustomization.yaml
-        └── ingress.yaml     # TLS ingress for site-prod.apki.dev
-```
-
-**Environment Differences:**
-
-| Setting | Dev | Prod |
-|---------|-----|------|
-| URL | site-dev.apki.dev | site-prod.apki.dev |
-| Namespace | health-samurai-dev | health-samurai-prod |
-| Replicas | 1 | 3 |
-| Git Branch | main | main |
-| Poll Interval | 30s | 120s |
-
-**Usage:**
-```bash
-# Preview generated manifests
-kubectl kustomize k8s/overlays/dev
-kubectl kustomize k8s/overlays/prod
-
-# Deploy to cluster
-kubectl apply -k k8s/overlays/dev
-kubectl apply -k k8s/overlays/prod
-
-# Delete deployment
-kubectl delete -k k8s/overlays/dev
-```
-
-**Container Image:**
-Update the image in `k8s/overlays/prod/kustomization.yaml`:
-```yaml
-images:
-  - name: health-samurai-web
-    newName: gcr.io/atomic-ehr/health-samurai-web
-    newTag: latest
-```
-
-**Build and push image:**
-```bash
-# Authenticate to GCR
-gcloud auth configure-docker gcr.io
-
-# Build and push
-docker build -t gcr.io/atomic-ehr/health-samurai-web:latest .
-docker push gcr.io/atomic-ehr/health-samurai-web:latest
-```
-
-**Docker Entrypoint:**
-The `docker-entrypoint.sh` script handles:
-1. Clone/pull the git repository
-2. Install dependencies (`bun install`)
-3. Build Tailwind CSS (`bun run css:build`)
-4. Start the server
-5. Poll for git changes and restart on updates
-
-The CSS build step ensures Tailwind is compiled on every deployment and restart.
+**URLs:**
+- Dev: https://site-dev.apki.dev (auto-deploys from `main`)
+- Prod: https://site-prod.apki.dev
 
 ## Datastar
 

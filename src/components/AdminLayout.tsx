@@ -1,4 +1,5 @@
 import type { Context, SessionUser } from "../context";
+import { gitInfo } from "../lib/git-info";
 
 type NavItem = {
   name: string;
@@ -252,6 +253,10 @@ export type AdminLayoutProps = {
 export function AdminLayout({ title, description, currentPath, children, ctx, devMode }: AdminLayoutProps): string {
   const fullTitle = `${title} | Admin | Health Samurai`;
   const metaDescription = description || "Health Samurai Admin";
+  const isDev = devMode ?? ctx?.devMode ?? false;
+  const cssHref = isDev && ctx?.serverId
+    ? `/styles/main.css?v=${ctx.serverId}`
+    : `/styles/main.css?v=${gitInfo.shortCommit || "prod"}`;
 
   // User must exist for admin pages (enforced by server middleware)
   const user = ctx?.user;
@@ -276,7 +281,7 @@ export function AdminLayout({ title, description, currentPath, children, ctx, de
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
         {/* Tailwind CSS - same as main Layout */}
-        <link rel="stylesheet" href="/styles/main.css" />
+        <link rel="stylesheet" href={cssHref} />
 
         {/* htmx - same as main Layout */}
         <script src="https://unpkg.com/htmx.org@1.9.10"></script>

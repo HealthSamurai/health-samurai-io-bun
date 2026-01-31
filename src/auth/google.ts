@@ -35,7 +35,7 @@ interface GoogleUserInfo {
 /**
  * Render error page
  */
-function renderError(message: string): string {
+function renderError(message: string, ctx?: Context): string {
   const content = `
     <div class="min-h-screen flex items-center justify-center py-12 px-4">
       <div class="max-w-md w-full space-y-8">
@@ -60,7 +60,12 @@ function renderError(message: string): string {
       </div>
     </div>
   `;
-  return BareLayout({ title: "Authentication Error", children: content });
+  return BareLayout({
+    title: "Authentication Error",
+    children: content,
+    ctx,
+    devMode: ctx?.devMode,
+  });
 }
 
 function parseCookies(cookieHeader: string | null): Record<string, string> {
@@ -102,7 +107,7 @@ export async function googleLogin(ctx: Context, req: Request): Promise<Response>
 
   if (!GOOGLE_CLIENT_ID) {
     console.error("[OAuth] GOOGLE_CLIENT_ID not configured");
-    return new Response(renderError("Google OAuth is not configured. Please set GOOGLE_CLIENT_ID environment variable."), {
+    return new Response(renderError("Google OAuth is not configured. Please set GOOGLE_CLIENT_ID environment variable.", ctx), {
       status: 500,
       headers: { "Content-Type": "text/html" },
     });
@@ -147,7 +152,7 @@ export async function googleCallback(ctx: Context, req: Request): Promise<Respon
   // Handle errors from Google
   if (error) {
     console.log("[OAuth] Error from Google:", error);
-    return new Response(renderError(`Google authentication failed: ${error}`), {
+    return new Response(renderError(`Google authentication failed: ${error}`, ctx), {
       status: 400,
       headers: { "Content-Type": "text/html" },
     });
@@ -155,7 +160,7 @@ export async function googleCallback(ctx: Context, req: Request): Promise<Respon
 
   if (!code) {
     console.log("[OAuth] No authorization code received");
-    return new Response(renderError("No authorization code received from Google"), {
+    return new Response(renderError("No authorization code received from Google", ctx), {
       status: 400,
       headers: { "Content-Type": "text/html" },
     });
@@ -166,7 +171,7 @@ export async function googleCallback(ctx: Context, req: Request): Promise<Respon
   const expectedState = cookies[OAUTH_STATE_COOKIE];
   if (!state || !expectedState || state !== expectedState) {
     console.log("[OAuth] Invalid or missing state", { hasState: !!state, hasCookie: !!expectedState });
-    return new Response(renderError("Invalid OAuth state. Please try again."), {
+    return new Response(renderError("Invalid OAuth state. Please try again.", ctx), {
       status: 400,
       headers: {
         "Content-Type": "text/html",
@@ -201,7 +206,7 @@ export async function googleCallback(ctx: Context, req: Request): Promise<Respon
         client_secret_length: GOOGLE_CLIENT_SECRET?.length,
         redirect_uri: GOOGLE_REDIRECT_URI,
       });
-      return new Response(renderError(`Failed to exchange authorization code: ${errorData}`), {
+      return new Response(renderError(`Failed to exchange authorization code: ${errorData}`, ctx), {
         status: 400,
         headers: { "Content-Type": "text/html" },
       });
@@ -218,7 +223,7 @@ export async function googleCallback(ctx: Context, req: Request): Promise<Respon
 
     if (!userInfoResponse.ok) {
       console.error("[OAuth] Failed to fetch user info:", userInfoResponse.status);
-      return new Response(renderError("Failed to fetch user information from Google"), {
+      return new Response(renderError("Failed to fetch user information from Google", ctx), {
         status: 400,
         headers: { "Content-Type": "text/html" },
       });
@@ -232,7 +237,7 @@ export async function googleCallback(ctx: Context, req: Request): Promise<Respon
     if (emailDomain !== ALLOWED_DOMAIN) {
       console.log("[OAuth] Domain rejected:", emailDomain, "expected:", ALLOWED_DOMAIN);
       return new Response(
-        renderError(`Access restricted to @${ALLOWED_DOMAIN} accounts. Your email domain: @${emailDomain}`),
+        renderError(`Access restricted to @${ALLOWED_DOMAIN} accounts. Your email domain: @${emailDomain}`, ctx),
         { status: 403, headers: { "Content-Type": "text/html" } }
       );
     }
@@ -277,7 +282,7 @@ export async function googleCallback(ctx: Context, req: Request): Promise<Respon
     // Check if user is active
     if (user.is_active === false) {
       console.log("[OAuth] User is deactivated:", user.id);
-      return new Response(renderError("Your account has been deactivated."), {
+      return new Response(renderError("Your account has been deactivated.", ctx), {
         status: 403,
         headers: { "Content-Type": "text/html" },
       });
@@ -297,22 +302,19 @@ export async function googleCallback(ctx: Context, req: Request): Promise<Respon
     console.log("[OAuth] Session created, redirecting to home");
 
     // Redirect to home with session cookie
+    const headers = new Headers({ Location: "/" });
+    headers.append("Set-Cookie", createSessionCookie(sessionId));
+    headers.append("Set-Cookie", clearOauthStateCookie());
     return new Response(null, {
       status: 303,
-      headers: {
-        Location: "/",
-        "Set-Cookie": [
-          createSessionCookie(sessionId),
-          clearOauthStateCookie(),
-        ].join(", "),
-      },
+      headers,
     });
   } catch (error) {
     console.error("[OAuth] Unhandled error:", error);
     const errorMessage = error instanceof Error ? error.message : String(error);
     const errorStack = error instanceof Error ? error.stack : "";
     console.error("[OAuth] Error details:", errorMessage, errorStack);
-    return new Response(renderError(`Auth error: ${errorMessage}`), {
+    return new Response(renderError(`Auth error: ${errorMessage}`, ctx), {
       status: 500,
       headers: {
         "Content-Type": "text/html",

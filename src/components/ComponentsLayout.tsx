@@ -3,6 +3,9 @@
  * Displays Tailwind Plus UI blocks with navigation sidebar
  */
 
+import type { Context } from "../context";
+import { gitInfo } from "../lib/git-info";
+
 type CategoryGroup = {
   name: string;
   categories: { name: string; slug: string }[];
@@ -176,10 +179,15 @@ export type ComponentsLayoutProps = {
   currentPath: string;
   children: string;
   devMode?: boolean;
+  ctx?: Context;
 };
 
-export function ComponentsLayout({ title, currentPath, children, devMode }: ComponentsLayoutProps): string {
+export function ComponentsLayout({ title, currentPath, children, devMode, ctx }: ComponentsLayoutProps): string {
   const fullTitle = `${title} | Tailwind UI Components`;
+  const isDev = devMode ?? ctx?.devMode ?? false;
+  const cssHref = isDev && ctx?.serverId
+    ? `/styles/main.css?v=${ctx.serverId}`
+    : `/styles/main.css?v=${gitInfo.shortCommit || "prod"}`;
 
   return (
     <html lang="en" class="h-full bg-white">
@@ -192,7 +200,7 @@ export function ComponentsLayout({ title, currentPath, children, devMode }: Comp
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="/styles/main.css" />
+        <link rel="stylesheet" href={cssHref} />
         <script type="module" src="https://cdn.jsdelivr.net/gh/starfederation/datastar@1.0.0-RC.7/bundles/datastar.js"></script>
       </head>
       <body class="h-full">

@@ -175,9 +175,9 @@ Bun.serve({
     }
 
     // Create context with user session for all requests
-    const baseCtx = newContext(db);
+    const baseCtx = newContext(db, SERVER_ID, DEV_MODE);
     const user = await getSession(baseCtx, req);
-    const ctx = newContext(db, user);
+    const ctx = newContext(db, SERVER_ID, DEV_MODE, user);
 
     // robots.txt and sitemap.xml
     if (path === "/robots.txt") {
@@ -526,6 +526,50 @@ Make healthcare data interoperable through FHIR standards.
       }
     }
 
+    // Samurai Agent chat API (echo for now)
+    if (path === "/api/agent/chat" && req.method === "POST") {
+      const formData = await req.formData();
+      const message = formData.get("message")?.toString() || "";
+
+      // Escape user message for XSS prevention
+      const escapedMessage = message
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+
+      // Return both user message and echo response
+      return html(`
+        <!-- User message -->
+        <div class="flex gap-3">
+          <div class="flex-shrink-0 size-8 rounded-full bg-gray-500 flex items-center justify-center text-white">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="size-4">
+              <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div class="flex-1">
+            <p class="text-sm font-medium text-gray-900 dark:text-dark-text">You</p>
+            <p class="mt-1 text-sm text-gray-700 dark:text-dark-text-light">${escapedMessage}</p>
+          </div>
+        </div>
+
+        <!-- Agent response (echo) -->
+        <div class="flex gap-3">
+          <div class="flex-shrink-0 size-8 rounded-full bg-primary flex items-center justify-center text-white">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="size-5">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-9.5c.83 0 1.5-.67 1.5-1.5S10.83 7.5 10 7.5 8.5 8.17 8.5 9s.67 1.5 1.5 1.5zm4 0c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-2 5.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+            </svg>
+          </div>
+          <div class="flex-1">
+            <p class="text-sm font-medium text-gray-900 dark:text-dark-text">Samurai Agent</p>
+            <p class="mt-1 text-sm text-gray-700 dark:text-dark-text-light">You said: <strong>${escapedMessage}</strong></p>
+            <p class="mt-1 text-xs text-gray-500 dark:text-dark-text-muted">Echo mode - AI integration coming soon!</p>
+          </div>
+        </div>
+      `);
+    }
+
     if (path === "/api/subscribe" && req.method === "POST") {
       try {
         const formData = await req.formData();
@@ -579,7 +623,7 @@ Make healthcare data interoperable through FHIR standards.
       // Validate input
       if (!emailOrUsername || !password) {
         const content = LoginForm({ error: "Please provide both email/username and password", redirect: redirectUrl });
-        return html(BareLayout({ title: "Login", children: content }));
+        return html(BareLayout({ title: "Login", children: content, ctx, devMode: DEV_MODE }));
       }
 
       try {
@@ -591,13 +635,13 @@ Make healthcare data interoperable through FHIR standards.
 
         if (!user) {
           const content = LoginForm({ error: "Invalid email/username or password", redirect: redirectUrl });
-          return html(BareLayout({ title: "Login", children: content }));
+          return html(BareLayout({ title: "Login", children: content, ctx, devMode: DEV_MODE }));
         }
 
         // Check if user has a password
         if (!user.password_hash) {
           const content = LoginForm({ error: "This account does not have password login enabled", redirect: redirectUrl });
-          return html(BareLayout({ title: "Login", children: content }));
+          return html(BareLayout({ title: "Login", children: content, ctx, devMode: DEV_MODE }));
         }
 
         // Verify password using Bun's built-in password hashing
@@ -605,13 +649,13 @@ Make healthcare data interoperable through FHIR standards.
 
         if (!passwordMatch) {
           const content = LoginForm({ error: "Invalid email/username or password", redirect: redirectUrl });
-          return html(BareLayout({ title: "Login", children: content }));
+          return html(BareLayout({ title: "Login", children: content, ctx, devMode: DEV_MODE }));
         }
 
         // Check if user is active
         if (user.is_active === false) {
           const content = LoginForm({ error: "Your account has been deactivated", redirect: redirectUrl });
-          return html(BareLayout({ title: "Login", children: content }));
+          return html(BareLayout({ title: "Login", children: content, ctx, devMode: DEV_MODE }));
         }
 
         // Update last login time
@@ -631,7 +675,7 @@ Make healthcare data interoperable through FHIR standards.
       } catch (error) {
         console.error("Login error:", error);
         const content = LoginForm({ error: "An error occurred during login. Please try again.", redirect: redirectUrl });
-        return html(BareLayout({ title: "Login", children: content }));
+        return html(BareLayout({ title: "Login", children: content, ctx, devMode: DEV_MODE }));
       }
     }
 

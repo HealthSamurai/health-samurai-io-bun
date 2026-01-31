@@ -74,6 +74,28 @@
   animation-play-state: paused;
 }
 
+@layer utilities {
+  @media (min-width: 768px) {
+    .agent-grid-closed {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 3rem;
+    }
+
+    .agent-grid-open {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 26.6667rem;
+    }
+
+    .agent-panel-open {
+      width: 26.6667rem;
+    }
+
+    .agent-panel-header {
+      height: 5.5rem;
+    }
+  }
+}
+
 /* htmx indicator styles */
 .htmx-indicator {
   display: none;

@@ -1,5 +1,6 @@
 import { BareLayout } from "../components/BareLayout";
 import { isGoogleOAuthConfigured } from "../auth/google";
+import type { Context } from "../context";
 
 export const metadata = {
   title: "Login",
@@ -123,11 +124,13 @@ export function LoginForm({ error, redirect, showGoogle = true }: LoginPageProps
   );
 }
 
-export default function LoginPage(params: Record<string, string>): string {
+export default function LoginPage(params: Record<string, string> & { ctx?: Context; devMode?: boolean }): string {
   const content = LoginForm({ redirect: params.redirect });
   return BareLayout({
     title: "Login",
     description: "Sign in to your account",
     children: content,
+    ctx: params.ctx,
+    devMode: params.devMode,
   });
 }

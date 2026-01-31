@@ -39,6 +39,10 @@ export function Trusted({
                 <img
                   src={logo.src}
                   alt={logo.alt}
+                  width="120"
+                  height="48"
+                  loading="lazy"
+                  decoding="async"
                   class="h-12 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
                 />
               </div>

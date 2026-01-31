@@ -15,7 +15,7 @@ export type Handler = (ctx: Context, req: Request) => Response | Promise<Respons
 export function withAuth(handler: Handler): Handler {
   return async (ctx: Context, req: Request) => {
     const user = await getSession(ctx, req);
-    const contextWithUser = newContext(ctx.db, user);
+    const contextWithUser = newContext(ctx.db, ctx.serverId, ctx.devMode, user);
     return handler(contextWithUser, req);
   };
 }
@@ -75,5 +75,5 @@ export function compose(...middleware: ((handler: Handler) => Handler)[]): (hand
  * Create a base context with database connection
  */
 export function createContext(db: Context["db"]): Context {
-  return newContext(db);
+  return newContext(db, crypto.randomUUID(), false);
 }

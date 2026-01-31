@@ -110,14 +110,16 @@ export async function destroySession(ctx: Context, sessionId: string): Promise<v
 export function createSessionCookie(sessionId: string): string {
   const isProduction = process.env.NODE_ENV === "production";
   const secure = isProduction ? "; Secure" : "";
-  return `session_id=${sessionId}; HttpOnly; Path=/; Max-Age=${60 * 60 * 24 * 7}${secure}`; // 7 days
+  return `session_id=${sessionId}; HttpOnly; Path=/; Max-Age=${60 * 60 * 24 * 7}; SameSite=Lax${secure}`; // 7 days
 }
 
 /**
  * Create cookie to clear session
  */
 export function clearSessionCookie(): string {
-  return `session_id=; HttpOnly; Path=/; Max-Age=0`;
+  const isProduction = process.env.NODE_ENV === "production";
+  const secure = isProduction ? "; Secure" : "";
+  return `session_id=; HttpOnly; Path=/; Max-Age=0; SameSite=Lax${secure}`;
 }
 
 /**
