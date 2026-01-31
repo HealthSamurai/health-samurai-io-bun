@@ -35,10 +35,10 @@ export function createConnection() {
     username: DB_CONFIG.username,
     password: DB_CONFIG.password,
     // Connection pool configuration
-    max: 20, // Maximum concurrent connections
-    idleTimeout: 30, // Close idle connections after 30 seconds
-    maxLifetime: 3600, // Maximum connection lifetime (1 hour)
-    connectionTimeout: 10, // Connection establishment timeout (10 seconds)
+    max: 10, // Maximum concurrent connections
+    idleTimeout: 0, // Don't close idle connections (0 = keep alive)
+    maxLifetime: 0, // No max lifetime (0 = forever)
+    connectionTimeout: 30, // Connection establishment timeout
   });
 }
 
