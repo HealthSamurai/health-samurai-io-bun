@@ -56,7 +56,8 @@ install_deps() {
 start_server() {
     cd "$APP_DIR"
     log "Starting server on port $PORT..."
-    bun run src/server.ts &
+    # Run server with unbuffered output for real-time logging
+    stdbuf -o0 -e0 bun run src/server.ts 2>&1 &
     SERVER_PID=$!
     log "Server started with PID: $SERVER_PID"
 }
