@@ -44,3 +44,8 @@ export function createConnection() {
 
 // Default database instance
 export const db = createConnection();
+
+// Warm up the connection pool on module load
+db`SELECT 1`.catch(() => {
+  console.error("[DB] Failed to warm up connection pool");
+});

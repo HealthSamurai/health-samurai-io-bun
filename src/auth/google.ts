@@ -191,7 +191,16 @@ export async function googleCallback(req: Request): Promise<Response> {
 
     // Find or create user
     console.log("[OAuth] Looking up user by google_id...");
-    let [user] = await db`SELECT * FROM users WHERE google_id = ${googleUser.id}`;
+    let user;
+    try {
+      [user] = await db`SELECT * FROM users WHERE google_id = ${googleUser.id}`;
+    } catch (dbError) {
+      console.error("[OAuth] DB error on user lookup:", dbError);
+      return new Response(renderError(`Database error: ${dbError instanceof Error ? dbError.message : String(dbError)}`), {
+        status: 500,
+        headers: { "Content-Type": "text/html" },
+      });
+    }
 
     if (!user) {
       console.log("[OAuth] No user found by google_id, checking email...");
