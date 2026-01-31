@@ -126,6 +126,36 @@ export async function trackEvent(opts: TrackEventOptions): Promise<void> {
 }
 
 /**
+ * Extract UTM parameters from URL
+ */
+function getUTMParams(url: URL): Record<string, string> | undefined {
+  const utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+  const params: Record<string, string> = {};
+
+  for (const key of utmKeys) {
+    const value = url.searchParams.get(key);
+    if (value) {
+      params[key] = value;
+    }
+  }
+
+  return Object.keys(params).length > 0 ? params : undefined;
+}
+
+/**
+ * Parse Accept-Language header to get primary language
+ */
+function getLanguage(req: Request): string | undefined {
+  const acceptLanguage = req.headers.get("accept-language");
+  if (!acceptLanguage) return undefined;
+
+  // Parse "en-US,en;q=0.9,ru;q=0.8" -> "en-US"
+  const primary = acceptLanguage.split(",")[0];
+  const lang = primary?.split(";")[0];
+  return lang ? lang.trim() : undefined;
+}
+
+/**
  * Track a page view (convenience wrapper)
  */
 export async function trackPageView(
@@ -137,6 +167,14 @@ export async function trackPageView(
   const url = new URL(req.url);
   const referrer = req.headers.get("referer") || undefined;
 
+  // Build metadata with language and UTM params
+  const language = getLanguage(req);
+  const utm = getUTMParams(url);
+  const metadata: Record<string, unknown> = {};
+
+  if (language) metadata.language = language;
+  if (utm) metadata.utm = utm;
+
   await trackEvent({
     sessionId,
     userId,
@@ -146,6 +184,7 @@ export async function trackPageView(
     previousPath,
     userAgent: req.headers.get("user-agent") || undefined,
     ip: getClientIP(req),
+    metadata: Object.keys(metadata).length > 0 ? metadata : undefined,
   });
 }
 
@@ -386,4 +425,66 @@ export async function getAverageSessionDuration(
   `;
 
   return Math.round(Number(result?.avg_duration) || 0);
+}
+
+/**
+ * Get top languages
+ */
+export async function getTopLanguages(
+  startDate: Date,
+  endDate: Date,
+  limit: number = 10
+): Promise<Array<{ language: string; count: number }>> {
+  const results = await db`
+    SELECT
+      COALESCE(metadata->>'language', 'Unknown') as language,
+      COUNT(DISTINCT session_id) as count
+    FROM analytics_events
+    WHERE event_type = 'page_view'
+      AND created_at >= ${startDate}
+      AND created_at < ${endDate}
+    GROUP BY metadata->>'language'
+    ORDER BY count DESC
+    LIMIT ${limit}
+  `;
+
+  return results.map((row: { language: string; count: number }) => ({
+    language: row.language,
+    count: Number(row.count),
+  }));
+}
+
+/**
+ * Get UTM campaign stats
+ */
+export async function getUTMStats(
+  startDate: Date,
+  endDate: Date,
+  limit: number = 10
+): Promise<Array<{ source: string; medium: string; campaign: string; visits: number }>> {
+  const results = await db`
+    SELECT
+      COALESCE(metadata->'utm'->>'utm_source', 'direct') as source,
+      COALESCE(metadata->'utm'->>'utm_medium', 'none') as medium,
+      COALESCE(metadata->'utm'->>'utm_campaign', 'none') as campaign,
+      COUNT(DISTINCT session_id) as visits
+    FROM analytics_events
+    WHERE event_type = 'page_view'
+      AND created_at >= ${startDate}
+      AND created_at < ${endDate}
+      AND metadata->'utm' IS NOT NULL
+    GROUP BY
+      metadata->'utm'->>'utm_source',
+      metadata->'utm'->>'utm_medium',
+      metadata->'utm'->>'utm_campaign'
+    ORDER BY visits DESC
+    LIMIT ${limit}
+  `;
+
+  return results.map((row: { source: string; medium: string; campaign: string; visits: number }) => ({
+    source: row.source,
+    medium: row.medium,
+    campaign: row.campaign,
+    visits: Number(row.visits),
+  }));
 }
