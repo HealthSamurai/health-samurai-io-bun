@@ -1,9 +1,11 @@
 import { Layout } from "./components/Layout";
 import { watch } from "fs";
 import { initGitInfo } from "./lib/git-info";
+import { initHighlighter } from "./lib/markdown";
 
-// Initialize git info at startup
+// Initialize at startup
 await initGitInfo();
+await initHighlighter();
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 4321;
 const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET || "";
@@ -185,7 +187,10 @@ Bun.serve({
     const match = router.match(req);
     if (match) {
       const page = await import(match.filePath);
-      const metadata = page.metadata || {};
+      // Support dynamic metadata via getMetadata(params) function
+      const metadata = page.getMetadata
+        ? page.getMetadata(match.params)
+        : page.metadata || {};
       const content = page.default(match.params);
 
       // If page has fullPage: true, render without Layout wrapper

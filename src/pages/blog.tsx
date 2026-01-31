@@ -1,59 +1,79 @@
 import { Fragment } from "../lib/jsx-runtime";
-import { Hero } from "../components/Hero";
+import { getAllPosts, formatDate, type BlogPost } from "../data/blog";
 
 export const metadata = {
   title: "Blog",
   description: "Articles, tutorials, and news about FHIR, healthcare interoperability, and Health Samurai products.",
 };
 
+function getInitials(name: string): string {
+  return name
+    .split(" ")
+    .map(n => n[0])
+    .join("")
+    .toUpperCase()
+    .slice(0, 2);
+}
+
+function BlogCard({ post }: { post: BlogPost }): string {
+  const formattedDate = formatDate(post.date);
+  // Clean up title (remove emoji prefix if present)
+  const title = post.title.replace(/^🔥\s*/, "");
+
+  return (
+    <article class="flex max-w-xl flex-col items-start justify-between">
+      <div class="flex items-center gap-x-4 text-xs">
+        <time datetime={post.date} class="text-gray-500">
+          {formattedDate}
+        </time>
+      </div>
+      <div class="group relative">
+        <h3 class="mt-3 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600">
+          <a href={`/blog/${post.slug}`}>
+            <span class="absolute inset-0"></span>
+            {title}
+          </a>
+        </h3>
+        <p class="mt-5 line-clamp-3 text-sm/6 text-gray-600">
+          {post.description}
+        </p>
+      </div>
+      <div class="relative mt-8 flex items-center gap-x-4">
+        <div class="size-10 rounded-full bg-gray-100 flex items-center justify-center text-sm font-medium text-gray-600">
+          {getInitials(post.author)}
+        </div>
+        <div class="text-sm/6">
+          <p class="font-semibold text-gray-900">
+            {post.author}
+          </p>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export default function BlogPage(): string {
+  const posts = getAllPosts();
+
   return (
     <Fragment>
-      <Hero
-        title="Blog"
-        description="Articles, tutorials, and news about FHIR, healthcare interoperability, and our products."
-        primaryCta={{ label: "Subscribe", href: "#subscribe" }}
-        secondaryCta={{ label: "All Articles", href: "#articles" }}
-      />
-
-      <section id="articles" class="py-24 sm:py-32">
+      <div class="bg-white py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
-          <div class="mx-auto max-w-2xl text-center">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Latest Articles</h2>
-            <p class="mt-6 text-lg leading-8 text-gray-600">
-              Stay up to date with the latest in FHIR and healthcare technology.
+          <div class="mx-auto max-w-2xl">
+            <h2 class="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
+              From the blog
+            </h2>
+            <p class="mt-2 text-lg/8 text-gray-600">
+              Learn how to build better healthcare applications with FHIR.
             </p>
-          </div>
-          <div class="mx-auto mt-16 max-w-2xl">
-            <p class="text-center text-gray-500">Blog posts coming soon.</p>
+            <div class="mt-10 space-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16">
+              {posts.map(post => (
+                <BlogCard post={post} />
+              ))}
+            </div>
           </div>
         </div>
-      </section>
-
-      <section id="subscribe" class="bg-gray-50 py-24 sm:py-32">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-          <div class="mx-auto max-w-2xl text-center">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Subscribe to our newsletter</h2>
-            <p class="mt-6 text-lg leading-8 text-gray-600">
-              Get the latest articles and updates delivered to your inbox.
-            </p>
-            <form action="/api/subscribe" method="POST" class="mt-10 flex gap-x-4 justify-center">
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                class="min-w-0 flex-auto rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6"
-              />
-              <button
-                type="submit"
-                class="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
+      </div>
     </Fragment>
   );
 }
