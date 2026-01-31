@@ -440,6 +440,7 @@ Make healthcare data interoperable through FHIR standards.
                           req.headers.get("x-real-ip") || null;
         const userAgent = req.headers.get("user-agent") || null;
         const referrer = req.headers.get("referer") || null;
+        const sessionId = getAnalyticsSessionId(req);
 
         const data = {
           firstName,
@@ -451,7 +452,7 @@ Make healthcare data interoperable through FHIR standards.
 
         await db`
           INSERT INTO form_submissions (form_type, email, name, data, ip_address, user_agent, referrer, session_id)
-          VALUES (${formType}, ${email}, ${name}, ${JSON.stringify(data)}, ${ipAddress}::inet, ${userAgent}, ${referrer}, ${analyticsSessionId})
+          VALUES (${formType}, ${email}, ${name}, ${JSON.stringify(data)}, ${ipAddress}::inet, ${userAgent}, ${referrer}, ${sessionId})
         `;
 
         return html(`
@@ -497,10 +498,11 @@ Make healthcare data interoperable through FHIR standards.
                           req.headers.get("x-real-ip") || null;
         const userAgent = req.headers.get("user-agent") || null;
         const referrer = req.headers.get("referer") || null;
+        const sessionId = getAnalyticsSessionId(req);
 
         await db`
           INSERT INTO form_submissions (form_type, email, data, ip_address, user_agent, referrer, session_id)
-          VALUES ('subscribe', ${email}, '{}', ${ipAddress}::inet, ${userAgent}, ${referrer}, ${analyticsSessionId})
+          VALUES ('subscribe', ${email}, '{}', ${ipAddress}::inet, ${userAgent}, ${referrer}, ${sessionId})
         `;
 
         return html(`
@@ -644,6 +646,84 @@ Make healthcare data interoperable through FHIR standards.
           headers: { "Content-Type": "application/json" },
         });
       }
+    }
+
+    // Post like/unlike API endpoint
+    if (path === "/api/posts/like" && req.method === "POST") {
+      try {
+        const body = await req.json() as { slug?: string };
+        const slug = body.slug;
+
+        if (!slug) {
+          return new Response(JSON.stringify({ error: "Missing slug" }), {
+            status: 400,
+            headers: { "Content-Type": "application/json" },
+          });
+        }
+
+        // Require authentication
+        if (!user) {
+          return new Response(JSON.stringify({ error: "Login required", requiresAuth: true }), {
+            status: 401,
+            headers: { "Content-Type": "application/json" },
+          });
+        }
+
+        // Check if already liked
+        const [existing] = await db`
+          SELECT id FROM post_likes WHERE post_slug = ${slug} AND user_id = ${user.id}
+        `;
+
+        if (existing) {
+          // Unlike
+          await db`DELETE FROM post_likes WHERE post_slug = ${slug} AND user_id = ${user.id}`;
+        } else {
+          // Like
+          await db`INSERT INTO post_likes (post_slug, user_id) VALUES (${slug}, ${user.id})`;
+        }
+
+        // Get updated count
+        const [{ count }] = await db`SELECT COUNT(*)::int as count FROM post_likes WHERE post_slug = ${slug}`;
+
+        return new Response(JSON.stringify({
+          liked: !existing,
+          count,
+        }), {
+          headers: { "Content-Type": "application/json" },
+        });
+      } catch (error) {
+        console.error("Like API error:", error);
+        return new Response(JSON.stringify({ error: "Failed to update like" }), {
+          status: 500,
+          headers: { "Content-Type": "application/json" },
+        });
+      }
+    }
+
+    // Get post like status
+    if (path === "/api/posts/like" && req.method === "GET") {
+      const slug = url.searchParams.get("slug");
+
+      if (!slug) {
+        return new Response(JSON.stringify({ error: "Missing slug" }), {
+          status: 400,
+          headers: { "Content-Type": "application/json" },
+        });
+      }
+
+      // Get count
+      const [{ count }] = await db`SELECT COUNT(*)::int as count FROM post_likes WHERE post_slug = ${slug}`;
+
+      // Check if current user liked
+      let liked = false;
+      if (user) {
+        const [existing] = await db`SELECT id FROM post_likes WHERE post_slug = ${slug} AND user_id = ${user.id}`;
+        liked = !!existing;
+      }
+
+      return new Response(JSON.stringify({ liked, count }), {
+        headers: { "Content-Type": "application/json" },
+      });
     }
 
     // Search API endpoint

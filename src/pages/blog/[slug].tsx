@@ -2,6 +2,7 @@ import { Fragment } from "../../lib/jsx-runtime";
 import { getPostBySlug, formatDate } from "../../data/blog";
 import { renderMarkdown } from "../../lib/markdown";
 import { CommentsSection } from "../../components/Comments";
+import { PostLikeButton } from "../../components/PostLikeButton";
 import type { Context } from "../../context";
 
 export const metadata = {
@@ -50,7 +51,7 @@ interface BlogPostParams {
   ctx?: Context;
 }
 
-export default function BlogPost(params: BlogPostParams): string {
+export default async function BlogPost(params: BlogPostParams): Promise<string> {
   const { slug, ctx } = params;
   const post = getPostBySlug(slug);
 
@@ -172,7 +173,7 @@ export default function BlogPost(params: BlogPostParams): string {
         )}
 
         {/* Content */}
-        <div class="px-6 pb-24">
+        <div class="px-6 pb-12">
           <div
             class="prose prose-lg mx-auto max-w-2xl
               prose-headings:font-bold prose-headings:tracking-tight
@@ -191,6 +192,9 @@ export default function BlogPost(params: BlogPostParams): string {
               prose-ol:my-4"
             dangerouslySetInnerHTML={{ __html: contentHtml }}
           />
+
+          {/* Like Button */}
+          <div class="mx-auto max-w-2xl" dangerouslySetInnerHTML={{ __html: await PostLikeButton({ slug, ctx }) }} />
         </div>
 
         {/* Comments Section */}
