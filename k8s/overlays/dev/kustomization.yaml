@@ -7,12 +7,15 @@ resources:
   - ../../base
   - ingress.yaml
 
+patches:
+  - path: postgres-secret-patch.yaml
+
 namePrefix: dev-
 
 commonLabels:
   environment: development
 
-patches:
+patchesJson6902:
   - patch: |-
       - op: replace
         path: /spec/replicas

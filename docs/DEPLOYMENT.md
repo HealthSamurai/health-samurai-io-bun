@@ -193,6 +193,176 @@ spec:
               number: 80
 ```
 
+## PostgreSQL Database
+
+PostgreSQL is deployed using [ParadeDB](https://paradedb.com/) (Postgres with vector/search extensions) as a StatefulSet in each environment.
+
+### Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    health-samurai-dev                       │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────────┐         ┌─────────────────────────┐   │
+│  │ dev-health-     │         │ dev-postgres            │   │
+│  │ samurai-web     │────────▶│ (StatefulSet)           │   │
+│  │ (Deployment)    │         │                         │   │
+│  └─────────────────┘         │ PVC: 10Gi               │   │
+│          │                   └─────────────────────────┘   │
+│          │ DATABASE_URL                   │                │
+│          │                                │ port 5432      │
+│          ▼                                ▼                │
+│  postgres://healthsamurai:...@dev-postgres:5432/healthsamurai
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Kubernetes Resources
+
+| Resource | Dev | Prod |
+|----------|-----|------|
+| StatefulSet | `dev-postgres` | `prod-postgres` |
+| Service | `dev-postgres:5432` | `prod-postgres:5432` |
+| Secret | `dev-postgres-secret` | `prod-postgres-secret` |
+| PVC | `postgres-data-dev-postgres-0` | `postgres-data-prod-postgres-0` |
+| Storage | 10Gi | 10Gi |
+
+### Connection Details
+
+| Environment | DATABASE_URL |
+|-------------|--------------|
+| Dev | `postgres://healthsamurai:healthsamurai@dev-postgres:5432/healthsamurai` |
+| Prod | `postgres://healthsamurai:healthsamurai@prod-postgres:5432/healthsamurai` |
+
+The web application automatically receives `DATABASE_URL` from the `postgres-secret` via `secretRef` in the deployment.
+
+### Files
+
+```
+k8s/
+├── base/
+│   ├── postgres-statefulset.yaml   # ParadeDB StatefulSet with PVC
+│   ├── postgres-service.yaml       # ClusterIP service on port 5432
+│   └── postgres-secret.yaml        # Credentials and DATABASE_URL
+└── overlays/
+    ├── dev/
+    │   └── postgres-secret-patch.yaml   # DATABASE_URL with dev-postgres host
+    └── prod/
+        └── postgres-secret-patch.yaml   # DATABASE_URL with prod-postgres host
+```
+
+### Deploy
+
+```bash
+# Preview generated manifests
+kubectl kustomize k8s/overlays/dev
+kubectl kustomize k8s/overlays/prod
+
+# Apply to cluster
+kubectl apply -k k8s/overlays/dev
+kubectl apply -k k8s/overlays/prod
+```
+
+### Check Status
+
+```bash
+# Check pods
+kubectl get pods -n health-samurai-dev -l app=postgres
+kubectl get pods -n health-samurai-prod -l app=postgres
+
+# Check PVCs
+kubectl get pvc -n health-samurai-dev
+kubectl get pvc -n health-samurai-prod
+
+# View logs
+kubectl logs -n health-samurai-dev statefulset/dev-postgres
+kubectl logs -n health-samurai-prod statefulset/prod-postgres
+```
+
+### Connect to Database
+
+```bash
+# Dev
+kubectl exec -it -n health-samurai-dev dev-postgres-0 -- psql -U healthsamurai
+
+# Prod
+kubectl exec -it -n health-samurai-prod prod-postgres-0 -- psql -U healthsamurai
+```
+
+### Run Migrations
+
+Migrations are run from the web container which has access to the database:
+
+```bash
+# Dev
+kubectl exec -it -n health-samurai-dev deployment/dev-health-samurai-web -- bun run migrate:up
+
+# Prod
+kubectl exec -it -n health-samurai-prod deployment/prod-health-samurai-web -- bun run migrate:up
+
+# Check migration status
+kubectl exec -it -n health-samurai-dev deployment/dev-health-samurai-web -- bun run migrate:status
+```
+
+### Backup & Restore
+
+```bash
+# Backup (dev)
+kubectl exec -n health-samurai-dev dev-postgres-0 -- \
+  pg_dump -U healthsamurai healthsamurai > backup-dev-$(date +%Y%m%d).sql
+
+# Restore (dev)
+kubectl exec -i -n health-samurai-dev dev-postgres-0 -- \
+  psql -U healthsamurai healthsamurai < backup-dev-20260131.sql
+```
+
+### Changing Credentials (Production)
+
+For production, you should change the default credentials:
+
+1. Update `k8s/overlays/prod/postgres-secret-patch.yaml`:
+   ```yaml
+   apiVersion: v1
+   kind: Secret
+   metadata:
+     name: postgres-secret
+   stringData:
+     POSTGRES_USER: your_secure_user
+     POSTGRES_PASSWORD: your_secure_password
+     POSTGRES_DB: healthsamurai
+     DATABASE_URL: postgres://your_secure_user:your_secure_password@prod-postgres:5432/healthsamurai
+   ```
+
+2. Apply and restart:
+   ```bash
+   kubectl apply -k k8s/overlays/prod
+   kubectl rollout restart -n health-samurai-prod statefulset/prod-postgres
+   kubectl rollout restart -n health-samurai-prod deployment/prod-health-samurai-web
+   ```
+
+### Troubleshooting
+
+**Pod stuck in Pending:**
+```bash
+# Check PVC status
+kubectl describe pvc -n health-samurai-dev postgres-data-dev-postgres-0
+# May need to wait for GKE to provision storage
+```
+
+**Connection refused from web app:**
+```bash
+# Verify postgres is ready
+kubectl exec -n health-samurai-dev dev-postgres-0 -- pg_isready -U healthsamurai
+
+# Check service endpoints
+kubectl get endpoints -n health-samurai-dev dev-postgres
+```
+
+**Data persistence:**
+- StatefulSet uses PersistentVolumeClaim (10Gi)
+- Data persists across pod restarts
+- Deleting the StatefulSet does NOT delete the PVC
+- To delete data: `kubectl delete pvc -n health-samurai-dev postgres-data-dev-postgres-0`
+
 ## DNS Configuration
 
 DNS is managed in GCP Cloud DNS (zone: `apki-dev`).
@@ -385,13 +555,25 @@ kubectl rollout restart deployment health-samurai-web
 ```
 ├── Dockerfile              # Bun + git Alpine image
 ├── docker-entrypoint.sh    # Clone/pull/restart logic
-├── docker-compose.yml      # Local development
+├── docker-compose.yml      # Local development (includes postgres)
 ├── k8s/
-│   ├── deployment.yaml     # Current deployment config
-│   ├── base/               # Kustomize base
+│   ├── base/
+│   │   ├── kustomization.yaml
+│   │   ├── deployment.yaml          # Web app deployment
+│   │   ├── service.yaml             # Web app service
+│   │   ├── configmap.yaml           # Environment config
+│   │   ├── postgres-statefulset.yaml # PostgreSQL StatefulSet
+│   │   ├── postgres-service.yaml    # PostgreSQL service
+│   │   └── postgres-secret.yaml     # Database credentials
 │   └── overlays/
-│       ├── prod/           # Production overlay
-│       └── dev/            # Development overlay
+│       ├── dev/
+│       │   ├── kustomization.yaml
+│       │   ├── ingress.yaml
+│       │   └── postgres-secret-patch.yaml  # Dev DATABASE_URL
+│       └── prod/
+│           ├── kustomization.yaml
+│           ├── ingress.yaml
+│           └── postgres-secret-patch.yaml  # Prod DATABASE_URL
 ```
 
 ## Useful Commands

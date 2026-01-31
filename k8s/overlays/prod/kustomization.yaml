@@ -7,6 +7,9 @@ resources:
   - ../../base
   - ingress.yaml
 
+patches:
+  - path: postgres-secret-patch.yaml
+
 namePrefix: prod-
 
 commonLabels:

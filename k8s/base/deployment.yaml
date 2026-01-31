@@ -23,6 +23,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: health-samurai-config
+            - secretRef:
+                name: postgres-secret
           resources:
             requests:
               memory: "128Mi"
