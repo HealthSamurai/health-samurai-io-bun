@@ -1,5 +1,6 @@
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import type { Context } from "../context";
 
 type LayoutProps = {
   title: string;
@@ -7,9 +8,10 @@ type LayoutProps = {
   children: string;
   hideFooter?: boolean;
   devMode?: boolean;
+  ctx?: Context;
 };
 
-export function Layout({ title, description, children, hideFooter, devMode }: LayoutProps): string {
+export function Layout({ title, description, children, hideFooter, devMode, ctx }: LayoutProps): string {
   const fullTitle = title === "Home"
     ? "Health Samurai: FHIR solutions | FHIR integration software"
     : `${title} | Health Samurai`;
@@ -46,7 +48,7 @@ export function Layout({ title, description, children, hideFooter, devMode }: La
         <link rel="apple-touch-icon" href="/assets/images/favicons/apple-touch-icon.png" />
       </head>
       <body>
-        <Header />
+        <Header ctx={ctx} />
         <main id="main-content" dangerouslySetInnerHTML={{ __html: children }} />
         {!hideFooter && <Footer />}
         {devMode && (

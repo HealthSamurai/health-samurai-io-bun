@@ -8,8 +8,14 @@ import {
   aboutLinks,
 } from "../data/header";
 import { SearchButton, MobileSearchButton, SearchModal } from "./Search";
+import type { Context } from "../context";
 
-export function Header(): string {
+type HeaderProps = {
+  ctx?: Context;
+};
+
+export function Header({ ctx }: HeaderProps = {}): string {
+  const user = ctx?.user;
   return (
     <header class="relative isolate z-10 bg-white" data-signals="{productsOpen: false, aboutOpen: false, mobileOpen: false, searchOpen: false, searchQuery: ''}">
       <nav aria-label="Global" class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
@@ -72,12 +78,62 @@ export function Header(): string {
           </button>
         </div>
 
-        {/* Search + CTA */}
+        {/* Search + CTA/User */}
         <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:gap-x-6">
           <SearchButton />
-          <a href={cta.href} class="text-sm/6 font-semibold text-gray-900">
-            {cta.label} <span aria-hidden="true" dangerouslySetInnerHTML={{ __html: "&rarr;" }} />
-          </a>
+          {user ? (
+            <div class="relative" data-signals="{userMenuOpen: false}">
+              <button
+                type="button"
+                class="flex items-center gap-x-2 text-sm/6 font-semibold text-gray-900"
+                data-on:click="$userMenuOpen = !$userMenuOpen"
+              >
+                {user.avatarUrl ? (
+                  <img src={user.avatarUrl} alt="" class="size-8 rounded-full bg-gray-50" />
+                ) : (
+                  <span class="flex size-8 items-center justify-center rounded-full bg-primary text-white text-xs font-medium">
+                    {user.username.charAt(0).toUpperCase()}
+                  </span>
+                )}
+                <span class="hidden xl:block">{user.username}</span>
+                <span
+                  class="flex-none text-gray-400 transition-transform duration-200"
+                  data-class:rotate-180="$userMenuOpen"
+                  dangerouslySetInnerHTML={{ __html: icons.chevron }}
+                />
+              </button>
+              {/* User dropdown menu */}
+              <div
+                class="absolute right-0 top-full mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-gray-900/5"
+                data-show="$userMenuOpen"
+                style={{ display: "none" }}
+              >
+                <div class="px-4 py-2 border-b border-gray-100">
+                  <p class="text-sm font-medium text-gray-900">{user.username}</p>
+                  <p class="text-xs text-gray-500">{user.email}</p>
+                </div>
+                <form method="POST" action="/api/logout">
+                  <button
+                    type="submit"
+                    class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-50"
+                  >
+                    Sign out
+                  </button>
+                </form>
+              </div>
+              {/* Click outside to close */}
+              <div
+                class="fixed inset-0 z-[-1]"
+                data-show="$userMenuOpen"
+                data-on:click="$userMenuOpen = false"
+                style={{ display: "none" }}
+              />
+            </div>
+          ) : (
+            <a href="/login" class="text-sm/6 font-semibold text-gray-900">
+              Log in <span aria-hidden="true" dangerouslySetInnerHTML={{ __html: "&rarr;" }} />
+            </a>
+          )}
         </div>
       </nav>
 
@@ -259,12 +315,38 @@ export function Header(): string {
             </div>
 
             <div class="py-6">
-              <a
-                href={cta.href}
-                class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-              >
-                {cta.label}
-              </a>
+              {user ? (
+                <div class="border-t border-gray-200 pt-4">
+                  <div class="flex items-center gap-x-3 px-3 py-2">
+                    {user.avatarUrl ? (
+                      <img src={user.avatarUrl} alt="" class="size-10 rounded-full bg-gray-50" />
+                    ) : (
+                      <span class="flex size-10 items-center justify-center rounded-full bg-primary text-white text-sm font-medium">
+                        {user.username.charAt(0).toUpperCase()}
+                      </span>
+                    )}
+                    <div>
+                      <p class="text-sm font-semibold text-gray-900">{user.username}</p>
+                      <p class="text-xs text-gray-500">{user.email}</p>
+                    </div>
+                  </div>
+                  <form method="POST" action="/api/logout" class="mt-2">
+                    <button
+                      type="submit"
+                      class="-mx-3 block w-full rounded-lg px-3 py-2.5 text-left text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                    >
+                      Sign out
+                    </button>
+                  </form>
+                </div>
+              ) : (
+                <a
+                  href="/login"
+                  class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                >
+                  Log in <span aria-hidden="true" dangerouslySetInnerHTML={{ __html: "&rarr;" }} />
+                </a>
+              )}
             </div>
           </div>
         </div>
