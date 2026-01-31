@@ -24,7 +24,7 @@ function toKebabCase(str: string): string {
   return str.replace(/([A-Z])/g, "-$1").toLowerCase();
 }
 
-// Render children to string (with HTML escaping to prevent XSS)
+// Render children to string
 function renderChildren(children: Child): string {
   if (children == null || children === false || children === true) {
     return "";
@@ -32,7 +32,7 @@ function renderChildren(children: Child): string {
   if (Array.isArray(children)) {
     return children.map(renderChildren).join("");
   }
-  return escapeHtml(String(children));
+  return String(children);
 }
 
 // Render props to HTML attributes
