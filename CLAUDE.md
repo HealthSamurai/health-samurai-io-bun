@@ -118,6 +118,7 @@ save_snapshot "https://health-samurai.io/fhir-server" "./webflow/fhir-server.htm
 
 - Prefer Bun for ad‑hoc scripts (`bun -e` or `scripts/*.ts` run via `bun`).
 - Use `jq` for quick CDP JSON parsing in shell pipelines.
+- Scripts should handle optional data defensively (TypeScript `strict`), especially scrapers that parse HTML.
 
 ## Project Structure
 
@@ -432,6 +433,21 @@ import { escapeHtml } from "../lib/jsx-runtime";
 - Content from `dangerouslySetInnerHTML` (intentionally raw)
 
 **Layout wrapper**: All pages use `Layout()` which wraps content with `<!DOCTYPE html>`, `<head>`, `Header()`, and `Footer()`.
+
+## Context & Database
+
+All database access should go through `ctx` (Context) rather than importing `db` directly. This keeps request-scoped data centralized and makes handlers testable by passing a fake `ctx`.
+
+**Examples:**
+```ts
+// ✅ Preferred
+await trackEvent(ctx, { ... })
+await ctx.db`SELECT ...`
+
+// ❌ Avoid
+import { db } from "../db";
+await db`SELECT ...`
+```
 
 **Static files**: CSS served from `/styles/*`, images from `/assets/*`. Files live in `src/styles/` and `src/assets/`.
 
