@@ -2,9 +2,8 @@
  * Session management using database-backed storage
  */
 
-import type { SessionUser } from "../context";
+import type { Context, SessionUser } from "../context";
 import type { UserRole } from "../types";
-import { db } from "../db";
 
 /**
  * Generate a random session ID
@@ -34,7 +33,7 @@ function parseCookies(cookieHeader: string | null): Record<string, string> {
 /**
  * Get session from request
  */
-export async function getSession(req: Request): Promise<SessionUser | undefined> {
+export async function getSession(ctx: Context, req: Request): Promise<SessionUser | undefined> {
   const cookies = parseCookies(req.headers.get("Cookie"));
   const sessionId = cookies["session_id"];
 
@@ -42,7 +41,7 @@ export async function getSession(req: Request): Promise<SessionUser | undefined>
 
   try {
     // Get session from database
-    const [session] = await db`
+    const [session] = await ctx.db`
       SELECT data, expires_at
       FROM user_sessions
       WHERE id = ${sessionId}
@@ -64,9 +63,9 @@ export async function getSession(req: Request): Promise<SessionUser | undefined>
 /**
  * Create a new session for a user
  */
-export async function createSession(userId: number): Promise<string> {
+export async function createSession(ctx: Context, userId: number): Promise<string> {
   // Get user details
-  const [user] = await db`
+  const [user] = await ctx.db`
     SELECT id, email, username, role, avatar_url
     FROM users
     WHERE id = ${userId}
@@ -90,7 +89,7 @@ export async function createSession(userId: number): Promise<string> {
 
   // Store session in database (expires in 7 days)
   const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-  await db`
+  await ctx.db`
     INSERT INTO user_sessions (id, user_id, data, expires_at)
     VALUES (${sessionId}, ${userId}, ${JSON.stringify(sessionUser)}, ${expiresAt})
   `;
@@ -101,8 +100,8 @@ export async function createSession(userId: number): Promise<string> {
 /**
  * Destroy a session
  */
-export async function destroySession(sessionId: string): Promise<void> {
-  await db`DELETE FROM user_sessions WHERE id = ${sessionId}`;
+export async function destroySession(ctx: Context, sessionId: string): Promise<void> {
+  await ctx.db`DELETE FROM user_sessions WHERE id = ${sessionId}`;
 }
 
 /**

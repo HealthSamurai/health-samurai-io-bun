@@ -1,7 +1,8 @@
 import { Fragment } from "../lib/jsx-runtime";
 import { products } from "../data/products";
 import { company } from "../data/company";
-import { Bento, BentoItem } from "../components/Bento";
+import { Bento } from "../components/Bento";
+import type { BentoItem } from "../components/Bento";
 import { ContactForm } from "../components/ContactForm";
 
 export const metadata = {
@@ -117,7 +118,7 @@ export default function HomePage(): string {
           <div class="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16">
             {company.certifications.map((cert) => (
               <div class="flex items-center gap-4">
-                <img src={cert.logo} alt={cert.name} class="h-16 w-auto" />
+                <img src={cert.logo} alt={cert.name} class="h-16 w-16 object-contain" width="64" height="64" loading="lazy" />
                 <div>
                   <p class="font-semibold text-gray-900">{cert.name}</p>
                   <p class="text-sm text-gray-600">Certified</p>

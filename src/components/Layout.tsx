@@ -42,17 +42,17 @@ export async function Layout({ title, description, children, hideFooter, devMode
         {/* Tailwind CSS */}
         <link rel="stylesheet" href="/styles/main.css" />
 
-        {/* htmx */}
-        <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+        {/* htmx - defer to not block render */}
+        <script src="https://unpkg.com/htmx.org@1.9.10" defer></script>
 
-        {/* Datastar */}
+        {/* Datastar - defer to not block render */}
         <script type="module" src="https://cdn.jsdelivr.net/gh/starfederation/datastar@1.0.0-RC.7/bundles/datastar.js"></script>
 
-        {/* Theme toggle utilities */}
-        <script src="/assets/js/theme.js"></script>
+        {/* Theme toggle utilities - defer, FOUC prevented by inline script above */}
+        <script src="/assets/js/theme.js" defer></script>
 
-        {/* Analytics tracking */}
-        <script src="/assets/js/analytics.js"></script>
+        {/* Analytics tracking - defer since it only needs DOM ready */}
+        <script src="/assets/js/analytics.js" defer></script>
 
         {/* Favicon */}
         <link rel="shortcut icon" type="image/png" href="/assets/images/favicons/favicon-32.png" />
@@ -68,7 +68,7 @@ export async function Layout({ title, description, children, hideFooter, devMode
         <Header ctx={ctx} />
         <main id="main-content" dangerouslySetInnerHTML={{ __html: children }} />
         {!hideFooter && <Footer />}
-        {path && <div dangerouslySetInnerHTML={{ __html: await PageStatsPanel({ path, ctx }) }} />}
+        {path && ctx && <div dangerouslySetInnerHTML={{ __html: await PageStatsPanel({ path, ctx }) }} />}
         {devMode && (
           <script dangerouslySetInnerHTML={{ __html: `let _id;setInterval(async()=>{const r=await fetch("/__ping").catch(()=>null);const n=await r?.text();if(_id&&n&&_id!==n)location.reload();if(n)_id=n},1000)` }} />
         )}

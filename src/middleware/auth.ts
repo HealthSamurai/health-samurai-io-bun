@@ -6,7 +6,6 @@ import type { Context } from "../context";
 import { newContext } from "../context";
 import { getSession } from "./session";
 import { UserRole } from "../types";
-import { db } from "../db";
 
 export type Handler = (ctx: Context, req: Request) => Response | Promise<Response>;
 
@@ -15,7 +14,7 @@ export type Handler = (ctx: Context, req: Request) => Response | Promise<Respons
  */
 export function withAuth(handler: Handler): Handler {
   return async (ctx: Context, req: Request) => {
-    const user = await getSession(req);
+    const user = await getSession(ctx, req);
     const contextWithUser = newContext(ctx.db, user);
     return handler(contextWithUser, req);
   };
@@ -75,6 +74,6 @@ export function compose(...middleware: ((handler: Handler) => Handler)[]): (hand
 /**
  * Create a base context with database connection
  */
-export function createContext(): Context {
+export function createContext(db: Context["db"]): Context {
   return newContext(db);
 }

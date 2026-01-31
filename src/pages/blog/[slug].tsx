@@ -48,7 +48,7 @@ function NotFound(): string {
 
 interface BlogPostParams {
   slug: string;
-  ctx?: Context;
+  ctx: Context;
 }
 
 export default async function BlogPost(params: BlogPostParams): Promise<string> {

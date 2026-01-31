@@ -1,5 +1,6 @@
 import { Fragment } from "../lib/jsx-runtime";
-import { Pricing, PricingTier } from "../components/Pricing";
+import { Pricing } from "../components/Pricing";
+import type { PricingTier } from "../components/Pricing";
 import { ContactForm } from "../components/ContactForm";
 
 export const metadata = {

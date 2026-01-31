@@ -4,12 +4,13 @@
  * Restarts server on file changes in src/
  */
 
-import { spawn, Subprocess } from "bun";
+import { spawn } from "bun";
+import type { Subprocess } from "bun";
 import { watch } from "fs";
 
 const PORT = process.env.PORT || "4444";
 let server: Subprocess | null = null;
-let restartTimeout: Timer | null = null;
+let restartTimeout: ReturnType<typeof setTimeout> | null = null;
 
 function startServer() {
   console.log(`\x1b[32m→\x1b[0m Starting server on http://localhost:${PORT}`);

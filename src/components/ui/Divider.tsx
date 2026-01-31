@@ -186,8 +186,8 @@ export function VerticalDivider({
   color = "gray",
   className = "",
 }: {
-  height?: "full" | "sm" | "md" | "lg";
-  color?: "gray" | "primary";
+  height: "full" | "sm" | "md" | "lg";
+  color: "gray" | "primary";
   className?: string;
 }): string {
   const heights = {

@@ -21,6 +21,9 @@ function parseFrontmatter(content: string): { meta: Record<string, any>; body: s
   }
 
   try {
+    if (!match[1] || !match[2]) {
+      return { meta: {}, body: content };
+    }
     const meta = JSON.parse(match[1]);
     return { meta, body: match[2] };
   } catch {
@@ -34,16 +37,18 @@ export function getAllPosts(): BlogPost[] {
   const posts = files.map(file => {
     const content = readFileSync(join(BLOG_DIR, file), "utf-8");
     const { meta, body } = parseFrontmatter(content);
-    const slug = meta.slug || file.replace(/\.md$/, "");
+    const slug = typeof meta.slug === "string" && meta.slug.length > 0
+      ? meta.slug
+      : file.replace(/\.md$/, "");
 
     return {
       slug,
-      title: meta.title || slug,
-      description: meta.description || "",
-      date: meta.date || "",
-      author: meta.author || "Health Samurai",
-      image: meta.image,
-      url: meta.url,
+      title: typeof meta.title === "string" && meta.title.length > 0 ? meta.title : slug,
+      description: typeof meta.description === "string" ? meta.description : "",
+      date: typeof meta.date === "string" ? meta.date : "",
+      author: typeof meta.author === "string" && meta.author.length > 0 ? meta.author : "Health Samurai",
+      image: typeof meta.image === "string" ? meta.image : undefined,
+      url: typeof meta.url === "string" ? meta.url : undefined,
       content: body,
     };
   });

@@ -3,7 +3,7 @@
  * Tracks page views and user journeys stored in PostgreSQL
  */
 
-import { db } from "./db";
+import type { Context } from "./context";
 
 const SESSION_COOKIE_NAME = "_hs_sid";
 const SESSION_DURATION = 30 * 60 * 1000; // 30 minutes sliding window
@@ -284,7 +284,7 @@ export interface TrackEventOptions {
 /**
  * Track an analytics event
  */
-export async function trackEvent(opts: TrackEventOptions): Promise<void> {
+export async function trackEvent(ctx: Context, opts: TrackEventOptions): Promise<void> {
   const {
     sessionId,
     userId,
@@ -301,7 +301,7 @@ export async function trackEvent(opts: TrackEventOptions): Promise<void> {
   const rawIp = ip && ip !== "unknown" ? ip : null;
 
   try {
-    await db`
+    await ctx.db`
       INSERT INTO analytics_events (
         session_id, user_id, event_type, path, referrer,
         previous_path, user_agent, ip_hash, ip_address, metadata
@@ -320,9 +320,9 @@ export async function trackEvent(opts: TrackEventOptions): Promise<void> {
  * Link anonymous session events to authenticated user
  * Called when user logs in to connect their previous anonymous activity
  */
-export async function linkSessionToUser(analyticsSessionId: string, userId: number): Promise<number> {
+export async function linkSessionToUser(ctx: Context, analyticsSessionId: string, userId: number): Promise<number> {
   try {
-    const result = await db`
+    const result = await ctx.db`
       UPDATE analytics_events
       SET user_id = ${userId}
       WHERE session_id = ${analyticsSessionId}
@@ -374,6 +374,7 @@ function getLanguage(req: Request): string | undefined {
  * Geo lookup runs in background to avoid blocking the response
  */
 export async function trackPageView(
+  ctx: Context,
   req: Request,
   sessionId: string,
   userId?: number,
@@ -428,7 +429,7 @@ export async function trackPageView(
     };
   }
 
-  await trackEvent({
+  await trackEvent(ctx, {
     sessionId,
     userId,
     eventType: "page_view",
@@ -506,10 +507,11 @@ export interface UserFlow {
  * Get dashboard statistics for a date range
  */
 export async function getDashboardStats(
+  ctx: Context,
   startDate: Date,
   endDate: Date
 ): Promise<DashboardStats> {
-  const [result] = await db`
+  const [result] = await ctx.db`
     SELECT
       COUNT(*) as total_views,
       COUNT(DISTINCT session_id) as unique_visitors,
@@ -521,7 +523,7 @@ export async function getDashboardStats(
   `;
 
   // Calculate bounce rate (sessions with only 1 page view)
-  const [bounceResult] = await db`
+  const [bounceResult] = await ctx.db`
     WITH session_counts AS (
       SELECT session_id, COUNT(*) as page_count
       FROM analytics_events
@@ -552,11 +554,12 @@ export async function getDashboardStats(
  * Get top pages by views
  */
 export async function getTopPages(
+  ctx: Context,
   startDate: Date,
   endDate: Date,
   limit: number = 10
 ): Promise<TopPage[]> {
-  const results = await db`
+  const results = await ctx.db`
     SELECT
       path,
       COUNT(*) as views,
@@ -581,11 +584,12 @@ export async function getTopPages(
  * Get top referrers
  */
 export async function getTopReferrers(
+  ctx: Context,
   startDate: Date,
   endDate: Date,
   limit: number = 10
 ): Promise<TopReferrer[]> {
-  const results = await db`
+  const results = await ctx.db`
     SELECT
       COALESCE(referrer, 'Direct') as referrer,
       COUNT(*) as visits
@@ -609,11 +613,12 @@ export async function getTopReferrers(
  * Get user flow (page transitions)
  */
 export async function getUserFlow(
+  ctx: Context,
   startDate: Date,
   endDate: Date,
   limit: number = 20
 ): Promise<UserFlow[]> {
-  const results = await db`
+  const results = await ctx.db`
     SELECT
       previous_path as from_path,
       path as to_path,
@@ -638,7 +643,7 @@ export async function getUserFlow(
 /**
  * Get recent events (for live dashboard)
  */
-export async function getRecentEvents(limit: number = 50): Promise<Array<{
+export async function getRecentEvents(ctx: Context, limit: number = 50): Promise<Array<{
   id: number;
   session_id: string;
   event_type: string;
@@ -646,7 +651,7 @@ export async function getRecentEvents(limit: number = 50): Promise<Array<{
   referrer: string | null;
   created_at: Date;
 }>> {
-  return await db`
+  return await ctx.db`
     SELECT id, session_id, event_type, path, referrer, created_at
     FROM analytics_events
     ORDER BY created_at DESC
@@ -658,10 +663,11 @@ export async function getRecentEvents(limit: number = 50): Promise<Array<{
  * Get average session duration
  */
 export async function getAverageSessionDuration(
+  ctx: Context,
   startDate: Date,
   endDate: Date
 ): Promise<number> {
-  const [result] = await db`
+  const [result] = await ctx.db`
     WITH session_durations AS (
       SELECT
         session_id,
@@ -684,11 +690,12 @@ export async function getAverageSessionDuration(
  * Get top languages
  */
 export async function getTopLanguages(
+  ctx: Context,
   startDate: Date,
   endDate: Date,
   limit: number = 10
 ): Promise<Array<{ language: string; count: number }>> {
-  const results = await db`
+  const results = await ctx.db`
     SELECT
       COALESCE(metadata->>'language', 'Unknown') as language,
       COUNT(DISTINCT session_id) as count
@@ -711,11 +718,12 @@ export async function getTopLanguages(
  * Get UTM campaign stats
  */
 export async function getUTMStats(
+  ctx: Context,
   startDate: Date,
   endDate: Date,
   limit: number = 10
 ): Promise<Array<{ source: string; medium: string; campaign: string; visits: number }>> {
-  const results = await db`
+  const results = await ctx.db`
     SELECT
       COALESCE(metadata->'utm'->>'utm_source', 'direct') as source,
       COALESCE(metadata->'utm'->>'utm_medium', 'none') as medium,
@@ -746,11 +754,12 @@ export async function getUTMStats(
  * Get top countries by visitors
  */
 export async function getTopCountries(
+  ctx: Context,
   startDate: Date,
   endDate: Date,
   limit: number = 10
 ): Promise<Array<{ country: string; countryCode: string; visitors: number }>> {
-  const results = await db`
+  const results = await ctx.db`
     SELECT
       COALESCE(metadata->'geo'->>'country', 'Unknown') as country,
       COALESCE(metadata->'geo'->>'countryCode', 'XX') as country_code,
@@ -775,11 +784,12 @@ export async function getTopCountries(
  * Get top cities by visitors
  */
 export async function getTopCities(
+  ctx: Context,
   startDate: Date,
   endDate: Date,
   limit: number = 10
 ): Promise<Array<{ city: string; country: string; visitors: number }>> {
-  const results = await db`
+  const results = await ctx.db`
     SELECT
       COALESCE(metadata->'geo'->>'city', 'Unknown') as city,
       COALESCE(metadata->'geo'->>'country', 'Unknown') as country,
@@ -805,11 +815,12 @@ export async function getTopCities(
  * Get top browsers by visitors
  */
 export async function getTopBrowsers(
+  ctx: Context,
   startDate: Date,
   endDate: Date,
   limit: number = 10
 ): Promise<Array<{ browser: string; visitors: number }>> {
-  const results = await db`
+  const results = await ctx.db`
     SELECT
       COALESCE(metadata->'browser'->>'name', 'Unknown') as browser,
       COUNT(DISTINCT session_id) as visitors
@@ -833,11 +844,12 @@ export async function getTopBrowsers(
  * Get top operating systems by visitors
  */
 export async function getTopOS(
+  ctx: Context,
   startDate: Date,
   endDate: Date,
   limit: number = 10
 ): Promise<Array<{ os: string; visitors: number }>> {
-  const results = await db`
+  const results = await ctx.db`
     SELECT
       COALESCE(metadata->'os'->>'name', 'Unknown') as os,
       COUNT(DISTINCT session_id) as visitors
@@ -861,10 +873,11 @@ export async function getTopOS(
  * Get device type breakdown
  */
 export async function getDeviceBreakdown(
+  ctx: Context,
   startDate: Date,
   endDate: Date
 ): Promise<Array<{ device: string; visitors: number; percentage: number }>> {
-  const results = await db`
+  const results = await ctx.db`
     WITH device_counts AS (
       SELECT
         COALESCE(metadata->>'device', 'unknown') as device,
@@ -898,11 +911,12 @@ export async function getDeviceBreakdown(
  * Get bot traffic stats
  */
 export async function getBotStats(
+  ctx: Context,
   startDate: Date,
   endDate: Date,
   limit: number = 10
 ): Promise<{ totalBotHits: number; topBots: Array<{ bot: string; hits: number }> }> {
-  const [countResult] = await db`
+  const [countResult] = await ctx.db`
     SELECT COUNT(*) as total
     FROM analytics_events
     WHERE event_type = 'page_view'
@@ -911,7 +925,7 @@ export async function getBotStats(
       AND metadata->>'isBot' = 'true'
   `;
 
-  const topBots = await db`
+  const topBots = await ctx.db`
     SELECT
       COALESCE(metadata->'browser'->>'name', 'Unknown Bot') as bot,
       COUNT(*) as hits
@@ -938,6 +952,7 @@ export async function getBotStats(
  * Get recent visitors with full details (for live view)
  */
 export async function getRecentVisitors(
+  ctx: Context,
   limit: number = 20
 ): Promise<Array<{
   session_id: string;
@@ -951,7 +966,7 @@ export async function getRecentVisitors(
   referrer: string | null;
   created_at: Date;
 }>> {
-  return await db`
+  return await ctx.db`
     SELECT
       session_id,
       path,

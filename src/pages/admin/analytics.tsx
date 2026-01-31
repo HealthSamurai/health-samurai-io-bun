@@ -303,6 +303,11 @@ type PageParams = {
 };
 
 export default async function AnalyticsDashboard(params: PageParams): Promise<string> {
+  if (!params.ctx) {
+    throw new Error("Context is required for analytics dashboard");
+  }
+  const ctx = params.ctx;
+
   // Get period from URL params (default to today)
   const period = params.period || "today";
   const { start, end, label } = getDateRange(period);
@@ -324,19 +329,19 @@ export default async function AnalyticsDashboard(params: PageParams): Promise<st
     botStats,
     recentVisitors,
   ] = await Promise.all([
-    getDashboardStats(start, end),
-    getTopPages(start, end, 10),
-    getTopReferrers(start, end, 10),
-    getUserFlow(start, end, 15),
-    getAverageSessionDuration(start, end),
-    getTopCountries(start, end, 10),
-    getTopCities(start, end, 10),
-    getTopLanguages(start, end, 10),
-    getTopBrowsers(start, end, 10),
-    getTopOS(start, end, 10),
-    getDeviceBreakdown(start, end),
-    getBotStats(start, end, 5),
-    getRecentVisitors(15),
+    getDashboardStats(ctx, start, end),
+    getTopPages(ctx, start, end, 10),
+    getTopReferrers(ctx, start, end, 10),
+    getUserFlow(ctx, start, end, 15),
+    getAverageSessionDuration(ctx, start, end),
+    getTopCountries(ctx, start, end, 10),
+    getTopCities(ctx, start, end, 10),
+    getTopLanguages(ctx, start, end, 10),
+    getTopBrowsers(ctx, start, end, 10),
+    getTopOS(ctx, start, end, 10),
+    getDeviceBreakdown(ctx, start, end),
+    getBotStats(ctx, start, end, 5),
+    getRecentVisitors(ctx, 15),
   ]);
 
   const content = (

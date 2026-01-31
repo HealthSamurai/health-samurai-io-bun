@@ -3,7 +3,7 @@
  * Restricted to @health-samurai.io domain
  */
 
-import { db } from "../db";
+import type { Context } from "../context";
 import { createSession, createSessionCookie } from "../middleware/session";
 import { BareLayout } from "../components/BareLayout";
 import { getAnalyticsSessionId, linkSessionToUser } from "../analytics";
@@ -18,6 +18,8 @@ const ALLOWED_DOMAIN = process.env.GOOGLE_ALLOWED_DOMAIN || "health-samurai.io";
 const GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth";
 const GOOGLE_TOKEN_URL = "https://oauth2.googleapis.com/token";
 const GOOGLE_USERINFO_URL = "https://www.googleapis.com/oauth2/v2/userinfo";
+
+const OAUTH_STATE_COOKIE = "oauth_state";
 
 interface GoogleUserInfo {
   id: string;
@@ -61,10 +63,36 @@ function renderError(message: string): string {
   return BareLayout({ title: "Authentication Error", children: content });
 }
 
+function parseCookies(cookieHeader: string | null): Record<string, string> {
+  if (!cookieHeader) return {};
+  return cookieHeader.split(";").reduce(
+    (cookies, cookie) => {
+      const [name, value] = cookie.trim().split("=");
+      if (name && value) {
+        cookies[name] = decodeURIComponent(value);
+      }
+      return cookies;
+    },
+    {} as Record<string, string>
+  );
+}
+
+function createOauthStateCookie(state: string): string {
+  const isProduction = process.env.NODE_ENV === "production";
+  const secure = isProduction ? "; Secure" : "";
+  // Short-lived state cookie (10 minutes)
+  const maxAge = 60 * 10;
+  return `${OAUTH_STATE_COOKIE}=${state}; HttpOnly; Path=/auth/google/callback; Max-Age=${maxAge}; SameSite=Lax${secure}`;
+}
+
+function clearOauthStateCookie(): string {
+  return `${OAUTH_STATE_COOKIE}=; HttpOnly; Path=/auth/google/callback; Max-Age=0; SameSite=Lax`;
+}
+
 /**
  * GET /auth/google - Redirect to Google OAuth consent screen
  */
-export async function googleLogin(req: Request): Promise<Response> {
+export async function googleLogin(ctx: Context, req: Request): Promise<Response> {
   console.log("[OAuth] Starting Google login flow");
   console.log("[OAuth] Config:", {
     clientId: GOOGLE_CLIENT_ID ? `${GOOGLE_CLIENT_ID.substring(0, 20)}...` : "NOT SET",
@@ -80,7 +108,8 @@ export async function googleLogin(req: Request): Promise<Response> {
     });
   }
 
-  // Build Google OAuth URL
+  // Build Google OAuth URL with CSRF state
+  const state = crypto.randomUUID();
   const params = new URLSearchParams({
     client_id: GOOGLE_CLIENT_ID,
     redirect_uri: GOOGLE_REDIRECT_URI,
@@ -89,6 +118,7 @@ export async function googleLogin(req: Request): Promise<Response> {
     access_type: "offline",
     prompt: "select_account",
     hd: ALLOWED_DOMAIN, // Restrict to specified domain
+    state,
   });
 
   const authUrl = `${GOOGLE_AUTH_URL}?${params.toString()}`;
@@ -96,16 +126,20 @@ export async function googleLogin(req: Request): Promise<Response> {
 
   return new Response(null, {
     status: 302,
-    headers: { Location: authUrl },
+    headers: {
+      Location: authUrl,
+      "Set-Cookie": createOauthStateCookie(state),
+    },
   });
 }
 
 /**
  * GET /auth/google/callback - Handle OAuth callback from Google
  */
-export async function googleCallback(req: Request): Promise<Response> {
+export async function googleCallback(ctx: Context, req: Request): Promise<Response> {
   const url = new URL(req.url);
   const code = url.searchParams.get("code");
+  const state = url.searchParams.get("state");
   const error = url.searchParams.get("error");
 
   console.log("[OAuth] Callback received", { hasCode: !!code, error });
@@ -124,6 +158,20 @@ export async function googleCallback(req: Request): Promise<Response> {
     return new Response(renderError("No authorization code received from Google"), {
       status: 400,
       headers: { "Content-Type": "text/html" },
+    });
+  }
+
+  // Validate OAuth state (CSRF protection)
+  const cookies = parseCookies(req.headers.get("Cookie"));
+  const expectedState = cookies[OAUTH_STATE_COOKIE];
+  if (!state || !expectedState || state !== expectedState) {
+    console.log("[OAuth] Invalid or missing state", { hasState: !!state, hasCookie: !!expectedState });
+    return new Response(renderError("Invalid OAuth state. Please try again."), {
+      status: 400,
+      headers: {
+        "Content-Type": "text/html",
+        "Set-Cookie": clearOauthStateCookie(),
+      },
     });
   }
 
@@ -191,17 +239,17 @@ export async function googleCallback(req: Request): Promise<Response> {
 
     // Find or create user
     console.log("[OAuth] Looking up user by google_id...");
-    let [user] = await db`SELECT * FROM users WHERE google_id = ${googleUser.id}`;
+    let [user] = await ctx.db`SELECT * FROM users WHERE google_id = ${googleUser.id}`;
 
     if (!user) {
       console.log("[OAuth] No user found by google_id, checking email...");
       // Check if user exists with same email (for linking accounts)
-      [user] = await db`SELECT * FROM users WHERE email = ${googleUser.email}`;
+      [user] = await ctx.db`SELECT * FROM users WHERE email = ${googleUser.email}`;
 
       if (user) {
         console.log("[OAuth] Found user by email, linking Google account...");
         // Link Google account to existing user
-        await db`
+        await ctx.db`
           UPDATE users
           SET google_id = ${googleUser.id}, avatar_url = ${googleUser.picture}, updated_at = CURRENT_TIMESTAMP
           WHERE id = ${user.id}
@@ -209,8 +257,9 @@ export async function googleCallback(req: Request): Promise<Response> {
       } else {
         console.log("[OAuth] Creating new user...");
         // Create new user
-        const username = await generateUniqueUsername(googleUser.email.split("@")[0]);
-        [user] = await db`
+        const baseUsername = googleUser.email.split("@")[0] ?? "user";
+        const username = await generateUniqueUsername(ctx, baseUsername);
+        [user] = await ctx.db`
           INSERT INTO users (email, username, google_id, first_name, last_name, avatar_url, is_active, role)
           VALUES (${googleUser.email}, ${username}, ${googleUser.id}, ${googleUser.given_name}, ${googleUser.family_name}, ${googleUser.picture}, true, 'user')
           RETURNING *
@@ -221,7 +270,7 @@ export async function googleCallback(req: Request): Promise<Response> {
       console.log("[OAuth] Found existing user:", user.id);
       // Update avatar if changed
       if (user.avatar_url !== googleUser.picture) {
-        await db`UPDATE users SET avatar_url = ${googleUser.picture}, updated_at = CURRENT_TIMESTAMP WHERE id = ${user.id}`;
+        await ctx.db`UPDATE users SET avatar_url = ${googleUser.picture}, updated_at = CURRENT_TIMESTAMP WHERE id = ${user.id}`;
       }
     }
 
@@ -236,15 +285,15 @@ export async function googleCallback(req: Request): Promise<Response> {
 
     // Update last login time
     console.log("[OAuth] Updating last login time...");
-    await db`UPDATE users SET last_login_at = CURRENT_TIMESTAMP WHERE id = ${user.id}`;
+    await ctx.db`UPDATE users SET last_login_at = CURRENT_TIMESTAMP WHERE id = ${user.id}`;
 
     // Link anonymous analytics session to authenticated user
     const analyticsSessionId = getAnalyticsSessionId(req);
-    await linkSessionToUser(analyticsSessionId, user.id!);
+    await linkSessionToUser(ctx, analyticsSessionId, user.id!);
 
     // Create session
     console.log("[OAuth] Creating session...");
-    const sessionId = await createSession(user.id!);
+    const sessionId = await createSession(ctx, user.id!);
     console.log("[OAuth] Session created, redirecting to home");
 
     // Redirect to home with session cookie
@@ -252,7 +301,10 @@ export async function googleCallback(req: Request): Promise<Response> {
       status: 303,
       headers: {
         Location: "/",
-        "Set-Cookie": createSessionCookie(sessionId),
+        "Set-Cookie": [
+          createSessionCookie(sessionId),
+          clearOauthStateCookie(),
+        ].join(", "),
       },
     });
   } catch (error) {
@@ -262,7 +314,10 @@ export async function googleCallback(req: Request): Promise<Response> {
     console.error("[OAuth] Error details:", errorMessage, errorStack);
     return new Response(renderError(`Auth error: ${errorMessage}`), {
       status: 500,
-      headers: { "Content-Type": "text/html" },
+      headers: {
+        "Content-Type": "text/html",
+        "Set-Cookie": clearOauthStateCookie(),
+      },
     });
   }
 }
@@ -270,12 +325,12 @@ export async function googleCallback(req: Request): Promise<Response> {
 /**
  * Generate a unique username by appending numbers if needed
  */
-async function generateUniqueUsername(baseUsername: string): Promise<string> {
+async function generateUniqueUsername(ctx: Context, baseUsername: string): Promise<string> {
   let username = baseUsername;
   let counter = 1;
 
   while (true) {
-    const [existing] = await db`SELECT id FROM users WHERE username = ${username}`;
+    const [existing] = await ctx.db`SELECT id FROM users WHERE username = ${username}`;
     if (!existing) break;
     username = `${baseUsername}${counter}`;
     counter++;

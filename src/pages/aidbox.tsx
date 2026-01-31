@@ -1,8 +1,10 @@
 import { Fragment } from "../lib/jsx-runtime";
 import { getProduct } from "../data/products";
 import { Hero } from "../components/Hero";
-import { Trusted, TrustedLogo } from "../components/Trusted";
-import { Pricing, PricingTier } from "../components/Pricing";
+import { Trusted } from "../components/Trusted";
+import type { TrustedLogo } from "../components/Trusted";
+import { Pricing } from "../components/Pricing";
+import type { PricingTier } from "../components/Pricing";
 import { ContactForm } from "../components/ContactForm";
 
 const product = getProduct("aidbox")!;

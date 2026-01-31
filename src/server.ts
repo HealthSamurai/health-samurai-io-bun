@@ -39,7 +39,7 @@ try {
   console.error("\x1b[31m✗\x1b[0m Database migrations failed:", error);
 }
 
-const PORT = process.env.PORT ? parseInt(process.env.PORT) : 4321;
+const PORT = process.env.PORT ? parseInt(process.env.PORT) : 4444;
 const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET || "";
 const PAGES_DIR = "./src/pages";
 const DEV_MODE = process.env.DEV === "1" || process.argv.includes("--hot");
@@ -86,14 +86,25 @@ function html(content: string): Response {
   });
 }
 
-// Helper to serve static files
+// Helper to serve static files with caching
 async function serveStatic(path: string, contentType: string): Promise<Response> {
+  // Determine cache duration based on file type
+  // - Images, fonts: long cache (1 year) - they rarely change
+  // - CSS, JS: medium cache (1 week) with revalidation - changes with deploys
+  const isImmutable = /\.(png|jpg|jpeg|gif|webp|avif|ico|woff|woff2|svg)$/i.test(path);
+  const cacheControl = isImmutable
+    ? "public, max-age=31536000, immutable"  // 1 year for images/fonts
+    : "public, max-age=604800, stale-while-revalidate=86400";  // 1 week for CSS/JS
+
   // Try public directory first (for images and other assets)
   try {
     const publicFile = Bun.file(`./public${path}`);
     if (await publicFile.exists()) {
       return new Response(publicFile, {
-        headers: { "Content-Type": contentType },
+        headers: {
+          "Content-Type": contentType,
+          "Cache-Control": cacheControl,
+        },
       });
     }
   } catch (e) {
@@ -105,7 +116,10 @@ async function serveStatic(path: string, contentType: string): Promise<Response>
     const srcFile = Bun.file(`./src${path}`);
     if (await srcFile.exists()) {
       return new Response(srcFile, {
-        headers: { "Content-Type": contentType },
+        headers: {
+          "Content-Type": contentType,
+          "Cache-Control": cacheControl,
+        },
       });
     }
   } catch (e) {
@@ -161,7 +175,8 @@ Bun.serve({
     }
 
     // Create context with user session for all requests
-    const user = await getSession(req);
+    const baseCtx = newContext(db);
+    const user = await getSession(baseCtx, req);
     const ctx = newContext(db, user);
 
     // robots.txt and sitemap.xml
@@ -468,7 +483,7 @@ Make healthcare data interoperable through FHIR standards.
           page,
         };
 
-        await db`
+        await ctx.db`
           INSERT INTO form_submissions (form_type, email, name, data, ip_address, user_agent, referrer, session_id, user_id)
           VALUES (${formType}, ${email}, ${name}, ${JSON.stringify(data)}, ${ipAddress}::inet, ${userAgent}, ${referrer}, ${sessionId}, ${user?.id || null})
         `;
@@ -521,7 +536,7 @@ Make healthcare data interoperable through FHIR standards.
         const referrer = req.headers.get("referer") || null;
         const sessionId = getAnalyticsSessionId(req);
 
-        await db`
+        await ctx.db`
           INSERT INTO form_submissions (form_type, email, data, ip_address, user_agent, referrer, session_id, user_id)
           VALUES ('subscribe', ${email}, '{}', ${ipAddress}::inet, ${userAgent}, ${referrer}, ${sessionId}, ${user?.id || null})
         `;
@@ -530,15 +545,25 @@ Make healthcare data interoperable through FHIR standards.
         notifySubscription(email).catch(() => {});
 
         return html(`
-          <div style="text-align: center; padding: var(--space-4); color: white;">
-            <strong>Thanks for subscribing!</strong>
+          <div class="rounded-md bg-green-500/20 border border-green-500/30 p-3 mb-4">
+            <div class="flex items-center gap-2">
+              <svg class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-sm font-medium text-green-400">Thanks for subscribing!</span>
+            </div>
           </div>
         `);
       } catch (error) {
         console.error("Failed to save subscription:", error);
         return html(`
-          <div style="text-align: center; padding: var(--space-4); color: white;">
-            <strong>Thanks for subscribing!</strong>
+          <div class="rounded-md bg-red-500/20 border border-red-500/30 p-3 mb-4">
+            <div class="flex items-center gap-2">
+              <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-sm font-medium text-red-400">Something went wrong. Please try again.</span>
+            </div>
           </div>
         `);
       }
@@ -559,9 +584,9 @@ Make healthcare data interoperable through FHIR standards.
 
       try {
         // Try to find user by email or username
-        let [user] = await db`SELECT * FROM users WHERE email = ${emailOrUsername}`;
+        let [user] = await ctx.db`SELECT * FROM users WHERE email = ${emailOrUsername}`;
         if (!user) {
-          [user] = await db`SELECT * FROM users WHERE username = ${emailOrUsername}`;
+          [user] = await ctx.db`SELECT * FROM users WHERE username = ${emailOrUsername}`;
         }
 
         if (!user) {
@@ -590,10 +615,10 @@ Make healthcare data interoperable through FHIR standards.
         }
 
         // Update last login time
-        await db`UPDATE users SET last_login_at = CURRENT_TIMESTAMP WHERE id = ${user.id}`;
+        await ctx.db`UPDATE users SET last_login_at = CURRENT_TIMESTAMP WHERE id = ${user.id}`;
 
         // Create session
-        const sessionId = await createSession(user.id!);
+        const sessionId = await createSession(ctx, user.id!);
 
         // Redirect with session cookie
         return new Response(null, {
@@ -614,7 +639,7 @@ Make healthcare data interoperable through FHIR standards.
     if (path === "/api/logout" && req.method === "POST") {
       const sessionId = getSessionId(req);
       if (sessionId) {
-        await destroySession(sessionId);
+        await destroySession(ctx, sessionId);
       }
 
       return new Response(null, {
@@ -628,11 +653,11 @@ Make healthcare data interoperable through FHIR standards.
 
     // Google OAuth routes
     if (path === "/auth/google") {
-      return googleLogin(req);
+      return googleLogin(ctx, req);
     }
 
     if (path === "/auth/google/callback") {
-      return googleCallback(req);
+      return googleCallback(ctx, req);
     }
 
     // Analytics event API endpoint (for client-side tracking)
@@ -648,7 +673,7 @@ Make healthcare data interoperable through FHIR standards.
         const analyticsSessionId = getAnalyticsSessionId(req);
         const body = await req.json() as { eventType?: string; path?: string; metadata?: Record<string, unknown> };
 
-        await trackEvent({
+        await trackEvent(ctx, {
           sessionId: analyticsSessionId,
           userId: user?.id,
           eventType: body.eventType || "custom",
@@ -694,20 +719,20 @@ Make healthcare data interoperable through FHIR standards.
         }
 
         // Check if already liked
-        const [existing] = await db`
+        const [existing] = await ctx.db`
           SELECT id FROM post_likes WHERE post_slug = ${slug} AND user_id = ${user.id}
         `;
 
         if (existing) {
           // Unlike
-          await db`DELETE FROM post_likes WHERE post_slug = ${slug} AND user_id = ${user.id}`;
+          await ctx.db`DELETE FROM post_likes WHERE post_slug = ${slug} AND user_id = ${user.id}`;
         } else {
           // Like
-          await db`INSERT INTO post_likes (post_slug, user_id) VALUES (${slug}, ${user.id})`;
+          await ctx.db`INSERT INTO post_likes (post_slug, user_id) VALUES (${slug}, ${user.id})`;
         }
 
         // Get updated count
-        const [{ count }] = await db`SELECT COUNT(*)::int as count FROM post_likes WHERE post_slug = ${slug}`;
+        const [{ count }] = await ctx.db`SELECT COUNT(*)::int as count FROM post_likes WHERE post_slug = ${slug}`;
 
         return new Response(JSON.stringify({
           liked: !existing,
@@ -736,12 +761,12 @@ Make healthcare data interoperable through FHIR standards.
       }
 
       // Get count
-      const [{ count }] = await db`SELECT COUNT(*)::int as count FROM post_likes WHERE post_slug = ${slug}`;
+      const [{ count }] = await ctx.db`SELECT COUNT(*)::int as count FROM post_likes WHERE post_slug = ${slug}`;
 
       // Check if current user liked
       let liked = false;
       if (user) {
-        const [existing] = await db`SELECT id FROM post_likes WHERE post_slug = ${slug} AND user_id = ${user.id}`;
+        const [existing] = await ctx.db`SELECT id FROM post_likes WHERE post_slug = ${slug} AND user_id = ${user.id}`;
         liked = !!existing;
       }
 
@@ -790,7 +815,7 @@ Make healthcare data interoperable through FHIR standards.
     const commentsMatch = path.match(/^\/api\/blog\/([^/]+)\/comments$/);
     if (commentsMatch && req.method === "GET") {
       const slug = commentsMatch[1]!;
-      const comments = await db`
+      const comments = await ctx.db`
         SELECT c.*, u.username, u.avatar_url, u.role
         FROM comments c
         JOIN users u ON c.user_id = u.id
@@ -820,7 +845,7 @@ Make healthcare data interoperable through FHIR standards.
       }
 
       // Insert comment and return the new comment HTML
-      const [newComment] = await db`
+      const [newComment] = await ctx.db`
         INSERT INTO comments (blog_slug, user_id, content, parent_id)
         VALUES (${slug}, ${user.id}, ${content}, ${parentId})
         RETURNING *
@@ -855,7 +880,7 @@ Make healthcare data interoperable through FHIR standards.
       }
 
       // Get the comment to check ownership
-      const [comment] = await db`
+      const [comment] = await ctx.db`
         SELECT * FROM comments WHERE id = ${commentId} AND blog_slug = ${slug}
       `;
 
@@ -869,7 +894,7 @@ Make healthcare data interoperable through FHIR standards.
       }
 
       // Delete the comment
-      await db`DELETE FROM comments WHERE id = ${commentId}`;
+      await ctx.db`DELETE FROM comments WHERE id = ${commentId}`;
 
       // Return empty response (htmx will remove the element)
       return new Response("", { status: 200 });
@@ -970,7 +995,7 @@ Make healthcare data interoperable through FHIR standards.
       const analyticsSessionId = getAnalyticsSessionId(req);
       const previousPath = getAndSetPreviousPath(analyticsSessionId, path);
       if (!isInternalUser) {
-        trackPageView(req, analyticsSessionId, user?.id, previousPath).catch(() => {});
+        trackPageView(ctx, req, analyticsSessionId, user?.id, previousPath).catch(() => {});
       }
 
       const page = await import(match.filePath);
@@ -1020,7 +1045,7 @@ Make healthcare data interoperable through FHIR standards.
     const analyticsSessionId = getAnalyticsSessionId(req);
     const previousPath = getAndSetPreviousPath(analyticsSessionId, path);
     if (!isInternalUser) {
-      trackPageView(req, analyticsSessionId, user?.id, previousPath).catch(() => {});
+      trackPageView(ctx, req, analyticsSessionId, user?.id, previousPath).catch(() => {});
     }
 
     return new Response(

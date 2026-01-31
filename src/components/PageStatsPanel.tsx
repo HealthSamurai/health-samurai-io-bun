@@ -1,4 +1,3 @@
-import { db } from "../db";
 import type { Context } from "../context";
 
 interface PageStats {
@@ -16,11 +15,11 @@ interface PageEvent {
   created_at: Date;
 }
 
-async function getPageStats(path: string): Promise<PageStats> {
+async function getPageStats(ctx: Context, path: string): Promise<PageStats> {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  const [result] = await db`
+  const [result] = await ctx.db`
     SELECT
       COUNT(*) as total_views,
       COUNT(DISTINCT session_id) as unique_visitors,
@@ -37,8 +36,8 @@ async function getPageStats(path: string): Promise<PageStats> {
   };
 }
 
-async function getPageEvents(path: string, limit: number = 20): Promise<PageEvent[]> {
-  return await db`
+async function getPageEvents(ctx: Context, path: string, limit: number = 20): Promise<PageEvent[]> {
+  return await ctx.db`
     SELECT id, event_type, session_id, referrer, metadata, created_at
     FROM analytics_events
     WHERE path = ${path}
@@ -82,7 +81,7 @@ function formatMetadata(metadata: Record<string, unknown> | null): string {
 
 export type PageStatsPanelProps = {
   path: string;
-  ctx?: Context;
+  ctx: Context;
 };
 
 export async function PageStatsPanel({ path, ctx }: PageStatsPanelProps): Promise<string> {
@@ -92,8 +91,8 @@ export async function PageStatsPanel({ path, ctx }: PageStatsPanelProps): Promis
   }
 
   const [stats, events] = await Promise.all([
-    getPageStats(path),
-    getPageEvents(path, 30),
+    getPageStats(ctx, path),
+    getPageEvents(ctx, path, 30),
   ]);
 
   const pageViewEvents = events.filter(e => e.event_type === "page_view");

@@ -257,9 +257,9 @@ export default function DividersDemo({ devMode }: { devMode?: boolean }): string
           children: `
             <div class="flex items-center gap-4 py-4">
               <span class="text-sm text-gray-600">Item 1</span>
-              ${VerticalDivider({ height: "md" })}
+              ${VerticalDivider({ height: "md", color: "gray" })}
               <span class="text-sm text-gray-600">Item 2</span>
-              ${VerticalDivider({ height: "md" })}
+              ${VerticalDivider({ height: "md", color: "gray" })}
               <span class="text-sm text-gray-600">Item 3</span>
             </div>
           `,

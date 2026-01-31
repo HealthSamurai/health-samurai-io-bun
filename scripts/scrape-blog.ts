@@ -86,7 +86,7 @@ function parseDate(dateStr: string): string {
 
   // Try "Month DD, YYYY" format
   const match = dateStr.match(/(\w+)\s+(\d{1,2}),?\s+(\d{4})/i);
-  if (match) {
+  if (match?.[1] && match?.[2] && match?.[3]) {
     const month = months[match[1].toLowerCase()];
     const day = match[2].padStart(2, '0');
     const year = match[3];
@@ -95,7 +95,7 @@ function parseDate(dateStr: string): string {
 
   // Try ISO format already
   const isoMatch = dateStr.match(/(\d{4})-(\d{2})-(\d{2})/);
-  if (isoMatch) return isoMatch[0];
+  if (isoMatch?.[0]) return isoMatch[0];
 
   return dateStr;
 }
@@ -106,35 +106,40 @@ function extractMetadata(html: string, url: string): Record<string, any> {
 
   // Title
   const titleMatch = html.match(/<title>([^<]*)<\/title>/i);
-  if (titleMatch) meta.title = titleMatch[1].trim();
+  const title = titleMatch?.[1]?.trim();
+  if (title) meta.title = title;
 
   // Description
   const descMatch = html.match(/<meta[^>]*name="description"[^>]*content="([^"]*)"[^>]*>/i)
     || html.match(/<meta[^>]*content="([^"]*)"[^>]*name="description"[^>]*>/i);
-  if (descMatch) meta.description = descMatch[1].trim();
+  const description = descMatch?.[1]?.trim();
+  if (description) meta.description = description;
 
   // OG Image
   const imgMatch = html.match(/<meta[^>]*property="og:image"[^>]*content="([^"]*)"[^>]*>/i)
     || html.match(/<meta[^>]*content="([^"]*)"[^>]*property="og:image"[^>]*>/i);
-  if (imgMatch) meta.image = imgMatch[1].trim();
+  const image = imgMatch?.[1]?.trim();
+  if (image) meta.image = image;
 
   // Date from ar-header-date class
   const dateMatch = html.match(/class="ar-header-date"[^>]*>([^<]+)</i);
   if (dateMatch) {
-    meta.date = parseDate(dateMatch[1].trim());
+    const date = dateMatch[1]?.trim();
+    if (date) meta.date = parseDate(date);
   }
 
   // Author from ar-header-author class
   const authorMatch = html.match(/class="ar-header-author"[^>]*>([^<]+)</i);
   if (authorMatch) {
-    meta.author = authorMatch[1].trim();
+    const author = authorMatch[1]?.trim();
+    if (author) meta.author = author;
   }
 
   // Categories - collect all unique category links
   const categories: string[] = [];
   const categoryMatches = html.matchAll(/href="\/article-categories\/([^"]+)"[^>]*>([^<]*)</gi);
   for (const match of categoryMatches) {
-    const category = match[2].trim();
+    const category = match[2]?.trim();
     if (category && !categories.includes(category)) {
       categories.push(category);
     }
@@ -145,7 +150,8 @@ function extractMetadata(html: string, url: string): Record<string, any> {
 
   // Slug from URL
   const slugMatch = url.match(/\/articles\/([^\/]+)$/);
-  if (slugMatch) meta.slug = slugMatch[1];
+  const slug = slugMatch?.[1];
+  if (slug) meta.slug = slug;
 
   return meta;
 }
@@ -156,13 +162,13 @@ function extractContent(html: string): string {
   const richTextMatch = html.match(/<div[^>]*class="[^"]*w-richtext[^"]*"[^>]*>([\s\S]*?)<\/div>\s*<\/div>/i)
     || html.match(/<div[^>]*class="ar-rich-text[^"]*"[^>]*>([\s\S]*?)<\/div>\s*(?:<div|<\/section)/i);
 
-  if (richTextMatch) {
+  if (richTextMatch?.[1]) {
     return htmlToMarkdown(richTextMatch[1]);
   }
 
   // Fallback: try to find article content
   const articleMatch = html.match(/<article[^>]*>([\s\S]*?)<\/article>/i);
-  if (articleMatch) {
+  if (articleMatch?.[1]) {
     return htmlToMarkdown(articleMatch[1]);
   }
 
@@ -180,7 +186,8 @@ async function fetchArticleUrls(): Promise<string[]> {
   // Extract all article links
   const matches = html.matchAll(/href="(\/articles\/[^"]+)"/g);
   for (const match of matches) {
-    urls.add(match[1]);
+    const href = match[1];
+    if (href) urls.add(href);
   }
 
   console.log(`Found ${urls.size} articles`);

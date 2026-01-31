@@ -1,19 +1,18 @@
-import { db } from "../db";
 import type { Context } from "../context";
 
 interface PostLikeButtonProps {
   slug: string;
-  ctx?: Context;
+  ctx: Context;
 }
 
 export async function PostLikeButton({ slug, ctx }: PostLikeButtonProps): Promise<string> {
   // Get like count
-  const [{ count }] = await db`SELECT COUNT(*)::int as count FROM post_likes WHERE post_slug = ${slug}`;
+  const [{ count }] = await ctx.db`SELECT COUNT(*)::int as count FROM post_likes WHERE post_slug = ${slug}`;
 
   // Check if current user liked
   let liked = false;
   if (ctx?.user) {
-    const [existing] = await db`SELECT id FROM post_likes WHERE post_slug = ${slug} AND user_id = ${ctx.user.id}`;
+    const [existing] = await ctx.db`SELECT id FROM post_likes WHERE post_slug = ${slug} AND user_id = ${ctx.user.id}`;
     liked = !!existing;
   }
 
