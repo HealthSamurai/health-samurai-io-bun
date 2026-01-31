@@ -24,9 +24,9 @@ fi
 # Kill any process on port 4444
 lsof -ti:$PORT | xargs kill -9 2>/dev/null
 
-# Start server in background
+# Start server in background with live reload
 echo "Starting server on port $PORT..."
-PORT=$PORT nohup bun --hot run src/server.ts > "$LOG_FILE" 2>&1 &
+DEV=1 PORT=$PORT nohup bun --hot run src/server.ts > "$LOG_FILE" 2>&1 &
 echo $! > "$PID_FILE"
 
 sleep 1

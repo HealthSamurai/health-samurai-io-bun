@@ -33,6 +33,7 @@ async function main() {
 
   console.log(`\x1b[32m→\x1b[0m Starting server on \x1b[1m${url}\x1b[0m`);
   console.log(`\x1b[32m→\x1b[0m Hot reload: \x1b[32menabled\x1b[0m`);
+  console.log(`\x1b[32m→\x1b[0m Live reload: \x1b[32menabled\x1b[0m (browser auto-refresh)`);
   console.log(`\x1b[32m→\x1b[0m Press \x1b[1mCtrl+C\x1b[0m to stop\n`);
 
   // Open browser after short delay
@@ -40,10 +41,10 @@ async function main() {
     setTimeout(() => openBrowser(url), 1000);
   }
 
-  // Start server with hot reload
+  // Start server with hot reload and live browser refresh
   const server = spawn({
     cmd: ["bun", "--hot", "src/server.ts"],
-    env: { ...process.env, PORT },
+    env: { ...process.env, PORT, DEV: "1" },
     stdout: "inherit",
     stderr: "inherit",
   });

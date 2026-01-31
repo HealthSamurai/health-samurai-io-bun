@@ -1,116 +1,64 @@
-/* Footer - Pixel perfect match to health-samurai.io */
+/* Footer */
 .footer {
-  background-color: #f4f8fb;
-  color: rgb(53, 59, 80);
-  padding: 0 32px 20px 32px;
+  @apply bg-white;
 }
 
-.footer-inner {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0;
+.footer-container {
+  @apply mx-auto max-w-7xl px-6 pt-16 pb-8 sm:pt-24 lg:px-8 lg:pt-32;
 }
 
-/* Main footer columns */
-.footer-columns {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr) 1.2fr;
-  gap: 48px;
+.footer-grid {
+  @apply xl:grid xl:grid-cols-3 xl:gap-8;
 }
 
-.footer-column {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.footer-brand {
+  @apply space-y-8;
 }
 
-/* Brand link with red underline - improved contrast */
-.footer-brand-link {
-  font-size: 15px;
-  font-weight: 500;
-  color: #4a4a4a;
-  text-decoration: none;
-  border-bottom: 2px solid var(--color-primary);
-  padding-bottom: 2px;
-  display: inline-block;
-  margin-bottom: 8px;
+.footer-logo {
+  @apply h-10;
 }
 
-.footer-brand-link:hover {
-  color: #1a1a1a;
+.footer-description {
+  @apply text-sm leading-6 text-balance text-gray-600;
 }
 
-/* Regular footer links - improved contrast ratio (4.5:1+) */
-.footer-link {
-  font-size: 15px;
-  font-weight: 400;
-  color: #4a4a4a;
-  text-decoration: none;
-  transition: color var(--transition-fast);
+.footer-social {
+  @apply flex gap-x-6;
 }
 
-.footer-link:hover {
-  color: var(--color-primary);
-  text-decoration: underline;
+.footer-social-link {
+  @apply text-gray-500 hover:text-primary;
 }
 
-/* Contact column - right side */
-.footer-contact {
-  text-align: right;
+.footer-nav {
+  @apply mt-16 xl:col-span-2 xl:mt-0;
 }
 
-.footer-contact-item {
-  font-size: 16px;
-  font-weight: 400;
-  color: #333333;
-  line-height: 21px;
-  margin-bottom: 16px;
+.footer-nav-grid {
+  @apply grid grid-cols-2 gap-8 md:grid-cols-4;
 }
 
-.footer-contact-item:last-child {
-  margin-bottom: 0;
+.footer-nav-title {
+  @apply text-sm font-semibold text-text;
 }
 
-/* Bottom section with watermark logo */
+.footer-nav-list {
+  @apply mt-6 space-y-4;
+}
+
+.footer-nav-link {
+  @apply text-sm text-gray-600 hover:text-primary;
+}
+
 .footer-bottom {
-  margin-top: 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
+  @apply mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24 flex flex-col sm:flex-row justify-between items-center gap-4;
 }
 
-.footer-watermark {
-  height: 96px;
-  width: auto;
-  opacity: 0.15;
+.footer-copyright {
+  @apply text-sm text-gray-600;
 }
 
-.footer-version {
-  font-size: 12px;
-  color: #6b7280;  /* Darker gray for WCAG AA contrast on #f4f8fb */
-  font-family: monospace;
-}
-
-@media (max-width: 1024px) {
-  .footer-columns {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
-  }
-
-  .footer-contact {
-    text-align: left;
-  }
-
-}
-
-@media (max-width: 640px) {
-  .footer-columns {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .footer-watermark {
-    height: 80px;
-  }
+.footer-git {
+  @apply text-xs text-gray-400 font-mono;
 }

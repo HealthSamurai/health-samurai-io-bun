@@ -8,6 +8,26 @@ await initGitInfo();
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 4321;
 const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET || "";
 const PAGES_DIR = "./src/pages";
+const DEV_MODE = process.env.DEV === "1" || process.argv.includes("--hot");
+
+// Live reload SSE clients (dev mode only)
+const reloadClients = new Set<ReadableStreamDefaultController>();
+let reloadTimeout: Timer | null = null;
+
+function notifyReload() {
+  // Debounce: wait 3s before sending reload
+  if (reloadTimeout) clearTimeout(reloadTimeout);
+  reloadTimeout = setTimeout(() => {
+    console.log(`\x1b[35m[Live]\x1b[0m Reloading browser...`);
+    for (const client of reloadClients) {
+      try {
+        client.enqueue("data: reload\n\n");
+      } catch {
+        reloadClients.delete(client);
+      }
+    }
+  }, 3000);
+}
 
 // File system router for pages
 const router = new Bun.FileSystemRouter({
@@ -21,8 +41,19 @@ watch(PAGES_DIR, { recursive: true }, (event, filename) => {
   if (filename?.endsWith(".tsx")) {
     router.reload();
     console.log(`\x1b[36m[Router]\x1b[0m Reloaded (${event}: ${filename})`);
+    if (DEV_MODE) notifyReload();
   }
 });
+
+// Watch src directory for component/style changes (dev mode)
+if (DEV_MODE) {
+  watch("./src", { recursive: true }, (event, filename) => {
+    if (filename && !filename.startsWith("pages/")) {
+      console.log(`\x1b[35m[Live]\x1b[0m ${event}: ${filename}`);
+      notifyReload();
+    }
+  });
+}
 
 // Helper to create HTML response
 function html(content: string): Response {
@@ -108,6 +139,26 @@ Bun.serve({
       return serveStatic("/sitemap.xml", "application/xml");
     }
 
+    // Live reload SSE endpoint (dev mode only)
+    if (DEV_MODE && path === "/__reload") {
+      const stream = new ReadableStream({
+        start(controller) {
+          reloadClients.add(controller);
+          controller.enqueue("data: connected\n\n");
+        },
+        cancel(controller) {
+          reloadClients.delete(controller);
+        },
+      });
+      return new Response(stream, {
+        headers: {
+          "Content-Type": "text/event-stream",
+          "Cache-Control": "no-cache",
+          "Connection": "keep-alive",
+        },
+      });
+    }
+
     // Static files
     if (path.startsWith("/assets/") || path.startsWith("/styles/")) {
       return serveStatic(path, getContentType(path));
@@ -190,6 +241,7 @@ Bun.serve({
           description: metadata.description,
           children: content,
           hideFooter: metadata.hideFooter,
+          devMode: DEV_MODE,
         })
       );
     }
@@ -199,6 +251,7 @@ Bun.serve({
       Layout({
         title: "Page Not Found",
         children: notFoundPage(),
+        devMode: DEV_MODE,
       })
     );
   },
@@ -224,4 +277,8 @@ function listRoutes(): string[] {
 const routes = listRoutes();
 console.log(`\n\x1b[32m→\x1b[0m Server running at \x1b[1mhttp://localhost:${PORT}\x1b[0m`);
 console.log(`\x1b[32m→\x1b[0m Routes: ${routes.join(", ")}`);
-console.log(`\x1b[32m→\x1b[0m Watching \x1b[36m${PAGES_DIR}\x1b[0m for changes\n`);
+console.log(`\x1b[32m→\x1b[0m Watching \x1b[36m${PAGES_DIR}\x1b[0m for changes`);
+if (DEV_MODE) {
+  console.log(`\x1b[32m→\x1b[0m Live reload: \x1b[35m/__reload\x1b[0m (SSE)`);
+}
+console.log();

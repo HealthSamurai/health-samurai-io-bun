@@ -1,50 +1,46 @@
 /* Services Section */
-.services {
-  padding: 0;
-  margin: 24px 0 60px;
-}
-
-.services .container {
-  padding: 0 32px;
-}
-
 .services-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-8);
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0;
+  @apply grid grid-cols-1 gap-8;
 }
 
-.service-card {
-  padding: 40px 48px 32px;
-  background: white;
-  border-radius: 8px;
-  border: 1px solid #f2f2f2;
-  transition: all var(--transition-base);
+@media (min-width: 1024px) {
+  .services-grid {
+    @apply grid-cols-2;
+  }
 }
 
-.service-card:nth-child(2) {
-  background: #fafafa;
-  border-color: #f2f2f2;
+.services-card {
+  @apply text-base leading-relaxed py-8 pr-8 pl-0;
 }
 
-.service-card:hover {
-  border-color: var(--color-primary);
-  box-shadow: var(--shadow-lg);
+@media (min-width: 1024px) {
+  .services-card {
+    @apply py-10 pr-10;
+  }
 }
 
-.service-card h3 {
-  font-size: var(--text-2xl);
-  font-weight: 700;
-  margin-bottom: var(--space-4);
+.services-card-alt {
+  @apply bg-bg-alt rounded-2xl pl-8;
 }
 
-.service-card p {
-  color: var(--color-text-light);
-  margin-bottom: var(--space-6);
-  line-height: 1.7;
+@media (min-width: 1024px) {
+  .services-card-alt {
+    @apply pl-10;
+  }
+}
+
+.services-card h3 {
+  @apply text-xl font-semibold tracking-tight text-text mb-4;
+}
+
+@media (min-width: 768px) {
+  .services-card h3 {
+    @apply text-2xl;
+  }
+}
+
+.services-card p {
+  @apply text-text-light mb-6;
 }
 
 /* Case Studies Section */

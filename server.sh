@@ -119,11 +119,11 @@ do_start() {
   echo "Starting server on port $PORT..."
 
   if [ "$hot_reload" = "true" ]; then
-    PORT=$PORT nohup bun --hot run src/server.ts > "$LOG_FILE" 2>&1 &
+    DEV=1 PORT=$PORT nohup bun --hot run src/server.ts > "$LOG_FILE" 2>&1 &
     echo $! > "$PID_FILE"
     sleep 1
     if is_running; then
-      print_status "Server started with hot reload (PID: $(get_pid))"
+      print_status "Server started with hot reload + live reload (PID: $(get_pid))"
     fi
   else
     PORT=$PORT nohup bun run src/server.ts > "$LOG_FILE" 2>&1 &
@@ -173,7 +173,7 @@ do_dev() {
   bunx @tailwindcss/cli -i src/styles/tailwind.css -o public/styles/main.css --watch > "$CSS_LOG_FILE" 2>&1 &
   echo $! > "$CSS_PID_FILE"
 
-  echo "Starting server in development mode (foreground, hot reload)..."
+  echo "Starting server in development mode (foreground, hot + live reload)..."
   echo "URL: http://localhost:$PORT"
   echo "Press Ctrl+C to stop"
   echo ""
@@ -181,7 +181,7 @@ do_dev() {
   # Trap to clean up CSS watcher on exit
   trap 'stop_css; exit 0' INT TERM
 
-  PORT=$PORT bun --hot run src/server.ts
+  DEV=1 PORT=$PORT bun --hot run src/server.ts
   stop_css
 }
 

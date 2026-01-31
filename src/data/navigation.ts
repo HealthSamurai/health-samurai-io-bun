@@ -27,91 +27,40 @@ export type NavItem = {
 export const navigation: NavItem[] = [
   {
     label: "Products",
-    categories: [
-      {
-        category: "FHIR server",
-        items: [
-          { label: "FHIR Server", href: "/fhir-server", description: "Powerful backend for digital health developers" },
-          { label: "Fhirbase", href: "/fhir-database", description: "Open source FHIR-native database for healthcare data" },
-          { label: "Aidbox Forms", href: "/medical-form", description: "No-code clinical forms with FHIR support" },
-        ],
-      },
-      {
-        category: "Converters",
-        items: [
-          { label: "HL7v2 to FHIR converter", href: "https://docs.aidbox.app/modules/integration-toolkit/hl7-v2-integration" },
-          { label: "C-CDA to FHIR converter", href: "/c-cda-to-fhir-converter" },
-        ],
-      },
-      {
-        category: "Modules",
-        items: [
-          { label: "Aidbox Forms", href: "/medical-form" },
-          { label: "Aidbox Terminology", href: "/terminology" },
-          { label: "Aidbox MPI", href: "https://docs.aidbox.app/modules/mpi" },
-          { label: "Auth Server", href: "https://docs.aidbox.app/security" },
-          { label: "Aidbox E-Prescription", href: "/e-prescription-module" },
-        ],
-      },
+    children: [
+      { label: "Aidbox", href: "/aidbox", description: "FHIR server and platform for healthcare developers" },
+      { label: "Smartbox", href: "/smartbox", description: "SMART on FHIR application launcher" },
+      { label: "Formbox", href: "/formbox", description: "Clinical forms with FHIR Questionnaire support" },
+      { label: "Auditbox", href: "/auditbox", description: "FHIR-native Audit Record Repository" },
+      { label: "Termbox", href: "/termbox", description: "FHIR Terminology Server" },
+      { label: "MDMbox", href: "/mdmbox", description: "Master Data Management for healthcare" },
+      { label: "E-prescription", href: "/e-prescription-module", description: "Electronic prescribing module for healthcare" },
+      { label: "Edibox", href: "/edibox", description: "Healthcare EDI transaction processing" },
     ],
-    cta: {
-      icon: "/assets/images/logos/aidbox-mini.svg",
-      title: "Managed Aidbox",
-      description: "Get started in minutes with a fully managed Aidbox FHIR platform",
-      href: "https://aidbox.app/ui/portal#/signup",
-    },
-  },
-  {
-    label: "Solutions",
-    categories: [
-      {
-        category: "Development",
-        items: [
-          { label: "Aidbox for Startups", href: "/startups" },
-          { label: "Aidbox for Data Platforms", href: "/healthcare-data-platform-toolkit-aidbox" },
-          { label: "EHR development toolkit", href: "/ehr-toolkit" },
-        ],
-      },
-      {
-        category: "Compliance",
-        items: [
-          { label: "ONC-certified API tools for EHRs", href: "/fhir-api" },
-          { label: "FHIR API for Payers - CMS", href: "/payers" },
-        ],
-      },
-    ],
-    cta: {
-      icon: "/assets/images/logos/aidbox-mini.svg",
-      title: "Aidbox on AWS",
-      description: "Get FHIR backend on AWS in one click",
-      href: "https://aws.amazon.com/marketplace/pp/prodview-l5djlpvsd6o5g",
-    },
   },
   {
     label: "Services",
     href: "/services",
   },
   {
-    label: "Docs & Resources",
-    children: [
-      { label: "Documentation", href: "https://docs.aidbox.app" },
-      { label: "Blog", href: "/blog" },
-      { label: "Case Studies", href: "/casestudies" },
-      { label: "Open Source", href: "/opensource" },
-    ],
+    label: "Blog",
+    href: "/blog",
+  },
+  {
+    label: "Case Studies",
+    href: "/casestudies",
+  },
+  {
+    label: "Docs",
+    href: "https://docs.aidbox.app",
+  },
+  {
+    label: "Meetups",
+    href: "/meetups",
   },
   {
     label: "Company",
-    children: [
-      { label: "About Us", href: "/company" },
-      { label: "Careers", href: "/careers" },
-      { label: "News", href: "/news" },
-      { label: "Contact", href: "/contacts" },
-    ],
-  },
-  {
-    label: "Pricing",
-    href: "/price",
+    href: "/company",
   },
 ];
 

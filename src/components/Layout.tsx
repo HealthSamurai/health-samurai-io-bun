@@ -6,9 +6,10 @@ type LayoutProps = {
   description?: string;
   children: string;
   hideFooter?: boolean;
+  devMode?: boolean;
 };
 
-export function Layout({ title, description, children, hideFooter }: LayoutProps): string {
+export function Layout({ title, description, children, hideFooter, devMode }: LayoutProps): string {
   const fullTitle = title === "Home"
     ? "Health Samurai: FHIR solutions | FHIR integration software"
     : `${title} | Health Samurai`;
@@ -47,6 +48,9 @@ export function Layout({ title, description, children, hideFooter }: LayoutProps
         <Header />
         <main id="main-content" dangerouslySetInnerHTML={{ __html: children }} />
         {!hideFooter && <Footer />}
+        {devMode && (
+          <script dangerouslySetInnerHTML={{ __html: `new EventSource("/__reload").onmessage = e => e.data === "reload" && location.reload()` }} />
+        )}
       </body>
     </html>
   );
