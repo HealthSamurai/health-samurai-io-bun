@@ -6,6 +6,7 @@
 import { db } from "../db";
 import { createSession, createSessionCookie } from "../middleware/session";
 import { BareLayout } from "../components/BareLayout";
+import { getAnalyticsSessionId, linkSessionToUser } from "../analytics";
 
 // OAuth configuration from environment
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || "";
@@ -236,6 +237,10 @@ export async function googleCallback(req: Request): Promise<Response> {
     // Update last login time
     console.log("[OAuth] Updating last login time...");
     await db`UPDATE users SET last_login_at = CURRENT_TIMESTAMP WHERE id = ${user.id}`;
+
+    // Link anonymous analytics session to authenticated user
+    const analyticsSessionId = getAnalyticsSessionId(req);
+    await linkSessionToUser(analyticsSessionId, user.id!);
 
     // Create session
     console.log("[OAuth] Creating session...");

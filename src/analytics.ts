@@ -8,6 +8,82 @@ import { db } from "./db";
 const SESSION_COOKIE_NAME = "_hs_sid";
 const SESSION_DURATION = 30 * 60 * 1000; // 30 minutes sliding window
 
+// ============================================
+// IP Geolocation (using ip-api.com - free tier)
+// ============================================
+
+interface GeoLocation {
+  country: string;
+  countryCode: string;
+  city: string;
+  region: string;
+}
+
+// In-memory cache for geo lookups (avoid rate limits)
+const geoCache = new Map<string, { data: GeoLocation | null; timestamp: number }>();
+const GEO_CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
+const GEO_CACHE_MAX_SIZE = 10000;
+
+/**
+ * Lookup geolocation for an IP address
+ * Uses ip-api.com free tier (45 requests/minute limit)
+ */
+export async function lookupGeoLocation(ip: string): Promise<GeoLocation | null> {
+  // Skip private/local IPs
+  if (!ip || ip === "unknown" || ip.startsWith("127.") || ip.startsWith("192.168.") ||
+      ip.startsWith("10.") || ip === "::1" || ip.startsWith("172.")) {
+    return null;
+  }
+
+  // Check cache
+  const cached = geoCache.get(ip);
+  if (cached && Date.now() - cached.timestamp < GEO_CACHE_TTL) {
+    return cached.data;
+  }
+
+  try {
+    // ip-api.com free tier - no API key needed
+    const response = await fetch(`http://ip-api.com/json/${ip}?fields=status,country,countryCode,regionName,city`);
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const data = await response.json() as {
+      status: string;
+      country?: string;
+      countryCode?: string;
+      regionName?: string;
+      city?: string;
+    };
+
+    if (data.status !== "success") {
+      geoCache.set(ip, { data: null, timestamp: Date.now() });
+      return null;
+    }
+
+    const geo: GeoLocation = {
+      country: data.country || "Unknown",
+      countryCode: data.countryCode || "XX",
+      city: data.city || "Unknown",
+      region: data.regionName || "Unknown",
+    };
+
+    // Cache the result
+    if (geoCache.size >= GEO_CACHE_MAX_SIZE) {
+      // Evict oldest entries
+      const oldestKey = geoCache.keys().next().value;
+      if (oldestKey) geoCache.delete(oldestKey);
+    }
+    geoCache.set(ip, { data: geo, timestamp: Date.now() });
+
+    return geo;
+  } catch (error) {
+    console.error("Geo lookup error:", error);
+    return null;
+  }
+}
+
 /**
  * Parse cookies from request
  */
@@ -126,6 +202,29 @@ export async function trackEvent(opts: TrackEventOptions): Promise<void> {
 }
 
 /**
+ * Link anonymous session events to authenticated user
+ * Called when user logs in to connect their previous anonymous activity
+ */
+export async function linkSessionToUser(analyticsSessionId: string, userId: number): Promise<number> {
+  try {
+    const result = await db`
+      UPDATE analytics_events
+      SET user_id = ${userId}
+      WHERE session_id = ${analyticsSessionId}
+        AND user_id IS NULL
+    `;
+    const count = result.count ?? 0;
+    if (count > 0) {
+      console.log(`[Analytics] Linked ${count} anonymous events to user ${userId}`);
+    }
+    return count;
+  } catch (error) {
+    console.error("Failed to link session to user:", error);
+    return 0;
+  }
+}
+
+/**
  * Extract UTM parameters from URL
  */
 function getUTMParams(url: URL): Record<string, string> | undefined {
@@ -157,6 +256,7 @@ function getLanguage(req: Request): string | undefined {
 
 /**
  * Track a page view (convenience wrapper)
+ * Geo lookup runs in background to avoid blocking the response
  */
 export async function trackPageView(
   req: Request,
@@ -166,6 +266,7 @@ export async function trackPageView(
 ): Promise<void> {
   const url = new URL(req.url);
   const referrer = req.headers.get("referer") || undefined;
+  const clientIP = getClientIP(req);
 
   // Build metadata with language and UTM params
   const language = getLanguage(req);
@@ -175,6 +276,17 @@ export async function trackPageView(
   if (language) metadata.language = language;
   if (utm) metadata.utm = utm;
 
+  // Fetch geo data (uses cache, so usually fast)
+  const geo = await lookupGeoLocation(clientIP);
+  if (geo) {
+    metadata.geo = {
+      country: geo.country,
+      countryCode: geo.countryCode,
+      city: geo.city,
+      region: geo.region,
+    };
+  }
+
   await trackEvent({
     sessionId,
     userId,
@@ -183,7 +295,7 @@ export async function trackPageView(
     referrer,
     previousPath,
     userAgent: req.headers.get("user-agent") || undefined,
-    ip: getClientIP(req),
+    ip: clientIP,
     metadata: Object.keys(metadata).length > 0 ? metadata : undefined,
   });
 }
@@ -486,5 +598,64 @@ export async function getUTMStats(
     medium: row.medium,
     campaign: row.campaign,
     visits: Number(row.visits),
+  }));
+}
+
+/**
+ * Get top countries by visitors
+ */
+export async function getTopCountries(
+  startDate: Date,
+  endDate: Date,
+  limit: number = 10
+): Promise<Array<{ country: string; countryCode: string; visitors: number }>> {
+  const results = await db`
+    SELECT
+      COALESCE(metadata->'geo'->>'country', 'Unknown') as country,
+      COALESCE(metadata->'geo'->>'countryCode', 'XX') as country_code,
+      COUNT(DISTINCT session_id) as visitors
+    FROM analytics_events
+    WHERE event_type = 'page_view'
+      AND created_at >= ${startDate}
+      AND created_at < ${endDate}
+    GROUP BY metadata->'geo'->>'country', metadata->'geo'->>'countryCode'
+    ORDER BY visitors DESC
+    LIMIT ${limit}
+  `;
+
+  return results.map((row: { country: string; country_code: string; visitors: number }) => ({
+    country: row.country,
+    countryCode: row.country_code,
+    visitors: Number(row.visitors),
+  }));
+}
+
+/**
+ * Get top cities by visitors
+ */
+export async function getTopCities(
+  startDate: Date,
+  endDate: Date,
+  limit: number = 10
+): Promise<Array<{ city: string; country: string; visitors: number }>> {
+  const results = await db`
+    SELECT
+      COALESCE(metadata->'geo'->>'city', 'Unknown') as city,
+      COALESCE(metadata->'geo'->>'country', 'Unknown') as country,
+      COUNT(DISTINCT session_id) as visitors
+    FROM analytics_events
+    WHERE event_type = 'page_view'
+      AND created_at >= ${startDate}
+      AND created_at < ${endDate}
+      AND metadata->'geo'->>'city' IS NOT NULL
+    GROUP BY metadata->'geo'->>'city', metadata->'geo'->>'country'
+    ORDER BY visitors DESC
+    LIMIT ${limit}
+  `;
+
+  return results.map((row: { city: string; country: string; visitors: number }) => ({
+    city: row.city,
+    country: row.country,
+    visitors: Number(row.visitors),
   }));
 }
