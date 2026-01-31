@@ -399,6 +399,32 @@ function MultipleItems(): string {
 }
 ```
 
+**XSS Prevention:**
+
+> **WARNING:** This JSX runtime does NOT auto-escape text content (unlike React). User-provided content must be explicitly escaped to prevent XSS attacks.
+
+Use `escapeHtml()` for any user-provided data:
+
+```tsx
+import { escapeHtml } from "../lib/jsx-runtime";
+
+// UNSAFE - XSS vulnerability!
+<p>{comment.content}</p>
+
+// SAFE - escaped
+<p>{escapeHtml(comment.content)}</p>
+```
+
+**When to escape:**
+- Comment/post content from database
+- User-submitted form data displayed back
+- Any data that originates from user input
+
+**When NOT to escape:**
+- Static strings in code
+- Component output (already HTML)
+- Content from `dangerouslySetInnerHTML` (intentionally raw)
+
 **Layout wrapper**: All pages use `Layout()` which wraps content with `<!DOCTYPE html>`, `<head>`, `Header()`, and `Footer()`.
 
 **Static files**: CSS served from `/styles/*`, images from `/assets/*`. Files live in `src/styles/` and `src/assets/`.

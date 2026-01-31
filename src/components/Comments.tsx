@@ -1,4 +1,4 @@
-import { Fragment } from "../lib/jsx-runtime";
+import { Fragment, escapeHtml } from "../lib/jsx-runtime";
 import type { Context, SessionUser } from "../context";
 import type { UserRole } from "../types";
 
@@ -85,7 +85,7 @@ export function CommentItem({ comment, replies, allComments, currentUser, slug, 
             <span class="font-medium text-gray-900 text-sm">{comment.username}</span>
             <span class="text-xs text-gray-500">{formatCommentDate(comment.created_at)}</span>
           </div>
-          <p class="text-gray-700 text-sm whitespace-pre-wrap break-words">{comment.content}</p>
+          <p class="text-gray-700 text-sm whitespace-pre-wrap break-words">{escapeHtml(comment.content)}</p>
 
           {/* Actions */}
           <div class="flex items-center gap-4 mt-2">

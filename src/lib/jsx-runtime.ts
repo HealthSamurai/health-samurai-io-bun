@@ -9,8 +9,8 @@ const VOID_ELEMENTS = new Set([
   "link", "meta", "param", "source", "track", "wbr",
 ]);
 
-// Escape HTML to prevent XSS
-function escapeHtml(str: string): string {
+// Escape HTML to prevent XSS - exported for use with user content
+export function escapeHtml(str: string): string {
   return str
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
