@@ -1,8 +1,11 @@
 import { Pool } from "pg";
 
-// Connection URL
-const DATABASE_URL = process.env.DATABASE_URL ||
-  "postgres://healthsamurai:healthsamurai@localhost:5436/healthsamurai";
+// Connection URL - must use DATABASE_URL from environment
+const DATABASE_URL = process.env.DATABASE_URL;
+if (!DATABASE_URL) {
+  console.error("[DB] ERROR: DATABASE_URL not set!");
+  throw new Error("DATABASE_URL environment variable is required");
+}
 
 console.log("[DB] Connecting to:", DATABASE_URL.replace(/:[^:@]+@/, ":***@"));
 
