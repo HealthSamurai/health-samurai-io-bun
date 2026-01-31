@@ -585,10 +585,10 @@ kubectl exec -it -n health-samurai-dev dev-postgres-0 -- psql -U healthsamurai
 kubectl exec -it -n health-samurai-prod prod-postgres-0 -- psql -U healthsamurai
 ```
 
-**Run migrations in Kubernetes:**
+**Migrations:** Run automatically on server startup. Manual commands if needed:
 ```bash
-kubectl exec -n health-samurai-dev deployment/dev-health-samurai-web -- bun run migrate:up
-kubectl exec -n health-samurai-prod deployment/prod-health-samurai-web -- bun run migrate:up
+kubectl exec -n health-samurai-dev deployment/dev-health-samurai-web -- bun run migrate:status
+kubectl exec -n health-samurai-prod deployment/prod-health-samurai-web -- bun run migrate:status
 ```
 
 See `docs/DEPLOYMENT.md` for full Kubernetes PostgreSQL documentation.
@@ -597,7 +597,16 @@ See `docs/DEPLOYMENT.md` for full Kubernetes PostgreSQL documentation.
 
 SQL-based migrations with up/down scripts. Migration files are stored in `migrations/` directory.
 
-**Commands:**
+**Automatic migrations:** Migrations run automatically when the server starts. No manual intervention needed for deployments.
+
+**IMPORTANT: Never modify a migration after it has been committed.** Once a migration is pushed to git, it may have already run on other environments (dev, prod, other developers). To make changes, create a new migration instead.
+
+```
+→ Database migrations: up to date
+→ Server running at http://localhost:4321
+```
+
+**Manual commands:**
 
 | Command | Description |
 |---------|-------------|
