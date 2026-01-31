@@ -31,6 +31,10 @@ All scripts are in `scripts/` and run via `bun run <script>`:
 | `bun run css:watch` | Watch Tailwind CSS for changes |
 | `bun run routes` | List all available routes |
 | `bun run typecheck` | Run TypeScript type checking |
+| `bun run migrate:status` | Show database migration status |
+| `bun run migrate:up` | Run pending database migrations |
+| `bun run migrate:down` | Rollback last migration |
+| `bun run migrate:create <name>` | Create new migration files |
 
 **Environment variables:**
 - `PORT` - Server port (default: 4444)
@@ -533,6 +537,124 @@ test("hello world", () => {
   expect(1).toBe(1);
 });
 ```
+
+## Database
+
+PostgreSQL database using ParadeDB (Postgres with vector extensions).
+
+**Start the database:**
+```bash
+docker-compose up -d postgres
+```
+
+**Connection settings (defaults):**
+- Host: `localhost`
+- Port: `5436`
+- User: `healthsamurai`
+- Password: `healthsamurai`
+- Database: `healthsamurai`
+
+**Environment variables:**
+- `POSTGRES_HOST` - Database host (default: localhost)
+- `POSTGRES_PORT` - Database port (default: 5436)
+- `POSTGRES_USER` - Database user (default: healthsamurai)
+- `POSTGRES_PASSWORD` - Database password (default: healthsamurai)
+- `POSTGRES_DB` - Database name (default: healthsamurai)
+
+### Kubernetes Deployment
+
+PostgreSQL is deployed as a StatefulSet with persistent storage in both dev and prod environments.
+
+| Environment | Service | DATABASE_URL |
+|-------------|---------|--------------|
+| Dev | `dev-postgres:5432` | `postgres://healthsamurai:healthsamurai@dev-postgres:5432/healthsamurai` |
+| Prod | `prod-postgres:5432` | `postgres://healthsamurai:healthsamurai@prod-postgres:5432/healthsamurai` |
+
+**Deploy:**
+```bash
+kubectl apply -k k8s/overlays/dev
+kubectl apply -k k8s/overlays/prod
+```
+
+**Connect to database:**
+```bash
+# Dev
+kubectl exec -it -n health-samurai-dev dev-postgres-0 -- psql -U healthsamurai
+
+# Prod
+kubectl exec -it -n health-samurai-prod prod-postgres-0 -- psql -U healthsamurai
+```
+
+**Run migrations in Kubernetes:**
+```bash
+kubectl exec -n health-samurai-dev deployment/dev-health-samurai-web -- bun run migrate:up
+kubectl exec -n health-samurai-prod deployment/prod-health-samurai-web -- bun run migrate:up
+```
+
+See `docs/DEPLOYMENT.md` for full Kubernetes PostgreSQL documentation.
+
+### Database Migrations
+
+SQL-based migrations with up/down scripts. Migration files are stored in `migrations/` directory.
+
+**Commands:**
+
+| Command | Description |
+|---------|-------------|
+| `bun run migrate` | Show usage help |
+| `bun run migrate:status` | Show migration status |
+| `bun run migrate:create <name>` | Create new migration files |
+| `bun run migrate:up` | Run pending migrations |
+| `bun run migrate:down [count]` | Rollback last migration(s) |
+
+**Creating a migration:**
+```bash
+bun run migrate:create add-users-table
+# Creates:
+#   migrations/20260131T160019-add-users-table.up.sql
+#   migrations/20260131T160019-add-users-table.down.sql
+```
+
+**Migration file format:**
+```sql
+-- migrations/20260131T160019-add-users-table.up.sql
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  email TEXT NOT NULL UNIQUE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- migrations/20260131T160019-add-users-table.down.sql
+DROP TABLE IF EXISTS users;
+```
+
+**Check status:**
+```bash
+bun run migrate:status
+# Migration Status:
+# =================
+# [x] 20260131T160019-add-users-table  (executed)
+# [ ] 20260131T170000-add-posts-table  (pending)
+```
+
+**Run migrations:**
+```bash
+bun run migrate:up
+# Found 1 pending migration(s)
+# Running migration: 20260131T170000-add-posts-table
+#   Migration completed
+```
+
+**Rollback:**
+```bash
+bun run migrate:down      # Rollback last 1 migration
+bun run migrate:down 3    # Rollback last 3 migrations
+```
+
+**Implementation:**
+- `src/migrate.ts` - Core migration logic using `Bun.SQL`
+- `scripts/migrate.ts` - CLI wrapper
+- Migrations tracked in `migrations` table in the database
 
 ## File System Router
 
