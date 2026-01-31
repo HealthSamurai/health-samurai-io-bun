@@ -6,6 +6,7 @@ export interface Comment {
   id: number;
   blog_slug: string;
   user_id: number;
+  parent_id: number | null;
   content: string;
   created_at: string;
   updated_at: string;
@@ -46,48 +47,126 @@ function formatCommentDate(dateStr: string): string {
 
 interface CommentItemProps {
   comment: Comment;
+  replies: Comment[];
+  allComments: Comment[];
   currentUser?: SessionUser;
+  slug: string;
+  depth?: number;
 }
 
-export function CommentItem({ comment, currentUser }: CommentItemProps): string {
+export function CommentItem({ comment, replies, allComments, currentUser, slug, depth = 0 }: CommentItemProps): string {
   const canDelete = currentUser && (
     currentUser.id === comment.user_id ||
     currentUser.role === "admin"
   );
+  const maxDepth = 3; // Limit nesting depth
+  const canReply = currentUser && depth < maxDepth;
+  const replySignal = `reply_${comment.id}`;
 
   return (
-    <div class="comment flex gap-3 py-4 border-b border-gray-100 last:border-0" id={`comment-${comment.id}`}>
-      {/* Avatar */}
-      {comment.avatar_url ? (
-        <img
-          src={comment.avatar_url}
-          alt={comment.username}
-          class="size-10 rounded-full flex-shrink-0"
-        />
-      ) : (
-        <div class="size-10 rounded-full bg-gray-100 flex items-center justify-center text-sm font-medium text-gray-600 flex-shrink-0">
-          {getInitials(comment.username)}
-        </div>
-      )}
+    <div class={`comment ${depth > 0 ? "ml-8 border-l-2 border-gray-100 pl-4" : ""}`} id={`comment-${comment.id}`}>
+      <div class="flex gap-3 py-4">
+        {/* Avatar */}
+        {comment.avatar_url ? (
+          <img
+            src={comment.avatar_url}
+            alt={comment.username}
+            class="size-8 rounded-full flex-shrink-0"
+          />
+        ) : (
+          <div class="size-8 rounded-full bg-gray-100 flex items-center justify-center text-xs font-medium text-gray-600 flex-shrink-0">
+            {getInitials(comment.username)}
+          </div>
+        )}
 
-      {/* Content */}
-      <div class="flex-1 min-w-0">
-        <div class="flex items-center gap-2 mb-1">
-          <span class="font-medium text-gray-900">{comment.username}</span>
-          <span class="text-sm text-gray-500">{formatCommentDate(comment.created_at)}</span>
-          {canDelete && (
-            <button
-              hx-delete={`/api/blog/${comment.blog_slug}/comments/${comment.id}`}
-              hx-target={`#comment-${comment.id}`}
-              hx-swap="outerHTML"
-              hx-confirm="Delete this comment?"
-              class="ml-auto text-sm text-gray-400 hover:text-red-500 transition-colors"
+        {/* Content */}
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="font-medium text-gray-900 text-sm">{comment.username}</span>
+            <span class="text-xs text-gray-500">{formatCommentDate(comment.created_at)}</span>
+          </div>
+          <p class="text-gray-700 text-sm whitespace-pre-wrap break-words">{comment.content}</p>
+
+          {/* Actions */}
+          <div class="flex items-center gap-4 mt-2">
+            {canReply && (
+              <button
+                data-on-click={`$${replySignal} = !$${replySignal}`}
+                class="text-xs text-gray-500 hover:text-gray-700"
+              >
+                Reply
+              </button>
+            )}
+            {canDelete && (
+              <button
+                hx-delete={`/api/blog/${slug}/comments/${comment.id}`}
+                hx-target={`#comment-${comment.id}`}
+                hx-swap="outerHTML"
+                hx-confirm="Delete this comment?"
+                class="text-xs text-gray-400 hover:text-red-500"
+              >
+                Delete
+              </button>
+            )}
+          </div>
+
+          {/* Reply form (hidden by default) */}
+          {canReply && (
+            <div
+              data-signals={`{${replySignal}: false}`}
+              data-show={`$${replySignal}`}
+              style="display: none"
+              class="mt-3"
             >
-              Delete
-            </button>
+              <form
+                hx-post={`/api/blog/${slug}/comments`}
+                hx-target={`#comment-${comment.id} > .replies`}
+                hx-swap="beforeend"
+                hx-on--after-request={`if(event.detail.successful) { this.reset(); $${replySignal} = false; }`}
+                class="flex gap-2"
+              >
+                <input type="hidden" name="parent_id" value={String(comment.id)} />
+                <textarea
+                  name="content"
+                  required
+                  rows={2}
+                  placeholder="Write a reply..."
+                  class="flex-1 px-3 py-2 text-sm border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                />
+                <div class="flex flex-col gap-1">
+                  <button
+                    type="submit"
+                    class="px-3 py-1.5 bg-primary text-white rounded-lg hover:bg-primary-dark text-xs font-medium"
+                  >
+                    Reply
+                  </button>
+                  <button
+                    type="button"
+                    data-on-click={`$${replySignal} = false`}
+                    class="px-3 py-1.5 text-gray-500 hover:text-gray-700 text-xs"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
           )}
         </div>
-        <p class="text-gray-700 whitespace-pre-wrap break-words">{comment.content}</p>
+      </div>
+
+      {/* Nested replies */}
+      <div class="replies">
+        {replies.map(reply => {
+          const nestedReplies = allComments.filter(c => c.parent_id === reply.id);
+          return CommentItem({
+            comment: reply,
+            replies: nestedReplies,
+            allComments,
+            currentUser,
+            slug,
+            depth: depth + 1,
+          });
+        })}
       </div>
     </div>
   );
@@ -96,10 +175,14 @@ export function CommentItem({ comment, currentUser }: CommentItemProps): string 
 interface CommentListProps {
   comments: Comment[];
   currentUser?: SessionUser;
+  slug: string;
 }
 
-export function CommentList({ comments, currentUser }: CommentListProps): string {
-  if (comments.length === 0) {
+export function CommentList({ comments, currentUser, slug }: CommentListProps): string {
+  // Get top-level comments (no parent)
+  const topLevel = comments.filter(c => c.parent_id === null);
+
+  if (topLevel.length === 0) {
     return (
       <div class="text-center py-8 text-gray-500">
         No comments yet. Be the first to comment!
@@ -109,7 +192,16 @@ export function CommentList({ comments, currentUser }: CommentListProps): string
 
   return (
     <div class="divide-y divide-gray-100">
-      {comments.map(comment => CommentItem({ comment, currentUser }))}
+      {topLevel.map(comment => {
+        const replies = comments.filter(c => c.parent_id === comment.id);
+        return CommentItem({
+          comment,
+          replies,
+          allComments: comments,
+          currentUser,
+          slug,
+        });
+      })}
     </div>
   );
 }
@@ -124,9 +216,9 @@ export function CommentForm({ slug, user }: CommentFormProps): string {
     <form
       hx-post={`/api/blog/${slug}/comments`}
       hx-target="#comments-list"
-      hx-swap="afterbegin"
+      hx-swap="beforeend"
       hx-on--after-request="if(event.detail.successful) this.reset()"
-      class="mb-8"
+      class="mt-8 pt-8 border-t border-gray-100"
     >
       <div class="flex gap-3">
         {/* User avatar */}
@@ -174,23 +266,9 @@ export function CommentsSection({ slug, ctx }: CommentsSectionProps): string {
   const user = ctx?.user;
 
   return (
-    <section class="border-t border-gray-200 mt-12 pt-12">
+    <section class="border-t border-gray-200 mt-12 pt-12 pb-12">
       <div class="mx-auto max-w-2xl px-6">
         <h2 class="text-2xl font-bold text-gray-900 mb-8">Comments</h2>
-
-        {/* Comment form (only for authenticated users) */}
-        {user ? (
-          CommentForm({ slug, user })
-        ) : (
-          <div class="mb-8 p-4 bg-gray-50 rounded-lg text-center">
-            <p class="text-gray-600">
-              <a href={`/login?redirect=/blog/${slug}`} class="text-primary hover:underline font-medium">
-                Log in
-              </a>
-              {" "}to leave a comment.
-            </p>
-          </div>
-        )}
 
         {/* Comments list (loaded via htmx) */}
         <div
@@ -203,6 +281,20 @@ export function CommentsSection({ slug, ctx }: CommentsSectionProps): string {
             Loading comments...
           </div>
         </div>
+
+        {/* Comment form at the bottom (only for authenticated users) */}
+        {user ? (
+          CommentForm({ slug, user })
+        ) : (
+          <div class="mt-8 pt-8 border-t border-gray-100 text-center">
+            <p class="text-gray-600">
+              <a href={`/login?redirect=/blog/${slug}`} class="text-primary hover:underline font-medium">
+                Log in
+              </a>
+              {" "}to leave a comment.
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );

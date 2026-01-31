@@ -342,21 +342,21 @@ Bun.serve({
     // Blog comments API - GET comments for a post
     const commentsMatch = path.match(/^\/api\/blog\/([^/]+)\/comments$/);
     if (commentsMatch && req.method === "GET") {
-      const slug = commentsMatch[1];
+      const slug = commentsMatch[1]!;
       const comments = await db`
         SELECT c.*, u.username, u.avatar_url, u.role
         FROM comments c
         JOIN users u ON c.user_id = u.id
         WHERE c.blog_slug = ${slug}
-        ORDER BY c.created_at DESC
+        ORDER BY c.created_at ASC
       ` as Comment[];
 
-      return html(CommentList({ comments, currentUser: user }));
+      return html(CommentList({ comments, currentUser: user, slug }));
     }
 
     // Blog comments API - POST new comment
     if (commentsMatch && req.method === "POST") {
-      const slug = commentsMatch[1];
+      const slug = commentsMatch[1]!;
 
       // Require authentication
       if (!user) {
@@ -365,6 +365,8 @@ Bun.serve({
 
       const formData = await req.formData();
       const content = formData.get("content")?.toString().trim();
+      const parentIdStr = formData.get("parent_id")?.toString();
+      const parentId = parentIdStr ? parseInt(parentIdStr) : null;
 
       if (!content) {
         return new Response("Content is required", { status: 400 });
@@ -372,8 +374,8 @@ Bun.serve({
 
       // Insert comment and return the new comment HTML
       const [newComment] = await db`
-        INSERT INTO comments (blog_slug, user_id, content)
-        VALUES (${slug}, ${user.id}, ${content})
+        INSERT INTO comments (blog_slug, user_id, content, parent_id)
+        VALUES (${slug}, ${user.id}, ${content}, ${parentId})
         RETURNING *
       `;
 
@@ -384,14 +386,21 @@ Bun.serve({
         role: user.role,
       };
 
-      return html(CommentItem({ comment, currentUser: user }));
+      return html(CommentItem({
+        comment,
+        replies: [],
+        allComments: [],
+        currentUser: user,
+        slug,
+        depth: parentId ? 1 : 0,
+      }));
     }
 
     // Blog comments API - DELETE comment
     const deleteCommentMatch = path.match(/^\/api\/blog\/([^/]+)\/comments\/(\d+)$/);
     if (deleteCommentMatch && req.method === "DELETE") {
-      const slug = deleteCommentMatch[1];
-      const commentId = parseInt(deleteCommentMatch[2]);
+      const slug = deleteCommentMatch[1]!;
+      const commentId = parseInt(deleteCommentMatch[2]!);
 
       // Require authentication
       if (!user) {
@@ -532,7 +541,8 @@ Bun.serve({
       }
 
       // Support both sync and async page components
-      const content = await page.default(params);
+      // Pass ctx to all pages so they can access user session if needed
+      const content = await page.default({ ...params, ctx });
 
       return new Response(
         Layout({

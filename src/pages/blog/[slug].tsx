@@ -1,6 +1,8 @@
 import { Fragment } from "../../lib/jsx-runtime";
 import { getPostBySlug, formatDate } from "../../data/blog";
 import { renderMarkdown } from "../../lib/markdown";
+import { CommentsSection } from "../../components/Comments";
+import type { Context } from "../../context";
 
 export const metadata = {
   title: "Blog",
@@ -43,8 +45,14 @@ function NotFound(): string {
   );
 }
 
-export default function BlogPost(params: { slug: string }): string {
-  const post = getPostBySlug(params.slug);
+interface BlogPostParams {
+  slug: string;
+  ctx?: Context;
+}
+
+export default function BlogPost(params: BlogPostParams): string {
+  const { slug, ctx } = params;
+  const post = getPostBySlug(slug);
 
   if (!post) {
     return NotFound();
@@ -132,6 +140,9 @@ export default function BlogPost(params: { slug: string }): string {
             dangerouslySetInnerHTML={{ __html: contentHtml }}
           />
         </div>
+
+        {/* Comments Section */}
+        {CommentsSection({ slug, ctx })}
 
         {/* Footer */}
         <footer class="border-t border-gray-100 bg-gray-50">

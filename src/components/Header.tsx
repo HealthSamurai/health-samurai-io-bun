@@ -112,6 +112,18 @@ export function Header({ ctx }: HeaderProps = {}): string {
                   <p class="text-sm font-medium text-gray-900">{user.username}</p>
                   <p class="text-xs text-gray-500">{user.email}</p>
                 </div>
+                {user.email.endsWith("@health-samurai.io") && (
+                  <a
+                    href="/admin/analytics"
+                    class="flex items-center gap-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                  >
+                    <svg class="size-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" />
+                    </svg>
+                    Admin
+                  </a>
+                )}
                 <form method="POST" action="/api/logout">
                   <button
                     type="submit"
@@ -330,6 +342,18 @@ export function Header({ ctx }: HeaderProps = {}): string {
                       <p class="text-xs text-gray-500">{user.email}</p>
                     </div>
                   </div>
+                  {user.email.endsWith("@health-samurai.io") && (
+                    <a
+                      href="/admin/analytics"
+                      class="-mx-3 flex items-center gap-x-2 rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                    >
+                      <svg class="size-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" />
+                      </svg>
+                      Admin
+                    </a>
+                  )}
                   <form method="POST" action="/api/logout" class="mt-2">
                     <button
                       type="submit"
