@@ -191,23 +191,12 @@ export async function googleCallback(req: Request): Promise<Response> {
 
     // Find or create user
     console.log("[OAuth] Looking up user by google_id...");
-    let user;
-    try {
-      const users = await db`SELECT * FROM users WHERE google_id = ${googleUser.id}`;
-      user = users[0];
-    } catch (dbError) {
-      console.error("[OAuth] DB error on user lookup:", dbError);
-      return new Response(renderError(`Database error: ${dbError instanceof Error ? dbError.message : String(dbError)}`), {
-        status: 500,
-        headers: { "Content-Type": "text/html" },
-      });
-    }
+    let [user] = await db`SELECT * FROM users WHERE google_id = ${googleUser.id}`;
 
     if (!user) {
       console.log("[OAuth] No user found by google_id, checking email...");
       // Check if user exists with same email (for linking accounts)
-      const usersByEmail = await db`SELECT * FROM users WHERE email = ${googleUser.email}`;
-      user = usersByEmail[0];
+      [user] = await db`SELECT * FROM users WHERE email = ${googleUser.email}`;
 
       if (user) {
         console.log("[OAuth] Found user by email, linking Google account...");
@@ -221,12 +210,11 @@ export async function googleCallback(req: Request): Promise<Response> {
         console.log("[OAuth] Creating new user...");
         // Create new user
         const username = await generateUniqueUsername(googleUser.email.split("@")[0]);
-        const newUsers = await db`
+        [user] = await db`
           INSERT INTO users (email, username, google_id, first_name, last_name, avatar_url, is_active, role)
           VALUES (${googleUser.email}, ${username}, ${googleUser.id}, ${googleUser.given_name}, ${googleUser.family_name}, ${googleUser.picture}, true, 'user')
           RETURNING *
         `;
-        user = newUsers[0];
         console.log("[OAuth] User created:", user.id);
       }
     } else {
@@ -287,8 +275,8 @@ async function generateUniqueUsername(baseUsername: string): Promise<string> {
   let counter = 1;
 
   while (true) {
-    const existing = await db`SELECT id FROM users WHERE username = ${username}`;
-    if (existing.length === 0) break;
+    const [existing] = await db`SELECT id FROM users WHERE username = ${username}`;
+    if (!existing) break;
     username = `${baseUsername}${counter}`;
     counter++;
   }
