@@ -1,183 +1,133 @@
-// Shared contact form component - configurable per page
-
-import { Component } from "../lib/component";
-
-export type ContactFormConfig = {
-  // Form configuration
-  action?: string;
-  pageUrl?: string;
-
-  // Labels & text
-  submitLabel?: string;
-  messagePlaceholder?: string;
-
-  // Input styling
-  inputClassName?: string;
-
-  // Success message
-  successMessage?: string;
+type ContactInfo = {
+  address?: string;
+  phone?: string;
+  email?: string;
 };
 
-export type ContactSectionConfig = ContactFormConfig & {
-  // Component tracing
-  componentName?: string;
-
-  // Section header
+type ContactFormProps = {
   title?: string;
-  subtitle?: string;
+  description?: string;
+  contactInfo?: ContactInfo;
+  formAction?: string;
+  page?: string;
 };
 
-const defaultConfig: Required<ContactFormConfig> = {
-  action: "https://main-page.d-chistoforov.workers.dev",
-  pageUrl: "",
-  submitLabel: "SEND",
-  messagePlaceholder: "How we can help?",
-  inputClassName: "global-textinput w-input",
-  successMessage: "Thank you! We'll be in touch soon.",
+const icons = {
+  address: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="h-7 w-6 text-gray-400"><path d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" stroke-linecap="round" stroke-linejoin="round" /></svg>`,
+  phone: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="h-7 w-6 text-gray-400"><path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" stroke-linecap="round" stroke-linejoin="round" /></svg>`,
+  email: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="h-7 w-6 text-gray-400"><path d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" stroke-linecap="round" stroke-linejoin="round" /></svg>`,
 };
 
-/**
- * Just the contact form - for embedding in custom layouts
- */
-export function ContactForm(config: ContactFormConfig = {}): string {
-  const c = { ...defaultConfig, ...config };
+const defaultContactInfo: ContactInfo = {
+  address: "Health Samurai, Inc.<br />San Francisco, CA",
+  phone: "+1 (628) 246-1268",
+  email: "hello@health-samurai.io",
+};
 
+export function ContactForm({
+  title = "Get in touch",
+  description = "Have a question about our products or services? We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+  contactInfo = defaultContactInfo,
+  formAction = "/api/contact",
+  page = "",
+}: ContactFormProps = {}): string {
   return (
-    <div className="w-form">
-      <form
-        id="contact-form"
-        name="contact-form"
-        action={c.action}
-        method="post"
-        className="w-clearfix"
-        aria-label="Contact Us"
-      >
-        <input
-          className={c.inputClassName}
-          maxLength="256"
-          name="Name"
-          data-name="Name"
-          placeholder="Name"
-          type="text"
-          id="Name-6"
-          required
-        />
-        <input
-          className={c.inputClassName}
-          maxLength="256"
-          name="Company-Name"
-          data-name="Company Name"
-          placeholder="Company"
-          type="text"
-          id="Company-Name"
-          required
-        />
-        <input
-          className={c.inputClassName}
-          maxLength="256"
-          name="Email"
-          data-name="Email"
-          pattern="((?!@(gmail.com|yahoo.com|hotmail.com|mail.ru|yandex.ru|bk.ru|icloud.com|list.ru)).)*"
-          placeholder="Business Email"
-          title="Enter Business Email"
-          type="email"
-          id="Email-5"
-          required
-        />
-        <input
-          className={c.inputClassName}
-          maxLength="256"
-          name="Phone"
-          data-name="Phone"
-          placeholder="Phone"
-          type="tel"
-          id="Phone"
-          required
-        />
-        <textarea
-          id="Message-4"
-          name="Message"
-          maxLength="5000"
-          data-name="Message"
-          placeholder={c.messagePlaceholder}
-          required
-          className="global-textarea w-input"
-        ></textarea>
-        <div className="w-embed w-script"> </div>
-        <div className="w-embed">
-          <input
-            type="hidden"
-            id="current-page"
-            data-name="WPAGE"
-            value={c.pageUrl}
-          />
-          <input
-            type="checkbox"
-            name="custom-field"
-            style="display:none"
-            tabIndex="-1"
-            autoComplete="off"
-          />
+    <div class="relative isolate bg-white">
+      <div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
+        <div class="relative px-6 pt-24 pb-20 sm:pt-32 lg:static lg:px-8 lg:py-48">
+          <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
+            <div class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-gray-100 ring-1 ring-gray-900/10 lg:w-1/2">
+              <svg aria-hidden="true" class="absolute inset-0 size-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]">
+                <defs>
+                  <pattern id="contact-pattern" width="200" height="200" x="100%" y="-1" patternUnits="userSpaceOnUse">
+                    <path d="M130 200V.5M.5 .5H200" fill="none" />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" stroke-width="0" fill="white" />
+                <svg x="100%" y="-1" class="overflow-visible fill-gray-50">
+                  <path d="M-470.5 0h201v201h-201Z" stroke-width="0" />
+                </svg>
+                <rect width="100%" height="100%" fill="url(#contact-pattern)" stroke-width="0" />
+              </svg>
+            </div>
+            <h2 class="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">{title}</h2>
+            <p class="mt-6 text-lg/8 text-gray-600">{description}</p>
+            <dl class="mt-10 space-y-4 text-base/7 text-gray-600">
+              {contactInfo.address && (
+                <div class="flex gap-x-4">
+                  <dt class="flex-none">
+                    <span class="sr-only">Address</span>
+                    <span dangerouslySetInnerHTML={{ __html: icons.address }} />
+                  </dt>
+                  <dd dangerouslySetInnerHTML={{ __html: contactInfo.address }} />
+                </div>
+              )}
+              {contactInfo.phone && (
+                <div class="flex gap-x-4">
+                  <dt class="flex-none">
+                    <span class="sr-only">Telephone</span>
+                    <span dangerouslySetInnerHTML={{ __html: icons.phone }} />
+                  </dt>
+                  <dd>
+                    <a href={`tel:${contactInfo.phone}`} class="hover:text-gray-900">{contactInfo.phone}</a>
+                  </dd>
+                </div>
+              )}
+              {contactInfo.email && (
+                <div class="flex gap-x-4">
+                  <dt class="flex-none">
+                    <span class="sr-only">Email</span>
+                    <span dangerouslySetInnerHTML={{ __html: icons.email }} />
+                  </dt>
+                  <dd>
+                    <a href={`mailto:${contactInfo.email}`} class="hover:text-gray-900">{contactInfo.email}</a>
+                  </dd>
+                </div>
+              )}
+            </dl>
+          </div>
         </div>
-        <input
-          type="submit"
-          data-wait="Please wait..."
-          id="Contact-us"
-          className="global-btn-primary align-right btn-width w-button"
-          value={c.submitLabel}
-        />
-        <div className="contactus_form_policy">
-          By submitting the form you agree to
-          <a href="/legal/privacy-policy" rel="nofollow" target="_blank">
-            Privacy Policy
-          </a>
-          and
-          <a href="/legal/cookie-policy" rel="nofollow" target="_blank">
-            Cookie Policy
-          </a>
-          .
-        </div>
-        <input type="hidden" name="hutk" value />
-        <input type="hidden" name="ipAddress" value />
-        <input type="hidden" name="pageUri" value />
-        <input type="hidden" name="pageId" value />
-        <input type="hidden" name="pageName" value />
-      </form>
-      <div
-        className="message-box w-form-done"
-        tabIndex="-1"
-        role="region"
-        aria-label="Contact Us success"
-      >
-        <div>{c.successMessage}</div>
-      </div>
-      <div
-        className="w-form-fail"
-        tabIndex="-1"
-        role="region"
-        aria-label="Contact Us failure"
-      >
-        <div>Oops! Something went wrong while submitting the form.</div>
+        <form action={formAction} method="POST" class="px-6 pt-20 pb-24 sm:pb-32 lg:px-8 lg:py-48">
+          <input type="hidden" name="page" value={page} />
+          <div class="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
+            <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+              <div>
+                <label for="first-name" class="block text-sm/6 font-semibold text-gray-900">First name</label>
+                <div class="mt-2.5">
+                  <input id="first-name" type="text" name="first-name" autocomplete="given-name" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-primary" />
+                </div>
+              </div>
+              <div>
+                <label for="last-name" class="block text-sm/6 font-semibold text-gray-900">Last name</label>
+                <div class="mt-2.5">
+                  <input id="last-name" type="text" name="last-name" autocomplete="family-name" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-primary" />
+                </div>
+              </div>
+              <div class="sm:col-span-2">
+                <label for="email" class="block text-sm/6 font-semibold text-gray-900">Email</label>
+                <div class="mt-2.5">
+                  <input id="email" type="email" name="email" autocomplete="email" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-primary" />
+                </div>
+              </div>
+              <div class="sm:col-span-2">
+                <label for="phone-number" class="block text-sm/6 font-semibold text-gray-900">Phone number</label>
+                <div class="mt-2.5">
+                  <input id="phone-number" type="tel" name="phone-number" autocomplete="tel" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-primary" />
+                </div>
+              </div>
+              <div class="sm:col-span-2">
+                <label for="message" class="block text-sm/6 font-semibold text-gray-900">Message</label>
+                <div class="mt-2.5">
+                  <textarea id="message" name="message" rows="4" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-primary"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="mt-8 flex justify-end">
+              <button type="submit" class="rounded-md bg-primary px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">Send message</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
-  );
-}
-
-/**
- * Contact form wrapped in a full page section with header
- */
-export function ContactSection(config: ContactSectionConfig = {}): string {
-  const title = config.title ?? "contact us";
-  const subtitle = config.subtitle ?? "Get in touch with us today!";
-  const componentName = config.componentName ?? "components/ContactSection";
-
-  return (
-    <Component name={componentName} className="contact-section">
-      <h2 className="global-2header">{title} </h2>
-      <p className="paragraph-3">{subtitle} </p>
-      <div id="get_in_touch" className="getintouch-form">
-        {ContactForm(config)}
-      </div>
-    </Component>
   );
 }

@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun run css:watch & bun scripts/dev.ts",
+    "dev": "bun scripts/dev.ts",
     "start": "bun run css:build && bun scripts/start.ts",
     "css:build": "bunx @tailwindcss/cli -i src/styles/tailwind.css -o public/styles/main.css --minify",
     "css:watch": "bunx @tailwindcss/cli -i src/styles/tailwind.css -o public/styles/main.css --watch",
@@ -19,7 +19,7 @@
     "tailwindcss": "^4.1.18"
   },
   "peerDependencies": {
-    "typescript": "^5"
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "parse5": "^8.0.0"

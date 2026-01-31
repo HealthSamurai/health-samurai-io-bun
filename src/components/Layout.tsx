@@ -49,7 +49,7 @@ export function Layout({ title, description, children, hideFooter, devMode }: La
         <main id="main-content" dangerouslySetInnerHTML={{ __html: children }} />
         {!hideFooter && <Footer />}
         {devMode && (
-          <script dangerouslySetInnerHTML={{ __html: `new EventSource("/__reload").onmessage = e => e.data === "reload" && location.reload()` }} />
+          <script dangerouslySetInnerHTML={{ __html: `let _id;setInterval(async()=>{const r=await fetch("/__ping").catch(()=>null);const n=await r?.text();if(_id&&n&&_id!==n)location.reload();if(n)_id=n},1000)` }} />
         )}
       </body>
     </html>

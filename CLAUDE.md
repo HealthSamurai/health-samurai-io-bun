@@ -14,7 +14,7 @@ Rebuilding [health-samurai.io](https://health-samurai.io) from scratch using Bun
 
 ```sh
 bun install    # Install dependencies
-bun dev        # Start dev server (hot reload + opens browser)
+bun dev        # Start dev server (hot reload)
 ```
 
 Server runs at http://localhost:4444
@@ -25,7 +25,7 @@ All scripts are in `scripts/` and run via `bun run <script>`:
 
 | Command | Description |
 |---------|-------------|
-| `bun dev` | Dev server + Tailwind watcher (hot reload, opens browser) |
+| `bun dev` | Dev server + Tailwind watcher (hot reload) |
 | `bun start` | Production server (builds CSS, no hot reload) |
 | `bun run css:build` | Build Tailwind CSS (minified) |
 | `bun run css:watch` | Watch Tailwind CSS for changes |
@@ -34,11 +34,9 @@ All scripts are in `scripts/` and run via `bun run <script>`:
 
 **Environment variables:**
 - `PORT` - Server port (default: 4444)
-- `NO_BROWSER=1` - Disable auto-open browser on dev
 
 ```sh
 PORT=3000 bun dev           # Run on different port
-NO_BROWSER=1 bun dev        # Don't open browser
 ```
 
 ## Server Management (Background)
