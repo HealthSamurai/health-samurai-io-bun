@@ -154,6 +154,56 @@ Bun.serve({
       return serveStatic("/sitemap.xml", "application/xml");
     }
 
+    // Raw markdown for LLMs: /blog.md (index) and /blog/[slug].md
+    if (path === "/blog.md") {
+      const { getAllPosts } = await import("./data/blog");
+      const posts = getAllPosts();
+
+      const markdown = `# Health Samurai Blog
+
+${posts.length} articles about FHIR, healthcare interoperability, and Health Samurai products.
+
+## Articles
+
+${posts.map(p => `- [${p.title}](/blog/${p.slug}.md) - ${p.date} by ${p.author}
+  ${p.description}`).join("\n\n")}
+`;
+
+      return new Response(markdown, {
+        headers: {
+          "Content-Type": "text/markdown; charset=utf-8",
+          "X-Robots-Tag": "noindex",
+        },
+      });
+    }
+
+    if (path.startsWith("/blog/") && path.endsWith(".md")) {
+      const slug = path.replace("/blog/", "").replace(".md", "");
+      const { getPostBySlug } = await import("./data/blog");
+      const post = getPostBySlug(slug);
+
+      if (post) {
+        // Return full markdown with frontmatter
+        const markdown = `---
+title: ${post.title}
+description: ${post.description}
+date: ${post.date}
+author: ${post.author}
+url: https://health-samurai.io/blog/${post.slug}
+---
+
+${post.content}`;
+
+        return new Response(markdown, {
+          headers: {
+            "Content-Type": "text/markdown; charset=utf-8",
+            "X-Robots-Tag": "noindex",
+          },
+        });
+      }
+      return new Response("Post not found", { status: 404 });
+    }
+
     // Live reload ping endpoint (dev mode only)
     if (DEV_MODE && path === "/__ping") {
       return new Response(SERVER_ID);
