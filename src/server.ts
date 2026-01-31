@@ -1,12 +1,34 @@
 import { Layout } from "./components/Layout";
+import { BareLayout } from "./components/BareLayout";
 import { watch } from "fs";
 import { initGitInfo } from "./lib/git-info";
 import { initHighlighter } from "./lib/markdown";
 import { getAllPosts } from "./data/blog";
+import { db } from "./db";
+import { newContext } from "./context";
+import {
+  createSession,
+  destroySession,
+  getSession,
+  getSessionId,
+  createSessionCookie,
+  clearSessionCookie,
+} from "./middleware/session";
+import { LoginForm } from "./pages/login";
+import { googleLogin, googleCallback, isGoogleOAuthConfigured } from "./auth/google";
+import { runMigrations } from "./migrate";
 
 // Initialize at startup
 await initGitInfo();
 await initHighlighter();
+
+// Run database migrations
+try {
+  await runMigrations({ silent: true });
+  console.log("\x1b[32m→\x1b[0m Database migrations: up to date");
+} catch (error) {
+  console.error("\x1b[31m✗\x1b[0m Database migrations failed:", error);
+}
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 4321;
 const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET || "";
@@ -107,6 +129,10 @@ Bun.serve({
     const url = new URL(req.url);
     const path = url.pathname;
 
+    // Create context with user session for all requests
+    const user = await getSession(req);
+    const ctx = newContext(db, user);
+
     // robots.txt and sitemap.xml
     if (path === "/robots.txt") {
       return serveStatic("/robots.txt", "text/plain");
@@ -141,6 +167,97 @@ Bun.serve({
           <strong>Thanks for subscribing!</strong>
         </div>
       `);
+    }
+
+    // Login API endpoint
+    if (path === "/api/login" && req.method === "POST") {
+      const formData = await req.formData();
+      const emailOrUsername = formData.get("email_or_username")?.toString() || "";
+      const password = formData.get("password")?.toString() || "";
+      const redirectUrl = formData.get("redirect")?.toString() || "/";
+
+      // Validate input
+      if (!emailOrUsername || !password) {
+        const content = LoginForm({ error: "Please provide both email/username and password", redirect: redirectUrl });
+        return html(BareLayout({ title: "Login", children: content }));
+      }
+
+      try {
+        // Try to find user by email or username
+        let [user] = await db`SELECT * FROM users WHERE email = ${emailOrUsername}`;
+        if (!user) {
+          [user] = await db`SELECT * FROM users WHERE username = ${emailOrUsername}`;
+        }
+
+        if (!user) {
+          const content = LoginForm({ error: "Invalid email/username or password", redirect: redirectUrl });
+          return html(BareLayout({ title: "Login", children: content }));
+        }
+
+        // Check if user has a password
+        if (!user.password_hash) {
+          const content = LoginForm({ error: "This account does not have password login enabled", redirect: redirectUrl });
+          return html(BareLayout({ title: "Login", children: content }));
+        }
+
+        // Verify password using Bun's built-in password hashing
+        const passwordMatch = await Bun.password.verify(password, user.password_hash);
+
+        if (!passwordMatch) {
+          const content = LoginForm({ error: "Invalid email/username or password", redirect: redirectUrl });
+          return html(BareLayout({ title: "Login", children: content }));
+        }
+
+        // Check if user is active
+        if (user.is_active === false) {
+          const content = LoginForm({ error: "Your account has been deactivated", redirect: redirectUrl });
+          return html(BareLayout({ title: "Login", children: content }));
+        }
+
+        // Update last login time
+        await db`UPDATE users SET last_login_at = CURRENT_TIMESTAMP WHERE id = ${user.id}`;
+
+        // Create session
+        const sessionId = await createSession(user.id!);
+
+        // Redirect with session cookie
+        return new Response(null, {
+          status: 303,
+          headers: {
+            Location: redirectUrl,
+            "Set-Cookie": createSessionCookie(sessionId),
+          },
+        });
+      } catch (error) {
+        console.error("Login error:", error);
+        const content = LoginForm({ error: "An error occurred during login. Please try again.", redirect: redirectUrl });
+        return html(BareLayout({ title: "Login", children: content }));
+      }
+    }
+
+    // Logout API endpoint
+    if (path === "/api/logout" && req.method === "POST") {
+      const sessionId = getSessionId(req);
+      if (sessionId) {
+        await destroySession(sessionId);
+      }
+
+      return new Response(null, {
+        status: 303,
+        headers: {
+          Location: "/login",
+          "Set-Cookie": clearSessionCookie(),
+        },
+      });
+    }
+
+    // Google OAuth routes
+    if (path === "/auth/google") {
+      return googleLogin(req);
+    }
+
+    if (path === "/auth/google/callback") {
+      return googleCallback(req);
     }
 
     // Search API endpoint
@@ -242,6 +359,7 @@ Bun.serve({
           children: content,
           hideFooter: metadata.hideFooter,
           devMode: DEV_MODE,
+          ctx,
         })
       );
     }
@@ -252,6 +370,7 @@ Bun.serve({
         title: "Page Not Found",
         children: notFoundPage(),
         devMode: DEV_MODE,
+        ctx,
       })
     );
   },
