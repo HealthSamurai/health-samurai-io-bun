@@ -2,8 +2,9 @@
 set -e
 
 APP_DIR="/app/repo"
-LOG_FIFO="/tmp/server.log"
+LOG_FILE="/tmp/server.log"
 SERVER_PID=""
+TAIL_PID=""
 
 log() {
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1"
@@ -57,18 +58,23 @@ install_deps() {
 start_server() {
     cd "$APP_DIR"
     log "Starting server on port $PORT..."
-    # Create named pipe for log forwarding
-    rm -f "$LOG_FIFO"
-    mkfifo "$LOG_FIFO"
-    # Forward server output to stdout in background
-    cat "$LOG_FIFO" &
-    # Run server with output to pipe
-    bun run src/server.ts > "$LOG_FIFO" 2>&1 &
+
+    # Create log file and start tail to forward logs
+    : > "$LOG_FILE"
+    tail -f "$LOG_FILE" &
+    TAIL_PID=$!
+
+    # Run server with output to log file
+    bun run src/server.ts >> "$LOG_FILE" 2>&1 &
     SERVER_PID=$!
-    log "Server started with PID: $SERVER_PID"
+    log "Server started with PID: $SERVER_PID (tail PID: $TAIL_PID)"
 }
 
 stop_server() {
+    if [ -n "$TAIL_PID" ] && kill -0 "$TAIL_PID" 2>/dev/null; then
+        kill "$TAIL_PID" 2>/dev/null || true
+        TAIL_PID=""
+    fi
     if [ -n "$SERVER_PID" ] && kill -0 "$SERVER_PID" 2>/dev/null; then
         log "Stopping server (PID: $SERVER_PID)..."
         kill "$SERVER_PID" 2>/dev/null || true
@@ -86,7 +92,6 @@ restart_server() {
 cleanup() {
     log "Shutting down..."
     stop_server
-    rm -f "$LOG_FIFO"
     exit 0
 }
 
@@ -129,6 +134,13 @@ while true; do
         if [ -n "$SERVER_PID" ] && ! kill -0 "$SERVER_PID" 2>/dev/null; then
             log "Server crashed, restarting..."
             start_server
+        fi
+
+        # Check if tail is still running
+        if [ -n "$TAIL_PID" ] && ! kill -0 "$TAIL_PID" 2>/dev/null; then
+            log "Log tail died, restarting..."
+            tail -f "$LOG_FILE" &
+            TAIL_PID=$!
         fi
     done
 
