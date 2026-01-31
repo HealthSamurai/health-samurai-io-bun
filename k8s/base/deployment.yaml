@@ -25,6 +25,8 @@ spec:
                 name: health-samurai-config
             - secretRef:
                 name: postgres-secret
+            - secretRef:
+                name: health-samurai-secrets
           resources:
             requests:
               memory: "128Mi"

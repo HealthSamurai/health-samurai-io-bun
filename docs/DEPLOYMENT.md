@@ -363,6 +363,77 @@ kubectl get endpoints -n health-samurai-dev dev-postgres
 - Deleting the StatefulSet does NOT delete the PVC
 - To delete data: `kubectl delete pvc -n health-samurai-dev postgres-data-dev-postgres-0`
 
+## Google OAuth Authentication
+
+Google OAuth is configured for `@health-samurai.io` domain authentication.
+
+### OAuth Client
+
+| Setting | Value |
+|---------|-------|
+| Project | `atomic-ehr` |
+| Client Name | `Health Samurai Website` |
+| Client ID | `353194995576-anatl78m48o2p16j250sbaob01rgmo92.apps.googleusercontent.com` |
+| Allowed Domain | `health-samurai.io` |
+
+**Redirect URIs:**
+- `http://localhost:4444/auth/google/callback` (local development)
+- `https://site-dev.apki.dev/auth/google/callback` (development)
+- `https://site-prod.apki.dev/auth/google/callback` (production)
+
+### Kubernetes Secrets
+
+Google OAuth credentials are stored in the `health-samurai-secrets` secret in each namespace:
+
+| Secret Key | Description |
+|------------|-------------|
+| `GOOGLE_CLIENT_ID` | OAuth Client ID |
+| `GOOGLE_CLIENT_SECRET` | OAuth Client Secret |
+| `GOOGLE_REDIRECT_URI` | Callback URL for environment |
+| `GOOGLE_ALLOWED_DOMAIN` | `health-samurai.io` |
+
+**View secrets:**
+```bash
+kubectl get secret health-samurai-secrets -n health-samurai-dev -o jsonpath='{.data}' | jq 'keys'
+kubectl get secret health-samurai-secrets -n health-samurai-prod -o jsonpath='{.data}' | jq 'keys'
+```
+
+**Update secrets:**
+```bash
+# Delete and recreate
+kubectl delete secret health-samurai-secrets -n health-samurai-dev
+kubectl create secret generic health-samurai-secrets \
+  --namespace=health-samurai-dev \
+  --from-literal=GOOGLE_CLIENT_ID=<client-id> \
+  --from-literal=GOOGLE_CLIENT_SECRET=<client-secret> \
+  --from-literal=GOOGLE_REDIRECT_URI=https://site-dev.apki.dev/auth/google/callback \
+  --from-literal=GOOGLE_ALLOWED_DOMAIN=health-samurai.io
+
+# Restart deployment to pick up changes
+kubectl rollout restart deployment/dev-health-samurai-web -n health-samurai-dev
+```
+
+### Local Development
+
+Copy `.env.example` to `.env` and fill in the Google OAuth credentials:
+
+```bash
+cp .env.example .env
+```
+
+```env
+GOOGLE_CLIENT_ID=353194995576-anatl78m48o2p16j250sbaob01rgmo92.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=<get from GCP Console or team>
+GOOGLE_REDIRECT_URI=http://localhost:4444/auth/google/callback
+GOOGLE_ALLOWED_DOMAIN=health-samurai.io
+```
+
+### Managing OAuth Client
+
+The OAuth client is managed in Google Cloud Console:
+- **Console URL:** https://console.cloud.google.com/apis/credentials?project=atomic-ehr
+- To add new redirect URIs or view the client secret, navigate to the OAuth 2.0 Client IDs section
+
 ## DNS Configuration
 
 DNS is managed in GCP Cloud DNS (zone: `apki-dev`).

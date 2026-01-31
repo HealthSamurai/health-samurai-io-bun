@@ -658,9 +658,77 @@ bun run migrate:down 3    # Rollback last 3 migrations
 - `scripts/migrate.ts` - CLI wrapper
 - Migrations tracked in `migrations` table in the database
 
+## Authentication
+
+Session-based authentication with Google OAuth for `@health-samurai.io` accounts.
+
+### Routes
+
+| Route | Method | Description |
+|-------|--------|-------------|
+| `/login` | GET | Login page with Google + email/password options |
+| `/auth/google` | GET | Redirect to Google OAuth consent |
+| `/auth/google/callback` | GET | Google OAuth callback handler |
+| `/api/login` | POST | Email/password login |
+| `/api/logout` | POST | Destroy session and redirect |
+
+### Files
+
+```
+src/
+├── auth/
+│   └── google.ts          # Google OAuth implementation
+├── middleware/
+│   ├── session.ts         # Session management (create, get, destroy)
+│   └── auth.ts            # Auth middleware (withAuth, requireAuth)
+├── pages/
+│   └── login.tsx          # Login page component
+├── components/
+│   └── BareLayout.tsx     # Minimal layout for auth pages
+├── context.ts             # Request context with user session
+└── types.ts               # User and session types
+```
+
+### Context
+
+User session is available via `ctx.user` in layouts and components:
+
+```tsx
+// In Layout or Header
+type Props = { ctx?: Context };
+
+export function Header({ ctx }: Props): string {
+  const user = ctx?.user;
+  if (user) {
+    return <span>{user.username}</span>;
+  }
+  return <a href="/login">Log in</a>;
+}
+```
+
+### Local Development
+
+Copy `.env.example` to `.env` with Google OAuth credentials:
+
+```env
+GOOGLE_CLIENT_ID=353194995576-anatl78m48o2p16j250sbaob01rgmo92.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=<get from team or GCP Console>
+GOOGLE_REDIRECT_URI=http://localhost:4444/auth/google/callback
+GOOGLE_ALLOWED_DOMAIN=health-samurai.io
+```
+
+### Kubernetes Deployment
+
+OAuth credentials stored in `health-samurai-secrets` secret. See `docs/DEPLOYMENT.md` for details.
+
+```bash
+# View secret keys
+kubectl get secret health-samurai-secrets -n health-samurai-dev -o jsonpath='{.data}' | jq 'keys'
+```
+
 ## File System Router
 
-This project uses [Bun.FileSystemRouter](https://bun.com/docs/api/file-system-router) for automatic file-based routing.
+This project uses [Bun.FileSystemRouter](https://bun.sh/docs/api/file-system-router) for automatic file-based routing.
 
 **How it works in this project:**
 ```ts
