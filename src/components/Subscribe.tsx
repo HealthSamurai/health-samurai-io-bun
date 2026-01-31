@@ -23,7 +23,14 @@ export function Subscribe({
           <h2 class="max-w-xl text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl xl:flex-auto">
             {title}
           </h2>
-          <form action={formAction} method="POST" class="w-full max-w-md">
+          <form
+            hx-post={formAction}
+            hx-target="#subscribe-response"
+            hx-swap="innerHTML"
+            hx-indicator="#subscribe-spinner"
+            class="w-full max-w-md"
+          >
+            <div id="subscribe-response"></div>
             <div class="flex gap-x-4">
               <label for="subscribe-email" class="sr-only">
                 Email address
@@ -39,8 +46,14 @@ export function Subscribe({
               />
               <button
                 type="submit"
-                class="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-xs hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                class="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-xs hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white inline-flex items-center gap-2"
               >
+                <span id="subscribe-spinner" class="htmx-indicator">
+                  <svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                </span>
                 {buttonText}
               </button>
             </div>
