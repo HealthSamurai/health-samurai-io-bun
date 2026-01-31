@@ -146,7 +146,13 @@ export async function googleCallback(req: Request): Promise<Response> {
     if (!tokenResponse.ok) {
       const errorData = await tokenResponse.text();
       console.error("[OAuth] Token exchange failed:", tokenResponse.status, errorData);
-      return new Response(renderError("Failed to exchange authorization code"), {
+      console.error("[OAuth] Request details:", {
+        code: code?.substring(0, 20) + "...",
+        client_id: GOOGLE_CLIENT_ID?.substring(0, 30) + "...",
+        client_secret_length: GOOGLE_CLIENT_SECRET?.length,
+        redirect_uri: GOOGLE_REDIRECT_URI,
+      });
+      return new Response(renderError(`Failed to exchange authorization code: ${errorData}`), {
         status: 400,
         headers: { "Content-Type": "text/html" },
       });
