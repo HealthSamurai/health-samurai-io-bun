@@ -1,4 +1,5 @@
 import { products } from "../data/products";
+import { company } from "../data/company";
 import { $ } from "bun";
 
 // Get git info at module load time
@@ -15,7 +16,7 @@ const icons = {
 const footerLinks = {
   products: products.map(p => ({ label: p.label, href: p.href })),
   resources: [
-    { label: "Documentation", href: "https://docs.aidbox.app" },
+    { label: "Documentation", href: company.urls.docs },
     { label: "Blog", href: "/blog" },
     { label: "Events", href: "/events" },
     { label: "Case Studies", href: "/casestudies" },
@@ -33,10 +34,10 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { label: "GitHub", href: "https://github.com/HealthSamurai", icon: icons.github },
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/health-samurai/", icon: icons.linkedin },
-  { label: "YouTube", href: "https://www.youtube.com/@HealthSamurai", icon: icons.youtube },
-  { label: "X", href: "https://x.com/health_samurai", icon: icons.x },
+  { label: "GitHub", href: company.social.github, icon: icons.github },
+  { label: "LinkedIn", href: company.social.linkedin, icon: icons.linkedin },
+  { label: "YouTube", href: company.social.youtube, icon: icons.youtube },
+  { label: "X", href: company.social.x, icon: icons.x },
 ];
 
 export function Footer(): string {
@@ -47,12 +48,12 @@ export function Footer(): string {
           {/* Logo and tagline */}
           <div class="space-y-8">
             <img
-              src="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5a2ff50e669ec50001a59b5d_health-samurai.webp"
-              alt="Health Samurai"
+              src={company.brand.logo}
+              alt={company.name}
               class="h-9"
             />
             <p class="text-sm/6 text-balance text-gray-600">
-              Building the future of healthcare interoperability with FHIR-native solutions.
+              {company.tagline}
             </p>
             {/* Social links */}
             <div class="flex gap-x-6">
@@ -129,7 +130,7 @@ export function Footer(): string {
         {/* Copyright */}
         <div class="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <p class="text-sm/6 text-gray-600">
-            &copy; {new Date().getFullYear()} Health Samurai, Inc. All rights reserved.
+            &copy; {new Date().getFullYear()} {company.legalName} All rights reserved.
           </p>
           <p class="text-xs text-gray-400 font-mono">
             {gitBranch}@{gitCommit}
