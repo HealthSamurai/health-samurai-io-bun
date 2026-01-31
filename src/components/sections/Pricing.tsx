@@ -112,14 +112,14 @@ export function Pricing({
           <button
             className="pricing-tab"
             data-class="{'active': $pricingPeriod === 'yearly'}"
-            data-on-click="$pricingPeriod = 'yearly'"
+            data-on:click="$pricingPeriod = 'yearly'"
           >
             Yearly
           </button>
           <button
             className="pricing-tab"
             data-class="{'active': $pricingPeriod === 'monthly'}"
-            data-on-click="$pricingPeriod = 'monthly'"
+            data-on:click="$pricingPeriod = 'monthly'"
           >
             Monthly
           </button>

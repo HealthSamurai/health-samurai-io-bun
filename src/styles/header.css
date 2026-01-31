@@ -1,44 +1,4 @@
-/* Header overrides for Webflow navigation markup */
-.nb-scroll-hidden-copy {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: white;
-}
-
-.nb-item-dropdown.w--open > .w-dropdown-list,
-.nb-item-dropdown .w-dropdown-list.w--open {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-  background-color: transparent;
-  height: auto;
-  position: fixed;
-  top: 64px;
-  left: 0;
-  right: 0;
-  z-index: 1001;
-}
-
-.nb-item-dropdown.w--open .nb-dropdown-toggle {
-  color: #c9362b;
-}
-
-.nb-item-dropdown.w--open .nb-icon {
+/* Header - minimal styles for Datastar rotation */
+.rotate-180 {
   transform: rotate(180deg);
-}
-
-/* Show mobile submenus without Webflow JS */
-@media (max-width: 991px) {
-  .nb-navbar-mobile-list .w-dropdown-list {
-    display: block;
-    position: static;
-    height: auto;
-    opacity: 1;
-    transform: none;
-  }
-
-  .nb-navbar-mobile-list .w-dropdown-toggle {
-    cursor: default;
-  }
 }

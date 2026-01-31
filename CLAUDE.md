@@ -801,46 +801,74 @@ The CSS build step ensures Tailwind is compiled on every deployment and restart.
 
 ## Datastar
 
-See [Datastar docs](https://data-star.dev/). Use Datastar for reactive client-side interactivity via HTML attributes. Datastar is loaded from `/assets/js/datastar.js`.
+See [Datastar docs](https://data-star.dev/reference). Use Datastar for reactive client-side interactivity via HTML attributes.
 
-**Core Concepts:**
-- `data-signals` — Define reactive state as a JSON object
-- `data-show` — Conditionally show/hide elements based on signal values
+**IMPORTANT: Attribute syntax uses COLONS, not hyphens!**
+
+**Core Attributes:**
+- `data-signals` — Define reactive state (object or key syntax)
+- `data-show` — Conditionally show/hide elements
 - `data-class` — Conditionally apply CSS classes
-- `data-on-click` — Handle click events and update signals
+- `data-on:click` — Handle click events (note the COLON)
+- `data-bind` — Two-way data binding for inputs
+- `data-text` — Bind element text content
 
+**Attribute Syntax (uses colons for modifiers):**
 ```html
-<!-- Tabs example with Datastar -->
+<!-- Signals: object syntax or key syntax -->
+<div data-signals="{activeTab: 'tab1', count: 0}"></div>
+<div data-signals:foo="1"></div>
+<div data-signals:foo.bar="nested"></div>
+
+<!-- Events: data-on:eventname -->
+<button data-on:click="$count = $count + 1">Increment</button>
+<input data-on:input="$search = evt.target.value" />
+<form data-on:submit="@post('/api/submit')">...</form>
+
+<!-- Classes: object syntax or key syntax -->
+<div data-class="{active: $tab == 'one', hidden: !$visible}"></div>
+<div data-class:font-bold="$isImportant"></div>
+<div data-class:bg-primary="$selected"></div>
+
+<!-- Show/hide -->
+<div data-show="$isVisible">Shown when true</div>
+<div data-show="$tab == 'settings'" style="display: none">Settings panel</div>
+
+<!-- Binding inputs -->
+<input data-bind:username />
+<select data-bind:country>...</select>
+
+<!-- Text content -->
+<span data-text="$message"></span>
+```
+
+**Event Modifiers:**
+```html
+<button data-on:click__once="$init()">Run once</button>
+<input data-on:input__debounce_300ms="$search = evt.target.value" />
+<div data-on:click__outside="$menuOpen = false">...</div>
+<button data-on:click__prevent="$submit()">Submit</button>
+```
+
+**Signal Syntax:**
+- Define: `data-signals="{name: 'value'}"` or `data-signals:name="value"`
+- Read: `$name` (prefix with `$`)
+- Update: `$name = 'new value'`
+- Nested: `data-signals:user.name="John"` → access as `$user.name`
+
+**Important:** Elements hidden by `data-show` should have `style="display: none"` initially to prevent flash before Datastar initializes.
+
+**Tabs Example:**
+```html
 <div data-signals="{activeTab: 'tab1'}">
-  <button data-class="{active: $activeTab == 'tab1'}" data-on-click="$activeTab = 'tab1'">
+  <button data-class="{active: $activeTab == 'tab1'}" data-on:click="$activeTab = 'tab1'">
     Tab 1
   </button>
-  <button data-class="{active: $activeTab == 'tab2'}" data-on-click="$activeTab = 'tab2'">
+  <button data-class="{active: $activeTab == 'tab2'}" data-on:click="$activeTab = 'tab2'">
     Tab 2
   </button>
 
   <div data-show="$activeTab == 'tab1'">Content 1</div>
   <div data-show="$activeTab == 'tab2'" style="display: none">Content 2</div>
 </div>
-```
-
-**Signal Syntax:**
-- Define signals: `data-signals="{name: 'value', count: 0}"`
-- Read signals: `$name`, `$count` (prefix with `$`)
-- Update signals: `$count = $count + 1` or `$name = 'new value'`
-
-**Important:** Panels hidden by `data-show` should have `style="display: none"` initially to prevent flash of content before Datastar initializes.
-
-**Reusable Tabs Component:**
-```tsx
-import { Tabs } from "../components/ui/Tabs";
-
-// Usage
-<Tabs
-  tabs={[
-    { id: "tab1", label: "First Tab", content: "<p>Content here</p>" },
-    { id: "tab2", label: "Second Tab", content: "<p>More content</p>" },
-  ]}
-  defaultTab="tab1"
-/>
 ```

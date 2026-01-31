@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @source "../components/**/*.tsx";
 @source "../pages/**/*.tsx";
-@import "./webflow-shared.css";
+/* @import "./webflow-shared.css"; */ /* Disabled - using Tailwind only */
 @import "./auditbox-inline.css";
 @import "./fhir-server-inline.css";
 @import "./medical-form-inline.css";

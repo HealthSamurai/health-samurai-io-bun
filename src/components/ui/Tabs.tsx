@@ -21,7 +21,7 @@ export function Tabs({ tabs, defaultTab, className = "" }: TabsProps): string {
             className="tabs-trigger"
             role="tab"
             data-class={`{active: $activeTab == '${tab.id}'}`}
-            data-on-click={`$activeTab = '${tab.id}'`}
+            data-on:click={`$activeTab = '${tab.id}'`}
           >
             {tab.label}
           </button>
