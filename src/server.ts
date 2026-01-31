@@ -25,6 +25,7 @@ import {
   trackEvent,
 } from "./analytics";
 import { CommentItem, CommentList, type Comment } from "./components/Comments";
+import { notifyContactForm, notifySubscription, isZulipConfigured } from "./lib/zulip";
 
 // Initialize at startup
 await initGitInfo();
@@ -451,9 +452,12 @@ Make healthcare data interoperable through FHIR standards.
         };
 
         await db`
-          INSERT INTO form_submissions (form_type, email, name, data, ip_address, user_agent, referrer, session_id)
-          VALUES (${formType}, ${email}, ${name}, ${JSON.stringify(data)}, ${ipAddress}::inet, ${userAgent}, ${referrer}, ${sessionId})
+          INSERT INTO form_submissions (form_type, email, name, data, ip_address, user_agent, referrer, session_id, user_id)
+          VALUES (${formType}, ${email}, ${name}, ${JSON.stringify(data)}, ${ipAddress}::inet, ${userAgent}, ${referrer}, ${sessionId}, ${user?.id || null})
         `;
+
+        // Notify Zulip (non-blocking)
+        notifyContactForm({ name, email, phone, message, page }).catch(() => {});
 
         return html(`
           <div class="rounded-lg bg-green-50 p-4 mb-6">
@@ -501,9 +505,12 @@ Make healthcare data interoperable through FHIR standards.
         const sessionId = getAnalyticsSessionId(req);
 
         await db`
-          INSERT INTO form_submissions (form_type, email, data, ip_address, user_agent, referrer, session_id)
-          VALUES ('subscribe', ${email}, '{}', ${ipAddress}::inet, ${userAgent}, ${referrer}, ${sessionId})
+          INSERT INTO form_submissions (form_type, email, data, ip_address, user_agent, referrer, session_id, user_id)
+          VALUES ('subscribe', ${email}, '{}', ${ipAddress}::inet, ${userAgent}, ${referrer}, ${sessionId}, ${user?.id || null})
         `;
+
+        // Notify Zulip (non-blocking)
+        notifySubscription(email).catch(() => {});
 
         return html(`
           <div style="text-align: center; padding: var(--space-4); color: white;">
@@ -1039,6 +1046,7 @@ const routes = listRoutes();
 console.log(`\n\x1b[32m→\x1b[0m Server running at \x1b[1mhttp://localhost:${PORT}\x1b[0m`);
 console.log(`\x1b[32m→\x1b[0m Routes: ${routes.join(", ")}`);
 console.log(`\x1b[32m→\x1b[0m Watching \x1b[36m${PAGES_DIR}\x1b[0m for changes`);
+console.log(`\x1b[32m→\x1b[0m Zulip: ${isZulipConfigured() ? "\x1b[32menabled\x1b[0m" : "\x1b[33mdisabled\x1b[0m (no credentials)"}`);
 if (DEV_MODE) {
   console.log(`\x1b[32m→\x1b[0m Live reload: \x1b[35m/__ping\x1b[0m (polling)`);
 }

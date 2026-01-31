@@ -35,6 +35,7 @@ All scripts are in `scripts/` and run via `bun run <script>`:
 | `bun run migrate:up` | Run pending database migrations |
 | `bun run migrate:down` | Rollback last migration |
 | `bun run migrate:create <name>` | Create new migration files |
+| `bun run sql "<query>"` | Run SQL query against the database |
 
 **Environment variables:**
 - `PORT` - Server port (default: 4444)
@@ -828,6 +829,27 @@ Self-hosted analytics tracking page views, user journeys, and site traffic. See 
 ```javascript
 hsTrack('custom_event', 'Button Clicked', { category: 'cta', plan: 'pro' });
 ```
+
+## Zulip Bot
+
+Zulip integration for posting form submission notifications to Zulip streams.
+
+**Key files:**
+- `src/lib/zulip.ts` - Zulip API client
+
+**Environment variables:**
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `ZULIP_BOT_EMAIL` | Bot email (from zuliprc) | - |
+| `ZULIP_API_KEY` | Bot API key (from zuliprc) | - |
+| `ZULIP_SERVER` | Zulip server URL | `https://chat.health-samurai.io` |
+| `ZULIP_STREAM` | Stream to post to | `health-samurai.io` |
+
+**Notifications:** All form submissions post to `#health-samurai.io > form-submissions`
+
+**Local development:** Add credentials to `.env` (see `.env.example`)
+
+**Kubernetes:** Credentials stored in `health-samurai-secrets` secret
 
 ## File System Router
 

@@ -11,6 +11,7 @@ resources:
   - postgres-statefulset.yaml
   - postgres-service.yaml
   - postgres-secret.yaml
+  - app-secrets.yaml
 
 labels:
   - pairs:

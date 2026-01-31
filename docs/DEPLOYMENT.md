@@ -280,6 +280,62 @@ GOOGLE_REDIRECT_URI=http://localhost:4444/auth/google/callback
 GOOGLE_ALLOWED_DOMAIN=health-samurai.io
 ```
 
+## Zulip Bot
+
+Zulip bot sends form submission notifications to chat.health-samurai.io.
+
+### Configuration
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `ZULIP_BOT_EMAIL` | Bot email address | - |
+| `ZULIP_API_KEY` | Bot API key | - |
+| `ZULIP_SERVER` | Zulip server URL | `https://chat.health-samurai.io` |
+| `ZULIP_STREAM` | Stream to post notifications | `health-samurai.io` |
+
+### Notifications
+
+All form submissions post to `#health-samurai.io > form-submissions`.
+
+### Kubernetes Secrets
+
+Add Zulip credentials to the `health-samurai-secrets` secret:
+
+```bash
+# Add to existing secret
+kubectl patch secret health-samurai-secrets -n default \
+  --type='json' \
+  -p='[
+    {"op": "add", "path": "/data/ZULIP_BOT_EMAIL", "value": "'$(echo -n "samurai-site-bot@chat.health-samurai.io" | base64)'"},
+    {"op": "add", "path": "/data/ZULIP_API_KEY", "value": "'$(echo -n "YOUR_API_KEY" | base64)'"},
+    {"op": "add", "path": "/data/ZULIP_SERVER", "value": "'$(echo -n "https://chat.health-samurai.io" | base64)'"},
+    {"op": "add", "path": "/data/ZULIP_STREAM", "value": "'$(echo -n "health-samurai.io" | base64)'"}
+  ]'
+
+# Restart to pick up changes
+kubectl rollout restart deployment/health-samurai-web-dev deployment/health-samurai-web-prod -n default
+```
+
+### Local Development
+
+Add to `.env`:
+
+```env
+ZULIP_BOT_EMAIL=samurai-site-bot@chat.health-samurai.io
+ZULIP_API_KEY=<get from zuliprc>
+ZULIP_SERVER=https://chat.health-samurai.io
+ZULIP_STREAM=health-samurai.io
+```
+
+### Verify Configuration
+
+Check server startup logs for Zulip status:
+
+```bash
+kubectl logs -n default deployment/health-samurai-web-dev | grep Zulip
+# → Zulip: enabled
+```
+
 ## Docker Image
 
 ### Build and Push
