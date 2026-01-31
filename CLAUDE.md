@@ -419,6 +419,74 @@ Routes are automatically discovered from `src/pages/` using `Bun.FileSystemRoute
 | `/api/contact` (POST) | API endpoint in server.ts |
 | `/api/subscribe` (POST) | API endpoint in server.ts |
 
+## LLM-Friendly Endpoints (llms.txt)
+
+The site implements the [llms.txt specification](https://llmstxt.org/) for LLM-friendly content discovery.
+
+### Endpoints
+
+| Path | Description |
+|------|-------------|
+| `/llms.txt` | Site index for LLMs with links to all markdown content |
+| `/blog.md` | Blog index with all 100+ articles |
+| `/blog/[slug].md` | Individual blog post in markdown with YAML frontmatter |
+| `/aidbox.md` | Aidbox FHIR Server product page |
+| `/medical-form.md` | Aidbox Forms product page |
+| `/price.md` | Pricing information |
+| `/contacts.md` | Contact information |
+| `/casestudies.md` | Case studies overview |
+| `/about.md` | Company information |
+
+### Example Usage
+
+```bash
+# Get site index for LLMs
+curl https://health-samurai.io/llms.txt
+
+# Get blog index
+curl https://health-samurai.io/blog.md
+
+# Get specific article
+curl https://health-samurai.io/blog/aidbox-2025-building-a-future-proof-fhir-platform.md
+```
+
+### llms.txt Format
+
+The `/llms.txt` file follows the specification:
+
+```markdown
+# Site Name
+
+> Brief description
+
+## Section
+- [Link](/path.md): Description
+
+## Optional
+- [Less important links](/other.md): Can be skipped for shorter context
+```
+
+### Headers
+
+All `.md` endpoints return:
+- `Content-Type: text/markdown; charset=utf-8`
+- `X-Robots-Tag: noindex` (prevents search engine indexing)
+
+### Adding New Page Markdown
+
+Add entries to the `pageMarkdown` object in `src/server.ts`:
+
+```typescript
+const pageMarkdown: Record<string, string> = {
+  "/new-page.md": `# New Page
+
+> Description
+
+Content here...
+`,
+};
+```
+
 ## Adding a New Page
 
 Create a file in `src/pages/` with `default` export and `metadata`:

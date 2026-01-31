@@ -154,6 +154,43 @@ Bun.serve({
       return serveStatic("/sitemap.xml", "application/xml");
     }
 
+    // llms.txt - LLM-friendly site index (https://llmstxt.org/)
+    if (path === "/llms.txt") {
+      const { getAllPosts } = await import("./data/blog");
+      const posts = getAllPosts();
+
+      const llmstxt = `# Health Samurai
+
+> Health Samurai builds FHIR-native healthcare infrastructure. Our main product is Aidbox — a FHIR server and healthcare development platform used by healthcare organizations worldwide.
+
+## Products
+
+- [Aidbox FHIR Server](/aidbox.md): Enterprise FHIR server with advanced features
+- [Aidbox Forms](/medical-form.md): FHIR SDC-compliant form builder
+- [Pricing](/price.md): Aidbox pricing and plans
+
+## Company
+
+- [About Us](/about.md): Health Samurai company information
+- [Contact](/contacts.md): Get in touch with our team
+- [Case Studies](/casestudies.md): Customer success stories
+
+## Blog
+
+- [All Articles](/blog.md): ${posts.length} articles about FHIR and healthcare interoperability
+
+## Optional
+
+${posts.slice(0, 10).map(p => `- [${p.title}](/blog/${p.slug}.md): ${p.description.slice(0, 100)}${p.description.length > 100 ? '...' : ''}`).join('\n')}
+`;
+
+      return new Response(llmstxt, {
+        headers: {
+          "Content-Type": "text/markdown; charset=utf-8",
+        },
+      });
+    }
+
     // Raw markdown for LLMs: /blog.md (index) and /blog/[slug].md
     if (path === "/blog.md") {
       const { getAllPosts } = await import("./data/blog");
@@ -202,6 +239,132 @@ ${post.content}`;
         });
       }
       return new Response("Post not found", { status: 404 });
+    }
+
+    // Static page markdown for LLMs (main pages)
+    const pageMarkdown: Record<string, string> = {
+      "/aidbox.md": `# Aidbox FHIR Server
+
+> Enterprise-grade FHIR server and healthcare development platform.
+
+Aidbox is a FHIR-native backend for healthcare applications. It provides:
+
+- **FHIR R4/R5 API** - Full FHIR compliance with REST API
+- **SQL on FHIR** - Query FHIR data with SQL
+- **SMART on FHIR** - OAuth2/OpenID Connect authentication
+- **Subscriptions** - Real-time notifications
+- **Bulk Data** - Large-scale data import/export
+- **Terminology Services** - ValueSet, CodeSystem operations
+
+## Use Cases
+
+- Electronic Health Records (EHR)
+- Health Information Exchange (HIE)
+- Clinical Decision Support
+- Patient Portals
+- Research Data Platforms
+
+## Links
+
+- [Pricing](/price.md)
+- [Documentation](https://docs.aidbox.app)
+- [Contact Sales](/contacts.md)
+`,
+      "/fhir-server.md": `# Aidbox FHIR Server
+
+See [/aidbox.md](/aidbox.md) for full details.
+`,
+      "/medical-form.md": `# Aidbox Forms
+
+> FHIR SDC-compliant healthcare form builder.
+
+Aidbox Forms enables healthcare organizations to:
+
+- Build FHIR Questionnaires visually
+- Render forms for patients and clinicians
+- Extract structured data as FHIR resources
+- Support complex logic and calculations
+
+## Features
+
+- Drag-and-drop form builder
+- FHIR SDC compliance
+- Conditional logic
+- Scoring and calculations
+- PDF generation
+- Multi-language support
+
+## Links
+
+- [Documentation](https://docs.aidbox.app/modules/aidbox-forms)
+- [Contact Sales](/contacts.md)
+`,
+      "/price.md": `# Aidbox Pricing
+
+> Flexible pricing for healthcare organizations of all sizes.
+
+## Plans
+
+- **Development** - Free for development and testing
+- **Production** - Pay-as-you-go for production workloads
+- **Enterprise** - Custom pricing with dedicated support
+
+## Contact
+
+[Contact our sales team](/contacts.md) for detailed pricing information.
+`,
+      "/contacts.md": `# Contact Health Samurai
+
+> Get in touch with our team.
+
+## Sales Inquiries
+
+Email: hello@health-samurai.io
+
+## Technical Support
+
+- Documentation: https://docs.aidbox.app
+- Community: https://t.me/aidbox
+
+## Office
+
+Health Samurai, Inc.
+`,
+      "/casestudies.md": `# Case Studies
+
+> See how healthcare organizations use Aidbox.
+
+Read our [blog](/blog.md) for detailed case studies and technical articles.
+`,
+      "/about.md": `# About Health Samurai
+
+> Building FHIR-native healthcare infrastructure since 2014.
+
+Health Samurai is a healthcare technology company focused on FHIR interoperability. We build Aidbox, an enterprise FHIR server used by healthcare organizations worldwide.
+
+## Mission
+
+Make healthcare data interoperable through FHIR standards.
+
+## Products
+
+- [Aidbox FHIR Server](/aidbox.md)
+- [Aidbox Forms](/medical-form.md)
+
+## Contact
+
+- Website: https://health-samurai.io
+- Email: hello@health-samurai.io
+`,
+    };
+
+    if (pageMarkdown[path]) {
+      return new Response(pageMarkdown[path], {
+        headers: {
+          "Content-Type": "text/markdown; charset=utf-8",
+          "X-Robots-Tag": "noindex",
+        },
+      });
     }
 
     // Live reload ping endpoint (dev mode only)
