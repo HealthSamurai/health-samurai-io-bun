@@ -17,6 +17,14 @@ import {
 import { LoginForm } from "./pages/login";
 import { googleLogin, googleCallback, isGoogleOAuthConfigured } from "./auth/google";
 import { runMigrations } from "./migrate";
+import {
+  getAnalyticsSessionId,
+  createAnalyticsCookie,
+  trackPageView,
+  getAndSetPreviousPath,
+  trackEvent,
+} from "./analytics";
+import { CommentItem, CommentList, type Comment } from "./components/Comments";
 
 // Initialize at startup
 await initGitInfo();
@@ -128,6 +136,11 @@ Bun.serve({
   async fetch(req) {
     const url = new URL(req.url);
     const path = url.pathname;
+
+    // Log all requests for debugging (skip static assets and ping)
+    if (!path.startsWith("/assets/") && !path.startsWith("/styles/") && path !== "/__ping") {
+      console.log(`[Request] ${req.method} ${path}`);
+    }
 
     // Create context with user session for all requests
     const user = await getSession(req);
@@ -260,6 +273,36 @@ Bun.serve({
       return googleCallback(req);
     }
 
+    // Analytics event API endpoint (for client-side tracking)
+    if (path === "/api/analytics/event" && req.method === "POST") {
+      try {
+        const analyticsSessionId = getAnalyticsSessionId(req);
+        const body = await req.json() as { eventType?: string; path?: string; metadata?: Record<string, unknown> };
+
+        await trackEvent({
+          sessionId: analyticsSessionId,
+          userId: user?.id,
+          eventType: body.eventType || "custom",
+          path: body.path || url.pathname,
+          metadata: body.metadata,
+          userAgent: req.headers.get("user-agent") || undefined,
+        });
+
+        return new Response(JSON.stringify({ ok: true }), {
+          headers: {
+            "Content-Type": "application/json",
+            "Set-Cookie": createAnalyticsCookie(analyticsSessionId),
+          },
+        });
+      } catch (error) {
+        console.error("Analytics API error:", error);
+        return new Response(JSON.stringify({ error: "Invalid request" }), {
+          status: 400,
+          headers: { "Content-Type": "application/json" },
+        });
+      }
+    }
+
     // Search API endpoint
     if (path === "/api/search") {
       const query = url.searchParams.get("q")?.toLowerCase().trim() || "";
@@ -294,6 +337,86 @@ Bun.serve({
         <p class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">Blog posts</p>
         <div class="divide-y divide-gray-100">${resultsHtml}</div>
       `);
+    }
+
+    // Blog comments API - GET comments for a post
+    const commentsMatch = path.match(/^\/api\/blog\/([^/]+)\/comments$/);
+    if (commentsMatch && req.method === "GET") {
+      const slug = commentsMatch[1];
+      const comments = await db`
+        SELECT c.*, u.username, u.avatar_url, u.role
+        FROM comments c
+        JOIN users u ON c.user_id = u.id
+        WHERE c.blog_slug = ${slug}
+        ORDER BY c.created_at DESC
+      ` as Comment[];
+
+      return html(CommentList({ comments, currentUser: user }));
+    }
+
+    // Blog comments API - POST new comment
+    if (commentsMatch && req.method === "POST") {
+      const slug = commentsMatch[1];
+
+      // Require authentication
+      if (!user) {
+        return new Response("Unauthorized", { status: 401 });
+      }
+
+      const formData = await req.formData();
+      const content = formData.get("content")?.toString().trim();
+
+      if (!content) {
+        return new Response("Content is required", { status: 400 });
+      }
+
+      // Insert comment and return the new comment HTML
+      const [newComment] = await db`
+        INSERT INTO comments (blog_slug, user_id, content)
+        VALUES (${slug}, ${user.id}, ${content})
+        RETURNING *
+      `;
+
+      const comment: Comment = {
+        ...newComment,
+        username: user.username,
+        avatar_url: user.avatarUrl,
+        role: user.role,
+      };
+
+      return html(CommentItem({ comment, currentUser: user }));
+    }
+
+    // Blog comments API - DELETE comment
+    const deleteCommentMatch = path.match(/^\/api\/blog\/([^/]+)\/comments\/(\d+)$/);
+    if (deleteCommentMatch && req.method === "DELETE") {
+      const slug = deleteCommentMatch[1];
+      const commentId = parseInt(deleteCommentMatch[2]);
+
+      // Require authentication
+      if (!user) {
+        return new Response("Unauthorized", { status: 401 });
+      }
+
+      // Get the comment to check ownership
+      const [comment] = await db`
+        SELECT * FROM comments WHERE id = ${commentId} AND blog_slug = ${slug}
+      `;
+
+      if (!comment) {
+        return new Response("Comment not found", { status: 404 });
+      }
+
+      // Check if user can delete (own comment or admin)
+      if (comment.user_id !== user.id && user.role !== "admin") {
+        return new Response("Forbidden", { status: 403 });
+      }
+
+      // Delete the comment
+      await db`DELETE FROM comments WHERE id = ${commentId}`;
+
+      // Return empty response (htmx will remove the element)
+      return new Response("", { status: 200 });
     }
 
     // GitHub webhook for instant reload
@@ -337,22 +460,81 @@ Bun.serve({
       });
     }
 
+    // Admin routes protection - require @health-samurai.io users
+    if (path.startsWith("/admin")) {
+      // Check if user is logged in
+      if (!user) {
+        return new Response(null, {
+          status: 303,
+          headers: {
+            Location: `/login?redirect=${encodeURIComponent(path)}`,
+          },
+        });
+      }
+
+      // Check if user has @health-samurai.io email
+      if (!user.email.endsWith("@health-samurai.io")) {
+        return new Response(
+          Layout({
+            title: "Access Denied",
+            children: `
+              <section class="section" style="text-align: center; padding: var(--space-24) 0;">
+                <div class="container">
+                  <h1 class="text-3xl font-bold text-gray-900 mb-4">Access Denied</h1>
+                  <p class="text-gray-600 mb-8">Admin pages are only available to @health-samurai.io users.</p>
+                  <p class="text-gray-500 mb-8">Logged in as: ${user.email}</p>
+                  <div class="flex gap-4 justify-center">
+                    <a href="/" class="btn btn-primary">Back to Home</a>
+                    <form method="POST" action="/api/logout" class="inline">
+                      <button type="submit" class="btn btn-outline">Sign out</button>
+                    </form>
+                  </div>
+                </div>
+              </section>
+            `,
+            devMode: DEV_MODE,
+            ctx,
+          }),
+          {
+            status: 403,
+            headers: { "Content-Type": "text/html; charset=utf-8" },
+          }
+        );
+      }
+    }
+
     // File system routing for pages
     const match = router.match(req);
     if (match) {
+      // Track page view (non-blocking)
+      const analyticsSessionId = getAnalyticsSessionId(req);
+      const previousPath = getAndSetPreviousPath(analyticsSessionId, path);
+      trackPageView(req, analyticsSessionId, user?.id, previousPath).catch(() => {});
+
       const page = await import(match.filePath);
+      // Merge route params with query params
+      const queryParams = Object.fromEntries(url.searchParams.entries());
+      const params = { ...match.params, ...queryParams };
       // Support dynamic metadata via getMetadata(params) function
       const metadata = page.getMetadata
-        ? page.getMetadata(match.params)
+        ? page.getMetadata(params)
         : page.metadata || {};
-      const content = page.default(match.params);
 
-      // If page has fullPage: true, render without Layout wrapper
+      // If page has fullPage: true, pass extended context including ctx and path
       if (metadata.fullPage) {
-        return html(`<!DOCTYPE html>${content}`);
+        const content = await page.default({ ...params, ctx, path, devMode: DEV_MODE });
+        return new Response(`<!DOCTYPE html>${content}`, {
+          headers: {
+            "Content-Type": "text/html; charset=utf-8",
+            "Set-Cookie": createAnalyticsCookie(analyticsSessionId),
+          },
+        });
       }
 
-      return html(
+      // Support both sync and async page components
+      const content = await page.default(params);
+
+      return new Response(
         Layout({
           title: metadata.title || "Health Samurai",
           description: metadata.description,
@@ -360,18 +542,35 @@ Bun.serve({
           hideFooter: metadata.hideFooter,
           devMode: DEV_MODE,
           ctx,
-        })
+        }),
+        {
+          headers: {
+            "Content-Type": "text/html; charset=utf-8",
+            "Set-Cookie": createAnalyticsCookie(analyticsSessionId),
+          },
+        }
       );
     }
 
-    // 404
-    return html(
+    // 404 - also track as page view
+    const analyticsSessionId = getAnalyticsSessionId(req);
+    const previousPath = getAndSetPreviousPath(analyticsSessionId, path);
+    trackPageView(req, analyticsSessionId, user?.id, previousPath).catch(() => {});
+
+    return new Response(
       Layout({
         title: "Page Not Found",
         children: notFoundPage(),
         devMode: DEV_MODE,
         ctx,
-      })
+      }),
+      {
+        status: 404,
+        headers: {
+          "Content-Type": "text/html; charset=utf-8",
+          "Set-Cookie": createAnalyticsCookie(analyticsSessionId),
+        },
+      }
     );
   },
 });
