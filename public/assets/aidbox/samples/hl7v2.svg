@@ -1,0 +1,24 @@
+<svg width="93" height="93" viewBox="0 0 93 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Left box (HL7v2) -->
+  <rect x="12" y="30" width="24" height="33" rx="3" stroke="#414042" stroke-width="1.5"/>
+  <line x1="16" y1="38" x2="32" y2="38" stroke="#414042" stroke-width="1"/>
+  <line x1="16" y1="43" x2="28" y2="43" stroke="#414042" stroke-width="1"/>
+  <line x1="16" y1="48" x2="30" y2="48" stroke="#414042" stroke-width="1"/>
+  <line x1="16" y1="53" x2="26" y2="53" stroke="#414042" stroke-width="1"/>
+
+  <!-- Right box (FHIR) -->
+  <rect x="57" y="30" width="24" height="33" rx="3" stroke="#EF4136" stroke-width="1.5"/>
+  <path d="M65 40 L73 40 L73 48 L65 48 Z" stroke="#EF4136" stroke-width="1" fill="none"/>
+  <circle cx="69" cy="54" r="4" stroke="#EF4136" stroke-width="1" fill="none"/>
+
+  <!-- Bidirectional arrows -->
+  <path d="M38 42 L55 42" stroke="#414042" stroke-width="1.5"/>
+  <path d="M51 38 L55 42 L51 46" stroke="#414042" stroke-width="1.5" fill="none"/>
+
+  <path d="M55 51 L38 51" stroke="#EF4136" stroke-width="1.5"/>
+  <path d="M42 47 L38 51 L42 55" stroke="#EF4136" stroke-width="1.5" fill="none"/>
+
+  <!-- Labels -->
+  <text x="24" y="24" font-family="Arial" font-size="8" fill="#414042" text-anchor="middle">HL7v2</text>
+  <text x="69" y="24" font-family="Arial" font-size="8" fill="#EF4136" text-anchor="middle">FHIR</text>
+</svg>

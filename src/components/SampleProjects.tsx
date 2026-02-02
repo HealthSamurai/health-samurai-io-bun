@@ -54,7 +54,7 @@ export function SampleProjects({ title, projects }: SampleProjectsProps): string
             ${title}
           </h2>
         </div>
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           ${projects.map((project) => ProjectCard({ project })).join("")}
         </div>
       </div>
@@ -64,6 +64,13 @@ export function SampleProjects({ title, projects }: SampleProjectsProps): string
 
 // Pre-configured data for Aidbox sample projects
 export const aidboxSampleProjects: SampleProject[] = [
+  {
+    title: "HL7v2 Integration",
+    description: "Bidirectional HL7v2 ↔ FHIR conversion with web UI. Supports ADT, ORU, and BAR messages with MLLP server and code mapping.",
+    icon: "/assets/aidbox/samples/hl7v2.svg",
+    tags: ["HL7v2", "Integration"],
+    href: "https://github.com/Aidbox/aidbox-hl7v2-example",
+  },
   {
     title: "Integration Pipeline",
     description: "Python framework for integrating Aidbox with external systems.",
