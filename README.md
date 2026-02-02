@@ -1,30 +1,99 @@
 # Health Samurai Website
 
-Clone of health-samurai.io built with Bun.
+Rebuilding [health-samurai.io](https://health-samurai.io) with Bun, server-side JSX, and Tailwind CSS v4.
 
-## Install
-
-```bash
-bun install
-```
-
-## Run
+## Quick Start
 
 ```bash
-bun run start
+bun install    # Install dependencies
+bun dev        # Start dev server (background, hot reload)
 ```
 
-Server runs at http://localhost:4321
+Server runs at http://localhost:4444
 
-## Development
+## Development Commands
 
-The server runs with hot reload enabled. Changes to source files are automatically picked up.
+| Command | Description |
+|---------|-------------|
+| `bun dev` | Start dev server in background |
+| `bun dev:stop` | Stop background dev server |
+| `bun dev:logs` | Tail dev server logs |
+| `bun dev:fg` | Run dev server in foreground |
+| `bun run routes` | List all available routes |
+| `bun run typecheck` | Run TypeScript type checking |
+
+## Working with Claude Code
+
+This project is optimized for development with [Claude Code](https://claude.ai/claude-code). The `CLAUDE.md` file contains detailed project instructions that Claude automatically follows.
+
+### Available Skills
+
+Invoke skills with `/skill-name` in Claude Code:
+
+| Skill | Description |
+|-------|-------------|
+| `/page-builder` | Create and modify pages, sections, and UI components |
+| `/cdp` | Control Chrome via DevTools Protocol for scraping and screenshots |
+
+### Common Workflows
+
+**Create a new page:**
+```
+/page-builder
+Create a new page at /my-page with a hero section and contact form
+```
+
+**Clone content from original site:**
+```
+/cdp
+Navigate to health-samurai.io/fhir-server and extract the pricing section
+```
+
+**Add a section to existing page:**
+```
+/page-builder
+Add a testimonials section to the aidbox page
+```
+
+### Project Structure
+
+```
+src/
+├── pages/           # File-based routing (*.tsx → routes)
+├── components/      # Reusable components
+│   ├── ui/          # UI component library
+│   ├── Hero.tsx     # Hero section
+│   ├── Bento.tsx    # Feature grid
+│   ├── UseCases.tsx # Tabbed case studies
+│   └── ...
+├── lib/             # Utilities (JSX runtime, etc.)
+└── styles/          # Tailwind CSS
+public/
+└── assets/          # Static assets (images, icons)
+```
+
+### Key Technologies
+
+- **Bun** - Runtime and package manager
+- **Server-side JSX** - Components render to HTML strings
+- **Tailwind CSS v4** - Styling with custom theme
+- **Datastar** - Client-side reactivity (tabs, toggles)
+- **htmx** - Server-driven interactivity (forms)
 
 ## Pages
 
-- `/` - Home page
-- `/fhir-server` - Aidbox FHIR Server product page
-- `/contacts` - Contact form
-- `/casestudies` - Case studies
-- `/blog` - Blog
-# Webhook test Wed Jan 28 17:17:10 WET 2026
+| Route | Description |
+|-------|-------------|
+| `/` | Home page |
+| `/aidbox` | Aidbox FHIR Server product page |
+| `/fhir-server` | Alias for /aidbox |
+| `/contacts` | Contact form |
+| `/casestudies` | Case studies |
+| `/blog` | Blog |
+| `/price` | Pricing page |
+
+## Documentation
+
+- `CLAUDE.md` - Full project documentation and conventions
+- `skills/page-builder/SKILL.md` - Page builder skill reference
+- `/_components/ui/*` - Live UI component demos
