@@ -1,0 +1,44 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bun dev)",
+      "Bash(bun dev:status:*)",
+      "Bash(curl:*)",
+      "Bash(bun install:*)",
+      "Bash(bun dev:reload:*)",
+      "Bash(ls:*)",
+      "Bash(docker-compose up:*)",
+      "Bash(docker compose up:*)",
+      "Bash(docker compose:*)",
+      "Bash(git pull:*)",
+      "Bash(unzip:*)",
+      "Bash(bun dev:stop:*)",
+      "Bash(lsof:*)",
+      "Bash(xargs kill:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)",
+      "Bash(bunx playwright:*)",
+      "Bash(npx playwright --version)",
+      "Bash(npx playwright:*)",
+      "WebSearch",
+      "Bash(claude mcp add:*)",
+      "mcp__figma__get_design_context",
+      "mcp__figma__get_screenshot",
+      "mcp__figma__whoami",
+      "Bash(claude mcp:*)",
+      "Bash(python3:*)",
+      "Bash(bun run typecheck:*)",
+      "Bash(grep:*)",
+      "Bash(git diff:*)",
+      "Bash(jq:*)",
+      "Bash(pgrep:*)",
+      "Bash(open:*)",
+      "Bash(pkill:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "figma"
+  ]
+}

@@ -108,3 +108,4 @@ Ilya Beda, CTO at [Beda Software](https://bit.ly/3qQBtnH)
 
 [Connect with Ilya via LinkedIn](https://www.linkedin.com/in/ilya-beda-6654147a/)
 [![](https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/66b64ae855f7c11cedd744da_64f5acec3070b0fe992be810_beda-logo%25404x.png)](https://bit.ly/3qQBtnH)
+
