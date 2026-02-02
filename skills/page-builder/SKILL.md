@@ -199,12 +199,13 @@ Import from `../components/`:
 | Component | Props | Description |
 |-----------|-------|-------------|
 | `Hero` | `title`, `description`, `primaryCta`, `secondaryCta`, `image`, `video` | Page hero with CTAs |
-| `Bento` | `tagline`, `title`, `items[]` | Feature grid (5 items max) |
+| `Bento` | `tagline`, `title`, `items[]` | Feature grid (4-col layout, first item double-width) |
+| `UseCases` | `title`, `cases[]` | Tabbed case studies with diagrams |
+| `Trusted` | `logos[]`, `tagline`, `ctaText`, `ctaHref` | Client logos marquee |
 | `ContactForm` | `title`, `description`, `page`, `user` | Contact form with htmx |
 | `Subscribe` | - | Newsletter subscription |
-| `Pricing` | - | Pricing cards |
+| `Pricing` | `title`, `subtitle`, `description`, `tiers[]` | Pricing cards |
 | `FAQ` | - | Accordion FAQ |
-| `Trusted` | - | Client logos |
 
 ### Hero Example
 
@@ -231,24 +232,95 @@ import { Hero } from "../components/Hero";
 
 ### Bento Grid Example
 
+4-column layout with first item double-width. Supports up to 7 items.
+
 ```tsx
 import { Bento, type BentoItem } from "../components/Bento";
 
 const features: BentoItem[] = [
   {
-    title: "FHIR Server",
-    subtitle: "Product",
-    description: "Enterprise-grade FHIR R4/R5 server.",
-    href: "/aidbox",
-    icon: `<svg>...</svg>`,
+    title: "FHIR Database",
+    description: "Manage FHIR data with PostgreSQL.",
+    href: "https://docs.aidbox.app",
+    iconSrc: "/assets/aidbox/features/database.svg",  // Use iconSrc for image path
+    tags: ["PostgreSQL", "JSONB", "SQL on FHIR"],     // Optional tags
   },
-  // ... more items (up to 5)
+  {
+    title: "API",
+    description: "Multiple APIs for FHIR data.",
+    href: "/docs/api",
+    iconSrc: "/assets/aidbox/features/api.svg",
+    tags: ["FHIR", "SQL", "GraphQL"],
+  },
+  // ... more items (up to 7)
 ];
 
 {Bento({
   tagline: "Our Products",
-  title: "Everything you need",
+  title: "What is Aidbox",
   items: features,
+})}
+```
+
+**BentoItem props:**
+- `title` - Card title
+- `subtitle` - Optional subtitle (shown above title in primary color)
+- `description` - Card description
+- `href` - Link URL
+- `iconSrc` - Path to icon image (preferred)
+- `icon` - Inline SVG string (alternative)
+- `tags` - Array of tag strings (optional)
+- `image` - Full image instead of icon
+
+### UseCases (Tabbed Section)
+
+Dynamic tabs with Datastar for switching between use cases.
+
+```tsx
+import { UseCases, aidboxUseCases } from "../components/UseCases";
+
+// Use pre-configured data
+{UseCases({
+  title: "See how Aidbox powers the system you want to build",
+  cases: aidboxUseCases,
+})}
+
+// Or define custom cases
+const customCases = [
+  {
+    id: "cdr",
+    label: "CDRs & Data Platforms",
+    image: "/assets/use-cases/cdr.svg",
+    cards: [
+      {
+        title: "Company Name",
+        logo: "/assets/logos/company.png",
+        logoWidth: 140,
+        tags: ["Healthcare", "Platform"],
+        description: "Description of how they use the product.",
+      },
+    ],
+  },
+];
+
+{UseCases({ title: "Use Cases", cases: customCases })}
+```
+
+### Trusted (Client Logos)
+
+```tsx
+import { Trusted, type TrustedLogo } from "../components/Trusted";
+
+const logos: TrustedLogo[] = [
+  { src: "/assets/logos/company1.png", alt: "Company 1" },
+  { src: "/assets/logos/company2.svg", alt: "Company 2" },
+];
+
+{Trusted({
+  logos,
+  tagline: "Trusted by leading healthcare organizations.",
+  ctaText: "Read customer stories",
+  ctaHref: "/casestudies",
 })}
 ```
 
@@ -444,21 +516,61 @@ View live demos at `/_components/ui/*`:
 **Important:** Use colons in attributes: `data-on:click`, `data-class:active`
 
 ```html
-<!-- Tabs -->
-<div data-signals="{tab: 'one'}">
-  <button data-on:click="$tab = 'one'" data-class:font-bold="$tab == 'one'">Tab 1</button>
-  <button data-on:click="$tab = 'two'" data-class:font-bold="$tab == 'two'">Tab 2</button>
-
-  <div data-show="$tab == 'one'">Content 1</div>
-  <div data-show="$tab == 'two'" style="display: none">Content 2</div>
-</div>
-
-<!-- Toggle -->
+<!-- Simple Toggle -->
 <div data-signals="{open: false}">
   <button data-on:click="$open = !$open">Toggle</button>
   <div data-show="$open" style="display: none">Hidden content</div>
 </div>
 ```
+
+### Underlined Tabs (Datastar)
+
+Standard tab pattern with underlined active state:
+
+```html
+<div data-signals="{activeTab: 'tab1'}">
+  <!-- Tab buttons with underline -->
+  <div class="border-b border-gray-200">
+    <nav class="flex justify-center -mb-px space-x-8">
+      <button
+        data-on:click="$activeTab = 'tab1'"
+        data-class="{
+          'border-primary text-primary': $activeTab == 'tab1',
+          'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700': $activeTab != 'tab1'
+        }"
+        class="border-b-2 px-1 py-4 text-sm font-medium whitespace-nowrap"
+      >
+        Tab 1
+      </button>
+      <button
+        data-on:click="$activeTab = 'tab2'"
+        data-class="{
+          'border-primary text-primary': $activeTab == 'tab2',
+          'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700': $activeTab != 'tab2'
+        }"
+        class="border-b-2 px-1 py-4 text-sm font-medium whitespace-nowrap"
+      >
+        Tab 2
+      </button>
+    </nav>
+  </div>
+
+  <!-- Tab panels -->
+  <div data-show="$activeTab == 'tab1'">
+    Content for Tab 1
+  </div>
+  <div data-show="$activeTab == 'tab2'" style="display: none">
+    Content for Tab 2
+  </div>
+</div>
+```
+
+**Key points:**
+- `data-signals` defines the state variable
+- `data-on:click` updates the state
+- `data-class` applies classes conditionally (use object syntax)
+- `data-show` shows/hides content based on state
+- **Important:** Hidden panels need `style="display: none"` to prevent flash on load
 
 ## XSS Prevention
 
@@ -544,6 +656,30 @@ Before committing a new page:
   </div>
 </div>
 ```
+
+## Migrating from Original Site
+
+Use the `/cdp` skill to scrape content from health-samurai.io:
+
+```bash
+# Navigate to page
+curl localhost:2229/cdp -d '{"method":"Page.navigate","params":{"url":"https://health-samurai.io/fhir-server"}}'
+
+# Extract section HTML
+curl localhost:2229/cdp -d '{"method":"Runtime.evaluate","params":{"expression":"document.querySelector(\".section-class\")?.outerHTML"}}'
+
+# Get all images in a section
+curl localhost:2229/cdp -d '{"method":"Runtime.evaluate","params":{"expression":"JSON.stringify([...document.querySelectorAll(\".section img\")].map(i => ({src: i.src, alt: i.alt})))"}}'
+
+# Download assets
+curl -s "https://cdn.prod.website-files.com/..." -o public/assets/aidbox/image.svg
+```
+
+**Workflow:**
+1. Use CDP to navigate and extract HTML/data from original
+2. Download images to `public/assets/`
+3. Create component with extracted data
+4. Use semantic file names (e.g., `innovaccer.webp` not `logo01.png`)
 
 ## Instructions
 
