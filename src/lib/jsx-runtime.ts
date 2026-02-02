@@ -78,12 +78,19 @@ export function jsx(
     return tag(props);
   }
 
-  const { children, ...restProps } = props;
+  const { children, dangerouslySetInnerHTML, ...restProps } = props as Props & {
+    dangerouslySetInnerHTML?: { __html: string };
+  };
   const attributes = renderProps(restProps as Props);
 
   // Handle void elements
   if (VOID_ELEMENTS.has(tag)) {
     return `<${tag}${attributes} />`;
+  }
+
+  // Handle dangerouslySetInnerHTML (raw HTML injection)
+  if (dangerouslySetInnerHTML && typeof dangerouslySetInnerHTML.__html === "string") {
+    return `<${tag}${attributes}>${dangerouslySetInnerHTML.__html}</${tag}>`;
   }
 
   const content = renderChildren(children);

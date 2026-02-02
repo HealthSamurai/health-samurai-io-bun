@@ -1,108 +1,179 @@
-import { Fragment } from "../lib/jsx-runtime";
-import { getAllPosts, formatDate, type BlogPost } from "../data/blog";
-import { getSamuraiByName, getInitials } from "../data/samurai";
+import { BlogLayout } from "../components/blog/BlogLayout"
+import { getAllArticles, getAuthors, getAllTags, slugify, type Article } from "../lib/articles"
+import { BlogHero } from "../components/blog/BlogHero"
+import { ArticleCard } from "../components/blog/ArticleCard"
+import { FilterSection } from "../components/blog/FilterSection"
+import { AuthorFilterSection } from "../components/blog/AuthorFilterSection"
+import { Pagination } from "../components/blog/Pagination"
+import type { Context } from "../context"
 
 export const metadata = {
-  title: "Blog",
-  description: "Articles, tutorials, and news about FHIR, healthcare interoperability, and Health Samurai products.",
-};
+  title: "Aidbox Blog - FHIR Expert Hub",
+  description: "Healthcare IT, FHIR, and Aidbox insights from Health Samurai",
+  fullPage: true,
+}
 
-function BlogCard({ post }: { post: BlogPost }): string {
-  const formattedDate = formatDate(post.date);
-  // Clean up title (remove emoji prefix if present)
-  const title = post.title.replace(/^🔥\s*/, "");
-  const author = getSamuraiByName(post.author);
+const ARTICLES_PER_PAGE = 4
 
-  return (
-    <article class="flex max-w-xl flex-col items-start justify-between">
-      <div class="flex items-center gap-x-4 text-xs">
-        <time datetime={post.date} class="text-gray-500 dark:text-dark-text-muted">
-          {formattedDate}
-        </time>
-      </div>
-      <div class="group relative">
-        <h3 class="mt-3 text-lg/6 font-semibold text-gray-900 dark:text-dark-text group-hover:text-gray-600 dark:group-hover:text-dark-text-light">
-          <a href={`/blog/${post.slug}`}>
-            <span class="absolute inset-0"></span>
-            {title}
-          </a>
-        </h3>
-        <p class="mt-5 line-clamp-3 text-sm/6 text-gray-600 dark:text-dark-text-light">
-          {post.description}
-        </p>
-      </div>
-      <div class="relative mt-8 flex items-center gap-x-4">
-        {author?.avatar ? (
-          <img src={author.avatar} alt={post.author} class="size-10 rounded-full object-cover" />
-        ) : (
-          <div class="size-10 rounded-full bg-gray-100 dark:bg-dark-bg-alt flex items-center justify-center text-sm font-medium text-gray-600 dark:text-dark-text-light">
-            {getInitials(post.author)}
+interface BlogPageProps {
+  tab?: string
+  tags?: string
+  author?: string
+  page?: string
+  ctx?: Context
+  devMode?: boolean
+}
+
+export default function BlogPage(props: BlogPageProps = {}): string {
+  const page = Number(props.page || 1)
+  const tab = props.tab || 'recent'
+  const tagsParam = props.tags || ''
+  const selectedTags = tagsParam ? tagsParam.split(',').filter(Boolean) : []
+  const authorParam = props.author || ''
+  const selectedAuthor = authorParam || null
+
+  const articles = getAllArticles()
+  const allTags = getAllTags()
+  const authors = getAuthors()
+
+  const featuredArticle = articles[0]
+  let restArticles = articles.slice(1)
+
+  // Filter by selected tags if on BY TOPIC tab
+  if (tab === 'by-topic' && selectedTags.length > 0) {
+    restArticles = restArticles.filter(article =>
+      article.tags && selectedTags.some(tag => article.tags?.includes(tag))
+    )
+  }
+
+  // Filter by selected author if on BY AUTHOR tab
+  if (tab === 'by-author' && selectedAuthor) {
+    restArticles = restArticles.filter(article =>
+      slugify(article.author) === selectedAuthor
+    )
+  }
+
+  // Pagination calculations
+  const totalArticles = restArticles.length
+  const totalPages = Math.ceil(totalArticles / ARTICLES_PER_PAGE)
+  const currentPage = Math.min(Math.max(1, page), totalPages || 1)
+  const startIndex = (currentPage - 1) * ARTICLES_PER_PAGE
+  const endIndex = startIndex + ARTICLES_PER_PAGE
+  const pageArticles = restArticles.slice(startIndex, endIndex)
+
+  const content = `
+    <main class="flex-1">
+      ${BlogHero()}
+
+      ${featuredArticle ? `
+        <section class="pt-12 pb-48">
+          <div class="max-w-[1200px] mx-auto px-4">
+            <h2 class="text-2xl font-semibold leading-8 tracking-tight text-neutral-900 mb-6 flex items-center gap-2">
+              <img src="/icons/blog/featured.svg" alt="" class="w-6 h-6" />
+              Featured articles
+            </h2>
+
+            <div class="flex flex-col lg:flex-row gap-6 lg:gap-11 lg:justify-between">
+              ${ArticleCard({ article: featuredArticle, variant: "featured" })}
+
+              <div class="flex flex-col gap-6 lg:w-[681px]">
+                ${restArticles.slice(0, 3).map(article =>
+                  ArticleCard({ article, variant: "horizontal" })
+                ).join('')}
+              </div>
+            </div>
           </div>
-        )}
-        <div class="text-sm/6">
-          {author?.linkedin ? (
-            <a
-              href={author.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="font-semibold text-gray-900 dark:text-dark-text hover:text-primary transition-colors"
-            >
-              {post.author}
-            </a>
-          ) : (
-            <p class="font-semibold text-gray-900 dark:text-dark-text">
-              {post.author}
-            </p>
-          )}
-          {author?.role && (
-            <p class="text-gray-500 dark:text-dark-text-muted">{author.role}</p>
-          )}
-        </div>
-      </div>
-    </article>
-  );
-}
+        </section>
+      ` : ''}
 
-function RssButton(): string {
-  return (
-    <a
-      href="/blog/rss.xml"
-      class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border-2 border-orange-400 text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-950 font-medium text-sm transition-colors cursor-pointer"
-      title="Subscribe via RSS"
-    >
-      <svg class="size-4" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1Z" />
-      </svg>
-      RSS
-    </a>
-  );
-}
-
-export default function BlogPage(): string {
-  const posts = getAllPosts();
-
-  return (
-    <Fragment>
-      <div class="bg-white dark:bg-dark-bg py-24 sm:py-32 transition-colors">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-          <div class="mx-auto max-w-2xl">
-            <div class="flex items-center justify-between gap-4">
-              <h2 class="text-4xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-dark-text sm:text-5xl">
-                From the blog
+      <section class="py-12">
+        <div class="max-w-[1200px] mx-auto px-4">
+          <div class="flex items-center justify-between mb-16 pb-6 border-b border-neutral-200">
+            <div class="flex items-center gap-2">
+              <img src="/icons/blog/hamburger.svg" alt="" class="w-6 h-6" />
+              <h2 class="text-2xl font-semibold leading-8 tracking-tight text-neutral-900">
+                All articles
               </h2>
-              <RssButton />
             </div>
-            <p class="mt-2 text-lg/8 text-gray-600 dark:text-dark-text-light">
-              Learn how to build better healthcare applications with FHIR.
-            </p>
-            <div class="mt-10 space-y-16 border-t border-gray-200 dark:border-dark-border pt-10 sm:mt-16 sm:pt-16">
-              {posts.map(post => (
-                <BlogCard post={post} />
-              ))}
+
+            <svg class="w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+
+          <div id="tabs-and-content-container">
+            <div class="flex gap-5 mb-6">
+              <a
+                href="/blog?tab=recent"
+                hx-get="/htmx/blog/recent"
+                hx-target="#tabs-and-content-container"
+                hx-swap="outerHTML"
+                hx-push-url="/blog?tab=recent"
+                class="text-sm pb-1 ${tab === 'recent' ? 'font-medium text-neutral-900 border-b-2 border-brand-500' : 'font-normal text-neutral-500 hover:text-neutral-900'}"
+              >
+                RECENT
+              </a>
+              <a
+                href="/blog?tab=by-topic"
+                hx-get="/htmx/blog/by-topic"
+                hx-target="#tabs-and-content-container"
+                hx-swap="outerHTML"
+                hx-push-url="/blog?tab=by-topic"
+                class="text-sm pb-1 ${tab === 'by-topic' ? 'font-medium text-neutral-900 border-b-2 border-brand-500' : 'font-normal text-neutral-500 hover:text-neutral-900'}"
+              >
+                BY TOPIC
+              </a>
+              <a
+                href="/blog?tab=by-author"
+                hx-get="/htmx/blog/by-author"
+                hx-target="#tabs-and-content-container"
+                hx-swap="outerHTML"
+                hx-push-url="/blog?tab=by-author"
+                class="text-sm pb-1 ${tab === 'by-author' ? 'font-medium text-neutral-900 border-b-2 border-brand-500' : 'font-normal text-neutral-500 hover:text-neutral-900'}"
+              >
+                BY AUTHOR
+              </a>
+            </div>
+
+            <div id="articles-container">
+              ${tab === 'by-topic' ? FilterSection({
+                tags: allTags,
+                selectedTags,
+                baseUrl: "/blog",
+              }) : ''}
+
+              ${tab === 'by-author' ? AuthorFilterSection({
+                authors,
+                selectedAuthor,
+                baseUrl: "/blog",
+              }) : ''}
+
+              <div class="flex flex-col">
+                ${pageArticles.map(article =>
+                  ArticleCard({ article, variant: "list" })
+                ).join('')}
+              </div>
+
+              <div class="mt-8 pt-8 border-t border-neutral-200">
+                ${Pagination({
+                  currentPage,
+                  totalPages,
+                  baseUrl: `/blog?tab=${tab}${tab === 'by-topic' && selectedTags.length > 0 ? `&tags=${selectedTags.join(',')}` : ''}${tab === 'by-author' && selectedAuthor ? `&author=${selectedAuthor}` : ''}`,
+                  htmxUrl: `/htmx/blog/${tab}${tab === 'by-topic' && selectedTags.length > 0 ? `?tags=${selectedTags.join(',')}` : ''}${tab === 'by-author' && selectedAuthor ? `?author=${selectedAuthor}` : ''}`,
+                })}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </Fragment>
-  );
+      </section>
+    </main>
+  `
+
+  return BlogLayout({
+    title: metadata.title,
+    description: metadata.description,
+    children: content,
+    ctx: props.ctx,
+    devMode: props.devMode,
+  })
 }

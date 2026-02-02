@@ -10,6 +10,13 @@ export type Samurai = {
 
 export const samurai: Samurai[] = [
   {
+    name: "Health Samurai Team",
+    alias: "health-samurai-team",
+    linkedin: "https://www.linkedin.com/company/health-samurai",
+    role: "Health Samurai",
+    avatar: "/assets/images/favicons/favicon-32.png",
+  },
+  {
     name: "Ivan Bagrov",
     alias: "ivan-bagrov",
     linkedin: "https://www.linkedin.com/in/ivan-bagrov-480113267",
@@ -84,7 +91,7 @@ export const samurai: Samurai[] = [
     alias: "svetlana-golubeva",
     linkedin: "https://www.linkedin.com/in/golubevas",
     role: "",
-    avatar: "https://media.licdn.com/dms/image/v2/D5603AQGKFGdR7r1eqg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1695970432195?e=1771459200&v=beta&t=A2fiP6zOSE-Ef2crSRcy0hJpmx81rENIJgpln3mYU7c",
+    avatar: "https://media.licdn.com/dms/image/v2/C4D03AQHTgJthGCe1zQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1616500108078?e=1771459200&v=beta&t=lPHZW3CyJtgZVHZ3HU9aNm3qX_F5b0y5d7nGdVPqxRU",
   },
   {
     name: "Pavel Smirnov",
@@ -168,7 +175,7 @@ export const samurai: Samurai[] = [
     alias: "mike-lapshin",
     linkedin: "https://www.linkedin.com/in/mike-lapshin-7a176625b",
     role: "",
-    avatar: "https://media.licdn.com/dms/image/v2/D5603AQGKFGdR7r1eqg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1695970432195?e=1771459200&v=beta&t=A2fiP6zOSE-Ef2crSRcy0hJpmx81rENIJgpln3mYU7c",
+    avatar: "https://media.licdn.com/dms/image/v2/D5603AQHdP_xZJ8-jEg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1678359584316?e=1771459200&v=beta&t=hqQK0qGCd_4aKdjgPq1q3vU3uNJ4QMaLAqQM3XbTMeU",
   },
   {
     name: "Ilya Beda",
@@ -180,9 +187,9 @@ export const samurai: Samurai[] = [
   {
     name: "Gennady Razmakhnin",
     alias: "gennady-razmakhnin",
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/gena-razmakhnin",
     role: "",
-    avatar: "",
+    avatar: "https://media.licdn.com/dms/image/v2/C4E03AQGQ_R2FvnzSig/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1616404631440?e=1771459200&v=beta&t=K3LMqrLh_d5w0Q-3Wc9pFq5H0sZPx5YJD0rCeIZPYfk",
   },
   {
     name: "Vasiliy Kupriakov",
@@ -199,11 +206,11 @@ export const samurai: Samurai[] = [
     avatar: "https://media.licdn.com/dms/image/v2/D4D03AQERFctJV6WpsQ/profile-displayphoto-scale_400_400/B4DZp8dmUmGsAk-/0/1763024725822?e=1771459200&v=beta&t=CRmja-UpRtBrntSFjUBXDh469eSm41r9kwSx-DFwnMA",
   },
   {
-    name: "Artem Alexeev",
-    alias: "artem-alexeev",
-    linkedin: "",
+    name: "Artem Alekseev",
+    alias: "artem-alekseev",
+    linkedin: "https://www.linkedin.com/in/artem-alekseev-17628b1b8",
     role: "",
-    avatar: "",
+    avatar: "https://media.licdn.com/dms/image/v2/D4D03AQEZYCphpBqA7g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1694589948174?e=1771459200&v=beta&t=5R5K0RQjDAc_qH_YhCFN4OYgD0f9TJJ6Uv4bfP8PQAM",
   },
   {
     name: "Viktor Gusakov",
@@ -231,7 +238,7 @@ export const samurai: Samurai[] = [
     alias: "max-putintsev",
     linkedin: "https://www.linkedin.com/in/max-putintsev-78278746",
     role: "",
-    avatar: "https://media.licdn.com/dms/image/v2/D5603AQEc8jkuPvq31w/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1675125117963?e=1771459200&v=beta&t=qvXC8vNHM4moQ3K5suKrEs0XW9OwmthSeIqQrZTLyKU",
+    avatar: "https://media.licdn.com/dms/image/v2/C5103AQH1HX_9b-HBFA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1517576595963?e=1771459200&v=beta&t=wl_5w8rYP1sGPkJd0ZLMHwLSFJQgSQ_x9x7E_bPrP38",
   },
 ];
 

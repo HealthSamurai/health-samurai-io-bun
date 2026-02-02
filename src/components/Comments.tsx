@@ -270,36 +270,36 @@ export function CommentsSection({ slug, ctx }: CommentsSectionProps): string {
   const user = ctx?.user;
 
   return (
-    <section class="border-t border-gray-200 mt-12 pt-12 pb-12">
-      <div class="mx-auto max-w-2xl px-6">
-        <h2 class="text-2xl font-bold text-gray-900 mb-8">Comments</h2>
-
-        {/* Comments list (loaded via htmx) */}
-        <div
-          id="comments-list"
-          hx-get={`/api/blog/${slug}/comments`}
-          hx-trigger="load"
-          hx-swap="innerHTML"
-        >
-          <div class="text-center py-8 text-gray-400">
-            Loading comments...
-          </div>
+    <section class="py-12">
+      <div class="mb-8 flex items-center justify-between">
+        <div class="flex items-center gap-[7px]">
+          <img src="/icons/blog/comments.svg" alt="" class="size-10" />
+          <h2 class="text-[36px] font-bold leading-[40px] tracking-[-0.4px] text-section-heading">Comments</h2>
         </div>
-
-        {/* Comment form at the bottom (only for authenticated users) */}
-        {user ? (
-          CommentForm({ slug, user })
-        ) : (
-          <div class="mt-8 pt-8 border-t border-gray-100 text-center">
-            <p class="text-gray-600">
-              <a href={`/login?redirect=/blog/${slug}`} class="text-primary hover:underline font-medium">
-                Log in
-              </a>
-              {" "}to leave a comment.
-            </p>
-          </div>
+        {!user && (
+          <a
+            href={`/login?redirect=/blog/${slug}`}
+            class="px-3 py-1.5 bg-brand-500 text-white text-sm font-medium rounded hover:bg-brand-600 transition-colors"
+          >
+            Sign in
+          </a>
         )}
       </div>
+
+      {/* Comments list (loaded via htmx) */}
+      <div
+        id="comments-list"
+        hx-get={`/api/blog/${slug}/comments`}
+        hx-trigger="load"
+        hx-swap="innerHTML"
+      >
+        <div class="text-center py-8 text-neutral-400">
+          Loading comments...
+        </div>
+      </div>
+
+      {/* Comment form at the bottom (only for authenticated users) */}
+      {user && CommentForm({ slug, user })}
     </section>
   );
 }

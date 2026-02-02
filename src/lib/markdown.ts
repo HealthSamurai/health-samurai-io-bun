@@ -29,8 +29,28 @@ export async function initHighlighter() {
   });
 }
 
-// Custom renderer for code blocks
+// Slugify function for heading IDs
+function slugifyHeading(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/<[^>]+>/g, '') // Remove HTML tags
+    .replace(/[^\w\s-]/g, '') // Remove special chars
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-') // Remove duplicate hyphens
+    .trim()
+}
+
+// Custom renderer for code blocks and headings
 const renderer = new marked.Renderer();
+
+// Add IDs to h2 and h3 for TOC
+renderer.heading = function ({ text, depth }) {
+  if (depth === 2 || depth === 3) {
+    const id = slugifyHeading(text)
+    return `<h${depth} id="${id}">${text}</h${depth}>`
+  }
+  return `<h${depth}>${text}</h${depth}>`
+}
 
 renderer.code = function ({ text, lang }) {
   if (!highlighter) {
@@ -77,6 +97,14 @@ marked.use({ renderer });
 
 export function renderMarkdown(content: string): string {
   return marked.parse(content, { async: false }) as string;
+}
+
+/**
+ * Parse markdown content to HTML
+ * Alias for renderMarkdown with slug parameter for consistency
+ */
+export function parseMarkdown(content: string, _slug: string): string {
+  return renderMarkdown(content);
 }
 
 /**

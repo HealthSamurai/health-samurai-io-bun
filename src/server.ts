@@ -26,6 +26,7 @@ import {
 } from "./analytics";
 import { CommentItem, CommentList, type Comment } from "./components/Comments";
 import { notifyContactForm, notifySubscription, isZulipConfigured } from "./lib/zulip";
+import { handleBlogHtmx } from "./htmx/blog";
 
 // Initialize at startup
 await initGitInfo();
@@ -452,8 +453,16 @@ Make healthcare data interoperable through FHIR standards.
     }
 
     // Static files
-    if (path.startsWith("/assets/") || path.startsWith("/styles/")) {
+    if (path.startsWith("/assets/") || path.startsWith("/styles/") || path.startsWith("/icons/") || path.startsWith("/images/")) {
       return serveStatic(path, getContentType(path));
+    }
+
+    // Blog HTMX endpoints
+    if (path.startsWith("/htmx/blog/")) {
+      const htmxContent = handleBlogHtmx(url);
+      if (htmxContent) {
+        return html(htmxContent);
+      }
     }
 
     // API endpoints (for htmx forms)
@@ -1047,9 +1056,10 @@ Make healthcare data interoperable through FHIR standards.
       const queryParams = Object.fromEntries(url.searchParams.entries());
       const params = { ...match.params, ...queryParams };
       // Support dynamic metadata via getMetadata(params) function
-      const metadata = page.getMetadata
-        ? page.getMetadata(params)
-        : page.metadata || {};
+      // Merge static metadata with dynamic metadata (dynamic takes precedence)
+      const staticMetadata = page.metadata || {};
+      const dynamicMetadata = page.getMetadata ? page.getMetadata(params) : {};
+      const metadata = { ...staticMetadata, ...dynamicMetadata };
 
       // If page has fullPage: true, pass extended context including ctx and path
       if (metadata.fullPage) {

@@ -75,3 +75,78 @@ export function formatDate(dateStr: string): string {
     year: "numeric",
   });
 }
+
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+export function getAuthors(): { name: string; slug: string; count: number }[] {
+  const posts = getAllPosts();
+  const authorMap = new Map<string, { name: string; count: number }>();
+
+  for (const post of posts) {
+    // Split author string by comma to handle co-author pairs
+    const authors = post.author.split(',').map(a => a.trim());
+
+    for (const authorName of authors) {
+      const slug = slugify(authorName);
+      const existing = authorMap.get(slug);
+      if (existing) {
+        existing.count++;
+      } else {
+        authorMap.set(slug, {
+          name: authorName,
+          count: 1,
+        });
+      }
+    }
+  }
+
+  return Array.from(authorMap.entries()).map(([slug, data]) => ({
+    slug,
+    ...data,
+  })).sort((a, b) => b.count - a.count);
+}
+
+export function getTags(): string[] {
+  const posts = getAllPosts();
+  const tagSet = new Set<string>();
+
+  for (const post of posts) {
+    const content = readFileSync(join(BLOG_DIR, `${post.slug}.md`), "utf-8");
+    const { meta } = parseFrontmatter(content);
+
+    if (Array.isArray(meta.tags)) {
+      for (const tag of meta.tags) {
+        if (typeof tag === "string") {
+          tagSet.add(tag);
+        }
+      }
+    }
+  }
+
+  return Array.from(tagSet).sort();
+}
+
+export function getTopics(): string[] {
+  const posts = getAllPosts();
+  const topicSet = new Set<string>();
+
+  for (const post of posts) {
+    const content = readFileSync(join(BLOG_DIR, `${post.slug}.md`), "utf-8");
+    const { meta } = parseFrontmatter(content);
+
+    if (Array.isArray(meta.topics)) {
+      for (const topic of meta.topics) {
+        if (typeof topic === "string") {
+          topicSet.add(topic);
+        }
+      }
+    }
+  }
+
+  return Array.from(topicSet).sort();
+}
