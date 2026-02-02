@@ -2,10 +2,14 @@ import { Fragment } from "../../../lib/jsx-runtime";
 import { getSeriesById, getEventBySlug, formatEventDate, type Event, type EventSeries } from "../../../data/events";
 import { renderMarkdown } from "../../../lib/markdown";
 import { EventHero } from "../../../components/events/EventHero";
+import { AboutSection } from "../../../components/events/AboutSection";
 import { AgendaSection } from "../../../components/events/AgendaSection";
 import { SpeakersGrid } from "../../../components/events/SpeakersGrid";
+import { BenefitsSection } from "../../../components/events/BenefitsSection";
 import { VenueSection } from "../../../components/events/VenueSection";
 import { PricingSection } from "../../../components/events/PricingSection";
+import { InfoSection } from "../../../components/events/InfoSection";
+import { RecapSection } from "../../../components/events/RecapSection";
 
 export const metadata = {
   title: "Talk",
@@ -65,7 +69,8 @@ function RichEventPage({ talk, series }: { talk: Event; series: EventSeries }): 
 
   return (
     <Fragment>
-      <article class="bg-white">
+      <article class="bg-gray-50">
+        {/* Hero */}
         {EventHero({
           name: talk.name,
           startDate: talk.startDate,
@@ -76,13 +81,59 @@ function RichEventPage({ talk, series }: { talk: Event; series: EventSeries }): 
           backLabel: series.name,
         })}
 
-        {talk.agenda && talk.agenda.length > 0 && AgendaSection({ topics: talk.agenda })}
+        {/* About Section */}
+        {talk.about && AboutSection({
+          title: talk.about.title,
+          content: talk.about.content,
+          image: talk.about.image,
+          linkText: talk.about.linkText,
+          linkUrl: talk.about.linkUrl,
+        })}
 
-        {talk.speakers && talk.speakers.length > 0 && SpeakersGrid({ speakers: talk.speakers })}
+        {/* Speakers */}
+        {talk.speakers && talk.speakers.length > 0 && SpeakersGrid({
+          speakers: talk.speakers,
+          title: talk.speakersTitle || "Speakers",
+          description: talk.speakersDescription,
+        })}
 
+        {/* Agenda */}
+        {talk.agenda && talk.agenda.length > 0 && AgendaSection({
+          topics: talk.agenda,
+          title: "Preliminary Agenda",
+        })}
+
+        {/* Benefits */}
+        {talk.benefits && talk.benefits.length > 0 && BenefitsSection({
+          title: "Why attend HL7 FHIR® Camp?",
+          benefits: talk.benefits,
+        })}
+
+        {/* Registration/Pricing */}
+        {talk.pricing && talk.pricing.length > 0 && PricingSection({
+          pricing: talk.pricing,
+          title: "Registration",
+          contact: talk.contact,
+        })}
+
+        {/* Location/Venue */}
         {talk.venue && VenueSection({ venue: talk.venue })}
 
-        {talk.pricing && talk.pricing.length > 0 && PricingSection({ pricing: talk.pricing, contact: talk.contact })}
+        {/* Info Section */}
+        {talk.info && InfoSection({
+          title: talk.info.title,
+          items: talk.info.items,
+          note: talk.info.note,
+        })}
+
+        {/* Recap Section */}
+        {talk.recap && RecapSection({
+          title: talk.recap.title,
+          description: talk.recap.description,
+          images: talk.recap.images,
+          link: talk.recap.link,
+          linkText: talk.recap.linkText,
+        })}
 
         {/* Additional content from markdown */}
         {contentHtml && (
@@ -102,6 +153,13 @@ function RichEventPage({ talk, series }: { talk: Event; series: EventSeries }): 
             </div>
           </div>
         )}
+
+        {/* Disclaimer */}
+        <div class="py-8 px-6 bg-gray-100 text-center">
+          <p class="text-sm text-gray-500 max-w-3xl mx-auto">
+            * The FHIR® trademark is used with HL7 International's permission. This is not an event provided or approved by HL7 International.
+          </p>
+        </div>
       </article>
     </Fragment>
   );

@@ -1,5 +1,9 @@
 export { EventHero } from "./EventHero";
+export { AboutSection } from "./AboutSection";
 export { AgendaSection } from "./AgendaSection";
 export { SpeakersGrid } from "./SpeakersGrid";
+export { BenefitsSection } from "./BenefitsSection";
 export { VenueSection } from "./VenueSection";
 export { PricingSection } from "./PricingSection";
+export { InfoSection } from "./InfoSection";
+export { RecapSection } from "./RecapSection";

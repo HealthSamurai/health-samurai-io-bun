@@ -22,6 +22,35 @@ export type PricingTier = {
   deadline?: string;
   features?: string[];
   highlighted?: boolean;
+  soldOut?: boolean;
+};
+
+export type Benefit = {
+  icon: "grow" | "connect" | "inspire" | "enjoy";
+  title: string;
+  description: string;
+};
+
+export type AboutContent = {
+  title: string;
+  content: string;
+  image?: string;
+  linkText?: string;
+  linkUrl?: string;
+};
+
+export type RecapContent = {
+  title: string;
+  description?: string;
+  images: string[];
+  link?: string;
+  linkText?: string;
+};
+
+export type InfoContent = {
+  title: string;
+  items: string[];
+  note?: string;
 };
 
 export type Event = {
@@ -40,10 +69,19 @@ export type Event = {
   role?: string;
   // Rich event fields
   type?: "talk" | "conference";
+  about?: AboutContent;
   agenda?: string[];
+  agendaDescription?: string;
+  agendaPdfUrl?: string;
   speakers?: Speaker[];
+  speakersTitle?: string;
+  speakersDescription?: string;
+  benefits?: Benefit[];
   venue?: Venue;
   pricing?: PricingTier[];
+  pricingDescription?: string;
+  info?: InfoContent;
+  recap?: RecapContent;
   contact?: string;
 };
 
@@ -59,17 +97,18 @@ export type EventSeries = {
 const EVENTS_DIR = join(import.meta.dir, "../../events");
 
 function parseFrontmatter(content: string): { meta: Record<string, any>; body: string } {
-  const match = content.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
+  // Allow optional body after closing ---
+  const match = content.match(/^---\s*\n([\s\S]*?)\n---\s*(?:\n([\s\S]*))?$/);
   if (!match) {
     return { meta: {}, body: content };
   }
 
   try {
-    if (!match[1] || !match[2]) {
+    if (!match[1]) {
       return { meta: {}, body: content };
     }
     const meta = JSON.parse(match[1]);
-    return { meta, body: match[2] };
+    return { meta, body: match[2] || "" };
   } catch {
     return { meta: {}, body: content };
   }
@@ -135,10 +174,19 @@ export async function getAllEvents(): Promise<EventSeries[]> {
         role: meta.role,
         // Rich event fields
         type: meta.type,
+        about: meta.about,
         agenda: meta.agenda,
+        agendaDescription: meta.agendaDescription,
+        agendaPdfUrl: meta.agendaPdfUrl,
         speakers: meta.speakers,
+        speakersTitle: meta.speakersTitle,
+        speakersDescription: meta.speakersDescription,
+        benefits: meta.benefits,
         venue: meta.venue,
         pricing: meta.pricing,
+        pricingDescription: meta.pricingDescription,
+        info: meta.info,
+        recap: meta.recap,
         contact: meta.contact,
       });
     }

@@ -7,6 +7,7 @@ type PricingTier = {
   deadline?: string;
   features?: string[];
   highlighted?: boolean;
+  soldOut?: boolean;
 };
 
 type PricingSectionProps = {
@@ -20,22 +21,27 @@ function PricingCard({ tier }: { tier: PricingTier }): string {
   const currencySymbol = currency === "EUR" ? "€" : currency === "USD" ? "$" : currency;
 
   return (
-    <div class={`relative p-6 rounded-xl border-2 ${tier.highlighted ? "border-primary bg-primary/5" : "border-gray-200 bg-white"}`}>
-      {tier.highlighted && (
+    <div class={`relative p-6 rounded-xl border-2 ${tier.highlighted ? "border-primary bg-primary/5" : "border-gray-200 bg-white"} ${tier.soldOut ? "opacity-75" : ""}`}>
+      {tier.highlighted && !tier.soldOut && (
         <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-white text-xs font-semibold rounded-full">
           Best Value
         </span>
       )}
+      {tier.soldOut && (
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-gray-500 text-white text-xs font-semibold rounded-full">
+          SOLD OUT
+        </span>
+      )}
       <h3 class="text-lg font-semibold text-gray-900 mb-2">{tier.name}</h3>
       <div class="flex items-baseline gap-1 mb-4">
-        <span class="text-3xl font-bold text-gray-900">{currencySymbol}{tier.price.toLocaleString()}</span>
+        <span class={`text-3xl font-bold ${tier.soldOut ? "text-gray-400 line-through" : "text-gray-900"}`}>{tier.price.toLocaleString()} {currency}</span>
       </div>
       {tier.deadline && (
         <p class="text-sm text-gray-600 mb-4">
           <svg class="inline size-4 mr-1 text-gray-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
           </svg>
-          Until {tier.deadline}
+          {tier.deadline}
         </p>
       )}
       {tier.features && tier.features.length > 0 && (
