@@ -144,7 +144,11 @@ src/
 │   ├── price.tsx          # Pricing page (/price)
 │   ├── contacts.tsx       # Contact page (/contacts)
 │   ├── casestudies.tsx    # Case studies (/casestudies)
-│   └── blog.tsx           # Blog page (/blog)
+│   ├── blog.tsx           # Blog page (/blog)
+│   └── events/            # Events pages
+│       ├── index.tsx      # Events listing (/events)
+│       ├── [slug].tsx     # Event series (/events/:slug)
+│       └── [slug]/[talk].tsx  # Talk detail (/events/:slug/:talk)
 ├── components/
 │   ├── Layout.tsx         # HTML wrapper with head, header, footer
 │   ├── Header.tsx         # Navigation header
@@ -161,7 +165,8 @@ src/
 │       └── ContactForm.tsx
 ├── data/
 │   ├── navigation.ts      # Nav links and footer links
-│   └── clients.ts         # Client logos data
+│   ├── clients.ts         # Client logos data
+│   └── events.ts          # Events data loader
 └── styles/
     ├── global.css         # CSS variables, base styles
     ├── header.css
@@ -173,7 +178,15 @@ public/
 └── assets/
     └── js/
         └── datastar.js    # Datastar framework for client-side reactivity
+events/                    # Events and talks content
+├── AGENTS.md              # Events system documentation
+└── [event-slug]/          # Event series folders
+    ├── index.json         # Event metadata
+    └── *.md               # Individual talks
 ```
+
+**Content Documentation:**
+- [events/AGENTS.md](events/AGENTS.md) - Events system conventions and structure
 
 ## Tailwind CSS
 
