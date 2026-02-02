@@ -1,6 +1,11 @@
 import { Fragment } from "../../../lib/jsx-runtime";
 import { getSeriesById, getEventBySlug, formatEventDate, type Event, type EventSeries } from "../../../data/events";
 import { renderMarkdown } from "../../../lib/markdown";
+import { EventHero } from "../../../components/events/EventHero";
+import { AgendaSection } from "../../../components/events/AgendaSection";
+import { SpeakersGrid } from "../../../components/events/SpeakersGrid";
+import { VenueSection } from "../../../components/events/VenueSection";
+import { PricingSection } from "../../../components/events/PricingSection";
 
 export const metadata = {
   title: "Talk",
@@ -55,9 +60,64 @@ function YoutubeEmbed({ url }: { url: string }): string {
   );
 }
 
+function RichEventPage({ talk, series }: { talk: Event; series: EventSeries }): string {
+  const contentHtml = talk.content ? renderMarkdown(talk.content) : "";
+
+  return (
+    <Fragment>
+      <article class="bg-white">
+        {EventHero({
+          name: talk.name,
+          startDate: talk.startDate,
+          endDate: talk.endDate,
+          location: talk.location,
+          description: talk.description,
+          backLink: `/events/${series.id}`,
+          backLabel: series.name,
+        })}
+
+        {talk.agenda && talk.agenda.length > 0 && AgendaSection({ topics: talk.agenda })}
+
+        {talk.speakers && talk.speakers.length > 0 && SpeakersGrid({ speakers: talk.speakers })}
+
+        {talk.venue && VenueSection({ venue: talk.venue })}
+
+        {talk.pricing && talk.pricing.length > 0 && PricingSection({ pricing: talk.pricing, contact: talk.contact })}
+
+        {/* Additional content from markdown */}
+        {contentHtml && (
+          <div class="py-12 px-6 bg-white">
+            <div
+              class="prose prose-lg mx-auto max-w-4xl
+                prose-headings:font-bold prose-headings:tracking-tight
+                prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
+                prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+                prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-6
+                prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+                prose-strong:text-gray-900
+                prose-ul:my-4 prose-li:my-1
+                prose-ol:my-4"
+            >
+              {contentHtml}
+            </div>
+          </div>
+        )}
+      </article>
+    </Fragment>
+  );
+}
+
 interface TalkPageParams {
   slug: string;
   talk: string;
+}
+
+function isRichEvent(event: Event): boolean {
+  return event.type === "conference" ||
+    !!(event.agenda && event.agenda.length > 0) ||
+    !!(event.speakers && event.speakers.length > 0) ||
+    !!event.venue ||
+    !!(event.pricing && event.pricing.length > 0);
 }
 
 export default async function TalkPage(params: TalkPageParams): Promise<string> {
@@ -72,6 +132,11 @@ export default async function TalkPage(params: TalkPageParams): Promise<string> 
 
   if (!talk) {
     return NotFound({ seriesId: slug });
+  }
+
+  // Check if this is a rich event (conference with agenda, speakers, etc.)
+  if (isRichEvent(talk)) {
+    return RichEventPage({ talk, series });
   }
 
   const dateStr = formatEventDate(talk);

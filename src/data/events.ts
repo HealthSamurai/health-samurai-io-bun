@@ -1,5 +1,29 @@
 import { join } from "path";
 
+export type Speaker = {
+  name: string;
+  role?: string;
+  company?: string;
+  avatar?: string;
+};
+
+export type Venue = {
+  name: string;
+  address?: string;
+  description?: string;
+  mapUrl?: string;
+  imageUrl?: string;
+};
+
+export type PricingTier = {
+  name: string;
+  price: number;
+  currency?: string;
+  deadline?: string;
+  features?: string[];
+  highlighted?: boolean;
+};
+
 export type Event = {
   id: string;
   name: string;
@@ -14,6 +38,13 @@ export type Event = {
   series?: string;
   speaker?: string;
   role?: string;
+  // Rich event fields
+  type?: "talk" | "conference";
+  agenda?: string[];
+  speakers?: Speaker[];
+  venue?: Venue;
+  pricing?: PricingTier[];
+  contact?: string;
 };
 
 export type EventSeries = {
@@ -92,13 +123,23 @@ export async function getAllEvents(): Promise<EventSeries[]> {
         id,
         name: meta.name || id,
         date: meta.date,
+        startDate: meta.startDate,
+        endDate: meta.endDate,
         time: meta.time,
+        location: meta.location,
         description: meta.description,
         youtube: meta.youtube,
         content: body.trim(),
         series: dir,
         speaker: meta.speaker,
         role: meta.role,
+        // Rich event fields
+        type: meta.type,
+        agenda: meta.agenda,
+        speakers: meta.speakers,
+        venue: meta.venue,
+        pricing: meta.pricing,
+        contact: meta.contact,
       });
     }
 
