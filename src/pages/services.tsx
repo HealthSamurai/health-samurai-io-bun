@@ -1,112 +1,361 @@
 import { Fragment } from "../lib/jsx-runtime";
-import { Hero } from "../components/Hero";
 import { ContactForm } from "../components/ContactForm";
 
 export const metadata = {
   title: "Services",
-  description: "Professional services from Health Samurai - FHIR consulting, custom development, integration, and training.",
+  description: "FHIR-first software development for healthcare. Dedicated teams, FHIR platform, domain expertise, and agile approach.",
 };
 
-const services = [
+const featureCards = [
   {
-    title: "FHIR Consulting",
-    description: "Expert guidance on FHIR implementation, data modeling, and healthcare interoperability strategy.",
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-8 text-primary"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" /></svg>`,
+    title: "Dedicated Teams",
+    description: "Achieve rapid results with our full-stack teams dedicated to your project.",
   },
   {
-    title: "Custom Development",
-    description: "Build custom healthcare applications, integrations, and workflows on top of the Aidbox platform.",
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-8 text-primary"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" /></svg>`,
+    title: "FHIR Platform",
+    description: "Reduce time-to-market with our pre-built Aidbox FHIR backend and cloud infrastructure.",
   },
   {
-    title: "System Integration",
-    description: "Connect your existing systems with FHIR APIs - EHRs, labs, pharmacies, payers, and more.",
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-8 text-primary"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>`,
+    title: "Domain Expertise",
+    description: "Benefit from 15+ years of experience in health IT, software development, and HL7 FHIR.",
   },
   {
-    title: "Training & Workshops",
-    description: "Hands-on training for your team on FHIR, Aidbox, and healthcare data standards.",
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-8 text-primary"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" /></svg>`,
-  },
-  {
-    title: "Compliance & Certification",
-    description: "Get help with ONC certification, HIPAA compliance, and regulatory requirements.",
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-8 text-primary"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" /></svg>`,
-  },
-  {
-    title: "Support & Maintenance",
-    description: "Ongoing support, monitoring, and maintenance for your Aidbox deployments.",
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-8 text-primary"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" /></svg>`,
+    title: "Agile & Lean",
+    description: "Reach your goals through short iterations that incrementally develop the product.",
   },
 ];
+
+const services = [
+  { title: "Full-stack Development", icon: "/assets/services/fullstack.svg" },
+  { title: "System Design", icon: "/assets/services/system-design.svg" },
+  { title: "FHIR Data Modeling", icon: "/assets/services/fhir-modeling.svg" },
+  { title: "Integrations", icon: "/assets/services/integrations.svg" },
+  { title: "Cloud Infrastructure", icon: "/assets/services/cloud.svg" },
+  { title: "ONC/CMS Compliance", icon: "/assets/services/onc-cms.svg" },
+  { title: "HIPAA/GDPR Compliance", icon: "/assets/services/hipaa-gdpr.svg" },
+  { title: "UI/UX Design", icon: "/assets/services/ui-ux.svg" },
+];
+
+const portfolio = [
+  {
+    title: "Care Coordination",
+    description: "Developing a care coordination platform for self-insured companies managed by Lucent Health.",
+    tag: "care coordination platform",
+    image: "/assets/services/portfolio-care.jpg",
+    href: "https://lucenthealth.com/",
+  },
+  {
+    title: "Hospice EHR",
+    description: "Developing a FHIR-native, specialized EHR system used by over 100 hospices across the US.",
+    tag: "specialized EHR",
+    image: "/assets/services/portfolio-hospice.jpg",
+    href: "https://firenote.health/",
+  },
+  {
+    title: "Billing Module",
+    description: "Creating an automated billing module for the Sandata Agency Management Platform tailored to US home care agencies.",
+    tag: "automated billing module",
+    image: "/assets/services/portfolio-billing.jpg",
+    href: "https://www.sandata.com/",
+  },
+  {
+    title: "Dermatology EHR",
+    description: "Developing EHR modules including billing, registration, and self-payment for a Dermatology Clinic in New York.",
+    tag: "EHR modules",
+    image: "/assets/services/portfolio-derm.jpg",
+    href: "https://metrodermatology.net/",
+  },
+];
+
+const cultureTabs = [
+  {
+    id: "teams",
+    label: "Teams",
+    title: "Small & Strong",
+    description: "We craft our teams with full-stack developers who can handle everything from design and development to deployment and maintenance across all layers. A typical team has 3-7 pros, including one PO/BA and 2-6 full-stack engineers.",
+    image: "/assets/services/culture-team.webp",
+    tags: ["full-stack developers"],
+  },
+  {
+    id: "process",
+    label: "Process",
+    title: "Iterative & Incremental",
+    description: "We kick things off with a proof-of-concept project that lays down the basic scenario. From there, we evolve it into an MVP and then scale it up to a production-ready solution, all through quick, 1-week iterations.",
+    image: "/assets/services/culture-scrum.webp",
+    tags: ["proof-of-concept project", "1-week iterations"],
+  },
+  {
+    id: "culture",
+    label: "Culture",
+    title: "Feedback & Automations",
+    description: "With proven engineering practices such as CI/CD automation, TDD, pair programming, and design sessions, our teams move towards their goals at high speed without sacrificing quality. We continuously improve our domain knowledge and development culture.",
+    image: "/assets/services/culture-feedback.webp",
+    tags: ["CI/CD automation", "TDD", "pair programming"],
+  },
+  {
+    id: "dev",
+    label: "Developments",
+    title: "Platform & Open Source",
+    description: "We build projects on our Aidbox FHIR Server, which dramatically reduces initial development efforts. We start and contribute significantly to valuable open-source projects, including: sql-on-fhir, fhirbase, hl7proxy, jute.clj, retest, suitkin, etc.",
+    image: "/assets/services/culture-platform.webp",
+    tags: ["Aidbox FHIR Server"],
+  },
+];
+
+const blogPosts = [
+  {
+    title: "FHIR FUSE: FHIR in a Unix Way",
+    href: "/blog/fhir-fuse-fhir-in-a-unix-way",
+    image: "/assets/services/blog-fhir-fuse.png",
+  },
+  {
+    title: "Managing Multi-Clinic Data and Real-time Synchronization with OrgBAC and Subscriptions",
+    href: "/blog/managing-multi-clinic-data-and-real-time-synchronization-with-orgbac-and-subscriptions",
+    image: "/assets/services/blog-multi-clinic.png",
+  },
+  {
+    title: "From Paper Form to FHIR",
+    href: "/blog/from-paper-form-to-fhir",
+    image: "/assets/services/blog-paper-form.png",
+  },
+];
+
+function HeroSection(): string {
+  return (
+    <section class="bg-white py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Hero row: title left, image right */}
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
+          <div class="lg:col-span-7">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 text-sm font-mono text-gray-700 mb-6">
+              <span class="text-primary">&gt;_</span> Services
+            </div>
+            <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+              FHIR-first<br />software development<br /><span class="text-primary">for healthcare</span>
+            </h1>
+          </div>
+          <div class="lg:col-span-5">
+            <img
+              src="/assets/services/services-hero.webp"
+              alt="FHIR experts"
+              class="w-full max-w-md mx-auto lg:max-w-none"
+            />
+          </div>
+        </div>
+
+        {/* Feature cards row - first card highlighted with light blue bg */}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {featureCards.map((card, i) => (
+            <div class={`rounded-2xl p-6 ${i === 0 ? 'bg-[#f4f8fb]' : ''}`}>
+              <h3 class="text-lg font-semibold text-gray-900">{card.title}</h3>
+              <p class="mt-2 text-sm text-gray-600">
+                {card.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PortfolioSection(): string {
+  return (
+    <section class="bg-white py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mb-12">
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Portfolio</h2>
+          <p class="mt-4 text-lg text-gray-600">
+            We are proud to partner with clients of all stages and sizes in the Health IT sector.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {portfolio.map(project => (
+            <div class="bg-[#f4f8fb] rounded-2xl p-6 hover:shadow-md transition-shadow">
+              <img
+                src={project.image}
+                alt={project.title}
+                class="w-20 h-20 object-contain mb-4"
+              />
+              <h3 class="text-xl font-semibold text-gray-900">{project.title}</h3>
+              <p class="mt-2 text-gray-600" dangerouslySetInnerHTML={{
+                __html: project.description.replace(
+                  project.tag,
+                  `<span class="text-primary font-medium">${project.tag}</span>`
+                )
+              }} />
+              <a
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark"
+              >
+                Visit site →
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ServicesSection(): string {
+  return (
+    <section class="bg-white py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left: Services diagram image */}
+          <div>
+            <img
+              src="/assets/services/services-diagram.webp"
+              alt="FHIR Services"
+              class="w-full max-w-lg mx-auto"
+            />
+          </div>
+
+          {/* Right: Title, description, services grid, button */}
+          <div>
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Trusted technology partner for FHIR projects
+            </h2>
+            <p class="mt-6 text-lg text-gray-600">
+              Collaborate with our small, cross-functional teams of business-focused domain experts.
+            </p>
+
+            {/* Services grid 2x4 */}
+            <div class="mt-8 grid grid-cols-2 gap-4">
+              {services.map(service => (
+                <div class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                  <img src={service.icon} alt={service.title} class="size-10" />
+                  <span class="text-sm font-medium text-gray-900">{service.title}</span>
+                </div>
+              ))}
+            </div>
+
+            <div class="mt-8">
+              <a
+                href="#contact"
+                class="rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-dark transition-colors"
+              >
+                Hire a team
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CultureSection(): string {
+  const defaultTab = cultureTabs[0].id;
+
+  return (
+    <section class="bg-[#f4f8fb] py-24 sm:py-32" data-signals={`{cultureTab: '${defaultTab}'}`}>
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Approach & Culture</h2>
+          <p class="mt-4 text-lg text-gray-600">
+            We follow the Lean Principle of <span class="text-primary font-medium">"do more with less"</span> and this shapes our culture.
+          </p>
+        </div>
+
+        {/* Tabs */}
+        <div class="flex justify-center gap-2 mb-12">
+          {cultureTabs.map(tab => (
+            <button
+              data-on:click={`$cultureTab = '${tab.id}'`}
+              data-class={`{'bg-white text-gray-900 shadow-sm': $cultureTab == '${tab.id}', 'bg-transparent text-gray-600 hover:text-gray-900': $cultureTab != '${tab.id}'}`}
+              class="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Tab content */}
+        {cultureTabs.map(tab => (
+          <div
+            data-show={`$cultureTab == '${tab.id}'`}
+            style={tab.id !== defaultTab ? "display: none" : ""}
+            class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+          >
+            <div>
+              <img
+                src={tab.image}
+                alt={tab.title}
+                class="w-full max-w-md mx-auto rounded-2xl"
+              />
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900">{tab.title}</h3>
+              <p class="mt-4 text-gray-600 leading-relaxed">
+                {tab.description}
+              </p>
+              {tab.tags && (
+                <div class="mt-6 flex flex-wrap gap-2">
+                  {tab.tags.map(tag => (
+                    <span class="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function BlogSection(): string {
+  return (
+    <section class="bg-white py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-12">Our Blog</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {blogPosts.map(post => (
+            <a
+              href={post.href}
+              class="block bg-[#f4f8fb] rounded-2xl overflow-hidden hover:shadow-md transition-shadow group"
+            >
+              <div class="aspect-video bg-gray-100">
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-semibold text-gray-900 group-hover:text-primary transition-colors line-clamp-2">
+                  {post.title}
+                </h3>
+                <span class="mt-4 inline-flex items-center text-sm font-semibold text-primary">
+                  Read more →
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function ServicesPage(): string {
   return (
     <Fragment>
-      <Hero
-        title="Professional Services"
-        description="Expert help to accelerate your healthcare interoperability projects. From strategy to implementation."
-        primaryCta={{ label: "Contact Us", href: "#contact" }}
-        secondaryCta={{ label: "View Services", href: "#services" }}
-      />
-
-      <section id="services" class="py-24 sm:py-32">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-          <div class="mx-auto max-w-2xl text-center">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">What We Offer</h2>
-            <p class="mt-6 text-lg leading-8 text-gray-600">
-              Our team of FHIR experts can help you at every stage of your project.
-            </p>
-          </div>
-          <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-              {services.map(service => (
-                <div class="flex flex-col">
-                  <dt class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
-                    <span>{service.icon}</span>
-                    {service.title}
-                  </dt>
-                  <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                    <p class="flex-auto">{service.description}</p>
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </div>
-      </section>
-
-      <section class="bg-gray-50 py-24 sm:py-32">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-          <div class="mx-auto max-w-2xl text-center">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Why Work With Us</h2>
-            <p class="mt-6 text-lg leading-8 text-gray-600">
-              We've helped hundreds of healthcare organizations implement FHIR successfully.
-            </p>
-          </div>
-          <div class="mx-auto mt-16 max-w-2xl lg:max-w-none">
-            <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
-              <div class="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-200">
-                <h3 class="text-lg font-semibold text-gray-900">Deep FHIR Expertise</h3>
-                <p class="mt-4 text-gray-600">Our team includes HL7 FHIR contributors and experts with years of implementation experience.</p>
-              </div>
-              <div class="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-200">
-                <h3 class="text-lg font-semibold text-gray-900">Proven Track Record</h3>
-                <p class="mt-4 text-gray-600">We've delivered successful projects for startups, enterprises, and government organizations.</p>
-              </div>
-              <div class="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-200">
-                <h3 class="text-lg font-semibold text-gray-900">End-to-End Support</h3>
-                <p class="mt-4 text-gray-600">From initial architecture to production deployment and ongoing maintenance.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <HeroSection />
+      <PortfolioSection />
+      <ServicesSection />
+      <CultureSection />
+      <BlogSection />
       <div id="contact">
         <ContactForm
-          title="Let's discuss your project"
-          description="Tell us about your healthcare interoperability needs and we'll get back to you with how we can help."
+          title="Got a FHIR project?"
+          description="Complete the form and one of our FHIR experts will contact you via email to schedule a call within one business day."
           page="/services"
         />
       </div>
