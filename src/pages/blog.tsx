@@ -1,24 +1,17 @@
 import { Fragment } from "../lib/jsx-runtime";
 import { getAllPosts, formatDate, type BlogPost } from "../data/blog";
+import { getSamuraiByName, getInitials } from "../data/samurai";
 
 export const metadata = {
   title: "Blog",
   description: "Articles, tutorials, and news about FHIR, healthcare interoperability, and Health Samurai products.",
 };
 
-function getInitials(name: string): string {
-  return name
-    .split(" ")
-    .map(n => n[0])
-    .join("")
-    .toUpperCase()
-    .slice(0, 2);
-}
-
 function BlogCard({ post }: { post: BlogPost }): string {
   const formattedDate = formatDate(post.date);
   // Clean up title (remove emoji prefix if present)
   const title = post.title.replace(/^🔥\s*/, "");
+  const author = getSamuraiByName(post.author);
 
   return (
     <article class="flex max-w-xl flex-col items-start justify-between">
@@ -39,13 +32,31 @@ function BlogCard({ post }: { post: BlogPost }): string {
         </p>
       </div>
       <div class="relative mt-8 flex items-center gap-x-4">
-        <div class="size-10 rounded-full bg-gray-100 dark:bg-dark-bg-alt flex items-center justify-center text-sm font-medium text-gray-600 dark:text-dark-text-light">
-          {getInitials(post.author)}
-        </div>
+        {author?.avatar ? (
+          <img src={author.avatar} alt={post.author} class="size-10 rounded-full object-cover" />
+        ) : (
+          <div class="size-10 rounded-full bg-gray-100 dark:bg-dark-bg-alt flex items-center justify-center text-sm font-medium text-gray-600 dark:text-dark-text-light">
+            {getInitials(post.author)}
+          </div>
+        )}
         <div class="text-sm/6">
-          <p class="font-semibold text-gray-900 dark:text-dark-text">
-            {post.author}
-          </p>
+          {author?.linkedin ? (
+            <a
+              href={author.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-semibold text-gray-900 dark:text-dark-text hover:text-primary transition-colors"
+            >
+              {post.author}
+            </a>
+          ) : (
+            <p class="font-semibold text-gray-900 dark:text-dark-text">
+              {post.author}
+            </p>
+          )}
+          {author?.role && (
+            <p class="text-gray-500 dark:text-dark-text-muted">{author.role}</p>
+          )}
         </div>
       </div>
     </article>
