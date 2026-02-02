@@ -5,6 +5,7 @@ import { Trusted } from "../components/Trusted";
 import type { TrustedLogo } from "../components/Trusted";
 import { Bento } from "../components/Bento";
 import type { BentoItem } from "../components/Bento";
+import { UseCases, aidboxUseCases } from "../components/UseCases";
 import { Pricing } from "../components/Pricing";
 import type { PricingTier } from "../components/Pricing";
 import { ContactForm } from "../components/ContactForm";
@@ -167,6 +168,10 @@ export default function AidboxPage(): string {
       <Bento
         title="What is Aidbox"
         items={aidboxFeatures}
+      />
+      <UseCases
+        title="See how Aidbox powers the system you want to build"
+        cases={aidboxUseCases}
       />
       <Pricing
         title="Pricing"
