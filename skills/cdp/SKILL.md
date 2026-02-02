@@ -10,8 +10,20 @@ Control Chrome browser via CDP commands.
 
 ## Prerequisites
 
-1. Chrome running with: `google-chrome --headless=new --remote-debugging-port=9222 --disable-gpu about:blank`
-2. CDP server running: `bun skills/cdp/src/index.js`
+Just start the CDP server - it will launch Chrome automatically with a dedicated profile:
+
+```bash
+bun skills/cdp/src/index.js
+```
+
+**Environment variables:**
+- `CDP_PORT` - HTTP API port (default: 2229)
+- `CDP_PROFILE` - Chrome profile directory (default: `/tmp/chrome-cdp-profile`)
+
+**Manual Chrome start** (if needed):
+```bash
+google-chrome --remote-debugging-port=9222 --user-data-dir=/tmp/chrome-cdp-profile
+```
 
 ## MCP Tool
 
