@@ -3,7 +3,7 @@
 const HTTP_PORT = process.env.CDP_PORT || 2229;
 const BROWSER_URL = "http://127.0.0.1:9222";
 const DEBUG_PORT = 9222;
-const USER_DATA_DIR = process.env.CDP_PROFILE || "/tmp/chrome-cdp-profile";
+const USER_DATA_DIR = process.env.CDP_PROFILE; // undefined = default profile
 
 let ws = null;
 let msgId = 0;
@@ -21,9 +21,15 @@ function getChromePath() {
 
 async function startChrome() {
   const chromePath = getChromePath();
-  process.stderr.write(`Starting Chrome with debugging port ${DEBUG_PORT}, profile: ${USER_DATA_DIR}\n`);
+  const args = [chromePath, `--remote-debugging-port=${DEBUG_PORT}`];
+  if (USER_DATA_DIR) {
+    args.push(`--user-data-dir=${USER_DATA_DIR}`);
+    process.stderr.write(`Starting Chrome with debugging port ${DEBUG_PORT}, profile: ${USER_DATA_DIR}\n`);
+  } else {
+    process.stderr.write(`Starting Chrome with debugging port ${DEBUG_PORT}, using default profile\n`);
+  }
 
-  chromeProcess = Bun.spawn([chromePath, `--remote-debugging-port=${DEBUG_PORT}`, `--user-data-dir=${USER_DATA_DIR}`], {
+  chromeProcess = Bun.spawn(args, {
     stdout: "ignore",
     stderr: "ignore",
   });
