@@ -15,14 +15,21 @@ export const metadata = {
 };
 
 const trustedLogos: TrustedLogo[] = [
-  { src: "/assets/aidbox/4medica.svg", alt: "4Medica" },
-  { src: "/assets/aidbox/innovaccer.svg", alt: "Innovaccer" },
-  { src: "/assets/aidbox/prenosis.svg", alt: "Prenosis" },
-  { src: "/assets/aidbox/pkb.svg", alt: "Patients Know Best" },
-  { src: "/assets/aidbox/sonic.svg", alt: "Sonic Healthcare" },
-  { src: "/assets/aidbox/narus.svg", alt: "Narus Health" },
-  { src: "/assets/aidbox/deep6ai.svg", alt: "Deep 6 AI" },
-  { src: "/assets/aidbox/healthie.svg", alt: "Healthie" },
+  { src: "/assets/aidbox/trust/solutio.png", alt: "Solutio" },
+  { src: "/assets/aidbox/trust/deep6ai.png", alt: "Deep 6 AI" },
+  { src: "/assets/aidbox/trust/bodylogicmd.png", alt: "BodyLogicMD" },
+  { src: "/assets/aidbox/trust/sandata.png", alt: "Sandata" },
+  { src: "/assets/aidbox/trust/villagecare.png", alt: "VillageCare" },
+  { src: "/assets/aidbox/trust/firenote.png", alt: "Firenote" },
+  { src: "/assets/aidbox/trust/healthie.png", alt: "Healthie" },
+  { src: "/assets/aidbox/trust/prenosis.png", alt: "Prenosis" },
+  { src: "/assets/aidbox/trust/patients-know-best.png", alt: "Patients Know Best" },
+  { src: "/assets/aidbox/trust/lucent-health.png", alt: "Lucent Health" },
+  { src: "/assets/aidbox/trust/bestnotes.png", alt: "BestNotes" },
+  { src: "/assets/aidbox/trust/innovaccer.png", alt: "Innovaccer" },
+  { src: "/assets/aidbox/trust/bupa.png", alt: "Bupa" },
+  { src: "/assets/aidbox/trust/duodecim.png", alt: "Duodecim" },
+  { src: "/assets/aidbox/trust/novellia.png", alt: "Novellia" },
 ];
 
 const pricingTiers: PricingTier[] = [
@@ -81,8 +88,8 @@ export default function AidboxPage(): string {
   return (
     <Fragment>
       <Hero
-        title={product.label}
-        description={product.description}
+        title="FHIR server and database"
+        description="Build healthcare solutions from CDRs to EHRs using FHIR, PostgreSQL, and our SDK. Free for development. Scale to terabytes with a flat monthly fee of $1,900."
         primaryCta={{ label: "Get Started", href: "https://docs.aidbox.app/getting-started" }}
         secondaryCta={{ label: "Documentation", href: "https://docs.aidbox.app" }}
         video={{
