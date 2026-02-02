@@ -7,6 +7,8 @@ export type PricingTier = {
   href: string;
   featured?: boolean;
   features: string[];
+  icon?: string;
+  cta?: string;
 };
 
 export type PricingProps = {
@@ -21,11 +23,11 @@ const checkIcon = `<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="tru
 export function Pricing({
   title = "Pricing",
   subtitle = "Pricing that grows with you",
-  description = "Choose a plan that fits your needs. All plans include access to our FHIR platform and developer tools.",
+  description,
   tiers,
 }: PricingProps): string {
   return (
-    <div class="bg-white py-24 sm:py-32" data-signals="{annual: false}">
+    <div class="bg-white py-24 sm:py-32" data-signals="{annual: true}">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <div class="mx-auto max-w-4xl text-center">
@@ -34,13 +36,27 @@ export function Pricing({
             {subtitle}
           </p>
         </div>
-        <p class="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-gray-600 sm:text-xl/8">
-          {description}
-        </p>
+        {description && (
+          <p class="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-gray-600 sm:text-xl/8">
+            {description}
+          </p>
+        )}
 
         {/* Toggle */}
         <div class="mt-16 flex justify-center">
           <div class="grid grid-cols-2 gap-x-1 rounded-full p-1 text-center text-xs/5 font-semibold ring-1 ring-inset ring-gray-200">
+            <button
+              type="button"
+              class="rounded-full px-4 py-1.5 transition-colors"
+              data-class="{'bg-primary text-white': $annual, 'text-gray-500': !$annual}"
+              data-on:click="$annual = true"
+              data-track="click"
+              data-track-label="Yearly"
+              data-track-category="pricing"
+              data-track-billing="annual"
+            >
+              Yearly
+            </button>
             <button
               type="button"
               class="rounded-full px-4 py-1.5 transition-colors"
@@ -52,18 +68,6 @@ export function Pricing({
               data-track-billing="monthly"
             >
               Monthly
-            </button>
-            <button
-              type="button"
-              class="rounded-full px-4 py-1.5 transition-colors"
-              data-class="{'bg-primary text-white': $annual, 'text-gray-500': !$annual}"
-              data-on:click="$annual = true"
-              data-track="click"
-              data-track-label="Annually"
-              data-track-category="pricing"
-              data-track-billing="annual"
-            >
-              Annually
             </button>
           </div>
         </div>
@@ -78,6 +82,11 @@ export function Pricing({
                   : "ring-1 ring-gray-200"
               }`}
             >
+              {tier.icon && (
+                <div class="mb-6">
+                  <img src={tier.icon} alt={tier.name} class="h-16 w-auto" loading="lazy" />
+                </div>
+              )}
               <div class="flex items-center justify-between gap-x-4">
                 <h3
                   class={`text-lg/8 font-semibold ${
@@ -94,20 +103,20 @@ export function Pricing({
               </div>
               <p class="mt-4 text-sm/6 text-gray-600">{tier.description}</p>
 
-              {/* Monthly price */}
-              <p class="mt-6 flex items-baseline gap-x-1" data-show="!$annual">
-                <span class="text-4xl font-semibold tracking-tight text-gray-900">
-                  {tier.priceMonthly}
-                </span>
-                <span class="text-sm/6 font-semibold text-gray-600">/month</span>
-              </p>
-
               {/* Annual price */}
-              <p class="mt-6 flex items-baseline gap-x-1" data-show="$annual" style={{ display: "none" }}>
+              <p class="mt-6 flex items-baseline gap-x-1" data-show="$annual">
                 <span class="text-4xl font-semibold tracking-tight text-gray-900">
                   {tier.priceAnnually}
                 </span>
                 <span class="text-sm/6 font-semibold text-gray-600">/year</span>
+              </p>
+
+              {/* Monthly price */}
+              <p class="mt-6 flex items-baseline gap-x-1" data-show="!$annual" style={{ display: "none" }}>
+                <span class="text-4xl font-semibold tracking-tight text-gray-900">
+                  {tier.priceMonthly}
+                </span>
+                <span class="text-sm/6 font-semibold text-gray-600">/month</span>
               </p>
 
               <a
@@ -118,11 +127,11 @@ export function Pricing({
                     : "text-primary ring-1 ring-inset ring-primary/20 hover:ring-primary/40"
                 }`}
                 data-track="click"
-                data-track-label={`Get started - ${tier.name}`}
+                data-track-label={`${tier.cta || "Get started"} - ${tier.name}`}
                 data-track-category="pricing"
                 data-track-tier={tier.id}
               >
-                Get started
+                {tier.cta || "Get started"}
               </a>
 
               <ul role="list" class="mt-8 space-y-3 text-sm/6 text-gray-600 xl:mt-10">

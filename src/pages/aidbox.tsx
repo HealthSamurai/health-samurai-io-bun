@@ -6,6 +6,7 @@ import type { TrustedLogo } from "../components/Trusted";
 import { Bento } from "../components/Bento";
 import type { BentoItem } from "../components/Bento";
 import { UseCases, aidboxUseCases } from "../components/UseCases";
+import { SampleProjects, aidboxSampleProjects } from "../components/SampleProjects";
 import { Pricing } from "../components/Pricing";
 import type { PricingTier } from "../components/Pricing";
 import { ContactForm } from "../components/ContactForm";
@@ -96,53 +97,38 @@ const aidboxFeatures: BentoItem[] = [
 
 const pricingTiers: PricingTier[] = [
   {
-    id: "developer",
-    name: "Developer",
-    description: "Perfect for development and testing your FHIR applications.",
+    id: "dev",
+    name: "Aidbox Dev",
+    description: "Free for prototyping, testing and development. Not for use with Protected Health Information (PHI).",
     priceMonthly: "$0",
     priceAnnually: "$0",
-    href: "https://aidbox.app",
-    features: [
-      "Single Aidbox instance",
-      "Up to 10,000 resources",
-      "Community support",
-      "Access to documentation",
-      "Local development",
-    ],
+    href: "https://aidbox.app/ui/portal",
+    icon: "/assets/aidbox/pricing/dev.svg",
+    cta: "Try now",
+    features: [],
   },
   {
-    id: "team",
-    name: "Team",
-    description: "For teams building production healthcare applications.",
-    priceMonthly: "$499",
-    priceAnnually: "$4,990",
+    id: "core",
+    name: "Aidbox Core",
+    description: "Pay per unique database. Basic support is included. Ask about startup or bulk discounts.",
+    priceMonthly: "$1,900",
+    priceAnnually: "$19,000",
     href: "/contacts",
+    icon: "/assets/aidbox/pricing/core.svg",
+    cta: "Contact Us",
     featured: true,
-    features: [
-      "Multiple Aidbox instances",
-      "Unlimited resources",
-      "Priority email support",
-      "SMART on FHIR support",
-      "Custom terminologies",
-      "Audit logging",
-    ],
+    features: [],
   },
   {
     id: "enterprise",
-    name: "Enterprise",
-    description: "Dedicated support and infrastructure for large organizations.",
-    priceMonthly: "Custom",
-    priceAnnually: "Custom",
+    name: "Aidbox Enterprise",
+    description: "Enterprise plan for large-scale production workloads. Built for multi-tenant architectures, high availability, and advanced data pipelines.",
+    priceMonthly: "Talk to Sales",
+    priceAnnually: "Talk to Sales",
     href: "/contacts",
-    features: [
-      "Unlimited instances",
-      "Unlimited resources",
-      "Dedicated support",
-      "SLA guarantees",
-      "On-premise deployment",
-      "Custom integrations",
-      "Compliance assistance",
-    ],
+    icon: "/assets/aidbox/pricing/enterprise.svg",
+    cta: "Contact Us",
+    features: [],
   },
 ];
 
@@ -150,7 +136,7 @@ export default function AidboxPage(): string {
   return (
     <Fragment>
       <Hero
-        title="FHIR server and database"
+        title="FHIR server and database!"
         description="Build healthcare solutions from CDRs to EHRs using FHIR, PostgreSQL, and our SDK. Free for development. Scale to terabytes with a flat monthly fee of $1,900."
         primaryCta={{ label: "Get Started", href: "https://docs.aidbox.app/getting-started" }}
         secondaryCta={{ label: "Documentation", href: "https://docs.aidbox.app" }}
@@ -173,10 +159,13 @@ export default function AidboxPage(): string {
         title="See how Aidbox powers the system you want to build"
         cases={aidboxUseCases}
       />
+      <SampleProjects
+        title="Get hands-on with sample projects built on Aidbox"
+        projects={aidboxSampleProjects}
+      />
       <Pricing
         title="Pricing"
-        subtitle="Simple, transparent pricing"
-        description="Choose the plan that fits your needs. Start free and scale as you grow."
+        subtitle="Flat pricing with no hidden fees."
         tiers={pricingTiers}
       />
       <ContactForm
