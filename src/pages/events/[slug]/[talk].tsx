@@ -77,11 +77,6 @@ export default async function TalkPage(params: TalkPageParams): Promise<string> 
   const dateStr = formatEventDate(talk);
   const contentHtml = talk.content ? renderMarkdown(talk.content) : "";
 
-  // Find prev/next talks
-  const talkIndex = series.events.findIndex(e => e.id === talkId);
-  const prevTalk = talkIndex > 0 ? series.events[talkIndex - 1] : null;
-  const nextTalk = talkIndex < series.events.length - 1 ? series.events[talkIndex + 1] : null;
-
   return (
     <Fragment>
       <article class="bg-white">
@@ -152,39 +147,6 @@ export default async function TalkPage(params: TalkPageParams): Promise<string> 
           </div>
         )}
 
-        {/* Navigation */}
-        <footer class="border-t border-gray-100 bg-gray-50">
-          <div class="mx-auto max-w-3xl px-6 py-8">
-            <div class="flex items-center justify-between gap-4">
-              {prevTalk ? (
-                <a href={`/events/${slug}/${prevTalk.id}`} class="flex-1 group">
-                  <span class="text-xs text-gray-500">Previous</span>
-                  <p class="text-sm font-medium text-gray-900 group-hover:text-primary truncate">
-                    ← {prevTalk.name}
-                  </p>
-                </a>
-              ) : (
-                <div class="flex-1" />
-              )}
-              <a
-                href={`/events/${slug}`}
-                class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 border border-gray-200 rounded-lg hover:bg-gray-50"
-              >
-                All talks
-              </a>
-              {nextTalk ? (
-                <a href={`/events/${slug}/${nextTalk.id}`} class="flex-1 text-right group">
-                  <span class="text-xs text-gray-500">Next</span>
-                  <p class="text-sm font-medium text-gray-900 group-hover:text-primary truncate">
-                    {nextTalk.name} →
-                  </p>
-                </a>
-              ) : (
-                <div class="flex-1" />
-              )}
-            </div>
-          </div>
-        </footer>
       </article>
     </Fragment>
   );
