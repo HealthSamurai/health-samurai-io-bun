@@ -21,6 +21,7 @@ export type EventSeries = {
   name: string;
   description?: string;
   date?: string;
+  sortOrder?: number;
   events: Event[];
 };
 
@@ -119,6 +120,7 @@ export async function getAllEvents(): Promise<EventSeries[]> {
       name: seriesMeta.name || dir,
       description: seriesMeta.description,
       date: seriesMeta.date || seriesMeta.start_date,
+      sortOrder: seriesMeta.sortOrder,
       events: events.sort((a, b) => {
         const dateA = a.date || a.startDate || "";
         const dateB = b.date || b.startDate || "";
@@ -127,8 +129,16 @@ export async function getAllEvents(): Promise<EventSeries[]> {
     });
   }
 
-  // Sort series by date (newest first)
+  // Sort series by sortOrder (if set), then by date (newest first)
   return series.sort((a, b) => {
+    // If both have sortOrder, use that
+    if (a.sortOrder !== undefined && b.sortOrder !== undefined) {
+      return a.sortOrder - b.sortOrder;
+    }
+    // Items with sortOrder come before items without
+    if (a.sortOrder !== undefined) return -1;
+    if (b.sortOrder !== undefined) return 1;
+    // Otherwise sort by date
     const dateA = a.date || "";
     const dateB = b.date || "";
     return dateB.localeCompare(dateA);

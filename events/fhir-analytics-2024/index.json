@@ -1,5 +1,6 @@
 {
-  "name": "FHIR Analytics",
+  "name": "FHIR Analytics 2024",
   "description": "A conference about SQL on FHIR, analytics tools, and transforming FHIR data for population-level queries.",
-  "date": "2024-09-12"
+  "date": "2024-09-12",
+  "sortOrder": 3
 }
