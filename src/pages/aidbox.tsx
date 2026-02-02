@@ -3,6 +3,8 @@ import { getProduct } from "../data/products";
 import { Hero } from "../components/Hero";
 import { Trusted } from "../components/Trusted";
 import type { TrustedLogo } from "../components/Trusted";
+import { Bento } from "../components/Bento";
+import type { BentoItem } from "../components/Bento";
 import { Pricing } from "../components/Pricing";
 import type { PricingTier } from "../components/Pricing";
 import { ContactForm } from "../components/ContactForm";
@@ -30,6 +32,65 @@ const trustedLogos: TrustedLogo[] = [
   { src: "/assets/aidbox/trust/bupa.png", alt: "Bupa" },
   { src: "/assets/aidbox/trust/duodecim.png", alt: "Duodecim" },
   { src: "/assets/aidbox/trust/novellia.png", alt: "Novellia" },
+];
+
+const aidboxFeatures: BentoItem[] = [
+  {
+    title: "FHIR Database",
+    description:
+      "Manage FHIR data with the power of PostgreSQL — fully under your control. Aidbox stores resources transparently as JSONB, enabling you to query, join, and aggregate by any element, with full support for transactional operations, reporting, and seamless migrations.",
+    href: "https://docs.aidbox.app/storage-1/aidboxdb-image",
+    iconSrc: "/assets/aidbox/features/database.svg",
+    tags: ["PostgreSQL", "JSONB", "Indexes", "Custom resources", "SQL on FHIR"],
+  },
+  {
+    title: "API",
+    description:
+      "Multiple APIs — FHIR, SQL, GraphQL, Bulk, and Subscription — to work efficiently with FHIR data for maximum flexibility and performance.",
+    href: "https://docs.aidbox.app/api-1",
+    iconSrc: "/assets/aidbox/features/api.svg",
+    tags: ["FHIR", "SQL", "GraphQL"],
+  },
+  {
+    title: "Artifact Registry",
+    description:
+      "Multiple FHIR versions: STU3, R4, R5, and R6. 500+ ready-to-use IGs: IPS, national (US, DE, CA, etc.), domain (mCode, Da Vinci, etc.), custom IGs.",
+    href: "https://docs.aidbox.app/profiling-and-validation/profiling-with-zen-lang",
+    iconSrc: "/assets/aidbox/features/artifact-registry.svg",
+    tags: ["IGs", "Profiles", "Search params"],
+  },
+  {
+    title: "Access Control",
+    description:
+      "Enterprise-grade security with OAuth 2.0, multitenancy, flexible user management, granular access policies, and complete audit trails.",
+    href: "https://docs.aidbox.app/security-and-access-control-1",
+    iconSrc: "/assets/aidbox/features/access-control.svg",
+    tags: ["OAuth 2.0", "SMART", "RBAC/ABAC"],
+  },
+  {
+    title: "Terminology",
+    description:
+      "Validate codes and perform fast lookups in ICD-10, SNOMED, LOINC. Use custom code systems and value sets.",
+    href: "https://docs.aidbox.app/terminology",
+    iconSrc: "/assets/aidbox/features/terminology.svg",
+    tags: ["CodeSystems", "ValueSets"],
+  },
+  {
+    title: "Developer Experience",
+    description:
+      "TypeScript, C#, and Python SDKs for easy Aidbox integration and rapid app development. SDK generator for custom toolkits tailored to your stack.",
+    href: "https://docs.aidbox.app/app-development-guides",
+    iconSrc: "/assets/aidbox/features/sdk.svg",
+    tags: ["Python", "C#", "JS", "Codegen"],
+  },
+  {
+    title: "UI",
+    description:
+      "Intuitive UI to work with FHIR data, manage users, clients, access policies, and configure system settings.",
+    href: "https://docs.aidbox.app/overview/aidbox-ui",
+    iconSrc: "/assets/aidbox/features/ui.svg",
+    tags: ["FHIR Viewer", "Search params"],
+  },
 ];
 
 const pricingTiers: PricingTier[] = [
@@ -102,6 +163,10 @@ export default function AidboxPage(): string {
         tagline="Trusted by leading healthcare organizations worldwide."
         ctaText="Read customer stories"
         ctaHref="/casestudies"
+      />
+      <Bento
+        title="What is Aidbox"
+        items={aidboxFeatures}
       />
       <Pricing
         title="Pricing"
