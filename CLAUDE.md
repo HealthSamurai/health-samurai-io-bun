@@ -73,6 +73,11 @@ bun dev:fg        # Foreground mode (Ctrl+C to stop)
 
 **Important:** Always use `bun dev:stop` to stop the server. Never use `pkill bun` as it kills all Bun processes system-wide.
 
+**After changing `.env`:** Environment variables are read at process startup. `bun dev:reload` may fail silently if the port is still held by the old process. Use full restart:
+```sh
+bun dev:stop && bun dev
+```
+
 **Tailwind watch fallback:** On systems where native file watching fails, `bun run css:watch` falls back to polling rebuilds every 2 seconds. This is expected and keeps CSS up to date.
 
 **Temp directory:** Dev scripts use a local `./.tmp` directory for Bun temp files.
