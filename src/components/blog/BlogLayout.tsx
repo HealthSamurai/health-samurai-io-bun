@@ -11,8 +11,8 @@ interface BlogLayoutProps {
 }
 
 /**
- * Blog-specific layout with dedicated CSS from blog-ts2
- * Uses blog.css for content, but keeps main header/footer
+ * Blog-specific layout
+ * Uses unified main.css (same as rest of site)
  */
 export function BlogLayout({ title, description, children, ctx, devMode }: BlogLayoutProps): string {
   return `<html lang="en">
@@ -22,7 +22,7 @@ export function BlogLayout({ title, description, children, ctx, devMode }: BlogL
     <title>${title}</title>
     ${description ? `<meta name="description" content="${description}" />` : ''}
     <link rel="icon" href="https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/5a2ff62247c38400019e81f3_32.png" />
-    <link rel="stylesheet" href="/styles/blog.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
