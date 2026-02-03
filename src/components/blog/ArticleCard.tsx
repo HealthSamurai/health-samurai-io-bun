@@ -73,7 +73,7 @@ function FeaturedCard({ article }: { article: Article }): string {
             <img
               src={article.image}
               alt={article.title}
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               loading="lazy"
             />
           </div>
@@ -116,7 +116,7 @@ function HorizontalCard({ article, showAuthor = true }: { article: Article; show
               <img
                 src={article.image}
                 alt={article.title}
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
               />
             </div>
@@ -168,7 +168,7 @@ function HorizontalCard({ article, showAuthor = true }: { article: Article; show
               <img
                 src={article.image}
                 alt={article.title}
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
               />
             </div>
@@ -210,7 +210,7 @@ function ListCard({ article }: { article: Article }): string {
               <img
                 src={article.image}
                 alt={article.title}
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
               />
             </div>
@@ -283,7 +283,7 @@ function GridCard({ article }: { article: Article }): string {
             <img
               src={article.image}
               alt={article.title}
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               loading="lazy"
             />
           </div>
