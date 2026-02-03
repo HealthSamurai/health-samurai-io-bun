@@ -234,7 +234,7 @@ export default function BlogPost(params: BlogPostParams): string {
             </div>
 
             {/* Title - full width per Figma 616-6263 */}
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-[72px] font-bold text-heading-primary leading-[80px] tracking-[-0.4px] w-full">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-[64px] font-bold text-heading-primary leading-[72px] tracking-[-0.4px] w-full">
               {title}
             </h1>
 

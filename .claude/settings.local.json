@@ -34,7 +34,14 @@
       "Bash(jq:*)",
       "Bash(pgrep:*)",
       "Bash(open:*)",
-      "Bash(pkill:*)"
+      "Bash(pkill:*)",
+      "Bash(bun:*)",
+      "Bash(brew install:*)",
+      "Bash(gh auth login:*)",
+      "Bash(gh issue list:*)",
+      "Bash(gh issue view:*)",
+      "Bash(head:*)",
+      "Bash(xargs:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
