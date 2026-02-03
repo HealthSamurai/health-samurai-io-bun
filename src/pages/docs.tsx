@@ -50,9 +50,9 @@ export default function DocsPage(): string {
     <Fragment>
       <div class="bg-white py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
-          <div class="mx-auto max-w-2xl text-center">
+          <div class="mx-auto max-w-3xl text-center">
             <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Documentation</h1>
-            <p class="mt-6 text-lg leading-8 text-gray-600">
+            <p class="mt-4 text-lg text-gray-600">
               Everything you need to build with Health Samurai products.
             </p>
             <div class="mt-10">
