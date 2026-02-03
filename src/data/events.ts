@@ -67,6 +67,7 @@ export type Event = {
   series?: string;
   speaker?: string;
   role?: string;
+  featured?: boolean; // Show on main events page
   // Rich event fields
   type?: "talk" | "conference";
   about?: AboutContent;
@@ -172,6 +173,7 @@ export async function getAllEvents(): Promise<EventSeries[]> {
         series: dir,
         speaker: meta.speaker,
         role: meta.role,
+        featured: meta.featured,
         // Rich event fields
         type: meta.type,
         about: meta.about,

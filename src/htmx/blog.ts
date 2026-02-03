@@ -9,7 +9,7 @@ const ARTICLES_PER_PAGE = 4
 // Tabs component for HTMX responses
 function Tabs({ activeTab }: { activeTab: string }): string {
   return `
-    <div class="flex gap-5 mb-6">
+    <div class="flex gap-5 mb-2">
       <a
         href="/blog?tab=recent"
         hx-get="/htmx/blog/recent"
@@ -100,7 +100,7 @@ function handleRecent(url: URL): string {
   }
 
   return `
-    <div id="tabs-and-content-container">
+    <div id="tabs-and-content-container" class="mt-[44px]">
       ${Tabs({ activeTab: 'recent' })}
       <div id="articles-container">
         ${articlesContent}
@@ -164,7 +164,7 @@ function handleByTopic(url: URL): string {
   }
 
   return `
-    <div id="tabs-and-content-container">
+    <div id="tabs-and-content-container" class="mt-[44px]">
       ${Tabs({ activeTab: 'by-topic' })}
       <div id="articles-container">
         ${articlesContent}
@@ -230,7 +230,7 @@ function handleByAuthor(url: URL): string {
   }
 
   return `
-    <div id="tabs-and-content-container">
+    <div id="tabs-and-content-container" class="mt-[44px]">
       ${Tabs({ activeTab: 'by-author' })}
       <div id="articles-container">
         ${articlesContent}

@@ -3,7 +3,8 @@
   "name": "Closing Roundtable",
   "speaker": "Panel Discussion",
   "role": "",
-  "youtube": "https://www.youtube.com/watch?v=qmpYnNerOTI"
+  "youtube": "https://www.youtube.com/watch?v=qmpYnNerOTI",
+  "featured": true
 }
 ---
 

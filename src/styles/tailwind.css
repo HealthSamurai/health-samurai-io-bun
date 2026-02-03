@@ -2,6 +2,7 @@
 @plugin "@tailwindcss/typography";
 @source "../components/**/*.tsx";
 @source "../pages/**/*.tsx";
+@source "../htmx/**/*.ts";
 @source "./blog-safelist.html";
 
 @variant dark (&:where(.dark, .dark *));

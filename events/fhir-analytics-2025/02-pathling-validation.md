@@ -3,7 +3,8 @@
   "name": "Validation of SQL on FHIR via Clinical Study Replication & Introduction to Pathling",
   "speaker": "John Grimes",
   "role": "Principal Research Consultant, CSIRO",
-  "youtube": "https://www.youtube.com/watch?v=UppNaETsNiE"
+  "youtube": "https://www.youtube.com/watch?v=UppNaETsNiE",
+  "featured": true
 }
 ---
 

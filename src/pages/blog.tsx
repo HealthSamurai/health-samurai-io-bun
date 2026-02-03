@@ -66,9 +66,9 @@ export default function BlogPage(props: BlogPageProps = {}): string {
       ${BlogHero()}
 
       ${featuredArticle ? `
-        <section class="pt-12 pb-48">
+        <section class="mb-16">
           <div class="max-w-[1200px] mx-auto px-4">
-            <h2 class="text-2xl font-semibold leading-8 tracking-tight text-neutral-900 mb-6 flex items-center gap-2">
+            <h2 class="text-[36px] font-semibold leading-tight tracking-tight text-neutral-900 mb-11 flex items-center gap-2">
               <img src="/icons/blog/featured.svg" alt="" class="w-6 h-6" />
               Featured articles
             </h2>
@@ -86,23 +86,17 @@ export default function BlogPage(props: BlogPageProps = {}): string {
         </section>
       ` : ''}
 
-      <section class="py-12">
+      <section class="pt-16">
         <div class="max-w-[1200px] mx-auto px-4">
-          <div class="flex items-center justify-between mb-16 pb-6 border-b border-neutral-200">
-            <div class="flex items-center gap-2">
-              <img src="/icons/blog/hamburger.svg" alt="" class="w-6 h-6" />
-              <h2 class="text-2xl font-semibold leading-8 tracking-tight text-neutral-900">
-                All articles
-              </h2>
-            </div>
-
-            <svg class="w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
+          <div class="flex items-center gap-2">
+            <img src="/icons/blog/hamburger.svg" alt="" class="w-6 h-6" />
+            <h2 class="text-[36px] font-semibold leading-tight tracking-tight text-neutral-900">
+              All articles
+            </h2>
           </div>
 
-          <div id="tabs-and-content-container">
-            <div class="flex gap-5 mb-6">
+          <div id="tabs-and-content-container" class="mt-[44px]">
+            <div class="flex gap-5 mb-2">
               <a
                 href="/blog?tab=recent"
                 hx-get="/htmx/blog/recent"

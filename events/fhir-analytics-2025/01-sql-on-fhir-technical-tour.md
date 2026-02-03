@@ -3,7 +3,8 @@
   "name": "SQL on FHIR v2.1: A Technical Tour & What's New for 2025",
   "speaker": "Nikolai Ryzhikov",
   "role": "CTO, Health Samurai",
-  "youtube": "https://www.youtube.com/watch?v=UBEOBwd459U"
+  "youtube": "https://www.youtube.com/watch?v=UBEOBwd459U",
+  "featured": true
 }
 ---
 
