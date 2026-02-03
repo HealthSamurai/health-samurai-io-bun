@@ -27,10 +27,13 @@ import {
 import { CommentItem, CommentList, type Comment } from "./components/Comments";
 import { notifyContactForm, notifySubscription, isZulipConfigured } from "./lib/zulip";
 import { handleBlogHtmx } from "./htmx/blog";
+import { handleDocsRequest } from "./docs";
+import { initDocsHighlighter } from "./docs/markdown";
 
 // Initialize at startup
 await initGitInfo();
 await initHighlighter();
+await initDocsHighlighter();
 
 // Run database migrations
 try {
@@ -179,6 +182,14 @@ Bun.serve({
     const baseCtx = newContext(db, SERVER_ID, DEV_MODE);
     const user = await getSession(baseCtx, req);
     const ctx = newContext(db, SERVER_ID, DEV_MODE, user);
+
+    // Documentation routes (/docs/*)
+    if (path.startsWith("/docs")) {
+      const docsResponse = await handleDocsRequest(req);
+      if (docsResponse) {
+        return docsResponse;
+      }
+    }
 
     // robots.txt and sitemap.xml
     if (path === "/robots.txt") {

@@ -12,9 +12,10 @@ type LayoutProps = {
   devMode?: boolean;
   ctx?: Context;
   path?: string;
+  fullWidth?: boolean; // For docs pages that need more width
 };
 
-export async function Layout({ title, description, children, hideFooter, devMode, ctx, path }: LayoutProps): Promise<string> {
+export async function Layout({ title, description, children, hideFooter, devMode, ctx, path, fullWidth }: LayoutProps): Promise<string> {
   const fullTitle = title === "Home"
     ? "Health Samurai: FHIR solutions | FHIR integration software"
     : `${title} | Health Samurai`;
@@ -74,7 +75,7 @@ export async function Layout({ title, description, children, hideFooter, devMode
         {/* Main content wrapper - gets pushed left when agent opens */}
         <div class="transition-all duration-300 min-w-0">
           <Header ctx={ctx} />
-          <main id="main-content">{children}</main>
+          <main id="main-content" class={fullWidth ? "w-full" : ""}>{children}</main>
           {!hideFooter && <Footer />}
           {path && ctx && <div>{await PageStatsPanel({ path, ctx })}</div>}
         </div>

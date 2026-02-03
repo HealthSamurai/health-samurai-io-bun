@@ -1,0 +1,37 @@
+# Documentation Products Configuration
+#
+# Each product has its own documentation folder under docs/
+# Structure:
+#   docs/
+#   ├── products.yaml (this file)
+#   ├── aidbox/
+#   │   ├── SUMMARY.md
+#   │   ├── README.md
+#   │   └── ... (other docs)
+#   └── termbox/
+#       ├── SUMMARY.md
+#       └── ...
+
+root-redirect: "/aidbox"
+
+products:
+  - id: aidbox
+    name: "Aidbox Documentation"
+    path: /aidbox
+    og-preview-text: "FHIR server for building healthcare applications"
+    links:
+      - text: "Product"
+        href: "https://www.health-samurai.io/fhir-server"
+        target: "_blank"
+      - text: "Sandbox"
+        href: "https://aidbox.app"
+        target: "_blank"
+      - text: "Support"
+        href: "https://www.health-samurai.io/contacts"
+        target: "_blank"
+
+  # Add more products as needed:
+  # - id: termbox
+  #   name: "Termbox Documentation"
+  #   path: /termbox
+  #   og-preview-text: "Terminology server for FHIR"
