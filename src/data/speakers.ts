@@ -1,60 +1,251 @@
-// Speaker avatars from Webflow export
-export const speakerAvatars: Record<string, string> = {
-  "Arjun Sanyal": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/679a1c9e558d96424496eff7_66f6641678d4ac5570f7b31b_Arjun.jpg",
-  "Bashir Sadjad": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/679a1d88b1f7c76486ae284e_66f6641623121ce7d7e21e8b_Bashir.jpg",
-  "Brendan Keeler": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/673b66f3d4b021a4ee114b39_63cfe05ca43e8fdfde7d4244_Keller.png",
-  "Brendan Kowitz": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/678fcdd35f96fb2cfe27afa9_6319f1107bed33cec76e236f_Brendan_p.webp",
-  "Brenin Rhodes": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/686655b9258546b44cfe93c4_Brenin.jpg",
-  "Brian Postlethwaite": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68665592ff17d5c83d8161b3_Brian.jpg",
-  "Carl Anderson": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/679a1d443e15dd409908590e_66f664168135da836918f3cb_Carl-Anderson.jpg",
-  "Chris Grenz": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/679106d421d4a50523f3506c_1516268574075.jpg",
-  "Chris Oakman": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/678f99d9ddee1e6232eaf6d6_637f7030cf8225247ee4848f_Chris%20Oakman.png",
-  "Dan Gottlieb": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/679a1cf4d3149c2ac48183d8_66f66416a7360285e4689c63_Dan-Gottleib.jpg",
-  "Dean Resnick": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/678f99c08b740d83e94f1316_637f70308de2a368442b68d7_Dean%20Resnick.png",
-  "Diego Kaminker": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/679a1db44ba4d3036a94daf8_66f66f280ec5859bf83a7582_Diego-Kamnker%20(1).jpg",
-  "Dr. Michael Lawley": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/678fc8459c8e6148abe4e8f3_1649397415249.jpg",
-  "Michael Lawley": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/678fc8459c8e6148abe4e8f3_1649397415249.jpg",
-  "Ed Martin": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/67910a266222150ff889b6c6_1516235232987.jpg",
-  "Gasper Andrejc": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/673b65db8f5b9576016918e3_63cfe05c7257e893b7687376_Gasper.png",
-  "Gašper Andrejc": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/673b65db8f5b9576016918e3_63cfe05c7257e893b7687376_Gasper.png",
-  "Gino Canessa": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/673b5d3697fdb33e423b7a04_652d0488588331f160bfb0bf_Gino%20Canessa.png",
-  "Grahame Grieve": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/678f997fc14912a61b93120b_637f7030d696415845a9d6a9_Grahame%20Grieve.png",
-  "Ilya Beda": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6790e65e5946478c3347b5e3_1610356085932.jpg",
-  "John Grimes": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/679a1d220976dc8b6d3ba4c7_66f6641618927b4093bb8b02_John-Grimes.jpg",
-  "John Moehrke": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/673b39aa4af12bb03a9a2c9e_6605449a1005b7c3e86485ac_Frame%203211.png",
-  "Josh Mandel": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/673b4a4229fb2fbf66ca5938_660544ac3dce0a703f62b012_Frame%203212.png",
-  "Justin Richer": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6791074790b7c419568e0294_1706121509600.jpg",
-  "Kalyan Pamarthy": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/679109f96573a830d1c4997a_1580251464211.jpg",
-  "Kaushal Parekh": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/679109ce597a170e23c47f2b_1550884533342.jpg",
-  "Kiran Ayyagari": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/679a1d6401f817686fd052e2_66f66416900592991bf67b11_Kiran.jpg",
-  "Lloyd McKenzie": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6790e4be669eda42c253a68b_1516247451842.jpg",
-  "Mark Kramer": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6790d466e0b92206397c8f35_1557155211848.jpg",
-  "Maxim Putintsev": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/673b5de7053620375d81099e_652d0499e4e95fb82fe7bb68_Max%20Putintsev.png",
-  "Max Putintsev": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/673b5de7053620375d81099e_652d0499e4e95fb82fe7bb68_Max%20Putintsev.png",
-  "Michael Hansen": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6791070ee23d074f4464b0d5_1652931930230.jpg",
-  "Mike Kulakov": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/673b4cb15856d1d2d9f40cf1_660fb3fa006aae83c7e9492e_Mike%20Kulakov.png",
-  "Mohammad Jafari": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/673b4b6e5dd6743710eda90b_660544be43946fa9bc98d26f_Frame%203213.png",
-  "Nikolai Ryzhikov": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/673b4d6f5aa9c29e70918dbf_637f56b1d2e0aa7181498605_nicola-min.png",
-  "Olim Saidov": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/68665607f0049794397cdbba_Olim.jpg",
-  "Paul Lynch": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6790e53926e7a7b2ec5b176f_1516552868922.jpg",
-  "Pavel Smirnov": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/67910ad7d291c535d878badb_1534892631300.jpg",
-  "Richard Ettema": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6790e233daae8918c13e794f_1517757919659.jpg",
-  "Rick Geimer": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6790d446d33ae1e2d16cd2ba_1516252717745.jpg",
-  "Rob Scanlon": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6790e205883d0f4862f5a544_1551402110923.jpg",
-  "Ryan Brush": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/679a1ccadc99f7089384a49a_6707e5a256688f69f7bf5679_1554418553275.jpg",
-  "Scot Brown": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6790e5887a83a709a9073608_1517374020665.jpg",
-  "Sean Fong": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6866567c1529e42de662bcc7_Sean.jpg",
-  "Sonya Huang": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/678fcdb73f7a4b3362a0ba0e_630622b11b93d6c2dab7ac21_sonya-min.webp",
-  "Stoyan Halkaliev": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6790e5ac64f683f7ecaef5aa_1516198659303.jpg",
-  "Thomas Myers": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/678f99fd0c9e0abc1e440a0d_637f703134473b57da93836f_Thomas%20Myers.png",
-  "Vadim Peretokin": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/686656d86bb5e6ef6ceecefd_Vadim.jpg",
-  "Vishwasrao Salunkhe": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/673b67bd053620375d8a37a7_63cfe05c4745926246754b8c_Vishwasrao.png",
-  "Vitaliy Banchenko": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/686656a9b8b3ecf0c2e7e68c_Vitaliy.jpg",
-  "Vivian Neilley": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/678fcd9eb451297d6c61d8a6_630622b1ed76ec46c8cd486a_vivian-min.webp",
-  "Vlad Ganshin": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/673b6690bf836d54e043001a_63cfe05c7112a9141e1e907a_Vlad.png",
-  "Yana Beda": "https://cdn.prod.website-files.com/58ecfb695710f07cd0a35e9c/6790e2992d5b3e8405a04963_1517456137391.jpg",
+import { join } from "path";
+
+export type Speaker = {
+  slug: string;
+  name: string;
+  role?: string;
+  avatar?: string;
+  bio?: string;
 };
 
-export function getSpeakerAvatar(name: string): string | undefined {
-  return speakerAvatars[name];
+const SPEAKERS_DIR = join(import.meta.dir, "../../speakers");
+
+// Cache for loaded speakers
+let speakersCache: Speaker[] | null = null;
+let speakersByNameCache: Map<string, Speaker> | null = null;
+let speakersBySlugCache: Map<string, Speaker> | null = null;
+
+function parseFrontmatter(content: string): { meta: Record<string, any>; body: string } {
+  const match = content.match(/^---\s*\n([\s\S]*?)\n---\s*(?:\n([\s\S]*))?$/);
+  if (!match) {
+    return { meta: {}, body: content };
+  }
+
+  try {
+    if (!match[1]) {
+      return { meta: {}, body: content };
+    }
+    const meta = JSON.parse(match[1]);
+    return { meta, body: match[2] || "" };
+  } catch {
+    return { meta: {}, body: content };
+  }
+}
+
+export async function getAllSpeakers(): Promise<Speaker[]> {
+  if (speakersCache) {
+    return speakersCache;
+  }
+
+  const { stdout } = await Bun.$`ls ${SPEAKERS_DIR}/*.md 2>/dev/null`.quiet().nothrow();
+  const files = stdout.toString().trim().split("\n").filter(f => f.endsWith(".md"));
+
+  const speakers: Speaker[] = [];
+
+  for (const filePath of files) {
+    const file = Bun.file(filePath);
+    const content = await file.text();
+    const { meta, body } = parseFrontmatter(content);
+    const slug = filePath.split("/").pop()!.replace(/\.md$/, "");
+
+    speakers.push({
+      slug,
+      name: meta.name || slug,
+      role: meta.role,
+      avatar: meta.avatar,
+      bio: body.trim() || undefined,
+    });
+  }
+
+  speakersCache = speakers;
+  return speakers;
+}
+
+export async function getSpeakerBySlug(slug: string): Promise<Speaker | null> {
+  if (!speakersBySlugCache) {
+    const speakers = await getAllSpeakers();
+    speakersBySlugCache = new Map(speakers.map(s => [s.slug, s]));
+  }
+  return speakersBySlugCache.get(slug) || null;
+}
+
+export async function getSpeakerByName(name: string): Promise<Speaker | null> {
+  if (!speakersByNameCache) {
+    const speakers = await getAllSpeakers();
+    speakersByNameCache = new Map();
+    for (const speaker of speakers) {
+      // Index by exact name
+      speakersByNameCache.set(speaker.name, speaker);
+      // Also index by name variations (lowercase)
+      speakersByNameCache.set(speaker.name.toLowerCase(), speaker);
+    }
+  }
+  return speakersByNameCache.get(name) || speakersByNameCache.get(name.toLowerCase()) || null;
+}
+
+// Backwards compatibility: get avatar by name
+export async function getSpeakerAvatar(name: string): Promise<string | undefined> {
+  const speaker = await getSpeakerByName(name);
+  return speaker?.avatar;
+}
+
+// Convert name to slug format (for backward compatibility)
+export function nameToSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+// Synchronous lookup by slug (must call preloadSpeakers first)
+export function getSpeakerBySlugSync(slug: string): Speaker | undefined {
+  if (!speakersBySlugCache) {
+    return undefined;
+  }
+  return speakersBySlugCache.get(slug);
+}
+
+// Synchronous version using cache (must call preloadSpeakers first)
+export function getSpeakerAvatarSync(name: string): string | undefined {
+  if (!speakersByNameCache) {
+    return undefined;
+  }
+  const speaker = speakersByNameCache.get(name) || speakersByNameCache.get(name.toLowerCase());
+  return speaker?.avatar;
+}
+
+// Get speaker by slug or name (tries slug first, then name-to-slug, then exact name)
+export function getSpeakerSync(slugOrName: string): Speaker | undefined {
+  if (!speakersBySlugCache || !speakersByNameCache) {
+    return undefined;
+  }
+  // Try direct slug lookup
+  let speaker = speakersBySlugCache.get(slugOrName);
+  if (speaker) return speaker;
+
+  // Try converting name to slug
+  const derivedSlug = nameToSlug(slugOrName);
+  speaker = speakersBySlugCache.get(derivedSlug);
+  if (speaker) return speaker;
+
+  // Fall back to name lookup
+  return speakersByNameCache.get(slugOrName) || speakersByNameCache.get(slugOrName.toLowerCase());
+}
+
+// Clear cache (useful for hot reload)
+export function clearSpeakersCache(): void {
+  speakersCache = null;
+  speakersByNameCache = null;
+  speakersBySlugCache = null;
+}
+
+// Resolve speaker from slug or name - returns speaker entity or creates fallback
+export function resolveSpeaker(slugOrName: string): Speaker {
+  const speaker = getSpeakerSync(slugOrName);
+  if (speaker) {
+    return speaker;
+  }
+  // Fallback: create a minimal speaker from the name
+  return {
+    slug: nameToSlug(slugOrName),
+    name: slugOrName,
+  };
+}
+
+// Check if speaker field indicates a panel discussion
+export function isPanel(speaker?: string): boolean {
+  if (!speaker) return false;
+  const lower = speaker.toLowerCase();
+  return (
+    lower.includes("panel") ||
+    lower.includes("roundtable") ||
+    lower.includes("discussion")
+  );
+}
+
+export type SpeakerType = "single" | "multiple" | "panel" | "none";
+
+export type ParsedSpeakers = {
+  type: SpeakerType;
+  speakers: Speaker[];
+};
+
+// Parse event speaker field and resolve to Speaker entities
+// Works with: speakerSlugs array, speakerSlug string, or comma-separated speaker names
+export function parseEventSpeakers(event: {
+  speaker?: string;
+  speakerSlug?: string;
+  speakerSlugs?: string[];
+}): ParsedSpeakers {
+  // If event has speakerSlugs, use those
+  if (event.speakerSlugs && event.speakerSlugs.length > 0) {
+    const speakers = event.speakerSlugs.map((slug) => resolveSpeaker(slug));
+    if (speakers.length === 1) {
+      return { type: "single", speakers };
+    }
+    return { type: "multiple", speakers };
+  }
+
+  // If event has single speakerSlug
+  if (event.speakerSlug) {
+    return { type: "single", speakers: [resolveSpeaker(event.speakerSlug)] };
+  }
+
+  // Fall back to parsing speaker name string
+  if (!event.speaker) {
+    return { type: "none", speakers: [] };
+  }
+
+  // Check if it's a panel discussion
+  if (isPanel(event.speaker)) {
+    return { type: "panel", speakers: [] };
+  }
+
+  const names = event.speaker
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  if (names.length === 0) {
+    return { type: "none", speakers: [] };
+  }
+
+  // Resolve each name to a speaker entity
+  const speakers = names.map((name) => resolveSpeaker(name));
+
+  if (speakers.length === 1) {
+    return { type: "single", speakers };
+  }
+
+  return { type: "multiple", speakers };
+}
+
+// Name aliases for speakers (maps alternative names to canonical names)
+const NAME_ALIASES: Record<string, string> = {
+  "Christopher Oakman": "Chris Oakman",
+  "Michael Lawley": "Dr. Michael Lawley",
+  "Vladislav Ganshin": "Vlad Ganshin",
+  "Vitaly Banchenko": "Vitaliy Banchenko",
+};
+
+// Preload speakers into cache
+export async function preloadSpeakers(): Promise<void> {
+  await getAllSpeakers();
+  // Build name index
+  const speakers = speakersCache!;
+  speakersByNameCache = new Map();
+  speakersBySlugCache = new Map();
+  for (const speaker of speakers) {
+    speakersByNameCache.set(speaker.name, speaker);
+    speakersByNameCache.set(speaker.name.toLowerCase(), speaker);
+    speakersBySlugCache.set(speaker.slug, speaker);
+  }
+  // Add aliases
+  for (const [alias, canonical] of Object.entries(NAME_ALIASES)) {
+    const speaker = speakersByNameCache.get(canonical);
+    if (speaker) {
+      speakersByNameCache.set(alias, speaker);
+      speakersByNameCache.set(alias.toLowerCase(), speaker);
+    }
+  }
 }

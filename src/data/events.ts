@@ -65,9 +65,12 @@ export type Event = {
   youtube?: string;
   content?: string;
   series?: string;
-  speaker?: string;
-  role?: string;
+  speaker?: string; // Legacy: speaker name (used if speakerSlug not set)
+  speakerSlug?: string; // Link to speaker entity by slug
+  speakerSlugs?: string[]; // Multiple speakers by slug
+  role?: string; // Legacy: speaker role (used if speakerSlug not set)
   featured?: boolean; // Show on main events page
+  mtime?: number; // File modification time (ms since epoch) for sorting
   // Rich event fields
   type?: "talk" | "conference";
   about?: AboutContent;
@@ -156,6 +159,7 @@ export async function getAllEvents(): Promise<EventSeries[]> {
     for (const filePath of eventFiles) {
       const file = Bun.file(filePath);
       const content = await file.text();
+      const mtime = file.lastModified; // Get file modification time
       const { meta, body } = parseFrontmatter(content);
       const id = filePath.split("/").pop()!.replace(/\.md$/, "");
 
@@ -172,8 +176,11 @@ export async function getAllEvents(): Promise<EventSeries[]> {
         content: body.trim(),
         series: dir,
         speaker: meta.speaker,
+        speakerSlug: meta.speakerSlug,
+        speakerSlugs: meta.speakerSlugs,
         role: meta.role,
         featured: meta.featured,
+        mtime,
         // Rich event fields
         type: meta.type,
         about: meta.about,
@@ -213,9 +220,14 @@ export async function getAllEvents(): Promise<EventSeries[]> {
       date: seriesMeta.date || seriesMeta.start_date,
       sortOrder: seriesMeta.sortOrder,
       events: events.sort((a, b) => {
-        const dateA = a.date || a.startDate || "";
-        const dateB = b.date || b.startDate || "";
-        return dateB.localeCompare(dateA); // newest first
+        // Sort by file modification time (most recently modified first)
+        const mtimeA = a.mtime || 0;
+        const mtimeB = b.mtime || 0;
+        if (mtimeA !== mtimeB) {
+          return mtimeB - mtimeA;
+        }
+        // Secondary sort by id for stable ordering when mtime is equal
+        return a.id.localeCompare(b.id);
       }),
     });
   }
