@@ -30,7 +30,6 @@ export const company = {
     githubAidbox: "https://github.com/Aidbox",
     linkedin: "https://www.linkedin.com/company/health-samurai/",
     twitter: "https://twitter.com/health_samurai",
-    x: "https://x.com/health_samurai",
     youtube: "https://www.youtube.com/@HealthSamurai",
     facebook: "https://www.facebook.com/healthsamurai/",
     crunchbase: "https://www.crunchbase.com/organization/health-samurai",
