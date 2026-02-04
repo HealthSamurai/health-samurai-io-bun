@@ -37,7 +37,7 @@ export default function HomePage(): string {
             </p>
             <div class="mt-10 flex items-center gap-x-6">
               <a
-                href="/aidbox"
+                href="/fhir-server"
                 class="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 Explore Aidbox

@@ -42,7 +42,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
         </div>
 
         {/* Desktop navigation */}
-        <div class="hidden lg:flex lg:gap-x-12">
+        <div class="hidden lg:flex lg:gap-x-6">
           {/* Products dropdown */}
           <button
             type="button"

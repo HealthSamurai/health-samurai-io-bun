@@ -173,6 +173,22 @@ Bun.serve({
     const url = new URL(req.url);
     const path = url.pathname;
 
+    const redirectTargets: Record<string, string> = {
+      "/aidbox": "/fhir-server",
+      "/aidbox/": "/fhir-server",
+      "/formbox": "/medical-form",
+      "/formbox/": "/medical-form",
+    };
+    const redirectTarget = redirectTargets[path];
+    if (redirectTarget) {
+      const redirectUrl = new URL(req.url);
+      redirectUrl.pathname = redirectTarget;
+      return new Response(null, {
+        status: 301,
+        headers: { Location: redirectUrl.toString() },
+      });
+    }
+
     // Log all requests for debugging (skip static assets and ping)
     if (!path.startsWith("/assets/") && !path.startsWith("/styles/") && path !== "/__ping") {
       console.log(`[Request] ${req.method} ${path}`);
