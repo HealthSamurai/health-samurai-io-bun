@@ -31,7 +31,7 @@ export function Pricing({
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <div class="mx-auto max-w-4xl text-center">
-          <h2 class="text-base/7 font-semibold text-primary">{title}</h2>
+          <div class="text-base/7 font-semibold text-primary">{title}</div>
           <p class="mt-2 text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-6xl">
             {subtitle}
           </p>
@@ -88,13 +88,13 @@ export function Pricing({
                 </div>
               )}
               <div class="flex items-center justify-between gap-x-4">
-                <h3
+                <div
                   class={`text-lg/8 font-semibold ${
                     tier.featured ? "text-primary" : "text-gray-900"
                   }`}
                 >
                   {tier.name}
-                </h3>
+                </div>
                 {tier.featured && (
                   <p class="rounded-full bg-primary/10 px-2.5 py-1 text-xs/5 font-semibold text-primary">
                     Most popular
@@ -121,6 +121,8 @@ export function Pricing({
 
               <a
                 href={tier.href}
+                rel={tier.href.startsWith("http://") || tier.href.startsWith("https://") ? "nofollow" : undefined}
+                target={tier.href.startsWith("http://") || tier.href.startsWith("https://") ? "_blank" : undefined}
                 class={`mt-6 block w-full rounded-md px-3 py-2 text-center text-sm/6 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
                   tier.featured
                     ? "bg-primary text-white shadow-sm hover:bg-primary-dark"

@@ -79,9 +79,9 @@ function FeaturedCard({ article }: { article: Article }): string {
           </div>
         )}
         <div class="flex flex-col gap-[16px] px-[31px] pt-[16px]">
-          <h3 class="text-neutral-900 text-[24px] font-semibold leading-[32px] tracking-[-0.4px]">
+          <div class="text-neutral-900 text-[24px] font-semibold leading-[32px] tracking-[-0.4px]">
             {article.title}
-          </h3>
+          </div>
           <p class="text-neutral-500 text-[16px] font-normal leading-[24px]">
             {article.teaser}
           </p>
@@ -142,9 +142,9 @@ function HorizontalCard({ article, showAuthor = true }: { article: Article; show
               {/* Title and Description */}
               <div class="flex flex-col gap-[16px]">
                 <div class="flex flex-col gap-[8px]">
-                  <h3 class="text-[20px] font-medium leading-[28px] tracking-[-0.4px] text-text-primary">
+                  <div class="text-[20px] font-medium leading-[28px] tracking-[-0.4px] text-text-primary">
                     {article.title}
-                  </h3>
+                  </div>
                   <p class="text-[16px] font-normal leading-[24px] text-text-secondary overflow-hidden text-ellipsis">
                     {article.teaser}
                   </p>
@@ -176,9 +176,9 @@ function HorizontalCard({ article, showAuthor = true }: { article: Article; show
         </a>
         <div class="flex-1 flex flex-col justify-between h-full min-w-0">
           <a href={`/blog/${article.slug}`} class="flex flex-col gap-3">
-            <h3 class="text-neutral-900 text-[20px] font-medium leading-[28px] tracking-[-0.4px] line-clamp-2 h-[56px]">
+            <div class="text-neutral-900 text-[20px] font-medium leading-[28px] tracking-[-0.4px] line-clamp-2 h-[56px]">
               {article.title}
-            </h3>
+            </div>
             <p class="text-neutral-500 text-[16px] font-normal leading-[24px] tracking-[0px] line-clamp-2">
               {article.teaser}
             </p>
@@ -240,9 +240,9 @@ function ListCard({ article }: { article: Article }): string {
             <div class="flex flex-col gap-[16px]">
               <div class="flex flex-col gap-[8px]">
                 <a href={`/blog/${article.slug}`} class="block">
-                  <h3 class="text-[20px] font-medium leading-[28px] tracking-[-0.4px] text-neutral-900 hover:text-brand-500 transition-colors">
+                  <div class="text-[20px] font-medium leading-[28px] tracking-[-0.4px] text-neutral-900 hover:text-brand-500 transition-colors">
                     {article.title}
-                  </h3>
+                  </div>
                 </a>
                 <p class="text-[16px] font-normal leading-[24px] text-neutral-500 overflow-hidden text-ellipsis">
                   {article.teaser}
@@ -289,9 +289,9 @@ function GridCard({ article }: { article: Article }): string {
           </div>
         )}
         <div class="p-6 pb-0">
-          <h3 class="text-neutral-900 text-2xl font-semibold leading-8 tracking-[-0.4px] line-clamp-2">
+          <div class="text-neutral-900 text-2xl font-semibold leading-8 tracking-[-0.4px] line-clamp-2">
             {article.title}
-          </h3>
+          </div>
           <p class="mt-3 text-neutral-500 text-base font-normal leading-6 line-clamp-2">
             {article.teaser}
           </p>

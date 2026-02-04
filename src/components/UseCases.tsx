@@ -52,8 +52,8 @@ export function UseCases({ title, cases }: UseCasesProps): string {
   return `
     <section class="py-24 sm:py-32 bg-white">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="mx-auto max-w-2xl text-center mb-12">
-          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        <div class="mx-auto text-center mb-12">
+          <h2 class="text-2xl font-bold tracking-tight text-gray-900">
             ${title}
           </h2>
         </div>
@@ -89,10 +89,10 @@ export function UseCases({ title, cases }: UseCasesProps): string {
             <div
               data-show="$useCaseTab == '${useCase.id}'"
               ${index !== 0 ? 'style="display: none"' : ""}
-              class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start"
+              class="grid grid-cols-1 lg:grid-cols-[auto_auto] gap-16 items-start justify-center"
             >
               <!-- Diagram -->
-              <div class="lg:col-span-3 flex items-center justify-center">
+              <div class="flex items-center justify-center w-[550px]">
                 <img
                   src="${useCase.image}"
                   alt="${useCase.label}"
@@ -102,7 +102,7 @@ export function UseCases({ title, cases }: UseCasesProps): string {
               </div>
 
               <!-- Case study cards -->
-              <div class="lg:col-span-2 flex flex-col gap-6">
+              <div class="bg-white flex flex-col gap-6 p-10 rounded-lg w-[550px] min-h-[500px] justify-center">
                 ${useCase.cards.map((card) => CaseCard({ card })).join("")}
               </div>
             </div>

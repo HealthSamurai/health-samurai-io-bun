@@ -38,6 +38,11 @@ const socialLinks = [
   { label: "YouTube", href: company.social.youtube, icon: icons.youtube },
 ];
 
+// Helper to check if link is external
+function isExternalLink(href: string): boolean {
+  return href.startsWith("http://") || href.startsWith("https://");
+}
+
 export function Footer(): string {
   return (
     <footer class="bg-white">
@@ -56,7 +61,7 @@ export function Footer(): string {
             {/* Social links */}
             <div class="flex gap-x-6">
               {socialLinks.map(link => (
-                <a href={link.href} target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-800">
+                <a href={link.href} target="_blank" rel="nofollow noopener noreferrer" class="text-gray-600 hover:text-gray-800">
                   <span class="sr-only">{link.label}</span>
                   <span>{link.icon}</span>
                 </a>
@@ -69,7 +74,7 @@ export function Footer(): string {
             <div class="md:grid md:grid-cols-2 md:gap-8">
               {/* Products */}
               <div>
-                <h3 class="text-sm/6 font-semibold text-gray-900">Products</h3>
+                <div class="text-sm/6 font-semibold text-gray-900">Products</div>
                 <ul role="list" class="mt-6 space-y-4">
                   {footerLinks.products.map(link => (
                     <li>
@@ -82,11 +87,16 @@ export function Footer(): string {
               </div>
               {/* Resources */}
               <div class="mt-10 md:mt-0">
-                <h3 class="text-sm/6 font-semibold text-gray-900">Resources</h3>
+                <div class="text-sm/6 font-semibold text-gray-900">Resources</div>
                 <ul role="list" class="mt-6 space-y-4">
                   {footerLinks.resources.map(link => (
                     <li>
-                      <a href={link.href} class="text-sm/6 text-gray-600 hover:text-gray-900">
+                      <a 
+                        href={link.href} 
+                        class="text-sm/6 text-gray-600 hover:text-gray-900"
+                        rel={isExternalLink(link.href) ? "nofollow" : undefined}
+                        target={isExternalLink(link.href) ? "_blank" : undefined}
+                      >
                         {link.label}
                       </a>
                     </li>
@@ -97,7 +107,7 @@ export function Footer(): string {
             <div class="md:grid md:grid-cols-2 md:gap-8">
               {/* Company */}
               <div>
-                <h3 class="text-sm/6 font-semibold text-gray-900">Company</h3>
+                <div class="text-sm/6 font-semibold text-gray-900">Company</div>
                 <ul role="list" class="mt-6 space-y-4">
                   {footerLinks.company.map(link => (
                     <li>
@@ -110,7 +120,7 @@ export function Footer(): string {
               </div>
               {/* Legal */}
               <div class="mt-10 md:mt-0">
-                <h3 class="text-sm/6 font-semibold text-gray-900">Legal</h3>
+                <div class="text-sm/6 font-semibold text-gray-900">Legal</div>
                 <ul role="list" class="mt-6 space-y-4">
                   {footerLinks.legal.map(link => (
                     <li>

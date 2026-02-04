@@ -15,6 +15,7 @@ export type BentoItem = {
 };
 
 export type BentoProps = {
+  heading?: string;
   tagline?: string;
   title: string;
   items: BentoItem[];
@@ -29,71 +30,80 @@ function BentoCard({
   className?: string;
   roundedClass?: string;
 }): string {
+  // Check if the link is external (starts with http:// or https://)
+  const isExternalLink = item.href.startsWith("http://") || item.href.startsWith("https://");
+
   return (
-    <div class={`relative ${className}`}>
-      <div class={`absolute inset-0 rounded-lg bg-white ${roundedClass}`} />
+    <a
+      href={item.href}
+      class={`group relative block ${className} transition-all duration-200`}
+      rel={isExternalLink ? "nofollow" : undefined}
+      target={isExternalLink ? "_blank" : undefined}
+    >
       <div
-        class={`relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] ${roundedClass.replace("rounded-", "rounded-[calc(2rem+1px)] lg:rounded-")}`}
+        class={`relative flex h-full flex-col rounded-lg bg-gray-100 p-6 transition-colors duration-200 group-hover:bg-[rgba(234,74,53,0.1)] ${roundedClass}`}
       >
-        {item.image ? (
-          <img src={item.image} alt="" class="h-80 object-cover object-left" />
-        ) : (
-          <div class="h-48 bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
+        {/* Arrow - hidden by default, shown on hover */}
+        <div class="absolute top-8 right-8 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+          <svg width="34" height="35" viewBox="0 0 34 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.0078125" y="0.0839844" width="33.9411" height="33.9411" rx="16.9706" fill="white" />
+            <path d="M8.49309 17.0544L25.4637 17.0544M25.4637 17.0544L19.8068 22.7113M25.4637 17.0544L19.8068 11.3976" stroke="#EA4A35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+
+        {/* Icon header - icon above title */}
+        <div class="mb-4">
+          <div class="mb-3">
             {item.iconSrc && (
-              <img src={item.iconSrc} alt={item.title} class="size-16" />
+              <img src={item.iconSrc} alt={item.title} class="w-20 h-20" />
             )}
             {item.icon && !item.iconSrc && (
-              <span class="size-16 text-primary">
-                {item.icon.replace('class="size-6', 'class="size-16')}
+              <span class="w-20 h-20 text-primary flex items-center justify-center">
+                {item.icon}
               </span>
             )}
           </div>
-        )}
-        <div class="p-8 pt-4 flex-1 flex flex-col">
-          {item.subtitle && (
-            <h3 class="text-sm/4 font-semibold text-primary">{item.subtitle}</h3>
-          )}
-          <p class={`${item.subtitle ? "mt-2" : ""} text-lg font-medium tracking-tight text-gray-950`}>
+          <h3 class="text-lg font-semibold tracking-tight text-gray-950">
             {item.title}
-          </p>
-          {item.tags && item.tags.length > 0 && (
-            <div class="mt-3 flex flex-wrap gap-2">
-              {item.tags.map((tag) => (
-                <span class="inline-flex items-center rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
-          <p class="mt-3 max-w-lg text-sm/6 text-gray-600 flex-1">
-            {item.description}
-          </p>
-          <a
-            href={item.href}
-            class="mt-4 text-sm font-semibold text-primary hover:text-primary-dark"
-          >
-            Learn more <span aria-hidden="true">→</span>
-          </a>
+          </h3>
         </div>
+
+        {/* Tags */}
+        {item.tags && item.tags.length > 0 && (
+          <div class="mb-4 flex flex-wrap gap-2">
+            {item.tags.map((tag) => (
+              <span class="inline-flex items-center rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {/* Description */}
+        <p class="text-sm/6 text-gray-600 flex-1">
+          {item.description}
+        </p>
       </div>
-      <div
-        class={`pointer-events-none absolute inset-0 rounded-lg shadow-sm ring-1 ring-black/5 ${roundedClass}`}
-      />
-    </div>
+    </a>
   );
 }
 
-export function Bento({ tagline, title, items }: BentoProps): string {
+export function Bento({ heading, tagline, title, items }: BentoProps): string {
   // 4-column layout: first item double width, rest single
   const [first, second, third, fourth, fifth, sixth, seventh, eighth] = items.slice(0, 8);
 
   return (
     <div class="bg-gray-50 py-24 sm:py-32">
       <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-        {tagline && (
-          <h2 class="text-base/7 font-semibold text-primary">{tagline}</h2>
+        {heading && (
+          <h1 class="text-center text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:text-7xl mb-16">
+            {heading}
+          </h1>
         )}
-        <p class="mt-2 max-w-lg text-4xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-5xl">
+        {tagline && (
+          <div class="text-base/7 font-semibold text-primary text-center">{tagline}</div>
+        )}
+        <p class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-5xl text-center">
           {title}
         </p>
         <div class="mt-10 grid grid-cols-1 gap-4 sm:mt-16 sm:grid-cols-2 lg:grid-cols-4">
@@ -159,9 +169,9 @@ export function Bento({ tagline, title, items }: BentoProps): string {
                     <span class="text-primary">{item.icon}</span>
                   )}
                   <div>
-                    <h3 class="font-semibold text-gray-950 group-hover:text-primary">
+                    <div class="font-semibold text-gray-950 group-hover:text-primary">
                       {item.title}
-                    </h3>
+                    </div>
                     <p class="text-sm text-gray-600">{item.description}</p>
                   </div>
                 </div>
@@ -169,6 +179,17 @@ export function Bento({ tagline, title, items }: BentoProps): string {
             ))}
           </div>
         )}
+
+        {/* Technical features button */}
+        <div class="mt-12 flex justify-center">
+          <a
+            href="/docs/aidbox/features"
+            class="inline-flex items-center gap-2 rounded-md border-2 border-primary px-6 py-3 text-base font-semibold text-primary hover:bg-primary hover:text-white transition-colors duration-200"
+          >
+            TECHNICAL FEATURES
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
       </div>
     </div>
   );

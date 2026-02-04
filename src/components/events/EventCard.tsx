@@ -158,9 +158,9 @@ export function EventCard({ event, series }: EventCardProps): string {
 				</div>
 
 				{/* Title - fixed 2 lines with ellipsis */}
-				<h3 class="mt-3 text-lg font-semibold text-gray-900 group-hover:text-gray-600 leading-snug line-clamp-2 min-h-[3rem]">
+				<div class="mt-3 text-lg font-semibold text-gray-900 group-hover:text-gray-600 leading-snug line-clamp-2 min-h-[3rem]">
 					{event.name}
-				</h3>
+				</div>
 
 				{/* Description - fixed 3 lines with ellipsis */}
 				<p class="mt-3 text-sm text-gray-600 leading-relaxed line-clamp-3 min-h-[4.5rem]">

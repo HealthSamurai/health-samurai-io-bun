@@ -32,9 +32,9 @@ function FeatureCardItem({ feature }: { feature: FeatureCard }): string {
           class="size-12"
           loading="lazy"
         />
-        <h3 class="text-lg font-semibold text-gray-900 group-hover:text-primary transition-colors">
+        <div class="text-lg font-semibold text-gray-900 group-hover:text-primary transition-colors">
           {feature.title}
-        </h3>
+        </div>
       </div>
       <div class="flex flex-wrap gap-2 mb-4">
         {feature.tags.map((tag) => (

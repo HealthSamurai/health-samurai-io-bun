@@ -3,7 +3,8 @@ type HeroProps = {
   description: string;
   primaryCta?: {
     label: string;
-    href: string;
+    href?: string;
+    modalId?: string;
   };
   secondaryCta?: {
     label: string;
@@ -43,12 +44,22 @@ export function Hero({ title, description, primaryCta, secondaryCta, image, vide
               {(primaryCta || secondaryCta) && (
                 <div class="mt-10 flex items-center justify-center gap-x-6">
                   {primaryCta && (
-                    <a
-                      href={primaryCta.href}
-                      class="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-                    >
-                      {primaryCta.label}
-                    </a>
+                    primaryCta.modalId ? (
+                      <button
+                        type="button"
+                        onclick={`document.getElementById('${primaryCta.modalId}').showModal()`}
+                        class="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                      >
+                        {primaryCta.label}
+                      </button>
+                    ) : (
+                      <a
+                        href={primaryCta.href}
+                        class="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                      >
+                        {primaryCta.label}
+                      </a>
+                    )
                   )}
                   {secondaryCta && (
                     <a href={secondaryCta.href} class="text-sm/6 font-semibold text-gray-900">
@@ -60,8 +71,8 @@ export function Hero({ title, description, primaryCta, secondaryCta, image, vide
             </div>
 
             {(image || video) && (
-              <div class="mt-16 flow-root sm:mt-24">
-                <div class="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-gray-900/10 ring-inset lg:-m-4 lg:rounded-2xl lg:p-4">
+              <div class="mt-16 sm:mt-24 flex justify-center">
+                <div class="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-gray-900/10 ring-inset lg:-m-4 lg:rounded-2xl lg:p-4 w-[60%]">
                   {video ? (
                     <video
                       src={video.src}

@@ -32,7 +32,7 @@ export function VenueSection({ venue, title = "Venue" }: VenueSectionProps): str
             </div>
           )}
           <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">{venue.name}</h3>
+            <div class="text-xl font-semibold text-gray-900 mb-2">{venue.name}</div>
             {venue.address && (
               <p class="text-gray-600 flex items-center gap-2 mb-3">
                 <svg class="size-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">

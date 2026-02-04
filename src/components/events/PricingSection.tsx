@@ -32,7 +32,7 @@ function PricingCard({ tier }: { tier: PricingTier }): string {
           SOLD OUT
         </span>
       )}
-      <h3 class="text-lg font-semibold text-gray-900 mb-2">{tier.name}</h3>
+      <div class="text-lg font-semibold text-gray-900 mb-2">{tier.name}</div>
       <div class="flex items-baseline gap-1 mb-4">
         <span class={`text-3xl font-bold ${tier.soldOut ? "text-gray-400 line-through" : "text-gray-900"}`}>{tier.price.toLocaleString()} {currency}</span>
       </div>

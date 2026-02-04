@@ -38,7 +38,7 @@ function SpeakerCard({ speaker }: { speaker: Speaker }): string {
           {initials}
         </div>
       )}
-      <h3 class="font-semibold text-gray-900">{speaker.name}</h3>
+      <div class="font-semibold text-gray-900">{speaker.name}</div>
       {speaker.role && (
         <p class="text-sm text-gray-600 mt-1 line-clamp-2">{speaker.role}</p>
       )}

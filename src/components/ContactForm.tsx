@@ -57,7 +57,7 @@ export function ContactForm({
                 <rect width="100%" height="100%" fill="url(#contact-pattern)" stroke-width="0" />
               </svg>
             </div>
-            <h2 class="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">{title}</h2>
+            <div class="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">{title}</div>
             <p class="mt-6 text-lg/8 text-gray-600">{description}</p>
             <dl class="mt-10 space-y-4 text-base/7 text-gray-600">
               {contactInfo.address && (

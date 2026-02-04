@@ -45,7 +45,7 @@ export function BenefitsSection({ title = "Why attend?", benefits }: BenefitsSec
           {benefits.map(benefit => (
             <div class="flex flex-col gap-4">
               {BenefitIcon({ icon: benefit.icon })}
-              <h3 class="text-lg font-bold text-gray-900">{benefit.title}</h3>
+              <div class="text-lg font-bold text-gray-900">{benefit.title}</div>
               <p class="text-gray-600 text-sm leading-relaxed">{benefit.description}</p>
             </div>
           ))}

@@ -19,52 +19,154 @@ const bentoItems: BentoItem[] = products.map((p) => ({
   icon: p.icon,
 }));
 
+const stories = [
+  {
+    name: "Prenosis",
+    href: "https://www.health-samurai.io/case-study/prenosis-develops-immunix-for-precision-medicine-with-aidbox",
+    logo: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/677c08fe2fbefa57cee94009_Prenosis_logo_328_49.png",
+    logoAlt: "Prenosis logo",
+    summary:
+      "How an artificial intelligence company, enabling precision medicine in acute care, built and launched the first FDA-authorized AI/ML sepsis diagnosis and prediction tool using the Aidbox FHIR platform.",
+    keyResults: [
+      "Obtained FDA marketing authorization as a Software as Medical Device (SaMD)",
+      "Cut development time by 50%",
+      "Integrated with 3 major hospitals using Epic EHR",
+      "75K+ patients, 200K+ encounters, and 6M+ observations processed",
+      "5,000+ plasma samples managed and calculated ImmunoScores for nearly 1,200 study participants",
+    ],
+    tags: [
+      "AI diagnostic tool",
+      "Dataset",
+      "FHIR API",
+      "Sepsis ImmunoScore™",
+      "HL7 FHIR",
+      "AI/ML tool",
+    ],
+  },
+  {
+    name: "Narus Health",
+    href: "https://www.health-samurai.io/case-study/narushealth",
+    logo: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/67d15cbbc892a21c9ded6efa_naruslucent-removebg-preview%201.png",
+    logoAlt: "Narus Health logo",
+    summary:
+      "How Narus Health, a Lucent Health company, has developed an integrated care management platform on top of the Aidbox FHIR backend, supporting patient care while enhancing outcomes and the recovery process.",
+    tags: [
+      "Care Management System",
+      "Care Plan",
+      "HL7 FHIR",
+      "Billing",
+      "IGAO",
+    ],
+  },
+  {
+    name: "Deep 6 AI",
+    href: "https://www.health-samurai.io/case-study/how-deep-6-ai-enhanced-ai-pipeline-performance-for-clinical-trial-recruitment-with-aidbox",
+    logo: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/67d1516b8c4a7141698cd721_f32fb6af-d4cf-440c-bf46-b0b3c48e9532-1559840009994%201.png",
+    logoAlt: "Deep 6 AI logo",
+    summary:
+      "How a leader in precision research software enhanced its AI pipeline for clinical trial recruitment with the Aidbox FHIR server.",
+    keyResults: [
+      "Initial data load times reduced by 50%",
+      "90% reduction in data validation errors",
+      "Real-time visibility into data processing status",
+    ],
+    tags: [
+      "AI/NLP platform",
+      "PostgreSQL FHIR Storage Standardized FHIR APIs",
+      "Subscriptions",
+      "Real-Time and Dashboards",
+    ],
+  },
+  {
+    name: "4medica",
+    href: "https://www.health-samurai.io/case-study/4medica-modernizes-clinical-data-infrastructure-with-aidbox",
+    logo: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/67c7225871fabab5d9c6070c_4medica-logo.png",
+    logoAlt: "4medica logo",
+    summary:
+      "How a leader in healthcare data management modernizes clinical data infrastructure with Aidbox, powering next-generation healthcare solutions.",
+    keyResults: [
+      "4-week migration time",
+      "70% performance boost",
+      "Upgrade from FHIR STU3 to R4",
+      "Native SQL capabilities for advanced analytics and reporting",
+    ],
+    tags: [
+      "Clinical Viewer",
+      "Patient Portal",
+      "HL7 FHIR",
+      "US Core 3.1.1",
+      "Bulk API",
+      "FHIR Storage",
+      "Profiling",
+      "SaaS",
+    ],
+  },
+];
+
+const trustedLogos = [
+  {
+    href: "https://innovaccer.com/",
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/64ba99d2e3fe0c7e42265e5d_innovaccer-logo-black.svg",
+    alt: "Innovaccer Logo",
+  },
+  {
+    href: "https://www.solutio.de/",
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/6602b888409299ed4eef694b_Frame%20427319224%20(1).webp",
+    alt: "Coda Logo",
+  },
+  {
+    href: "https://www.duodecim.fi/english/",
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/6811f756ed6ce3acce94256a_Duodecim_idFuVC2K5H_1.png",
+    alt: "Duodecim Logo",
+  },
+  {
+    href: "https://patientsknowbest.com/",
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/65425eb4a2c54d0ea864cb16_Logo_PatientsCo%20HiRes%20(1)%202.webp",
+    alt: "Patients Know Best Company Logo",
+  },
+  {
+    href: "https://firenote.health/",
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/6811ffa3bd8873ca1d79e495_firenote-logo-reverse%202.png",
+    alt: "Firenote Logo",
+  },
+  {
+    href: "https://www.gethealthie.com/",
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/65425eb4d9547ec7a6917d3c_Healthie-logo%201.webp",
+    alt: "Healthie Company logo",
+  },
+  {
+    href: "https://lucenthealth.com/",
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/65425eb49aaba578b2bb7cf9_naruslucent-removebg-preview%201.webp",
+    alt: "Lucent Health Logo",
+  },
+  {
+    href: "https://prenosis.com/",
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/65426115ed1b936bef809059_prenosis-logo-color%202.webp",
+    alt: "Prenosis Company Logo",
+  },
+  {
+    href: "https://www.bestnotes.com/",
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/65425eb477c566d9cea62f52_BestNotes_Logo-to-use_1-768x168%201.webp",
+    alt: "Bestnotes Company Logo",
+  },
+  {
+    href: "https://lucethealth.com/",
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/6542824da3496e9497e73349_Frame%20427319190(2).webp",
+    alt: "Lucet Logo",
+  },
+  {
+    href: "https://novellia.com/",
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/68e3da6d6bb804a0e39fba1d_novellia.png",
+    alt: "novellia Logo",
+  },
+];
+
 export default function HomePage(): string {
   return (
     <Fragment>
-      {/* Hero Section */}
-      <div class="relative isolate overflow-hidden bg-white">
-        <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
-          <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
-            <p class="text-base/7 font-semibold text-primary">
-              Since {company.founded}
-            </p>
-            <h1 class="mt-2 text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
-              FHIR-native healthcare platform
-            </h1>
-            <p class="mt-8 text-lg font-medium text-gray-500 sm:text-xl/8">
-              {company.description}
-            </p>
-            <div class="mt-10 flex items-center gap-x-6">
-              <a
-                href="/fhir-server"
-                class="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-              >
-                Explore Aidbox
-              </a>
-              <a
-                href="/about"
-                class="text-sm/6 font-semibold text-gray-900 hover:text-primary"
-              >
-                About us <span aria-hidden="true">→</span>
-              </a>
-            </div>
-          </div>
-        </div>
-        {/* Background gradient */}
-        <div
-          class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-          aria-hidden="true"
-        >
-          <div
-            class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-primary to-primary-light opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-            style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
-          />
-        </div>
-      </div>
-
       {/* Products Bento Grid */}
       <Bento
+        heading="Let's implement your ideas on FHIR"
         tagline="Our Products"
         title="Everything you need to build healthcare applications"
         items={bentoItems}
@@ -108,6 +210,113 @@ export default function HomePage(): string {
                 </dd>
               </div>
             </dl>
+          </div>
+        </div>
+      </div>
+
+      {/* Mission Text */}
+      <div class="bg-white py-16">
+        <div class="mx-auto max-w-5xl px-6 lg:px-8">
+          <div class="space-y-6 text-lg text-gray-600">
+            <p>
+              At Health Samurai, we aim to transform care delivery with
+              exceptional software. We believe that an open, connected
+              healthcare application ecosystem will drive higher quality care
+              and lower costs. To help make this happen, we provide a
+              comprehensive{" "}
+              <a href="/fhir-server" class="text-primary hover:text-primary-dark">
+                FHIR server
+              </a>{" "}
+              to EHR and EMR systems, universities for educational purposes,
+              startups, telemedicine platforms, and data platforms. Our
+              Analytics on FHIR further enhances data handling capabilities.
+            </p>
+            <p>
+              Since its inception, we have been part of the FHIR movement and
+              leverage the Aidbox to empower our clients with the right tools
+              and data. This allows for the creation of life-changing
+              technologies and ensures healthcare data is managed correctly. By
+              equipping people with these resources, we believe amazing things
+              will happen.
+            </p>
+            <p>
+              That’s how we believe we can change healthcare for good, and
+              we’re committed to making our vision a reality daily. Our{" "}
+              <a href="/fhir-server" class="text-primary hover:text-primary-dark">
+                FHIR server
+              </a>{" "}
+              supports diverse healthcare needs, ensuring seamless integration
+              and interoperability across various platforms and applications.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Stories */}
+      <div class="bg-white py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl lg:max-w-none">
+            <h2 class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+              Our stories
+            </h2>
+            <div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2">
+              {stories.map((story) => (
+                <a
+                  href={story.href}
+                  target="_blank"
+                  rel="nofollow"
+                  class="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                >
+                  <img
+                    src={story.logo}
+                    alt={story.logoAlt}
+                    class="h-12 w-auto max-w-[200px] object-contain"
+                    loading="lazy"
+                  />
+                  <div class="mt-6 text-2xl font-semibold text-gray-900">
+                    {story.name}
+                  </div>
+                  <p class="mt-4 text-base text-gray-600">{story.summary}</p>
+                  {story.keyResults ? (
+                    <div class="mt-4">
+                      <p class="text-sm font-semibold text-gray-900">
+                        Key results:
+                      </p>
+                      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-gray-600">
+                        {story.keyResults.map((result) => (
+                          <li>{result}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
+                  <div class="mt-6 flex flex-wrap gap-2">
+                    {story.tags.map((tag) => (
+                      <span class="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Trusted logos */}
+      <div class="bg-gray-50 py-16">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <div class="grid grid-cols-2 items-center justify-items-center gap-6 sm:grid-cols-3 lg:grid-cols-6">
+            {trustedLogos.map((logo) => (
+              <a href={logo.href} target="_blank" rel="nofollow">
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  class="h-10 w-auto object-contain grayscale"
+                  loading="lazy"
+                />
+              </a>
+            ))}
           </div>
         </div>
       </div>

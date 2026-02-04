@@ -18,30 +18,41 @@ export type SampleProjectsProps = {
 
 function ProjectCard({ project }: { project: SampleProject }): string {
   return `
-    <div class="bg-white rounded-2xl p-6 shadow-sm ring-1 ring-gray-200 flex flex-col h-full">
-      <div class="flex items-center gap-4 mb-4">
-        <img
-          src="${project.icon}"
-          alt="${project.title}"
-          class="size-12"
-          loading="lazy"
-        />
-        <h3 class="text-lg font-semibold text-gray-900">${project.title}</h3>
+    <a
+      href="${project.href}"
+      target="_blank"
+      rel="nofollow"
+      class="group relative block transition-all duration-200"
+    >
+      <div class="relative flex h-full flex-col rounded-lg bg-gray-100 p-6 transition-colors duration-200 group-hover:bg-[rgba(234,74,53,0.1)]">
+        <div class="absolute top-6 right-6 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+          <svg width="34" height="35" viewBox="0 0 34 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.0078125" y="0.0839844" width="33.9411" height="33.9411" rx="16.9706" fill="white" />
+            <path d="M8.49309 17.0544L25.4637 17.0544M25.4637 17.0544L19.8068 22.7113M25.4637 17.0544L19.8068 11.3976" stroke="#EA4A35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+
+        <div class="mb-4">
+          <div class="mb-3">
+            <img
+              src="${project.icon}"
+              alt="${project.title}"
+              class="w-12 h-12"
+              loading="lazy"
+            />
+          </div>
+          <h3 class="text-lg font-semibold tracking-tight text-gray-950">${project.title}</h3>
+        </div>
+
+        <p class="text-sm text-gray-600 leading-relaxed mb-4 flex-1">
+          ${project.description}
+        </p>
+
+        <div class="flex flex-wrap gap-2">
+          ${project.tags.map((tag) => `<span class="inline-flex items-center rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600">${tag}</span>`).join("")}
+        </div>
       </div>
-      <p class="text-sm text-gray-600 leading-relaxed mb-4 flex-1">
-        ${project.description}
-      </p>
-      <div class="flex flex-wrap gap-2 mb-4">
-        ${project.tags.map((tag) => `<span class="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700">${tag}</span>`).join("")}
-      </div>
-      <a
-        href="${project.href}"
-        target="_blank"
-        class="text-sm font-semibold text-primary hover:text-primary-dark"
-      >
-        Github →
-      </a>
-    </div>
+    </a>
   `;
 }
 
