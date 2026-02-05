@@ -4,6 +4,7 @@ node_modules
 # output
 out
 dist
+content/
 *.tgz
 public/styles/main.css
 
