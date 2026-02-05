@@ -486,7 +486,7 @@ Make healthcare data interoperable through FHIR standards.
     }
 
     // Static files
-    if (path.startsWith("/assets/") || path.startsWith("/styles/") || path.startsWith("/icons/") || path.startsWith("/images/")) {
+    if (path.startsWith("/assets/") || path.startsWith("/styles/") || path.startsWith("/icons/") || path.startsWith("/images/") || path.startsWith("/devlink/")) {
       return serveStatic(path, getContentType(path));
     }
 
@@ -1194,6 +1194,7 @@ Make healthcare data interoperable through FHIR standards.
           devMode: DEV_MODE,
           ctx,
           path,
+          stylesheets: metadata.stylesheets,
         }),
         {
           headers: {

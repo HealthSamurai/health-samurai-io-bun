@@ -1,0 +1,25 @@
+.footer-section {
+  display: block;
+  overflow: clip;
+  height: 90px;
+  max-width: 1300px;
+  margin-right: auto;
+  margin-bottom: 0px;
+  margin-left: auto;
+}
+
+@media screen and (max-width: 991px) {
+  .footer-section {
+    width: auto;
+  }
+}
+
+.hs-logo-footer {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 30px;
+  padding-bottom: 60px;
+
+  text-align: left;
+}

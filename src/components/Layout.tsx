@@ -13,9 +13,10 @@ type LayoutProps = {
   ctx?: Context;
   path?: string;
   fullWidth?: boolean; // For docs pages that need more width
+  stylesheets?: string[]; // Additional CSS stylesheets to include in <head>
 };
 
-export async function Layout({ title, description, children, hideFooter, devMode, ctx, path, fullWidth }: LayoutProps): Promise<string> {
+export async function Layout({ title, description, children, hideFooter, devMode, ctx, path, fullWidth, stylesheets }: LayoutProps): Promise<string> {
   const fullTitle = title === "Home"
     ? "Health Samurai: FHIR solutions | FHIR integration software"
     : `${title} | Health Samurai`;
@@ -48,6 +49,9 @@ export async function Layout({ title, description, children, hideFooter, devMode
 
         {/* Tailwind CSS */}
         <link rel="stylesheet" href={cssHref} />
+
+        {/* Additional page-specific stylesheets */}
+        {stylesheets?.map(href => `<link rel="stylesheet" href="${href}" />`).join('\n        ') || ''}
 
         {/* htmx - defer to not block render */}
         <script src="https://unpkg.com/htmx.org@1.9.10" defer></script>

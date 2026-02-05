@@ -1,0 +1,10 @@
+{
+  "siteName": "health-samurai",
+  "siteId": "57441aa5da71fdf07a0a2e19",
+  "devlink": {
+    "host": "https://api.webflow.com",
+    "rootDir": "./devlink",
+    "cssModules": true,
+    "relativeHrefRoot": "/"
+  }
+}

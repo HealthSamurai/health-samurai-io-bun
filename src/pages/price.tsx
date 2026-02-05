@@ -1,80 +1,61 @@
 import { Fragment } from "../lib/jsx-runtime";
-import { Pricing } from "../components/Pricing";
-import type { PricingTier } from "../components/Pricing";
-import { ContactForm } from "../components/ContactForm";
 
 export const metadata = {
   title: "Pricing",
   description: "Aidbox pricing plans - choose the right plan for your healthcare application.",
+  stylesheets: ["/devlink/pricing.css"],
 };
 
-const tiers: PricingTier[] = [
-  {
-    id: "developer",
-    name: "Developer",
-    description: "Perfect for development and testing your FHIR applications.",
-    priceMonthly: "$0",
-    priceAnnually: "$0",
-    href: "https://aidbox.app",
-    features: [
-      "Single Aidbox instance",
-      "Up to 10,000 resources",
-      "Community support",
-      "Access to documentation",
-      "Local development",
-    ],
-  },
-  {
-    id: "team",
-    name: "Team",
-    description: "For teams building production healthcare applications.",
-    priceMonthly: "$499",
-    priceAnnually: "$4,990",
-    href: "/contacts",
-    featured: true,
-    features: [
-      "Multiple Aidbox instances",
-      "Unlimited resources",
-      "Priority email support",
-      "SMART on FHIR support",
-      "Custom terminologies",
-      "Audit logging",
-    ],
-  },
-  {
-    id: "enterprise",
-    name: "Enterprise",
-    description: "Dedicated support and infrastructure for large organizations.",
-    priceMonthly: "Custom",
-    priceAnnually: "Custom",
-    href: "/contacts",
-    features: [
-      "Unlimited instances",
-      "Unlimited resources",
-      "Dedicated support",
-      "SLA guarantees",
-      "On-premise deployment",
-      "Custom integrations",
-      "Compliance assistance",
-    ],
-  },
-];
+// Cache the HTML in production, read fresh in dev for easier iteration
+let pricingHtmlCache: string | null = null;
 
-export default function PricePage(): string {
+async function getPricingHtml(): Promise<string> {
+  if (!pricingHtmlCache || process.env.NODE_ENV !== "production") {
+    pricingHtmlCache = await Bun.file("public/devlink/pricing.html").text();
+  }
+  return pricingHtmlCache;
+}
+
+// Vanilla JS for Webflow tab switching (Yearly/Monthly toggles)
+const tabSwitchScript = `
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Handle Webflow-style tab switching
+  document.querySelectorAll('.w-tab-link').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var tabId = this.getAttribute('data-w-tab');
+      // Find the parent .w-tabs container
+      var tabsContainer = this.closest('.w-tabs');
+      if (!tabsContainer) return;
+      
+      // Deactivate all tab links in this container
+      tabsContainer.querySelectorAll('.w-tab-link').forEach(function(l) {
+        l.classList.remove('w--current');
+      });
+      // Activate clicked link
+      this.classList.add('w--current');
+      
+      // Hide all tab panes in this container
+      tabsContainer.querySelectorAll('.w-tab-pane').forEach(function(pane) {
+        pane.classList.remove('w--tab-active');
+      });
+      // Show the matching pane
+      var targetPane = tabsContainer.querySelector('.w-tab-pane[data-w-tab="' + tabId + '"]');
+      if (targetPane) {
+        targetPane.classList.add('w--tab-active');
+      }
+    });
+  });
+});
+</script>
+`;
+
+export default async function PricePage(): Promise<string> {
+  const pricingHtml = await getPricingHtml();
   return (
     <Fragment>
-      <Pricing
-        title="Pricing"
-        subtitle="Simple, transparent pricing"
-        description="Choose the plan that fits your needs. Start free and scale as you grow."
-        tiers={tiers}
-      />
-
-      <ContactForm
-        title="Need a custom plan?"
-        description="Contact us to discuss enterprise pricing, volume discounts, or special requirements."
-        page="/price"
-      />
+      <div dangerouslySetInnerHTML={{ __html: pricingHtml + tabSwitchScript }} />
     </Fragment>
   );
 }
