@@ -1083,15 +1083,19 @@ Make healthcare data interoperable through FHIR standards.
       console.log(`[Webhook/docs] Received ${event} for ${product.id}`);
 
       if (event === "push") {
-        // Reload product in background (don't block the response)
-        reloadProduct(product.id).catch((err) => {
+        try {
+          await reloadProduct(product.id);
+          return new Response(
+            JSON.stringify({ status: "reloaded", product: product.id }),
+            { headers: { "Content-Type": "application/json" } }
+          );
+        } catch (err: any) {
           console.error(`[Webhook/docs] Failed to reload ${product.id}:`, err);
-        });
-
-        return new Response(
-          JSON.stringify({ status: "reload_triggered", product: product.id }),
-          { headers: { "Content-Type": "application/json" } }
-        );
+          return new Response(
+            JSON.stringify({ status: "error", product: product.id, error: String(err) }),
+            { status: 500, headers: { "Content-Type": "application/json" } }
+          );
+        }
       }
 
       return new Response(JSON.stringify({ status: "ignored", event }), {
