@@ -74,7 +74,7 @@ export async function loadConfig(): Promise<DocsConfig> {
         llms: p.llms || defaults.llms || "llms.txt",
         meilisearchIndex: p["meilisearch-index"] || p.id,
         // Webhook secret from env var by convention: WEBHOOK_SECRET_AIDBOX
-        webhookSecret: process.env[`WEBHOOK_SECRET_${p.id.toUpperCase()}`],
+        webhookSecret: process.env[`WEBHOOK_SECRET_${p.id.toUpperCase()}`] || "CHANGE_ME_AND_PUT_INTO_SECRET",
         // Dev mode path resolved from local-path in yaml
         devPath,
       };

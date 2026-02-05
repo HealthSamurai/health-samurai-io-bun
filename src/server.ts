@@ -27,7 +27,7 @@ import {
 import { CommentItem, CommentList, type Comment } from "./components/Comments";
 import { notifyContactForm, notifySubscription, isZulipConfigured } from "./lib/zulip";
 import { handleBlogHtmx } from "./htmx/blog";
-import { handleDocsRequest, initializeDocs } from "./docs";
+import { handleDocsRequest, initializeDocs, reloadProduct, getAllProducts } from "./docs";
 
 // Initialize at startup
 await initGitInfo();
@@ -1020,6 +1020,78 @@ Make healthcare data interoperable through FHIR standards.
         return new Response(JSON.stringify({ status: "reload_triggered" }), {
           headers: { "Content-Type": "application/json" },
         });
+      }
+
+      return new Response(JSON.stringify({ status: "ignored", event }), {
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    // Docs webhook — reload a single product on push to its docs repo
+    if (path === "/api/webhook/docs" && req.method === "POST") {
+      const body = await req.text();
+      const signature = req.headers.get("x-hub-signature-256");
+      const event = req.headers.get("x-github-event");
+
+      // Parse payload to identify repo
+      let payload: any;
+      try {
+        payload = JSON.parse(body);
+      } catch {
+        return new Response("Invalid JSON", { status: 400 });
+      }
+
+      const repoFullName = payload?.repository?.full_name;
+      if (!repoFullName) {
+        return new Response("Missing repository in payload", { status: 400 });
+      }
+
+      // Find matching product (case-insensitive repo comparison)
+      let products: ReturnType<typeof getAllProducts>;
+      try {
+        products = getAllProducts();
+      } catch {
+        return new Response("Docs not initialized", { status: 503 });
+      }
+
+      const product = products.find(
+        (p) => p.repo.toLowerCase() === repoFullName.toLowerCase()
+      );
+
+      if (!product) {
+        console.log(`[Webhook/docs] No product matches repo: ${repoFullName}`);
+        return new Response(JSON.stringify({ status: "ignored", repo: repoFullName }), {
+          headers: { "Content-Type": "application/json" },
+        });
+      }
+
+      // Verify HMAC signature with product's webhook secret
+      if (!product.webhookSecret) {
+        console.log(`[Webhook/docs] No WEBHOOK_SECRET_${product.id.toUpperCase()} configured`);
+        return new Response("Webhook not configured for this product", { status: 503 });
+      }
+
+      const hmac = new Bun.CryptoHasher("sha256", product.webhookSecret);
+      hmac.update(body);
+      const expectedSignature = "sha256=" + hmac.digest("hex");
+
+      if (signature !== expectedSignature) {
+        console.log(`[Webhook/docs] Invalid signature for ${product.id}`);
+        return new Response("Invalid signature", { status: 401 });
+      }
+
+      console.log(`[Webhook/docs] Received ${event} for ${product.id}`);
+
+      if (event === "push") {
+        // Reload product in background (don't block the response)
+        reloadProduct(product.id).catch((err) => {
+          console.error(`[Webhook/docs] Failed to reload ${product.id}:`, err);
+        });
+
+        return new Response(
+          JSON.stringify({ status: "reload_triggered", product: product.id }),
+          { headers: { "Content-Type": "application/json" } }
+        );
       }
 
       return new Response(JSON.stringify({ status: "ignored", event }), {
