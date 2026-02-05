@@ -40,7 +40,7 @@ export default function AuditboxPage(): string {
       <Hero
         title={product.label}
         description={product.description}
-        primaryCta={{ label: "Get Started", href: "https://docs.aidbox.app/modules/audit" }}
+        primaryCta={{ label: "Get Started", href: "/docs/auditbox" }}
         secondaryCta={{ label: "Learn More", href: "/contacts" }}
       />
       <FAQ items={faqItems} />

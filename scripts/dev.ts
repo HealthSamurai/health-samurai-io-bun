@@ -10,7 +10,7 @@
  */
 
 import { spawn } from "bun";
-import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, rmSync, writeFileSync, openSync } from "node:fs";
 
 const PORT = process.env.PORT || "4444";
 const TMP_DIR = `${process.cwd()}/.tmp`;
@@ -63,19 +63,34 @@ const isRunning = (pid: number | null) => {
   }
 };
 
-const killProcess = async (pid: number | null, name: string) => {
+const killProcessGroup = async (pid: number | null, name: string) => {
   if (!pid) return;
+
+  // Kill the entire process group (negative PID)
+  // This ensures child processes (bun --watch children) are also killed
   try {
-    process.kill(pid, "SIGTERM");
+    process.kill(-pid, "SIGTERM");
   } catch {
-    return;
+    // If group kill fails, try single process
+    try {
+      process.kill(pid, "SIGTERM");
+    } catch {
+      return;
+    }
   }
+
   await sleep(600);
+
+  // Force-kill if still alive
   if (isRunning(pid)) {
     try {
-      process.kill(pid, "SIGKILL");
+      process.kill(-pid, "SIGKILL");
     } catch {
-      // ignore
+      try {
+        process.kill(pid, "SIGKILL");
+      } catch {
+        // ignore
+      }
     }
   }
   console.log(`Stopped ${name} (PID: ${pid})`);
@@ -145,24 +160,28 @@ const startProcesses = async () => {
 
   await buildCss();
 
+  // Truncate log files on fresh start
+  writeFileSync(CSS_LOG_FILE, "");
+  writeFileSync(LOG_FILE, "");
+
+  const cssLogFd = openSync(CSS_LOG_FILE, "a");
   const cssWatcher = spawn({
-    cmd: [
-      "sh",
-      "-c",
-      `TMPDIR=${TMP_DIR} BUN_TMPDIR=${TMP_DIR} bun run css:watch >> ${CSS_LOG_FILE} 2>&1`,
-    ],
-    stdio: ["ignore", "ignore", "ignore"],
+    cmd: ["bun", "run", "css:watch"],
+    env: { ...process.env, TMPDIR: TMP_DIR, BUN_TMPDIR: TMP_DIR },
+    stdout: cssLogFd,
+    stderr: cssLogFd,
+    stdin: "ignore",
     detached: true,
   });
   writePid(CSS_PID_FILE, cssWatcher.pid);
 
+  const serverLogFd = openSync(LOG_FILE, "a");
   const server = spawn({
-    cmd: [
-      "sh",
-      "-c",
-      `TMPDIR=${TMP_DIR} BUN_TMPDIR=${TMP_DIR} PORT=${PORT} DEV=1 bun --watch src/server.ts >> ${LOG_FILE} 2>&1`,
-    ],
-    stdio: ["ignore", "ignore", "ignore"],
+    cmd: ["bun", "--watch", "src/server.ts"],
+    env: { ...process.env, PORT, DEV: "1", TMPDIR: TMP_DIR, BUN_TMPDIR: TMP_DIR },
+    stdout: serverLogFd,
+    stderr: serverLogFd,
+    stdin: "ignore",
     detached: true,
   });
   writePid(PID_FILE, server.pid);
@@ -176,8 +195,8 @@ const stopProcesses = async () => {
   const serverPid = readPid(PID_FILE);
   const cssPid = readPid(CSS_PID_FILE);
 
-  await killProcess(cssPid, "CSS watcher");
-  await killProcess(serverPid, "server");
+  await killProcessGroup(cssPid, "CSS watcher");
+  await killProcessGroup(serverPid, "server");
 
   removePid(CSS_PID_FILE);
   removePid(PID_FILE);

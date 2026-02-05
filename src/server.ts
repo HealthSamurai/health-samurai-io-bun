@@ -27,13 +27,19 @@ import {
 import { CommentItem, CommentList, type Comment } from "./components/Comments";
 import { notifyContactForm, notifySubscription, isZulipConfigured } from "./lib/zulip";
 import { handleBlogHtmx } from "./htmx/blog";
-import { handleDocsRequest } from "./docs";
-import { initDocsHighlighter } from "./docs/markdown";
+import { handleDocsRequest, initializeDocs } from "./docs";
 
 // Initialize at startup
 await initGitInfo();
 await initHighlighter();
-await initDocsHighlighter();
+
+// Initialize docs engine
+try {
+  await initializeDocs();
+  console.log("\x1b[32m→\x1b[0m Documentation engine: initialized");
+} catch (error) {
+  console.error("\x1b[31m✗\x1b[0m Documentation engine failed:", error);
+}
 
 // Run database migrations
 try {
@@ -200,8 +206,8 @@ Bun.serve({
     const ctx = newContext(db, SERVER_ID, DEV_MODE, user);
 
     // Documentation routes (/docs/*)
-    if (path.startsWith("/docs")) {
-      const docsResponse = await handleDocsRequest(req);
+    if (path.startsWith("/docs/")) {
+      const docsResponse = await handleDocsRequest(req, ctx);
       if (docsResponse) {
         return docsResponse;
       }

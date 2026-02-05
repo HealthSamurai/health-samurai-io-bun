@@ -1,0 +1,22 @@
+products:
+  - id: aidbox
+    name: Aidbox
+    repo: health-samurai/aidbox-docs
+    meilisearch-index: docs
+
+  - id: fhirbase
+    name: FHIRbase
+    repo: health-samurai/fhirbase-docs
+
+  - id: auditbox
+    name: Auditbox
+    repo: HealthSamurai/auditbox-docs
+
+# Defaults (applied if not specified per product)
+defaults:
+  branch: main
+  docs: ./docs
+  assets: ./assets
+  summary: SUMMARY.md
+  redirects: redirects.yaml
+  llms: llms.txt

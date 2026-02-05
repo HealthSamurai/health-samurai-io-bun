@@ -1,154 +1,103 @@
-/**
- * Documentation Engine Configuration
- *
- * Supports multiple products, each with their own documentation structure.
- */
+import { parse } from "yaml";
+import path from "path";
 
-import { parse as parseYaml } from "yaml";
-import { existsSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+// Project root directory (where products.yaml lives relative to)
+const PROJECT_ROOT = process.cwd();
 
-export interface NavLink {
-  text: string;
-  href: string;
-  target?: string;
-  entries?: NavLink[];
-  title?: string;
-}
+// Base directory for docs repos. In dev mode with convention: {DOCS_REPOS_PATH}/{id}-docs
+const DOCS_REPOS_PATH = process.env.DOCS_REPOS_PATH;
 
 export interface ProductConfig {
   id: string;
   name: string;
-  path: string;          // URL path prefix (e.g., /aidbox)
-  docsPath: string;      // Filesystem path to docs
-  summaryPath: string;   // Path to SUMMARY.md
-  logo?: string;
-  favicon?: string;
-  ogPreviewText?: string;
-  meilisearchIndex?: string;
-  links?: NavLink[];
+  repo: string; // Full GitHub repo path (e.g., health-samurai/aidbox-docs)
+  path: string; // URL path prefix, e.g. /docs/aidbox
+  branch: string;
+  docs: string; // Markdown files location within repo
+  assets: string; // Images location within repo
+  summary: string; // Navigation file
+  redirects: string; // Redirects file
+  llms: string; // llms.txt location
+  meilisearchIndex: string;
+  webhookSecret?: string;
+  devPath?: string; // Local path for dev mode (overrides git clone)
 }
 
 export interface DocsConfig {
-  rootRedirect?: string;
   products: ProductConfig[];
 }
 
-/**
- * Load documentation configuration from products.yaml
- */
-export function loadDocsConfig(docsRoot: string): DocsConfig {
-  const configPath = join(docsRoot, "products.yaml");
+let cachedConfig: DocsConfig | null = null;
 
-  if (!existsSync(configPath)) {
-    // Return default config if no products.yaml - auto-discover products
-    return {
-      products: discoverProducts(docsRoot),
-    };
+export async function loadConfig(): Promise<DocsConfig> {
+  if (cachedConfig) return cachedConfig;
+
+  const configPath = process.env.DOCS_CONFIG_PATH || "./src/data/products.yaml";
+  const file = Bun.file(configPath);
+
+  if (!(await file.exists())) {
+    throw new Error(`Products config not found: ${configPath}`);
   }
 
-  const configContent = readFileSync(configPath, "utf-8");
-  const config = parseYaml(configContent) as any;
+  const content = await file.text();
+  const raw = parse(content);
 
-  const products: ProductConfig[] = (config.products || []).map((p: any) => ({
-    id: p.id,
-    name: p.name,
-    path: p.path || `/${p.id}`,
-    docsPath: join(docsRoot, p.id),
-    summaryPath: join(docsRoot, p.id, "SUMMARY.md"),
-    logo: p.logo,
-    favicon: p.favicon,
-    ogPreviewText: p["og-preview-text"],
-    meilisearchIndex: p["meilisearch-index"],
-    links: p.links,
-  }));
+  const defaults = raw.defaults || {};
 
-  return {
-    rootRedirect: config["root-redirect"],
-    products,
-  };
-}
+  const isDevMode = process.env.DOCS_DEV_MODE === "true";
 
-/**
- * Load configuration for existing Aidbox documentation structure
- * (tmp/documentation/docs format where SUMMARY.md is at root level)
- */
-export function loadLegacyDocsConfig(docsRoot: string): DocsConfig {
-  // Check if this is the legacy structure with SUMMARY.md at root
-  const rootSummary = join(docsRoot, "SUMMARY.md");
-
-  if (existsSync(rootSummary)) {
-    // Legacy single-product structure
-    return {
-      rootRedirect: "/aidbox",
-      products: [{
-        id: "aidbox",
-        name: "Aidbox Documentation",
-        path: "/aidbox",
-        docsPath: docsRoot,
-        summaryPath: rootSummary,
-        ogPreviewText: "FHIR server for building healthcare applications",
-      }],
-    };
-  }
-
-  // Try loading from products.yaml
-  return loadDocsConfig(docsRoot);
-}
-
-/**
- * Auto-discover products from directory structure
- */
-function discoverProducts(docsRoot: string): ProductConfig[] {
-  const products: ProductConfig[] = [];
-
-  try {
-    const { readdirSync, statSync } = require("node:fs");
-    const entries = readdirSync(docsRoot);
-
-    for (const entry of entries) {
-      const entryPath = join(docsRoot, entry);
-      const stat = statSync(entryPath);
-
-      if (stat.isDirectory() && !entry.startsWith(".")) {
-        const summaryPath = join(entryPath, "SUMMARY.md");
-        if (existsSync(summaryPath)) {
-          products.push({
-            id: entry,
-            name: entry.charAt(0).toUpperCase() + entry.slice(1) + " Documentation",
-            path: `/${entry}`,
-            docsPath: entryPath,
-            summaryPath,
-          });
+  cachedConfig = {
+    products: raw.products.map((p: any) => {
+      // Resolve dev path: explicit local-path > DOCS_REPOS_PATH convention > none
+      let devPath: string | undefined;
+      if (isDevMode) {
+        if (p["local-path"]) {
+          // Explicit override: resolve relative to DOCS_REPOS_PATH or PROJECT_ROOT
+          const base = DOCS_REPOS_PATH || PROJECT_ROOT;
+          devPath = path.resolve(base, p["local-path"]);
+        } else if (DOCS_REPOS_PATH) {
+          // Convention: {DOCS_REPOS_PATH}/{id}-docs
+          devPath = path.resolve(DOCS_REPOS_PATH, `${p.id}-docs`);
         }
       }
-    }
-  } catch (e) {
-    console.error("Error discovering products:", e);
-  }
 
-  return products;
+      return {
+        id: p.id,
+        name: p.name,
+        repo: p.repo,
+        path: `/docs/${p.id}`,
+        branch: p.branch || defaults.branch || "main",
+        docs: p.docs || defaults.docs || "./docs",
+        assets: p.assets || defaults.assets || "./assets",
+        summary: p.summary || defaults.summary || "SUMMARY.md",
+        redirects: p.redirects || defaults.redirects || "redirects.yaml",
+        llms: p.llms || defaults.llms || "llms.txt",
+        meilisearchIndex: p["meilisearch-index"] || p.id,
+        // Webhook secret from env var by convention: WEBHOOK_SECRET_AIDBOX
+        webhookSecret: process.env[`WEBHOOK_SECRET_${p.id.toUpperCase()}`],
+        // Dev mode path resolved from local-path in yaml
+        devPath,
+      };
+    }),
+  };
+
+  return cachedConfig;
 }
 
-/**
- * Get product by ID
- */
-export function getProduct(config: DocsConfig, productId: string): ProductConfig | undefined {
-  return config.products.find(p => p.id === productId);
+export function getProductConfig(productId: string): ProductConfig | undefined {
+  if (!cachedConfig) {
+    throw new Error("Config not loaded. Call loadConfig() first.");
+  }
+  return cachedConfig.products.find((p) => p.id === productId);
 }
 
-/**
- * Get product by URL path
- */
-export function getProductByPath(config: DocsConfig, urlPath: string): ProductConfig | undefined {
-  // Remove leading /docs prefix if present
-  const normalizedPath = urlPath.replace(/^\/docs/, "");
-
-  for (const product of config.products) {
-    if (normalizedPath.startsWith(product.path)) {
-      return product;
-    }
+export function getAllProducts(): ProductConfig[] {
+  if (!cachedConfig) {
+    throw new Error("Config not loaded. Call loadConfig() first.");
   }
+  return cachedConfig.products;
+}
 
-  return undefined;
+export function clearConfigCache(): void {
+  cachedConfig = null;
 }
