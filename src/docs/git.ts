@@ -1,4 +1,5 @@
 import { $ } from "bun";
+import { existsSync } from "node:fs";
 import type { ProductConfig } from "./config";
 
 // Production clone target. DOCS_REPOS_PATH is the primary env var;
@@ -42,8 +43,7 @@ export async function cloneOrFetch(product: ProductConfig): Promise<void> {
   const repoDir = getProductDir(product);
   const gitDir = `${repoDir}/.git`;
 
-  const gitDirFile = Bun.file(gitDir);
-  const exists = await gitDirFile.exists();
+  const exists = existsSync(gitDir);
 
   if (exists) {
     // Fetch and reset to latest
@@ -115,7 +115,7 @@ export async function getLastmod(product: ProductConfig): Promise<Map<string, st
 export async function repoExists(product: ProductConfig): Promise<boolean> {
   const repoDir = getProductDir(product);
   const gitDir = `${repoDir}/.git`;
-  return Bun.file(gitDir).exists();
+  return existsSync(gitDir);
 }
 
 /**
@@ -129,8 +129,7 @@ export function isDevMode(): boolean {
  * Ensure content directory exists
  */
 export async function ensureContentDir(): Promise<void> {
-  const dir = Bun.file(CONTENT_DIR);
-  if (!(await dir.exists())) {
+  if (!existsSync(CONTENT_DIR)) {
     await $`mkdir -p ${CONTENT_DIR}`.quiet();
   }
 }
