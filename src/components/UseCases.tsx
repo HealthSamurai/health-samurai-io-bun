@@ -28,7 +28,7 @@ function CaseCard({ card }: { card: CaseStudyCard }): string {
     <div class="bg-white rounded-xl p-6 shadow-sm ring-1 ring-gray-200">
       <div class="flex flex-col gap-4">
         <div class="flex items-center justify-between">
-          <h4 class="text-lg font-semibold text-gray-900">${card.title}</h4>
+          <div class="text-lg font-semibold text-gray-900">${card.title}</div>
           <img
             src="${card.logo}"
             alt="${card.title}"
@@ -52,8 +52,8 @@ export function UseCases({ title, cases }: UseCasesProps): string {
   return `
     <section class="py-24 sm:py-32 bg-white">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="mx-auto text-center mb-12">
-          <h2 class="text-2xl font-bold tracking-tight text-gray-900">
+        <div class="mx-auto max-w-2xl text-center mb-12">
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             ${title}
           </h2>
         </div>

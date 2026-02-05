@@ -101,7 +101,7 @@ function NotFound(ctx?: Context): string {
         {Header({ ctx })}
         <div class="flex-1 flex items-center justify-center">
           <div class="text-center">
-            <h1 class="text-4xl font-bold text-gray-900 mb-4">Article not found</h1>
+            <div class="text-4xl font-bold text-gray-900 mb-4">Article not found</div>
             <p class="text-gray-600 mb-8">The article you're looking for doesn't exist.</p>
             <a href="/blog" class="text-primary hover:text-primary-dark font-medium">
               ← Back to blog
@@ -130,9 +130,9 @@ function ArticleCard({ article }: { article: Article }): string {
           </div>
         )}
         <div class="p-5">
-          <h3 class="text-lg font-semibold text-gray-900 group-hover:text-primary transition-colors line-clamp-2 mb-2">
+          <div class="text-lg font-semibold text-gray-900 group-hover:text-primary transition-colors line-clamp-2 mb-2">
             {title}
-          </h3>
+          </div>
           {article.teaser && (
             <p class="text-sm text-gray-500 line-clamp-2 mb-3">{article.teaser}</p>
           )}
@@ -270,7 +270,7 @@ export default function BlogPost(params: BlogPostParams): string {
               <div class="flex-1 min-w-0 max-w-[784px]">
                 {/* Summarize with AI */}
                 <div class="mb-8 p-6 bg-author-pill-bg rounded-xl">
-                  <h4 class="text-base text-blog-meta mb-4">Summarize this blog post with:</h4>
+                  <div class="text-base text-blog-meta mb-4">Summarize this blog post with:</div>
                   <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                     {/* ChatGPT */}
                     <a
@@ -362,7 +362,7 @@ export default function BlogPost(params: BlogPostParams): string {
                     <nav id="toc-nav" class="mb-6 rounded-lg border border-blog-border py-6 relative overflow-hidden">
                       {/* Header - no border-b per Figma */}
                       <div class="px-8 pb-4 mb-4">
-                        <h4 class="text-[20px] font-semibold leading-[1.6] text-text-primary">In this article:</h4>
+                        <div class="text-[20px] font-semibold leading-[1.6] text-text-primary">In this article:</div>
                       </div>
 
                       {/* Items with left track */}
@@ -390,7 +390,7 @@ export default function BlogPost(params: BlogPostParams): string {
 
                   {/* Share / Actions - Figma 616-6283 */}
                   <div class="p-6 border border-blog-border rounded-lg">
-                    <h4 class="text-sm font-medium text-blog-meta mb-4">Share this article</h4>
+                    <div class="text-sm font-medium text-blog-meta mb-4">Share this article</div>
                     <div class="flex items-center gap-2">
                       <a
                         href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`https://health-samurai.io/blog/${slug}`)}&text=${encodeURIComponent(title)}`}
@@ -456,7 +456,7 @@ export default function BlogPost(params: BlogPostParams): string {
             <div class="mx-auto max-w-[1200px]">
               <div class="flex items-center gap-[7px] mb-8">
                 <img src="/icons/blog/similar-articles.svg" alt="" class="size-10" />
-                <h2 class="text-[36px] font-bold text-section-heading tracking-[-0.4px] leading-[40px]">Similar articles</h2>
+                <div class="text-[36px] font-bold text-section-heading tracking-[-0.4px] leading-[40px]">Similar articles</div>
               </div>
               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {similarPosts.map(post => ArticleCard({ article: post }))}
@@ -470,9 +470,9 @@ export default function BlogPost(params: BlogPostParams): string {
           <div class="mx-auto max-w-[1200px]">
             <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10">
               <div class="max-w-xl">
-                <h2 class="text-4xl lg:text-5xl font-bold text-white mb-4">
+                <div class="text-4xl lg:text-5xl font-bold text-white mb-4">
                   Shape what's next.
-                </h2>
+                </div>
                 <p class="text-lg text-footer-text">
                   Subscribe for our updates
                 </p>

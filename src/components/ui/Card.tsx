@@ -116,7 +116,7 @@ export function Card({
   } else if (header) {
     headerHtml = `
       <div class="${paddingConfig.header}">
-        <h3 class="text-base font-semibold text-gray-900">${header}</h3>
+        <div class="text-base font-semibold text-gray-900">${header}</div>
       </div>
     `;
   }
@@ -160,7 +160,7 @@ export function CardWithAction({
 }): string {
   const headerContent = `
     <div class="flex items-center justify-between">
-      <h3 class="text-base font-semibold text-gray-900">${header}</h3>
+      <div class="text-base font-semibold text-gray-900">${header}</div>
       <div class="shrink-0">${action}</div>
     </div>
   `;

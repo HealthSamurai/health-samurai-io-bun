@@ -23,7 +23,7 @@ function NotFound(): string {
   return (
     <div class="min-h-[60vh] flex items-center justify-center">
       <div class="text-center">
-        <h1 class="text-4xl font-bold text-gray-900 mb-4">Event not found</h1>
+        <div class="text-4xl font-bold text-gray-900 mb-4">Event not found</div>
         <p class="text-gray-600 mb-8">The event you're looking for doesn't exist.</p>
         <a href="/events" class="text-primary hover:text-primary-dark font-medium">
           ← Back to events
@@ -61,9 +61,9 @@ export default async function EventSeriesPage(params: EventPageParams): Promise<
               All events
             </a>
 
-            <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <div class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               {series.name}
-            </h1>
+            </div>
             {series.description && (
               <p class="mt-3 text-base text-gray-600 max-w-2xl">{series.description}</p>
             )}

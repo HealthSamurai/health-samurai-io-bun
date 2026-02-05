@@ -63,9 +63,9 @@ function BentoCard({
               </span>
             )}
           </div>
-          <h3 class="text-lg font-semibold tracking-tight text-gray-950">
+          <div class="text-lg font-semibold tracking-tight text-gray-950">
             {item.title}
-          </h3>
+          </div>
         </div>
 
         {/* Tags */}
@@ -179,17 +179,6 @@ export function Bento({ heading, tagline, title, items }: BentoProps): string {
             ))}
           </div>
         )}
-
-        {/* Technical features button */}
-        <div class="mt-12 flex justify-center">
-          <a
-            href="/docs/aidbox/features"
-            class="inline-flex items-center gap-2 rounded-md border-2 border-primary px-6 py-3 text-base font-semibold text-primary hover:bg-primary hover:text-white transition-colors duration-200"
-          >
-            TECHNICAL FEATURES
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
       </div>
     </div>
   );

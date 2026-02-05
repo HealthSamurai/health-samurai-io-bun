@@ -68,10 +68,10 @@ export default function BlogPage(props: BlogPageProps = {}): string {
       ${featuredArticle ? `
         <section class="mb-16">
           <div class="max-w-[1200px] mx-auto px-4">
-            <h2 class="text-[36px] font-semibold leading-tight tracking-tight text-neutral-900 mb-11 flex items-center gap-2">
+            <div class="text-[36px] font-semibold leading-tight tracking-tight text-neutral-900 mb-11 flex items-center gap-2">
               <img src="/icons/blog/featured.svg" alt="" class="w-6 h-6" />
               Featured articles
-            </h2>
+            </div>
 
             <div class="flex flex-col lg:flex-row gap-6 lg:gap-11 lg:justify-between">
               ${ArticleCard({ article: featuredArticle, variant: "featured" })}
@@ -90,9 +90,9 @@ export default function BlogPage(props: BlogPageProps = {}): string {
         <div class="max-w-[1200px] mx-auto px-4">
           <div class="flex items-center gap-2">
             <img src="/icons/blog/hamburger.svg" alt="" class="w-6 h-6" />
-            <h2 class="text-[36px] font-semibold leading-tight tracking-tight text-neutral-900">
+            <div class="text-[36px] font-semibold leading-tight tracking-tight text-neutral-900">
               All articles
-            </h2>
+            </div>
           </div>
 
           <div id="tabs-and-content-container" class="mt-[44px]">

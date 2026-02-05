@@ -128,7 +128,7 @@ function Card({ title, subtitle, children }: { title: string; subtitle?: string;
   return (
     <div class="bg-white rounded-lg shadow">
       <div class="px-6 py-4 border-b border-gray-200">
-        <h2 class="text-lg font-semibold text-gray-900">{title}</h2>
+        <div class="text-lg font-semibold text-gray-900">{title}</div>
         {subtitle && <p class="text-sm text-gray-500 mt-1">{subtitle}</p>}
       </div>
       <div class="p-4">{children}</div>
@@ -349,7 +349,7 @@ export default async function AnalyticsDashboard(params: PageParams): Promise<st
       {/* Header */}
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
         <div>
-          <h1 class="text-2xl font-bold text-gray-900">Analytics</h1>
+          <div class="text-2xl font-bold text-gray-900">Analytics</div>
           <p class="text-gray-500 mt-1">{label}</p>
         </div>
         <PeriodSelector currentPeriod={period} />

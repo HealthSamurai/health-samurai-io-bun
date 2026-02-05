@@ -41,7 +41,7 @@ function ProjectCard({ project }: { project: SampleProject }): string {
               loading="lazy"
             />
           </div>
-          <h3 class="text-lg font-semibold tracking-tight text-gray-950">${project.title}</h3>
+          <div class="text-lg font-semibold tracking-tight text-gray-950">${project.title}</div>
         </div>
 
         <p class="text-sm text-gray-600 leading-relaxed mb-4 flex-1">

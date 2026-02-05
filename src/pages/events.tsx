@@ -29,9 +29,9 @@ function EventSeriesSection({ series }: { series: EventSeries }): string {
 	return (
 		<div class="mt-16 first:mt-0">
 			{/* Category header */}
-			<h2 class="text-2xl font-bold tracking-tight text-gray-900">
+			<div class="text-2xl font-bold tracking-tight text-gray-900">
 				{series.name}
-			</h2>
+			</div>
 			{series.description && (
 				<p class="mt-2 text-base text-gray-600">{series.description}</p>
 			)}
@@ -82,9 +82,9 @@ export default async function EventsPage(): Promise<string> {
 				<div class="mx-auto max-w-7xl px-6 lg:px-8">
 					{/* Page header */}
 					<div class="mx-auto max-w-3xl text-center mb-24">
-						<h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+						<div class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
 							Events
-						</h1>
+						</div>
 						<p class="mt-4 text-lg text-gray-600">
 							Conferences, webinars, and community calls from Health Samurai.
 						</p>

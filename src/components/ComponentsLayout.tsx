@@ -145,9 +145,9 @@ function Sidebar({ currentPath }: { currentPath: string }): string {
       </a>
       {componentGroups.map((group) => (
         <div>
-          <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">
+          <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">
             {group.name}
-          </h3>
+          </div>
           <ul class="space-y-1">
             {group.categories.map((cat) => {
               const href = `/_components/${cat.slug}`;

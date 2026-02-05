@@ -10,6 +10,10 @@ import { SampleProjects, aidboxSampleProjects } from "../components/SampleProjec
 import { Deployment, aidboxDeploymentOptions } from "../components/Deployment";
 import { Pricing } from "../components/Pricing";
 import type { PricingTier } from "../components/Pricing";
+import { SupportPlans, supportPlans } from "../components/SupportPlans";
+import { Testimonials, aidboxTestimonials } from "../components/Testimonials";
+import { JoinCommunity } from "../components/JoinCommunity";
+import { FAQ, aidboxFAQ } from "../components/FAQ";
 import { ContactForm } from "../components/ContactForm";
 import { GetStartedModal } from "../components/GetStartedModal";
 
@@ -21,21 +25,50 @@ export const metadata = {
 };
 
 const trustedLogos: TrustedLogo[] = [
-  { src: "/assets/aidbox/trust/solutio.png", alt: "Solutio" },
-  { src: "/assets/aidbox/trust/deep6ai.png", alt: "Deep 6 AI" },
-  { src: "/assets/aidbox/trust/bodylogicmd.png", alt: "BodyLogicMD" },
-  { src: "/assets/aidbox/trust/sandata.png", alt: "Sandata" },
-  { src: "/assets/aidbox/trust/villagecare.png", alt: "VillageCare" },
-  { src: "/assets/aidbox/trust/firenote.png", alt: "Firenote" },
-  { src: "/assets/aidbox/trust/healthie.png", alt: "Healthie" },
-  { src: "/assets/aidbox/trust/prenosis.png", alt: "Prenosis" },
-  { src: "/assets/aidbox/trust/patients-know-best.png", alt: "Patients Know Best" },
-  { src: "/assets/aidbox/trust/lucent-health.png", alt: "Lucent Health" },
-  { src: "/assets/aidbox/trust/bestnotes.png", alt: "BestNotes" },
-  { src: "/assets/aidbox/trust/innovaccer.png", alt: "Innovaccer" },
-  { src: "/assets/aidbox/trust/bupa.png", alt: "Bupa" },
-  { src: "/assets/aidbox/trust/duodecim.png", alt: "Duodecim" },
-  { src: "/assets/aidbox/trust/novellia.png", alt: "Novellia" },
+  {
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/64ba99d2e3fe0c7e42265e5d_innovaccer-logo-black.svg",
+    alt: "Innovaccer Logo",
+  },
+  {
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/6602b888409299ed4eef694b_Frame%20427319224%20(1).webp",
+    alt: "Coda Logo",
+  },
+  {
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/6811f756ed6ce3acce94256a_Duodecim_idFuVC2K5H_1.png",
+    alt: "Duodecim Logo",
+  },
+  {
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/65425eb4a2c54d0ea864cb16_Logo_PatientsCo%20HiRes%20(1)%202.webp",
+    alt: "Patients Know Best Company Logo",
+  },
+  {
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/6811ffa3bd8873ca1d79e495_firenote-logo-reverse%202.png",
+    alt: "Firenote Logo",
+  },
+  {
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/65425eb4d9547ec7a6917d3c_Healthie-logo%201.webp",
+    alt: "Healthie Company logo",
+  },
+  {
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/65425eb49aaba578b2bb7cf9_naruslucent-removebg-preview%201.webp",
+    alt: "Lucent Health Logo",
+  },
+  {
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/65426115ed1b936bef809059_prenosis-logo-color%202.webp",
+    alt: "Prenosis Company Logo",
+  },
+  {
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/65425eb477c566d9cea62f52_BestNotes_Logo-to-use_1-768x168%201.webp",
+    alt: "Bestnotes Company Logo",
+  },
+  {
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/6542824da3496e9497e73349_Frame%20427319190(2).webp",
+    alt: "Lucet Logo",
+  },
+  {
+    src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/68e3da6d6bb804a0e39fba1d_novellia.png",
+    alt: "novellia Logo",
+  },
 ];
 
 const aidboxFeatures: BentoItem[] = [
@@ -140,7 +173,7 @@ export default function FhirServerPage(): string {
   return (
     <Fragment>
       <Hero
-        title="FHIR server and database!"
+        title="FHIR server and database"
         description="Build healthcare solutions from CDRs to EHRs using FHIR, PostgreSQL, and our SDK. Free for development. Scale to terabytes with a flat monthly fee of $1,900."
         primaryCta={{ label: "TRY FOR FREE", modalId }}
         secondaryCta={{ label: "Documentation", href: "/docs" }}
@@ -159,12 +192,23 @@ export default function FhirServerPage(): string {
         title="What is Aidbox"
         items={aidboxFeatures}
       />
+      <div class="bg-gray-50 pb-24">
+        <div class="flex justify-center">
+          <a
+            href="/docs/aidbox/features"
+            class="inline-flex items-center gap-2 rounded-md border-2 border-primary px-6 py-3 text-base font-semibold text-primary hover:bg-primary hover:text-white transition-colors duration-200"
+          >
+            TECHNICAL FEATURES
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
       <UseCases
-        title="See how Aidbox powers the system you want to build"
+        title="See how Aidbox FHIR server powers the system you want to build"
         cases={aidboxUseCases}
       />
       <SampleProjects
-        title="Get hands-on with sample projects built on Aidbox"
+        title="Get hands-on with sample projects built on Aidbox FHIR server"
         projects={aidboxSampleProjects}
       />
       <Deployment
@@ -177,6 +221,13 @@ export default function FhirServerPage(): string {
         title="Pricing"
         subtitle="Flat pricing with no hidden fees."
         tiers={pricingTiers}
+      />
+      <SupportPlans plans={supportPlans} />
+      <Testimonials testimonials={aidboxTestimonials} />
+      <JoinCommunity />
+      <FAQ 
+        title="Aidbox FHIR Platform: Unified FHIR Server and Database for high-performance healthcare applications"
+        items={aidboxFAQ}
       />
       <ContactForm
         title={`Questions about ${product.label}?`}

@@ -40,7 +40,7 @@ export function BenefitsSection({ title = "Why attend?", benefits }: BenefitsSec
   return (
     <section class="py-16 px-6 bg-white">
       <div class="mx-auto max-w-5xl">
-        <h2 class="text-3xl font-bold text-gray-900 mb-12">{title}</h2>
+        <div class="text-3xl font-bold text-gray-900 mb-12">{title}</div>
         <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {benefits.map(benefit => (
             <div class="flex flex-col gap-4">

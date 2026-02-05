@@ -39,7 +39,7 @@ export default function CareersPage(): string {
       <section id="culture" class="py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <div class="mx-auto max-w-2xl text-center">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Why Health Samurai?</h2>
+            <div class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Why Health Samurai?</div>
             <p class="mt-6 text-lg leading-8 text-gray-600">
               We're building tools that make healthcare data interoperable. Here's what we offer.
             </p>
@@ -48,7 +48,7 @@ export default function CareersPage(): string {
             <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
               {benefits.map(benefit => (
                 <div class="rounded-2xl border border-gray-200 p-8">
-                  <h3 class="text-lg font-semibold text-gray-900">{benefit.title}</h3>
+                  <div class="text-lg font-semibold text-gray-900">{benefit.title}</div>
                   <p class="mt-4 text-gray-600">{benefit.description}</p>
                 </div>
               ))}
@@ -60,7 +60,7 @@ export default function CareersPage(): string {
       <section id="openings" class="bg-gray-50 py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <div class="mx-auto max-w-2xl text-center">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Open Positions</h2>
+            <div class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Open Positions</div>
             <p class="mt-6 text-lg leading-8 text-gray-600">
               We're always looking for talented people. Check out our current openings.
             </p>

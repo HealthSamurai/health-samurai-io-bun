@@ -10,9 +10,9 @@ export default function AboutPage(): string {
     <Fragment>
       <section class="py-20">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-          <h1 class="text-4xl font-bold text-gray-900 mb-4">
+          <div class="text-4xl font-bold text-gray-900 mb-4">
             About Us
-          </h1>
+          </div>
           <p class="text-lg text-gray-600">
             Health Samurai is a healthcare technology company focused on FHIR interoperability solutions.
           </p>

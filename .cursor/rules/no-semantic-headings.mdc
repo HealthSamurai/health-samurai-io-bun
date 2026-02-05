@@ -1,0 +1,78 @@
+---
+description: Не использовать семантические заголовки h1-h6 в компонентах. Заголовки расставляются вручную.
+globs: "*.tsx, *.css"
+alwaysApply: false
+---
+
+# Семантические заголовки
+
+**ВАЖНО:** Не использовать семантические HTML заголовки `h1`, `h2`, `h3`, `h4`, `h5`, `h6` в компонентах и верстке.
+
+## Почему
+
+- Семантические заголовки (`h1`-`h6`) влияют на SEO и accessibility
+- Неправильная иерархия заголовков ухудшает индексацию и UX для screen readers
+- Заголовки должны расставляться вручную с учетом структуры страницы
+
+## Что использовать вместо
+
+Используйте стилизованные `div` или `span` с классами Tailwind:
+
+```tsx
+// ❌ ПЛОХО - не использовать h1-h6
+<h2 className="text-2xl font-bold">Заголовок секции</h2>
+
+// ✅ ХОРОШО - использовать div с Tailwind классами
+<div className="text-2xl font-bold text-text">Заголовок секции</div>
+```
+
+## Как правильно структурировать компоненты
+
+```tsx
+// ❌ ПЛОХО
+export function Bento({ title, items }: BentoProps): string {
+  return (
+    <section className="py-20">
+      <h2 className="text-4xl font-bold">{title}</h2>
+      {items.map(item => (
+        <div>
+          <h3 className="text-2xl">{item.title}</h3>
+        </div>
+      ))}
+    </section>
+  );
+}
+
+// ✅ ХОРОШО
+export function Bento({ title, items }: BentoProps): string {
+  return (
+    <section className="py-20">
+      <div className="text-4xl font-bold text-text">{title}</div>
+      {items.map(item => (
+        <div>
+          <div className="text-2xl font-semibold text-text">{item.title}</div>
+        </div>
+      ))}
+    </section>
+  );
+}
+```
+
+## Когда можно использовать h1-h6
+
+Только когда пользователь **явно попросит** добавить семантический заголовок для SEO или accessibility.
+
+## В CSS
+
+```css
+/* ❌ ПЛОХО - не создавать стили для h1-h6 */
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* ✅ ХОРОШО - использовать классы */
+.section-title {
+  @apply text-4xl font-bold text-text;
+}
+```

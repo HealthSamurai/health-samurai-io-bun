@@ -55,7 +55,7 @@ export function DescriptionList({
 }: DescriptionListProps): string {
   const header = title || description ? `
     <div class="px-4 sm:px-0">
-      ${title ? `<h3 class="text-base/7 font-semibold text-gray-900">${title}</h3>` : ""}
+      ${title ? `<div class="text-base/7 font-semibold text-gray-900">${title}</div>` : ""}
       ${description ? `<p class="mt-1 max-w-2xl text-sm/6 text-gray-500">${description}</p>` : ""}
     </div>
   ` : "";
@@ -106,7 +106,7 @@ export function DescriptionList({
       <div class="overflow-hidden bg-white shadow ring-1 ring-gray-900/5 sm:rounded-xl ${className}">
         ${title || description ? `
           <div class="px-4 py-6 sm:px-6">
-            ${title ? `<h3 class="text-base/7 font-semibold text-gray-900">${title}</h3>` : ""}
+            ${title ? `<div class="text-base/7 font-semibold text-gray-900">${title}</div>` : ""}
             ${description ? `<p class="mt-1 max-w-2xl text-sm/6 text-gray-500">${description}</p>` : ""}
           </div>
         ` : ""}
@@ -184,7 +184,7 @@ export function DescriptionListTwoColumn({
     <div class="${className}">
       ${title || description ? `
         <div class="mb-6">
-          ${title ? `<h3 class="text-base/7 font-semibold text-gray-900">${title}</h3>` : ""}
+          ${title ? `<div class="text-base/7 font-semibold text-gray-900">${title}</div>` : ""}
           ${description ? `<p class="mt-1 text-sm text-gray-500">${description}</p>` : ""}
         </div>
       ` : ""}

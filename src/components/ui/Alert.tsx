@@ -154,7 +154,7 @@ export function Alert({
   ` : "";
 
   // Build title
-  const titleHtml = title ? `<h3 class="text-sm font-medium ${config.titleColor}">${title}</h3>` : "";
+  const titleHtml = title ? `<div class="text-sm font-medium ${config.titleColor}">${title}</div>` : "";
 
   // Build content
   let contentHtml = "";

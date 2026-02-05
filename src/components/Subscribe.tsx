@@ -20,9 +20,9 @@ export function Subscribe({
     <div class="bg-white py-16 sm:py-24">
       <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="relative isolate flex flex-col gap-10 overflow-hidden bg-gray-900 px-6 py-24 shadow-2xl sm:rounded-3xl sm:px-24 xl:flex-row xl:items-center xl:py-32">
-          <h2 class="max-w-xl text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl xl:flex-auto">
+          <div class="max-w-xl text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl xl:flex-auto">
             {title}
-          </h2>
+          </div>
           <form
             hx-post={formAction}
             hx-target="#subscribe-response"

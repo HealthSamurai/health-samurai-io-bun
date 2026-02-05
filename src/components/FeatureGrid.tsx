@@ -63,9 +63,9 @@ export function FeatureGrid({
     <section class="py-24 sm:py-32 bg-gray-50">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center mb-16">
-          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <div class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             {title}
-          </h2>
+          </div>
         </div>
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {features.map((feature) => FeatureCardItem({ feature }))}

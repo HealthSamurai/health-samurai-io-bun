@@ -140,7 +140,7 @@ export function Modal({
       <div>
         ${iconHtml}
         <div class="mt-3 text-center sm:mt-5">
-          <h3 id="${id}-title" class="text-base font-semibold text-gray-900">${title}</h3>
+          <div id="${id}-title" class="text-base font-semibold text-gray-900">${title}</div>
           <div class="mt-2">
             <div class="text-sm text-gray-500">${children}</div>
           </div>
@@ -152,7 +152,7 @@ export function Modal({
       <div class="sm:flex sm:items-start">
         ${iconHtml}
         <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-          <h3 id="${id}-title" class="text-base font-semibold text-gray-900">${title}</h3>
+          <div id="${id}-title" class="text-base font-semibold text-gray-900">${title}</div>
           <div class="mt-2">
             <div class="text-sm text-gray-500">${children}</div>
           </div>
@@ -162,7 +162,7 @@ export function Modal({
   } else {
     contentHtml = `
       ${iconHtml ? `<div class="mb-4">${iconHtml}</div>` : ""}
-      <h3 id="${id}-title" class="text-base font-semibold text-gray-900">${title}</h3>
+      <div id="${id}-title" class="text-base font-semibold text-gray-900">${title}</div>
       <div class="mt-2">
         <div class="text-sm text-gray-500">${children}</div>
       </div>

@@ -4,6 +4,8 @@ import { company } from "../data/company";
 import { Bento } from "../components/Bento";
 import type { BentoItem } from "../components/Bento";
 import { ContactForm } from "../components/ContactForm";
+import { Trusted } from "../components/Trusted";
+import type { TrustedLogo } from "../components/Trusted";
 
 export const metadata = {
   title: "Home",
@@ -103,59 +105,48 @@ const stories = [
   },
 ];
 
-const trustedLogos = [
+const trustedLogos: TrustedLogo[] = [
   {
-    href: "https://innovaccer.com/",
     src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/64ba99d2e3fe0c7e42265e5d_innovaccer-logo-black.svg",
     alt: "Innovaccer Logo",
   },
   {
-    href: "https://www.solutio.de/",
     src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/6602b888409299ed4eef694b_Frame%20427319224%20(1).webp",
     alt: "Coda Logo",
   },
   {
-    href: "https://www.duodecim.fi/english/",
     src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/6811f756ed6ce3acce94256a_Duodecim_idFuVC2K5H_1.png",
     alt: "Duodecim Logo",
   },
   {
-    href: "https://patientsknowbest.com/",
     src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/65425eb4a2c54d0ea864cb16_Logo_PatientsCo%20HiRes%20(1)%202.webp",
     alt: "Patients Know Best Company Logo",
   },
   {
-    href: "https://firenote.health/",
     src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/6811ffa3bd8873ca1d79e495_firenote-logo-reverse%202.png",
     alt: "Firenote Logo",
   },
   {
-    href: "https://www.gethealthie.com/",
     src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/65425eb4d9547ec7a6917d3c_Healthie-logo%201.webp",
     alt: "Healthie Company logo",
   },
   {
-    href: "https://lucenthealth.com/",
     src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/65425eb49aaba578b2bb7cf9_naruslucent-removebg-preview%201.webp",
     alt: "Lucent Health Logo",
   },
   {
-    href: "https://prenosis.com/",
     src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/65426115ed1b936bef809059_prenosis-logo-color%202.webp",
     alt: "Prenosis Company Logo",
   },
   {
-    href: "https://www.bestnotes.com/",
     src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/65425eb477c566d9cea62f52_BestNotes_Logo-to-use_1-768x168%201.webp",
     alt: "Bestnotes Company Logo",
   },
   {
-    href: "https://lucethealth.com/",
     src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/6542824da3496e9497e73349_Frame%20427319190(2).webp",
     alt: "Lucet Logo",
   },
   {
-    href: "https://novellia.com/",
     src: "https://cdn.prod.website-files.com/57441aa5da71fdf07a0a2e19/68e3da6d6bb804a0e39fba1d_novellia.png",
     alt: "novellia Logo",
   },
@@ -256,9 +247,9 @@ export default function HomePage(): string {
       <div class="bg-white py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <div class="mx-auto max-w-2xl lg:max-w-none">
-            <h2 class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+            <div class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
               Our stories
-            </h2>
+            </div>
             <div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2">
               {stories.map((story) => (
                 <a
@@ -304,22 +295,12 @@ export default function HomePage(): string {
       </div>
 
       {/* Trusted logos */}
-      <div class="bg-gray-50 py-16">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-          <div class="grid grid-cols-2 items-center justify-items-center gap-6 sm:grid-cols-3 lg:grid-cols-6">
-            {trustedLogos.map((logo) => (
-              <a href={logo.href} target="_blank" rel="nofollow">
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  class="h-10 w-auto object-contain grayscale"
-                  loading="lazy"
-                />
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
+      <Trusted
+        logos={trustedLogos}
+        tagline="Trusted by healthcare innovators worldwide."
+        ctaText="Read customer stories"
+        ctaHref="/casestudies"
+      />
 
       {/* Certifications */}
       <div class="bg-gray-50 py-16">

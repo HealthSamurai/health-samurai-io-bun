@@ -104,7 +104,7 @@ export function Slideover({
                 <div class="bg-gray-50 px-4 py-6 sm:px-6">
                   <div class="flex items-start justify-between">
                     <div>
-                      ${title ? `<h2 id="${id}-title" class="text-base font-semibold text-gray-900">${title}</h2>` : ""}
+                      ${title ? `<div id="${id}-title" class="text-base font-semibold text-gray-900">${title}</div>` : ""}
                       ${subtitle ? `<p class="mt-1 text-sm text-gray-500">${subtitle}</p>` : ""}
                     </div>
                     ${showClose ? `
@@ -205,7 +205,7 @@ export function WideSlideoverWithColumns({
                 <div class="bg-gray-50 px-4 py-6 sm:px-6">
                   <div class="flex items-start justify-between">
                     <div>
-                      ${title ? `<h2 class="text-lg font-semibold text-gray-900">${title}</h2>` : ""}
+                      ${title ? `<div class="text-lg font-semibold text-gray-900">${title}</div>` : ""}
                       ${subtitle ? `<p class="mt-1 text-sm text-gray-500">${subtitle}</p>` : ""}
                     </div>
                     ${showClose ? `
@@ -295,7 +295,7 @@ export function NotificationSlideover({
               <div class="flex h-full flex-col bg-white shadow-xl">
                 <!-- Header -->
                 <div class="flex items-center justify-between border-b border-gray-200 px-4 py-4">
-                  <h2 class="text-base font-semibold text-gray-900">${title || "Notifications"}</h2>
+                  <div class="text-base font-semibold text-gray-900">${title || "Notifications"}</div>
                   ${showClose ? `
                     <button
                       type="button"

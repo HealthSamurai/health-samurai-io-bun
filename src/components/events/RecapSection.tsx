@@ -14,7 +14,7 @@ export function RecapSection({ title = "See how it was", description, images, li
   return (
     <section class="py-16 px-6 bg-gray-50">
       <div class="mx-auto max-w-5xl">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">{title}</h2>
+        <div class="text-2xl font-bold text-gray-900 mb-4">{title}</div>
         {description && (
           <p class="text-gray-600 mb-8">
             {description}

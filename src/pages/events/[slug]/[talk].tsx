@@ -36,7 +36,7 @@ function NotFound({ seriesId }: { seriesId?: string }): string {
   return (
     <div class="min-h-[60vh] flex items-center justify-center">
       <div class="text-center">
-        <h1 class="text-4xl font-bold text-gray-900 mb-4">Talk not found</h1>
+        <div class="text-4xl font-bold text-gray-900 mb-4">Talk not found</div>
         <p class="text-gray-600 mb-8">The talk you're looking for doesn't exist.</p>
         <a href={seriesId ? `/events/${seriesId}` : "/events"} class="text-primary hover:text-primary-dark font-medium">
           ← Back to event
@@ -219,9 +219,9 @@ export default async function TalkPage(params: TalkPageParams): Promise<string> 
             </a>
 
             {/* Title */}
-            <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 leading-tight">
+            <div class="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 leading-tight">
               {talk.name}
-            </h1>
+            </div>
 
             {/* Speakers */}
             {speakers.length > 0 && (

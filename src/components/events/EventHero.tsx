@@ -38,9 +38,9 @@ export function EventHero({ name, startDate, endDate, location, description, bac
           {backLabel}
         </a>
 
-        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight leading-tight mb-6">
+        <div class="text-4xl sm:text-5xl font-bold tracking-tight leading-tight mb-6">
           {name}
-        </h1>
+        </div>
 
         <div class="flex flex-wrap items-center gap-6 text-lg text-white/90">
           {dateStr && (

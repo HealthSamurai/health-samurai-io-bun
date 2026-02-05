@@ -130,9 +130,9 @@ function HeroSection(): string {
             <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 text-sm font-mono text-gray-700 mb-6">
               <span class="text-primary">&gt;_</span> Services
             </div>
-            <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+            <div class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
               FHIR-first<br />software development<br /><span class="text-primary">for healthcare</span>
-            </h1>
+            </div>
           </div>
           <div class="lg:col-span-5">
             <img
@@ -147,7 +147,7 @@ function HeroSection(): string {
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {featureCards.map((card, i) => (
             <div class={`rounded-2xl p-6 ${i === 0 ? 'bg-[#f4f8fb]' : ''}`}>
-              <h3 class="text-lg font-semibold text-gray-900">{card.title}</h3>
+              <div class="text-lg font-semibold text-gray-900">{card.title}</div>
               <p class="mt-2 text-sm text-gray-600">
                 {card.description}
               </p>
@@ -164,7 +164,7 @@ function PortfolioSection(): string {
     <section class="bg-white py-24 sm:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mb-12">
-          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Portfolio</h2>
+          <div class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Portfolio</div>
           <p class="mt-4 text-lg text-gray-600">
             We are proud to partner with clients of all stages and sizes in the Health IT sector.
           </p>
@@ -177,7 +177,7 @@ function PortfolioSection(): string {
                 alt={project.title}
                 class="w-20 h-20 object-contain mb-4"
               />
-              <h3 class="text-xl font-semibold text-gray-900">{project.title}</h3>
+              <div class="text-xl font-semibold text-gray-900">{project.title}</div>
               <p class="mt-2 text-gray-600" dangerouslySetInnerHTML={{
                 __html: project.description.replace(
                   project.tag,
@@ -216,9 +216,9 @@ function ServicesSection(): string {
 
           {/* Right: Title, description, services grid, button */}
           <div>
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <div class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Trusted technology partner for FHIR projects
-            </h2>
+            </div>
             <p class="mt-6 text-lg text-gray-600">
               Collaborate with our small, cross-functional teams of business-focused domain experts.
             </p>
@@ -255,7 +255,7 @@ function CultureSection(): string {
     <section class="bg-[#f4f8fb] py-24 sm:py-32" data-signals={`{cultureTab: '${defaultTab}'}`}>
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Approach & Culture</h2>
+          <div class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Approach & Culture</div>
           <p class="mt-4 text-lg text-gray-600">
             We follow the Lean Principle of <span class="text-primary font-medium">"do more with less"</span> and this shapes our culture.
           </p>
@@ -289,7 +289,7 @@ function CultureSection(): string {
               />
             </div>
             <div>
-              <h3 class="text-2xl font-bold text-gray-900">{tab.title}</h3>
+              <div class="text-2xl font-bold text-gray-900">{tab.title}</div>
               <p class="mt-4 text-gray-600 leading-relaxed">
                 {tab.description}
               </p>
@@ -314,7 +314,7 @@ function BlogSection(): string {
   return (
     <section class="bg-white py-24 sm:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-12">Our Blog</h2>
+        <div class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-12">Our Blog</div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           {blogPosts.map(post => (
             <a
@@ -329,9 +329,9 @@ function BlogSection(): string {
                 />
               </div>
               <div class="p-6">
-                <h3 class="text-lg font-semibold text-gray-900 group-hover:text-primary transition-colors line-clamp-2">
+                <div class="text-lg font-semibold text-gray-900 group-hover:text-primary transition-colors line-clamp-2">
                   {post.title}
-                </h3>
+                </div>
                 <span class="mt-4 inline-flex items-center text-sm font-semibold text-primary">
                   Read more →
                 </span>

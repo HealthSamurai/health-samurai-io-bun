@@ -107,7 +107,7 @@ export function EmptyState({
 
   const content = `
     ${iconSvg}
-    <h3 class="mt-2 ${sizeConfig.title} font-semibold text-gray-900">${title}</h3>
+    <div class="mt-2 ${sizeConfig.title} font-semibold text-gray-900">${title}</div>
     ${description ? `<p class="mt-1 ${sizeConfig.description} text-gray-500">${description}</p>` : ""}
     ${action || secondaryAction ? `
       <div class="mt-6 flex items-center justify-center gap-3">
@@ -158,7 +158,7 @@ export function EmptySearchResults({
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" class="mx-auto size-12 text-gray-400">
         ${icons.search}
       </svg>
-      <h3 class="mt-2 text-sm font-semibold text-gray-900">No results found</h3>
+      <div class="mt-2 text-sm font-semibold text-gray-900">No results found</div>
       <p class="mt-1 text-sm text-gray-500">No results for "${query}". Try a different search term.</p>
       ${suggestions && suggestions.length > 0 ? `
         <div class="mt-4">

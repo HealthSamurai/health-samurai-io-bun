@@ -12,7 +12,7 @@ export function InfoSection({ title, items, note }: InfoSectionProps): string {
   return (
     <section class="py-16 px-6 bg-white">
       <div class="mx-auto max-w-5xl">
-        <h2 class="text-2xl font-bold text-gray-900 mb-8">{title}</h2>
+        <div class="text-2xl font-bold text-gray-900 mb-8">{title}</div>
         <ul class="space-y-4">
           {items.map(item => (
             <li class="flex items-start gap-3 text-gray-600">

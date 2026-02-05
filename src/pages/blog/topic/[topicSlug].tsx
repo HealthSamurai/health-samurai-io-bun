@@ -32,9 +32,9 @@ export default function TopicPage(params: TopicPageParams): string {
 
       <!-- Topic Header -->
       <div class="max-w-[1200px] mx-auto px-4 pb-14">
-        <h1 class="text-[72px] font-bold leading-[80px] tracking-[-0.4px] text-text-primary mb-2">
+        <div class="text-[72px] font-bold leading-[80px] tracking-[-0.4px] text-text-primary mb-2">
           ${topicName}
-        </h1>
+        </div>
         <p class="text-[24px] font-normal leading-[1.6] text-brand-500">
           Topic
         </p>
@@ -42,9 +42,9 @@ export default function TopicPage(params: TopicPageParams): string {
 
       <!-- Articles Section -->
       <div class="max-w-[1200px] mx-auto px-4 pb-12">
-        <h2 class="text-[36px] font-bold leading-[40px] tracking-[-0.4px] text-section-heading mb-[24px]">
+        <div class="text-[36px] font-bold leading-[40px] tracking-[-0.4px] text-section-heading mb-[24px]">
           Articles about ${topicName} (${articles.length})
-        </h2>
+        </div>
 
         ${articles.length > 0 ? `
           <div class="flex flex-col">

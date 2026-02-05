@@ -84,9 +84,9 @@ function HeroSection(): string {
   return (
     <section class="bg-white py-24 sm:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8 text-center">
-        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+        <div class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
           About us
-        </h1>
+        </div>
       </div>
     </section>
   );
@@ -122,9 +122,9 @@ function OfficesSection(): string {
   return (
     <section class="bg-[#f4f8fb] py-24 sm:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center mb-16">
+        <div class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center mb-16">
           Worldwide offices
-        </h2>
+        </div>
         {CardGrid({
           cols: 3,
           children: offices.map(office =>
@@ -132,7 +132,7 @@ function OfficesSection(): string {
               padding: "lg",
               shadow: "sm",
               children: `
-                <h3 class="text-xl font-bold text-gray-900 uppercase tracking-wide">${office.country}</h3>
+                <div class="text-xl font-bold text-gray-900 uppercase tracking-wide">${office.country}</div>
                 <p class="mt-4 text-gray-900 font-medium">${office.company}</p>
                 <p class="mt-2 text-gray-600 text-sm">${office.address}</p>
                 ${office.phone ? `<p class="mt-2 text-gray-600 text-sm">${office.phone}</p>` : ''}
@@ -152,9 +152,9 @@ function StorySection(): string {
   return (
     <section class="bg-white py-24 sm:py-32">
       <div class="mx-auto max-w-3xl px-6 lg:px-8">
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center mb-8">
+        <div class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center mb-8">
           Our Story
-        </h2>
+        </div>
         <div class="prose prose-lg max-w-none text-gray-600">
           <p>
             Building a healthcare application is a complex, expensive, and time-consuming process that requires significant domain knowledge. We understand all too well how these barriers limit innovation, because we've been developing custom health IT solutions for our clients since 2004.
@@ -178,9 +178,9 @@ function CodeOfHonorSection(): string {
   return (
     <section class="bg-[#f4f8fb] py-24 sm:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center mb-16">
+        <div class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center mb-16">
           Health Samurai Code of Honor
-        </h2>
+        </div>
         <p class="text-center text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
           These are the beliefs and values that continue to guide us as we grow:
         </p>
@@ -191,7 +191,7 @@ function CodeOfHonorSection(): string {
               padding: "md",
               shadow: "sm",
               children: `
-                <h3 class="text-lg font-bold text-gray-900">${value.title}</h3>
+                <div class="text-lg font-bold text-gray-900">${value.title}</div>
                 <p class="mt-3 text-gray-600 text-sm leading-relaxed">${value.description}</p>
               `,
             })

@@ -28,7 +28,7 @@ export default function AuthorPage(params: AuthorPageParams): string {
       children: `
         <div class="min-h-[60vh] flex items-center justify-center">
           <div class="text-center">
-            <h1 class="text-4xl font-bold text-neutral-900 mb-4">Author not found</h1>
+            <div class="text-4xl font-bold text-neutral-900 mb-4">Author not found</div>
             <p class="text-neutral-500 mb-8">No articles found for this author.</p>
             <a href="/blog" class="text-brand-500 hover:text-brand-600 font-medium">
               ← Back to blog
@@ -89,9 +89,9 @@ export default function AuthorPage(params: AuthorPageParams): string {
           <div class="flex flex-col gap-9">
             <!-- Name and Title -->
             <div class="flex flex-col gap-2">
-              <h1 class="text-[72px] font-bold leading-[80px] tracking-[-0.4px] text-blog-title">
+              <div class="text-[72px] font-bold leading-[80px] tracking-[-0.4px] text-blog-title">
                 ${authorName}
-              </h1>
+              </div>
               <p class="text-[24px] leading-[1.6] text-blog-accent">
                 ${authorTitle}
               </p>
@@ -122,9 +122,9 @@ export default function AuthorPage(params: AuthorPageParams): string {
 
       <!-- Articles Section -->
       <div class="max-w-[1200px] mx-auto px-4 pb-12">
-        <h2 class="text-[36px] font-bold leading-[40px] tracking-[-0.4px] text-neutral-650 mb-[24px]">
+        <div class="text-[36px] font-bold leading-[40px] tracking-[-0.4px] text-neutral-650 mb-[24px]">
           Articles with ${authorName} participation (${articles.length})
-        </h2>
+        </div>
 
         <div class="flex flex-col">
           ${articles.map(article => `

@@ -34,9 +34,9 @@ export function BlogHero(): string {
 				{/* Hero Text - Figma node: 616:5519 */}
 				<div class="flex flex-col items-center max-w-3xl mx-auto mb-24 text-center">
 					<div class="flex items-center justify-center gap-3 w-full">
-						<h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+						<div class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
 							Aidbox Blog
-						</h1>
+						</div>
 						{/* RSS Button */}
 						<a
 							href="/blog/rss.xml"

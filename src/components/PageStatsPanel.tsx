@@ -143,9 +143,9 @@ export async function PageStatsPanel({ path, ctx }: PageStatsPanelProps): Promis
         <div class="p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 max-h-96 overflow-y-auto">
           {/* Page Views */}
           <div>
-            <h4 class="text-xs font-semibold text-gray-400 uppercase mb-2">
+            <div class="text-xs font-semibold text-gray-400 uppercase mb-2">
               Recent Page Views ({pageViewEvents.length})
-            </h4>
+            </div>
             <div class="space-y-1 text-xs font-mono">
               {pageViewEvents.length === 0 ? (
                 <p class="text-gray-500">No page views yet</p>
@@ -164,9 +164,9 @@ export async function PageStatsPanel({ path, ctx }: PageStatsPanelProps): Promis
 
           {/* Click Events */}
           <div>
-            <h4 class="text-xs font-semibold text-gray-400 uppercase mb-2">
+            <div class="text-xs font-semibold text-gray-400 uppercase mb-2">
               Click Events ({clickEvents.length})
-            </h4>
+            </div>
             <div class="space-y-1 text-xs font-mono">
               {clickEvents.length === 0 ? (
                 <p class="text-gray-500">No click events yet</p>
@@ -192,9 +192,9 @@ export async function PageStatsPanel({ path, ctx }: PageStatsPanelProps): Promis
 
           {/* Other Events */}
           <div>
-            <h4 class="text-xs font-semibold text-gray-400 uppercase mb-2">
+            <div class="text-xs font-semibold text-gray-400 uppercase mb-2">
               Other Events ({otherEvents.length})
-            </h4>
+            </div>
             <div class="space-y-1 text-xs font-mono">
               {otherEvents.length === 0 ? (
                 <p class="text-gray-500">No other events yet</p>

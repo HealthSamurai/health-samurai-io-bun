@@ -51,7 +51,7 @@ export default function DocsPage(): string {
       <div class="bg-white py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <div class="mx-auto max-w-3xl text-center">
-            <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Documentation</h1>
+            <div class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Documentation</div>
             <p class="mt-4 text-lg text-gray-600">
               Everything you need to build with Health Samurai products.
             </p>
@@ -69,7 +69,7 @@ export default function DocsPage(): string {
 
           {/* Product Quick Links */}
           <div class="mx-auto mt-16 max-w-2xl lg:max-w-none">
-            <h2 class="text-2xl font-bold tracking-tight text-gray-900">Products</h2>
+            <div class="text-2xl font-bold tracking-tight text-gray-900">Products</div>
             <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {products.map(product => (
                 <a
@@ -93,7 +93,7 @@ export default function DocsPage(): string {
             <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
               {docSections.map(section => (
                 <div class="rounded-2xl border border-gray-200 p-8">
-                  <h3 class="text-lg font-semibold text-gray-900">{section.title}</h3>
+                  <div class="text-lg font-semibold text-gray-900">{section.title}</div>
                   <p class="mt-2 text-sm text-gray-600">{section.description}</p>
                   <ul class="mt-6 space-y-3">
                     {section.links.map(link => (

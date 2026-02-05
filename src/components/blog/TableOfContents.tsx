@@ -21,7 +21,7 @@ export function TableOfContents({ items }: TableOfContentsProps): string {
       >
         <div class="flex flex-col gap-[16px]">
           <div class="px-[32px]">
-            <h3 class="text-[20px] font-semibold text-[#1d2331] leading-[1.6]">In this article:</h3>
+            <div class="text-[20px] font-semibold text-[#1d2331] leading-[1.6]">In this article:</div>
           </div>
 
           <div class="px-[56px] flex flex-col gap-[25px]">

@@ -21,11 +21,11 @@ export function GetStartedModal({ id = "get-started-modal" }: GetStartedModalPro
 
           <div class="space-y-8">
             <div>
-              <h2 id="${id}-title" class="text-2xl font-semibold text-gray-900">Get Started with Aidbox</h2>
+              <div id="${id}-title" class="text-2xl font-semibold text-gray-900">Get Started with Aidbox</div>
             </div>
 
             <div class="space-y-3">
-              <h3 class="text-lg font-semibold text-gray-900">Run Aidbox Locally</h3>
+              <div class="text-lg font-semibold text-gray-900">Run Aidbox Locally</div>
               <p class="text-sm text-gray-600">
                 Quickly spin up a local Aidbox instance with a single command. Ideal for developers who want a private and persistent setup.
               </p>
@@ -57,7 +57,7 @@ export function GetStartedModal({ id = "get-started-modal" }: GetStartedModalPro
             </div>
 
             <div class="space-y-3">
-              <h3 class="text-lg font-semibold text-gray-900">Launch Aidbox in Sandbox</h3>
+              <div class="text-lg font-semibold text-gray-900">Launch Aidbox in Sandbox</div>
               <p class="text-sm text-gray-600">
                 Explore Aidbox in a ready-to-use cloud environment with demo data and UI tools. Perfect for quick evaluations and product exploration.
               </p>

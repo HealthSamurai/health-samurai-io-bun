@@ -74,9 +74,9 @@ interface LLMShareProps {
 export function LLMShare({ articleUrl }: LLMShareProps): string {
   return `
     <div id="llm-share-section" class="bg-neutral-50 rounded-lg p-4 md:p-6 mb-8">
-      <h2 class="text-neutral-900 font-medium text-sm mb-3">
+      <div class="text-neutral-900 font-medium text-sm mb-3">
         Summarize this blog post with:
-      </h2>
+      </div>
       <div class="flex flex-row gap-2">
         ${services.map(service => ServiceButton({ service, articleUrl })).join('')}
       </div>

@@ -274,7 +274,7 @@ export function CommentsSection({ slug, ctx }: CommentsSectionProps): string {
       <div class="mb-8 flex items-center justify-between">
         <div class="flex items-center gap-[7px]">
           <img src="/icons/blog/comments.svg" alt="" class="size-10" />
-          <h2 class="text-[36px] font-bold leading-[40px] tracking-[-0.4px] text-section-heading">Comments</h2>
+          <div class="text-[36px] font-bold leading-[40px] tracking-[-0.4px] text-section-heading">Comments</div>
         </div>
         {!user && (
           <a

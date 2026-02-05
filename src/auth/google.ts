@@ -40,7 +40,7 @@ function renderError(message: string, ctx?: Context): string {
     <div class="min-h-screen flex items-center justify-center py-12 px-4">
       <div class="max-w-md w-full space-y-8">
         <div class="text-center">
-          <h1 class="text-2xl font-bold text-gray-900 mb-4">Authentication Error</h1>
+          <div class="text-2xl font-bold text-gray-900 mb-4">Authentication Error</div>
           <div class="rounded-md bg-red-50 p-4 mb-6">
             <div class="flex">
               <div class="flex-shrink-0">

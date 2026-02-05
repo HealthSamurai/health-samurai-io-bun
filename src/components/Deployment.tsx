@@ -25,7 +25,7 @@ function DeploymentCard({ option }: { option: DeploymentOption }): string {
         class="w-11 h-11"
         loading="lazy"
       />
-      <h3 class="text-xl font-semibold text-gray-900">${option.title}</h3>
+      <div class="text-xl font-semibold text-gray-900">${option.title}</div>
       <p class="text-gray-600 text-base">${option.description}</p>
     </div>
   `;
@@ -36,9 +36,9 @@ export function Deployment({ title, subtitle, options, diagramSrc }: DeploymentP
     <section class="py-24 sm:py-32 bg-white">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto text-center mb-16">
-          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-4">
+          <div class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-4">
             ${title}
-          </h2>
+          </div>
           <p class="text-lg text-gray-600">
             ${subtitle}
           </p>

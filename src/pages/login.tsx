@@ -24,9 +24,9 @@ export function LoginForm({ error, redirect, showGoogle = true }: LoginPageProps
           <a href="/" class="flex justify-center">
             <img src="/assets/images/logos/aidbox-alt.svg" alt="Health Samurai" class="h-12" />
           </a>
-          <h2 class="mt-6 text-center text-3xl font-bold text-gray-900">
+          <div class="mt-6 text-center text-3xl font-bold text-gray-900">
             Sign in to your account
-          </h2>
+          </div>
         </div>
 
         {error && (

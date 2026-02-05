@@ -52,7 +52,7 @@ export function SpeakersGrid({ speakers, title = "Speakers", description }: Spea
   return (
     <section class="py-16 px-6 bg-gray-50">
       <div class="mx-auto max-w-5xl">
-        <h2 class="text-2xl font-bold text-gray-900 mb-3">{title}</h2>
+        <div class="text-2xl font-bold text-gray-900 mb-3">{title}</div>
         {description && <p class="text-gray-600 mb-8">{description}</p>}
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {speakers.map(speaker => SpeakerCard({ speaker }))}

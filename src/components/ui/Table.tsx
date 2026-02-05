@@ -301,7 +301,7 @@ export function DataTable({
     <div class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl ${className}">
       ${(title || description) ? `
         <div class="border-b border-gray-200 px-4 py-5 sm:px-6">
-          ${title ? `<h3 class="text-base font-semibold text-gray-900">${title}</h3>` : ""}
+          ${title ? `<div class="text-base font-semibold text-gray-900">${title}</div>` : ""}
           ${description ? `<p class="mt-1 text-sm text-gray-500">${description}</p>` : ""}
         </div>
       ` : ""}

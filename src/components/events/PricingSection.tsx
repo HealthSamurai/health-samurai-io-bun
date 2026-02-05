@@ -66,12 +66,12 @@ export function PricingSection({ pricing, title = "Pricing", contact }: PricingS
   return (
     <section class="py-12 px-6 bg-gray-50">
       <div class="mx-auto max-w-4xl">
-        <h2 class="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-3">
+        <div class="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-3">
           <svg class="size-7 text-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
           </svg>
           {title}
-        </h2>
+        </div>
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {pricing.map(tier => PricingCard({ tier }))}
         </div>

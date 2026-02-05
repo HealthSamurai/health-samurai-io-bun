@@ -542,7 +542,7 @@ Make healthcare data interoperable through FHIR standards.
                 </svg>
               </div>
               <div class="ml-3">
-                <h3 class="text-sm font-medium text-green-800">Thank you!</h3>
+                <div class="text-sm font-medium text-green-800">Thank you!</div>
                 <p class="mt-1 text-sm text-green-700">We've received your message and will get back to you soon.</p>
               </div>
             </div>
@@ -559,7 +559,7 @@ Make healthcare data interoperable through FHIR standards.
                 </svg>
               </div>
               <div class="ml-3">
-                <h3 class="text-sm font-medium text-red-800">Oops!</h3>
+                <div class="text-sm font-medium text-red-800">Oops!</div>
                 <p class="mt-1 text-sm text-red-700">Something went wrong. Please try again or email us directly.</p>
               </div>
             </div>
@@ -1047,7 +1047,7 @@ Make healthcare data interoperable through FHIR standards.
             children: `
               <section class="section" style="text-align: center; padding: var(--space-24) 0;">
                 <div class="container">
-                  <h1 class="text-3xl font-bold text-gray-900 mb-4">Access Denied</h1>
+                  <div class="text-3xl font-bold text-gray-900 mb-4">Access Denied</div>
                   <p class="text-gray-600 mb-8">Admin pages are only available to @health-samurai.io users.</p>
                   <p class="text-gray-500 mb-8">Logged in as: ${user.email}</p>
                   <div class="flex gap-4 justify-center">

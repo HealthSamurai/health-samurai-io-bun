@@ -118,7 +118,7 @@ export async function Layout({ title, description, children, hideFooter, devMode
                     <path d="M14.5 13 16 16.2 19.2 17.7 16 19.2 14.5 22.4 13 19.2 9.8 17.7 13 16.2 14.5 13z"/>
                   </svg>
                 </span>
-                <h2 class="text-base font-semibold text-gray-900 dark:text-dark-text">Samurai Agent</h2>
+                <div class="text-base font-semibold text-gray-900 dark:text-dark-text">Samurai Agent</div>
               </div>
               <button
                 type="button"
@@ -227,7 +227,7 @@ export async function Layout({ title, description, children, hideFooter, devMode
                     <path d="M14.5 13 16 16.2 19.2 17.7 16 19.2 14.5 22.4 13 19.2 9.8 17.7 13 16.2 14.5 13z"/>
                   </svg>
                 </span>
-                <h2 class="text-base font-semibold text-gray-900 dark:text-dark-text">Samurai Agent</h2>
+                <div class="text-base font-semibold text-gray-900 dark:text-dark-text">Samurai Agent</div>
               </div>
               <button
                 type="button"
