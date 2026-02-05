@@ -1084,9 +1084,9 @@ Make healthcare data interoperable through FHIR standards.
 
       if (event === "push") {
         try {
-          await reloadProduct(product.id);
+          const info = await reloadProduct(product.id);
           return new Response(
-            JSON.stringify({ status: "reloaded", product: product.id }),
+            JSON.stringify({ status: "reloaded", product: product.id, ...info }),
             { headers: { "Content-Type": "application/json" } }
           );
         } catch (err: any) {
