@@ -1,7 +1,7 @@
 products:
   - id: aidbox
     name: Aidbox
-    repo: health-samurai/aidbox-docs
+    repo: HealthSamurai/aidbox-docs
     meilisearch-index: docs
 
   - id: fhirbase

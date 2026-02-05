@@ -212,7 +212,7 @@ async function handleDocPage(
   // Build response headers
   const headers: Record<string, string> = {
     "Content-Type": "text/html; charset=utf-8",
-    "Cache-Control": "public, no-cache",
+    "Cache-Control": "public, max-age=300, stale-while-revalidate=86400",
     "ETag": etag,
   };
 
@@ -363,7 +363,7 @@ function handleLandingPage(
   return new Response(html, {
     headers: {
       "Content-Type": "text/html; charset=utf-8",
-      "Cache-Control": "public, no-cache",
+      "Cache-Control": "public, max-age=300, stale-while-revalidate=86400",
     },
   });
 }

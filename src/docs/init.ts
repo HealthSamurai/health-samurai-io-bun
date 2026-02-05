@@ -12,7 +12,6 @@ import { loadConfig, type ProductConfig } from "./config";
 import {
   initState,
   setProductState,
-  getProductState,
   createEmptyProductState,
   markInitialized,
   getState,
@@ -116,14 +115,8 @@ async function initializeProduct(
 
 /**
  * Reload a single product (called by webhook)
- * Returns diagnostic info about the reload
  */
-export async function reloadProduct(productId: string): Promise<{
-  beforeHead: string;
-  afterHead: string;
-  elapsed: number;
-  files: number;
-}> {
+export async function reloadProduct(productId: string): Promise<void> {
   console.log(`[docs] Reloading product: ${productId}`);
   const startTime = Date.now();
 
@@ -135,23 +128,14 @@ export async function reloadProduct(productId: string): Promise<{
   }
 
   const devMode = isDevMode();
-  const beforeHead = await getGitHead(product);
 
   // Re-clone/fetch
   if (!devMode || !product.devPath) {
     await cloneOrFetch(product);
   }
 
-  const afterHead = await getGitHead(product);
-
   // Re-initialize
   await initializeProduct(product, devMode);
 
-  const state = getProductState(productId);
-  const files = state?.mdFiles.size ?? 0;
-  const elapsed = Date.now() - startTime;
-
-  console.log(`[docs] Reload complete: ${productId} (${elapsed}ms) ${beforeHead.slice(0, 7)} → ${afterHead.slice(0, 7)}, ${files} files`);
-
-  return { beforeHead, afterHead, elapsed, files };
+  console.log(`[docs] Reload complete: ${productId} (${Date.now() - startTime}ms)`);
 }
