@@ -45,7 +45,7 @@ function isExternalLink(href: string): boolean {
 
 export function Footer(): string {
   return (
-    <footer class="bg-white">
+    <footer class="relative w-screen bg-gray-50 dark:bg-gray-900/10" style="margin-left: calc(50% - 50vw);">
       <div class="mx-auto max-w-7xl px-6 pt-16 pb-8 sm:pt-24 lg:px-8 lg:pt-32">
         <div class="xl:grid xl:grid-cols-3 xl:gap-8">
           {/* Logo and tagline */}
