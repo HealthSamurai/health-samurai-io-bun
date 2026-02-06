@@ -12,6 +12,8 @@ type SupportPlan = {
 
 type SupportPlansProps = {
   plans: SupportPlan[];
+  ctaText?: string;
+  ctaHref?: string;
 };
 
 function SupportPlanCard({ plan }: { plan: SupportPlan }): string {
@@ -39,7 +41,7 @@ function SupportPlanCard({ plan }: { plan: SupportPlan }): string {
   `;
 }
 
-export function SupportPlans({ plans }: SupportPlansProps): string {
+export function SupportPlans({ plans, ctaText = "SEE PLANS", ctaHref = "/price" }: SupportPlansProps): string {
   return `
     <section class="py-24 sm:py-32 bg-gray-50">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
@@ -56,10 +58,10 @@ export function SupportPlans({ plans }: SupportPlansProps): string {
             Get in touch, we'll dig into your case and propose the best option.
           </p>
           <a
-            href="/price"
+            href="${ctaHref}"
             class="inline-flex items-center justify-center rounded-md border-2 border-primary px-8 py-3 text-base font-semibold text-primary hover:bg-primary hover:text-white transition-colors duration-200"
           >
-            SEE PLANS
+            ${ctaText}
           </a>
         </div>
       </div>

@@ -1,6 +1,10 @@
 type HeroProps = {
   title: string;
   description: string;
+  productName?: {
+    prefix: string;
+    suffix: string;
+  };
   primaryCta?: {
     label: string;
     href?: string;
@@ -20,7 +24,7 @@ type HeroProps = {
   };
 };
 
-export function Hero({ title, description, primaryCta, secondaryCta, image, video }: HeroProps): string {
+export function Hero({ title, description, productName, primaryCta, secondaryCta, image, video }: HeroProps): string {
   return (
     <div class="bg-white">
       <div class="relative isolate pt-14">
@@ -32,9 +36,15 @@ export function Hero({ title, description, primaryCta, secondaryCta, image, vide
           />
         </div>
 
-        <div class="py-24 sm:py-32 lg:pb-40">
+        <div class={productName ? "pt-10 pb-24 sm:pt-14 sm:pb-32 lg:pb-40" : "py-24 sm:py-32 lg:pb-40"}>
           <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <div class="mx-auto max-w-2xl text-center">
+            <div class="mx-auto max-w-4xl text-center">
+              {productName && (
+                <p class="text-lg font-extrabold tracking-wide uppercase mb-6">
+                  <span class="text-primary">{productName.prefix}</span>
+                  <span class="text-gray-900">{productName.suffix}</span>
+                </p>
+              )}
               <h1 class="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">
                 {title}
               </h1>
