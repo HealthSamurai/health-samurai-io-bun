@@ -5,9 +5,11 @@ console.warn(
 );
 
 export * as _Builtin from "./_Builtin";
+export * from "./AppearanceForm";
 export * from "./devlink";
 export * from "./devlinkContext";
 export * from "./DevLinkProvider";
+export * from "./Formbox";
 export * from "./GFooter";
 export * from "./GPrefooter";
 export * from "./HsNewButton";
