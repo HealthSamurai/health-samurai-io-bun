@@ -155,7 +155,7 @@ function bentoGrid(): string {
 
   return `
   <div>
-    <div class="mb-12">
+    <div class="mb-6">
       <h2 class="text-[28px] font-semibold leading-9 tracking-[-0.03em] mb-4 text-on-surface-strong font-sans">Main concepts</h2>
     </div>
 
@@ -359,9 +359,9 @@ function zulipCommunity(): string {
 // ---------------------------------------------------------------------------
 function heroSection(): string {
   return `
-  <div class="w-full relative">
-    <!-- Gray background with subtle overlay -->
-    <div class="absolute inset-0 bg-surface-alt" style="z-index:0"></div>
+  <div class="w-full relative pb-6">
+    <!-- Gray background - full width, reduced height so card extends beyond it -->
+    <div class="absolute top-0 left-0 right-0 w-screen bg-surface-alt" style="z-index:0; height: calc(60% + 52px); margin-left: calc(50% - 50vw);"></div>
 
     <!-- Content -->
     <div class="max-w-screen-2xl mx-auto px-4 md:px-8 pt-8 sm:pt-12 xl:pt-16 pb-8 relative z-10">
@@ -391,7 +391,7 @@ export function AidboxLanding(): string {
   ${heroSection()}
 
   <!-- Main content -->
-  <div class="max-w-screen-2xl mx-auto px-4 md:px-8 py-8">
+  <div class="max-w-screen-2xl mx-auto px-4 md:px-8 pt-6 pb-8">
     ${bentoGrid()}
     ${modulesSection()}
     ${seeAlsoSection()}
