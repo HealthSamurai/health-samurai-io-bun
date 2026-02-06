@@ -28,7 +28,7 @@ export function BlogLayout({ title, description, children, ctx, devMode }: BlogL
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
   </head>
-  <body class="bg-bg-primary text-text-secondary min-h-screen flex flex-col antialiased font-sans">
+  <body class="bg-bg-primary text-text-secondary min-h-screen flex flex-col antialiased font-sans pt-20">
     ${Header({ ctx })}
     ${children}
     ${Footer()}

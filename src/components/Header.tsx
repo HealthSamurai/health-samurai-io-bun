@@ -13,13 +13,18 @@ import type { Context } from "../context";
 
 type HeaderProps = {
   ctx?: Context;
+  fullWidth?: boolean;
 };
 
-export function Header({ ctx }: HeaderProps = {}): string {
+export function Header({ ctx, fullWidth }: HeaderProps = {}): string {
   const user = ctx?.user;
+  const navClass = fullWidth 
+    ? "flex items-center justify-between p-6 lg:px-8"
+    : "mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8";
+  
   return (
-    <header class="relative isolate z-10 bg-white dark:bg-dark-bg transition-colors" data-signals="{productsOpen: false, aboutOpen: false, mobileOpen: false, searchOpen: false, searchQuery: ''}">
-      <nav aria-label="Global" class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+    <header class="sticky top-0 isolate z-50 bg-white/80 dark:bg-dark-bg/80 backdrop-blur-2xl backdrop-saturate-150 transition-colors border-b border-gray-200/50 dark:border-dark-border/50" data-signals="{productsOpen: false, aboutOpen: false, mobileOpen: false, searchOpen: false, searchQuery: ''}">
+      <nav aria-label="Global" class={`${navClass}`}>
         {/* Logo */}
         <div class="flex lg:flex-1">
           <a href={logo.href} class="-m-1.5 p-1.5">
@@ -161,7 +166,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
         style={{ display: "none" }}
       >
         <div class="relative bg-white dark:bg-dark-bg">
-          <div class="mx-auto grid max-w-7xl grid-cols-4 gap-x-4 px-6 py-10 lg:px-8 xl:gap-x-8">
+          <div class={`${fullWidth ? 'grid' : 'mx-auto grid max-w-7xl'} grid-cols-4 gap-x-4 px-6 py-10 lg:px-8 xl:gap-x-8`}>
             {products.map((product) => (
               <div class="group relative rounded-lg p-6 text-sm/6 hover:bg-gray-50 dark:hover:bg-dark-bg-alt">
                 <div class="flex size-11 items-center justify-center rounded-lg bg-gray-50 dark:bg-dark-bg-alt group-hover:bg-white dark:group-hover:bg-dark-bg">
@@ -178,7 +183,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
 
           {/* Bottom actions */}
           <div class="bg-gray-50 dark:bg-dark-bg-alt">
-            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class={`${fullWidth ? '' : 'mx-auto max-w-7xl'} px-6 lg:px-8`}>
               <div class="grid grid-cols-3 divide-x divide-gray-900/5 dark:divide-dark-border border-x border-gray-900/5 dark:border-dark-border">
                 {dropdownActions.map((action) => (
                   <a
@@ -202,7 +207,7 @@ export function Header({ ctx }: HeaderProps = {}): string {
         style={{ display: "none" }}
       >
         <div class="relative bg-white dark:bg-dark-bg">
-          <div class="mx-auto grid max-w-7xl grid-cols-4 gap-x-4 px-6 py-10 lg:px-8 xl:gap-x-8">
+          <div class={`${fullWidth ? 'grid' : 'mx-auto grid max-w-7xl'} grid-cols-4 gap-x-4 px-6 py-10 lg:px-8 xl:gap-x-8`}>
             {aboutLinks.map((item) => (
               <div class="group relative rounded-lg p-6 text-sm/6 hover:bg-gray-50 dark:hover:bg-dark-bg-alt">
                 <div class="flex size-11 items-center justify-center rounded-lg bg-gray-50 dark:bg-dark-bg-alt group-hover:bg-white dark:group-hover:bg-dark-bg">

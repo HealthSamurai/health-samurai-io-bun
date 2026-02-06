@@ -81,9 +81,9 @@ export function DocsLayout(props: DocsLayoutProps): string {
   ${jsonLdTag}
 </head>
 <body class="docs-page" data-signals="{mobileNavOpen: false, productsOpen: false, aboutOpen: false, mobileOpen: false, searchOpen: false, searchQuery: ''}">
-  ${Header({ ctx })}
+  ${Header({ ctx, fullWidth: true })}
 
-  <!-- Docs mobile menu button (separate from main nav mobile) -->
+  ${isLanding ? "" : `<!-- Docs mobile menu button (separate from main nav mobile) -->
   <div class="docs-mobile-nav-toggle lg:hidden px-4 py-2 border-b border-outline-subtle bg-surface flex items-center gap-2">
     <button
       class="docs-menu-btn"
@@ -106,13 +106,13 @@ export function DocsLayout(props: DocsLayoutProps): string {
     data-show="$mobileNavOpen"
     data-on:click="$mobileNavOpen = false"
     style="display: none"
-  ></div>
+  ></div>`}
 
   <div class="docs-container">
     <!-- Left Sidebar: Navigation -->
-    <aside class="docs-sidebar" data-class="{'docs-sidebar-open': $mobileNavOpen}">
+    ${isLanding ? "" : `<aside class="docs-sidebar" data-class="{'docs-sidebar-open': $mobileNavOpen}">
       ${renderNavigation(navigation, currentUri)}
-    </aside>
+    </aside>`}
 
     <!-- Main Content -->
     <main class="docs-main${isLanding ? " docs-main-landing" : ""}">
