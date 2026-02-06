@@ -78,7 +78,7 @@ export function Pagination({
   const disabledClass = "bg-white border border-[#e9e9e9] px-3 py-2 rounded-[4px] text-base font-normal leading-6 text-[#313131] opacity-50 cursor-not-allowed flex items-center gap-1"
 
   return (
-    <nav class="flex items-center justify-center gap-[6px] flex-wrap" aria-label="Pagination">
+    <nav class="flex items-center justify-center gap-[6px] flex-wrap pb-[44px]" aria-label="Pagination">
       {/* First */}
       {currentPage > 1 ? (
         <button

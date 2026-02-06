@@ -420,8 +420,8 @@ function heroSection(): string {
         <div class="flex items-center gap-4">
           <div class="flex flex-col">
             <div class="font-mono font-medium text-base leading-[22.75px] text-brand mb-3">&gt;_</div>
-            <h1 class="m-0 mb-3 text-[36px] leading-[36px] tracking-[-0.03em] text-on-surface-strong font-sans font-semibold">Aidbox Documentation</h1>
-            <p class="m-0 text-on-surface-secondary text-base leading-6 font-normal max-w-[370px]">Learn how to get up and running with Aidbox through tutorials, APIs and platform resources.</p>
+            <h1 class="m-0 mb-3 text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white font-sans">Aidbox Documentation</h1>
+            <p class="m-0 mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-[370px]">Learn how to get up and running with Aidbox through tutorials, APIs and platform resources.</p>
           </div>
         </div>
 

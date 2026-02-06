@@ -75,11 +75,11 @@ function handleRecent(url: URL): string {
   const pageArticles = restArticles.slice(startIndex, endIndex)
 
   const articlesContent = `
-    <div class="flex flex-col">
+    <div class="flex flex-col [&>*:last-child]:border-b-0">
       ${pageArticles.map(article => ArticleCard({ article, variant: 'list' })).join('')}
     </div>
 
-    <div class="mt-8 pt-8 border-t border-neutral-200">
+    <div class="mt-6 pt-6">
       ${Pagination({
         currentPage,
         totalPages,
@@ -139,11 +139,11 @@ function handleByTopic(url: URL): string {
       baseUrl: '/blog',
     })}
 
-    <div class="flex flex-col">
+    <div class="flex flex-col [&>*:last-child]:border-b-0">
       ${pageArticles.map(article => ArticleCard({ article, variant: 'list' })).join('')}
     </div>
 
-    <div class="mt-8 pt-8 border-t border-neutral-200">
+    <div class="mt-6 pt-6">
       ${Pagination({
         currentPage,
         totalPages,
@@ -203,12 +203,12 @@ function handleByAuthor(url: URL): string {
       baseUrl: '/blog',
     })}
 
-    <div class="flex flex-col">
+    <div class="flex flex-col [&>*:last-child]:border-b-0">
       ${pageArticles.map(article => ArticleCard({ article, variant: 'list' })).join('')}
     </div>
 
     ${selectedAuthor ? `
-      <div class="mt-8 pt-8 border-t border-neutral-200">
+      <div class="mt-6 pt-6">
         ${Pagination({
           currentPage,
           totalPages,

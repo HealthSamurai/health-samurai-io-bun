@@ -1422,6 +1422,7 @@ html.dark .shiki span {
 
 .toc {
   font-size: 0.875rem;
+  padding-top: 24px;
 }
 
 .toc-title {
