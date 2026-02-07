@@ -173,7 +173,7 @@ export default function FhirServerPage(): string {
   return (
     <Fragment>
       <Hero
-        title="FHIR server and database"
+        title="FHIR server and database!"
         description="Build healthcare solutions from CDRs to EHRs using FHIR, PostgreSQL, and our SDK. Free for development. Scale to terabytes with a flat monthly fee of $1,900."
         primaryCta={{ label: "TRY FOR FREE", modalId }}
         secondaryCta={{ label: "Documentation", href: "/docs/aidbox" }}

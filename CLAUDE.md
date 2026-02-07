@@ -10,11 +10,73 @@ Rebuilding [health-samurai.io](https://health-samurai.io) from scratch using Bun
 
 **Goal:** Clone the existing health-samurai.io site with modern tech stack (Bun + htmx + Datastar) instead of the original Webflow implementation. Reference the live site for design, content, and functionality.
 
+## Mandatory Before Running The Site
+
+Before `bun dev`, these must be in place:
+
+- **Tmux**: installed and available in PATH (`tmux -V`)
+- **Tailwind**: native Tailwind CLI available after deps install (`bun install`)
+- **CLI in code diff**: keep current native CLI setup in repo
+  - `package.json` -> `css:build` uses `tailwindcss ... --minify`
+  - `package.json` -> `css:watch` uses `tailwindcss ... --watch=always`
+  - `src/styles/tailwind.css` starts with `@import "tailwindcss" source(none);`
+
+Quick verification:
+
+```sh
+tmux -V
+bun install
+rg -n '"css:build"|"css:watch"' package.json
+head -n 1 src/styles/tailwind.css
+```
+
+## Dev Internals (Read First)
+
+How `bun dev` works right now:
+
+1. Runs one-time CSS build (`bun run css:build`).
+2. Starts a tmux session (default: `hs-dev`) with two panes.
+3. Pane `server`: `bun --watch src/server.ts`.
+4. Pane `css`: `bun run css:watch`.
+
+### Hot Reload Model
+
+- Server-side hot reload is process-restart based.
+- `bun --watch src/server.ts` restarts the server when watched files change.
+- Every server restart gets a new `SERVER_ID`.
+- In dev mode, pages poll `/__ping` every 1s and call `location.reload()` when `SERVER_ID` changes.
+- `main.css` is requested as `/styles/main.css?v=<serverId>` in dev to avoid stale cache after restarts.
+
+### Tailwind Build Model
+
+- Input: `src/styles/tailwind.css`
+- Output: `public/styles/main.css`
+- Tailwind import uses `@import "tailwindcss" source(none);` to disable auto source detection.
+- Class scanning is explicit via `@source` (`src/components`, `src/pages`, `src/docs`, `src/htmx`).
+- So there is no watch loop from “output file updates input”.
+
+### Continuous Tailwind Rebuilds: What It Means
+
+- `bun run css:watch` now uses native `tailwindcss --watch=always`.
+- If rebuild output looks duplicated/triplicated, multiple `css:watch` processes are running at the same time.
+- If rebuild happens continuously without source edits, common causes are:
+- stale legacy wrapper processes (`scripts/css-watch.ts`) from old sessions
+- Tailwind auto source detection enabled (fixed by `source(none)` in `src/styles/tailwind.css`)
+
+### Troubleshooting Noisy CSS Rebuild Logs
+
+- Check status: `bun dev:status`
+- Inspect logs: `bun dev:logs`
+- If rebuild output appears duplicated/triplicated, orphan `css:watch` processes are likely running.
+- Do a clean restart: `bun dev:stop && bun dev`
+- `bun dev:stop` stops all managed tmux sessions matching `DEV_TMUX_PREFIX` (default: `hs-dev*`)
+- Avoid manual `pkill bun` (it kills unrelated Bun processes system-wide).
+
 ## Quick Start
 
 ```sh
 bun install    # Install dependencies
-bun dev        # Start dev server in background (watch mode + Tailwind watch)
+bun dev        # Start dev server in tmux session
 ```
 
 Server runs at http://localhost:4444
@@ -25,12 +87,13 @@ All scripts are in `scripts/` and run via `bun run <script>`:
 
 | Command | Description |
 |---------|-------------|
-| `bun dev` | Start background dev server + Tailwind watch |
+| `bun dev` | Start dev server in tmux session |
+| `bun dev:attach` | Attach to tmux dev session |
 | `bun dev:fg` | Run dev server + Tailwind watch in foreground |
-| `bun dev:reload` | Restart background dev processes |
-| `bun dev:stop` | Stop background dev processes |
-| `bun dev:status` | Show background dev status |
-| `bun dev:logs` | Tail dev server + Tailwind logs |
+| `bun dev:reload` | Restart dev session/processes |
+| `bun dev:stop` | Stop dev session/processes |
+| `bun dev:status` | Show tmux + legacy process status |
+| `bun dev:logs` | Tail dev logs (tmux log or legacy files) |
 | `bun start` | Production server (builds CSS, no hot reload) |
 | `bun run css:build` | Build Tailwind CSS (minified) |
 | `bun run css:watch` | Watch Tailwind CSS for changes |
@@ -46,30 +109,37 @@ All scripts are in `scripts/` and run via `bun run <script>`:
 - `PORT` - Server port (default: 4444)
 
 ```sh
-PORT=3000 bun dev           # Run background dev server on different port
+PORT=3000 bun dev           # Run tmux dev server on different port
 PORT=3000 bun dev:fg        # Foreground dev server on different port
 ```
 
 ## Server Management (Dev)
 
-Use `bun dev` (single entry point) to manage background dev processes with PID + log files:
+Use `bun dev` (single entry point) with tmux:
 
 ```sh
-bun dev           # Start server + CSS watcher in background
-bun dev:reload    # Restart background processes
-bun dev:stop      # Stop background processes (uses PID files)
-bun dev:status    # Check if running (shows PIDs)
-bun dev:logs      # Tail server + Tailwind logs
+bun dev           # Start server + CSS watcher in tmux
+bun dev:attach    # Attach to tmux session output
+bun dev:reload    # Restart tmux session/processes
+bun dev:stop      # Stop tmux session/processes
+bun dev:status    # Check tmux + legacy status
+bun dev:logs      # Tail .dev.log (or legacy logs if no tmux session)
 bun dev:fg        # Foreground mode (Ctrl+C to stop)
 ```
 
-**PID files:**
-- `.server.pid` - Server process ID
-- `.css.pid` - Tailwind CSS watcher process ID
+**tmux defaults:**
+- Session name: `hs-dev`
+- Override session name: `DEV_TMUX_SESSION=my-dev bun dev`
+- Stop by naming convention: `bun dev:stop` kills all sessions matching `hs-dev*` (configurable via `DEV_TMUX_PREFIX`)
 
 **Log files:**
+- `.dev.log` - Combined tmux pane output (`bun dev` mode)
 - `.server.log` - Server output
 - `.css.log` - CSS watcher output
+
+**Legacy PID files (fallback/non-tmux mode):**
+- `.server.pid`
+- `.css.pid`
 
 **Important:** Always use `bun dev:stop` to stop the server. Never use `pkill bun` as it kills all Bun processes system-wide.
 
@@ -78,7 +148,7 @@ bun dev:fg        # Foreground mode (Ctrl+C to stop)
 bun dev:stop && bun dev
 ```
 
-**Tailwind watch fallback:** On systems where native file watching fails, `bun run css:watch` falls back to polling rebuilds every 2 seconds. This is expected and keeps CSS up to date.
+**Tailwind watch:** `bun run css:watch` runs native `tailwindcss --watch=always` (no custom polling wrapper).
 
 **Temp directory:** Dev scripts use a local `./.tmp` directory for Bun temp files.
 
